@@ -1,7 +1,8 @@
-using Unity.VisualScripting;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Unit : Stat
+public class Player : Unit
 {
     #region Properties
     #region Private
@@ -15,7 +16,6 @@ public abstract class Unit : Stat
     #endregion
 
     #region Constructor
-    public Unit() : base() { }
     #endregion
 
     #region Methods
@@ -24,6 +24,10 @@ public abstract class Unit : Stat
     #region Protected
     #endregion
     #region Public
+    public override void TakeDamage(float damage)
+    {
+        this[EStat.HP] -= damage;
+    }
     #endregion
     #endregion
 

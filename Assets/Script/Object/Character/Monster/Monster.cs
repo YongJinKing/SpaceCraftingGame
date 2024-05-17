@@ -8,7 +8,8 @@ public class Monster : Unit
     #region Private
     #endregion
     #region Protected
-    protected float ATK;
+    [SerializeField]protected float ATK;
+    [SerializeField]protected float ATKSpeed;
     #endregion
     #region Public
     #endregion
@@ -20,7 +21,6 @@ public class Monster : Unit
     public Monster() : base() 
     {
         AddStat(EStat.ATK, ATK);
-        float a = this[EStat.ATK];
     }
     #endregion
 
@@ -30,6 +30,10 @@ public class Monster : Unit
     #region Protected
     #endregion
     #region Public
+    public override void TakeDamage(float damage)
+    {
+        this[EStat.HP] -= damage;
+    }
     #endregion
     #endregion
 

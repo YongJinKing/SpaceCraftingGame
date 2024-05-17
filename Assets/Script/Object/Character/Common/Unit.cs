@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Unit
+public abstract class Unit : Stat
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
+    [SerializeField] protected float moveSpeed;
     #endregion
     #region Public
     #endregion
@@ -16,6 +15,10 @@ public class Player : Unit
     #endregion
 
     #region Constructor
+    public Unit() : base() 
+    {
+        AddStat(EStat.MoveSpeed, moveSpeed);
+    }
     #endregion
 
     #region Methods

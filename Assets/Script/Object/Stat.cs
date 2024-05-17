@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class Stat : MonoBehaviour
+public abstract class Stat : MonoBehaviour, IDamage
 {
     #region Properties
     #region Private
     private Dictionary<EStat, float> _Stats = new Dictionary<EStat, float>();
+    private Dictionary<EStat, UnityEvent<float, float>> _StatChangedEvents = new Dictionary<EStat, UnityEvent<float, float>>();
     #endregion
     #region Protected
     [SerializeField]protected float MaxHP;
@@ -25,6 +27,7 @@ public abstract class Stat : MonoBehaviour
         {
             if (this._Stats.ContainsKey(type))
             {
+                _StatChangedEvents[type]?.Invoke(_Stats[type], value);
                 _Stats[type] = value;
             }
         }
@@ -53,9 +56,11 @@ public abstract class Stat : MonoBehaviour
     protected void AddStat(EStat type, float value)
     {
         _Stats.Add(type, value);
+        _StatChangedEvents.Add(type, new UnityEvent<float, float>());
     }
     #endregion
     #region Public
+    public abstract void TakeDamage(float damage);
     #endregion
     #endregion
 
