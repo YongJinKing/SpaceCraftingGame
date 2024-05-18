@@ -1,13 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Unit : Stat
+public class State : MonoBehaviour
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-    [SerializeField] protected float moveSpeed;
-    StateMachine stateMachine;
     #endregion
     #region Public
     #endregion
@@ -16,18 +16,30 @@ public abstract class Unit : Stat
     #endregion
 
     #region Constructor
-    public Unit() : base() 
-    {
-        AddStat(EStat.MoveSpeed, moveSpeed);
-    }
     #endregion
 
     #region Methods
     #region Private
     #endregion
     #region Protected
+    protected virtual void AddListeners()
+    {
+    }
+
+    protected virtual void RemoveListeners()
+    {
+    }
     #endregion
     #region Public
+    public virtual void Enter()
+    {
+        AddListeners();
+    }
+
+    public virtual void Exit()
+    {
+        RemoveListeners();
+    }
     #endregion
     #endregion
 
@@ -38,5 +50,9 @@ public abstract class Unit : Stat
     #endregion
 
     #region MonoBehaviour
+    protected virtual void OnDestroy()
+    {
+        RemoveListeners();
+    }
     #endregion
 }
