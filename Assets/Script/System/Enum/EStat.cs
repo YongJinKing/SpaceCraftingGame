@@ -8,6 +8,7 @@ public enum EStat
     #region Unit, Turret
     ATK,
     ATKSpeed,
+    ATKDelay,
     #endregion
 
     #region Unit
@@ -16,6 +17,11 @@ public enum EStat
 
     #region Factory Buildings
     Efficiency,
-    Output
+    Output,
+    #endregion
+
+    #region Structure
+    DEF,
+    BuildingSpeed
     #endregion
 }
