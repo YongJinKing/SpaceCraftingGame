@@ -40,8 +40,7 @@ public abstract class Stat : MonoBehaviour, IDamage
     #region Constructor
     public Stat()
     {
-        AddStat(EStat.MaxHP, MaxHP);
-        AddStat(EStat.HP, HP);
+
     }
     #endregion
 
@@ -55,8 +54,13 @@ public abstract class Stat : MonoBehaviour, IDamage
     #region Protected
     protected void AddStat(EStat type, float value)
     {
-        _Stats.Add(type, value);
-        _StatChangedEvents.Add(type, new UnityEvent<float, float>());
+        if(!_Stats.ContainsKey(type))
+            _Stats.Add(type, value);
+        else 
+            _Stats[type] = value;
+
+        if(!_StatChangedEvents.ContainsKey(type))
+            _StatChangedEvents.Add(type, new UnityEvent<float, float>());
     }
     #endregion
     #region Public
@@ -71,5 +75,10 @@ public abstract class Stat : MonoBehaviour, IDamage
     #endregion
 
     #region MonoBehaviour
+    protected virtual void Start()
+    {
+        AddStat(EStat.MaxHP, MaxHP);
+        AddStat(EStat.HP, HP);
+    }
     #endregion
 }

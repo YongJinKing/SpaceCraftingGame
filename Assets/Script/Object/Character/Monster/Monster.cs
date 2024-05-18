@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Monster : Unit
@@ -18,16 +17,15 @@ public class Monster : Unit
     #endregion
 
     #region Constructor
-    public Monster() : base() 
-    {
-        AddStat(EStat.ATK, ATK);
-    }
     #endregion
 
     #region Methods
     #region Private
     #endregion
     #region Protected
+    protected override void Initialize()
+    {
+    }
     #endregion
     #region Public
     public override void TakeDamage(float damage)
@@ -44,5 +42,10 @@ public class Monster : Unit
     #endregion
 
     #region MonoBehaviour
+    protected override void Start()
+    {
+        base.Start();
+        AddStat(EStat.ATK, ATK);
+    }
     #endregion
 }

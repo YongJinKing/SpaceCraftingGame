@@ -16,16 +16,13 @@ public abstract class Unit : Stat
     #endregion
 
     #region Constructor
-    public Unit() : base() 
-    {
-        AddStat(EStat.MoveSpeed, moveSpeed);
-    }
     #endregion
 
     #region Methods
     #region Private
     #endregion
     #region Protected
+    protected abstract void Initialize();
     #endregion
     #region Public
     #endregion
@@ -38,5 +35,10 @@ public abstract class Unit : Stat
     #endregion
 
     #region MonoBehaviour
+    protected override void Start()
+    {
+        base.Start();
+        AddStat(EStat.MoveSpeed, moveSpeed);
+    }
     #endregion
 }

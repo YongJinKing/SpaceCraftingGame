@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+
 
 public class Player : Unit
 {
@@ -22,6 +20,9 @@ public class Player : Unit
     #region Private
     #endregion
     #region Protected
+    protected override void Initialize()
+    {
+    }
     #endregion
     #region Public
     public override void TakeDamage(float damage)
