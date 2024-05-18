@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TestEnemy : MonoBehaviour
+public class TestEnemy : MonoBehaviour, IDamage
 {
     public SpriteRenderer spriteRenderer;
     public Transform Target;

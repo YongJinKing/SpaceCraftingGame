@@ -140,7 +140,7 @@ public class Turret : Structure
     // 무조건 맞는건데 투사체가 보였으면 좋겠음
     void Attack(GameObject enemy)
     {
-        TestEnemy targetEnemy = enemy.GetComponent<TestEnemy>();
+        IDamage targetEnemy = enemy.GetComponent<IDamage>();
 
         if (targetEnemy != null && bullet != null)
         {
@@ -159,6 +159,7 @@ public class Turret : Structure
     #endregion
 
     #region For_Debug
+#if UNITY_2022_1_OR_NEWER
     // 공격 범위를 시각적으로 보여주는 함수 (디버그용)
     void OnDrawGizmosSelected()
     {
@@ -168,5 +169,6 @@ public class Turret : Structure
             Gizmos.DrawWireSphere(transform.position, perception.GetComponent<CircleCollider2D>().radius);
         }
     }
+#endif
     #endregion
 }
