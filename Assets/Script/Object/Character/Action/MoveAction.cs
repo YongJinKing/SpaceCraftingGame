@@ -1,17 +1,19 @@
-
+using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Monster : Unit
+public abstract class MoveAction : Action
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-
     #endregion
     #region Public
     #endregion
     #region Events
+    protected UnityEvent<Vector2> moveToPosEvent = new UnityEvent<Vector2>();
+    protected UnityEvent<Vector2> moveToDirEvent = new UnityEvent<Vector2>();
     #endregion
     #endregion
 
@@ -22,15 +24,8 @@ public class Monster : Unit
     #region Private
     #endregion
     #region Protected
-    protected override void Initialize()
-    {
-    }
     #endregion
     #region Public
-    public override void TakeDamage(float damage)
-    {
-        this[EStat.HP] -= damage;
-    }
     #endregion
     #endregion
 
@@ -41,5 +36,10 @@ public class Monster : Unit
     #endregion
 
     #region MonoBehaviour
+    protected virtual void OnDestroy()
+    {
+        moveToPosEvent.RemoveAllListeners();
+        moveToDirEvent.RemoveAllListeners();
+    }
     #endregion
 }

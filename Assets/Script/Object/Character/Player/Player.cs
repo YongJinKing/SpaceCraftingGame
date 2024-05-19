@@ -1,5 +1,7 @@
 
 
+using UnityEngine;
+
 public class Player : Unit
 {
     #region Properties
@@ -8,6 +10,7 @@ public class Player : Unit
     #region Protected
     #endregion
     #region Public
+    public Action[] actions;
     #endregion
     #region Events
     #endregion
@@ -22,6 +25,8 @@ public class Player : Unit
     #region Protected
     protected override void Initialize()
     {
+        base.Initialize();
+        stateMachine.ChangeState<PlayerIdleState>();
     }
     #endregion
     #region Public

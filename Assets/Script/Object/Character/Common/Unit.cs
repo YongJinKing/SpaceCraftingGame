@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Unit : Stat
@@ -7,7 +8,9 @@ public abstract class Unit : Stat
     #endregion
     #region Protected
     [SerializeField] protected float moveSpeed;
-    StateMachine stateMachine;
+    [SerializeField] protected float ATK;
+    [SerializeField] protected float ATKSpeed;
+    protected StateMachine stateMachine;
     #endregion
     #region Public
     #endregion
@@ -22,7 +25,16 @@ public abstract class Unit : Stat
     #region Private
     #endregion
     #region Protected
-    protected abstract void Initialize();
+    protected override void Initialize()
+    {
+        base.Initialize();
+        AddStat(EStat.MoveSpeed, moveSpeed);
+        AddStat(EStat.ATK, ATK);
+        AddStat(EStat.ATKSpeed, ATKSpeed);
+
+        if (stateMachine == null)
+            stateMachine = transform.AddComponent<StateMachine>();
+    }
     #endregion
     #region Public
     #endregion
@@ -35,10 +47,5 @@ public abstract class Unit : Stat
     #endregion
 
     #region MonoBehaviour
-    protected override void Start()
-    {
-        base.Start();
-        AddStat(EStat.MoveSpeed, moveSpeed);
-    }
     #endregion
 }

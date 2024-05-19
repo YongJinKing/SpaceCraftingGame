@@ -1,13 +1,13 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : Unit
+public class PlayerIdleState : PlayerState
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-
     #endregion
     #region Public
     #endregion
@@ -22,14 +22,16 @@ public class Monster : Unit
     #region Private
     #endregion
     #region Protected
-    protected override void Initialize()
-    {
-    }
     #endregion
     #region Public
-    public override void TakeDamage(float damage)
+    public override void Enter()
     {
-        this[EStat.HP] -= damage;
+        base.Enter();
+        owner.actions[0].Activate();
+    }
+    public override void Exit() { 
+        base.Exit();
+        owner.actions[0].Deactivate();
     }
     #endregion
     #endregion

@@ -9,26 +9,28 @@ public abstract class Stat : MonoBehaviour, IDamage
     #region Properties
     #region Private
     private Dictionary<EStat, float> _Stats = new Dictionary<EStat, float>();
+    //UnityEvent = first float : oldValue, second float : newValue
     private Dictionary<EStat, UnityEvent<float, float>> _StatChangedEvents = new Dictionary<EStat, UnityEvent<float, float>>();
     #endregion
     #region Protected
-    [SerializeField]protected float MaxHP;
-    [SerializeField]protected float HP;
+    [SerializeField] protected float MaxHP;
+    [SerializeField] protected float HP;
     #endregion
     #region Public
     public float this[EStat type]
     {
-        get 
+        get
         {
-            if (!this._Stats.ContainsKey(type)) return 0.0f;
+            if (!this._Stats.ContainsKey(type)) return -1.0f;
             return GetModifiedStat(type);
         }
         set
         {
             if (this._Stats.ContainsKey(type))
             {
-                _StatChangedEvents[type]?.Invoke(_Stats[type], value);
+                float old = GetModifiedStat(type);
                 _Stats[type] = value;
+                _StatChangedEvents[type]?.Invoke(old, GetModifiedStat(type));
             }
         }
     }
@@ -38,10 +40,6 @@ public abstract class Stat : MonoBehaviour, IDamage
     #endregion
 
     #region Constructor
-    public Stat()
-    {
-
-    }
     #endregion
 
     #region Methods
@@ -52,19 +50,44 @@ public abstract class Stat : MonoBehaviour, IDamage
     }
     #endregion
     #region Protected
+    protected virtual void Initialize()
+    {
+        AddStat(EStat.MaxHP, MaxHP);
+        AddStat(EStat.HP, HP);
+    }
     protected void AddStat(EStat type, float value)
     {
-        if(!_Stats.ContainsKey(type))
+        if (!_Stats.ContainsKey(type))
             _Stats.Add(type, value);
-        else 
+        else
             _Stats[type] = value;
 
-        if(!_StatChangedEvents.ContainsKey(type))
+        if (!_StatChangedEvents.ContainsKey(type))
             _StatChangedEvents.Add(type, new UnityEvent<float, float>());
     }
     #endregion
     #region Public
     public abstract void TakeDamage(float damage);
+    public void AddStatEventListener(EStat type, UnityAction<float, float> function)
+    {
+        if (_StatChangedEvents.ContainsKey(type))
+        {
+            _StatChangedEvents[type].AddListener(function);
+        }
+    }
+    public void RemoveStatEventListener(EStat type, UnityAction<float, float> function)
+    {
+        if (_StatChangedEvents.ContainsKey(type))
+        {
+            _StatChangedEvents[type].RemoveListener(function);
+        }
+    }
+    public float GetRawStat(EStat type)
+    {
+        if ( _Stats.ContainsKey(type))
+            return _Stats[type];
+        return -1.0f;
+    }
     #endregion
     #endregion
 
@@ -77,8 +100,7 @@ public abstract class Stat : MonoBehaviour, IDamage
     #region MonoBehaviour
     protected virtual void Start()
     {
-        AddStat(EStat.MaxHP, MaxHP);
-        AddStat(EStat.HP, HP);
+        Initialize();
     }
     #endregion
 }

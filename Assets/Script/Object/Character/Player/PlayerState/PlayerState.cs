@@ -1,13 +1,14 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : Unit
+public abstract class PlayerState : State
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-
+    protected Player owner;
     #endregion
     #region Public
     #endregion
@@ -22,15 +23,8 @@ public class Monster : Unit
     #region Private
     #endregion
     #region Protected
-    protected override void Initialize()
-    {
-    }
     #endregion
     #region Public
-    public override void TakeDamage(float damage)
-    {
-        this[EStat.HP] -= damage;
-    }
     #endregion
     #endregion
 
@@ -41,5 +35,9 @@ public class Monster : Unit
     #endregion
 
     #region MonoBehaviour
+    protected virtual void Awake()
+    {
+        owner = GetComponent<Player>();
+    }
     #endregion
 }
