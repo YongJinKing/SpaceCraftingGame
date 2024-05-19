@@ -25,9 +25,7 @@ public class Turret : Structure
     #region Constructor
     public Turret() : base()
     {
-        AddStat(EStat.ATKSpeed, turretAttackTimer);
-        AddStat(EStat.ATKDelay, turretAttackCooldown);
-        AddStat(EStat.ATK, dmg);
+        
     }
     #endregion
 
@@ -42,9 +40,12 @@ public class Turret : Structure
         turretAttackCooldown = this[EStat.ATKDelay];*/
     }
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
+        AddStat(EStat.ATKSpeed, turretAttackTimer);
+        AddStat(EStat.ATKDelay, turretAttackCooldown);
+        AddStat(EStat.ATK, dmg);
     }
 
     // Update is called once per frame

@@ -44,16 +44,25 @@ public abstract class Structure : Stat
     #region Constructor
     public Structure() : base()
     {
-        _state = StructureState.BuildProgress;
-        AddStat(EStat.DEF, def);
-        AddStat(EStat.BuildingSpeed, buildingSpd);
+        
     }
     #endregion
 
     #region Method
+
     protected float GetEfficiency()
     {
         return this[EStat.HP]/ this[EStat.MaxHP];
+    }
+    #endregion
+
+    #region MonoBehaviour
+    protected override void Start()
+    {
+        base.Start();
+        _state = StructureState.BuildProgress;
+        AddStat(EStat.DEF, def);
+        AddStat(EStat.BuildingSpeed, buildingSpd);
     }
     #endregion
 }
