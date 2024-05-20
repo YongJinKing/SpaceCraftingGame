@@ -535,7 +535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a58a3c00d1e3a94a9e22a843801a052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activated: 0
 --- !u!4 &1854854245
 Transform:
   m_ObjectHideFlags: 0
@@ -708,8 +707,7 @@ MonoBehaviour:
   moveSpeed: 5
   ATK: 0
   ATKSpeed: 0
-  actions:
-  - {fileID: 1854854244}
+  moveAction: {fileID: 1854854244}
 --- !u!1 &2006832372
 GameObject:
   m_ObjectHideFlags: 0

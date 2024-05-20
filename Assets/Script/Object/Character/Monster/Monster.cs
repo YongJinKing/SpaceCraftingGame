@@ -24,6 +24,8 @@ public class Monster : Unit
     #region Protected
     protected override void Initialize()
     {
+        base.Initialize();
+        stateMachine.ChangeState<MonsterInitState>();
     }
     #endregion
     #region Public

@@ -1,16 +1,13 @@
 
-
-using UnityEngine;
-
-public class Player : Unit
+public class MonsterState : State
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
+    protected Monster owner;
     #endregion
     #region Public
-    public MoveAction moveAction;
     #endregion
     #region Events
     #endregion
@@ -23,17 +20,8 @@ public class Player : Unit
     #region Private
     #endregion
     #region Protected
-    protected override void Initialize()
-    {
-        base.Initialize();
-        stateMachine.ChangeState<PlayerInitState>();
-    }
     #endregion
     #region Public
-    public override void TakeDamage(float damage)
-    {
-        this[EStat.HP] -= damage;
-    }
     #endregion
     #endregion
 
@@ -44,5 +32,9 @@ public class Player : Unit
     #endregion
 
     #region MonoBehaviour
+    protected virtual void Awake()
+    {
+        owner = GetComponent<Monster>();
+    }
     #endregion
 }

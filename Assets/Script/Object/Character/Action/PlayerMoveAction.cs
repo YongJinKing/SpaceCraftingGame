@@ -6,8 +6,6 @@ public class PlayerMoveAction : MoveAction
 {
     #region Properties
     #region Private
-    //for debug, Serialize
-    [SerializeField]private bool activated = false;
     #endregion
     #region Protected
     #endregion
@@ -29,31 +27,20 @@ public class PlayerMoveAction : MoveAction
         UnitMovement movement = GetComponentInParent<UnitMovement>();
         moveToPosEvent.AddListener(movement.OnMoveToPos);
         moveToDirEvent.AddListener(movement.OnMoveToDir);
-
-        InputController inputController = GameObject.Find("InputController").GetComponent<InputController>();
-        inputController.moveEvent.AddListener(OnMove);
     }
     #endregion
     #region Public
-    public override void Activate()
+    public override void Activate(Vector2 info)
     {
-        activated = true;
+        moveToDirEvent?.Invoke(info);
     }
     public override void Deactivate()
     {
-        activated &= false;
     }
     #endregion
     #endregion
 
     #region EventHandlers
-    public void OnMove(Vector2 dir)
-    {
-        if(activated)
-        {
-            moveToDirEvent?.Invoke(dir);
-        }
-    }
     #endregion
 
     #region Coroutines

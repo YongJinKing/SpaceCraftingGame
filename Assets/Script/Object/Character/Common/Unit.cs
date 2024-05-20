@@ -10,9 +10,13 @@ public abstract class Unit : Stat
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float ATK;
     [SerializeField] protected float ATKSpeed;
-    protected StateMachine stateMachine;
+    protected StateMachine _stateMachine;
     #endregion
     #region Public
+    public StateMachine stateMachine 
+    {
+        get { return _stateMachine; } 
+    }
     #endregion
     #region Events
     #endregion
@@ -32,8 +36,8 @@ public abstract class Unit : Stat
         AddStat(EStat.ATK, ATK);
         AddStat(EStat.ATKSpeed, ATKSpeed);
 
-        if (stateMachine == null)
-            stateMachine = transform.AddComponent<StateMachine>();
+        if (_stateMachine == null)
+            _stateMachine = transform.AddComponent<StateMachine>();
     }
     #endregion
     #region Public

@@ -1,8 +1,7 @@
+﻿
+using System.Collections;
 
-
-using UnityEngine;
-
-public class Player : Unit
+public class PlayerInitState : PlayerState
 {
     #region Properties
     #region Private
@@ -10,7 +9,6 @@ public class Player : Unit
     #region Protected
     #endregion
     #region Public
-    public MoveAction moveAction;
     #endregion
     #region Events
     #endregion
@@ -23,16 +21,16 @@ public class Player : Unit
     #region Private
     #endregion
     #region Protected
-    protected override void Initialize()
-    {
-        base.Initialize();
-        stateMachine.ChangeState<PlayerInitState>();
-    }
     #endregion
     #region Public
-    public override void TakeDamage(float damage)
+    public override void Enter()
     {
-        this[EStat.HP] -= damage;
+        base.Enter();
+        StartCoroutine(Init());
+    }
+    public override void Exit()
+    {
+        base.Exit();
     }
     #endregion
     #endregion
@@ -41,6 +39,11 @@ public class Player : Unit
     #endregion
 
     #region Coroutines
+    private IEnumerator Init()
+    {
+        yield return null;
+        owner.stateMachine.ChangeState<PlayerIdleState>();
+    }
     #endregion
 
     #region MonoBehaviour

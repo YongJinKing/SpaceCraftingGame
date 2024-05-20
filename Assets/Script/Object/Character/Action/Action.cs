@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Action : MonoBehaviour
+public abstract class Action<T> : MonoBehaviour
 {
     #region Properties
     #region Private
@@ -25,7 +25,7 @@ public abstract class Action : MonoBehaviour
     protected abstract void Initialize();
     #endregion
     #region Public
-    public abstract void Activate();
+    public abstract void Activate(T info);
     public abstract void Deactivate();
     #endregion
     #endregion

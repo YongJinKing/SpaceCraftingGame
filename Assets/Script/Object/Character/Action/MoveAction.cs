@@ -2,7 +2,7 @@ using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class MoveAction : Action
+public abstract class MoveAction : Action<Vector2>
 {
     #region Properties
     #region Private
