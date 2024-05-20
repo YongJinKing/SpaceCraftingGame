@@ -15,7 +15,7 @@ public class InputController : MonoBehaviour
     #endregion
     #region Events
     public UnityEvent<Vector2> moveEvent;
-    public UnityEvent<int> mouseEvent;
+    public UnityEvent<int, Vector2> mouseEvent;
     #endregion
     #endregion
 
@@ -24,6 +24,10 @@ public class InputController : MonoBehaviour
 
     #region Methods
     #region Private
+    private Vector2 GetMousePoint()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
     #endregion
     #region Protected
     #endregion
@@ -44,15 +48,15 @@ public class InputController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            mouseEvent?.Invoke(0);
+            mouseEvent?.Invoke(0, GetMousePoint());
         }
         if (Input.GetMouseButtonDown(1))
         {
-            mouseEvent?.Invoke(1);
+            mouseEvent?.Invoke(1, GetMousePoint());
         }
         if (Input.GetMouseButtonDown(2))
         {
-            mouseEvent?.Invoke(2);
+            mouseEvent?.Invoke(2, GetMousePoint());
         }
     }
 
