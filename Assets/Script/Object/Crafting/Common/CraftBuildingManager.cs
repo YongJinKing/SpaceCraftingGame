@@ -12,20 +12,20 @@ public class CraftBuildingManager : MonoBehaviour
     public Transform turret;
     public Transform[] rectangles;
     public Transform TurretParent;
+
+    public int size;
     TileManager tileManage;
-    int size;
     // Start is called before the first frame update
     void Start()
     {
         tileManage = FindObjectOfType<TileManager>();
-        size = tileManage.GetTileLength();
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        Debug.Log(tileManage.GetTileLength());
+        //Debug.Log(tileManage.GetTileLength());
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask);
@@ -34,20 +34,19 @@ public class CraftBuildingManager : MonoBehaviour
             ground = hit.collider.gameObject.GetComponent<Tilemap>();
             Debug.Log(ground.cellSize.x + " " + ground.cellSize.y);
             Vector3Int cellPosition = ground.LocalToCell(hit.point);
-            /* if (tileManage.IsCraftable(cellPosition))
-                 DrawRectangle(new Vector3(cellPosition.x + ground.tileAnchor.x, cellPosition.y + ground.tileAnchor.y, 0), Color.green);
-             else
-             {
-                 DrawRectangle(new Vector3(cellPosition.x + ground.tileAnchor.x, cellPosition.y + ground.tileAnchor.y, 0), Color.red);
-             }
- */
-            Draw_nSizeRectangle(cellPosition, 2);
+            /*if (tileManage.IsCraftable(cellPosition))
+                DrawRectangle(new Vector3(cellPosition.x + ground.tileAnchor.x, cellPosition.y + ground.tileAnchor.y, 0), Color.green);
+            else
+            {
+                DrawRectangle(new Vector3(cellPosition.x + ground.tileAnchor.x, cellPosition.y + ground.tileAnchor.y, 0), Color.red);
+            }*/
+
+            Draw_nSizeRectangle(cellPosition, size);
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log(cellPosition);
                 if (tileManage.IsCraftable(cellPosition))
                 {
-                    Debug.Log(tileManage.GetPlaceIdx(cellPosition));
                     Instantiate(turret, new Vector3(cellPosition.x + ground.tileAnchor.x, cellPosition.y+ground.tileAnchor.y, 0), Quaternion.identity, TurretParent);
                     RemovePlaceEvent?.Invoke(cellPosition);
                 }
@@ -62,43 +61,43 @@ public class CraftBuildingManager : MonoBehaviour
 
     void DrawRectangle(Vector3 pos, Color color)
     {
-        /*if(!rectangle.gameObject.activeSelf)rectangle.gameObject.SetActive(true);
-        rectangle.transform.position = pos;
+        if (!rectangles[0].gameObject.activeSelf) rectangles[0].gameObject.SetActive(true);
+        rectangles[0].transform.position = pos;
         Color tmpColor = color;
         tmpColor.a = 0.5f;
-        rectangle.transform.GetComponent<SpriteRenderer>().color = tmpColor;*/
+        rectangles[0].transform.GetComponent<SpriteRenderer>().color = tmpColor;
     }
 
+    // NxN 사이즈의 박스를 그리기 위해 NxN번 반복하며 그린다.
     void Draw_nSizeRectangle(Vector3 pos, int n)
     {
-        int idx = tileManage.GetPlaceIdx(pos);
-        Vector3 tmpPos = pos;
-        int recIdx = 0;
-        for(int i = idx, cnt = 0; cnt < n; i += size, cnt++)
+        StopDrawingRectangle();
+        Vector3 tmpPos;
+        Vector3 cellPos;
+        int rectIdx = 0;
+        for(int i = 0; i < n; i++)
         {
-            int mul = 0;
-            for (int j = i; j < i+n; j++)
+            for(int j = 0; j < n; j++)
             {
-                tmpPos = tmpPos + new Vector3(tmpPos.x + +(ground.cellSize.x * mul), tmpPos.y + (ground.cellSize.y * mul),0);
-                if (!rectangles[recIdx].gameObject.activeSelf) rectangles[recIdx].gameObject.SetActive(true);
-                rectangles[recIdx].transform.position =
-                    new Vector3(tmpPos.x + ground.tileAnchor.x, tmpPos.y + ground.tileAnchor.y, 0);
-                Color tmpColor = Color.white;
+                tmpPos = pos + new Vector3(ground.cellSize.x * j, ground.cellSize.y * i,0);
+                cellPos = tmpPos + new Vector3(ground.tileAnchor.x, ground.tileAnchor.y, 0);
+                if (!tileManage.HasTile(tmpPos)) break;
+                if (!rectangles[rectIdx].gameObject.activeSelf) rectangles[rectIdx].gameObject.SetActive(true);
+                rectangles[rectIdx].transform.position = cellPos;
                 if (tileManage.IsCraftable(tmpPos))
                 {
-                    tmpColor = Color.green;
+                    Color tmpColor = Color.green;
                     tmpColor.a = 0.5f;
+                    rectangles[rectIdx].transform.GetComponent<SpriteRenderer>().color = tmpColor;
                 }
                 else
                 {
-                    tmpColor = Color.red;
+                    Color tmpColor = Color.red;
                     tmpColor.a = 0.5f;
+                    rectangles[rectIdx].transform.GetComponent<SpriteRenderer>().color = tmpColor;
                 }
-                rectangles[recIdx].transform.GetComponent<SpriteRenderer>().color = tmpColor;
-                recIdx++;
-                mul++;
+                rectIdx++;
             }
-            
         }
     }
 
@@ -107,7 +106,6 @@ public class CraftBuildingManager : MonoBehaviour
         for(int i = 0; i < rectangles.Length; i++)
         {
             if (rectangles[i].gameObject.activeSelf) rectangles[i].gameObject.SetActive(false);
-            else break;
         }
     }
 

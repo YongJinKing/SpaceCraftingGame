@@ -1169,8 +1169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileMap: {fileID: 0}
-  availablePlaces: []
-  objectPlaces: []
 --- !u!19719996 &1107091912
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -1463,6 +1461,7 @@ MonoBehaviour:
   - {fileID: 1195118748}
   - {fileID: 533128977}
   TurretParent: {fileID: 1884331769}
+  size: 1
 --- !u!4 &1430609684
 Transform:
   m_ObjectHideFlags: 0

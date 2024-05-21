@@ -7,17 +7,16 @@ public class TileManager : MonoBehaviour
 {
     public Tilemap tileMap = null;
 
-    public List<Vector3> availablePlaces;
-    public List<Vector3> objectPlaces;
-
-
+    //public List<Vector3> availablePlaces;
+    public Dictionary<Vector3, bool> availablePlaces;
     CraftBuildingManager craftmanager;
     void Awake()
     {
         craftmanager = FindObjectOfType<CraftBuildingManager>();
         craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
         tileMap = transform.GetComponent<Tilemap>();
-        availablePlaces = new List<Vector3>();
+        //availablePlaces = new List<Vector3>();
+        availablePlaces = new Dictionary<Vector3, bool>();
 
         /*for (int x = tileMap.cellBounds.xMin; x < tileMap.cellBounds.xMax; x++)
         {
@@ -47,7 +46,8 @@ public class TileManager : MonoBehaviour
                 if (tileMap.HasTile(localPlace))
                 {
                     //Tile at "place"
-                    availablePlaces.Add(place);
+                    //availablePlaces.Add(place);
+                    availablePlaces[place] = true;
                 }
                 else
                 {
@@ -55,93 +55,40 @@ public class TileManager : MonoBehaviour
                 }
             }
         }
-    }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            CoutList();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            RandomObject();
-        }
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            CoutRndList();
-        }
+        Debug.Log(availablePlaces.Count);
     }
 
     public bool IsCraftable(Vector3 coordinates)
     {
-        return availablePlaces.Contains(coordinates);
-    }
-
-    public bool IsCraftable(int idx)
-    {
-        return availablePlaces[idx] != null;
+        //return availablePlaces.Contains(coordinates);
+        return availablePlaces[coordinates];
     }
 
     public void RemopvePlace(Vector3 coordinates)
     {
-        availablePlaces.Remove(coordinates);
-    }
-
-    public int GetPlaceIdx(Vector3 coordinates)
-    {
-        return availablePlaces.IndexOf(coordinates);
+        availablePlaces[coordinates] = false;
     }
 
     public int GetTileLength()
     {
         return (int)Mathf.Sqrt(availablePlaces.Count);
     }
-
     
-    
-    public Vector3 GetTilePosWithIdx(int idx)
+    public bool HasTile(Vector3 coordinates)
     {
-        return availablePlaces[idx];
-    }
-    void CoutList()
-    {
-        for (int i = 0; i < availablePlaces.Count; i++)
-        {
-            Debug.Log(availablePlaces[i]);
-        }
+        return availablePlaces.ContainsKey(coordinates);
     }
 
-    void CoutRndList()
+    private void Update()
     {
-        for (int i = 0; i < objectPlaces.Count; i++)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log(objectPlaces[i]);
-        }
-    }
-
-    void RandomObject()
-    {
-        int idx = -1;
-        int prevIdx = idx;
-        for (int i = 0; i < 10; i++)
-        {
-            idx = Random.Range(0, availablePlaces.Count);
-            if (prevIdx == idx)
+            foreach (KeyValuePair<Vector3, bool> entry in availablePlaces)
             {
-                continue;
+                Debug.Log(entry.Key + " : " + entry.Value);
             }
-            else
-            {
-                objectPlaces.Add(availablePlaces[idx]);
-                availablePlaces.RemoveAt(idx);
-                prevIdx = idx;
-            }
-
         }
-
-
     }
+
 }
