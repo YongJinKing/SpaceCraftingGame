@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class PlayerIdleState : PlayerState
+public class PlayerMovableActionState : PlayerState
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
+    Action action;
     #endregion
     #region Public
     #endregion
@@ -29,25 +29,36 @@ public class PlayerIdleState : PlayerState
         base.AddListeners();
         InputController inputController = GameObject.Find("InputController").GetComponent<InputController>();
         inputController.moveEvent.AddListener(OnMove);
-        inputController.mouseEvent.AddListener(OnMouse);
     }
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
         InputController inputController = GameObject.Find("InputController").GetComponent<InputController>();
-        if(inputController != null)
+        if (inputController != null)
         {
             inputController.moveEvent.RemoveListener(OnMove);
-            inputController.mouseEvent.RemoveListener(OnMouse);
-        } 
+        }
+        if(action != null)
+        {
+            action.OnActionEndEvent.RemoveListener(OnActionEnd);
+        }
+        action = null;
     }
     #endregion
     #region Public
+    public override void GetInfo<T>(T info)
+    {
+        action = info as Action;
+        if (action != null)
+        {
+            action.OnActionEndEvent.AddListener(OnActionEnd);
+        }
+    }
     public override void Enter()
     {
         base.Enter();
     }
-    public override void Exit() 
+    public override void Exit()
     {
         base.Exit();
         owner.moveAction.Deactivate();
@@ -60,10 +71,9 @@ public class PlayerIdleState : PlayerState
     {
         owner.moveAction.Activate(dir);
     }
-    public void OnMouse(int type, Vector2 pos)
+    public void OnActionEnd()
     {
-        owner.attackAction.Activate(pos);
-        owner.stateMachine.ChangeState<PlayerMovableActionState, Action>(owner.attackAction);
+        owner.stateMachine.ChangeState<PlayerIdleState>();
     }
     #endregion
 

@@ -30,9 +30,9 @@ public class PlayerMoveAction : MoveAction
     }
     #endregion
     #region Public
-    public override void Activate(Vector2 info)
+    public override void Activate(Vector2 pos)
     {
-        moveToDirEvent?.Invoke(info);
+        moveToDirEvent?.Invoke(pos);
     }
     public override void Deactivate()
     {

@@ -37,8 +37,8 @@ public abstract class HitBox : MonoBehaviour
     }
     public float duration
     {
-        get { return duration; }
-        set {  duration = value; }
+        get { return _duration; }
+        set {  _duration = value; }
     }
 
     public float hitFrequency
@@ -48,6 +48,7 @@ public abstract class HitBox : MonoBehaviour
     }
     #endregion
     #region Events
+    public UnityEvent OnDurationEndEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -92,21 +93,27 @@ public abstract class HitBox : MonoBehaviour
     }
     #endregion
     #region Public
-    #endregion
-    #endregion
-
-    #region EventHandlers
-    public virtual void OnActivated(Vector2 pos)
+    public void Refresh()
+    {
+        calculatedObject.Clear();
+    }
+    public virtual void Activate(Vector2 pos)
     {
         gameObject.SetActive(true);
         this.pos = pos;
         StartCoroutine(HitChecking());
         StartCoroutine(Refreshing());
     }
-    public virtual void OnDeactivated()
+    public virtual void Deactivate()
     {
         StopAllCoroutines();
+        gameObject.SetActive(false);
+        Refresh();
     }
+    #endregion
+    #endregion
+
+    #region EventHandlers
     #endregion
 
     #region Coroutines
@@ -117,7 +124,7 @@ public abstract class HitBox : MonoBehaviour
         while(duration > 0)
         {
             yield return new WaitForSeconds(hitFrequency);
-            calculatedObject.Clear();
+            Refresh();
         }
     }
     #endregion
@@ -127,7 +134,6 @@ public abstract class HitBox : MonoBehaviour
     {
         Initialize();
     }
-
     //for Debug
 #if UNITY_EDITOR
     public bool debuging = false;

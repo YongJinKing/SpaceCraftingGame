@@ -27,23 +27,26 @@ public class MeleeHitBox : HitBox
     protected override void Initialize()
     {
         base.Initialize();
-        offset = hitBoxSize.x;
+        offset = hitBoxSize.x * 0.5f;
         transform.Translate(Vector3.right * offset, Space.World);
     }
     #endregion
     #region Public
-    #endregion
-    #endregion
-
-    #region EventHandlers
-    public override void OnActivated(Vector2 pos)
+    public override void Activate(Vector2 pos)
     {
         float dir = 1.0f;
         if (Vector2.Dot(transform.up, pos - (Vector2)transform.position) < 0.0f) dir = -1.0f;
         angle = Vector2.Angle(transform.right, pos) * dir;
         transform.Rotate(Vector3.forward * angle, Space.World);
-        base.OnActivated(pos);
+
+        transform.localPosition = new Vector2(offset * Mathf.Cos(transform.localRotation.z * Mathf.Deg2Rad), offset * Mathf.Sin(transform.localRotation.z * Mathf.Deg2Rad));
+
+        base.Activate(pos);
     }
+    #endregion
+    #endregion
+
+    #region EventHandlers
     #endregion
 
     #region Coroutines
@@ -88,7 +91,9 @@ public class MeleeHitBox : HitBox
 
             yield return null;
         }
+        OnDurationEndEvent?.Invoke();
         gameObject.SetActive(false);
+        Refresh();
     }
     #endregion
 

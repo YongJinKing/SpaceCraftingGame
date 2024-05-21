@@ -40,6 +40,9 @@ public class State : MonoBehaviour
     {
         RemoveListeners();
     }
+    public virtual void GetInfo<T>(T info)
+    {
+    }
     #endregion
     #endregion
 

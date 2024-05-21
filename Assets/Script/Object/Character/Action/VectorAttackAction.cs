@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
-public abstract class VectorAttackAction : AttackAction<Vector2>
+public class VectorAttackAction : AttackAction
 {
     #region Properties
     #region Private
@@ -22,6 +23,25 @@ public abstract class VectorAttackAction : AttackAction<Vector2>
     #region Private
     #endregion
     #region Protected
+
+    #endregion
+    #region Public
+    public override void Activate(Vector2 pos)
+    {
+        for(int i = 0; i < hitBoxes.Length; ++i)
+        {
+            hitBoxes[i].Activate(pos);
+        }
+
+    }
+    public override void Deactivate()
+    {
+        for (int i = 0; i < hitBoxes.Length; ++i)
+        {
+            hitBoxes[i].Deactivate();
+        }
+        ActionEnd();
+    }
     #endregion
     #endregion
 

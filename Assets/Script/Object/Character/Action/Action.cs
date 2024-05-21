@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class Action<T> : MonoBehaviour
+public abstract class Action : MonoBehaviour
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
+    protected bool _fireAndForget;
     #endregion
     #region Public
+    public bool fireAndForget
+    {
+        get { return _fireAndForget; }
+        set { _fireAndForget = value; }
+    }
     #endregion
     #region Events
+    public UnityEvent OnActionEndEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -23,9 +31,13 @@ public abstract class Action<T> : MonoBehaviour
     #endregion
     #region Protected
     protected abstract void Initialize();
+    protected virtual void ActionEnd()
+    {
+        OnActionEndEvent?.Invoke();
+    }
     #endregion
     #region Public
-    public abstract void Activate(T info);
+    public abstract void Activate(Vector2 pos);
     public abstract void Deactivate();
     #endregion
     #endregion
