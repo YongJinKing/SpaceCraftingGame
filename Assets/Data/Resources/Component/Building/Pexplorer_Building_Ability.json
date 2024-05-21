@@ -1,0 +1,202 @@
+[
+  {
+    "BuildingAbility_Index": 100000,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 1],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 0
+  },
+  {
+    "BuildingAbility_Index": 100001,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [10, 2],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 0
+  },
+  {
+    "BuildingAbility_Index": 100002,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [15, 3],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 0
+  },
+  {
+    "BuildingAbility_Index": 100003,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [20, 4],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 0
+  },
+  {
+    "BuildingAbility_Index": 100004,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [25, 5],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 0
+  },
+  {
+    "BuildingAbility_Index": 100005,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [30, 6],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 0
+  },
+  {
+    "BuildingAbility_Index": 100006,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [35, 7],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 0
+  },
+  {
+    "BuildingAbility_Index": 100007,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [40, 8],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 0
+  },
+  {
+    "BuildingAbility_Index": 100008,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [45, 9],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 0
+  },
+  {
+    "BuildingAbility_Index": 100009,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [50, 10],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 0
+  },
+  {
+    "BuildingAbility_Index": 110000,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 1],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 10
+  },
+  {
+    "BuildingAbility_Index": 110001,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [10, 2],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 10
+  },
+  {
+    "BuildingAbility_Index": 110002,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [15, 3],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 10
+  },
+  {
+    "BuildingAbility_Index": 110003,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [20, 4],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 10
+  },
+  {
+    "BuildingAbility_Index": 110004,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [25, 5],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 10
+  },
+  {
+    "BuildingAbility_Index": 110005,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [30, 6],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 10
+  },
+  {
+    "BuildingAbility_Index": 110006,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [35, 7],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 10
+  },
+  {
+    "BuildingAbility_Index": 110007,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [40, 8],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 10
+  },
+  {
+    "BuildingAbility_Index": 110008,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [45, 9],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 10
+  },
+  {
+    "BuildingAbility_Index": 110009,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [50, 10],
+    "BuildingSpeed": 5,
+    "BuildingScale": 1,
+    "BuildingDetail_Value": 10,
+    "BuildingDetail_Delay": 5,
+    "BuildingDetail_Range": 10
+  }
+]

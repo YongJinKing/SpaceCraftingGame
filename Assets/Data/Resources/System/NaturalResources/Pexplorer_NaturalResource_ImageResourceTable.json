@@ -1,12 +1,12 @@
 [
-   {
-      "index":10000,
-      "String_Type":0,
-      "String_Desc":"Img_Moon_MoonLightOre"
-   },
-   {
-      "index":10001,
-      "String_Type":0,
-      "String_Desc":"Img_Moon_MoonLightGas"
-   }
+  {
+    "NRImageTable_Index": 10000,
+    "String_Type": 0,
+    "String_Desc": "Img_Moon_MoonLightOre"
+  },
+  {
+    "NRImageTable_Index": 10001,
+    "String_Type": 0,
+    "String_Desc": "Img_Moon_MoonLightGas"
+  }
 ]
