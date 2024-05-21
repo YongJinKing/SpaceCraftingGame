@@ -8,7 +8,8 @@ public class GasSpawner : MonoBehaviour
     public int numberOfGas = 5;
     public int mapWidth = 128;
     public int mapHeight = 128;
-
+    public float minDistance = 1; //磊盔 积己 弥家 芭府
+    public LayerMask GasMask;
     void Start()
     {
         PlaceGas();
@@ -16,10 +17,15 @@ public class GasSpawner : MonoBehaviour
 
     public void PlaceGas()
     {
-        for (int i = 0; i< numberOfGas; i++)
+        int GasPlaced = 0;
+        while(GasPlaced < numberOfGas)
         {
             Vector2 randomPosition = GetRandomPosition();
-            Instantiate(Gas, randomPosition, Quaternion.identity);
+            if(CanPlaceGas(randomPosition))
+            {
+                Instantiate(Gas, randomPosition, Quaternion.identity);
+                GasPlaced++;
+            }
         }
     }
 
@@ -30,4 +36,10 @@ public class GasSpawner : MonoBehaviour
         return new Vector2(x, y);
     }
    
+    bool CanPlaceGas(Vector2 pos)
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(pos, minDistance, GasMask);
+        return hitColliders.Length == 0;
+    }
+
 }
