@@ -10,6 +10,7 @@ public class TileManager : MonoBehaviour
     public List<Vector3> availablePlaces;
     public List<Vector3> objectPlaces;
 
+
     CraftBuildingManager craftmanager;
     void Awake()
     {
@@ -79,11 +80,32 @@ public class TileManager : MonoBehaviour
         return availablePlaces.Contains(coordinates);
     }
 
+    public bool IsCraftable(int idx)
+    {
+        return availablePlaces[idx] != null;
+    }
+
     public void RemopvePlace(Vector3 coordinates)
     {
         availablePlaces.Remove(coordinates);
     }
 
+    public int GetPlaceIdx(Vector3 coordinates)
+    {
+        return availablePlaces.IndexOf(coordinates);
+    }
+
+    public int GetTileLength()
+    {
+        return (int)Mathf.Sqrt(availablePlaces.Count);
+    }
+
+    
+    
+    public Vector3 GetTilePosWithIdx(int idx)
+    {
+        return availablePlaces[idx];
+    }
     void CoutList()
     {
         for (int i = 0; i < availablePlaces.Count; i++)
