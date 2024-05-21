@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectPlacer : MonoBehaviour
 {
-    public GameObject Placer;
+    public GameObject resource1;
     public LayerMask Mineral;
     public LayerMask Gas;
 
@@ -15,7 +15,7 @@ public class ObjectPlacer : MonoBehaviour
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (CanPlaceObject(mousePosition))
             {
-                Instantiate(Placer, mousePosition, Quaternion.identity);
+                Instantiate(resource1, mousePosition, Quaternion.identity);
             }
         }
     }

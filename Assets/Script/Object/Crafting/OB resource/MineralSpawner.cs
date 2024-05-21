@@ -9,6 +9,9 @@ public class MineralSpawner : MonoBehaviour
     public int mapWidth = 128;
     public int mapHeight = 128;
 
+    public float minDistance = 1f; // 磊盔 积己 弥家 芭府
+    public LayerMask mineralLayer;
+
     void Start()
     {
         PlaceMinerals();
@@ -16,10 +19,16 @@ public class MineralSpawner : MonoBehaviour
 
     public void PlaceMinerals()
     {
-        for(int i= 0; i < numberOfminerals; i++)
+        int mineralsPlaced = 0;
+        while (mineralsPlaced < numberOfminerals)
         {
             Vector2 randomPosition = GetRandomPosition();
-            Instantiate(mineral, randomPosition, Quaternion.identity);
+            if (CanPlaceMineral(randomPosition))
+            {
+                Instantiate(mineral, randomPosition, Quaternion.identity);
+                mineralsPlaced++;
+            }
+            
         }
     }
 
@@ -28,6 +37,12 @@ public class MineralSpawner : MonoBehaviour
         float x = Random.Range(0, mapWidth);
         float y = Random.Range(0, mapHeight);
         return new Vector2(x, y);
+    }
+
+    bool CanPlaceMineral(Vector2 pos)
+    {
+        Collider2D[] hitCollider = Physics2D.OverlapCircleAll(pos, minDistance ,mineralLayer);
+        return hitCollider.Length == 0;
     }
     
 }
