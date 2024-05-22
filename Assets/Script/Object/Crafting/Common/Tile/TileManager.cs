@@ -46,7 +46,6 @@ public class TileManager : MonoBehaviour
                 if (tileMap.HasTile(localPlace))
                 {
                     //Tile at "place"
-                    //availablePlaces.Add(place);
                     availablePlaces[place] = true;
                 }
                 else

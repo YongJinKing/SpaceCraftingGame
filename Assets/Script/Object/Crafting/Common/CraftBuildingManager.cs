@@ -24,15 +24,13 @@ public class CraftBuildingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         //Debug.Log(tileManage.GetTileLength());
-        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask);
         if (hit.collider != null)
         {
             ground = hit.collider.gameObject.GetComponent<Tilemap>();
-            Debug.Log(ground.cellSize.x + " " + ground.cellSize.y);
+            //Debug.Log(ground.cellSize.x + " " + ground.cellSize.y);
             Vector3Int cellPosition = ground.LocalToCell(hit.point);
             /*if (tileManage.IsCraftable(cellPosition))
                 DrawRectangle(new Vector3(cellPosition.x + ground.tileAnchor.x, cellPosition.y + ground.tileAnchor.y, 0), Color.green);
@@ -47,8 +45,15 @@ public class CraftBuildingManager : MonoBehaviour
                 Debug.Log(cellPosition);
                 if (tileManage.IsCraftable(cellPosition))
                 {
-                    Instantiate(turret, new Vector3(cellPosition.x + ground.tileAnchor.x, cellPosition.y+ground.tileAnchor.y, 0), Quaternion.identity, TurretParent);
+                    /*Transform obj = Instantiate(turret, new Vector3(cellPosition.x + (ground.tileAnchor.x * size), cellPosition.y + (ground.tileAnchor.y * size), 0), Quaternion.identity, TurretParent);
+                    obj.transform.localScale = Vector3.one * size;
                     RemovePlaceEvent?.Invoke(cellPosition);
+                    */
+                    MakeFalseCoordinates(cellPosition, size);
+                }
+                else
+                {
+                    Debug.Log("클릭한 위치에 건물이 있어 지을 수 없어요");
                 }
             }
         }
@@ -99,6 +104,58 @@ public class CraftBuildingManager : MonoBehaviour
                 rectIdx++;
             }
         }
+    }
+
+    void MakeFalseCoordinates(Vector3 pos, int size)
+    {
+        Vector3 cellPos;
+        bool canBuild = true;
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                cellPos = pos + new Vector3(ground.cellSize.x * j, ground.cellSize.y * i, 0);
+                if (!tileManage.HasTile(cellPos))
+                {
+                    canBuild = false;
+                    break;
+                }
+                
+                if (tileManage.IsCraftable(cellPos))
+                {
+                    continue;
+                }
+                else
+                {
+                    canBuild = false;
+                    break;
+                }
+            }
+            if (!canBuild)
+            {
+                Debug.Log("클릭한 위치 범위 내에 건물이 있어 지을 수 없어요");
+                break;
+            }
+        }
+
+        if (canBuild)
+        {
+            Debug.Log("여기엔 지을 수 있어요");
+            Transform obj = Instantiate(turret, new Vector3(pos.x + (ground.tileAnchor.x * size), pos.y + (ground.tileAnchor.y * size), 0), Quaternion.identity, TurretParent);
+            obj.transform.localScale = Vector3.one * size;
+            
+            cellPos = Vector3.zero;
+            for (int i = 0; i < size; i++)
+            {
+                for(int j = 0; j < size; j++)
+                {
+                    cellPos = pos + new Vector3(ground.cellSize.x * j, ground.cellSize.y * i, 0);
+                    RemovePlaceEvent?.Invoke(cellPos);
+                }
+            }
+        }
+        
+       
     }
 
     void StopDrawingRectangle()
