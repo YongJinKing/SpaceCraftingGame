@@ -32,7 +32,6 @@ public class VectorAttackAction : AttackAction
         {
             hitBoxes[i].Activate(pos);
         }
-
     }
     public override void Deactivate()
     {

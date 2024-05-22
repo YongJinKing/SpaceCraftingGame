@@ -60,8 +60,9 @@ public class PlayerMovableActionState : PlayerState
     }
     public override void Exit()
     {
-        base.Exit();
         owner.moveAction.Deactivate();
+        action.Deactivate();
+        base.Exit();
     }
     #endregion
     #endregion

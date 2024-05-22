@@ -32,7 +32,6 @@ public abstract class AttackAction : Action
     {
         for (int i = 0; i < hitBoxes.Length; ++i)
         {
-            hitBoxes[i].targetMask = targetMask;
             hitBoxes[i].OnDurationEndEvent.AddListener(OnHitBoxEnd);
         }
     }

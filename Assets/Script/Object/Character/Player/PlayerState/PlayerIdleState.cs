@@ -49,8 +49,8 @@ public class PlayerIdleState : PlayerState
     }
     public override void Exit() 
     {
-        base.Exit();
         owner.moveAction.Deactivate();
+        base.Exit();
     }
     #endregion
     #endregion
