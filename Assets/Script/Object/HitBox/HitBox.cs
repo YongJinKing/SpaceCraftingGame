@@ -93,7 +93,7 @@ public abstract class HitBox : MonoBehaviour
     }
     #endregion
     #region Public
-    public void Refresh()
+    public virtual void Refresh()
     {
         calculatedObject.Clear();
     }
