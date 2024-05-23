@@ -1,4 +1,4 @@
-struct CraftBuildingComponentTable
+public struct CraftBuildingComponentTable
 {
     public int ComponentDataTable_Index;
     public int Component_Type;
@@ -9,7 +9,7 @@ struct CraftBuildingComponentTable
     public int Component_Detail;
 }
 
-struct CraftBuildingAbilityTable
+public struct CraftBuildingAbilityTable
 {
     public int ComponentDataTable_Index;
     public int[] Consume_Index;
@@ -21,7 +21,7 @@ struct CraftBuildingAbilityTable
     public int BuildingDetail_Range;
 }
 
-struct CraftBuildImageTable
+public struct CraftBuildImageTable
 {
     public int ComponentDataTable_Index;
     public string ImageResource_Name;
