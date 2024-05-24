@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
+public class Tile
+{
+    public bool available;
+    public GameObject Object;
+}
+
 public class TileManager : MonoBehaviour
 {
     public Tilemap tileMap = null;
 
     //public List<Vector3> availablePlaces;
-    public Dictionary<Vector3Int, bool> availablePlaces;
+    public Dictionary<Vector3Int, Tile> availablePlaces;
     CraftBuildingManager craftmanager;
     void Awake()
     {
@@ -16,7 +23,7 @@ public class TileManager : MonoBehaviour
         craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
         tileMap = transform.GetComponent<Tilemap>();
         //availablePlaces = new List<Vector3>();
-        availablePlaces = new Dictionary<Vector3Int, bool>();
+        availablePlaces = new Dictionary<Vector3Int, Tile>();
 
         /*for (int x = tileMap.cellBounds.xMin; x < tileMap.cellBounds.xMax; x++)
         {
@@ -47,7 +54,8 @@ public class TileManager : MonoBehaviour
                 {
                     Vector3Int _place = new Vector3Int((int)place.x, (int)place.y, (int)place.z);
                     //Tile at "place"
-                    availablePlaces[_place] = true;
+                    availablePlaces[_place].available = true;
+                    availablePlaces[_place].Object = null;
                 }
                 else
                 {
@@ -62,12 +70,12 @@ public class TileManager : MonoBehaviour
     public bool IsCraftable(Vector3Int coordinates)
     {
         //return availablePlaces.Contains(coordinates);
-        return availablePlaces[coordinates];
+        return availablePlaces[coordinates].available;
     }
 
     public void RemopvePlace(Vector3Int coordinates)
     {
-        availablePlaces[coordinates] = false;
+        availablePlaces[coordinates].available = false;
     }
 
     public int GetTileLength()
@@ -84,7 +92,7 @@ public class TileManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            foreach (KeyValuePair<Vector3Int, bool> entry in availablePlaces)
+            foreach (KeyValuePair<Vector3Int, Tile> entry in availablePlaces)
             {
                 Debug.Log(entry.Key + " : " + entry.Value);
             }
