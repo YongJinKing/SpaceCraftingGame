@@ -11,17 +11,23 @@ public abstract class Action : MonoBehaviour
     #region Protected
     protected bool _fireAndForget;
     protected bool _available = true;
+    [SerializeField]protected float _coolTime = -1;
     #endregion
     #region Public
     public bool fireAndForget
     {
         get { return _fireAndForget; }
-        set { _fireAndForget = value; }
+        protected set { _fireAndForget = value; }
     }
     public bool available
     {
         get { return _available; }
         protected set { _available = value; }
+    }
+    public float coolTime
+    {
+        get { return _coolTime; }
+        set { _coolTime = value; }
     }
     #endregion
     #region Events

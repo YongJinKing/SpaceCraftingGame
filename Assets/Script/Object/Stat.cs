@@ -14,7 +14,6 @@ public abstract class Stat : MonoBehaviour, IDamage
     #endregion
     #region Protected
     [SerializeField] protected float MaxHP;
-    [SerializeField] protected float HP;
     #endregion
     #region Public
     public float this[EStat type]
@@ -58,7 +57,7 @@ public abstract class Stat : MonoBehaviour, IDamage
     protected virtual void Initialize()
     {
         this[EStat.MaxHP] = MaxHP;
-        this[EStat.HP] = HP;
+        this[EStat.HP] = this[EStat.MaxHP];
     }
     protected void AddStat(EStat type, float value)
     {

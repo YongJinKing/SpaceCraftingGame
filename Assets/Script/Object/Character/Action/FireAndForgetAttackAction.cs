@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VectorAttackAction : AttackAction
+public class FireAndForgetAttackAction : AttackAction
 {
     #region Properties
     #region Private
@@ -14,13 +14,21 @@ public class VectorAttackAction : AttackAction
     #endregion
 
     #region Constructor
+    public FireAndForgetAttackAction()
+    {
+        fireAndForget = true;
+    }
     #endregion
 
     #region Methods
     #region Private
     #endregion
     #region Protected
-
+    protected override void ActionEnd()
+    {
+        available = true;
+        base.ActionEnd();
+    }
     #endregion
     #region Public
     public override void Activate(Vector2 pos)
@@ -29,6 +37,7 @@ public class VectorAttackAction : AttackAction
         {
             hitBoxes[i].Activate(pos);
         }
+        available = false;
     }
     public override void Deactivate()
     {

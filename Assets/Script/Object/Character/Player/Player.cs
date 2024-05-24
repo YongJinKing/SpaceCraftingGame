@@ -11,7 +11,7 @@ public class Player : Unit
     #endregion
     #region Public
     public MoveAction moveAction;
-    public VectorAttackAction attackAction;
+    public AttackAction attackAction;
     #endregion
     #region Events
     #endregion

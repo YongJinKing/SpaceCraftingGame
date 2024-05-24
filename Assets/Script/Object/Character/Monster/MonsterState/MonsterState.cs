@@ -1,5 +1,5 @@
 
-public class MonsterState : State
+public abstract class MonsterState : State
 {
     #region Properties
     #region Private
