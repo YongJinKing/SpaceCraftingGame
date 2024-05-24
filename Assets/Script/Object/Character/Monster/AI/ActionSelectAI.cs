@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class ActionSelectAI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #region Properties
+    #region Private
+    #endregion
+    #region Protected
+    #endregion
+    #region Public
+    #endregion
+    #region Events
+    #endregion
+    #endregion
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #region Constructor
+    #endregion
+
+    #region Methods
+    #region Private
+    #endregion
+    #region Protected
+    #endregion
+    #region Public
+    #endregion
+    #endregion
+
+    #region EventHandlers
+    #endregion
+
+    #region Coroutines
+    #endregion
+
+    #region MonoBehaviour
+    #endregion
 }

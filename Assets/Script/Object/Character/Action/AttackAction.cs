@@ -51,5 +51,12 @@ public abstract class AttackAction : Action
     #endregion
 
     #region MonoBehaviour
+    protected virtual void OnDestroy()
+    {
+        for (int i = 0; i < hitBoxes.Length; ++i)
+        {
+            hitBoxes[i].OnDurationEndEvent.RemoveListener(OnHitBoxEnd);
+        }
+    }
     #endregion
 }

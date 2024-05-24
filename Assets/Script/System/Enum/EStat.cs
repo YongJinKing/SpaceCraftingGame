@@ -3,6 +3,7 @@ public enum EStat
     #region Common
     MaxHP,
     HP,
+    Priority,
     #endregion
 
     #region Unit, Turret

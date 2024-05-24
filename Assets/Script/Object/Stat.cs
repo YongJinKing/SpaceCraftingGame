@@ -4,7 +4,7 @@ using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Stat : MonoBehaviour, IDamage
+public abstract class Stat : MonoBehaviour, IDamage, IGetPriority
 {
     #region Properties
     #region Private
@@ -17,6 +17,7 @@ public abstract class Stat : MonoBehaviour, IDamage
     #endregion
     #region Public
     public float MaxHP;
+    public float Priority;
     public float this[EStat type]
     {
         get
@@ -44,6 +45,7 @@ public abstract class Stat : MonoBehaviour, IDamage
     {
         AddStat(EStat.MaxHP, 0);
         AddStat(EStat.HP, 0);
+        AddStat(EStat.Priority, 0);
     }
     #endregion
 
@@ -59,6 +61,7 @@ public abstract class Stat : MonoBehaviour, IDamage
     {
         this[EStat.MaxHP] = MaxHP;
         this[EStat.HP] = this[EStat.MaxHP];
+        this[EStat.Priority] = Priority;
     }
     protected void AddStat(EStat type, float value)
     {
@@ -92,6 +95,14 @@ public abstract class Stat : MonoBehaviour, IDamage
         if ( _Stats.ContainsKey(type))
             return _Stats[type];
         return -1.0f;
+    }
+    public virtual float GetPriority()
+    {
+        //if Priority is below 0, this Object don`t becomes target
+        if (this[EStat.Priority] < 0) 
+            return -1.0f;
+
+        return Mathf.Clamp(this[EStat.Priority] - 2 * (this[EStat.HP] / this[EStat.MaxHP]), 0, float.MaxValue);
     }
     #endregion
     #endregion

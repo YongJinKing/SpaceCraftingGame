@@ -28,9 +28,16 @@ public abstract class MoveAction : Action
     protected override void Initialize()
     {
         UnitMovement movement = GetComponentInParent<UnitMovement>();
+        movement.moveEndEvent.AddListener(OnMoveEnd);
+
         moveToPosEvent.AddListener(movement.OnMoveToPos);
         moveToDirEvent.AddListener(movement.OnMoveToDir);
         stopMoveEvent.AddListener(movement.OnStop);
+    }
+
+    protected virtual void OnMoveEnd()
+    {
+        ActionEnd();
     }
     #endregion
     #region Public
@@ -46,6 +53,12 @@ public abstract class MoveAction : Action
     #region MonoBehaviour
     protected virtual void OnDestroy()
     {
+        UnitMovement movement = GetComponentInParent<UnitMovement>();
+        if(movement != null)
+        {
+            movement.moveEndEvent.RemoveListener(OnMoveEnd);
+        }
+
         moveToPosEvent.RemoveAllListeners();
         moveToDirEvent.RemoveAllListeners();
         stopMoveEvent.RemoveAllListeners();

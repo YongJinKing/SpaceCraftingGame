@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class UnitMovement : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class UnitMovement : MonoBehaviour
     #region Public
     #endregion
     #region Events
+    public UnityEvent moveEndEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -77,6 +79,7 @@ public class UnitMovement : MonoBehaviour
             yield return null;
         }
 
+        moveEndEvent?.Invoke();
         yield return null;
     }
 

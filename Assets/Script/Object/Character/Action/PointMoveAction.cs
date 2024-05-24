@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointMoveAction : MonoBehaviour
+public class PointMoveAction : MoveAction
 {
     #region Properties
     #region Private
@@ -22,8 +22,21 @@ public class PointMoveAction : MonoBehaviour
     #region Private
     #endregion
     #region Protected
+    protected override void Initialize()
+    {
+        base.Initialize();
+    }
     #endregion
     #region Public
+    public override void Activate(Vector2 pos)
+    {
+        base.Activate(pos);
+        moveToPosEvent?.Invoke(pos);
+    }
+    public override void Deactivate()
+    {
+        stopMoveEvent?.Invoke();
+    }
     #endregion
     #endregion
 
