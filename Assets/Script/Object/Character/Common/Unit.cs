@@ -7,12 +7,12 @@ public abstract class Unit : Stat
     #region Private
     #endregion
     #region Protected
-    [SerializeField] protected float moveSpeed;
-    [SerializeField] protected float ATK;
-    [SerializeField] protected float ATKSpeed;
     protected StateMachine _stateMachine;
     #endregion
     #region Public
+    public float moveSpeed;
+    public float ATK;
+    public float ATKSpeed;
     public StateMachine stateMachine 
     {
         get { return _stateMachine; } 

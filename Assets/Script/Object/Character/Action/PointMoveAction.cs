@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveAction : MoveAction
+public class PointMoveAction : MonoBehaviour
 {
     #region Properties
     #region Private
@@ -24,14 +24,6 @@ public class PlayerMoveAction : MoveAction
     #region Protected
     #endregion
     #region Public
-    public override void Activate(Vector2 pos)
-    {
-        moveToDirEvent?.Invoke(pos);
-    }
-    public override void Deactivate()
-    {
-
-    }
     #endregion
     #endregion
 

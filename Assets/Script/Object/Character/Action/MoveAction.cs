@@ -14,6 +14,7 @@ public abstract class MoveAction : Action
     #region Events
     protected UnityEvent<Vector2> moveToPosEvent = new UnityEvent<Vector2>();
     protected UnityEvent<Vector2> moveToDirEvent = new UnityEvent<Vector2>();
+    protected UnityEvent stopMoveEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -29,6 +30,7 @@ public abstract class MoveAction : Action
         UnitMovement movement = GetComponentInParent<UnitMovement>();
         moveToPosEvent.AddListener(movement.OnMoveToPos);
         moveToDirEvent.AddListener(movement.OnMoveToDir);
+        stopMoveEvent.AddListener(movement.OnStop);
     }
     #endregion
     #region Public
@@ -46,6 +48,7 @@ public abstract class MoveAction : Action
     {
         moveToPosEvent.RemoveAllListeners();
         moveToDirEvent.RemoveAllListeners();
+        stopMoveEvent.RemoveAllListeners();
     }
     #endregion
 }

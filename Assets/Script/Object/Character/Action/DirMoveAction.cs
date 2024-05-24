@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class FireAndForgetAttackAction : AttackAction
+public class DirMoveAction : MoveAction
 {
     #region Properties
     #region Private
@@ -14,37 +16,21 @@ public class FireAndForgetAttackAction : AttackAction
     #endregion
 
     #region Constructor
-    public FireAndForgetAttackAction()
-    {
-        fireAndForget = true;
-    }
     #endregion
 
     #region Methods
     #region Private
     #endregion
     #region Protected
-    protected override void ActionEnd()
-    {
-        base.ActionEnd();
-    }
     #endregion
     #region Public
     public override void Activate(Vector2 pos)
     {
         base.Activate(pos);
-        for(int i = 0; i < hitBoxes.Length; ++i)
-        {
-            hitBoxes[i].Activate(pos);
-        }
+        moveToDirEvent?.Invoke(pos);
     }
     public override void Deactivate()
     {
-        for (int i = 0; i < hitBoxes.Length; ++i)
-        {
-            hitBoxes[i].Deactivate();
-        }
-        ActionEnd();
     }
     #endregion
     #endregion

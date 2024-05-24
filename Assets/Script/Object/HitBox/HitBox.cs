@@ -15,7 +15,7 @@ public abstract class HitBox : MonoBehaviour
     [SerializeField]protected LayerMask _targetMask;
     //duration for safe
     [SerializeField]protected float _duration = 5.0f;
-    [SerializeField]protected float _hitFrequency = 0.5f;
+    [SerializeField]protected float _hitFrequency = -1.0f;
     protected Vector2 pos;
     protected bool isCircle = false;
     protected HashSet<Stat> calculatedObject = new HashSet<Stat>();

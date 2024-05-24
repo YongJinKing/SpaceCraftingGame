@@ -9,8 +9,10 @@ public abstract class Action : MonoBehaviour
     #region Private
     #endregion
     #region Protected
-    protected bool _fireAndForget;
+    protected bool _fireAndForget = false;
     protected bool _available = true;
+    //for AI
+    protected float _priority = 0.0f;
     [SerializeField]protected float _coolTime = -1;
     #endregion
     #region Public
@@ -23,6 +25,11 @@ public abstract class Action : MonoBehaviour
     {
         get { return _available; }
         protected set { _available = value; }
+    }
+    public float priority
+    {
+        get { return _priority; }
+        protected set { _priority = value; }
     }
     public float coolTime
     {
@@ -49,7 +56,11 @@ public abstract class Action : MonoBehaviour
     }
     #endregion
     #region Public
-    public abstract void Activate(Vector2 pos);
+    public virtual void Activate(Vector2 pos)
+    {
+        available = false;
+        StartCoroutine(CoolTimeChecking());
+    }
     public abstract void Deactivate();
     #endregion
     #endregion
@@ -58,6 +69,21 @@ public abstract class Action : MonoBehaviour
     #endregion
 
     #region Coroutines
+    protected IEnumerator CoolTimeChecking()
+    {
+        if (available || coolTime < 0)
+        {
+            yield break;
+        }
+
+        float remainCoolTime = coolTime;
+        while(remainCoolTime > 0) 
+        {
+            remainCoolTime -= Time.deltaTime;
+            yield return null;
+        }
+        available = true;
+    }
     #endregion
 
     #region MonoBehaviour
