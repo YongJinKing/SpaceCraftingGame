@@ -8,7 +8,7 @@ public class CraftBuildingManager : MonoBehaviour
 {
     public LayerMask layerMask;
     public Tilemap ground;
-    public UnityEvent<Vector3Int> RemovePlaceEvent;
+    public UnityEvent<Vector3Int, GameObject> RemovePlaceEvent;
     public Transform turret;
     public Transform[] rectangles;
     public Transform TurretParent;
@@ -155,7 +155,7 @@ public class CraftBuildingManager : MonoBehaviour
                 for(int j = 0; j < size; j++)
                 {
                     cellPos = tmpPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
-                    RemovePlaceEvent?.Invoke(cellPos);
+                    RemovePlaceEvent?.Invoke(cellPos, obj.gameObject);
                 }
             }
         }

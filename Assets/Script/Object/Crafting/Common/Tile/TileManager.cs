@@ -8,6 +8,12 @@ public class Tile
 {
     public bool available;
     public GameObject Object;
+
+    public Tile(bool available, GameObject Object)
+    {
+        this.available = available;
+        this.Object = Object;
+    }
 }
 
 public class TileManager : MonoBehaviour
@@ -54,8 +60,9 @@ public class TileManager : MonoBehaviour
                 {
                     Vector3Int _place = new Vector3Int((int)place.x, (int)place.y, (int)place.z);
                     //Tile at "place"
-                    availablePlaces[_place].available = true;
-                    availablePlaces[_place].Object = null;
+                    availablePlaces[_place] = new Tile(true, null);
+                    /*availablePlaces[_place].available = true;
+                    availablePlaces[_place].Object = null;*/
                 }
                 else
                 {
@@ -73,9 +80,10 @@ public class TileManager : MonoBehaviour
         return availablePlaces[coordinates].available;
     }
 
-    public void RemopvePlace(Vector3Int coordinates)
+    public void RemopvePlace(Vector3Int coordinates, GameObject obj)
     {
         availablePlaces[coordinates].available = false;
+        availablePlaces[coordinates].Object = obj;
     }
 
     public int GetTileLength()
