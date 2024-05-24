@@ -10,12 +10,18 @@ public abstract class Action : MonoBehaviour
     #endregion
     #region Protected
     protected bool _fireAndForget;
+    protected bool _available = true;
     #endregion
     #region Public
     public bool fireAndForget
     {
         get { return _fireAndForget; }
         set { _fireAndForget = value; }
+    }
+    public bool available
+    {
+        get { return _available; }
+        protected set { _available = value; }
     }
     #endregion
     #region Events

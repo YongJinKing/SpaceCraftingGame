@@ -18,6 +18,9 @@ public class Player : Unit
     #endregion
 
     #region Constructor
+    public Player() : base()
+    {
+    }
     #endregion
 
     #region Methods

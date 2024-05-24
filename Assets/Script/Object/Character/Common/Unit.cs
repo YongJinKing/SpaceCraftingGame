@@ -23,6 +23,12 @@ public abstract class Unit : Stat
     #endregion
 
     #region Constructor
+    public Unit() : base()
+    {
+        AddStat(EStat.MoveSpeed, 0);
+        AddStat(EStat.ATK, 0);
+        AddStat(EStat.ATKSpeed, 0);
+    }
     #endregion
 
     #region Methods
@@ -32,9 +38,9 @@ public abstract class Unit : Stat
     protected override void Initialize()
     {
         base.Initialize();
-        AddStat(EStat.MoveSpeed, moveSpeed);
-        AddStat(EStat.ATK, ATK);
-        AddStat(EStat.ATKSpeed, ATKSpeed);
+        this[EStat.MoveSpeed] = moveSpeed;
+        this[EStat.ATK] = ATK;
+        this[EStat.ATKSpeed] = ATKSpeed;
 
         if (_stateMachine == null)
             _stateMachine = transform.AddComponent<StateMachine>();

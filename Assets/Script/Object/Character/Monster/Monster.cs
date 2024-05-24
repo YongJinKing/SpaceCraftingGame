@@ -7,15 +7,19 @@ public class Monster : Unit
     #region Private
     #endregion
     #region Protected
-
     #endregion
     #region Public
+    public MoveAction[] moveActions;
+    public AttackAction[] attackActions;
     #endregion
     #region Events
     #endregion
     #endregion
 
     #region Constructor
+    public Monster() : base()
+    {
+    }
     #endregion
 
     #region Methods

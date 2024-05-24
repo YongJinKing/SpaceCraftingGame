@@ -24,6 +24,12 @@ public abstract class MoveAction : Action
     #region Private
     #endregion
     #region Protected
+    protected override void Initialize()
+    {
+        UnitMovement movement = GetComponentInParent<UnitMovement>();
+        moveToPosEvent.AddListener(movement.OnMoveToPos);
+        moveToDirEvent.AddListener(movement.OnMoveToDir);
+    }
     #endregion
     #region Public
     #endregion

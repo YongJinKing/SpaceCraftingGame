@@ -67,7 +67,7 @@ public class MeleeHitBox : HitBox
             Collider2D[] tempcol;
             if (isCircle)
             {
-                tempcol = Physics2D.OverlapCircleAll((Vector2)transform.position, hitBoxSize.x, targetMask);
+                tempcol = Physics2D.OverlapCircleAll((Vector2)transform.position, offset, targetMask);
             }
             else
             {

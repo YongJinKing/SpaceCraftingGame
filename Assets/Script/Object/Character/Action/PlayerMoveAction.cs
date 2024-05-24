@@ -22,12 +22,6 @@ public class PlayerMoveAction : MoveAction
     #region Private
     #endregion
     #region Protected
-    protected override void Initialize()
-    {
-        UnitMovement movement = GetComponentInParent<UnitMovement>();
-        moveToPosEvent.AddListener(movement.OnMoveToPos);
-        moveToDirEvent.AddListener(movement.OnMoveToDir);
-    }
     #endregion
     #region Public
     public override void Activate(Vector2 pos)
@@ -36,6 +30,7 @@ public class PlayerMoveAction : MoveAction
     }
     public override void Deactivate()
     {
+
     }
     #endregion
     #endregion

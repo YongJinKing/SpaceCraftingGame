@@ -40,6 +40,11 @@ public abstract class Stat : MonoBehaviour, IDamage
     #endregion
 
     #region Constructor
+    public Stat()
+    {
+        AddStat(EStat.MaxHP, 0);
+        AddStat(EStat.HP, 0);
+    }
     #endregion
 
     #region Methods
@@ -52,8 +57,8 @@ public abstract class Stat : MonoBehaviour, IDamage
     #region Protected
     protected virtual void Initialize()
     {
-        AddStat(EStat.MaxHP, MaxHP);
-        AddStat(EStat.HP, HP);
+        this[EStat.MaxHP] = MaxHP;
+        this[EStat.HP] = HP;
     }
     protected void AddStat(EStat type, float value)
     {

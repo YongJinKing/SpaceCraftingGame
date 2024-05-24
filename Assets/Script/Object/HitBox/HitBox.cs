@@ -141,12 +141,12 @@ public abstract class HitBox : MonoBehaviour
     {
         if (debuging)
         {
-            Gizmos.matrix = transform.localToWorldMatrix;
+            //Gizmos.matrix = transform.localToWorldMatrix;
             Gizmos.color = new Color(0.0f, 1.0f, 0.0f, 0.1f);
             if (!isCircle)
                 Gizmos.DrawCube(transform.position, hitBoxSize);
             else
-                Gizmos.DrawSphere(transform.position, hitBoxSize.x);
+                Gizmos.DrawSphere(transform.position, hitBoxSize.x * 0.5f);
         }
     }
 #endif
