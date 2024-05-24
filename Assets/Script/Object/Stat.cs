@@ -13,9 +13,10 @@ public abstract class Stat : MonoBehaviour, IDamage
     private Dictionary<EStat, UnityEvent<float, float>> _StatChangedEvents = new Dictionary<EStat, UnityEvent<float, float>>();
     #endregion
     #region Protected
-    [SerializeField] protected float MaxHP;
+
     #endregion
     #region Public
+    public float MaxHP;
     public float this[EStat type]
     {
         get
