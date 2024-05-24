@@ -15,10 +15,12 @@ public class CraftBuildingManager : MonoBehaviour
 
     public int size;
     TileManager tileManage;
+    CraftFactory factory;
     // Start is called before the first frame update
     void Start()
     {
         tileManage = FindObjectOfType<TileManager>();
+        factory = new CraftFactory();
     }
 
     // Update is called once per frame
@@ -146,16 +148,19 @@ public class CraftBuildingManager : MonoBehaviour
         if (canBuild)
         {
             Debug.Log("여기엔 지을 수 있어요");
-            Transform obj = Instantiate(turret, new Vector3(pos.x + (ground.tileAnchor.x * size), pos.y + (ground.tileAnchor.y * size), 0), Quaternion.identity, TurretParent);
-            obj.transform.localScale = Vector3.one * size;
-            
+            GameObject craft = factory.CraftBuilding(110000);
+            //Transform obj = Instantiate(.transform, new Vector3(pos.x + (ground.tileAnchor.x * size), pos.y + (ground.tileAnchor.y * size), 0), Quaternion.identity, TurretParent);
+            craft.transform.position = new Vector3(pos.x + (ground.tileAnchor.x * size), pos.y + (ground.tileAnchor.y * size), 0);
+            craft.transform.localScale = Vector3.one * size;
+            craft.transform.SetParent(TurretParent);
+
             cellPos = Vector3Int.zero;
             for (int i = 0; i < size; i++)
             {
                 for(int j = 0; j < size; j++)
                 {
                     cellPos = tmpPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
-                    RemovePlaceEvent?.Invoke(cellPos, obj.gameObject);
+                    RemovePlaceEvent?.Invoke(cellPos, craft);
                 }
             }
         }

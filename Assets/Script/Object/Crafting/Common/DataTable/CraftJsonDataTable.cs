@@ -3,8 +3,8 @@ public struct CraftBuildingComponentTable
     public int ComponentDataTable_Index;
     public int Component_Type;
     public int Component_Name;
-    public int Component_Description;
-    public int Component_ImgIdx;
+    public int Component_Desc;
+    public int Component_Image;
     public int Component_Hp;
     public int Component_Detail;
 }
@@ -23,6 +23,6 @@ public struct CraftBuildingAbilityTable
 
 public struct CraftBuildImageTable
 {
-    public int ComponentDataTable_Index;
+    public int ComponentImage_Index;
     public string ImageResource_Name;
 }

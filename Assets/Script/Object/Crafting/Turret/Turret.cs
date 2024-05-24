@@ -25,27 +25,40 @@ public class Turret : Structure
     #region Constructor
     public Turret() : base()
     {
-        
+        AddStat(EStat.ATKSpeed, turretAttackTimer);
+        AddStat(EStat.ATKDelay, turretAttackCooldown);
+        AddStat(EStat.ATK, dmg);
     }
     #endregion
 
     #region OnEnable, Start, Update
     private void OnEnable()
     {
-        perception = GetComponentInChildren<TurretPerception>();
-        perception.detectEnemyEvents.AddListener(OnEnemyDetected);
-        perception.lostEnemyEvents.AddListener(OnEnemyLost);
+        
 
+        Debug.Log("≈Õ∑ø onenable");
         /*turretAttackTimer = this[EStat.ATKSpeed];
         turretAttackCooldown = this[EStat.ATKDelay];*/
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+
     }
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        AddStat(EStat.ATKSpeed, turretAttackTimer);
-        AddStat(EStat.ATKDelay, turretAttackCooldown);
-        AddStat(EStat.ATK, dmg);
+        dmg = this[EStat.ATK];
+        turretAttackCooldown = this[EStat.ATKDelay];
+        turretAttackTimer = this[EStat.ATKSpeed];
+        MaxHP = this[EStat.MaxHP];
+        perception = GetComponentInChildren<TurretPerception>();
+        perception.detectEnemyEvents.AddListener(OnEnemyDetected);
+        perception.lostEnemyEvents.AddListener(OnEnemyLost);
+        Debug.Log(this[EStat.MaxHP]);
+
     }
 
     // Update is called once per frame

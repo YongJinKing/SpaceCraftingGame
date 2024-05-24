@@ -33,6 +33,6 @@ public class StructureDataManager
 
         this.dicCBComponentTable = arrCBComponentDatas.ToDictionary(x => x.ComponentDataTable_Index);
         this.dicCBAbilityTable = arrCBAbilityDatas.ToDictionary(x => x.BuildingAbility_Index);
-        this.dicCBImgTable = arrCBImgDatas.ToDictionary(x => x.ComponentDataTable_Index);
+        this.dicCBImgTable = arrCBImgDatas.ToDictionary(x => x.ComponentImage_Index);
     }
 }
