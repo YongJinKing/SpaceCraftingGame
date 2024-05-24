@@ -1,0 +1,22 @@
+[
+   {
+      "ItemString_Index":100000,
+      "String_Type":0,
+      "String_Desc":"달빛 광석"
+   },
+   {
+      "ItemString_Index":100001,
+      "String_Type":0,
+      "String_Desc":"달빛 가스"
+   },
+   {
+      "ItemString_Index":1000000,
+      "String_Type":10,
+      "String_Desc":"달의 어느곳에서든 발견 되는 광석이다. 건물의 기초부분을 생성할 때 사용된다."
+   },
+   {
+      "ItemString_Index":1000001,
+      "String_Type":10,
+      "String_Desc":"달에 매장되어 있는 가스이다. 우주선에 동력을 공급하거나 건물의 기초부분을 생성할 때 사용된다."
+   }
+]

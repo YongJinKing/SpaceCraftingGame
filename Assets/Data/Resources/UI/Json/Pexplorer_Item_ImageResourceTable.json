@@ -1,0 +1,10 @@
+[
+   {
+      "ItemImage_Index":100000,
+      "ImageResource_Name":"Img_Moon_MoonLightOre"
+   },
+   {
+      "ItemImage_Index":100001,
+      "ImageResource_Name":"Img_Moon_MoonLightGas"
+   }
+]
