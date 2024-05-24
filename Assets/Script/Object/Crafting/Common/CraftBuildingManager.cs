@@ -8,7 +8,7 @@ public class CraftBuildingManager : MonoBehaviour
 {
     public LayerMask layerMask;
     public Tilemap ground;
-    public UnityEvent<Vector3> RemovePlaceEvent;
+    public UnityEvent<Vector3Int> RemovePlaceEvent;
     public Transform turret;
     public Transform[] rectangles;
     public Transform TurretParent;
@@ -77,15 +77,19 @@ public class CraftBuildingManager : MonoBehaviour
     void Draw_nSizeRectangle(Vector3 pos, int n)
     {
         StopDrawingRectangle();
-        Vector3 tmpPos;
+        Vector3Int intPos = new Vector3Int((int)pos.x, (int)pos.y, (int)pos.z);
+        Vector3Int tmpPos;
         Vector3 cellPos;
+        Vector3 drawPos = pos;
         int rectIdx = 0;
         for(int i = 0; i < n; i++)
         {
             for(int j = 0; j < n; j++)
             {
-                tmpPos = pos + new Vector3(ground.cellSize.x * j, ground.cellSize.y * i,0);
-                cellPos = tmpPos + new Vector3(ground.tileAnchor.x, ground.tileAnchor.y, 0);
+                drawPos = pos + new Vector3(ground.cellSize.x * j, ground.cellSize.y * i, 0);
+                tmpPos = intPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i,0);
+                cellPos = drawPos + new Vector3(ground.tileAnchor.x, ground.tileAnchor.y, 0);
+                
                 if (!tileManage.HasTile(tmpPos)) break;
                 if (!rectangles[rectIdx].gameObject.activeSelf) rectangles[rectIdx].gameObject.SetActive(true);
                 rectangles[rectIdx].transform.position = cellPos;
@@ -108,13 +112,14 @@ public class CraftBuildingManager : MonoBehaviour
 
     void MakeFalseCoordinates(Vector3 pos, int size)
     {
-        Vector3 cellPos;
+        Vector3Int tmpPos = new Vector3Int((int)pos.x, (int)pos.y, (int)pos.z);
+        Vector3Int cellPos;
         bool canBuild = true;
         for (int i = 0; i < size; i++)
         {
             for (int j = 0; j < size; j++)
             {
-                cellPos = pos + new Vector3(ground.cellSize.x * j, ground.cellSize.y * i, 0);
+                cellPos = tmpPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
                 if (!tileManage.HasTile(cellPos))
                 {
                     canBuild = false;
@@ -144,12 +149,12 @@ public class CraftBuildingManager : MonoBehaviour
             Transform obj = Instantiate(turret, new Vector3(pos.x + (ground.tileAnchor.x * size), pos.y + (ground.tileAnchor.y * size), 0), Quaternion.identity, TurretParent);
             obj.transform.localScale = Vector3.one * size;
             
-            cellPos = Vector3.zero;
+            cellPos = Vector3Int.zero;
             for (int i = 0; i < size; i++)
             {
                 for(int j = 0; j < size; j++)
                 {
-                    cellPos = pos + new Vector3(ground.cellSize.x * j, ground.cellSize.y * i, 0);
+                    cellPos = tmpPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
                     RemovePlaceEvent?.Invoke(cellPos);
                 }
             }

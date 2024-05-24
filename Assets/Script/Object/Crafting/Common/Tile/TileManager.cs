@@ -8,7 +8,7 @@ public class TileManager : MonoBehaviour
     public Tilemap tileMap = null;
 
     //public List<Vector3> availablePlaces;
-    public Dictionary<Vector3, bool> availablePlaces;
+    public Dictionary<Vector3Int, bool> availablePlaces;
     CraftBuildingManager craftmanager;
     void Awake()
     {
@@ -16,7 +16,7 @@ public class TileManager : MonoBehaviour
         craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
         tileMap = transform.GetComponent<Tilemap>();
         //availablePlaces = new List<Vector3>();
-        availablePlaces = new Dictionary<Vector3, bool>();
+        availablePlaces = new Dictionary<Vector3Int, bool>();
 
         /*for (int x = tileMap.cellBounds.xMin; x < tileMap.cellBounds.xMax; x++)
         {
@@ -45,8 +45,9 @@ public class TileManager : MonoBehaviour
                 Vector3 place = tileMap.CellToWorld(localPlace);
                 if (tileMap.HasTile(localPlace))
                 {
+                    Vector3Int _place = new Vector3Int((int)place.x, (int)place.y, (int)place.z);
                     //Tile at "place"
-                    availablePlaces[place] = true;
+                    availablePlaces[_place] = true;
                 }
                 else
                 {
@@ -58,13 +59,13 @@ public class TileManager : MonoBehaviour
         Debug.Log(availablePlaces.Count);
     }
 
-    public bool IsCraftable(Vector3 coordinates)
+    public bool IsCraftable(Vector3Int coordinates)
     {
         //return availablePlaces.Contains(coordinates);
         return availablePlaces[coordinates];
     }
 
-    public void RemopvePlace(Vector3 coordinates)
+    public void RemopvePlace(Vector3Int coordinates)
     {
         availablePlaces[coordinates] = false;
     }
@@ -74,7 +75,7 @@ public class TileManager : MonoBehaviour
         return (int)Mathf.Sqrt(availablePlaces.Count);
     }
     
-    public bool HasTile(Vector3 coordinates)
+    public bool HasTile(Vector3Int coordinates)
     {
         return availablePlaces.ContainsKey(coordinates);
     }
@@ -83,7 +84,7 @@ public class TileManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            foreach (KeyValuePair<Vector3, bool> entry in availablePlaces)
+            foreach (KeyValuePair<Vector3Int, bool> entry in availablePlaces)
             {
                 Debug.Log(entry.Key + " : " + entry.Value);
             }
