@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Action : MonoBehaviour
+public abstract class Action : MonoBehaviour, IGetPriority
 {
     #region Properties
     #region Private
@@ -12,7 +12,7 @@ public abstract class Action : MonoBehaviour
     protected bool _fireAndForget = false;
     protected bool _available = true;
     //for AI
-    protected float _priority = 0.0f;
+    [SerializeField]protected float _priority = 0.0f;
     [SerializeField]protected float _coolTime = -1;
     #endregion
     #region Public
@@ -62,6 +62,10 @@ public abstract class Action : MonoBehaviour
         StartCoroutine(CoolTimeChecking());
     }
     public abstract void Deactivate();
+    public virtual float GetPriority()
+    {
+        return priority;
+    }
     #endregion
     #endregion
 

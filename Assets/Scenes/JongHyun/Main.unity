@@ -153,6 +153,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1854854245}
+  - {fileID: 400017617}
   - {fileID: 1759674493}
   m_Father: {fileID: 1948805411}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -360,6 +361,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &400017616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400017617}
+  - component: {fileID: 400017618}
+  m_Layer: 0
+  m_Name: PointMoveAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400017617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400017616}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 76067947}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &400017618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400017616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004021bff1c915444a8d147a68c1ca43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 0
+  _coolTime: -1
+  OnActionEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &552727370
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7801757fd82e344c94b70b210b015fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
   _coolTime: -1
   OnActionEndEvent:
     m_PersistentCalls:
@@ -623,6 +674,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1035733691}
+  - component: {fileID: 1035733692}
   m_Layer: 0
   m_Name: TargetSelect
   m_TagString: Untagged
@@ -645,6 +697,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 924476286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1035733692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035733690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3726365d8f39cbf409068343765ec512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1065010940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -804,6 +868,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1285290033}
+  - component: {fileID: 1285290034}
   m_Layer: 0
   m_Name: ActionSelect
   m_TagString: Untagged
@@ -826,6 +891,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 924476286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1285290034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285290032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e6f5784f8dec64b9b0fdb64016a3bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1404288694
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7801757fd82e344c94b70b210b015fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
   _coolTime: -1
   OnActionEndEvent:
     m_PersistentCalls:
@@ -1019,7 +1097,7 @@ GameObject:
   - component: {fileID: 1854854245}
   - component: {fileID: 1854854244}
   m_Layer: 0
-  m_Name: PlayerMoveAction
+  m_Name: DirMoveAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1037,6 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a58a3c00d1e3a94a9e22a843801a052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
   _coolTime: -1
   OnActionEndEvent:
     m_PersistentCalls:
@@ -1460,6 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004021bff1c915444a8d147a68c1ca43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
   _coolTime: -1
   OnActionEndEvent:
     m_PersistentCalls:

@@ -8,20 +8,8 @@ public class TargetSelectAI : MonoBehaviour
     #region Private
     #endregion
     #region Protected
-    protected LayerMask _targetMask;
-    protected float _detectRadius = 5.0f;
     #endregion
     #region Public
-    public LayerMask targetMask
-    {
-        get { return _targetMask; }
-        protected set { _targetMask = value; }
-    }
-    public float detectRadius
-    {
-        get { return _detectRadius; }
-        protected set { _detectRadius = value; }
-    }
     #endregion
     #region Events
     #endregion
@@ -38,11 +26,8 @@ public class TargetSelectAI : MonoBehaviour
     #region Public
     public GameObject Compute(LayerMask targetMask, float Radius)
     {
-        this.targetMask = targetMask;
-        this.detectRadius = Radius;
-
         //Scan Targets
-        Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, detectRadius, targetMask);
+        Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, Radius, targetMask);
         if( targets.Length <= 0 ) { return null; }
 
         int bestTarget = 0;
@@ -67,6 +52,17 @@ public class TargetSelectAI : MonoBehaviour
                 bestTarget = i;
             }
         }
+        
+        getValue = targets[bestTarget].GetComponentInParent<IGetPriority>();
+        //find target but, that can not become target
+        if (getValue != null)
+        {
+            if(getValue.GetPriority() < 0)
+            {
+                return null;
+            }
+        }
+        else { return null; }
 
         return targets[bestTarget].gameObject;
     }
