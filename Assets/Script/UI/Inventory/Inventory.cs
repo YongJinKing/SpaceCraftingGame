@@ -1,20 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {
     
     
-
+    
+    [Serializable]
     public class SlotItemData
     {
         public int id;
         public int Amount;
     }
     SelelctType InvenSoltType = SelelctType.All;
+    public List<SlotItemData> InventoryDatas = new List<SlotItemData>();
     public static Inventory instance;
-    List<SlotItemData> InventoryDatas = new List<SlotItemData>();
+    
+    public UnityEvent UpdatePopup;
+
     public List<SlotItemData> DisplayInven;
     public int Testid;
     public int TestAmout;
@@ -33,12 +40,7 @@ public class Inventory : MonoBehaviour
     }
     public void ChangeDisplayType(SelelctType Type)
     {
-        if(InvenSoltType == Type)
-            return;
-        else
-        {
-            DisplayInven = InventoryDatas;
-        }
+        DisplayInven = InventoryDatas;
     }
     public void TestBtn()
     {
@@ -60,6 +62,7 @@ public class Inventory : MonoBehaviour
         naturalResourceData.Amount = Amount;
         InventoryDatas.Add(naturalResourceData);
         SortInventoryDatas();
+        UpdatePopup?.Invoke();
     }
 
     public void SortInventoryDatas()
