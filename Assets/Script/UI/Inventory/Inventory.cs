@@ -40,6 +40,7 @@ public class Inventory : MonoBehaviour
     }
     private void Start() 
     {
+        ItemStaticDataManager.GetInstance().LoadItemDatas();
         InvenSoltType = SelelctType.All;
     }
     
@@ -49,7 +50,7 @@ public class Inventory : MonoBehaviour
     }
     public void AddItem(int id, int Amount)
     {
-        SlotItemData naturalResourceData = new SlotItemData();
+        SlotItemData SlotData = new SlotItemData();
         for(int i = 0; i < InventoryDatas.Count; i++)
         {
             if(InventoryDatas[i].id == id)
@@ -59,9 +60,9 @@ public class Inventory : MonoBehaviour
                 return;
             }
         }
-        naturalResourceData.id = id;
-        naturalResourceData.Amount = Amount;
-        InventoryDatas.Add(naturalResourceData);
+        SlotData.id = id;
+        SlotData.Amount = Amount;
+        InventoryDatas.Add(SlotData);
 
         SortInventoryDatas();
         ModeDisplay(InvenSoltType);
@@ -69,8 +70,12 @@ public class Inventory : MonoBehaviour
     }
     public void ChangeMode(int index)
     {
+        
         InvenSoltType = (SelelctType)index;
         ModeDisplay(InvenSoltType);
+        //Debug.Log($"모드체인지{InvenSoltType}");
+        UpdatePopup?.Invoke();
+        
     }
 
     void ModeDisplay(SelelctType Type)
@@ -80,7 +85,20 @@ public class Inventory : MonoBehaviour
             return;
         else
         {
-            
+            DisplayInven = new List<SlotItemData>();
+            SlotItemData SlotData = new SlotItemData();
+            for(int i = 0; i < InventoryDatas.Count; i++)
+            {
+                var ItemData = ItemStaticDataManager.GetInstance().dicItemData[InventoryDatas[i].id];
+                //Debug.Log($"{ItemData.ItemType}아이템 타입, {Type}모드 타입");
+                if(ItemData.ItemType + 1 == (int)Type)
+                {
+                    SlotData.id = InventoryDatas[i].id;
+                    SlotData.Amount = InventoryDatas[i].Amount;
+                    DisplayInven.Add(SlotData);
+                    
+                }
+            }
         }
     }
     void SortInventoryDatas()

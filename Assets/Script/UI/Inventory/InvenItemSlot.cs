@@ -27,6 +27,11 @@ public class InvenItemSlot : MonoBehaviour
         spName = SpriteData.ImageResource_Name;
         Sprite sp = Resources.Load<Sprite>($"UI/ItemResources/{spName}");
         image.sprite = sp;
-        transform.gameObject.SetActive(true);
     }
+    public void init()
+    {
+        AmountTxt.text = "";
+        
+    }
+
 }

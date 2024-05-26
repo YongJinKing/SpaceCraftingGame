@@ -10,6 +10,121 @@
       "String_Desc":"달빛 가스"
    },
    {
+      "ItemString_Index":100002,
+      "String_Type":0,
+      "String_Desc":"천연 자원 3"
+   },
+   {
+      "ItemString_Index":100003,
+      "String_Type":0,
+      "String_Desc":"천연 자원 4"
+   },
+   {
+      "ItemString_Index":100004,
+      "String_Type":0,
+      "String_Desc":"천연 자원 5"
+   },
+   {
+      "ItemString_Index":200000,
+      "String_Type":1,
+      "String_Desc":"몬스터 자원 1"
+   },
+   {
+      "ItemString_Index":200001,
+      "String_Type":1,
+      "String_Desc":"몬스터 자원 2"
+   },
+   {
+      "ItemString_Index":200002,
+      "String_Type":1,
+      "String_Desc":"몬스터 자원 3"
+   },
+   {
+      "ItemString_Index":200003,
+      "String_Type":1,
+      "String_Desc":"몬스터 자원 4"
+   },
+   {
+      "ItemString_Index":200004,
+      "String_Type":1,
+      "String_Desc":"몬스터 자원 5"
+   },
+   {
+      "ItemString_Index":300000,
+      "String_Type":2,
+      "String_Desc":"무기 1"
+   },
+   {
+      "ItemString_Index":300001,
+      "String_Type":2,
+      "String_Desc":"무기 2"
+   },
+   {
+      "ItemString_Index":300002,
+      "String_Type":2,
+      "String_Desc":"무기 3"
+   },
+   {
+      "ItemString_Index":300003,
+      "String_Type":2,
+      "String_Desc":"무기 4"
+   },
+   {
+      "ItemString_Index":300004,
+      "String_Type":2,
+      "String_Desc":"무기 5"
+   },
+   {
+      "ItemString_Index":400000,
+      "String_Type":3,
+      "String_Desc":"방어구 1"
+   },
+   {
+      "ItemString_Index":400001,
+      "String_Type":3,
+      "String_Desc":"방어구 2"
+   },
+   {
+      "ItemString_Index":400002,
+      "String_Type":3,
+      "String_Desc":"방어구 3"
+   },
+   {
+      "ItemString_Index":400003,
+      "String_Type":3,
+      "String_Desc":"방어구 4"
+   },
+   {
+      "ItemString_Index":400004,
+      "String_Type":3,
+      "String_Desc":"방어구 5"
+   },
+   {
+      "ItemString_Index":500000,
+      "String_Type":4,
+      "String_Desc":"악세서리 1"
+   },
+   {
+      "ItemString_Index":500001,
+      "String_Type":4,
+      "String_Desc":"악세서리 2"
+   },
+   {
+      "ItemString_Index":500002,
+      "String_Type":4,
+      "String_Desc":"악세서리 3"
+   },
+   {
+      "ItemString_Index":500003,
+      "String_Type":4,
+      "String_Desc":"악세서리 4"
+   },
+   {
+      "ItemString_Index":500004,
+      "String_Type":4,
+      "String_Desc":"악세서리 5"
+   },
+   {
       "ItemString_Index":1000000,
       "String_Type":10,
       "String_Desc":"달의 어느곳에서든 발견 되는 광석이다. 건물의 기초부분을 생성할 때 사용된다."
@@ -18,5 +133,120 @@
       "ItemString_Index":1000001,
       "String_Type":10,
       "String_Desc":"달에 매장되어 있는 가스이다. 우주선에 동력을 공급하거나 건물의 기초부분을 생성할 때 사용된다."
+   },
+   {
+      "ItemString_Index":1000002,
+      "String_Type":10,
+      "String_Desc":"천연 자원 3이다."
+   },
+   {
+      "ItemString_Index":1000003,
+      "String_Type":10,
+      "String_Desc":"천연 자원 4이다."
+   },
+   {
+      "ItemString_Index":1000004,
+      "String_Type":10,
+      "String_Desc":"천연 자원 5이다."
+   },
+   {
+      "ItemString_Index":2000000,
+      "String_Type":11,
+      "String_Desc":"몬스터 자원 1이다."
+   },
+   {
+      "ItemString_Index":2000001,
+      "String_Type":11,
+      "String_Desc":"몬스터 자원 2이다."
+   },
+   {
+      "ItemString_Index":2000002,
+      "String_Type":11,
+      "String_Desc":"몬스터 자원 3이다."
+   },
+   {
+      "ItemString_Index":2000003,
+      "String_Type":11,
+      "String_Desc":"몬스터 자원 4이다."
+   },
+   {
+      "ItemString_Index":2000004,
+      "String_Type":11,
+      "String_Desc":"몬스터 자원 5이다."
+   },
+   {
+      "ItemString_Index":3000000,
+      "String_Type":12,
+      "String_Desc":"무기 1이다."
+   },
+   {
+      "ItemString_Index":3000001,
+      "String_Type":12,
+      "String_Desc":"무기 2이다."
+   },
+   {
+      "ItemString_Index":3000002,
+      "String_Type":12,
+      "String_Desc":"무기 3이다."
+   },
+   {
+      "ItemString_Index":3000003,
+      "String_Type":12,
+      "String_Desc":"무기 4이다."
+   },
+   {
+      "ItemString_Index":3000004,
+      "String_Type":12,
+      "String_Desc":"무기 5이다."
+   },
+   {
+      "ItemString_Index":4000000,
+      "String_Type":13,
+      "String_Desc":"방어구 1이다."
+   },
+   {
+      "ItemString_Index":4000001,
+      "String_Type":13,
+      "String_Desc":"방어구 2이다."
+   },
+   {
+      "ItemString_Index":4000002,
+      "String_Type":13,
+      "String_Desc":"방어구 3이다."
+   },
+   {
+      "ItemString_Index":4000003,
+      "String_Type":13,
+      "String_Desc":"방어구 4이다."
+   },
+   {
+      "ItemString_Index":4000004,
+      "String_Type":13,
+      "String_Desc":"방어구 5이다."
+   },
+   {
+      "ItemString_Index":5000000,
+      "String_Type":14,
+      "String_Desc":"악세서리 1이다."
+   },
+   {
+      "ItemString_Index":5000001,
+      "String_Type":14,
+      "String_Desc":"악세서리 2이다."
+   },
+   {
+      "ItemString_Index":5000002,
+      "String_Type":14,
+      "String_Desc":"악세서리 3이다."
+   },
+   {
+      "ItemString_Index":5000003,
+      "String_Type":14,
+      "String_Desc":"악세서리 4이다."
+   },
+   {
+      "ItemString_Index":5000004,
+      "String_Type":14,
+      "String_Desc":"악세서리 5이다."
    }
 ]
