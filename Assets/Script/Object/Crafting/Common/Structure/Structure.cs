@@ -13,14 +13,21 @@ public abstract class Structure : Stat
     [SerializeField] protected StructureState _state = new StructureState();
     [SerializeField] protected float def;
     [SerializeField] protected float buildingSpd;
-    // 이 아래로 json에 존재하는 데이터들 변수로 변환시킨 거
-    [SerializeField] protected int componentType;
-    [SerializeField] protected int componentName;
-    [SerializeField] protected int componentDescription;
-    [SerializeField] protected int componentImage;
-    [SerializeField] protected int componentdetail;
+    [SerializeField] protected int priority;
+    [SerializeField] protected string componentName;
     #endregion
     #region Public
+    public int mPriority
+    {
+        get
+        {
+            return priority;
+        }
+        set
+        {
+            priority = value;
+        }
+    }
     public StructureState mState
     {
         get
@@ -42,6 +49,14 @@ public abstract class Structure : Stat
         }
     }
     
+    public string mComponentName
+    {
+        get { return componentName; }
+        set
+        {
+            componentName = value;
+        }
+    }
     #endregion
     #region Events
     #endregion

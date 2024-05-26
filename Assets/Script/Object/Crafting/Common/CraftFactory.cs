@@ -39,9 +39,11 @@ public class CraftFactory
         //Collider, Rigidbody, Scale Setting
         obj.transform.localScale = Vector3.one;
         obj.name = "Turret";
+        
         obj.AddComponent<BoxCollider2D>();
         Turret turret = obj.AddComponent<Turret>();
         turret.MaxHP = componentData.Component_Hp;
+        turret.mComponentName = componentData.Component_Name.ToString();
         //turret[EStat.MaxHP] = 100;
         turret[EStat.ATK] = abilityData.BuildingDetail_Value;
         turret[EStat.ATKDelay] = abilityData.BuildingDetail_Delay;
@@ -53,10 +55,12 @@ public class CraftFactory
         head.name = "head";
         head.transform.SetParent(obj.transform);
         head.transform.position = new Vector3(0, 0.5f, 0);
+        turret.header = head.transform;
 
         GameObject attackPoint = new GameObject();
         attackPoint.name = "attackPoint";
         attackPoint.transform.SetParent(head.transform);
+        turret.attackPoint = attackPoint.transform;
 
         GameObject body = new GameObject();
         body.name = "body";
@@ -64,6 +68,26 @@ public class CraftFactory
         body.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         SpriteRenderer renderer = body.AddComponent<SpriteRenderer>();
         renderer.sprite = Resources.Load<Sprite>($"Component/Image/{imgData.ImageResource_Name}");
+
+        GameObject bulletPool = new GameObject();
+        bulletPool.name = "bulletPool";
+        bulletPool.transform.SetParent(obj.transform);
+
+        for(int i = 0; i < 5; i++)
+        {
+            GameObject bullet = new GameObject();
+            bullet.name = "bullet" + i.ToString();
+            bullet.transform.SetParent(bulletPool.transform);
+            bullet.AddComponent<SpriteRenderer>();
+            TestBullet testBullet = bullet.AddComponent<TestBullet>();
+            testBullet.layerMask = 1 << 19;
+
+            BoxCollider2D boxCollider2D = bullet.AddComponent<BoxCollider2D>();
+            boxCollider2D.size = new Vector2(1f, 0.5f);
+            turret.bulletList.Add(bullet);
+
+            bullet.gameObject.SetActive(false);
+        }
 
 
         GameObject perception = new GameObject();

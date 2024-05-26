@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Turret : Structure
 {
@@ -17,6 +18,7 @@ public class Turret : Structure
     public Transform bullet;
     public Transform attackPoint;
     public Transform header;
+    public List<GameObject> bulletList = new List<GameObject>();
     #endregion
     #region Events
     #endregion
@@ -161,6 +163,23 @@ public class Turret : Structure
             //targetEnemy.TakeDamage(damage * GetEfficiency()); // 현재 내구도 상태에 따라 데미지를 달리 줌
             //targetEnemy.TakeDamage(damage);
             var towerBullet = Instantiate(bullet, attackPoint.transform.position, Quaternion.identity);
+            /*for (int i = 0; i < bulletList.Count; i++)
+            {
+                if (!bulletList[i].gameObject.activeSelf)
+                {
+                    var towerBullet = bulletList[i];
+                    *//*towerBullet.SetActive(true);
+                    towerBullet.transform.position = attackPoint.position;
+                    towerBullet.transform.SetParent(null);
+                    towerBullet.GetComponent<TestBullet>().SetTarget(enemy.transform);
+                    //towerBullet.GetComponent<TestBullet>().SetDamage(this[EStat.ATK]);
+                    towerBullet.GetComponent<TestBullet>().SetDamage(dmg);
+                    towerBullet.GetComponent<TestBullet>().SetRotation(enemy.transform);*//*
+                    break;
+                }
+            }*/
+            //towerBullet.SetActive(true);
+            towerBullet.transform.position = attackPoint.position;
             towerBullet.transform.SetParent(null);
             towerBullet.GetComponent<TestBullet>().SetTarget(enemy.transform);
             //towerBullet.GetComponent<TestBullet>().SetDamage(this[EStat.ATK]);

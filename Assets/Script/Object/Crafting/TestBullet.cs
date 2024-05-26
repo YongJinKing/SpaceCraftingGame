@@ -32,8 +32,8 @@ public class TestBullet : MonoBehaviour
             Debug.Log(collision.gameObject.name + " hit!");
             TestEnemy character = collision.gameObject.GetComponent<TestEnemy>();
             character.TakeDamage(damage);
-            Destroy(this.gameObject);
-
+            //Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
 
         }
     }
@@ -60,6 +60,6 @@ public class TestBullet : MonoBehaviour
 
     public void LostTarget()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }
