@@ -23,7 +23,7 @@ public class InvenItemSlot : MonoBehaviour
     {
         var ItemData = ItemStaticDataManager.GetInstance().dicItemData[Inventory.instance.DisplayInven[transform.GetSiblingIndex()].id];
         var SpriteData = ItemStaticDataManager.GetInstance().dicResouseTable[ItemData.ItemImage];
-        AmountTxt.text = Inventory.instance.DisplayInven[transform.GetSiblingIndex()].Amount.ToString();
+        AmountTxt.text = "x" + Inventory.instance.DisplayInven[transform.GetSiblingIndex()].Amount.ToString();
         spName = SpriteData.ImageResource_Name;
         Sprite sp = Resources.Load<Sprite>($"UI/ItemResources/{spName}");
         image.sprite = sp;

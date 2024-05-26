@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
         public int id;
         public int Amount;
     }
-    SelelctType InvenSoltType = SelelctType.All;
+    SelelctType InvenSoltType;
     public List<SlotItemData> InventoryDatas = new List<SlotItemData>();
     public static Inventory instance;
     
@@ -38,15 +38,15 @@ public class Inventory : MonoBehaviour
             Destroy(instance.gameObject);
         }
     }
-    public void ChangeDisplayType(SelelctType Type)
+    private void Start() 
     {
-        DisplayInven = InventoryDatas;
+        InvenSoltType = SelelctType.All;
     }
-    public void TestBtn()
+    
+    public void Testbtn()
     {
         AddItem(Testid,TestAmout);
     }
-
     public void AddItem(int id, int Amount)
     {
         SlotItemData naturalResourceData = new SlotItemData();
@@ -55,17 +55,35 @@ public class Inventory : MonoBehaviour
             if(InventoryDatas[i].id == id)
             {
                 InventoryDatas[i].Amount += Amount;
+                UpdatePopup?.Invoke();
                 return;
             }
         }
         naturalResourceData.id = id;
         naturalResourceData.Amount = Amount;
         InventoryDatas.Add(naturalResourceData);
+
         SortInventoryDatas();
+        ModeDisplay(InvenSoltType);
         UpdatePopup?.Invoke();
     }
+    public void ChangeMode(int index)
+    {
+        InvenSoltType = (SelelctType)index;
+        ModeDisplay(InvenSoltType);
+    }
 
-    public void SortInventoryDatas()
+    void ModeDisplay(SelelctType Type)
+    {
+        DisplayInven = InventoryDatas;
+        if(Type == SelelctType.All)
+            return;
+        else
+        {
+            
+        }
+    }
+    void SortInventoryDatas()
     {
         for(int i = 0; i < InventoryDatas.Count - 1; i++)//ItemSort
         {

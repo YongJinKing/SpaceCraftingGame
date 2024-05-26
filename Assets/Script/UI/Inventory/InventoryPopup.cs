@@ -13,12 +13,17 @@ public class InventoryPopup : MonoBehaviour
             if(Inventory.instance.DisplayInven[i].id > 0)
             {
                 SlotGridLine.transform.GetChild(i).GetComponent<InvenItemSlot>().Display();
+                SlotGridLine.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
             }
             else
             {
                 SlotGridLine.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);
             }
         }
-        
     }
+    public void SlotHL(int index, bool onCheck)
+    {
+        SlotGridLine.transform.GetChild(index).GetChild(2).gameObject.SetActive(onCheck);
+    }
+    
 }
