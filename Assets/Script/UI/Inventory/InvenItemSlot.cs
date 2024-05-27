@@ -19,14 +19,15 @@ public class InvenItemSlot : MonoBehaviour
     {
         ItemStaticDataManager.GetInstance().LoadItemDatas();
     }
-    public void Display()
+    public void Display(int index)
     {
-        var ItemData = ItemStaticDataManager.GetInstance().dicItemData[Inventory.instance.DisplayInven[transform.GetSiblingIndex()].id];
+        var ItemData = ItemStaticDataManager.GetInstance().dicItemData[Inventory.instance.DisplayInven[transform.GetSiblingIndex() + (index * 25)].id];
         var SpriteData = ItemStaticDataManager.GetInstance().dicResouseTable[ItemData.ItemImage];
-        AmountTxt.text = "x" + UnitCalculate.GetInstance().Calculate(Inventory.instance.DisplayInven[transform.GetSiblingIndex()].Amount);
+        AmountTxt.text = "x" + UnitCalculate.GetInstance().Calculate(Inventory.instance.DisplayInven[transform.GetSiblingIndex() + (index * 25)].Amount);
         spName = SpriteData.ImageResource_Name;
         Sprite sp = Resources.Load<Sprite>($"UI/ItemResources/{spName}");
         image.sprite = sp;
+        
     }
     public void init()
     {

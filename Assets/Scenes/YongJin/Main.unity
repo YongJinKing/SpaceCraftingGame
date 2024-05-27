@@ -918,7 +918,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1/2
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7254,6 +7254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotGridLine: {fileID: 595659362}
+  OptionPanel: {fileID: 1585979356}
+  FrontPageNum: 0
 --- !u!1 &1157542580
 GameObject:
   m_ObjectHideFlags: 0
@@ -9602,7 +9604,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1147186555}
         m_TargetAssemblyTypeName: InventoryPopup, Assembly-CSharp
         m_MethodName: PopupUpdate
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13039,7 +13041,19 @@ MonoBehaviour:
   btnChildCount: 0
   BtnAct:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1147186555}
+        m_TargetAssemblyTypeName: InventoryPopup, Assembly-CSharp
+        m_MethodName: PagePtn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2098745793
 GameObject:
   m_ObjectHideFlags: 0

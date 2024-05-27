@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     public List<SlotItemData> InventoryDatas = new List<SlotItemData>();
     public static Inventory instance;
     
-    public UnityEvent UpdatePopup;
+    public UnityEvent<int> UpdatePopup;
 
     public List<SlotItemData> DisplayInven;
     public int Testid;
@@ -56,7 +56,7 @@ public class Inventory : MonoBehaviour
             if(InventoryDatas[i].id == id)
             {
                 InventoryDatas[i].Amount += Amount;
-                UpdatePopup?.Invoke();
+                UpdatePopup?.Invoke(0);
                 return;
             }
         }
@@ -66,15 +66,16 @@ public class Inventory : MonoBehaviour
 
         SortInventoryDatas();
         ModeDisplay(InvenSoltType);
-        UpdatePopup?.Invoke();
+        UpdatePopup?.Invoke(0);
     }
     public void ChangeMode(int index)
     {
         
         InvenSoltType = (SelelctType)index;
         ModeDisplay(InvenSoltType);
+        UpdatePopup?.Invoke(1);
         //Debug.Log($"모드체인지{InvenSoltType}");
-        UpdatePopup?.Invoke();
+        
         
     }
 
