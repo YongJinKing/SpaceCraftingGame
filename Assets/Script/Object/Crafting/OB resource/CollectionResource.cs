@@ -1,22 +1,29 @@
+using Newtonsoft.Json.Bson;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CollectionResource : MonoBehaviour
 {
-    private MineralSpawner spawner;
+    public delegate void MineralHarvested(Vector3Int position);
+    public static event MineralHarvested OnMineralHarvested;
 
-    public void Initialize(MineralSpawner spawner)
+    private Tilemap tilemap;
+
+    private void Start()
     {
-        this.spawner = spawner;
+        tilemap = FindObjectOfType<Tilemap>();
     }
 
-    void OnMouseDown()
+    // 미네랄 채취 메서드
+    public void Harvest()
     {
-        // 미네랄이 채취되었을 때 새로운 미네랄을 생성
-        spawner.PlaceMinerals();
-
-        // 미네랄 오브젝트 삭제
-        Destroy(gameObject);
+        Vector3Int cellPosition = tilemap.WorldToCell(transform.position);
+        OnMineralHarvested?.Invoke(cellPosition);
+        Destroy(gameObject); // 미네랄 오브젝트 제거
     }
+
+
 }
