@@ -8,7 +8,7 @@ public class MineralSpawner : MonoBehaviour
     public Tilemap tilemap; // 타일맵을 연결하기 위한 변수
     public int mapWidth = 128; // 타일맵의 너비
     public int mapHeight = 128; // 타일맵의 높이
-    public int numberOfMinerals = 32; // 생성할 미네랄의 수
+    public int numberOfMinerals = 16; // 생성할 미네랄의 수
     public LayerMask mineralLayer; // 미네랄 레이어를 설정하기 위한 변수
 
     private void OnEnable()
@@ -31,9 +31,9 @@ public class MineralSpawner : MonoBehaviour
         int mineralsPlaced = 0;
         float mineralDensity = (float)numberOfMinerals / (mapWidth * mapHeight);
 
-        for (int x = 0; x < mapWidth; x++)
+        for (int y = tilemap.cellBounds.yMin; y < tilemap.cellBounds.yMax; y++)
         {
-            for (int y = 0; y < mapHeight; y++)
+            for (int x = tilemap.cellBounds.xMin; x < tilemap.cellBounds.xMax; x++)
             {
                 if (mineralsPlaced >= numberOfMinerals)
                 {
