@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterDetectState : MonsterState
+public class MonsterAttackState : MonsterState
 {
     #region Properties
     #region Private
@@ -35,13 +35,10 @@ public class MonsterDetectState : MonsterState
     public override void Enter()
     {
         base.Enter();
-        StartCoroutine(FollowTarget());
-        StartCoroutine(SelectingAction());
     }
     public override void Exit()
     {
         base.Exit();
-        StopCoroutine(FollowTarget());
     }
     #endregion
     #endregion
@@ -50,29 +47,11 @@ public class MonsterDetectState : MonsterState
     #endregion
 
     #region Coroutines
-    protected IEnumerator FollowTarget()
+    protected IEnumerator Attacking()
     {
-        while (true)
-        {
-            owner.dirMove?.Activate(owner.target.transform.position - transform.position);
-            yield return null;
-        }
-    }
-    protected IEnumerator SelectingAction()
-    {
-        if (owner.attackActions == null)
-            yield break;
 
-        Action action = null;
-        while (action == null)
-        {
-            action = owner.ai.SelectAction(owner.attackActions);
-            if (!action.available)
-                action = null;
-            yield return null;
-        }
-        owner.activatedAction = action;
-        owner.stateMachine.ChangeState<MonsterAttackState>();
+
+        yield return null;
     }
     #endregion
 

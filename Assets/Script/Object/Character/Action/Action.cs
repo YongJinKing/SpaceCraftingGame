@@ -14,6 +14,7 @@ public abstract class Action : MonoBehaviour, IGetPriority
     //for AI
     [SerializeField]protected float _priority = 0.0f;
     [SerializeField]protected float _coolTime = -1;
+    [SerializeField]protected float _activeRadius = 1.0f;
     #endregion
     #region Public
     public bool fireAndForget
@@ -35,6 +36,11 @@ public abstract class Action : MonoBehaviour, IGetPriority
     {
         get { return _coolTime; }
         set { _coolTime = value; }
+    }
+    public float activeRadius
+    {
+        get { return _activeRadius; }
+        protected set { _activeRadius = value; }
     }
     #endregion
     #region Events
