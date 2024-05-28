@@ -9,6 +9,7 @@ public class AI : MonoBehaviour
     protected bool isWave;
     #endregion
     #region Public
+    public TileManager tileManager;
     #endregion
     #region Events
     #endregion
