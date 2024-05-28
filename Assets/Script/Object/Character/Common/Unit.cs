@@ -8,6 +8,7 @@ public abstract class Unit : Stat
     #endregion
     #region Protected
     protected StateMachine _stateMachine;
+    protected Action _activatedAction = null;
     #endregion
     #region Public
     public float moveSpeed;
@@ -16,6 +17,11 @@ public abstract class Unit : Stat
     public StateMachine stateMachine 
     {
         get { return _stateMachine; } 
+    }
+    public Action activatedAction
+    {
+        get { return _activatedAction; }
+        set { _activatedAction = value; }
     }
     #endregion
     #region Events

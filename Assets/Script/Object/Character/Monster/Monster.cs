@@ -7,10 +7,25 @@ public class Monster : Unit
     #region Private
     #endregion
     #region Protected
+    protected Vector2 _spawnPoint = Vector2.zero;
+    protected GameObject _target;
     #endregion
     #region Public
-    public MoveAction[] moveActions;
+    public float detectRadius;
+    public DirMoveAction dirMove;
+    public PointMoveAction pointMove;
     public AttackAction[] attackActions;
+    public AI ai;
+    public Vector3 spawnPoint
+    {
+        get { return _spawnPoint; }
+        protected set { _spawnPoint = value; }
+    }
+    public GameObject target
+    {
+        get { return _target; }
+        set { _target = value; }
+    }
     #endregion
     #region Events
     #endregion
@@ -19,6 +34,7 @@ public class Monster : Unit
     #region Constructor
     public Monster() : base()
     {
+        AddStat(EStat.DetectRadius, 0.0f);
     }
     #endregion
 
@@ -29,6 +45,9 @@ public class Monster : Unit
     protected override void Initialize()
     {
         base.Initialize();
+        this[EStat.DetectRadius] = detectRadius;
+        spawnPoint = transform.position;
+
         stateMachine.ChangeState<MonsterInitState>();
     }
     #endregion

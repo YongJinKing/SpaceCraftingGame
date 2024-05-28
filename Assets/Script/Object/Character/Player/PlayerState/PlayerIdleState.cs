@@ -63,7 +63,8 @@ public class PlayerIdleState : PlayerState
     public void OnMouse(int type, Vector2 pos)
     {
         owner.attackAction.Activate(pos);
-        owner.stateMachine.ChangeState<PlayerMovableActionState, Action>(owner.attackAction);
+        owner.activatedAction = owner.attackAction;
+        owner.stateMachine.ChangeState<PlayerMovableActionState>();
     }
     #endregion
 

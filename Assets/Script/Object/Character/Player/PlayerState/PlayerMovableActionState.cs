@@ -9,7 +9,6 @@ public class PlayerMovableActionState : PlayerState
     #region Private
     #endregion
     #region Protected
-    Action action;
     #endregion
     #region Public
     #endregion
@@ -29,6 +28,11 @@ public class PlayerMovableActionState : PlayerState
         base.AddListeners();
         InputController inputController = GameObject.Find("InputController").GetComponent<InputController>();
         inputController.moveEvent.AddListener(OnMove);
+
+        if (owner.activatedAction != null)
+        {
+            owner.activatedAction.OnActionEndEvent.AddListener(OnActionEnd);
+        }
     }
     protected override void RemoveListeners()
     {
@@ -38,22 +42,14 @@ public class PlayerMovableActionState : PlayerState
         {
             inputController.moveEvent.RemoveListener(OnMove);
         }
-        if(action != null)
+        if(owner.activatedAction != null)
         {
-            action.OnActionEndEvent.RemoveListener(OnActionEnd);
+            owner.activatedAction.OnActionEndEvent.RemoveListener(OnActionEnd);
         }
-        action = null;
+        owner.activatedAction = null;
     }
     #endregion
     #region Public
-    public override void GetInfo<T>(T info)
-    {
-        action = info as Action;
-        if (action != null)
-        {
-            action.OnActionEndEvent.AddListener(OnActionEnd);
-        }
-    }
     public override void Enter()
     {
         base.Enter();
@@ -61,7 +57,7 @@ public class PlayerMovableActionState : PlayerState
     public override void Exit()
     {
         owner.moveAction.Deactivate();
-        action.Deactivate();
+        owner.activatedAction.Deactivate();
         base.Exit();
     }
     #endregion

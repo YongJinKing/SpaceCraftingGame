@@ -16,6 +16,10 @@ public enum EStat
     MoveSpeed,
     #endregion
 
+    #region Monster
+    DetectRadius,
+    #endregion
+
     #region Factory Buildings
     Efficiency,
     Output,
