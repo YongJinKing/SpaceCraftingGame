@@ -37,12 +37,12 @@ public class MonsterIdleState : MonsterState
     {
         base.Enter();
         StartCoroutine(Roaming());
-
+        StartCoroutine(Detecting());
     }
     public override void Exit()
     {
         base.Exit();
-        StopCoroutine(Roaming());
+        StopAllCoroutines();
     }
     #endregion
     #endregion
@@ -63,7 +63,7 @@ public class MonsterIdleState : MonsterState
         {
             randomDist = Random.Range(0.0f, roamingRadius);
             randomAngle = Random.Range(0.0f, 360.0f);
-            randomWaitTime = Random.Range(0.1f, maxWaitTime);
+            randomWaitTime = Random.Range(1.0f, maxWaitTime);
 
             randomPos = new Vector2(Mathf.Cos(randomAngle * Mathf.Deg2Rad), Mathf.Cos(randomAngle * Mathf.Deg2Rad));
             randomPos = randomPos * randomDist;
@@ -78,7 +78,10 @@ public class MonsterIdleState : MonsterState
 
         GameObject target = null;
         //For Test, Hard Coding LayerMask
-        LayerMask temp = (1 << 5);
+        LayerMask temp = (1 << 17);
+
+        Debug.Log(temp.value);
+        Debug.Log(LayerMask.NameToLayer("Mineral"));
 
         while(target == null)
         {

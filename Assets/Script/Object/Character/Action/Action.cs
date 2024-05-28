@@ -81,7 +81,7 @@ public abstract class Action : MonoBehaviour, IGetPriority
     #region Coroutines
     protected IEnumerator CoolTimeChecking()
     {
-        if (available || coolTime < 0)
+        if (available && coolTime < 0)
         {
             yield break;
         }

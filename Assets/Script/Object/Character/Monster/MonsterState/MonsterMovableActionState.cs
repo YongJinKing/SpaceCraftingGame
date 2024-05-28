@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterDetectState : MonsterState
+public class MonsterMovableActionState : MonsterState
 {
     #region Properties
     #region Private
@@ -25,10 +25,19 @@ public class MonsterDetectState : MonsterState
     protected override void AddListeners()
     {
         base.AddListeners();
+        if (owner.activatedAction != null)
+        {
+            owner.activatedAction.OnActionEndEvent.AddListener(OnActionEnd);
+        }
     }
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
+        if (owner.activatedAction != null)
+        {
+            owner.activatedAction.OnActionEndEvent.RemoveListener(OnActionEnd);
+        }
+        owner.activatedAction = null;
     }
     #endregion
     #region Public
@@ -36,10 +45,10 @@ public class MonsterDetectState : MonsterState
     {
         base.Enter();
         StartCoroutine(FollowingTarget());
-        StartCoroutine(SelectingAction());
     }
     public override void Exit()
     {
+        owner.activatedAction.Deactivate();
         base.Exit();
         StopAllCoroutines();
     }
@@ -47,6 +56,15 @@ public class MonsterDetectState : MonsterState
     #endregion
 
     #region EventHandlers
+    public void OnActionEnd()
+    {
+        Debug.Log("액션 끝남");
+
+        if(owner.target != null)
+            owner.stateMachine.ChangeState<MonsterDetectState>();
+        else
+            owner.stateMachine.ChangeState<MonsterIdleState>();
+    }
     #endregion
 
     #region Coroutines
@@ -58,26 +76,6 @@ public class MonsterDetectState : MonsterState
             owner.dirMove?.Activate(owner.target.transform.position - transform.position);
             yield return null;
         }
-    }
-    protected IEnumerator SelectingAction()
-    {
-        if (owner.attackActions == null)
-        {
-            Debug.Log("attackActions == null");
-            yield break;
-        }
-            
-
-        Action action = null;
-        while (action == null)
-        {
-            action = owner.ai.SelectAction(owner.attackActions);
-            if (!action.available)
-                action = null;
-            yield return null;
-        }
-        owner.activatedAction = action;
-        owner.stateMachine.ChangeState<MonsterAttackState>();
     }
     #endregion
 

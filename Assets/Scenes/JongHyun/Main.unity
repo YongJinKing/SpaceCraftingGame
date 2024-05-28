@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &40186627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3312,8 +3312,9 @@ MonoBehaviour:
       m_Calls: []
   _targetMask:
     serializedVersion: 2
-    m_Bits: 0
-  hitBoxes: []
+    m_Bits: 131072
+  hitBoxes:
+  - {fileID: 1065010942}
 --- !u!1 &924476285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,7 +3370,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: _targetMask.m_Bits
-      value: 32
+      value: 131072
       objectReference: {fileID: 0}
     - target: {fileID: 4390499503078326914, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: m_Name
@@ -3425,6 +3426,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7295757008676812936, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
   m_PrefabInstance: {fileID: 1065010940}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1065010942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
+  m_PrefabInstance: {fileID: 1065010940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b513573205fa6e439985ea821a5f15d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1076829769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3845,6 +3857,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1759674493}
     m_Modifications:
     - target: {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
+      propertyPath: _duration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: _targetMask.m_Bits
       value: 524288
       objectReference: {fileID: 0}
@@ -3862,7 +3878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7295757008676812936, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7295757008676812936, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3906,9 +3922,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1948805411}
+  - component: {fileID: 1948805415}
+  - component: {fileID: 1948805414}
   - component: {fileID: 1948805413}
   - component: {fileID: 1948805412}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3967,6 +3985,68 @@ MonoBehaviour:
   ATKSpeed: 0
   moveAction: {fileID: 1854854244}
   attackAction: {fileID: 1759674492}
+--- !u!58 &1948805414
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948805410}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!50 &1948805415
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948805410}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &2006832372
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,10 +4115,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 0
   Priority: 0
-  moveSpeed: 0
+  moveSpeed: 1
   ATK: 0
   ATKSpeed: 0
-  detectRadius: 0
+  detectRadius: 5
   dirMove: {fileID: 740402379}
   pointMove: {fileID: 2088204755}
   attackActions:

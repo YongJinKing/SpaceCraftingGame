@@ -22,19 +22,12 @@ public class MonsterAttackState : MonsterState
     #region Private
     #endregion
     #region Protected
-    protected override void AddListeners()
-    {
-        base.AddListeners();
-    }
-    protected override void RemoveListeners()
-    {
-        base.RemoveListeners();
-    }
     #endregion
     #region Public
     public override void Enter()
     {
         base.Enter();
+        StartCoroutine(Attacking());
     }
     public override void Exit()
     {
@@ -49,9 +42,30 @@ public class MonsterAttackState : MonsterState
     #region Coroutines
     protected IEnumerator Attacking()
     {
+        float dist = 0.0f;
+        Vector2 dir;
+        while (true)
+        {
+            dir = owner.target.transform.position - transform.position;
+
+            //follow target
+            owner.dirMove?.Activate(dir);
 
 
-        yield return null;
+            dist = dir.magnitude;
+            if (dist - owner.activatedAction.activeRadius < 0)
+            {
+                break;
+            }
+            yield return null;
+        }
+
+        owner.activatedAction.Activate(owner.target.transform.position);
+
+        if (owner.activatedAction.fireAndForget)
+            owner.stateMachine.ChangeState<MonsterMovableActionState>();
+        else
+            owner.stateMachine.ChangeState<MonsterUnmovableActionState>();
     }
     #endregion
 
