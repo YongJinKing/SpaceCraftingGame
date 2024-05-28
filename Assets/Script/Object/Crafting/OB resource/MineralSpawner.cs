@@ -11,6 +11,8 @@ public class MineralSpawner : MonoBehaviour
     public int numberOfMinerals = 16; // 생성할 미네랄의 수
     public LayerMask mineralLayer; // 미네랄 레이어를 설정하기 위한 변수
 
+    private CollectionResource collectionResource;
+
     private void OnEnable()
     {
         CollectionResource.OnMineralHarvested += SpawnMineralNearPosition;
@@ -23,6 +25,7 @@ public class MineralSpawner : MonoBehaviour
 
     void Start()
     {
+        collectionResource = GetComponent<CollectionResource>();
         SpawnMinerals();
     }
 
@@ -85,6 +88,20 @@ public class MineralSpawner : MonoBehaviour
                 }
             }
         }
+    }
+
+    Vector3Int GetRandomPositionNearby(Vector3Int basePosition, int minDistance)
+    {
+        Vector3Int newPos = basePosition;
+
+        while (Vector3Int.Distance(newPos, basePosition) < minDistance)
+        {
+            int offsetX = Random.Range(-minDistance, minDistance + 1);
+            int offsetY = Random.Range(-minDistance, minDistance + 1);
+            newPos = basePosition + new Vector3Int(offsetX, offsetY, 0);
+        }
+
+        return newPos;
     }
 
     bool IsMineralAtPosition(Vector3 position)
