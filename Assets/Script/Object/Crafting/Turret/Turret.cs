@@ -158,26 +158,29 @@ public class Turret : Structure
     {
         IDamage targetEnemy = enemy.GetComponent<IDamage>();
 
-        if (targetEnemy != null && bullet != null)
+        //if (targetEnemy != null && bullet != null)
+        if (targetEnemy != null)
         {
             //targetEnemy.TakeDamage(damage * GetEfficiency()); // 현재 내구도 상태에 따라 데미지를 달리 줌
             //targetEnemy.TakeDamage(damage);
-            var towerBullet = Instantiate(bullet, attackPoint.transform.position, Quaternion.identity);
+
             /*for (int i = 0; i < bulletList.Count; i++)
             {
                 if (!bulletList[i].gameObject.activeSelf)
                 {
                     var towerBullet = bulletList[i];
-                    *//*towerBullet.SetActive(true);
+                    towerBullet.SetActive(true);
                     towerBullet.transform.position = attackPoint.position;
-                    towerBullet.transform.SetParent(null);
+                    //towerBullet.transform.SetParent(null);
                     towerBullet.GetComponent<TestBullet>().SetTarget(enemy.transform);
                     //towerBullet.GetComponent<TestBullet>().SetDamage(this[EStat.ATK]);
                     towerBullet.GetComponent<TestBullet>().SetDamage(dmg);
-                    towerBullet.GetComponent<TestBullet>().SetRotation(enemy.transform);*//*
+                    towerBullet.GetComponent<TestBullet>().SetRotation(enemy.transform);
                     break;
                 }
             }*/
+            //var towerBullet = Instantiate(bullet, attackPoint.transform.position, Quaternion.identity);
+            var towerBullet = ObjectPool.Instance.GetObject<TestBullet>(bullet.gameObject, attackPoint);
             //towerBullet.SetActive(true);
             towerBullet.transform.position = attackPoint.position;
             towerBullet.transform.SetParent(null);

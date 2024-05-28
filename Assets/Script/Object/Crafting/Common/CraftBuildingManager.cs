@@ -148,9 +148,11 @@ public class CraftBuildingManager : MonoBehaviour
         if (canBuild)
         {
             Debug.Log("여기엔 지을 수 있어요");
-            GameObject craft = factory.CraftBuilding(110000);
+            //Inventory.instance.UseItem(10000, 5);
+            Vector3 turretPos = new Vector3((pos.x + (ground.tileAnchor.x * size)), (pos.y + (ground.tileAnchor.y * size)), 0);
+            GameObject craft = factory.CraftBuilding(110000, turretPos);
             //Transform obj = Instantiate(.transform, new Vector3(pos.x + (ground.tileAnchor.x * size), pos.y + (ground.tileAnchor.y * size), 0), Quaternion.identity, TurretParent);
-            craft.transform.position = new Vector3(pos.x + (ground.tileAnchor.x * size), pos.y + (ground.tileAnchor.y * size), 0);
+            //craft.transform.position = new Vector3(pos.x + (ground.tileAnchor.x * size), pos.y + (ground.tileAnchor.y * size), 0);
             craft.transform.localScale = Vector3.one * size;
             craft.transform.SetParent(TurretParent);
 

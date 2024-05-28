@@ -16,7 +16,12 @@ public class TestBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null || !readyToFire) return;
+        if (target == null || !readyToFire)
+        {
+            Release();
+            return;
+        }
+        
         Vector2 dir = target.position - transform.position;
         float dist = dir.magnitude;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
@@ -33,8 +38,8 @@ public class TestBullet : MonoBehaviour
             TestEnemy character = collision.gameObject.GetComponent<TestEnemy>();
             character.TakeDamage(damage);
             //Destroy(this.gameObject);
-            this.gameObject.SetActive(false);
-
+            //this.gameObject.SetActive(false);
+            Release();
         }
     }
 
@@ -61,5 +66,9 @@ public class TestBullet : MonoBehaviour
     public void LostTarget()
     {
         this.gameObject.SetActive(false);
+    }
+    void Release()
+    {
+        ObjectPool.Instance.ReleaseObject<TestBullet>(gameObject);
     }
 }

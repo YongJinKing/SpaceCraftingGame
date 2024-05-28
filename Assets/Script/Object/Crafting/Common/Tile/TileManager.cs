@@ -22,10 +22,13 @@ public class TileManager : MonoBehaviour
 
     //public List<Vector3> availablePlaces;
     public Dictionary<Vector3Int, Tile> availablePlaces;
+    ComponetsInfo componentsInfo;
     CraftBuildingManager craftmanager;
+    CraftFactory factory;
     void Awake()
     {
         craftmanager = FindObjectOfType<CraftBuildingManager>();
+        factory = new CraftFactory();
         craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
         tileMap = transform.GetComponent<Tilemap>();
         //availablePlaces = new List<Vector3>();
@@ -71,6 +74,25 @@ public class TileManager : MonoBehaviour
             }
         }
 
+
+        componentsInfo = ComponentSaveSystem.Instance.LoadTileInfo();
+        if (componentsInfo == null) return;
+        else
+        {
+            Debug.Log("읽어서 가져옴");
+        }
+        for (int i = 0; i < componentsInfo.components.Count; i++)
+        {
+            Vector3Int componetPlace = componentsInfo.components[i].coordinates;
+            Debug.Log("읽어온 좌표 : " + componetPlace);
+            Debug.Log("읽어온 인덱스 : " + componentsInfo.components[i].index);
+            Vector3 componentPos = new Vector3(componetPlace.x + tileMap.tileAnchor.x, componetPlace.y + tileMap.tileAnchor.y, componetPlace.z); // 추후 수정해야함 << size에 따라 바뀌어야함
+            Tile isPlacedTile = new Tile(false, factory.CraftBuilding(componentsInfo.components[i].index, componentPos, componentsInfo.components[i].Hp));
+            availablePlaces[componetPlace] = isPlacedTile;
+
+        }
+
+
         Debug.Log(availablePlaces.Count);
     }
 
@@ -90,10 +112,15 @@ public class TileManager : MonoBehaviour
     {
         return (int)Mathf.Sqrt(availablePlaces.Count);
     }
-    
+
     public bool HasTile(Vector3Int coordinates)
     {
         return availablePlaces.ContainsKey(coordinates);
+    }
+
+    public Dictionary<Vector3Int, Tile> GetTileMap()
+    {
+        return availablePlaces;
     }
 
     private void Update()
@@ -104,6 +131,11 @@ public class TileManager : MonoBehaviour
             {
                 Debug.Log(entry.Key + " : " + entry.Value);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            ComponentSaveSystem.Instance.SaveTilesInfo();
         }
     }
 
