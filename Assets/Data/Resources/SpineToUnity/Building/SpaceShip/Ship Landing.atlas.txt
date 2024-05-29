@@ -1,0 +1,118 @@
+
+Ship Landing.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 2, 1557
+  size: 1116, 467
+  orig: 1116, 467
+  offset: 0, 0
+  index: -1
+BodyBoorBase
+  rotate: false
+  xy: 2, 958
+  size: 326, 149
+  orig: 329, 151
+  offset: 1, 1
+  index: -1
+Dectec_L_tDoor
+  rotate: true
+  xy: 330, 789
+  size: 318, 105
+  orig: 318, 152
+  offset: 0, 47
+  index: -1
+Dectec_R_tDoor
+  rotate: false
+  xy: 437, 814
+  size: 318, 103
+  orig: 318, 152
+  offset: 0, 49
+  index: -1
+Dectecting1
+  rotate: true
+  xy: 514, 919
+  size: 319, 338
+  orig: 319, 338
+  offset: 0, 0
+  index: -1
+Dectecting2
+  rotate: false
+  xy: 854, 808
+  size: 231, 339
+  orig: 231, 340
+  offset: 0, 0
+  index: -1
+Dectecting3
+  rotate: true
+  xy: 514, 1240
+  size: 315, 346
+  orig: 315, 346
+  offset: 0, 0
+  index: -1
+Dectecting4
+  rotate: false
+  xy: 862, 1149
+  size: 245, 406
+  orig: 245, 406
+  offset: 0, 0
+  index: -1
+FrontLeg
+  rotate: true
+  xy: 437, 638
+  size: 174, 179
+  orig: 174, 179
+  offset: 0, 0
+  index: -1
+LeftFlipWing
+  rotate: true
+  xy: 2, 1109
+  size: 446, 510
+  orig: 446, 510
+  offset: 0, 0
+  index: -1
+LeftWing
+  rotate: false
+  xy: 1120, 1091
+  size: 522, 498
+  orig: 523, 498
+  offset: 1, 0
+  index: -1
+RightFlipWing
+  rotate: true
+  xy: 1740, 1077
+  size: 489, 225
+  orig: 491, 225
+  offset: 0, 0
+  index: -1
+RightWing
+  rotate: true
+  xy: 1743, 1568
+  size: 456, 281
+  orig: 456, 281
+  offset: 0, 0
+  index: -1
+ThrusterFlame
+  rotate: false
+  xy: 1120, 1591
+  size: 621, 433
+  orig: 623, 481
+  offset: 1, 47
+  index: -1
+ThrusterL
+  rotate: true
+  xy: 2, 768
+  size: 188, 248
+  orig: 188, 248
+  offset: 0, 0
+  index: -1
+ThrusterR
+  rotate: true
+  xy: 1644, 1436
+  size: 153, 94
+  orig: 154, 94
+  offset: 0, 0
+  index: -1
