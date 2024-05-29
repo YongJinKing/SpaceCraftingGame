@@ -9,11 +9,11 @@ public class InvenItemSlot : MonoBehaviour
     public Image image;
     public TMP_Text AmountTxt;
 
-    public int id;
-    public string ItemName;
-    public string ItemDesc;
-    public int ItemValue;
-    public string spName;
+    int id;
+    string ItemName;
+    string ItemDesc;
+    int ItemValue;
+    string spName;
     
     private void Start() 
     {
@@ -27,12 +27,10 @@ public class InvenItemSlot : MonoBehaviour
         spName = SpriteData.ImageResource_Name;
         Sprite sp = Resources.Load<Sprite>($"UI/ItemResources/{spName}");
         image.sprite = sp;
-        
     }
     public void init()
     {
         AmountTxt.text = "";
-        
     }
 
 }

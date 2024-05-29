@@ -57,6 +57,8 @@ public class Inventory : MonoBehaviour
             {
                 InventoryDatas[i].Amount += Amount;
                 UpdatePopup?.Invoke(0);
+                ModeDisplay(InvenSoltType);
+                UpdatePopup?.Invoke(0);
                 return;
             }
         }
@@ -74,9 +76,6 @@ public class Inventory : MonoBehaviour
         InvenSoltType = (SelelctType)index;
         ModeDisplay(InvenSoltType);
         UpdatePopup?.Invoke(1);
-        //Debug.Log($"모드체인지{InvenSoltType}");
-        
-        
     }
 
     void ModeDisplay(SelelctType Type)
@@ -87,17 +86,17 @@ public class Inventory : MonoBehaviour
         else
         {
             DisplayInven = new List<SlotItemData>();
-            SlotItemData SlotData = new SlotItemData();
             for(int i = 0; i < InventoryDatas.Count; i++)
             {
                 var ItemData = ItemStaticDataManager.GetInstance().dicItemData[InventoryDatas[i].id];
                 //Debug.Log($"{ItemData.ItemType}아이템 타입, {Type}모드 타입");
                 if(ItemData.ItemType + 1 == (int)Type)
                 {
+                    Debug.Log("실행 채크");
+                    SlotItemData SlotData = new SlotItemData();
                     SlotData.id = InventoryDatas[i].id;
                     SlotData.Amount = InventoryDatas[i].Amount;
                     DisplayInven.Add(SlotData);
-                    
                 }
             }
         }
@@ -119,7 +118,7 @@ public class Inventory : MonoBehaviour
     }
     public void UseItem(int id, int Amount)
     {
-        for(int i = 0; i <InventoryDatas.Count; i++)
+        for(int i = 0; i < InventoryDatas.Count; i++)
         {
             if(InventoryDatas[i].id == id)
             {

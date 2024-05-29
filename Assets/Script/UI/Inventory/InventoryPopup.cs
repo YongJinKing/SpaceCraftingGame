@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class InventoryPopup : MonoBehaviour
 {
-    public GameObject SlotGridLine;
-    public GameObject OptionPanel;
+    public GameObject ObjSlotGridLine;
+    public GameObject ObjOptionPanel;
+    public GameObject ObjSlotPopup;
+    Coroutine SlotPopup;
     public int FrontPageNum;
     int BackPageNum;
     private void Start() 
@@ -21,17 +23,18 @@ public class InventoryPopup : MonoBehaviour
         if(index == 1)
             FrontPageNum = 1;
         PageUpdate();
-        for(int i = 0; i < SlotGridLine.transform.childCount; i++)
+        for(int i = 0; i < ObjSlotGridLine.transform.childCount; i++)
         {
-            if(Inventory.instance.DisplayInven.Count > SlotGridLine.transform.GetChild(i).GetSiblingIndex() + ((FrontPageNum - 1) * 25))
+            if(Inventory.instance.DisplayInven.Count > ObjSlotGridLine.transform.GetChild(i).GetSiblingIndex() + ((FrontPageNum - 1) * 25))
             {
-                SlotGridLine.transform.GetChild(i).GetComponent<InvenItemSlot>().Display(FrontPageNum - 1);
-                SlotGridLine.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
+                ObjSlotGridLine.transform.GetChild(i).GetComponent<InvenItemSlot>().Display(FrontPageNum - 1);
+                ObjSlotGridLine.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
+                //Debug.Log("팝업업데이트 작동확인");
             }
             else
             {
-                SlotGridLine.transform.GetChild(i).GetComponent<InvenItemSlot>().init();
-                SlotGridLine.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);
+                ObjSlotGridLine.transform.GetChild(i).GetComponent<InvenItemSlot>().init();
+                ObjSlotGridLine.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);
             }
         }
         
@@ -67,12 +70,32 @@ public class InventoryPopup : MonoBehaviour
         {
             BackPageNum = 1;
         }
-        OptionPanel.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = FrontPageNum.ToString() + "/" + BackPageNum.ToString();
+        ObjOptionPanel.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = FrontPageNum.ToString() + "/" + BackPageNum.ToString();
     }
     public void SlotHL(int index, bool onCheck)
     {
-        SlotGridLine.transform.GetChild(index).GetChild(2).gameObject.SetActive(onCheck);
+        ObjSlotGridLine.transform.GetChild(index).GetChild(2).gameObject.SetActive(onCheck);
+        if(onCheck)
+        {
+            SlotPopup = StartCoroutine(CorSlotPopup(index));
+        }
+        else
+        {
+            if(SlotPopup != null)
+            {
+                StopCoroutine(SlotPopup);
+                SlotPopup = null;
+                ObjSlotPopup.SetActive(false);
+            }
+        }
     }
     
+    IEnumerator CorSlotPopup(int index)
+    {
+        yield return new WaitForSeconds(1);
+        ObjSlotPopup.SetActive(true);
+        ObjSlotPopup.transform.GetComponent<RectTransform>().anchoredPosition=
+        ObjSlotGridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition;
+    }
 }
 
