@@ -31,6 +31,8 @@ public class Component
     public Vector3Int coordinates;
     public int index;
     public float Hp;
+    public int size;
+    public bool placeable;
 
     // JSON 문자열에서 Vector3Int를 직접 처리할 수 없기 때문에,
     // 직렬화 및 역직렬화 시 문자열로 변환하는 추가 필드가 필요함
@@ -106,8 +108,19 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
                 Vector3Int coordinate = new Vector3Int(tile.Key.x, tile.Key.y, tile.Key.z);
                 component.coordinates = coordinate;
                 component.OnBeforeSerialize();
-                component.index = int.Parse(tile.Value.Object.GetComponent<Turret>().mComponentName);
-                component.Hp = tile.Value.Object.GetComponent<Turret>().MaxHP;
+                if (!(tile.Value.Object == null))
+                {
+                    component.index = int.Parse(tile.Value.Object.GetComponent<Turret>().mComponentName);
+                    component.Hp = tile.Value.Object.GetComponent<Turret>().MaxHP;
+                }
+                else
+                {
+                    component.index = 0;
+                    component.Hp = 0;
+                }
+
+                
+                component.size = tile.Value.size;
                 componentList.Add(component);
                 Debug.Log(tile.Key + ", " + tile.Value);
                 Debug.Log(component.coordinates + ", " + component.index + ", " + component.Hp);

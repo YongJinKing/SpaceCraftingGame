@@ -8,11 +8,13 @@ public class Tile
 {
     public bool available;
     public GameObject Object;
+    public int size;
 
-    public Tile(bool available, GameObject Object)
+    public Tile(bool available, GameObject Object, int size)
     {
         this.available = available;
         this.Object = Object;
+        this.size = size;
     }
 }
 
@@ -30,6 +32,7 @@ public class TileManager : MonoBehaviour
         craftmanager = FindObjectOfType<CraftBuildingManager>();
         factory = new CraftFactory();
         craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
+        craftmanager.WritePlaceInfoEvent.AddListener(RemopvePlace);
         tileMap = transform.GetComponent<Tilemap>();
         //availablePlaces = new List<Vector3>();
         availablePlaces = new Dictionary<Vector3Int, Tile>();
@@ -63,7 +66,7 @@ public class TileManager : MonoBehaviour
                 {
                     Vector3Int _place = new Vector3Int((int)place.x, (int)place.y, (int)place.z);
                     //Tile at "place"
-                    availablePlaces[_place] = new Tile(true, null);
+                    availablePlaces[_place] = new Tile(true, null, 0);
                     /*availablePlaces[_place].available = true;
                     availablePlaces[_place].Object = null;*/
                 }
@@ -84,10 +87,20 @@ public class TileManager : MonoBehaviour
         for (int i = 0; i < componentsInfo.components.Count; i++)
         {
             Vector3Int componetPlace = componentsInfo.components[i].coordinates;
+            int index = componentsInfo.components[i].index;
+            float Hp = componentsInfo.components[i].Hp;
+            int size = componentsInfo.components[i].size;
+
             Debug.Log("읽어온 좌표 : " + componetPlace);
-            Debug.Log("읽어온 인덱스 : " + componentsInfo.components[i].index);
-            Vector3 componentPos = new Vector3(componetPlace.x + tileMap.tileAnchor.x, componetPlace.y + tileMap.tileAnchor.y, componetPlace.z); // 추후 수정해야함 << size에 따라 바뀌어야함
-            Tile isPlacedTile = new Tile(false, factory.CraftBuilding(componentsInfo.components[i].index, componentPos, componentsInfo.components[i].Hp));
+            Debug.Log("읽어온 인덱스 : " + index);
+            Debug.Log("읽어온 사이즈 : " + size);
+            Vector3 componentPos = new Vector3(componetPlace.x + (tileMap.tileAnchor.x * size), 
+                componetPlace.y + (tileMap.tileAnchor.y * size), componetPlace.z);
+
+            Tile isPlacedTile = null;
+            if (size != 0) isPlacedTile = new Tile(false, factory.CraftBuilding(index, componentPos, Hp, size), size);
+            else isPlacedTile = new Tile(false, null, 0);
+
             availablePlaces[componetPlace] = isPlacedTile;
 
         }
@@ -102,11 +115,19 @@ public class TileManager : MonoBehaviour
         return availablePlaces[coordinates].available;
     }
 
-    public void RemopvePlace(Vector3Int coordinates, GameObject obj)
+    public void RemopvePlace(Vector3Int coordinates, GameObject obj, int size)
     {
         availablePlaces[coordinates].available = false;
         availablePlaces[coordinates].Object = obj;
+        availablePlaces[coordinates].size = size;
     }
+
+    public void RemopvePlace(Vector3Int coordinates)
+    {
+        availablePlaces[coordinates].available = false;
+    }
+
+
 
     public int GetTileLength()
     {

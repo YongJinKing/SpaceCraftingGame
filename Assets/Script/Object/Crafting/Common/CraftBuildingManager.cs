@@ -8,7 +8,8 @@ public class CraftBuildingManager : MonoBehaviour
 {
     public LayerMask layerMask;
     public Tilemap ground;
-    public UnityEvent<Vector3Int, GameObject> RemovePlaceEvent;
+    public UnityEvent<Vector3Int, GameObject, int> WritePlaceInfoEvent;
+    public UnityEvent<Vector3Int> RemovePlaceEvent;
     public Transform turret;
     public Transform[] rectangles;
     public Transform TurretParent;
@@ -84,14 +85,14 @@ public class CraftBuildingManager : MonoBehaviour
         Vector3 cellPos;
         Vector3 drawPos = pos;
         int rectIdx = 0;
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
-            for(int j = 0; j < n; j++)
+            for (int j = 0; j < n; j++)
             {
                 drawPos = pos + new Vector3(ground.cellSize.x * j, ground.cellSize.y * i, 0);
-                tmpPos = intPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i,0);
+                tmpPos = intPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
                 cellPos = drawPos + new Vector3(ground.tileAnchor.x, ground.tileAnchor.y, 0);
-                
+
                 if (!tileManage.HasTile(tmpPos)) break;
                 if (!rectangles[rectIdx].gameObject.activeSelf) rectangles[rectIdx].gameObject.SetActive(true);
                 rectangles[rectIdx].transform.position = cellPos;
@@ -127,7 +128,7 @@ public class CraftBuildingManager : MonoBehaviour
                     canBuild = false;
                     break;
                 }
-                
+
                 if (tileManage.IsCraftable(cellPos))
                 {
                     continue;
@@ -157,22 +158,23 @@ public class CraftBuildingManager : MonoBehaviour
             craft.transform.SetParent(TurretParent);
 
             cellPos = Vector3Int.zero;
+            WritePlaceInfoEvent?.Invoke(tmpPos, craft, size);
             for (int i = 0; i < size; i++)
             {
-                for(int j = 0; j < size; j++)
+                for (int j = 0; j < size; j++)
                 {
                     cellPos = tmpPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
-                    RemovePlaceEvent?.Invoke(cellPos, craft);
+                    RemovePlaceEvent?.Invoke(cellPos);
                 }
             }
         }
-        
-       
+
+
     }
 
     void StopDrawingRectangle()
     {
-        for(int i = 0; i < rectangles.Length; i++)
+        for (int i = 0; i < rectangles.Length; i++)
         {
             if (rectangles[i].gameObject.activeSelf) rectangles[i].gameObject.SetActive(false);
         }

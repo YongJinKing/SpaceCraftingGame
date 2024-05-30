@@ -13,11 +13,11 @@ public abstract class Structure : Stat
     [SerializeField] protected StructureState _state = new StructureState();
     [SerializeField] protected float def;
     [SerializeField] protected float buildingSpd;
-    [SerializeField] protected int priority;
+    [SerializeField] protected byte priority;
     [SerializeField] protected string componentName;
     #endregion
     #region Public
-    public int mPriority
+    public byte mPriority
     {
         get
         {

@@ -18,7 +18,7 @@ public class CraftFactory
         structureDataManger = null;
     }
 
-    public GameObject CraftBuilding(int index, Vector3 pos , float Hp = 0f)
+    public GameObject CraftBuilding(int index, Vector3 pos , float Hp = 0f, int size = 0)
     {
         /*GameObject obj = new GameObject();
         CraftBuildingComponentTable componentData = default;
@@ -116,16 +116,16 @@ public class CraftFactory
         switch(idx)
         {
             case 10:
-                return CraftMiner(index, pos, Hp);
+                return CraftMiner(index, pos, Hp, size);
             case 11:
-                return CraftTurret(index, pos,Hp);
+                return CraftTurret(index, pos,Hp, size);
             default:
                 return null;
         }
 
     }
 
-    GameObject CraftTurret(int index, Vector3 pos, float Hp = 0f)
+    GameObject CraftTurret(int index, Vector3 pos, float Hp = 0f, int size = 0)
     {
         GameObject obj = new GameObject();
         CraftBuildingComponentTable componentData = default;
@@ -149,7 +149,7 @@ public class CraftFactory
         //Collider, Rigidbody, Scale Setting
         obj.transform.localScale = Vector3.one;
         obj.name = "Turret";
-        obj.transform.localPosition = pos;
+        
 
         obj.AddComponent<BoxCollider2D>();
         Turret turret = obj.AddComponent<Turret>();
@@ -207,10 +207,12 @@ public class CraftFactory
         perception.transform.SetParent(obj.transform);
         perception.transform.localPosition = new Vector3(0, 0, 0);
 
+        obj.transform.localPosition = pos;
+        obj.transform.localScale = Vector3.one * size;
         return obj;
     }
 
-    GameObject CraftMiner(int index, Vector3 pos, float Hp = 0f)
+    GameObject CraftMiner(int index, Vector3 pos, float Hp = 0f, int size = 1)
     {
         return null;
     }
