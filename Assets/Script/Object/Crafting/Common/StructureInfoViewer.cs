@@ -7,23 +7,22 @@ public class StructureInfoViewer : MonoBehaviour
     public LayerMask layerMask;
     public Structure viewStructure;
 
-    [SerializeField] float mouseOnTime = 0f;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask);
-        if (hit.collider != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            mouseOnTime += Time.deltaTime;
-            if(mouseOnTime >= 1.5f)
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask);
+            if (hit.collider != null)
             {
+
                 viewStructure = hit.collider.GetComponent<Structure>();
 
                 if (viewStructure != null)
@@ -32,11 +31,9 @@ public class StructureInfoViewer : MonoBehaviour
                     Debug.Log(viewStructure.mComponentName);
 
                 }
+
             }
         }
-        else
-        {
-            mouseOnTime = 0f;
-        }
+
     }
 }
