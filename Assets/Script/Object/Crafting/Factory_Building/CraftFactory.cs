@@ -149,7 +149,7 @@ public class CraftFactory
         //Collider, Rigidbody, Scale Setting
         obj.transform.localScale = Vector3.one;
         obj.name = "Turret";
-        
+        obj.layer = 16;
 
         obj.AddComponent<BoxCollider2D>();
         Turret turret = obj.AddComponent<Turret>();

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public abstract class Structure : Stat
 {
@@ -75,6 +76,8 @@ public abstract class Structure : Stat
     {
         return this[EStat.HP]/ this[EStat.MaxHP];
     }
+
+
     #endregion
 
     #region MonoBehaviour
@@ -85,5 +88,6 @@ public abstract class Structure : Stat
         AddStat(EStat.DEF, def);
         AddStat(EStat.BuildingSpeed, buildingSpd);
     }
+
     #endregion
 }
