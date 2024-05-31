@@ -36,7 +36,6 @@ public class MonsterIdleState : MonsterState
     public override void Enter()
     {
         base.Enter();
-        StartCoroutine(Roaming());
         StartCoroutine(Detecting());
     }
     public override void Exit()
@@ -51,27 +50,6 @@ public class MonsterIdleState : MonsterState
     #endregion
 
     #region Coroutines
-    protected IEnumerator Roaming()
-    {
-        float roamingRadius = 5.0f;
-        float maxWaitTime = 3.0f;
-        float randomDist = 0.0f;
-        float randomAngle = 0.0f;
-        float randomWaitTime = 0.0f;
-        Vector2 randomPos = Vector2.right;
-        while (true)
-        {
-            randomDist = Random.Range(0.0f, roamingRadius);
-            randomAngle = Random.Range(0.0f, 360.0f);
-            randomWaitTime = Random.Range(1.0f, maxWaitTime);
-
-            randomPos = new Vector2(Mathf.Cos(randomAngle * Mathf.Deg2Rad), Mathf.Cos(randomAngle * Mathf.Deg2Rad));
-            randomPos = randomPos * randomDist;
-
-            owner.pointMove?.Activate((Vector2)owner.spawnPoint + randomPos);
-            yield return new WaitForSeconds(randomWaitTime);
-        }
-    }
     protected IEnumerator Detecting()
     {
         if (owner.ai == null) yield break;

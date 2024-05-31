@@ -61,7 +61,7 @@ public class MonsterMovableActionState : MonsterState
         Debug.Log("액션 끝남");
 
         if(owner.target != null)
-            owner.stateMachine.ChangeState<MonsterDetectState>();
+            owner.stateMachine.ChangeState<MonsterAttackState>();
         else
             owner.stateMachine.ChangeState<MonsterIdleState>();
     }

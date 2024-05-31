@@ -57,7 +57,7 @@ public class MonsterUnmovableActionState : MonsterState
     public void OnActionEnd()
     {
         if (owner.target != null)
-            owner.stateMachine.ChangeState<MonsterDetectState>();
+            owner.stateMachine.ChangeState<MonsterAttackState>();
         else
             owner.stateMachine.ChangeState<MonsterIdleState>();
     }

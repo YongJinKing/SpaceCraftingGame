@@ -7,6 +7,7 @@ public class AI : MonoBehaviour
     #endregion
     #region Protected
     protected bool isWave;
+    protected Monster owner;
     #endregion
     #region Public
     public TileManager tileManager;
@@ -66,6 +67,17 @@ public class AI : MonoBehaviour
 
         return targets[bestTarget].gameObject;
     }
+
+    public bool PathFind(Vector2 startPos, Vector2 targetPos ,out Vector2[] path)
+    {
+        Vector3Int targetCoor = tileManager.GetTileCoordinates(targetPos);
+        Vector3Int startCoor = tileManager.GetTileCoordinates(startPos);
+
+        //use A* Algorisim
+
+        path = null;
+        return false;
+    }
     public Action SelectAction(Action[] actions)
     {
         int bestTarget = 0;
@@ -104,5 +116,9 @@ public class AI : MonoBehaviour
     #endregion
 
     #region MonoBehaviour
+    private void Start()
+    {
+        owner = GetComponentInParent<Monster>();
+    }
     #endregion
 }

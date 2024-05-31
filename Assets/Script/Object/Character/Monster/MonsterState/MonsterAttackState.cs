@@ -32,6 +32,7 @@ public class MonsterAttackState : MonsterState
     public override void Exit()
     {
         base.Exit();
+        StopAllCoroutines();
     }
     #endregion
     #endregion
@@ -42,10 +43,20 @@ public class MonsterAttackState : MonsterState
     #region Coroutines
     protected IEnumerator Attacking()
     {
+        if(owner.activatedAction == null)
+        {
+            yield return StartCoroutine(SelectingAction());
+        }
+
         float dist = 0.0f;
         Vector2 dir;
         while (true)
         {
+            if(owner.target == null)
+            {
+                owner.stateMachine.ChangeState<MonsterIdleState>();
+            }
+
             dir = owner.target.transform.position - transform.position;
 
             //follow target
@@ -66,6 +77,26 @@ public class MonsterAttackState : MonsterState
             owner.stateMachine.ChangeState<MonsterMovableActionState>();
         else
             owner.stateMachine.ChangeState<MonsterUnmovableActionState>();
+    }
+
+    protected IEnumerator SelectingAction()
+    {
+        if (owner.attackActions == null)
+        {
+            Debug.Log("attackActions == null");
+            yield break;
+        }
+
+
+        Action action = null;
+        while (action == null)
+        {
+            action = owner.ai.SelectAction(owner.attackActions);
+            if (!action.available)
+                action = null;
+            yield return null;
+        }
+        owner.activatedAction = action;
     }
     #endregion
 
