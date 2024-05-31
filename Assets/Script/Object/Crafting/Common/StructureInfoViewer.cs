@@ -16,22 +16,19 @@ public class StructureInfoViewer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask);
             if (hit.collider != null)
             {
-
                 viewStructure = hit.collider.GetComponent<Structure>();
 
                 if (viewStructure != null)
                 {
                     Debug.Log(hit.collider.name);
                     Debug.Log(viewStructure.mComponentName);
-
                 }
-
             }
         }
 
