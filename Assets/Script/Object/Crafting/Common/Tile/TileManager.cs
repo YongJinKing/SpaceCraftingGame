@@ -127,8 +127,7 @@ public class TileManager : MonoBehaviour
         availablePlaces[coordinates].available = false;
     }
 
-
-
+    
     public int GetTileLength()
     {
         return (int)Mathf.Sqrt(availablePlaces.Count);
@@ -137,6 +136,20 @@ public class TileManager : MonoBehaviour
     public bool HasTile(Vector3Int coordinates)
     {
         return availablePlaces.ContainsKey(coordinates);
+    }
+
+    public Vector3Int GetTileCoordinates(Vector2 worldPos)
+    {
+        Vector3Int coordinates = (new Vector3Int((int)worldPos.x, (int)worldPos.y, 0));
+        if (HasTile(coordinates))
+        {
+            return coordinates;
+        }
+        else
+        {
+            Vector3Int falseCoordinates = new Vector3Int(coordinates.x, coordinates.y, -1);
+            return falseCoordinates;
+        }
     }
 
     public Dictionary<Vector3Int, Tile> GetTileMap()
