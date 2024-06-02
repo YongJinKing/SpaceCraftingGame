@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Animations;
+using Unity.VisualScripting;
 
 public class AI : MonoBehaviour
 {
@@ -46,13 +47,36 @@ public class AI : MonoBehaviour
 
     #region Methods
     #region Private
-    private void AddNode(Dictionary<Vector3Int, Node> list, Vector3Int key, Vector3Int targetCoor, Node parent)
+    private void AddNodeToOList(Dictionary<Vector3Int, Node> CList, Dictionary<Vector3Int, Node> OList, Vector3Int key, Vector3Int targetCoor, Node parent)
     {
+        if (CList.ContainsKey(key))
+        {
+            return;
+        }
+
         if (tileManager.HasTile(key))
         {
             if (tileManager.availablePlaces[key].available)
             {
-                list.Add(key, new Node(key, 1 + parent.GScore, Mathf.Pow(targetCoor.x - key.x, 2) + Mathf.Pow(targetCoor.y - key.y, 2), parent.NodeID));
+                if(OList.ContainsKey(key))
+                {
+                    float gscore = 1 + parent.GScore;
+                    float hscore = Mathf.Pow(targetCoor.x - key.x, 2) + Mathf.Pow(targetCoor.y - key.y, 2);
+                    float fscore = gscore + hscore;
+                    if (fscore < OList[key].FScore)
+                    {
+                        Node temp = new Node(key, gscore, hscore, parent.NodeID);
+                        OList[key] = temp;
+                    }
+                }
+                else
+                {
+                    OList.Add(key, new Node(
+                        key,
+                        1 + parent.GScore,
+                        Mathf.Pow(targetCoor.x - key.x, 2) + Mathf.Pow(targetCoor.y - key.y, 2),
+                        parent.NodeID));
+                }
             }
         }
     }
@@ -123,39 +147,41 @@ public class AI : MonoBehaviour
 
         CList.Add(startCoor, new Node(startCoor, 0, 0, Vector3Int.back));
 
-
+        //repeat 20 times
         for(int i = 0; i < 20; ++i)
         {
+            //Add Node to Open Node List
             foreach(Node node in CList.Values)
             {
                 Vector3Int temp;
 
                 //Add nodes clockwise
                 temp = node.NodeID + Vector3Int.up;
-                AddNode(OList, temp, targetCoor, node);
+                AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.up + Vector3Int.right;
-                AddNode(OList, temp, targetCoor, node);
+                AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.right;
-                AddNode(OList, temp, targetCoor, node);
+                AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.down + Vector3Int.right;
-                AddNode(OList, temp, targetCoor, node);
+                AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.down;
-                AddNode(OList, temp, targetCoor, node);
+                AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.down + Vector3Int.left;
-                AddNode(OList, temp, targetCoor, node);
+                AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.left;
-                AddNode(OList, temp, targetCoor, node);
+                AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.up + Vector3Int.left;
-                AddNode(OList, temp, targetCoor, node);
+                AddNodeToOList(CList, OList, temp, targetCoor, node);
             }
 
+            //find minimum FScore Node
             float min = 0;
             foreach (Node node in OList.Values)
             {
@@ -163,27 +189,28 @@ public class AI : MonoBehaviour
                     min = node.FScore;
             }
 
+            //Add minimum node to CList
             foreach (Node node in OList.Values)
             {
                 if (Mathf.Approximately(node.FScore, min))
                 {
-                    if (CList.ContainsKey(node.NodeID))
-                    {
-                        if (node.FScore < CList[node.NodeID].FScore)
-                            CList[node.NodeID] = node;
-                    }
-                    else
-                    {
-                        CList.Add(node.NodeID, node);
-                    }
+                    CList.Add(node.NodeID, node);
+                    OList.Remove(node.NodeID);
                 }
             }
+
+            //find Path
+            if (CList.ContainsKey(targetCoor))
+                break;
         }
 
 
-
+        //if cannot find Path
         if (!CList.ContainsKey(targetCoor))
         {
+            CList.Clear();
+            OList.Clear();
+
             path = null;
             return false;
         }
@@ -204,6 +231,9 @@ public class AI : MonoBehaviour
                 path[i] = reversePath[j];
             }
 
+
+            CList.Clear();
+            OList.Clear();
             return true;
         }
         
