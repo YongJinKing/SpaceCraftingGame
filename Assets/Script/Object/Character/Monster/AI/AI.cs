@@ -219,6 +219,9 @@ public class AI : MonoBehaviour
             List<Vector2> reversePath = new List<Vector2>();
 
             Vector3Int temp = targetCoor;
+
+            //for now, save coordinate point, because world pos saved in coordinate
+            //later, need to translate coordinate pos to world pos
             while(temp != startCoor)
             {
                 temp = CList[targetCoor].ParentNode;

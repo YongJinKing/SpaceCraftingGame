@@ -35,8 +35,8 @@ public class MonsterDetectState : MonsterState
     public override void Enter()
     {
         base.Enter();
+        StartCoroutine(ProcessingState());
         StartCoroutine(FollowingTarget());
-        StartCoroutine(SelectingAction());
     }
     public override void Exit()
     {
@@ -50,6 +50,27 @@ public class MonsterDetectState : MonsterState
     #endregion
 
     #region Coroutines
+    protected IEnumerator ProcessingState()
+    {
+        //Wait until Select Action
+        yield return StartCoroutine(SelectingAction());
+
+        while(!owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
+        {
+            Vector2 dir = owner.target.transform.position - transform.position;
+
+            //targeting owner`s opponent
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dir.magnitude, owner.targetMask);
+            if(hit.collider != null)
+            {
+                owner.target = hit.collider.gameObject;
+            }
+        }
+
+        owner.stateMachine.ChangeState<MonsterAttackState>();
+        yield return null;
+    }
+
     protected IEnumerator FollowingTarget()
     {
         //현재는 감지하면 무조건 쫒아가기만 하는 알고리즘
@@ -67,7 +88,6 @@ public class MonsterDetectState : MonsterState
             yield break;
         }
             
-
         Action action = null;
         while (action == null)
         {
@@ -77,7 +97,6 @@ public class MonsterDetectState : MonsterState
             yield return null;
         }
         owner.activatedAction = action;
-        owner.stateMachine.ChangeState<MonsterAttackState>();
     }
     #endregion
 

@@ -50,6 +50,14 @@ public class MonsterIdleState : MonsterState
     #endregion
 
     #region Coroutines
+    protected IEnumerator ApproachingToSpaceShip()
+    {
+        //for Test, Hard Coded
+        //Must be Change Later
+        owner.dirMove.Activate(Vector2.zero);
+
+        yield return null;
+    }
     protected IEnumerator Detecting()
     {
         if (owner.ai == null) yield break;

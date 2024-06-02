@@ -45,31 +45,29 @@ public class MonsterAttackState : MonsterState
     {
         if(owner.activatedAction == null)
         {
-            yield return StartCoroutine(SelectingAction());
+            owner.stateMachine.ChangeState<MonsterIdleState>();
         }
 
-        float dist = 0.0f;
+        
         Vector2 dir;
-        while (true)
+        float dist;
+        do
         {
-            if(owner.target == null)
+            dir = owner.target.transform.position - transform.position;
+            dist = dir.magnitude;
+
+            if (owner.target == null)
             {
                 owner.stateMachine.ChangeState<MonsterIdleState>();
             }
 
-            dir = owner.target.transform.position - transform.position;
-
             //follow target
             owner.dirMove?.Activate(dir);
 
-
-            dist = dir.magnitude;
-            if (dist - owner.activatedAction.activeRadius < 0)
-            {
-                break;
-            }
             yield return null;
         }
+
+        while (dist - owner.activatedAction.activeRadius < 0);
 
         owner.activatedAction.Activate(owner.target.transform.position);
 
@@ -77,26 +75,6 @@ public class MonsterAttackState : MonsterState
             owner.stateMachine.ChangeState<MonsterMovableActionState>();
         else
             owner.stateMachine.ChangeState<MonsterUnmovableActionState>();
-    }
-
-    protected IEnumerator SelectingAction()
-    {
-        if (owner.attackActions == null)
-        {
-            Debug.Log("attackActions == null");
-            yield break;
-        }
-
-
-        Action action = null;
-        while (action == null)
-        {
-            action = owner.ai.SelectAction(owner.attackActions);
-            if (!action.available)
-                action = null;
-            yield return null;
-        }
-        owner.activatedAction = action;
     }
     #endregion
 

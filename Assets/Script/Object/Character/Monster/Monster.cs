@@ -12,6 +12,7 @@ public class Monster : Unit
     #endregion
     #region Public
     public float detectRadius;
+    public LayerMask targetMask = 1 << 17;
     public DirMoveAction dirMove;
     public PointMoveAction pointMove;
     public AttackAction[] attackActions;
