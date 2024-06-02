@@ -16,7 +16,7 @@ public class Monster : Unit
     public PointMoveAction pointMove;
     public AttackAction[] attackActions;
     public AI ai;
-    public Vector3 spawnPoint
+    public Vector2 spawnPoint
     {
         get { return _spawnPoint; }
         protected set { _spawnPoint = value; }
