@@ -110,8 +110,8 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
                 component.OnBeforeSerialize();
                 if (!(tile.Value.Object == null))
                 {
-                    component.index = int.Parse(tile.Value.Object.GetComponent<Turret>().mComponentName);
-                    component.Hp = tile.Value.Object.GetComponent<Turret>().MaxHP;
+                    component.index = int.Parse(tile.Value.Object.GetComponent<Structure>().mComponentName);
+                    component.Hp = tile.Value.Object.GetComponent<Structure>().MaxHP;
                 }
                 else
                 {

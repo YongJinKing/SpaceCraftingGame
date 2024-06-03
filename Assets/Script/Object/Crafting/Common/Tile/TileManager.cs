@@ -141,6 +141,7 @@ public class TileManager : MonoBehaviour
     public Vector3Int GetTileCoordinates(Vector2 worldPos)
     {
         Vector3Int coordinates = (new Vector3Int((int)worldPos.x, (int)worldPos.y, 0));
+        //Vector3 place = tileMap.CellToWorld(coordinates);
         if (HasTile(coordinates))
         {
             return coordinates;

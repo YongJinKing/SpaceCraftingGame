@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CraftFactory
 {
     StructureDataManager structureDataManger = StructureDataManager.GetInstance();
+    CraftBuildingComponentTable componentData = default;
+    CraftBuildingAbilityTable abilityData = default;
+    CraftBuildImageTable imgData = default;
 
     public CraftFactory()
     {
@@ -128,9 +132,7 @@ public class CraftFactory
     GameObject CraftTurret(int index, Vector3 pos, float Hp = 0f, int size = 0)
     {
         GameObject obj = new GameObject();
-        CraftBuildingComponentTable componentData = default;
-        CraftBuildingAbilityTable abilityData = default;
-        CraftBuildImageTable imgData = default;
+        
 
         if (structureDataManger.dicCBComponentTable.ContainsKey(index))
         {
@@ -214,6 +216,60 @@ public class CraftFactory
 
     GameObject CraftMiner(int index, Vector3 pos, float Hp = 0f, int size = 1)
     {
-        return null;
+        Debug.Log("생산 건물 건설 시작");
+        GameObject obj = new GameObject();
+
+        if (structureDataManger.dicCBComponentTable.ContainsKey(index))
+        {
+            componentData = structureDataManger.dicCBComponentTable[index];
+        }
+        if (structureDataManger.dicCBAbilityTable.ContainsKey(index))
+        {
+            abilityData = structureDataManger.dicCBAbilityTable[index];
+        }
+        if (structureDataManger.dicCBImgTable.ContainsKey(index))
+        {
+            imgData = structureDataManger.dicCBImgTable[index];
+        }
+
+        obj.transform.localScale = Vector3.one;
+        obj.layer = 16;
+        obj.name = index.ToString();
+        obj.AddComponent<BoxCollider2D>();
+
+        FactoryBuilding factoryBuilding =  obj.AddComponent<FactoryBuilding>();
+        factoryBuilding.mComponentName = componentData.Component_Name.ToString();
+        factoryBuilding.consumeIndex = abilityData.Consume_IndexArr[0]; // 건물 건설 시 소모되는 자원 인덱스
+        factoryBuilding.consumeCount = abilityData.Consume_CountArr[0]; // 건물 건설 시 소모되는 자원량
+        factoryBuilding.produceIndex = abilityData.Consume_IndexArr[1]; // 건물에서 생산되는 자원 인덱스
+        factoryBuilding.produceCount = abilityData.Consume_CountArr[1]; // 건물에서 생산 되는 자원량
+        if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; // 건물의 체력
+        factoryBuilding[EStat.Efficiency] = abilityData.BuildingDetail_Delay; // 건물의 생산 속도
+        factoryBuilding.maxAmount = abilityData.BuildingDetail_Value; // 건물이 보관할 수 있는 자원의 최대량
+
+        GameObject objImg = new GameObject();
+        objImg.name = "Image";
+        objImg.transform.SetParent(obj.transform);
+        objImg.transform.localScale = Vector3.one * 0.25f;
+
+        SpriteRenderer renderer = objImg.AddComponent<SpriteRenderer>();
+        renderer.sprite = Resources.Load<Sprite>($"Component/Image/{imgData.ImageResource_Name}");
+        
+
+        obj.transform.localPosition = pos;
+        obj.transform.localScale = Vector3.one * size;
+        Debug.Log("생산 건물 건설 끝");
+        Debug.Log(obj);
+        return obj;
+    }
+
+    public int GetBuildingSize(int index)
+    {
+        if (structureDataManger.dicCBAbilityTable.ContainsKey(index))
+        {
+            abilityData = structureDataManger.dicCBAbilityTable[index];
+        }
+
+        return abilityData.BuildingScale;
     }
 }

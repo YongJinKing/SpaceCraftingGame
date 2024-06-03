@@ -16,6 +16,7 @@ public abstract class Structure : Stat
     [SerializeField] protected float buildingSpd;
     [SerializeField] protected byte priority;
     [SerializeField] protected string componentName;
+    [SerializeField] protected int scale;
     #endregion
     #region Public
     public byte mPriority
@@ -56,6 +57,15 @@ public abstract class Structure : Stat
         set
         {
             componentName = value;
+        }
+    }
+
+    public int mScale
+    {
+        get { return scale; }
+        set
+        {
+            scale = value;
         }
     }
     #endregion

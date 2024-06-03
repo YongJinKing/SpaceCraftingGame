@@ -15,6 +15,7 @@ public class CraftBuildingManager : MonoBehaviour
     public Transform TurretParent;
 
     public int size;
+    [SerializeField] int buildingIndex;
     TileManager tileManage;
     CraftFactory factory;
     // Start is called before the first frame update
@@ -22,11 +23,25 @@ public class CraftBuildingManager : MonoBehaviour
     {
         tileManage = FindObjectOfType<TileManager>();
         factory = new CraftFactory();
+        buildingIndex = 110000; // 빌딩 인덱스, 추후 건축 모드에서 Ui를 통해 이 인덱스를 원하는 건물의 인덱스로 변경할 수 있어야함  <<<<<<<<<<<<
+        size = factory.GetBuildingSize(buildingIndex);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            buildingIndex = 110000;
+            size = factory.GetBuildingSize(buildingIndex);
+            Debug.Log("현재 건설 선택된 인덱스 : " + buildingIndex);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            buildingIndex = 100000;
+            size = factory.GetBuildingSize(buildingIndex);
+            Debug.Log("현재 건설 선택된 인덱스 : " + buildingIndex);
+        }
         //Debug.Log(tileManage.GetTileLength());
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask);
@@ -52,7 +67,7 @@ public class CraftBuildingManager : MonoBehaviour
                     obj.transform.localScale = Vector3.one * size;
                     RemovePlaceEvent?.Invoke(cellPosition);
                     */
-                    MakeFalseCoordinates(cellPosition, size);
+                    MakeFalseCoordinates(cellPosition, buildingIndex, size);
                 }
                 else
                 {
@@ -113,7 +128,7 @@ public class CraftBuildingManager : MonoBehaviour
         }
     }
 
-    void MakeFalseCoordinates(Vector3 pos, int size)
+    void MakeFalseCoordinates(Vector3 pos, int index,int size)
     {
         Vector3Int tmpPos = new Vector3Int((int)pos.x, (int)pos.y, (int)pos.z);
         Vector3Int cellPos;
@@ -150,8 +165,8 @@ public class CraftBuildingManager : MonoBehaviour
         {
             Debug.Log("여기엔 지을 수 있어요");
             //Inventory.instance.UseItem(10000, 5);
-            Vector3 turretPos = new Vector3((pos.x + (ground.tileAnchor.x * size)), (pos.y + (ground.tileAnchor.y * size)), 0);
-            GameObject craft = factory.CraftBuilding(110000, turretPos);
+            Vector3 craftPos = new Vector3((pos.x + (ground.tileAnchor.x * size)), (pos.y + (ground.tileAnchor.y * size)), 0);
+            GameObject craft = factory.CraftBuilding(index, craftPos);
             //Transform obj = Instantiate(.transform, new Vector3(pos.x + (ground.tileAnchor.x * size), pos.y + (ground.tileAnchor.y * size), 0), Quaternion.identity, TurretParent);
             //craft.transform.position = new Vector3(pos.x + (ground.tileAnchor.x * size), pos.y + (ground.tileAnchor.y * size), 0);
             craft.transform.localScale = Vector3.one * size;
