@@ -42,6 +42,7 @@ public class MonsterAttackState : MonsterState
     {
         base.Enter();
         StartCoroutine(Attacking());
+        StartCoroutine(TravelingPath());
     }
     public override void Exit()
     {
@@ -72,6 +73,7 @@ public class MonsterAttackState : MonsterState
         {
             dir = owner.target.transform.position - transform.position;
             dist = dir.magnitude;
+            yield return null;
         }
         while (dist > owner.activatedAction.activeRadius);
         owner.activatedAction.Activate(owner.target.transform.position);
@@ -89,7 +91,7 @@ public class MonsterAttackState : MonsterState
         while(owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
         {
             moveToPathEvent?.Invoke(path);
-            yield return new WaitForSeconds(1.1f);
+            yield return new WaitForSeconds(3.0f);
         }
         //if cannot find path
         owner.stateMachine.ChangeState<MonsterIdleState> ();

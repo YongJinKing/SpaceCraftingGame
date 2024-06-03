@@ -54,6 +54,12 @@ public class AI : MonoBehaviour
             return;
         }
 
+        if(key == targetCoor)
+        {
+            OList.Add(key, new Node(key, 0, 0, parent.NodeID));
+            return;
+        }
+
         if (tileManager.HasTile(key))
         {
             if (tileManager.availablePlaces[key].available)
@@ -183,7 +189,7 @@ public class AI : MonoBehaviour
             }
 
             //find minimum FScore Node
-            float min = 0;
+            float min = float.MaxValue;
             foreach (Node node in OList.Values)
             {
                 if (min > node.FScore)
@@ -196,7 +202,15 @@ public class AI : MonoBehaviour
                 if (Mathf.Approximately(node.FScore, min))
                 {
                     CList.Add(node.NodeID, node);
-                    OList.Remove(node.NodeID);
+                }
+            }
+
+            //Remove node in OList, the nodes are inserted in CList
+            foreach(Vector3Int nodeID in CList.Keys)
+            {
+                if (OList.ContainsKey(nodeID))
+                {
+                    OList.Remove(nodeID);
                 }
             }
 
@@ -210,6 +224,27 @@ public class AI : MonoBehaviour
         if (!CList.ContainsKey(targetCoor))
         {
             Debug.Log("AI.PathFinding.Cannot Find Path");
+            Debug.Log(startCoor);
+            Debug.Log(targetCoor);
+            Debug.Log("OList");
+            foreach (Node node in OList.Values)
+            {
+                Debug.Log($"node id = {node.NodeID}\n" +
+                    $"node fscore = {node.FScore}\n" +
+                    $"node gscore = {node.GScore}\n" +
+                    $"node hscore = {node.HScore}\n" +
+                    $"node parent node = {node.ParentNode}");
+            }
+            Debug.Log("CList");
+            foreach (Node node in CList.Values)
+            {
+                Debug.Log($"node id = {node.NodeID}\n" +
+                    $"node fscore = {node.FScore}\n" +
+                    $"node gscore = {node.GScore}\n" +
+                    $"node hscore = {node.HScore}\n" +
+                    $"node parent node = {node.ParentNode}");
+            }
+
             CList.Clear();
             OList.Clear();
 
@@ -224,10 +259,11 @@ public class AI : MonoBehaviour
 
             //for now, save coordinate point, because world pos saved in coordinate
             //later, need to translate coordinate pos to world pos
-            while(temp != startCoor)
+            //20 times repeat for safety
+            for(int i = 0; i < 20 && temp != startCoor; ++i)
             {
-                temp = CList[targetCoor].ParentNode;
-                reversePath.Add(new Vector2(temp.x, temp.y));
+                temp = CList[temp].ParentNode;
+                reversePath.Add(new Vector2((float)temp.x + 0.5f, (float)temp.y + 0.5f));
             }
 
             path = new Vector2[reversePath.Count];

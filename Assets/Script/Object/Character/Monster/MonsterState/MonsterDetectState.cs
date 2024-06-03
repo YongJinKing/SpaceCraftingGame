@@ -55,7 +55,9 @@ public class MonsterDetectState : MonsterState
         //Wait until Select Action
         yield return StartCoroutine(SelectingAction());
 
-        while(!owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
+        Debug.Log(owner.target.transform.position);
+
+        while (!owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
         {
             Vector2 dir = owner.target.transform.position - transform.position;
 
@@ -64,7 +66,7 @@ public class MonsterDetectState : MonsterState
             if(hit.collider != null)
             {
                 owner.target = hit.collider.gameObject;
-                Debug.Log(owner.target.name);
+                Debug.Log(owner.target.transform.position);
             }
             yield return new WaitForSeconds(1.1f);
         }
