@@ -37,6 +37,7 @@ public abstract class Stat : MonoBehaviour, IDamage, IGetPriority
     }
     #endregion
     #region Events
+    public UnityEvent deadEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -72,6 +73,9 @@ public abstract class Stat : MonoBehaviour, IDamage, IGetPriority
 
         if (!_StatChangedEvents.ContainsKey(type))
             _StatChangedEvents.Add(type, new UnityEvent<float, float>());
+    }
+    protected virtual void OnDead()
+    {
     }
     #endregion
     #region Public

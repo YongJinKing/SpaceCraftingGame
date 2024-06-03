@@ -64,7 +64,9 @@ public class MonsterDetectState : MonsterState
             if(hit.collider != null)
             {
                 owner.target = hit.collider.gameObject;
+                Debug.Log(owner.target.name);
             }
+            yield return new WaitForSeconds(1.1f);
         }
 
         owner.stateMachine.ChangeState<MonsterAttackState>();

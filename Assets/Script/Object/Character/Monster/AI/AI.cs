@@ -61,7 +61,7 @@ public class AI : MonoBehaviour
                 if(OList.ContainsKey(key))
                 {
                     float gscore = 1 + parent.GScore;
-                    float hscore = Mathf.Pow(targetCoor.x - key.x, 2) + Mathf.Pow(targetCoor.y - key.y, 2);
+                    float hscore = Mathf.Abs(targetCoor.x - key.x) + Mathf.Abs(targetCoor.y - key.y);
                     float fscore = gscore + hscore;
                     if (fscore < OList[key].FScore)
                     {
@@ -74,7 +74,7 @@ public class AI : MonoBehaviour
                     OList.Add(key, new Node(
                         key,
                         1 + parent.GScore,
-                        Mathf.Pow(targetCoor.x - key.x, 2) + Mathf.Pow(targetCoor.y - key.y, 2),
+                        Mathf.Abs(targetCoor.x - key.x) + Mathf.Abs(targetCoor.y - key.y),
                         parent.NodeID));
                 }
             }
@@ -134,18 +134,19 @@ public class AI : MonoBehaviour
 
         if(targetCoor.z < 0 || startCoor.z < 0)
         {
+            Debug.Log("AI.PathFinding.Not Available Pos");
             path = null;
             return false;
         }
 
         //use A* Algorisim
         //http://www.gisdeveloper.co.kr/?p=3897
-        //휴리스틱 함수는 두 지점 사이의 거리를 제곱근 말고 제곱한 상태 그대로
-        //H(x) = (target.x - node.x)^2 + (target.y - node.y)^2
+        //휴리스틱 함수는 맨하탄 디스턴스
+        //H(x) = |target.x - node.x| + |target.y - node.y|
         Dictionary<Vector3Int, Node>OList = new Dictionary<Vector3Int, Node>();
         Dictionary<Vector3Int, Node>CList = new Dictionary<Vector3Int, Node>();
 
-        CList.Add(startCoor, new Node(startCoor, 0, 0, Vector3Int.back));
+        CList.Add(startCoor, new Node(startCoor, 0, 0, startCoor));
 
         //repeat 20 times
         for(int i = 0; i < 20; ++i)
@@ -208,6 +209,7 @@ public class AI : MonoBehaviour
         //if cannot find Path
         if (!CList.ContainsKey(targetCoor))
         {
+            Debug.Log("AI.PathFinding.Cannot Find Path");
             CList.Clear();
             OList.Clear();
 

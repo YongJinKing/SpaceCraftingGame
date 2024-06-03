@@ -63,15 +63,10 @@ public class MonsterIdleState : MonsterState
         if (owner.ai == null) yield break;
 
         GameObject target = null;
-        //For Test, Hard Coding LayerMask
-        LayerMask temp = (1 << 17);
-
-        Debug.Log(temp.value);
-        Debug.Log(LayerMask.NameToLayer("Mineral"));
 
         while(target == null)
         {
-            target = owner.ai.TargetSelect(temp, owner[EStat.DetectRadius]);
+            target = owner.ai.TargetSelect(owner.targetMask, owner[EStat.DetectRadius]);
             yield return null;
         }
 

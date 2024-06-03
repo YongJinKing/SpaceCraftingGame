@@ -1,13 +1,15 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using System.IO;
 
 public class UnitMovement : MonoBehaviour
 {
     #region Properties
     #region Private
-    private Coroutine move;
-    private Coroutine rot;
+    private Coroutine MoveC;
+    private Coroutine PathC;
+    private Coroutine RotC;
     //for debug, Serialize
     [SerializeField]private float Speed = 1;
     #endregion
@@ -17,6 +19,7 @@ public class UnitMovement : MonoBehaviour
     #endregion
     #region Events
     public UnityEvent moveEndEvent = new UnityEvent();
+    public UnityEvent pathEndEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -39,11 +42,28 @@ public class UnitMovement : MonoBehaviour
     }
     public void OnMoveToPos(Vector2 pos)
     {
-        if (move != null)
+        if (MoveC != null)
         {
-            StopCoroutine(move);
+            StopCoroutine(MoveC);
         }
-        StartCoroutine(MovingToPos(pos));
+        if (PathC != null)
+        {
+            StopCoroutine(PathC);
+        }
+        MoveC = StartCoroutine(MovingToPos(pos));
+    }
+
+    public void OnMoveToPath(Vector2[] path)
+    {
+        if(MoveC != null)
+        {
+            StopCoroutine(MoveC);
+        }
+        if(PathC != null)
+        {
+            StopCoroutine(PathC);
+        }
+        PathC = StartCoroutine(MovingToPath(path));
     }
 
     public void OnMoveToDir(Vector2 dir)
@@ -81,6 +101,15 @@ public class UnitMovement : MonoBehaviour
 
         moveEndEvent?.Invoke();
         yield return null;
+    }
+
+    protected IEnumerator MovingToPath(Vector2[] path)
+    {
+        for(int i = 0; i < path.Length; ++i)
+        {
+            yield return MoveC = StartCoroutine(MovingToPos(path[i]));
+        }
+        pathEndEvent?.Invoke();
     }
 
     protected IEnumerator DelaiedLoad()

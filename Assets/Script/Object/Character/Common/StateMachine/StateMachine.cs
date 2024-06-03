@@ -58,11 +58,6 @@ public class StateMachine : MonoBehaviour
     {
         CurrentState = GetState<T>();
     }
-    public virtual void ChangeState<T0, T1>(T1 info) where T0 : State
-    {
-        CurrentState = GetState<T0>();
-        _currentState.GetInfo<T1>(info);
-    }
     #endregion
     #endregion
 

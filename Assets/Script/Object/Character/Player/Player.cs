@@ -34,10 +34,7 @@ public class Player : Unit
     }
     #endregion
     #region Public
-    public override void TakeDamage(float damage)
-    {
-        this[EStat.HP] -= damage;
-    }
+
     #endregion
     #endregion
 

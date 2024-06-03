@@ -53,6 +53,14 @@ public abstract class Unit : Stat
     }
     #endregion
     #region Public
+    public override void TakeDamage(float damage)
+    {
+        this[EStat.HP] -= damage;
+        if (this[EStat.HP] < 0)
+        {
+            OnDead();
+        }
+    }
     #endregion
     #endregion
 

@@ -3966,6 +3966,9 @@ MonoBehaviour:
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
+  pathEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1948805413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3979,7 +3982,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 0
-  Priority: 0
+  Priority: 2
+  deadEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveSpeed: 5
   ATK: 0
   ATKSpeed: 0
@@ -4101,6 +4107,9 @@ MonoBehaviour:
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
+  pathEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2006832375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4113,12 +4122,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa406a686cb0cc4e889d5391ab100f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
+  MaxHP: 5
   Priority: 0
+  deadEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveSpeed: 1
   ATK: 0
   ATKSpeed: 0
   detectRadius: 5
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 196608
   dirMove: {fileID: 740402379}
   pointMove: {fileID: 2088204755}
   attackActions:
