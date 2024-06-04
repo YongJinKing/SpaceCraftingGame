@@ -1,0 +1,18 @@
+[
+   {
+      "GameResources_Index":500000,
+      "GameResources_Type":0,
+      "GameResources_SponItem":"[100000]",
+      "GameResources_ItemCount":"[10]",
+      "GameResources_HasPercentage":1,
+      "GameResources_PercentageMinimum":5
+   },
+   {
+      "GameResources_Index":500001,
+      "GameResources_Type":0,
+      "GameResources_SponItem":"[100001]",
+      "GameResources_ItemCount":"[3]",
+      "GameResources_HasPercentage":1,
+      "GameResources_PercentageMinimum":1
+   }
+]

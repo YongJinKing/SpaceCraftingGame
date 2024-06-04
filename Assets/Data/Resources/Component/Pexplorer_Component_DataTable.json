@@ -3,7 +3,7 @@
       "ComponentDataTable_Index":100000,
       "Component_Type":0,
       "Component_Name":100000,
-      "Component_Desc":200000,
+      "Component_Desc":1000000,
       "Component_Image":100000,
       "Component_Hp":200,
       "Component_Detail":100000
@@ -12,7 +12,7 @@
       "ComponentDataTable_Index":100001,
       "Component_Type":0,
       "Component_Name":100001,
-      "Component_Desc":200001,
+      "Component_Desc":1000001,
       "Component_Image":100001,
       "Component_Hp":200,
       "Component_Detail":100001
@@ -21,7 +21,7 @@
       "ComponentDataTable_Index":100002,
       "Component_Type":0,
       "Component_Name":100002,
-      "Component_Desc":200002,
+      "Component_Desc":1000002,
       "Component_Image":100002,
       "Component_Hp":200,
       "Component_Detail":100002
@@ -30,7 +30,7 @@
       "ComponentDataTable_Index":100003,
       "Component_Type":0,
       "Component_Name":100003,
-      "Component_Desc":200003,
+      "Component_Desc":1000003,
       "Component_Image":100003,
       "Component_Hp":200,
       "Component_Detail":100003
@@ -39,7 +39,7 @@
       "ComponentDataTable_Index":100004,
       "Component_Type":0,
       "Component_Name":100004,
-      "Component_Desc":200004,
+      "Component_Desc":1000004,
       "Component_Image":100004,
       "Component_Hp":200,
       "Component_Detail":100004
@@ -48,7 +48,7 @@
       "ComponentDataTable_Index":100005,
       "Component_Type":0,
       "Component_Name":100005,
-      "Component_Desc":200005,
+      "Component_Desc":1000005,
       "Component_Image":100005,
       "Component_Hp":200,
       "Component_Detail":100005
@@ -57,7 +57,7 @@
       "ComponentDataTable_Index":100006,
       "Component_Type":0,
       "Component_Name":100006,
-      "Component_Desc":200006,
+      "Component_Desc":1000006,
       "Component_Image":100006,
       "Component_Hp":201,
       "Component_Detail":100006
@@ -66,7 +66,7 @@
       "ComponentDataTable_Index":100007,
       "Component_Type":0,
       "Component_Name":100007,
-      "Component_Desc":200007,
+      "Component_Desc":1000007,
       "Component_Image":100007,
       "Component_Hp":202,
       "Component_Detail":100007
@@ -75,7 +75,7 @@
       "ComponentDataTable_Index":100008,
       "Component_Type":0,
       "Component_Name":100008,
-      "Component_Desc":200008,
+      "Component_Desc":1000008,
       "Component_Image":100008,
       "Component_Hp":203,
       "Component_Detail":100008
@@ -84,7 +84,7 @@
       "ComponentDataTable_Index":100009,
       "Component_Type":0,
       "Component_Name":100009,
-      "Component_Desc":200009,
+      "Component_Desc":1000009,
       "Component_Image":100009,
       "Component_Hp":204,
       "Component_Detail":100009
@@ -93,7 +93,7 @@
       "ComponentDataTable_Index":110000,
       "Component_Type":0,
       "Component_Name":110000,
-      "Component_Desc":210000,
+      "Component_Desc":1110000,
       "Component_Image":110000,
       "Component_Hp":300,
       "Component_Detail":110000
@@ -102,7 +102,7 @@
       "ComponentDataTable_Index":110001,
       "Component_Type":0,
       "Component_Name":110001,
-      "Component_Desc":210001,
+      "Component_Desc":1110001,
       "Component_Image":110001,
       "Component_Hp":300,
       "Component_Detail":110001
@@ -111,7 +111,7 @@
       "ComponentDataTable_Index":110002,
       "Component_Type":0,
       "Component_Name":110002,
-      "Component_Desc":210002,
+      "Component_Desc":1110002,
       "Component_Image":110002,
       "Component_Hp":300,
       "Component_Detail":110002
@@ -120,7 +120,7 @@
       "ComponentDataTable_Index":110003,
       "Component_Type":0,
       "Component_Name":110003,
-      "Component_Desc":210003,
+      "Component_Desc":1110003,
       "Component_Image":110003,
       "Component_Hp":300,
       "Component_Detail":110003
@@ -129,7 +129,7 @@
       "ComponentDataTable_Index":110004,
       "Component_Type":0,
       "Component_Name":110004,
-      "Component_Desc":210004,
+      "Component_Desc":1110004,
       "Component_Image":110004,
       "Component_Hp":300,
       "Component_Detail":110004
@@ -138,7 +138,7 @@
       "ComponentDataTable_Index":110005,
       "Component_Type":0,
       "Component_Name":110005,
-      "Component_Desc":210005,
+      "Component_Desc":1110005,
       "Component_Image":110005,
       "Component_Hp":300,
       "Component_Detail":110005
@@ -147,7 +147,7 @@
       "ComponentDataTable_Index":110006,
       "Component_Type":0,
       "Component_Name":110006,
-      "Component_Desc":210006,
+      "Component_Desc":1110006,
       "Component_Image":110006,
       "Component_Hp":300,
       "Component_Detail":110006
@@ -156,7 +156,7 @@
       "ComponentDataTable_Index":110007,
       "Component_Type":0,
       "Component_Name":110007,
-      "Component_Desc":210007,
+      "Component_Desc":1110007,
       "Component_Image":110007,
       "Component_Hp":300,
       "Component_Detail":110007
@@ -165,7 +165,7 @@
       "ComponentDataTable_Index":110008,
       "Component_Type":0,
       "Component_Name":110008,
-      "Component_Desc":210008,
+      "Component_Desc":1110008,
       "Component_Image":110008,
       "Component_Hp":300,
       "Component_Detail":110008
@@ -174,7 +174,7 @@
       "ComponentDataTable_Index":110009,
       "Component_Type":0,
       "Component_Name":110009,
-      "Component_Desc":210009,
+      "Component_Desc":1110009,
       "Component_Image":110009,
       "Component_Hp":300,
       "Component_Detail":110009
@@ -183,7 +183,7 @@
       "ComponentDataTable_Index":120000,
       "Component_Type":0,
       "Component_Name":120000,
-      "Component_Desc":220000,
+      "Component_Desc":1220000,
       "Component_Image":120000,
       "Component_Hp":300,
       "Component_Detail":120000
@@ -192,7 +192,7 @@
       "ComponentDataTable_Index":120001,
       "Component_Type":0,
       "Component_Name":120001,
-      "Component_Desc":220001,
+      "Component_Desc":1220001,
       "Component_Image":120001,
       "Component_Hp":300,
       "Component_Detail":120001
@@ -201,7 +201,7 @@
       "ComponentDataTable_Index":120002,
       "Component_Type":0,
       "Component_Name":120002,
-      "Component_Desc":220002,
+      "Component_Desc":1220002,
       "Component_Image":120002,
       "Component_Hp":300,
       "Component_Detail":120002
@@ -210,7 +210,7 @@
       "ComponentDataTable_Index":120003,
       "Component_Type":0,
       "Component_Name":120003,
-      "Component_Desc":220003,
+      "Component_Desc":1220003,
       "Component_Image":120003,
       "Component_Hp":300,
       "Component_Detail":120003
@@ -219,7 +219,7 @@
       "ComponentDataTable_Index":120004,
       "Component_Type":0,
       "Component_Name":120004,
-      "Component_Desc":220004,
+      "Component_Desc":1220004,
       "Component_Image":120004,
       "Component_Hp":300,
       "Component_Detail":120004
@@ -228,7 +228,7 @@
       "ComponentDataTable_Index":120005,
       "Component_Type":0,
       "Component_Name":120005,
-      "Component_Desc":220005,
+      "Component_Desc":1220005,
       "Component_Image":120005,
       "Component_Hp":300,
       "Component_Detail":120005
@@ -237,7 +237,7 @@
       "ComponentDataTable_Index":120006,
       "Component_Type":0,
       "Component_Name":120006,
-      "Component_Desc":220006,
+      "Component_Desc":1220006,
       "Component_Image":120006,
       "Component_Hp":300,
       "Component_Detail":120006
@@ -246,7 +246,7 @@
       "ComponentDataTable_Index":120007,
       "Component_Type":0,
       "Component_Name":120007,
-      "Component_Desc":220007,
+      "Component_Desc":1220007,
       "Component_Image":120007,
       "Component_Hp":300,
       "Component_Detail":120007
@@ -255,7 +255,7 @@
       "ComponentDataTable_Index":120008,
       "Component_Type":0,
       "Component_Name":120008,
-      "Component_Desc":220008,
+      "Component_Desc":1220008,
       "Component_Image":120008,
       "Component_Hp":300,
       "Component_Detail":120008
@@ -264,7 +264,7 @@
       "ComponentDataTable_Index":120009,
       "Component_Type":0,
       "Component_Name":120009,
-      "Component_Desc":220009,
+      "Component_Desc":1220009,
       "Component_Image":120009,
       "Component_Hp":300,
       "Component_Detail":120009
@@ -273,7 +273,7 @@
       "ComponentDataTable_Index":130000,
       "Component_Type":0,
       "Component_Name":130000,
-      "Component_Desc":230000,
+      "Component_Desc":1330000,
       "Component_Image":130000,
       "Component_Hp":300,
       "Component_Detail":130000
@@ -282,7 +282,7 @@
       "ComponentDataTable_Index":130001,
       "Component_Type":0,
       "Component_Name":130001,
-      "Component_Desc":230001,
+      "Component_Desc":1330001,
       "Component_Image":130001,
       "Component_Hp":300,
       "Component_Detail":130001
@@ -291,7 +291,7 @@
       "ComponentDataTable_Index":130002,
       "Component_Type":0,
       "Component_Name":130002,
-      "Component_Desc":230002,
+      "Component_Desc":1330002,
       "Component_Image":130002,
       "Component_Hp":300,
       "Component_Detail":130002
@@ -300,7 +300,7 @@
       "ComponentDataTable_Index":130003,
       "Component_Type":0,
       "Component_Name":130003,
-      "Component_Desc":230003,
+      "Component_Desc":1330003,
       "Component_Image":130003,
       "Component_Hp":300,
       "Component_Detail":130003
@@ -309,7 +309,7 @@
       "ComponentDataTable_Index":130004,
       "Component_Type":0,
       "Component_Name":130004,
-      "Component_Desc":230004,
+      "Component_Desc":1330004,
       "Component_Image":130004,
       "Component_Hp":300,
       "Component_Detail":130004
@@ -318,7 +318,7 @@
       "ComponentDataTable_Index":130005,
       "Component_Type":0,
       "Component_Name":130005,
-      "Component_Desc":230005,
+      "Component_Desc":1330005,
       "Component_Image":130005,
       "Component_Hp":300,
       "Component_Detail":130005
@@ -327,7 +327,7 @@
       "ComponentDataTable_Index":130006,
       "Component_Type":0,
       "Component_Name":130006,
-      "Component_Desc":230006,
+      "Component_Desc":1330006,
       "Component_Image":130006,
       "Component_Hp":300,
       "Component_Detail":130006
@@ -336,7 +336,7 @@
       "ComponentDataTable_Index":130007,
       "Component_Type":0,
       "Component_Name":130007,
-      "Component_Desc":230007,
+      "Component_Desc":1330007,
       "Component_Image":130007,
       "Component_Hp":300,
       "Component_Detail":130007
@@ -345,7 +345,7 @@
       "ComponentDataTable_Index":130008,
       "Component_Type":0,
       "Component_Name":130008,
-      "Component_Desc":230008,
+      "Component_Desc":1330008,
       "Component_Image":130008,
       "Component_Hp":300,
       "Component_Detail":130008
@@ -354,9 +354,27 @@
       "ComponentDataTable_Index":130009,
       "Component_Type":0,
       "Component_Name":130009,
-      "Component_Desc":230009,
+      "Component_Desc":1330009,
       "Component_Image":130009,
       "Component_Hp":300,
       "Component_Detail":130009
+   },
+   {
+      "ComponentDataTable_Index":500000,
+      "Component_Type":2,
+      "Component_Name":500000,
+      "Component_Desc":5000000,
+      "Component_Image":500000,
+      "Component_Hp":100,
+      "Component_Detail":500000
+   },
+   {
+      "ComponentDataTable_Index":500001,
+      "Component_Type":2,
+      "Component_Name":500001,
+      "Component_Desc":5000001,
+      "Component_Image":500001,
+      "Component_Hp":150,
+      "Component_Detail":500001
    }
 ]

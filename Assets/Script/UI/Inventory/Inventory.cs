@@ -92,7 +92,7 @@ public class Inventory : MonoBehaviour
                 //Debug.Log($"{ItemData.ItemType}아이템 타입, {Type}모드 타입");
                 if(ItemData.ItemType + 1 == (int)Type)
                 {
-                    Debug.Log("실행 채크");
+                    //Debug.Log("실행 채크");
                     SlotItemData SlotData = new SlotItemData();
                     SlotData.id = InventoryDatas[i].id;
                     SlotData.Amount = InventoryDatas[i].Amount;
