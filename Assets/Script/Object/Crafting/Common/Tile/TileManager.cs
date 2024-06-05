@@ -141,11 +141,12 @@ public class TileManager : MonoBehaviour
 
     public Vector3Int GetTileCoordinates(Vector2 worldPos)
     {
-        int x = Mathf.RoundToInt(worldPos.x);
+        /*int x = Mathf.RoundToInt(worldPos.x);
         int y = Mathf.RoundToInt(worldPos.y);
-        Vector3Int coordinates = (new Vector3Int(x, y, 0));
+        Vector3Int coordinates = (new Vector3Int(x, y, 0));*/
         //Vector3Int coordinates = (new Vector3Int((int)worldPos.x, (int)worldPos.y, 0));
         //Vector3 place = tileMap.CellToWorld(coordinates);
+        Vector3Int coordinates = tileMap.WorldToCell(new Vector3(worldPos.x, worldPos.y, 0));
         if (HasTile(coordinates))
         {
             return coordinates;
