@@ -54,7 +54,7 @@ public class AI : MonoBehaviour
             return;
         }
 
-        if(key == targetCoor)
+        if(key == targetCoor && !OList.ContainsKey(key))
         {
             OList.Add(key, new Node(key, 0, 0, parent.NodeID));
             return;
@@ -64,11 +64,11 @@ public class AI : MonoBehaviour
         {
             if (tileManager.availablePlaces[key].available)
             {
-                if(OList.ContainsKey(key))
+                float gscore = 1 + parent.GScore;
+                float hscore = Mathf.Abs(targetCoor.x - key.x) + Mathf.Abs(targetCoor.y - key.y);
+                float fscore = gscore + hscore;
+                if (OList.ContainsKey(key))
                 {
-                    float gscore = 1 + parent.GScore;
-                    float hscore = Mathf.Abs(targetCoor.x - key.x) + Mathf.Abs(targetCoor.y - key.y);
-                    float fscore = gscore + hscore;
                     if (fscore < OList[key].FScore)
                     {
                         Node temp = new Node(key, gscore, hscore, parent.NodeID);
@@ -79,8 +79,8 @@ public class AI : MonoBehaviour
                 {
                     OList.Add(key, new Node(
                         key,
-                        1 + parent.GScore,
-                        Mathf.Abs(targetCoor.x - key.x) + Mathf.Abs(targetCoor.y - key.y),
+                        gscore,
+                        hscore,
                         parent.NodeID));
                 }
             }
@@ -166,26 +166,26 @@ public class AI : MonoBehaviour
                 temp = node.NodeID + Vector3Int.up;
                 AddNodeToOList(CList, OList, temp, targetCoor, node);
 
-                temp = node.NodeID + Vector3Int.up + Vector3Int.right;
-                AddNodeToOList(CList, OList, temp, targetCoor, node);
+                //temp = node.NodeID + Vector3Int.up + Vector3Int.right;
+                //AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.right;
                 AddNodeToOList(CList, OList, temp, targetCoor, node);
 
-                temp = node.NodeID + Vector3Int.down + Vector3Int.right;
-                AddNodeToOList(CList, OList, temp, targetCoor, node);
+                //temp = node.NodeID + Vector3Int.down + Vector3Int.right;
+                //AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.down;
                 AddNodeToOList(CList, OList, temp, targetCoor, node);
 
-                temp = node.NodeID + Vector3Int.down + Vector3Int.left;
-                AddNodeToOList(CList, OList, temp, targetCoor, node);
+                //temp = node.NodeID + Vector3Int.down + Vector3Int.left;
+                //AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.left;
                 AddNodeToOList(CList, OList, temp, targetCoor, node);
 
-                temp = node.NodeID + Vector3Int.up + Vector3Int.left;
-                AddNodeToOList(CList, OList, temp, targetCoor, node);
+                //temp = node.NodeID + Vector3Int.up + Vector3Int.left;
+                //AddNodeToOList(CList, OList, temp, targetCoor, node);
             }
 
             //find minimum FScore Node
@@ -266,12 +266,55 @@ public class AI : MonoBehaviour
                 reversePath.Add(new Vector2((float)temp.x + 0.5f, (float)temp.y + 0.5f));
             }
 
-            path = new Vector2[reversePath.Count];
-            for (int i = 0, j = reversePath.Count - 1; i < reversePath.Count; ++i, --j)
+            if (reversePath.Count > 1)
             {
-                path[i] = reversePath[j];
+                path = new Vector2[reversePath.Count - 1];
+                //not to save startPos, i condition is not i < reversePath.Count
+                //but i < reversePath.Count - 1
+                //if i < reversePath.Count, path will save start pos
+                for (int i = 0, j = reversePath.Count - 2; i < reversePath.Count - 1; ++i, --j)
+                {
+                    path[i] = reversePath[j];
+                }
+            }
+            else
+            {
+                path = new Vector2[1];
+                path[0] = new Vector2(targetCoor.x + 0.5f, targetCoor.y + 0.5f);
             }
 
+            //for debug
+            Debug.Log("Path");
+            for(int i = 0; i < path.Length; ++i)
+            {
+                Debug.Log(path[i]);
+            }
+            Debug.Log("reversePath");
+            for(int i = 0; i < reversePath.Count; ++i)
+            {
+                Debug.Log(reversePath[i]);
+            }
+            Debug.Log("OList");
+            foreach (Node node in OList.Values)
+            {
+                Debug.Log($"node id = {node.NodeID}\n" +
+                    $"node fscore = {node.FScore}\n" +
+                    $"node gscore = {node.GScore}\n" +
+                    $"node hscore = {node.HScore}\n" +
+                    $"node parent node = {node.ParentNode}");
+            }
+            Debug.Log("CList");
+            foreach (Node node in CList.Values)
+            {
+                Debug.Log($"node id = {node.NodeID}\n" +
+                    $"node fscore = {node.FScore}\n" +
+                    $"node gscore = {node.GScore}\n" +
+                    $"node hscore = {node.HScore}\n" +
+                    $"node parent node = {node.ParentNode}");
+            }
+
+            Debug.Log($"targetCoor = {targetCoor}, startCoor = {startCoor}");
+            Debug.Log($"targetPos = {targetPos}, startPos = {startPos}");
 
             CList.Clear();
             OList.Clear();

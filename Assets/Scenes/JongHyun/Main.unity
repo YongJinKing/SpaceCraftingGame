@@ -3306,7 +3306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _priority: 0
   _coolTime: -1
-  _activeRadius: 1
+  _activeRadius: 1.2
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []

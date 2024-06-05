@@ -55,8 +55,6 @@ public class MonsterDetectState : MonsterState
         //Wait until Select Action
         yield return StartCoroutine(SelectingAction());
 
-        Debug.Log(owner.target.transform.position);
-
         while (!owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
         {
             Vector2 dir = owner.target.transform.position - transform.position;

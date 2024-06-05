@@ -86,13 +86,28 @@ public class MonsterAttackState : MonsterState
 
     protected IEnumerator TravelingPath()
     {
-        //findpath every 1.1f seconds
-        //because pathfinding is very heavy
-        while(owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
+        Vector2 dir;
+
+        while (true)
         {
-            moveToPathEvent?.Invoke(path);
-            yield return new WaitForSeconds(3.0f);
+            dir = owner.target.transform.position - transform.position;
+            if(dir.magnitude < 1.5f)
+            {
+                owner.dirMove.Activate(owner.target.transform.position);
+            }
+            else if(owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
+            {
+                moveToPathEvent?.Invoke(path);
+                yield return new WaitForSeconds(1.1f);
+            }
+            else
+            {
+                break;
+            }
+
+            yield return null;
         }
+
         //if cannot find path
         owner.stateMachine.ChangeState<MonsterIdleState> ();
     }

@@ -49,6 +49,7 @@ public class UnitMovement : MonoBehaviour
         if (PathC != null)
         {
             StopCoroutine(PathC);
+            PathC = null;
         }
         MoveC = StartCoroutine(MovingToPos(pos));
     }
@@ -58,6 +59,7 @@ public class UnitMovement : MonoBehaviour
         if(MoveC != null)
         {
             StopCoroutine(MoveC);
+            MoveC = null;
         }
         if(PathC != null)
         {
@@ -107,6 +109,10 @@ public class UnitMovement : MonoBehaviour
     {
         for(int i = 0; i < path.Length; ++i)
         {
+            if (MoveC != null)
+            {
+                StopCoroutine(MoveC);
+            }
             yield return MoveC = StartCoroutine(MovingToPos(path[i]));
         }
         pathEndEvent?.Invoke();
