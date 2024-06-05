@@ -243,7 +243,12 @@ public class CraftFactory
         factoryBuilding.consumeCount = abilityData.Consume_CountArr[0]; // 건물 건설 시 소모되는 자원량
         factoryBuilding.produceIndex = abilityData.Consume_IndexArr[1]; // 건물에서 생산되는 자원 인덱스
         factoryBuilding.produceCount = abilityData.Consume_CountArr[1]; // 건물에서 생산 되는 자원량
-        if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; // 건물의 체력
+        //if (Hp != 0) factoryBuilding.MaxHP = componentData.Component_Hp; // 건물의 체력
+
+        // 체력 관련은 수정 필요
+        if(Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; // 건물의 체력
+        else factoryBuilding.MaxHP = Hp; // 건물의 체력
+
         factoryBuilding[EStat.Efficiency] = abilityData.BuildingDetail_Delay; // 건물의 생산 속도
         factoryBuilding.maxAmount = abilityData.BuildingDetail_Value; // 건물이 보관할 수 있는 자원의 최대량
 

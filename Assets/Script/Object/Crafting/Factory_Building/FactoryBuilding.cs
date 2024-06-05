@@ -36,16 +36,16 @@ public class FactoryBuilding : Structure
 
     private void OnEnable()
     {
-        
+        StartProducing();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        /*if (Input.GetKeyDown(KeyCode.L))
         {
             StartProducing(); // 임시, 작동 확인용
-        }
+        }*/
     }
 
     public void StartProducing()
@@ -60,6 +60,7 @@ public class FactoryBuilding : Structure
 
     IEnumerator FactoryWorking() // 1초에 json으로 정의된 양만큼(produceCount)만큼 produceIndex에 해당하는 아이템을 생산한다
     {
+        yield return new WaitForSeconds(1f);
         while (true)
         {
             if (this[EStat.HP] <= 0.0f)
@@ -85,6 +86,7 @@ public class FactoryBuilding : Structure
 
     public void FactoryClickEvent() // 만약 플레이어가 어떠한 루트로 공장에서 생산한 재료를 가져가려할 때 이 함수를 호출해 index에 맞는 현재까지 생산한 produceAmount만큼의 양의 재료를 Add한다
     {
-        Inventory.instance.AddItem(produceIndex, produceAmount);
+        if(Inventory.instance != null) Inventory.instance.AddItem(produceIndex, produceAmount);
+        produceAmount = 0;
     }
 }

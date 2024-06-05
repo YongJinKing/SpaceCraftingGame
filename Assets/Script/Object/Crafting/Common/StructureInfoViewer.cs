@@ -28,6 +28,12 @@ public class StructureInfoViewer : MonoBehaviour
                 {
                     Debug.Log(hit.collider.name);
                     Debug.Log(viewStructure.mComponentName);
+                    Debug.Log(viewStructure[EStat.HP]);
+                    var factoryProduce = viewStructure.GetComponent<FactoryBuilding>();
+                    if(factoryProduce != null)
+                    {
+                        factoryProduce.FactoryClickEvent();
+                    }
                 }
             }
         }

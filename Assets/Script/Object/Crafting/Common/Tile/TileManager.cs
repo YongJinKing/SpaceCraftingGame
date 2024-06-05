@@ -94,6 +94,7 @@ public class TileManager : MonoBehaviour
             Debug.Log("읽어온 좌표 : " + componetPlace);
             Debug.Log("읽어온 인덱스 : " + index);
             Debug.Log("읽어온 사이즈 : " + size);
+            Debug.Log("읽어온 Hp : " + Hp);
             Vector3 componentPos = new Vector3(componetPlace.x + (tileMap.tileAnchor.x * size), 
                 componetPlace.y + (tileMap.tileAnchor.y * size), componetPlace.z);
 
@@ -140,7 +141,10 @@ public class TileManager : MonoBehaviour
 
     public Vector3Int GetTileCoordinates(Vector2 worldPos)
     {
-        Vector3Int coordinates = (new Vector3Int((int)worldPos.x, (int)worldPos.y, 0));
+        int x = Mathf.RoundToInt(worldPos.x);
+        int y = Mathf.RoundToInt(worldPos.y);
+        Vector3Int coordinates = (new Vector3Int(x, y, 0));
+        //Vector3Int coordinates = (new Vector3Int((int)worldPos.x, (int)worldPos.y, 0));
         //Vector3 place = tileMap.CellToWorld(coordinates);
         if (HasTile(coordinates))
         {
