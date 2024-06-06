@@ -88,10 +88,20 @@ public abstract class Structure : Stat
         return this[EStat.HP]/ this[EStat.MaxHP];
     }
 
+    public override void TakeDamage(float damage)
+    {
+        this[EStat.HP] -= damage;
+        if (this[EStat.HP] < 0)
+        {
+            OnDead();
+        }
+    }
     protected override void OnDead()
     {
         base.OnDead();
+        Debug.Log("Ondead ½ÇÇà");
         DestroyEvent?.Invoke(this.transform.position);
+        Destroy(this.gameObject);
     }
 
     #endregion
@@ -103,6 +113,7 @@ public abstract class Structure : Stat
         _state = StructureState.BuildProgress;
         AddStat(EStat.DEF, def);
         AddStat(EStat.BuildingSpeed, buildingSpd);
+        
     }
 
     #endregion

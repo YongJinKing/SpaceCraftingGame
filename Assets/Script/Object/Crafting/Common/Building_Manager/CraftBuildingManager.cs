@@ -16,12 +16,12 @@ public class CraftBuildingManager : MonoBehaviour
 
     public int size;
     [SerializeField] int buildingIndex;
-    TileManager tileManage;
+    //TileManager tileManage;
     CraftFactory factory;
     // Start is called before the first frame update
     void Start()
     {
-        tileManage = FindObjectOfType<TileManager>();
+        //tileManage = FindObjectOfType<TileManager>(); // tilemanager singleton화 시키는중
         factory = new CraftFactory();
         buildingIndex = 110000; // 빌딩 인덱스, 추후 건축 모드에서 Ui를 통해 이 인덱스를 원하는 건물의 인덱스로 변경할 수 있어야함  <<<<<<<<<<<<
         size = factory.GetBuildingSize(buildingIndex);
@@ -57,7 +57,8 @@ public class CraftBuildingManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log(cellPosition);
-                if (tileManage.IsCraftable(cellPosition))  // 타일에 건축이 가능하다면<< 이것만 체크하는데 이제 필요한 자원까지 생각해서 건축할 수 있는지 검사해야함
+                //if (tileManage.IsCraftable(cellPosition))  // 타일에 건축이 가능하다면<< 이것만 체크하는데 이제 필요한 자원까지 생각해서 건축할 수 있는지 검사해야함
+                if (TileManager.Instance.IsCraftable(cellPosition))
                 {
                     
                     MakeFalseCoordinates(cellPosition, buildingIndex, size);
@@ -101,10 +102,12 @@ public class CraftBuildingManager : MonoBehaviour
                 tmpPos = intPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
                 cellPos = drawPos + new Vector3(ground.tileAnchor.x, ground.tileAnchor.y, 0);
 
-                if (!tileManage.HasTile(tmpPos)) break;
+                //if (!tileManage.HasTile(tmpPos)) break;
+                if (!TileManager.Instance.HasTile(tmpPos)) break;
                 if (!rectangles[rectIdx].gameObject.activeSelf) rectangles[rectIdx].gameObject.SetActive(true);
                 rectangles[rectIdx].transform.position = cellPos;
-                if (tileManage.IsCraftable(tmpPos))
+                //if (tileManage.IsCraftable(tmpPos))
+                if (TileManager.Instance.IsCraftable(tmpPos))
                 {
                     Color tmpColor = Color.green;
                     tmpColor.a = 0.5f;
@@ -131,13 +134,15 @@ public class CraftBuildingManager : MonoBehaviour
             for (int j = 0; j < size; j++)
             {
                 cellPos = tmpPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
-                if (!tileManage.HasTile(cellPos))
+                //if (!tileManage.HasTile(cellPos))
+                if (!TileManager.Instance.HasTile(cellPos))
                 {
                     canBuild = false;
                     break;
                 }
 
-                if (tileManage.IsCraftable(cellPos))
+                //if (tileManage.IsCraftable(cellPos))
+                if (TileManager.Instance.IsCraftable(cellPos))
                 {
                     continue;
                 }

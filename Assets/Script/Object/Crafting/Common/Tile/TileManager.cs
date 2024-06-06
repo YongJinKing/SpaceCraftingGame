@@ -18,7 +18,7 @@ public class Tile
     }
 }
 
-public class TileManager : MonoBehaviour
+public class TileManager : Singleton<TileManager>
 {
     public Tilemap tileMap = null;
 
@@ -167,13 +167,16 @@ public class TileManager : MonoBehaviour
 
     public void DestoryObjectOnTile(Vector3 pos) // 해당 위치에 있던 타일 제거
     {
-        Vector3Int coordiantes = tileMap.WorldToCell(pos);
-        if (HasTile(coordiantes))
+        Debug.Log("destroy 실행");
+        Vector3Int coordiantes = tileMap.LocalToCell(pos);
+        if (tileMap.HasTile(coordiantes))
         {
             availablePlaces[coordiantes].available = true;
             availablePlaces[coordiantes].Object = null;
             availablePlaces[coordiantes].size = 0;
+            Debug.Log("해당 건물 삭제");
         }
+        Debug.Log("destroy 종료");
     }
 
     public Dictionary<Vector3Int, Tile> GetTileMap()
