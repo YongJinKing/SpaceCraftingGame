@@ -158,6 +158,24 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    public Vector3 GetWorldPosCenterOfCell(Vector2Int pos)
+    {
+        Vector3 centerPos = new Vector3(pos.x + tileMap.cellSize.x, pos.y + tileMap.cellSize.y, 0);
+
+        return centerPos;
+    }
+
+    public void DestoryObjectOnTile(Vector3 pos) // 해당 위치에 있던 타일 제거
+    {
+        Vector3Int coordiantes = tileMap.WorldToCell(pos);
+        if (HasTile(coordiantes))
+        {
+            availablePlaces[coordiantes].available = true;
+            availablePlaces[coordiantes].Object = null;
+            availablePlaces[coordiantes].size = 0;
+        }
+    }
+
     public Dictionary<Vector3Int, Tile> GetTileMap()
     {
         return availablePlaces;

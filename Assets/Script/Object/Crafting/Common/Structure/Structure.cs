@@ -70,6 +70,7 @@ public abstract class Structure : Stat
     }
     #endregion
     #region Events
+    public UnityEvent<Vector3> DestroyEvent;
     #endregion
     #endregion
 
@@ -87,6 +88,11 @@ public abstract class Structure : Stat
         return this[EStat.HP]/ this[EStat.MaxHP];
     }
 
+    protected override void OnDead()
+    {
+        base.OnDead();
+        DestroyEvent?.Invoke(this.transform.position);
+    }
 
     #endregion
 
