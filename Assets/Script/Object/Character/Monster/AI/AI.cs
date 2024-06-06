@@ -282,7 +282,7 @@ public class AI : MonoBehaviour
                 path = new Vector2[1];
                 path[0] = new Vector2(targetCoor.x + 0.5f, targetCoor.y + 0.5f);
             }
-
+            /*
             //for debug
             Debug.Log("Path");
             for(int i = 0; i < path.Length; ++i)
@@ -315,7 +315,7 @@ public class AI : MonoBehaviour
 
             Debug.Log($"targetCoor = {targetCoor}, startCoor = {startCoor}");
             Debug.Log($"targetPos = {targetPos}, startPos = {startPos}");
-
+            */
             CList.Clear();
             OList.Clear();
             return true;
