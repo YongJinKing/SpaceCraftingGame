@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -5,14 +6,17 @@ public class MineralGasSpawner : MonoBehaviour
 {
     public GameObject mineralPrefab; // 미네랄 프리팹을 연결하기 위한 변수
     public GameObject gasPrefab; // 가스 프리팹을 연결하기 위한 변수
+    public GameObject plusResource; // 2x2 자원
     public Tilemap tilemap; // 타일맵을 연결하기 위한 변수
     public int mapWidth = 128; // 타일맵의 너비
     public int mapHeight = 128; // 타일맵의 높이
-    public int totalResources = 8; // 생성할 총 자원의 수
+    public int totalResources = 32; // 생성할 총 자원의 수
     public LayerMask mineralLayer; // 미네랄 레이어를 설정하기 위한 변수
     public LayerMask gasLayer; // 가스 레이어를 설정하기 위한 변수
+    public LayerMask plusResourceLayer;
 
     private CollectionResource collectionResource;
+    private bool isplusResourceSpawned;
 
     private void OnEnable()
     {
@@ -30,6 +34,30 @@ public class MineralGasSpawner : MonoBehaviour
     {
         collectionResource = GetComponent<CollectionResource>();
         SpawnResources();
+        SpawnPlusResource();
+    }
+
+    void SpawnPlusResource()
+    {
+        if (isplusResourceSpawned)
+        {
+            return; 
+        }
+        int boundaryOffset = 2;
+        for (int attempt = 0; attempt < 100; attempt++)
+        {
+            int x = Random.Range(tilemap.cellBounds.xMin + boundaryOffset, tilemap.cellBounds.xMax - boundaryOffset);
+            int y = Random.Range(tilemap.cellBounds.yMin + boundaryOffset, tilemap.cellBounds.yMax - boundaryOffset);
+            Vector3Int cellPosition = new Vector3Int(x, y, 0);
+            Vector3 worldPosition = tilemap.CellToWorld(cellPosition);
+
+            if (tilemap.GetTile(cellPosition) != null && !IsResourceAtPosition(worldPosition))
+            {
+                Instantiate(plusResource, worldPosition, Quaternion.identity);
+                isplusResourceSpawned = true;
+                break;
+            }
+        }
     }
 
     void SpawnResources()
@@ -42,82 +70,79 @@ public class MineralGasSpawner : MonoBehaviour
         float mineralDensity = (float)totalMinerals / (mapWidth * mapHeight);
         float gasDensity = (float)totalGas / (mapWidth * mapHeight);
 
-        for (int y = tilemap.cellBounds.yMin; y < tilemap.cellBounds.yMax; y++)
+        int boundaryOffset = 2;// 경계선에 자원이 생성되는것을 방지
+
+        for (int y = tilemap.cellBounds.yMin + boundaryOffset ; y < tilemap.cellBounds.yMax; y += 2)
         {
-            for (int x = tilemap.cellBounds.xMin; x < tilemap.cellBounds.xMax; x++)
+            for (int x = tilemap.cellBounds.xMin + boundaryOffset; x < tilemap.cellBounds.xMax; x += 2)
             {
                 if (mineralsPlaced >= totalMinerals && gasPlaced >= totalGas)
                 {
                     return;
                 }
 
-                Vector3Int cellPosition = new Vector3Int(x, y, 0);
-                Vector3 worldPosition = tilemap.CellToWorld(cellPosition);
-
-                if (tilemap.GetTile(cellPosition) != null)
+                for (int offsetY = 0; offsetY < 2; offsetY++)
                 {
-                    if (mineralsPlaced < totalMinerals && !IsResourceAtPosition(worldPosition, mineralLayer) && Random.value < mineralDensity)
+                    for (int offsetX = 0; offsetX < 2; offsetX++)
                     {
-                        Instantiate(mineralPrefab, worldPosition, Quaternion.identity);
-                        mineralsPlaced++;
-                    }
-                    else if (gasPlaced < totalGas && !IsResourceAtPosition(worldPosition, gasLayer) && Random.value < gasDensity)
-                    {
-                        Instantiate(gasPrefab, worldPosition, Quaternion.identity);
-                        gasPlaced++;
+
+                        Vector3Int cellPosition = new Vector3Int(x, y, 0);
+                        Vector3 worldPosition = tilemap.CellToWorld(cellPosition);
+
+                        if (tilemap.GetTile(cellPosition) != null)
+                        {
+                            if (mineralsPlaced < totalMinerals && !IsResourceAtPosition(worldPosition) && Random.value < mineralDensity)
+                            {
+                                Instantiate(mineralPrefab, worldPosition, Quaternion.identity);
+                                mineralsPlaced++;
+                            }
+                            else if (gasPlaced < totalGas && !IsResourceAtPosition(worldPosition) && Random.value < gasDensity)
+                            {
+                                Instantiate(gasPrefab, worldPosition, Quaternion.identity);
+                                gasPlaced++;
+                            }
+                            if(mineralsPlaced >= totalMinerals && gasPlaced >= totalGas)
+                            {
+                                return;
+                            }
+                        }
                     }
                 }
             }
         }
-
-        // 자원이 부족한 경우 추가로 생성 (예외 처리)
-        /*while (mineralsPlaced < totalMinerals || gasPlaced < totalGas)
-        {
-            int x = Random.Range(0, mapWidth);
-            int y = Random.Range(0, mapHeight);
-            Vector3Int cellPosition = new Vector3Int(x, y, 0);
-            Vector3 worldPosition = tilemap.CellToWorld(cellPosition);
-
-            if (tilemap.GetTile(cellPosition) != null)
-            {
-                if (mineralsPlaced < totalMinerals && !IsResourceAtPosition(worldPosition, mineralLayer))
-                {
-                    Instantiate(mineralPrefab, worldPosition, Quaternion.identity);
-                    mineralsPlaced++;
-                }
-                else if (gasPlaced < totalGas && !IsResourceAtPosition(worldPosition, gasLayer))
-                {
-                    Instantiate(gasPrefab, worldPosition, Quaternion.identity);
-                    gasPlaced++;
-                }
-            }
-        }*/
     }
 
     void SpawnResourceNearPosition(Vector3Int position, GameObject prefab, LayerMask layer)
     {
-        for (int i = -1; i <= 1; i++)
+        int boundaryOffset = 2;
+
+        for(int attemp =0; attemp < 10; attemp++) // 10번 시도
         {
-            for (int j = -1; j <= 1; j++)
+            int randomX = Random.Range(-2, 3); // -2~2사이 랜덤
+            int randomY = Random.Range(-2, 3);
+
+            Vector3Int newPos = position + new Vector3Int(randomX, randomY, 0);
+            Vector3 worldPosition = tilemap.CellToWorld(newPos);
+
+            //타일이 존재하고, 경계선 안쪽이며, 자원이 없는 위치에만 생성
+            if(tilemap.GetTile(newPos) != null &&
+                newPos.x >= tilemap.cellBounds.xMin + boundaryOffset &&
+                newPos.x <= tilemap.cellBounds.xMax - boundaryOffset &&
+                newPos.y >= tilemap.cellBounds.yMin + boundaryOffset &&
+                newPos.y <= tilemap.cellBounds.yMax - boundaryOffset &&
+                !IsResourceAtPosition(worldPosition))
             {
-                if (i == 0 && j == 0) continue;
-
-                Vector3Int newPos = position + new Vector3Int(i, j, 0);
-                Vector3 worldPosition = tilemap.CellToWorld(newPos);
-
-                if (tilemap.GetTile(newPos) != null && !IsResourceAtPosition(worldPosition, layer))
-                {
-                    Instantiate(prefab, worldPosition, Quaternion.identity);
-                    return;
-                }
+                Instantiate(prefab, worldPosition, Quaternion.identity);
+                return;
             }
         }
     }
 
-    bool IsResourceAtPosition(Vector3 position, LayerMask layer)
+    bool IsResourceAtPosition(Vector3 position)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.1f, layer);
-        return colliders.Length > 0;
+        Collider2D[] mineralColliders = Physics2D.OverlapCircleAll(position, 1.5f, mineralLayer);
+        Collider2D[] gasColliders = Physics2D.OverlapCircleAll(position, 1.5f, gasLayer);
+        Collider2D[] plusResorce = Physics2D.OverlapCircleAll(position, 1.5f, plusResourceLayer);
+        return mineralColliders.Length > 0 || gasColliders.Length > 0;
     }
 }
-
