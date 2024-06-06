@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using static UnityEngine.GraphicsBuffer;
 
 public class Turret : Structure
 {
@@ -59,6 +60,7 @@ public class Turret : Structure
         perception = GetComponentInChildren<TurretPerception>();
         perception.detectEnemyEvents.AddListener(OnEnemyDetected);
         perception.lostEnemyEvents.AddListener(OnEnemyLost);
+        this.DestroyEvent.AddListener(TileManager.Instance.DestoryObjectOnTile);
         Debug.Log(this[EStat.MaxHP]);
 
     }
@@ -149,7 +151,11 @@ public class Turret : Structure
     {
         float dmg = damage - this[EStat.DEF];
         if (dmg <= 0.0f) dmg = 1f;
-        this[EStat.HP] = dmg;
+        this[EStat.HP] -= dmg;
+        if (this[EStat.HP] < 0)
+        {
+            OnDead();
+        }
     }
 
     // 적을 공격하는 함수

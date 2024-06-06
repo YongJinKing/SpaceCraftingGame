@@ -22,7 +22,11 @@ public class FactoryBuilding : Structure
     {
         float dmg = damage - this[EStat.DEF];
         if (dmg <= 0.0f) dmg = 1f;
-        this[EStat.HP] = dmg;
+        this[EStat.HP] -= dmg;
+        if (this[EStat.HP] < 0)
+        {
+            OnDead();
+        }
     }
 
     // Start is called before the first frame update
@@ -31,6 +35,7 @@ public class FactoryBuilding : Structure
         base.Start();
         // 설정할거 설정하고
         produceTime = this[EStat.Efficiency];
+        this.DestroyEvent.AddListener(TileManager.Instance.DestoryObjectOnTile);
 
     }
 
