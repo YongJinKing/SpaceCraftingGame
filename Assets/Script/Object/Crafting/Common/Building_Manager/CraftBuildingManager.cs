@@ -50,8 +50,8 @@ public class CraftBuildingManager : MonoBehaviour
         if (hit.collider != null)
         {
             ground = hit.collider.gameObject.GetComponent<Tilemap>();
-            Vector3Int cellPosition = ground.LocalToCell(hit.point);
-            
+            // Vector3Int cellPosition = ground.LocalToCell(hit.point);
+            Vector3Int cellPosition = ground.WorldToCell(hit.point);
 
             Draw_nSizeRectangle(cellPosition, size);
             if (Input.GetMouseButtonDown(0))
@@ -60,7 +60,7 @@ public class CraftBuildingManager : MonoBehaviour
                 //if (tileManage.IsCraftable(cellPosition))  // 타일에 건축이 가능하다면<< 이것만 체크하는데 이제 필요한 자원까지 생각해서 건축할 수 있는지 검사해야함
                 if (TileManager.Instance.IsCraftable(cellPosition))
                 {
-                    
+
                     MakeFalseCoordinates(cellPosition, buildingIndex, size);
                 }
                 else
@@ -124,7 +124,7 @@ public class CraftBuildingManager : MonoBehaviour
         }
     }
 
-    void MakeFalseCoordinates(Vector3 pos, int index,int size)
+    void MakeFalseCoordinates(Vector3 pos, int index, int size)
     {
         Vector3Int tmpPos = new Vector3Int((int)pos.x, (int)pos.y, (int)pos.z);
         Vector3Int cellPos;
@@ -162,7 +162,7 @@ public class CraftBuildingManager : MonoBehaviour
         if (canBuild) // 해당 위치에 지을 수 있지만, 내가 가지고 있는 자원량과도 비교해야함 << 이거 추가해야함
         {
             Debug.Log("여기엔 지을 수 있어요");
-            
+
             // 자원이 부족하면 못지어야함
 
             // 아래는 건물을 짓는 코드들, 이것도 바로 짓는게 아니라 건물이 지어지는 느낌을 연출해야 하니 아래 코드들은 코루틴으로 이동?

@@ -167,16 +167,14 @@ public class TileManager : Singleton<TileManager>
 
     public void DestoryObjectOnTile(Vector3 pos) // 해당 위치에 있던 타일 제거
     {
-        Debug.Log("destroy 실행");
-        Vector3Int coordiantes = tileMap.LocalToCell(pos);
+        
+        Vector3Int coordiantes = tileMap.WorldToCell(pos);
         if (tileMap.HasTile(coordiantes))
         {
-            availablePlaces[coordiantes].available = true;
-            availablePlaces[coordiantes].Object = null;
-            availablePlaces[coordiantes].size = 0;
-            Debug.Log("해당 건물 삭제");
+            availablePlaces.Remove(coordiantes);
+            availablePlaces[coordiantes] = new Tile(true, null, 0);
+            Debug.Log(coordiantes + "위치 건물 삭제");
         }
-        Debug.Log("destroy 종료");
     }
 
     public Dictionary<Vector3Int, Tile> GetTileMap()
