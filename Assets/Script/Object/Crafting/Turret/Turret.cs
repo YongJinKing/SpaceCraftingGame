@@ -147,16 +147,7 @@ public class Turret : Structure
 
     #endregion
     #region public
-    public override void TakeDamage(float damage)
-    {
-        float dmg = damage - this[EStat.DEF];
-        if (dmg <= 0.0f) dmg = 1f;
-        this[EStat.HP] -= dmg;
-        if (this[EStat.HP] < 0)
-        {
-            OnDead();
-        }
-    }
+    
 
     // 적을 공격하는 함수
     // 무조건 맞는건데 투사체가 보였으면 좋겠음
