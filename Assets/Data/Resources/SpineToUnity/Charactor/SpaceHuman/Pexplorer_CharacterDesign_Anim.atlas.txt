@@ -5,57 +5,71 @@ format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Bag
-  rotate: true
-  xy: 220, 608
+  rotate: false
+  xy: 2, 411
   size: 195, 287
   orig: 197, 289
   offset: 1, 1
   index: -1
 Body
-  rotate: false
-  xy: 2, 638
+  rotate: true
+  xy: 199, 482
   size: 216, 181
   orig: 218, 183
   offset: 1, 1
   index: -1
-Head
+Hammer
   rotate: false
-  xy: 509, 534
+  xy: 269, 735
+  size: 149, 258
+  orig: 149, 259
+  offset: 0, 0
+  index: -1
+Head
+  rotate: true
+  xy: 2, 160
   size: 249, 208
   orig: 251, 211
   offset: 1, 2
   index: -1
 HoldGun
   rotate: false
-  xy: 579, 744
+  xy: 2, 2
   size: 321, 156
   orig: 323, 158
   offset: 1, 1
   index: -1
 LeftArm
-  rotate: true
-  xy: 2, 826
+  rotate: false
+  xy: 212, 306
   size: 74, 174
   orig: 76, 176
   offset: 1, 1
   index: -1
 LeftLeg
-  rotate: false
-  xy: 335, 811
+  rotate: true
+  xy: 288, 356
   size: 124, 89
   orig: 126, 91
   offset: 1, 1
   index: -1
+Minning
+  rotate: false
+  xy: 2, 700
+  size: 265, 293
+  orig: 266, 293
+  offset: 0, 0
+  index: -1
 RightArm
   rotate: true
-  xy: 178, 821
+  xy: 212, 225
   size: 79, 155
   orig: 81, 157
   offset: 1, 1
   index: -1
 RightLeg
-  rotate: false
-  xy: 461, 805
+  rotate: true
+  xy: 325, 107
   size: 116, 95
   orig: 118, 97
   offset: 1, 1

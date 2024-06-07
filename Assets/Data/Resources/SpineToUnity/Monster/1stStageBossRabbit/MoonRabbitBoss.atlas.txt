@@ -1,0 +1,104 @@
+
+MoonRabbitBoss.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+AttackFacce
+  rotate: false
+  xy: 337, 657
+  size: 210, 127
+  orig: 211, 127
+  offset: 0, 0
+  index: -1
+BackEar
+  rotate: true
+  xy: 337, 883
+  size: 135, 255
+  orig: 135, 688
+  offset: 0, 433
+  index: -1
+Body
+  rotate: false
+  xy: 2, 591
+  size: 204, 185
+  orig: 204, 185
+  offset: 0, 0
+  index: -1
+Dead
+  rotate: true
+  xy: 208, 591
+  size: 185, 113
+  orig: 185, 113
+  offset: 0, 0
+  index: -1
+Hammer
+  rotate: true
+  xy: 594, 901
+  size: 117, 250
+  orig: 119, 252
+  offset: 1, 1
+  index: -1
+Head
+  rotate: false
+  xy: 2, 778
+  size: 333, 240
+  orig: 333, 240
+  offset: 0, 0
+  index: -1
+LeftArm
+  rotate: false
+  xy: 846, 918
+  size: 172, 100
+  orig: 172, 100
+  offset: 0, 0
+  index: -1
+RightArm
+  rotate: false
+  xy: 846, 918
+  size: 172, 100
+  orig: 172, 100
+  offset: 0, 0
+  index: -1
+LeftLeg
+  rotate: true
+  xy: 846, 727
+  size: 189, 150
+  orig: 189, 150
+  offset: 0, 0
+  index: -1
+NormalFace
+  rotate: false
+  xy: 337, 786
+  size: 219, 95
+  orig: 222, 96
+  offset: 0, 1
+  index: -1
+RightLeg
+  rotate: true
+  xy: 844, 545
+  size: 180, 139
+  orig: 181, 139
+  offset: 0, 0
+  index: -1
+Tails
+  rotate: false
+  xy: 323, 571
+  size: 91, 84
+  orig: 93, 86
+  offset: 1, 1
+  index: -1
+Tijred
+  rotate: false
+  xy: 549, 568
+  size: 210, 103
+  orig: 210, 103
+  offset: 0, 0
+  index: -1
+frontEar
+  rotate: true
+  xy: 594, 673
+  size: 226, 248
+  orig: 226, 248
+  offset: 0, 0
+  index: -1
