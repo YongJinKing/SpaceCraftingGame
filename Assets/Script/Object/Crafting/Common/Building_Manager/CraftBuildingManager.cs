@@ -50,7 +50,8 @@ public class CraftBuildingManager : MonoBehaviour
         if (hit.collider != null)
         {
             ground = hit.collider.gameObject.GetComponent<Tilemap>();
-            Vector3Int cellPosition = ground.LocalToCell(hit.point);
+            // Vector3Int cellPosition = ground.LocalToCell(hit.point);
+            Vector3Int cellPosition = ground.WorldToCell(hit.point);
 
             Draw_nSizeRectangle(cellPosition, size);
             if (Input.GetMouseButtonDown(0))
