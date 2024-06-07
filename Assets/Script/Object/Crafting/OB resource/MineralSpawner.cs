@@ -6,14 +6,12 @@ public class MineralGasSpawner : MonoBehaviour
 {
     public GameObject mineralPrefab; // 미네랄 프리팹을 연결하기 위한 변수
     public GameObject gasPrefab; // 가스 프리팹을 연결하기 위한 변수
-    public GameObject plusResource; // 2x2 자원
     public Tilemap tilemap; // 타일맵을 연결하기 위한 변수
     public int mapWidth = 128; // 타일맵의 너비
     public int mapHeight = 128; // 타일맵의 높이
     public int totalResources = 32; // 생성할 총 자원의 수
     public LayerMask mineralLayer; // 미네랄 레이어를 설정하기 위한 변수
-    public LayerMask gasLayer; // 가스 레이어를 설정하기 위한 변수
-    public LayerMask plusResourceLayer;
+    public LayerMask gasLayer; // 가스 레이어를 설정하기 위한 변수;
 
     private CollectionResource collectionResource;
     private bool isplusResourceSpawned;
@@ -34,37 +32,13 @@ public class MineralGasSpawner : MonoBehaviour
     {
         collectionResource = GetComponent<CollectionResource>();
         SpawnResources();
-        SpawnPlusResource();
-    }
-
-    void SpawnPlusResource()
-    {
-        if (isplusResourceSpawned)
-        {
-            return; 
-        }
-        int boundaryOffset = 2;
-        for (int attempt = 0; attempt < 100; attempt++)
-        {
-            int x = Random.Range(tilemap.cellBounds.xMin + boundaryOffset, tilemap.cellBounds.xMax - boundaryOffset);
-            int y = Random.Range(tilemap.cellBounds.yMin + boundaryOffset, tilemap.cellBounds.yMax - boundaryOffset);
-            Vector3Int cellPosition = new Vector3Int(x, y, 0);
-            Vector3 worldPosition = tilemap.CellToWorld(cellPosition);
-
-            if (tilemap.GetTile(cellPosition) != null && !IsResourceAtPosition(worldPosition))
-            {
-                Instantiate(plusResource, worldPosition, Quaternion.identity);
-                isplusResourceSpawned = true;
-                break;
-            }
-        }
     }
 
     void SpawnResources()
     {
         int mineralsPlaced = 0;
         int gasPlaced = 0;
-        int totalMinerals = (int)(totalResources * 0.7f);
+        int totalMinerals = (int)(totalResources * 0.8f);
         int totalGas = totalResources - totalMinerals;
 
         float mineralDensity = (float)totalMinerals / (mapWidth * mapHeight);
@@ -76,38 +50,28 @@ public class MineralGasSpawner : MonoBehaviour
         {
             for (int x = tilemap.cellBounds.xMin + boundaryOffset; x < tilemap.cellBounds.xMax; x += 2)
             {
-                if (mineralsPlaced >= totalMinerals && gasPlaced >= totalGas)
-                {
-                    return;
-                }
+   
+               Vector3Int cellPosition = new Vector3Int(x, y, 0);
+               Vector3 worldPosition = tilemap.CellToWorld(cellPosition);
 
-                for (int offsetY = 0; offsetY < 2; offsetY++)
-                {
-                    for (int offsetX = 0; offsetX < 2; offsetX++)
-                    {
+               if (tilemap.GetTile(cellPosition) != null)
+               {
+                  if (mineralsPlaced < totalMinerals && !IsResourceAtPosition(worldPosition) && Random.value < mineralDensity)
+                  {
+                     Instantiate(mineralPrefab, worldPosition, Quaternion.identity);
+                      mineralsPlaced++;
+                  }
+                  else if (gasPlaced < totalGas && !IsResourceAtPosition(worldPosition) && Random.value < gasDensity)
+                  {
+                     Instantiate(gasPrefab, worldPosition, Quaternion.identity);
+                     gasPlaced++;
+                  }
+                  if(mineralsPlaced >= totalMinerals && gasPlaced >= totalGas)
+                  {
+                     return;
+                  }
+               }
 
-                        Vector3Int cellPosition = new Vector3Int(x, y, 0);
-                        Vector3 worldPosition = tilemap.CellToWorld(cellPosition);
-
-                        if (tilemap.GetTile(cellPosition) != null)
-                        {
-                            if (mineralsPlaced < totalMinerals && !IsResourceAtPosition(worldPosition) && Random.value < mineralDensity)
-                            {
-                                Instantiate(mineralPrefab, worldPosition, Quaternion.identity);
-                                mineralsPlaced++;
-                            }
-                            else if (gasPlaced < totalGas && !IsResourceAtPosition(worldPosition) && Random.value < gasDensity)
-                            {
-                                Instantiate(gasPrefab, worldPosition, Quaternion.identity);
-                                gasPlaced++;
-                            }
-                            if(mineralsPlaced >= totalMinerals && gasPlaced >= totalGas)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                }
             }
         }
     }
@@ -142,7 +106,6 @@ public class MineralGasSpawner : MonoBehaviour
     {
         Collider2D[] mineralColliders = Physics2D.OverlapCircleAll(position, 1.5f, mineralLayer);
         Collider2D[] gasColliders = Physics2D.OverlapCircleAll(position, 1.5f, gasLayer);
-        Collider2D[] plusResorce = Physics2D.OverlapCircleAll(position, 1.5f, plusResourceLayer);
         return mineralColliders.Length > 0 || gasColliders.Length > 0;
     }
 }
