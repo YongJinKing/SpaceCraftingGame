@@ -50,14 +50,15 @@ public class RabbitBossIdleState : MonsterState
     #region Coroutines
     protected IEnumerator SetTarget()
     {
-        GameObject target = null;
+        Player target = null;
 
-        while (target != null)
+        do
         {
-            //target = FindObjectOfType<Player>();
+            target = FindObjectOfType<Player>();
             yield return null;
-        }
-        owner.target = target;
+        } while (target == null);
+
+        owner.target = target.gameObject;
         owner.stateMachine.ChangeState<RabbitBossAlertState>();
     }
     #endregion

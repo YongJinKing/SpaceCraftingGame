@@ -35,7 +35,7 @@ public class RabbitBossAlertState : MonsterState
     public override void Enter()
     {
         base.Enter();
-        StartCoroutine(ProcessingState());
+        //StartCoroutine(ProcessingState()); // 이동이 끝난 뒤에 State변경을 해야함..
         StartCoroutine(FollowingTarget());
     }
     public override void Exit()
@@ -55,32 +55,21 @@ public class RabbitBossAlertState : MonsterState
         //Wait until Select Action
         yield return StartCoroutine(SelectingAction());
 
-        while (!owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
-        {
-            Vector2 dir = owner.target.transform.position - transform.position;
-
-            //targeting owner`s opponent
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dir.magnitude, owner.targetMask);
-            if (hit.collider != null)
-            {
-                owner.target = hit.collider.gameObject;
-                Debug.Log(owner.target.transform.position);
-            }
-            yield return new WaitForSeconds(1.1f);
-        }
-
         owner.stateMachine.ChangeState<MonsterAttackState>();
         yield return null;
     }
 
     protected IEnumerator FollowingTarget()
     {
-        //현재는 감지하면 무조건 쫒아가기만 하는 알고리즘
-        while (true)
+        //현재는 감지하면 무조건 쫒아가기만 하는 알고리즘 >> 타겟을 중심으로 원을 그리며 경계하는 알고리즘으로 변경 예정, 아래는 일단 변경한 함수
+        /*while (true)
         {
-            owner.dirMove?.Activate(owner.target.transform.position - transform.position);
+            owner.bossDirMove?.Activate(owner.target.transform.position - transform.position);
             yield return null;
-        }
+        }*/
+        owner.bossDirMove?.Activate(owner.target.transform.position - transform.position);
+        yield return StartCoroutine(ProcessingState());
+
     }
     protected IEnumerator SelectingAction()
     {
