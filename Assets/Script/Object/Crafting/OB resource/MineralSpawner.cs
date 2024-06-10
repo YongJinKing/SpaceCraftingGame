@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using JetBrains.Annotations;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -11,7 +9,7 @@ public class MineralGasSpawner : MonoBehaviour
     public GameObject mineralPrefab; // 미네랄 프리팹을 연결하기 위한 변수
     public GameObject gasPrefab; // 가스 프리팹을 연결하기 위한 변수
     public GameObject plusResource; // 2x2 자원
-    public Tilemap tilemap; // 타일맵을 연결하기 위한 변수
+    public TileManager tileManager; // 타일 매니저를 연결하기 위한 변수
     public int totalResources = 64; // 생성할 총 자원의 수
     public LayerMask mineralLayer; // 미네랄 레이어를 설정하기 위한 변수
     public LayerMask gasLayer; // 가스 레이어를 설정하기 위한 변수
@@ -53,12 +51,12 @@ public class MineralGasSpawner : MonoBehaviour
         int boundaryOffset = 2;
         for (int attempt = 0; attempt < 100; attempt++)
         {
-            int x = Random.Range(tilemap.cellBounds.xMin + boundaryOffset, tilemap.cellBounds.xMax - boundaryOffset);
-            int y = Random.Range(tilemap.cellBounds.yMin + boundaryOffset, tilemap.cellBounds.yMax - boundaryOffset);
+            int x = Random.Range(TileManager.Instance.tileMap.cellBounds.xMin + boundaryOffset, TileManager.Instance.tileMap.cellBounds.xMax - boundaryOffset);
+            int y = Random.Range(TileManager.Instance.tileMap.cellBounds.yMin + boundaryOffset, TileManager.Instance.tileMap.cellBounds.yMax - boundaryOffset);
             Vector3Int cellPosition = new Vector3Int(x, y, 0);
-            Vector3 worldPosition = tilemap.CellToWorld(cellPosition);
+            Vector3 worldPosition = TileManager.Instance.tileMap.CellToWorld(cellPosition);
 
-            if (tilemap.GetTile(cellPosition) != null && !IsResourceAtPosition(worldPosition))
+            if (TileManager.Instance.tileMap.GetTile(cellPosition) != null && !IsResourceAtPosition(worldPosition))
             {
                 Instantiate(plusResource, worldPosition, Quaternion.identity);
                 isPlusResourceSpawned = true;
@@ -75,16 +73,16 @@ public class MineralGasSpawner : MonoBehaviour
         int totalMinerals = (int)(totalResources * 0.8f);
         int totalGas = totalResources - totalMinerals;
 
-        float totalCells = (tilemap.cellBounds.size.x - 98) * (tilemap.cellBounds.size.y - 80); // 경계 오프셋 고려
+        float totalCells = (TileManager.Instance.tileMap.cellBounds.size.x - 98) * (TileManager.Instance.tileMap.cellBounds.size.y - 80); // 경계 오프셋 고려
         float mineralDensity = totalMinerals / totalCells;
         float gasDensity = totalGas / totalCells;
 
         int boundaryOffset = 2; // 경계선에 자원이 생성되는 것을 방지
 
         //각 축 별로 4칸 검사 후 자원 생성 
-        for (int y = tilemap.cellBounds.yMin + boundaryOffset; y < tilemap.cellBounds.yMax - boundaryOffset; y+=4)
+        for (int y = TileManager.Instance.tileMap.cellBounds.yMin + boundaryOffset; y < TileManager.Instance.tileMap.cellBounds.yMax - boundaryOffset; y+=4)
         {
-            for (int x = tilemap.cellBounds.xMin + boundaryOffset; x < tilemap.cellBounds.xMax - boundaryOffset; x+=4)
+            for (int x = TileManager.Instance.tileMap.cellBounds.xMin + boundaryOffset; x < TileManager.Instance.tileMap.cellBounds.xMax - boundaryOffset; x+=4)
             {
                 if (mineralsPlaced >= totalMinerals && gasPlaced >= totalGas)
                 {
@@ -92,21 +90,27 @@ public class MineralGasSpawner : MonoBehaviour
                 }
 
                 Vector3Int cellPosition = new Vector3Int(x, y, 0);
-                Vector3 worldPosition = tilemap.CellToWorld(cellPosition);
-
-                if (tilemap.GetTile(cellPosition) != null && !IsResourceAtPosition(worldPosition))
+                Vector3 worldPosition = TileManager.Instance.tileMap.CellToWorld(cellPosition);
+                Vector3 place = new Vector3(worldPosition.x + (TileManager.Instance.tileMap.cellSize.x * 0.5f), worldPosition.y + (TileManager.Instance.tileMap.cellSize.y * 0.5f), 0);
+                Vector3Int gridPosition = new Vector3Int((int)worldPosition.x, (int)worldPosition.y, 0);
+                
+                if (TileManager.Instance.tileMap.GetTile(cellPosition) != null && !IsResourceAtPosition(place))
                 {
+                    if (TileManager.Instance.HasTile(gridPosition))
+                    {
+                        TileManager.Instance.RemopvePlace(gridPosition);
+                    }
                     if (mineralsPlaced < totalMinerals && Random.value < mineralDensity)
                     {
-                        Instantiate(mineralPrefab, worldPosition, Quaternion.identity);
+                        Instantiate(mineralPrefab, place, Quaternion.identity);
                         mineralsPlaced++;
-                        AddResourceData(0, worldPosition, "[100000]", "[10]", 1, 5);
+                        AddResourceData(0, place, "[100000]", "[10]", 1, 5);
                     }
                     else if (gasPlaced < totalGas && Random.value < gasDensity)
                     {
-                        Instantiate(gasPrefab, worldPosition, Quaternion.identity);
+                        Instantiate(gasPrefab, place, Quaternion.identity);
                         gasPlaced++;
-                        AddResourceData(1, worldPosition, "[100001]", "[3]", 1, 1);
+                        AddResourceData(1, place, "[100001]", "[3]", 1, 1);
                     }
                 }
             }
