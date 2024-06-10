@@ -29,10 +29,10 @@ public class TileManager : Singleton<TileManager>
     CraftFactory factory;
     void Awake()
     {
-        //craftmanager = FindObjectOfType<CraftBuildingManager>();
+        craftmanager = FindObjectOfType<CraftBuildingManager>();
         factory = new CraftFactory();
-        /*craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
-        craftmanager.WritePlaceInfoEvent.AddListener(RemopvePlace);*/
+        craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
+        craftmanager.WritePlaceInfoEvent.AddListener(RemopvePlace);
         tileMap = transform.GetComponent<Tilemap>();
         //availablePlaces = new List<Vector3>();
         availablePlaces = new Dictionary<Vector3Int, Tile>();
