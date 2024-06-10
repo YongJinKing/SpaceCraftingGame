@@ -26,8 +26,8 @@ TagManager:
   - Gas
   - Enemy
   - Ground
-  - 
-  - 
+  - Player
+  - Player_Avoid
   - 
   - 
   - 
