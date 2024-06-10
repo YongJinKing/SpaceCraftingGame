@@ -10,10 +10,12 @@ public class MineralGasSpawner : MonoBehaviour
     public GameObject gasPrefab; // 가스 프리팹을 연결하기 위한 변수
     public GameObject plusResource; // 2x2 자원
     public TileManager tileManager; // 타일 매니저를 연결하기 위한 변수
-    public int totalResources = 64; // 생성할 총 자원의 수
     public LayerMask mineralLayer; // 미네랄 레이어를 설정하기 위한 변수
     public LayerMask gasLayer; // 가스 레이어를 설정하기 위한 변수
     public LayerMask plusResourceLayer;
+
+    private const int totalResources = 248;
+    private const float mineralRatio = 0.8f;
 
     private CollectionResource collectionResource;
     private bool isPlusResourceSpawned;
@@ -68,16 +70,17 @@ public class MineralGasSpawner : MonoBehaviour
 
     void SpawnResources()
     {
-        int mineralsPlaced = 0;
-        int gasPlaced = 0;
-        int totalMinerals = (int)(totalResources * 0.8f);
+        int totalMinerals = Mathf.RoundToInt(totalResources * mineralRatio);
         int totalGas = totalResources - totalMinerals;
 
-        float totalCells = (TileManager.Instance.tileMap.cellBounds.size.x - 98) * (TileManager.Instance.tileMap.cellBounds.size.y - 80); // 경계 오프셋 고려
+        int mineralsPlaced = 0;
+        int gasPlaced = 0;
+
+        float totalCells = (TileManager.Instance.tileMap.cellBounds.size.x - 64) * (TileManager.Instance.tileMap.cellBounds.size.y - 84); // 경계 오프셋 고려
         float mineralDensity = totalMinerals / totalCells;
         float gasDensity = totalGas / totalCells;
 
-        int boundaryOffset = 2; // 경계선에 자원이 생성되는 것을 방지
+        int boundaryOffset = 1; // 경계선에 자원이 생성되는 것을 방지
 
         //각 축 별로 4칸 검사 후 자원 생성 
         for (int y = TileManager.Instance.tileMap.cellBounds.yMin + boundaryOffset; y < TileManager.Instance.tileMap.cellBounds.yMax - boundaryOffset; y+=4)
