@@ -96,6 +96,7 @@ public class MonsterDetectState : MonsterState
             action = owner.ai.SelectAction(owner.attackActions);
             yield return null;
         }
+
         owner.activatedAction = action;
     }
     #endregion

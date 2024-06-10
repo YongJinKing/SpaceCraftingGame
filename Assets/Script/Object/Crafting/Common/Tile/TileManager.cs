@@ -160,7 +160,7 @@ public class TileManager : Singleton<TileManager>
 
     public Vector3 GetWorldPosCenterOfCell(Vector2Int pos)
     {
-        Vector3 centerPos = new Vector3(pos.x + tileMap.cellSize.x, pos.y + tileMap.cellSize.y, 0);
+        Vector3 centerPos = new Vector3(pos.x + tileMap.cellSize.x / 2.0f, pos.y + tileMap.cellSize.y / 2.0f, 0);
 
         return centerPos;
     }

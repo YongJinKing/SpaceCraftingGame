@@ -3341,7 +3341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7801757fd82e344c94b70b210b015fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _priority: 0
+  _priority: 1
   _coolTime: -1
   _activeRadius: 1.2
   OnActionEndEvent:
@@ -4102,7 +4102,7 @@ GameObject:
   - component: {fileID: 2006832377}
   - component: {fileID: 2006832378}
   - component: {fileID: 2006832374}
-  m_Layer: 19
+  m_Layer: 18
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4228,7 +4228,7 @@ MonoBehaviour:
   moveSpeed: 1
   ATK: 0
   ATKSpeed: 0
-  detectRadius: 0
+  detectRadius: 10
   targetMask:
     serializedVersion: 2
     m_Bits: 2162688

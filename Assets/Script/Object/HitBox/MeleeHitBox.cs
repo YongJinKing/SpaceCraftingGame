@@ -89,8 +89,10 @@ public class MeleeHitBox : HitBox
                     }
                     HitEffectPlay(hit.point);
 
+                    Debug.Log(targetMask & (1 << tempcol[i].gameObject.layer));
+
                     calculatedObject.Add(temp);
-                    onHitEvents[targetMask | (1 << tempcol[i].gameObject.layer)]?.Invoke(tempcol[i], hit.point);
+                    onHitEvents[targetMask & (1 << tempcol[i].gameObject.layer)]?.Invoke(tempcol[i], hit.point);
                 }
             }
 
