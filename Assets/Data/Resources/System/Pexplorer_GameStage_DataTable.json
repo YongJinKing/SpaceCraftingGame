@@ -1,0 +1,9 @@
+[
+  {
+    "GameStage_Index": 1000,
+    "GameStage_Type": 0,
+    "GameStage_SponResources": [50000, 50001],
+    "GameStage_SponResourcesPercent": [0.7, 0.3],
+    "GameStage_SponResourcesRange": 4
+  }
+]
