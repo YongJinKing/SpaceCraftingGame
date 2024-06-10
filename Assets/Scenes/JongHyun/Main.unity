@@ -4100,7 +4100,7 @@ GameObject:
   - component: {fileID: 2006832373}
   - component: {fileID: 2006832376}
   - component: {fileID: 2006832377}
-  - component: {fileID: 2006832375}
+  - component: {fileID: 2006832378}
   - component: {fileID: 2006832374}
   m_Layer: 19
   m_Name: Monster
@@ -4146,36 +4146,6 @@ MonoBehaviour:
   pathEndEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2006832375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006832372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aa406a686cb0cc4e889d5391ab100f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHP: 5
-  Priority: 0
-  deadEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  moveSpeed: 1
-  ATK: 0
-  ATKSpeed: 0
-  detectRadius: 10
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 2162688
-  dirMove: {fileID: 740402379}
-  pointMove: {fileID: 2088204755}
-  attackActions:
-  - {fileID: 876089727}
-  ai: {fileID: 924476287}
-  bossDirMove: {fileID: 0}
 --- !u!50 &2006832376
 Rigidbody2D:
   serializedVersion: 4
@@ -4238,6 +4208,36 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2006832378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006832372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f2f83ec5edccb4693915010fc0416e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 5
+  Priority: 0
+  deadEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  moveSpeed: 1
+  ATK: 0
+  ATKSpeed: 0
+  detectRadius: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 2162688
+  dirMove: {fileID: 740402379}
+  pointMove: {fileID: 2088204755}
+  attackActions:
+  - {fileID: 876089727}
+  ai: {fileID: 924476287}
+  bossDirMove: {fileID: 0}
 --- !u!1 &2088204753
 GameObject:
   m_ObjectHideFlags: 0

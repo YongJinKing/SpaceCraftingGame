@@ -325,6 +325,7 @@ public class AI : MonoBehaviour
     {
         int bestTarget = 0;
         float max = 0;
+        bool isSelected = false;
 
         IGetPriority getValue;
         float computedVal;
@@ -332,6 +333,9 @@ public class AI : MonoBehaviour
         for (int i = 0; i < actions.Length; ++i)
         {
             //Compute Best Target
+            if (!actions[i].available)
+                continue;
+
             getValue = actions[i].GetComponent<IGetPriority>();
             if (getValue == null)
                 continue;
@@ -342,12 +346,21 @@ public class AI : MonoBehaviour
 
             if (max < computedVal)
             {
+                isSelected = true;
                 max = computedVal;
                 bestTarget = i;
             }
         }
 
-        return actions[bestTarget];
+        if (isSelected)
+        {
+            return actions[bestTarget];
+        }
+        else
+        {
+            return null;
+        }
+        
     }
     #endregion
     #endregion

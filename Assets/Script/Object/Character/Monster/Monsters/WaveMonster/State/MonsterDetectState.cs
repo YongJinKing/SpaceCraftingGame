@@ -94,8 +94,6 @@ public class MonsterDetectState : MonsterState
         while (action == null)
         {
             action = owner.ai.SelectAction(owner.attackActions);
-            if (!action.available)
-                action = null;
             yield return null;
         }
         owner.activatedAction = action;
