@@ -36,7 +36,6 @@ public class AI : MonoBehaviour
     protected Monster owner;
     #endregion
     #region Public
-    public TileManager tileManager;
     #endregion
     #region Events
     #endregion
@@ -60,9 +59,9 @@ public class AI : MonoBehaviour
             return;
         }
 
-        if (tileManager.HasTile(key))
+        if (TileManager.Instance.HasTile(key))
         {
-            if (tileManager.availablePlaces[key].available)
+            if (TileManager.Instance.availablePlaces[key].available)
             {
                 float gscore = 1 + parent.GScore;
                 float hscore = Mathf.Abs(targetCoor.x - key.x) + Mathf.Abs(targetCoor.y - key.y);
@@ -135,8 +134,8 @@ public class AI : MonoBehaviour
 
     public bool PathFinding(Vector2 startPos, Vector2 targetPos ,out Vector2[] path)
     {
-        Vector3Int targetCoor = tileManager.GetTileCoordinates(targetPos);
-        Vector3Int startCoor = tileManager.GetTileCoordinates(startPos);
+        Vector3Int targetCoor = TileManager.Instance.GetTileCoordinates(targetPos);
+        Vector3Int startCoor = TileManager.Instance.GetTileCoordinates(startPos);
 
         if(targetCoor.z < 0 || startCoor.z < 0)
         {
@@ -263,7 +262,7 @@ public class AI : MonoBehaviour
             for(int i = 0; i < 20 && temp != startCoor; ++i)
             {
                 temp = CList[temp].ParentNode;
-                reversePath.Add(new Vector2((float)temp.x + 0.5f, (float)temp.y + 0.5f));
+                reversePath.Add(TileManager.Instance.GetWorldPosCenterOfCell((Vector2Int)temp));
             }
 
             if (reversePath.Count > 1)
@@ -280,7 +279,7 @@ public class AI : MonoBehaviour
             else
             {
                 path = new Vector2[1];
-                path[0] = new Vector2(targetCoor.x + 0.5f, targetCoor.y + 0.5f);
+                path[0] = TileManager.Instance.GetWorldPosCenterOfCell((Vector2Int)temp);
             }
             /*
             //for debug

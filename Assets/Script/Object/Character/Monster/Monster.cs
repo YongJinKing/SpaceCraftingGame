@@ -49,8 +49,6 @@ public class Monster : Unit
         base.Initialize();
         this[EStat.DetectRadius] = detectRadius;
         spawnPoint = transform.position;
-
-        stateMachine.ChangeState<MonsterInitState>();
     }
     #endregion
     #region Public
