@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_Rabbit : Boss
+public class Boss : Monster
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-    
+
     #endregion
     #region Public
-    
+    public BossDirMoveAction bossDirMove;
     #endregion
     #region Events
     #endregion
     #endregion
 
     #region Constructor
-    public Boss_Rabbit() : base()
+    public Boss() : base()
     {
         
     }
@@ -37,7 +37,8 @@ public class Boss_Rabbit : Boss
     protected override void Initialize()
     {
         base.Initialize();
-        
+        spawnPoint = transform.position;
+        stateMachine.ChangeState<BossInitState>(); // 
     }
     #endregion
     #region Public
@@ -57,6 +58,5 @@ public class Boss_Rabbit : Boss
 
     #region MonoBehaviour
     #endregion
-
 
 }

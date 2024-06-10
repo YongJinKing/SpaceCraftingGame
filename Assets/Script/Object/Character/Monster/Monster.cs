@@ -17,7 +17,6 @@ public class Monster : Unit
     public PointMoveAction pointMove;
     public AttackAction[] attackActions;
     public AI ai;
-    public BossDirMoveAction bossDirMove; // <<<<<<<<<<<<<<<<<<< 임시, 추후에 삭제 예정 <<<<<<<<<<<<<<<<<<<<<<
     public Vector2 spawnPoint
     {
         get { return _spawnPoint; }

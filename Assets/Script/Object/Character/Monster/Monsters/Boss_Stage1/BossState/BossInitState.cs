@@ -2,49 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_Rabbit : Boss
+public class BossInitState : BossState
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-    
     #endregion
     #region Public
-    
     #endregion
     #region Events
     #endregion
     #endregion
 
     #region Constructor
-    public Boss_Rabbit() : base()
-    {
-        
-    }
     #endregion
 
     #region Methods
     #region Private
     #endregion
     #region Protected
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    protected override void Initialize()
-    {
-        base.Initialize();
-        
-    }
     #endregion
     #region Public
-    // Update is called once per frame
-    void Update()
+    public override void Enter()
     {
+        base.Enter();
+        StartCoroutine(Init());
+    }
 
+    public override void Exit()
+    {
+        base.Exit();
     }
     #endregion
     #endregion
@@ -53,10 +41,13 @@ public class Boss_Rabbit : Boss
     #endregion
 
     #region Coroutines
+    private IEnumerator Init()
+    {
+        yield return null;
+        owner.stateMachine.ChangeState<BossIdleState>();
+    }
     #endregion
 
     #region MonoBehaviour
     #endregion
-
-
 }

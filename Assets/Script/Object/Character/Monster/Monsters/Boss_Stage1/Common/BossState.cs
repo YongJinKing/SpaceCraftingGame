@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RabbitBossInitState : MonsterState
+public abstract class BossState : State
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
+    protected Boss owner;
     #endregion
     #region Public
     #endregion
@@ -24,16 +25,6 @@ public class RabbitBossInitState : MonsterState
     #region Protected
     #endregion
     #region Public
-    public override void Enter()
-    {
-        base.Enter();
-        StartCoroutine(Init());
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-    }
     #endregion
     #endregion
 
@@ -41,13 +32,12 @@ public class RabbitBossInitState : MonsterState
     #endregion
 
     #region Coroutines
-    private IEnumerator Init()
-    {
-        yield return null;
-        owner.stateMachine.ChangeState<RabbitBossIdleState>();
-    }
     #endregion
 
     #region MonoBehaviour
+    protected virtual void Awake()
+    {
+        owner = GetComponent<Boss>();
+    }
     #endregion
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RabbitBossAlertState : MonsterState
+public class BossAlertState : BossState
 {
     #region Properties
     #region Private
@@ -67,7 +67,7 @@ public class RabbitBossAlertState : MonsterState
             owner.bossDirMove?.Activate(owner.target.transform.position - transform.position);
             yield return null;
         }*/
-        owner.bossDirMove?.Activate(owner.target.transform.position - transform.position);
+        //owner.bossDirMove?.Activate(owner.target.transform.position - transform.position);
         yield return StartCoroutine(ProcessingState());
 
     }

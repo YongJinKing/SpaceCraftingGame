@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RabbitBossIdleState : MonsterState
+public class BossIdleState : BossState
 {
     #region Properties
     #region Private
@@ -59,7 +59,7 @@ public class RabbitBossIdleState : MonsterState
         } while (target == null);
 
         owner.target = target.gameObject;
-        owner.stateMachine.ChangeState<RabbitBossAlertState>();
+        owner.stateMachine.ChangeState<BossAlertState>();
     }
     #endregion
 
