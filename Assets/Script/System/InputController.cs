@@ -26,7 +26,7 @@ public class InputController : MonoBehaviour
     #region Private
     private Vector2 GetMousePoint()
     {
-        Debug.Log($"{Camera.main.ScreenToWorldPoint(Input.mousePosition)}");
+        //Debug.Log($"{Camera.main.ScreenToWorldPoint(Input.mousePosition)}");
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
     #endregion

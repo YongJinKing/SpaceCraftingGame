@@ -32,6 +32,8 @@ public class DamageAffect : BaseAffect
     #region Public
     public override void OnActivate(Collider2D target, Vector2 hitWorldPos)
     {
+        Debug.Log("DamageAffect Activated");
+
         IDamage damage = target.GetComponent<IDamage>();
 
         if (damage != null)

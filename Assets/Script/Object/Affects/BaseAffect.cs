@@ -36,8 +36,6 @@ public abstract class BaseAffect : MonoBehaviour
         {
             myStat = GetComponentInParent<Stat>();
         }
-
-        StartCoroutine(DelaiedInit());
     }
     #endregion
     #region Public
@@ -49,47 +47,12 @@ public abstract class BaseAffect : MonoBehaviour
     #endregion
 
     #region Coroutines
-    protected virtual IEnumerator DelaiedInit()
-    {
-        yield return new WaitForEndOfFrame();
-        HitBox hitbox = GetComponentInParent<HitBox>();
-        if (hitbox != null) 
-        {
-            if (targetMask != 0)
-            {
-                for (int i = 0; i < 32; ++i)
-                {
-                    if ((targetMask & (1 << i)) != 0)
-                    {
-                        hitbox.RegisterToHitEvent((1 << i), OnActivate);
-                    }
-                }
-            }
-        }
-    }
     #endregion
 
     #region MonoBehaviour
     protected virtual void Start()
     {
         Initialize();
-    }
-    protected virtual void OnDestroy()
-    {
-        HitBox hitbox = GetComponentInParent<HitBox>();
-        if (hitbox != null)
-        {
-            if (targetMask != 0)
-            {
-                for (int i = 0; i < 32; ++i)
-                {
-                    if ((targetMask & (1 << i)) != 0)
-                    {
-                        hitbox.DisregisterToHitEvent((1 << i), OnActivate);
-                    }
-                }
-            }
-        }
     }
     #endregion
 }

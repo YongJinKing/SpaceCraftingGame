@@ -3412,6 +3412,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeHitBox
       objectReference: {fileID: 0}
+    - target: {fileID: 4390499503078326914, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507411145549505196, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
+      propertyPath: _targetMask.m_Bits
+      value: 2097152
+      objectReference: {fileID: 0}
     - target: {fileID: 7295757008676812936, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4023,7 +4031,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   moveSpeed: 5
-  ATK: 0
+  ATK: 1
   ATKSpeed: 0
   moveAction: {fileID: 1854854244}
   attackAction: {fileID: 1759674492}
@@ -4220,13 +4228,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f2f83ec5edccb4693915010fc0416e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 5
+  MaxHP: 10
   Priority: 0
   deadEvent:
     m_PersistentCalls:
       m_Calls: []
   moveSpeed: 1
-  ATK: 0
+  ATK: 1
   ATKSpeed: 0
   detectRadius: 10
   targetMask:
@@ -4237,7 +4245,6 @@ MonoBehaviour:
   attackActions:
   - {fileID: 876089727}
   ai: {fileID: 924476287}
-  bossDirMove: {fileID: 0}
 --- !u!1 &2088204753
 GameObject:
   m_ObjectHideFlags: 0

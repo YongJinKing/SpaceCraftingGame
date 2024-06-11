@@ -62,6 +62,9 @@ public abstract class HitBox : MonoBehaviour
     protected virtual void Initialize()
     {
         if(hitBoxSize.y < 0) isCircle = true;
+
+        BaseAffect[] affects = GetComponentsInChildren<BaseAffect>();
+
         if(targetMask != 0)
         {
             for(int i = 0; i < 32; ++i)
@@ -69,6 +72,16 @@ public abstract class HitBox : MonoBehaviour
                 if((targetMask & (1 << i)) != 0)
                 {
                     onHitEvents.Add(1 << i, new UnityEvent<Collider2D, Vector2>());
+
+                    //Register Affects
+                    for(int j = 0; j < affects.Length; ++j)
+                    {
+                        if ((affects[j].targetMask & (1 << i)) != 0)
+                        {
+                            onHitEvents[1 << i].AddListener(affects[j].OnActivate);
+                        }
+                    }
+
                     Debug.Log($"{LayerMask.LayerToName(i)}");
                 }
             }
@@ -109,26 +122,6 @@ public abstract class HitBox : MonoBehaviour
         StopAllCoroutines();
         gameObject.SetActive(false);
         Refresh();
-    }
-    public bool RegisterToHitEvent(LayerMask mask, UnityAction<Collider2D, Vector2> action)
-    {
-        if(!onHitEvents.ContainsKey(mask))
-        {
-            return false;
-        }
-        onHitEvents[mask].AddListener(action);
-
-        return true;
-    }
-    public bool DisregisterToHitEvent(LayerMask mask, UnityAction<Collider2D, Vector2> action)
-    {
-        if (!onHitEvents.ContainsKey(mask))
-        {
-            return false;
-        }
-
-        onHitEvents[mask].RemoveListener(action);
-        return true;
     }
     #endregion
     #endregion

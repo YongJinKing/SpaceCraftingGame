@@ -56,6 +56,8 @@ public abstract class Unit : Stat
     public override void TakeDamage(float damage)
     {
         this[EStat.HP] -= damage;
+        Debug.Log($"Unit.TakeDamage, now HP is {this[EStat.HP]}");
+
         if (this[EStat.HP] < 0)
         {
             OnDead();

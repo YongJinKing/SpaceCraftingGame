@@ -80,7 +80,7 @@ public class MeleeHitBox : HitBox
                 if(!calculatedObject.Contains(temp))
                 {
                     //Debug
-                    Debug.Log(tempcol[i].gameObject.name);
+                    //Debug.Log(tempcol[i].gameObject.name);
 
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, tempcol[i].bounds.center, 10.0f, targetMask);
                     if(hit == default(RaycastHit2D))
@@ -89,7 +89,7 @@ public class MeleeHitBox : HitBox
                     }
                     HitEffectPlay(hit.point);
 
-                    Debug.Log(targetMask & (1 << tempcol[i].gameObject.layer));
+                    //Debug.Log(targetMask & (1 << tempcol[i].gameObject.layer));
 
                     calculatedObject.Add(temp);
                     onHitEvents[targetMask & (1 << tempcol[i].gameObject.layer)]?.Invoke(tempcol[i], hit.point);
