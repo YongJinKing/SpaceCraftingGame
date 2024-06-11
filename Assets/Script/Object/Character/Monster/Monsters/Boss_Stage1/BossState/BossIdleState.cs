@@ -35,6 +35,7 @@ public class BossIdleState : BossState
     public override void Enter()
     {
         base.Enter();
+        StartCoroutine(SetTarget());
     }
     public override void Exit()
     {
@@ -52,14 +53,15 @@ public class BossIdleState : BossState
     {
         Player target = null;
 
-        do
+        while (target == null)
         {
             target = FindObjectOfType<Player>();
+            Debug.Log("Player searching..");
             yield return null;
-        } while (target == null);
+        } 
 
-        owner.target = target.gameObject;
-        owner.stateMachine.ChangeState<BossAlertState>();
+        owner.target = target.gameObject; // 타겟을 플레이어로 정하고
+        owner.stateMachine.ChangeState<BossAlertState>(); // 경계 상태로 보낸다.
     }
     #endregion
 

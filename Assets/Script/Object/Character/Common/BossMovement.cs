@@ -46,7 +46,8 @@ public class BossMovement : MonoBehaviour
             StopCoroutine(MoveC);
         }
         
-        MoveC = StartCoroutine(MovingToPos(pos));
+        if(pos.magnitude > 0f)MoveC = StartCoroutine(MovingToPos(pos));
+        else MoveC = StartCoroutine(MovingCirclularPos(pos));
     }
 
 
@@ -65,6 +66,7 @@ public class BossMovement : MonoBehaviour
     #region Coroutines
     protected IEnumerator MovingToPos(Vector2 pos)
     {
+        Debug.Log("¹«ºù Åõ Æ÷½º");
         Vector2 dir = pos - (Vector2)transform.position;
         float dist = dir.magnitude - limitDist;
         if (dist < 0f) dist = limitDist;
@@ -85,11 +87,12 @@ public class BossMovement : MonoBehaviour
         }
 
         moveEndEvent?.Invoke();
-        yield return StartCoroutine(MovingCirclularPos(pos));
+        yield return null;
     }
 
     protected IEnumerator MovingCirclularPos(Vector2 pos)
     {
+        Debug.Log("¹«ºù ¼­Å§·¯ Æ÷½º");
         float moveTime = Random.Range(2f, 5f);
         float angle = 0.0f; // °¢µµ
         while (moveTime > 0f)
