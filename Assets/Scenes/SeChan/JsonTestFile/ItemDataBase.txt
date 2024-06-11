@@ -1,0 +1,6 @@
+Character	Pig	Pig	1	FALSE
+Character	Creeper	Creeper	1	FALSE
+Character	Bee	Bee	1	FALSE
+Balloon	RedBalloon	RedBalloon	1	FALSE
+Balloon	GreenBallon	GreenBallon	1	FALSE
+Balloon	BlueBalloon	BlueBalloon	1	FALSE
