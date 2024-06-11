@@ -110,6 +110,26 @@ public abstract class HitBox : MonoBehaviour
         gameObject.SetActive(false);
         Refresh();
     }
+    public bool RegisterToHitEvent(LayerMask mask, UnityAction<Collider2D, Vector2> action)
+    {
+        if(!onHitEvents.ContainsKey(mask))
+        {
+            return false;
+        }
+        onHitEvents[mask].AddListener(action);
+
+        return true;
+    }
+    public bool DisregisterToHitEvent(LayerMask mask, UnityAction<Collider2D, Vector2> action)
+    {
+        if (!onHitEvents.ContainsKey(mask))
+        {
+            return false;
+        }
+
+        onHitEvents[mask].RemoveListener(action);
+        return true;
+    }
     #endregion
     #endregion
 

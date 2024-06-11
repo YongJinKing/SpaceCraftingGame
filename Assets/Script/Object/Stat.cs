@@ -54,7 +54,17 @@ public abstract class Stat : MonoBehaviour, IDamage, IGetPriority
     #region Private
     private float GetModifiedStat(EStat type)
     {
-        return _Stats[type];
+        ValueChanger vc = new ValueChanger(_Stats[type]);
+        IGetStatValueModifiers[] modifiers = GetComponentsInChildren<IGetStatValueModifiers>();
+
+        foreach (IGetStatValueModifiers modi in modifiers)
+        {
+            List<ValueModifier> vm = modi.GetStatValueModifiers(type);
+            if (vm != null)
+                vc.AddModifiers(vm);
+        }
+
+        return vc.GetModifiedValue();
     }
     #endregion
     #region Protected

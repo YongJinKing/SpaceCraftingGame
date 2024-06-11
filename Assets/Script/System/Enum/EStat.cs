@@ -27,6 +27,8 @@ public enum EStat
 
     #region Structure
     DEF,
-    BuildingSpeed
+    BuildingSpeed,
     #endregion
+
+    Count   //for iteration
 }
