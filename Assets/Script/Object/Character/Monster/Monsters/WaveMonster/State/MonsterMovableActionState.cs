@@ -69,7 +69,7 @@ public class MonsterMovableActionState : MonsterState
     protected IEnumerator FollowingTarget()
     {
         //현재는 감지하면 무조건 쫒아가기만 하는 알고리즘
-        while (true)
+        while (owner.target != null)
         {
             owner.dirMove?.Activate(owner.target.transform.position - transform.position);
             yield return null;
