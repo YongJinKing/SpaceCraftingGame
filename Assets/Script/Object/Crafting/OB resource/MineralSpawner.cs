@@ -14,90 +14,62 @@ public class MineralGasSpawner : MonoBehaviour
     public LayerMask gasLayer; // 가스 레이어를 설정하기 위한 변수
     public LayerMask plusResourceLayer;
 
-    private const int totalResources = 248;
+    private const int totalResources = 224;
     private const float mineralRatio = 0.8f;
+    private const float plusMineralRatio = 0.01f;
 
-    private CollectionResource collectionResource;
-    private bool isPlusResourceSpawned;
-    private int resourceIndex = 500000; // 시작 인덱스
+ 
+    public int resourceIndex = 500000; // 시작 인덱스 
 
-    private List<Resource_JsonData> resourceDataList = new List<Resource_JsonData>();
+    public List<Resource_JsonData> resourceDataList = new List<Resource_JsonData>();
 
-    //아래 주석 처리 된 부분은 자원 채취 관련 델리게이트... 수정 필요함
-   /* private void OnEnable()
-    {
-        CollectionResource.OnMineralHarvested += (pos) => SpawnResourceNearPosition(pos, mineralPrefab, mineralLayer);
-        CollectionResource.OnGasHarvested += (pos) => SpawnResourceNearPosition(pos, gasPrefab, gasLayer);
-    }
-
-    private void OnDisable()
-    {
-        CollectionResource.OnMineralHarvested -= (pos) => SpawnResourceNearPosition(pos, mineralPrefab, mineralLayer);
-        CollectionResource.OnGasHarvested -= (pos) => SpawnResourceNearPosition(pos, gasPrefab, gasLayer);
-    }*/
 
     void Start()
     {
-        collectionResource = GetComponent<CollectionResource>();
         SpawnResources();
-        SpawnPlusResource();
+        LoadResourceDataFromJson();
         SaveResourceDataToJson();
     }
 
-    void SpawnPlusResource()
+    public void SpawnResources()
     {
-        if (isPlusResourceSpawned)
-        {
-            return; 
-        }
-        int boundaryOffset = 2;
-        for (int attempt = 0; attempt < 100; attempt++)
-        {
-            int x = Random.Range(TileManager.Instance.tileMap.cellBounds.xMin + boundaryOffset, TileManager.Instance.tileMap.cellBounds.xMax - boundaryOffset);
-            int y = Random.Range(TileManager.Instance.tileMap.cellBounds.yMin + boundaryOffset, TileManager.Instance.tileMap.cellBounds.yMax - boundaryOffset);
-            Vector3Int cellPosition = new Vector3Int(x, y, 0);
-            Vector3 worldPosition = TileManager.Instance.tileMap.CellToWorld(cellPosition);
-
-            if (TileManager.Instance.tileMap.GetTile(cellPosition) != null && !IsResourceAtPosition(worldPosition))
-            {
-                Instantiate(plusResource, worldPosition, Quaternion.identity);
-                isPlusResourceSpawned = true;
-                AddResourceData(2, worldPosition, "[100000]", "[10]", 1, 5);
-                break;
-            }
-        }
-    }
-
-    void SpawnResources()
-    {
-        int totalMinerals = Mathf.RoundToInt(totalResources * mineralRatio);
+        int totalMinerals = Mathf.RoundToInt(totalResources * mineralRatio);//5376 ,16384
         int totalGas = totalResources - totalMinerals;
+        int plusMinerals = Mathf.RoundToInt(totalMinerals * plusMineralRatio);
 
         int mineralsPlaced = 0;
         int gasPlaced = 0;
 
-        float totalCells = (TileManager.Instance.tileMap.cellBounds.size.x - 64) * (TileManager.Instance.tileMap.cellBounds.size.y - 84); // 경계 오프셋 고려
+        float totalCells = (TileManager.Instance.tileMap.cellBounds.size.x - 64) * (TileManager.Instance.tileMap.cellBounds.size.y - 80); // 경계 오프셋 고려
         float mineralDensity = totalMinerals / totalCells;
         float gasDensity = totalGas / totalCells;
 
         int boundaryOffset = 1; // 경계선에 자원이 생성되는 것을 방지
+        HashSet<Vector2Int> placedResources = new HashSet<Vector2Int>();
+        SpawnPlusMinerals(plusMinerals);
+
 
         //각 축 별로 4칸 검사 후 자원 생성 
-        for (int y = TileManager.Instance.tileMap.cellBounds.yMin + boundaryOffset; y < TileManager.Instance.tileMap.cellBounds.yMax - boundaryOffset; y+=4)
+        for (int y = TileManager.Instance.tileMap.cellBounds.yMin + boundaryOffset; y < TileManager.Instance.tileMap.cellBounds.yMax - boundaryOffset; y += 4)
         {
-            for (int x = TileManager.Instance.tileMap.cellBounds.xMin + boundaryOffset; x < TileManager.Instance.tileMap.cellBounds.xMax - boundaryOffset; x+=4)
+            for (int x = TileManager.Instance.tileMap.cellBounds.xMin + boundaryOffset; x < TileManager.Instance.tileMap.cellBounds.xMax + boundaryOffset; x += 4)
             {
                 if (mineralsPlaced >= totalMinerals && gasPlaced >= totalGas)
                 {
                     return;
                 }
 
-                Vector3Int cellPosition = new Vector3Int(x, y, 0);
-                Vector3 worldPosition = TileManager.Instance.tileMap.CellToWorld(cellPosition);
-                Vector3 place = new Vector3(worldPosition.x + (TileManager.Instance.tileMap.cellSize.x * 0.5f), worldPosition.y + (TileManager.Instance.tileMap.cellSize.y * 0.5f), 0);
+                //Vector2Int cellPosition = new Vector2Int(x + Random.Range(0, 4), y + Random.Range(0, 4));
+                Vector2Int cellPosition = new Vector2Int(x, y);
+                Vector3 worldPosition = TileManager.Instance.GetWorldPosCenterOfCell(cellPosition);
                 Vector3Int gridPosition = new Vector3Int((int)worldPosition.x, (int)worldPosition.y, 0);
-                
-                if (TileManager.Instance.tileMap.GetTile(cellPosition) != null && !IsResourceAtPosition(place))
+
+                if (placedResources.Contains(cellPosition) || TileManager.Instance.tileMap.GetTile(gridPosition) == null || IsResourceAtPosition(worldPosition))
+                {
+                    continue;
+                }
+
+                if (TileManager.Instance.tileMap.GetTile(gridPosition) != null && !IsResourceAtPosition(worldPosition))
                 {
                     if (TileManager.Instance.HasTile(gridPosition))
                     {
@@ -105,51 +77,50 @@ public class MineralGasSpawner : MonoBehaviour
                     }
                     if (mineralsPlaced < totalMinerals && Random.value < mineralDensity)
                     {
-                        Instantiate(mineralPrefab, place, Quaternion.identity);
+                        Instantiate(mineralPrefab, worldPosition, Quaternion.identity);
                         mineralsPlaced++;
-                        AddResourceData(0, place, "[100000]", "[10]", 1, 5);
+                        AddResourceData(0, worldPosition, new int[] { 100000 }, new int[] { 5 }, new int[] { 10 }, 0.8f);
                     }
                     else if (gasPlaced < totalGas && Random.value < gasDensity)
                     {
-                        Instantiate(gasPrefab, place, Quaternion.identity);
+                        Instantiate(gasPrefab, worldPosition, Quaternion.identity);
                         gasPlaced++;
-                        AddResourceData(1, place, "[100001]", "[3]", 1, 1);
+                        AddResourceData(1, worldPosition, new int[] { 100001 }, new int[] { 1 }, new int[] { 5 }, 0.2f);
+                    }
+                }
+            }
+        }
+        void SpawnPlusMinerals(int plusMinerals)
+        {
+            int boundaryOffset = 2;
+            for (int i = 0; i < plusMinerals; i++)
+            {
+                for (int attempt = 0; attempt < 100; attempt++)
+                {
+                    int x = Random.Range(TileManager.Instance.tileMap.cellBounds.xMin + boundaryOffset, TileManager.Instance.tileMap.cellBounds.xMax - boundaryOffset);
+                    int y = Random.Range(TileManager.Instance.tileMap.cellBounds.yMin + boundaryOffset, TileManager.Instance.tileMap.cellBounds.yMax - boundaryOffset);
+                    Vector2Int cellPosition = new Vector2Int(x, y);
+                    Vector3 worldPosition = TileManager.Instance.GetWorldPosCenterOfCell(cellPosition);
+                    Vector3Int gridPosition = new Vector3Int((int)worldPosition.x, (int)worldPosition.y, 0);
+                    Vector3 place = new Vector3(worldPosition.x + (TileManager.Instance.tileMap.cellSize.x * 0.5f), worldPosition.y + (TileManager.Instance.tileMap.cellSize.y * 0.5f), 0);
+
+                    if (placedResources.Contains(cellPosition) || TileManager.Instance.tileMap.GetTile(gridPosition) == null || IsResourceAtPosition(worldPosition))
+                    {
+                        continue;
+                    }
+
+                    if (TileManager.Instance.tileMap.GetTile(gridPosition) != null && !IsResourceAtPosition(worldPosition))
+                    {
+                        Instantiate(plusResource, worldPosition, Quaternion.identity);
+                        AddResourceData(2, worldPosition, new int[] { 100000 }, new int[] { 5 }, new int[] { 10 }, 0.01f);
+                        break;
                     }
                 }
             }
         }
     }
-
-
-    //자원 재 생성 함수 
-   /* void SpawnResourceNearPosition(Vector3Int position, GameObject prefab, LayerMask layer)
-    {
-        int boundaryOffset = 2;
-
-        for (int attempt = 0; attempt < 10; attempt++) // 10번 시도
-        {
-            int randomX = Random.Range(-2, 3); // -2~2사이 랜덤
-            int randomY = Random.Range(-2, 3);
-
-            Vector3Int newPos = position + new Vector3Int(randomX, randomY, 0);
-            Vector3 worldPosition = tilemap.CellToWorld(newPos);
-
-            //타일이 존재하고, 경계선 안쪽이며, 자원이 없는 위치에만 생성
-            if (tilemap.GetTile(newPos) != null &&
-                newPos.x >= tilemap.cellBounds.xMin + boundaryOffset &&
-                newPos.x <= tilemap.cellBounds.xMax - boundaryOffset &&
-                newPos.y >= tilemap.cellBounds.yMin + boundaryOffset &&
-                newPos.y <= tilemap.cellBounds.yMax - boundaryOffset &&
-                !IsResourceAtPosition(worldPosition))
-            {
-                Instantiate(prefab, worldPosition, Quaternion.identity);
-                return;
-            }
-        }
-    }
-   */
    
-    void AddResourceData(int type, Vector3 position, string sponItem, string itemCount, int hasPercentage, int percentageMinimum)
+    public void AddResourceData(int type, Vector3 position, int[] sponItem, int[] itemCount, int[] hasPercentage, float percentageMinimum)
     {
         //json 데이터 
         Resource_JsonData data = new Resource_JsonData
@@ -165,23 +136,36 @@ public class MineralGasSpawner : MonoBehaviour
     }
 
 
-    void SaveResourceDataToJson() // json 저장
+    [ContextMenu("Save Resource Data To JSON")]
+    public void SaveResourceDataToJson() // json 저장
     {
         GameResourceList dataList = new GameResourceList { resources = resourceDataList };
         string json = JsonUtility.ToJson(dataList, true);
-        string folderpath = Path.Combine(Application.dataPath,"Resources/Component/GameResources");
+        string folderpath = Path.Combine(Application.dataPath, "Resources/Component/GameResources");
         string filepath = Path.Combine(folderpath, "Pexplorer_GameResources_Ability.json");
         File.WriteAllText(filepath, json);
-        Debug.Log($"Resource data saved to {"파일 패치"}");
-
+        Debug.Log($"Resource data saved to {filepath}");
     }
 
+    [ContextMenu("Load Resource Data From JSON")]
+    public void LoadResourceDataFromJson() // json 불러오기
+    {
+        string folderpath = Path.Combine(Application.dataPath, "Resources/Component/GameResources");
+        string filepath = Path.Combine(folderpath, "Pexplorer_GameResources_Ability.json");
+        if (File.Exists(filepath))
+        {
+            string json = File.ReadAllText(filepath);
+            GameResourceList dataList = JsonUtility.FromJson<GameResourceList>(json);
+            resourceDataList = dataList.resources;
+            Debug.Log($"Resource data loaded from {filepath}");
+        }
+    }
 
     bool IsResourceAtPosition(Vector3 position)
     {
         Collider2D[] mineralColliders = Physics2D.OverlapCircleAll(position, 1.5f, mineralLayer);
         Collider2D[] gasColliders = Physics2D.OverlapCircleAll(position, 1.5f, gasLayer);
-        Collider2D[] plusResourceColliders = Physics2D.OverlapCircleAll(position, 1.5f, plusResourceLayer);
+        Collider2D[] plusResourceColliders = Physics2D.OverlapCircleAll(position, 3.5f, plusResourceLayer);
         return mineralColliders.Length > 0 || gasColliders.Length > 0 || plusResourceColliders.Length > 0;
     }
 }
