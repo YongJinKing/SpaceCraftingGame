@@ -9,16 +9,18 @@ public class BossMovement : MonoBehaviour
     #region Properties
     #region Private
     private Coroutine MoveC;
-    [SerializeField] private float limitDist = 5f;
+    
     //for debug, Serialize
     [SerializeField] private float Speed = 1;
     #endregion
     #region Protected
+    
     #endregion
     #region Public
     #endregion
     #region Events
     public UnityEvent moveEndEvent = new UnityEvent();
+    public float limitDist = 5f;
     #endregion
     #endregion
 

@@ -7,6 +7,8 @@ public class BossAlertState : BossState
 {
     #region Properties
     #region Private
+    float limitDist = 5f;
+    float moveSpeed = 1f;
     #endregion
     #region Protected
     #endregion
@@ -36,6 +38,12 @@ public class BossAlertState : BossState
     public override void Enter()
     {
         base.Enter();
+        BossMovement bossMovement = GetComponent<BossMovement>();
+        if (bossMovement != null)
+        {
+            limitDist = bossMovement.limitDist;
+        }
+        moveSpeed = owner.moveSpeed;
         //StartCoroutine(ProcessingState()); // 이동이 끝난 뒤에 State변경을 해야함..
         StartCoroutine(FollowAndRotate());
     }
@@ -58,33 +66,115 @@ public class BossAlertState : BossState
             // 1. 플레이어에게 일정 거리까지 다가간다.
             yield return StartCoroutine(MoveTowardsTarget());
 
-            // 2. 일정 거리에 다다르면 플레이어를 중심으로 회전한다.
-            yield return StartCoroutine(RotateAroundTarget());
-
-            // 3. 회전 후 다시 플레이어에게 다가간다.
+            // 3. 회전 후 공격 action을 정한다.
+            yield return StartCoroutine(ProcessingState());
         }
     }
 
     private IEnumerator MoveTowardsTarget()
     {
+        /*while (true)
+        {
+            Vector2 targetPosition = (Vector2)owner.transform.position;
+            Vector2 currentPosition = (Vector2)transform.position;
+            Vector2 dir = targetPosition - currentPosition;
+            float dist = dir.magnitude;
+            dir.Normalize();
+
+            // 현재 거리가 limitDist보다 작으면 뒤로 물러납니다.
+            if (dist < limitDist)
+            {
+                while (dist < limitDist)
+                {
+                    float delta = Time.deltaTime * moveSpeed;
+                    if (delta > limitDist - dist)
+                    {
+                        delta = limitDist - dist;
+                    }
+                    dist += delta;
+                    transform.Translate(-dir * delta, Space.World);
+                    yield return null;
+
+                    // 거리와 방향을 다시 계산합니다.
+                    currentPosition = (Vector2)transform.position;
+                    dir = targetPosition - currentPosition;
+                    dist = dir.magnitude;
+                    dir.Normalize();
+                }
+            }
+            // 현재 거리가 limitDist보다 크면 따라갑니다.
+            else if (dist > limitDist)
+            {
+                while (dist > limitDist)
+                {
+                    float delta = Time.deltaTime * moveSpeed;
+                    if (delta > dist - limitDist)
+                    {
+                        delta = dist - limitDist;
+                    }
+                    dist -= delta;
+                    transform.Translate(dir * delta, Space.World);
+                    yield return null;
+
+                    // 거리와 방향을 다시 계산합니다.
+                    currentPosition = (Vector2)transform.position;
+                    dir = targetPosition - currentPosition;
+                    dist = dir.magnitude;
+                    dir.Normalize();
+                }
+            }
+            else
+            {
+                // target이 limitDist에 있을 때 멈춥니다.
+                yield break;
+            }
+
+            yield return null;
+        }*/
+
+        /*Vector2 dir = (Vector2)owner.target.transform.position - (Vector2)transform.position;
+        float dist = dir.magnitude - limitDist;
+        float delta = 0;
+        dir.Normalize();
+        if (dist < 0f)
+        {
+            dist *= -1;
+            dir *= -1;
+        }
+
+        while (dist > 0)
+        {
+            delta = Time.deltaTime * moveSpeed;
+            if (delta > dist)
+            {
+                delta = dist;
+            }
+            dist -= delta;
+
+            transform.Translate(dir * delta);
+            yield return null;
+        }
+
+        yield return null;*/
+
         while (true)
         {
             Vector2 dir = (Vector2)owner.target.transform.position - (Vector2)transform.position;
             float dist = dir.magnitude;
-            if (dist <= 5f)
+            if (dist <= limitDist)
             {
                 yield break;
             }
 
             dir.Normalize();
-            transform.Translate(dir * 1f * Time.deltaTime, Space.World);
+            transform.Translate(dir * moveSpeed * Time.deltaTime, Space.World);
             yield return null;
         }
     }
     private IEnumerator RotateAroundTarget()
     {
         float startTime = Time.time;
-        float rotateTime = Random.Range(2f, 5f);
+        float rotateTime = Random.Range(1f, 4f);
         Vector2 initialPosition = transform.position;
         Vector2 targetPosition = owner.target.transform.position; // 회전 시작 시의 플레이어 위치 고정
         float angle = 0f;
@@ -94,56 +184,45 @@ public class BossAlertState : BossState
 
         while (Time.time - startTime < rotateTime)
         {
-            //angle += 1f * Time.deltaTime;
-
-            angle = initialAngle + 1f * (Time.time - startTime);
+            angle = initialAngle + 0.5f * (Time.time - startTime);
 
             // 새로운 위치 계산
-            float x = Mathf.Cos(angle) * 5f;
-            float y = Mathf.Sin(angle) * 5f;
+            float x = Mathf.Cos(angle) * limitDist;
+            float y = Mathf.Sin(angle) * limitDist;
 
             transform.position = new Vector3(targetPosition.x + x, targetPosition.y + y, transform.position.z);
             yield return null;
         }
-
-        // 회전이 끝난 후 다시 초기 위치로 돌아감
-        //transform.position = initialPosition;
     }
 
     protected IEnumerator ProcessingState()
     {
         //Wait until Select Action
-        /*yield return StartCoroutine(SelectingAction());
+        yield return StartCoroutine(SelectingAction());
 
-        owner.stateMachine.ChangeState<MonsterAttackState>();*/
+        owner.stateMachine.ChangeState<BossAttackState>();
         Debug.Log("Boss Processing State");
-        yield return new WaitForSeconds(1f);
-
-        //yield return StartCoroutine(FollowingTarget());
+        
     }
 
-    protected IEnumerator MovingCirclularPos(Vector2 initialPos)
+    protected IEnumerator SelectingAction()
     {
-        Debug.Log("무빙 서큘러 포스");
-        float moveTime = Random.Range(2f, 5f);
-        float angle = 0.0f; // 각도
-        while (moveTime > 0f)
+        if (owner.attackActions == null)
         {
-
-            angle += 1f * Time.deltaTime;
-
-            // 새로운 위치 계산
-            float x = Mathf.Cos(angle) * 4f;
-            float y = Mathf.Sin(angle) * 4f;
-
-            // 새로운 위치 설정
-            transform.position = new Vector3(initialPos.x + x, initialPos.y + y, transform.position.z);
-            yield return null;
-            moveTime -= Time.deltaTime;
+            Debug.Log("attackActions == null");
+            yield break;
         }
-
-        yield return StartCoroutine(ProcessingState());
+        Debug.Log("Selecting");
+        Action action = null;
+        while (action == null)
+        {
+            action = owner.ai.SelectAction(owner.attackActions);
+            yield return null;
+        }
+        Debug.Log("Selected");
+        owner.activatedAction = action;
     }
+
     #endregion
 
     #region MonoBehaviour
