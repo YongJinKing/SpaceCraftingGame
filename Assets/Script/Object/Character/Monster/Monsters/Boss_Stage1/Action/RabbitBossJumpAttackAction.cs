@@ -45,6 +45,8 @@ public class RabbitBossJumpAttackAction : AttackAction
     {
         startPos = transform.position;
         Vector2 velocity = CalculateJumpVelocity(startPos, pos, jumpHeight); // 필요한 속도 계산
+        if (velocity == Vector2.zero) yield break;
+        Debug.Log("점프");
         rb.velocity = velocity;
         rb.gravityScale = 1; // 점프 시작 시 중력 활성화
 
@@ -69,7 +71,7 @@ public class RabbitBossJumpAttackAction : AttackAction
     // 포물선을 그리며 점프할 때, 주어진 높이와 목표 위치로 도달하기 위한 초기 속도를 계산하는 함수
     Vector2 CalculateJumpVelocity(Vector2 start, Vector2 end, float height)
     {
-        float displacementX = end.x - start.x; // 목표 위치와 시작 위치 사이의 수평 거리
+        /*float displacementX = end.x - start.x; // 목표 위치와 시작 위치 사이의 수평 거리
         float displacementY = end.y - start.y; // 목표 위치와 시작 위치 사이의 수직 거리
         float time = Mathf.Sqrt(-2 * height / gravity) + Mathf.Sqrt(2 * (displacementY - height) / gravity);
         // 점프가 최대 높이에 도달하는 데 걸리는 시간 + 대 높이에서 목표 위치까지 내려가는 데 걸리는 시간 <<< sqrt(2h / g) + sqrt(2(y - h) / g) 중력이 음수로 설정되어 -를 붙임
@@ -77,6 +79,38 @@ public class RabbitBossJumpAttackAction : AttackAction
 
         float velocityX = displacementX / time; // 수평 변위를 전체 비행 시간으로 나눈 값 >> 수평 속도
         float velocityY = Mathf.Sqrt(-2 * gravity * height); //  최대 높이에 도달하기 위한 초기 속도 >> 수직속도, 여기서도 중력이 음수로 설정 되어 - 를 붙임
+
+        return new Vector2(velocityX, velocityY); // 계산된 수평 속도 (velocityX)와 수직 속도 (velocityY)를 포함하는 Vector2를 반환*/
+        float displacementX = end.x - start.x; // 목표 위치와 시작 위치 사이의 수평 거리
+        float displacementY = end.y - start.y; // 목표 위치와 시작 위치 사이의 수직 거리
+
+        // 최대 높이에 도달하는 데 걸리는 시간 계산
+        float sqrtTerm1 = Mathf.Sqrt(-2 * height / gravity);
+        // 목표 위치까지 내려가는 데 걸리는 시간 계산
+        float sqrtTerm2 = Mathf.Sqrt(2 * (displacementY - height) / gravity);
+
+        // sqrtTerm1과 sqrtTerm2가 유효한지 확인
+        if (float.IsNaN(sqrtTerm1) || float.IsNaN(sqrtTerm2))
+        {
+            return Vector2.zero;
+        }
+
+        float time = sqrtTerm1 + sqrtTerm2;
+
+        // time이 유효한지 확인
+        if (time <= 0)
+        {
+            return Vector2.zero;
+        }
+
+        float velocityX = displacementX / time; // 수평 변위를 전체 비행 시간으로 나눈 값 >> 수평 속도
+        float velocityY = Mathf.Sqrt(-2 * gravity * height); // 최대 높이에 도달하기 위한 초기 속도 >> 수직속도
+
+        // velocityY가 유효한지 확인
+        if (float.IsNaN(velocityY))
+        {
+            return Vector2.zero;
+        }
 
         return new Vector2(velocityX, velocityY); // 계산된 수평 속도 (velocityX)와 수직 속도 (velocityY)를 포함하는 Vector2를 반환
     }

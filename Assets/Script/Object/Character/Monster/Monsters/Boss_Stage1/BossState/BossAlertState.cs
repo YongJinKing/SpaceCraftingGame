@@ -61,14 +61,14 @@ public class BossAlertState : BossState
     #region Coroutines
     private IEnumerator FollowAndRotate()
     {
-        while (true)
-        {
+        //while (true)
+        //{
             // 1. 플레이어에게 일정 거리까지 다가간다.
             yield return StartCoroutine(MoveTowardsTarget());
 
-            // 3. 회전 후 공격 action을 정한다.
+            // 2. 이동 후 action을 정한다.
             yield return StartCoroutine(ProcessingState());
-        }
+        //}
     }
 
     private IEnumerator MoveTowardsTarget()
@@ -199,7 +199,7 @@ public class BossAlertState : BossState
     {
         //Wait until Select Action
         yield return StartCoroutine(SelectingAction());
-
+        yield return new WaitForSeconds(1f);
         owner.stateMachine.ChangeState<BossAttackState>();
         Debug.Log("Boss Processing State");
         
