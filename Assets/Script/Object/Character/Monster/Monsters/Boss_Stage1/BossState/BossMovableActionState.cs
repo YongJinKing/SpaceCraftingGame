@@ -6,6 +6,8 @@ public class BossMovableActionState : BossState
 {
     #region Properties
     #region Private
+    float moveSpeed;
+    float moveTimer;
     #endregion
     #region Protected
     #endregion
@@ -44,6 +46,8 @@ public class BossMovableActionState : BossState
     public override void Enter()
     {
         base.Enter();
+        moveTimer = 5f;
+        moveSpeed = owner.moveSpeed * 0.6f;
         StartCoroutine(FollowingTarget());
     }
     public override void Exit()
@@ -62,6 +66,7 @@ public class BossMovableActionState : BossState
             owner.stateMachine.ChangeState<BossAlertState>();
         else
             owner.stateMachine.ChangeState<BossIdleState>();
+        Debug.Log("보스 무버블 앤드");
     }
     #endregion
 
@@ -69,6 +74,15 @@ public class BossMovableActionState : BossState
     protected IEnumerator FollowingTarget()
     {
         //보스의 이동속도의 80%(느리게 따라갈거면) 혹은 120%(빠르게 따라갈거면)로 플레이어를 따라감
+        while(moveTimer >= 0.0f)
+        {
+            moveTimer -= Time.deltaTime;
+            Vector2 dir = owner.target.transform.position - transform.position;
+            dir.Normalize();
+            transform.Translate(dir * moveSpeed * Time.deltaTime, Space.World);
+            yield return null;
+        }
+
         yield return null;
         
     }

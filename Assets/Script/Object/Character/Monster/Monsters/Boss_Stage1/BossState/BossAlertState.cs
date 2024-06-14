@@ -67,12 +67,13 @@ public class BossAlertState : BossState
             yield return StartCoroutine(MoveTowardsTarget());
 
             // 2. 이동 후 action을 정한다.
-            yield return StartCoroutine(ProcessingState());
+            //yield return StartCoroutine(ProcessingState());
         //}
     }
 
     private IEnumerator MoveTowardsTarget()
     {
+        Debug.Log("무브투타겟");
         /*while (true)
         {
             Vector2 targetPosition = (Vector2)owner.transform.position;
@@ -163,13 +164,15 @@ public class BossAlertState : BossState
             float dist = dir.magnitude;
             if (dist <= limitDist)
             {
-                yield break;
+                break;
             }
 
             dir.Normalize();
             transform.Translate(dir * moveSpeed * Time.deltaTime, Space.World);
             yield return null;
         }
+
+        yield return StartCoroutine(ProcessingState());
     }
     private IEnumerator RotateAroundTarget()
     {
@@ -199,7 +202,7 @@ public class BossAlertState : BossState
     {
         //Wait until Select Action
         yield return StartCoroutine(SelectingAction());
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         owner.stateMachine.ChangeState<BossAttackState>();
         Debug.Log("Boss Processing State");
         

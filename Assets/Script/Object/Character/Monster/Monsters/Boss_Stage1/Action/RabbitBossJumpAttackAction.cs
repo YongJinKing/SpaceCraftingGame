@@ -2,7 +2,9 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class RabbitBossJumpAttackAction : AttackAction
 {
@@ -41,46 +43,30 @@ public class RabbitBossJumpAttackAction : AttackAction
         }
         yield return null;
     }
-    IEnumerator JumpToTarget(Vector2 pos)
+    
+    // 현재 토끼의 위치로부터 타겟의 위치까지 height의 높이로 duration의 시간만큼 포물선 이동을 구현
+    // 타겟의 위치에 다다르면 히트박스를 킨다.
+    IEnumerator JumpToTarget(Vector2 start, Vector2 target, float height, float duration)
     {
-        startPos = transform.position;
-        Vector2 velocity = CalculateJumpVelocity(startPos, pos, jumpHeight); // 필요한 속도 계산
-        if (velocity == Vector2.zero) yield break;
-        Debug.Log("점프");
-        rb.velocity = velocity;
-        rb.gravityScale = 1; // 점프 시작 시 중력 활성화
-
-        // 목표 지점에 도착할 때까지 대기
-        while (true)
+        float elapsedTime = 0;
+        while (elapsedTime < duration)
         {
-            if (rb.velocity.y < 0)
-            {
-                Vector2 currentPosition = transform.position;
-                if (currentPosition.y <= pos.y && currentPosition.x >= pos.x) // 해당 위치에 다다르면
-                {
-                    rb.velocity = Vector2.zero;
-                    rb.gravityScale = 0;
-                    break;
-                }
-            }
-            yield return null; // 다음 프레임까지 대기
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+            float x = Mathf.Lerp(start.x, target.x, t);
+            float y = Mathf.Lerp(start.y, target.y, t) + height * Mathf.Sin(Mathf.PI * t);
+            rb.position = new Vector2(x, y);
+            yield return null;
         }
+        rb.position = target; // 정확한 위치 보정
 
-        yield return StartCoroutine(HitBoxOn(pos));
+        yield return StartCoroutine(HitBoxOn(target));
     }
-    // 포물선을 그리며 점프할 때, 주어진 높이와 목표 위치로 도달하기 위한 초기 속도를 계산하는 함수
+
+    // 포물선을 그리며 점프할 때, 주어진 높이와 목표 위치로 도달하기 위한 초기 속도를 계산하는 함수 >> Rigidbody2D gravityScale을 사용
+    // >> 버그가 잦아 일단 보류
     Vector2 CalculateJumpVelocity(Vector2 start, Vector2 end, float height)
     {
-        /*float displacementX = end.x - start.x; // 목표 위치와 시작 위치 사이의 수평 거리
-        float displacementY = end.y - start.y; // 목표 위치와 시작 위치 사이의 수직 거리
-        float time = Mathf.Sqrt(-2 * height / gravity) + Mathf.Sqrt(2 * (displacementY - height) / gravity);
-        // 점프가 최대 높이에 도달하는 데 걸리는 시간 + 대 높이에서 목표 위치까지 내려가는 데 걸리는 시간 <<< sqrt(2h / g) + sqrt(2(y - h) / g) 중력이 음수로 설정되어 -를 붙임
-        // 
-
-        float velocityX = displacementX / time; // 수평 변위를 전체 비행 시간으로 나눈 값 >> 수평 속도
-        float velocityY = Mathf.Sqrt(-2 * gravity * height); //  최대 높이에 도달하기 위한 초기 속도 >> 수직속도, 여기서도 중력이 음수로 설정 되어 - 를 붙임
-
-        return new Vector2(velocityX, velocityY); // 계산된 수평 속도 (velocityX)와 수직 속도 (velocityY)를 포함하는 Vector2를 반환*/
         float displacementX = end.x - start.x; // 목표 위치와 시작 위치 사이의 수평 거리
         float displacementY = end.y - start.y; // 목표 위치와 시작 위치 사이의 수직 거리
 
@@ -128,7 +114,8 @@ public class RabbitBossJumpAttackAction : AttackAction
         base.Activate(pos);
         rb = transform.parent.GetComponentInParent<Rigidbody2D>();
         rb.gravityScale = 0;
-        StartCoroutine(JumpToTarget(pos));
+        //StartCoroutine(JumpToTarget(pos));
+        StartCoroutine(JumpToTarget(transform.position, pos, 2.5f, 1f));
         // 포물선을 그리면서 점프를 하는 함수를 만들고
         // 그 함수가 끝날 때쯤 히트박스를 킨다.
         
