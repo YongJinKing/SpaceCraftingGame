@@ -22,6 +22,10 @@ public class Building
 
 public class CraftBuildingUIManager : MonoBehaviour
 {
+    public GameObject BuildingButton, InventoryButton;
+    public int ButtonClick, BuildButtonStatus, InventoryButtonStatus;
+
+
     public string curType = "Resource";
     //public List<Building> AllItemList, MyItemList,CurItemList;
     public GameObject[] Slot, UsingImage;
@@ -34,6 +38,11 @@ public class CraftBuildingUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ButtonClick = 0;
+        BuildButtonStatus = 0;
+        InventoryButtonStatus = 0;
+        //BuildingButton.SetActive(false);
+        //InventoryButton.SetActive(false);
         BuildSet = new CraftingUI();
         BuildUIIndex = 110000;
         Debug.Log("콘솔창 오픈");
@@ -43,7 +52,35 @@ public class CraftBuildingUIManager : MonoBehaviour
     void Update()
     {
 
-     
+
+        if (Input.GetKey(KeyCode.B))
+        {
+            if (ButtonClick == 0)
+            {
+                Debug.Log("건설 창 오픈");
+                BuildUIOpen();
+            }
+            if (ButtonClick == 1)
+            {
+                Debug.Log("건설 창 클로즈");
+                BuildUIClose();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (ButtonClick == 0)
+            {
+                Debug.Log("건설 창 오픈");
+                InventoryUIOpen();
+            }
+            if (ButtonClick == 1)
+            {
+                Debug.Log("건설 창 클로즈");
+                InventoryUIClose();
+            }
+        }
+
+        
     }
     /*
     public void SlotClick(int slotNum)
@@ -131,5 +168,27 @@ public class CraftBuildingUIManager : MonoBehaviour
     {
         GameObject ResourceBuilding = BuildSet.CraftBuildUI(index);
         Debug.Log(ResourceBuilding);
+    }
+
+    public void BuildUIOpen()
+    {
+        BuildingButton.SetActive(true);
+        ButtonClick = 1;
+    }
+    public void BuildUIClose()
+    {
+        BuildingButton.SetActive(false);
+        ButtonClick = 0;
+    }
+
+    public void InventoryUIOpen()
+    {
+        InventoryButton.SetActive(true);
+        ButtonClick = 1;
+    }
+    public void InventoryUIClose()
+    {
+        InventoryButton.SetActive(false);
+        ButtonClick = 0;
     }
 }
