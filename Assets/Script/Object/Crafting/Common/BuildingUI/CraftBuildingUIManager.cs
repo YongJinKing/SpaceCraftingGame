@@ -8,36 +8,39 @@ using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 using UnityEngine.UI;
 using System;
 using System.Reflection;
-/*
-public class Building
-{
-    public Building(string _Type, string _Name, string _Explain, string _Number, bool _isUsing)
-    {
-        Type = _Type; Name = _Name; Explain = _Explain; Number = _Number; isUsing = _isUsing;
-    }
 
-    public string Type, Name, Explain, Number;
-    public bool isUsing;
-}*/
 
 public class CraftBuildingUIManager : MonoBehaviour
 {
     public GameObject BuildingButton, InventoryButton;
     public int ButtonClick, BuildButtonStatus, InventoryButtonStatus;
 
-
     public string curType = "Resource";
     //public List<Building> AllItemList, MyItemList,CurItemList;
     public GameObject[] Slot, UsingImage;
-    public Image[] TabImage,ItemImage;
+    public Image[] TabImage, ItemImage;
     public Sprite TabSelectSprite, TabDeselectSprite;
     public Sprite[] ItemSprite;
 
     [SerializeField] int BuildUIIndex;
     CraftingUI BuildSet;
+
+    public static CraftBuildingUIManager instance;
+    public List<int> BuildingID, TurretID;
+    
+    
+    public class SlotBuildingData
+    {
+        public int id;
+
+    }
+    //public List<SlotBuildingData> InventoryDatas = new List<>();
+
     // Start is called before the first frame update
     void Start()
     {
+
+        BuildingUIStructure.GetInstance().LoadBuildingInfo();
         ButtonClick = 0;
         BuildButtonStatus = 0;
         InventoryButtonStatus = 0;
@@ -46,6 +49,18 @@ public class CraftBuildingUIManager : MonoBehaviour
         BuildSet = new CraftingUI();
         BuildUIIndex = 110000;
         Debug.Log("콘솔창 오픈");
+
+        foreach (var data in BuildingUIStructure.GetInstance().dicBUIComponentTable)
+        {
+
+            if (data.Value.ComponentDataTable_Index < 200000)
+            { 
+                Debug.Log(data.Value.ComponentDataTable_Index);
+                //json Index값을 가져와 새로운 리스트에 삽입
+                BuildingID.Add(data.Value.ComponentDataTable_Index);
+            }
+           
+        }
     }
 
     // Update is called once per frame
@@ -80,7 +95,7 @@ public class CraftBuildingUIManager : MonoBehaviour
             }
         }
 
-        
+
     }
     /*
     public void SlotClick(int slotNum)
@@ -147,12 +162,12 @@ public class CraftBuildingUIManager : MonoBehaviour
 
     public void ResourceButtonClick()
     {
-        
+
 
         BuildUIIndex = 100000;
         Debug.Log("현재 건설 선택된 인덱스 : " + BuildUIIndex);
-        BringBuildData(BuildUIIndex); 
-       
+        BringBuildData(BuildUIIndex);
+
     }
 
     public void TurretButtonClick()
@@ -190,5 +205,38 @@ public class CraftBuildingUIManager : MonoBehaviour
     {
         InventoryButton.SetActive(false);
         ButtonClick = 0;
+    }
+
+    public void TestReadingJsonData()
+    {
+        Debug.Log("JsonTest");
+        
+        
+        
+
+        /*s
+        // 장비창 전부 탭
+        DisplayInven = InventoryDatas;
+        if (Type == SelelctType.All)
+            return;
+        
+        else
+        {
+            DisplayInven = new List<SlotItemData>();
+            for (int i = 0; i < InventoryDatas.Count; i++)
+            {
+                var ItemData = ItemStaticDataManager.GetInstance().dicItemData[InventoryDatas[i].id];
+                //Debug.Log($"{ItemData.ItemType}아이템 타입, {Type}모드 타입");
+                if (ItemData.ItemType + 1 == (int)Type)
+                {
+                    //Debug.Log("실행 채크");
+                    SlotItemData SlotData = new SlotItemData();
+                    SlotData.id = InventoryDatas[i].id;
+                    SlotData.Amount = InventoryDatas[i].Amount;
+                    DisplayInven.Add(SlotData);
+                }
+            }
+        }*/
+
     }
 }
