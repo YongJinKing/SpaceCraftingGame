@@ -161,7 +161,7 @@ public class BossAlertState : BossState
         while (true)
         {
             Vector2 dir = (Vector2)owner.target.transform.position - (Vector2)transform.position;
-            float dist = dir.magnitude;
+            float dist = dir.magnitude - 0.5f;
             if (dist <= limitDist)
             {
                 break;

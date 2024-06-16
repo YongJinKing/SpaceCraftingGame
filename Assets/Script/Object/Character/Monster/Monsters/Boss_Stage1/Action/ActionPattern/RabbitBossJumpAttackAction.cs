@@ -48,11 +48,11 @@ public class RabbitBossJumpAttackAction : AttackAction
     // 타겟의 위치에 다다르면 히트박스를 킨다.
     IEnumerator JumpToTarget(Vector2 start, Vector2 target, float height, float duration)
     {
-        float elapsedTime = 0;
-        while (elapsedTime < duration)
+        float jumpTime = 0;
+        while (jumpTime < duration)
         {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / duration;
+            jumpTime += Time.deltaTime;
+            float t = jumpTime / duration;
             float x = Mathf.Lerp(start.x, target.x, t);
             float y = Mathf.Lerp(start.y, target.y, t) + height * Mathf.Sin(Mathf.PI * t);
             rb.position = new Vector2(x, y);
@@ -61,6 +61,7 @@ public class RabbitBossJumpAttackAction : AttackAction
         rb.position = target; // 정확한 위치 보정
 
         yield return StartCoroutine(HitBoxOn(target));
+        ActionEnd();
     }
 
     // 포물선을 그리며 점프할 때, 주어진 높이와 목표 위치로 도달하기 위한 초기 속도를 계산하는 함수 >> Rigidbody2D gravityScale을 사용
@@ -106,6 +107,7 @@ public class RabbitBossJumpAttackAction : AttackAction
     protected override void ActionEnd()
     {
         base.ActionEnd();
+        StopAllCoroutines();
     }
     #endregion
     #region Public

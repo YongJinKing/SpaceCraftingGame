@@ -1359,6 +1359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 707610222}
+  - component: {fileID: 707610223}
   m_Layer: 0
   m_Name: ThrowAttack
   m_TagString: Untagged
@@ -1378,9 +1379,35 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1322096492}
   m_Father: {fileID: 1809045653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &707610223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707610221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd4c8fda60ee854ca977308c6c39538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 10
+  _coolTime: 5
+  _activeRadius: 1
+  OnActionEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _targetMask:
+    serializedVersion: 2
+    m_Bits: 2097152
+  hitBoxes: []
+  riceCakes: {fileID: 1735542251873017580, guid: 64b5a383663259f4cabe41e3a16e669b, type: 3}
+  riceFloor: {fileID: 0}
+  ThrowingPos: {fileID: 1322096492}
 --- !u!1 &746036845
 GameObject:
   m_ObjectHideFlags: 0
@@ -4074,6 +4101,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b513573205fa6e439985ea821a5f15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1322096491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1322096492}
+  m_Layer: 0
+  m_Name: ThrowingPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1322096492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322096491}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 707610222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1325064706
 GameObject:
   m_ObjectHideFlags: 0
@@ -4748,8 +4806,8 @@ Transform:
   m_Children:
   - {fileID: 1869338158}
   - {fileID: 1915992401}
-  - {fileID: 746036846}
   - {fileID: 707610222}
+  - {fileID: 746036846}
   m_Father: {fileID: 1816270049}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1816270048
@@ -4765,7 +4823,7 @@ GameObject:
   - component: {fileID: 1816270051}
   - component: {fileID: 1816270050}
   - component: {fileID: 1816270053}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Boss_Rabbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4819,6 +4877,7 @@ MonoBehaviour:
   attackActions:
   - {fileID: 1869338159}
   - {fileID: 1915992402}
+  - {fileID: 707610223}
   ai: {fileID: 1940367737}
   bossDirMove: {fileID: 0}
 --- !u!50 &1816270051
@@ -4899,7 +4958,7 @@ MonoBehaviour:
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
-  limitDist: 2
+  limitDist: 4
 --- !u!1 &1855386083
 GameObject:
   m_ObjectHideFlags: 0
@@ -4990,7 +5049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priority: 1
-  _coolTime: 5
+  _coolTime: 7
   _activeRadius: 1
   OnActionEndEvent:
     m_PersistentCalls:

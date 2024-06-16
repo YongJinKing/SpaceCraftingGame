@@ -47,6 +47,7 @@ public class RabbitBossSpinningAttackAction : AttackAction
     protected override void ActionEnd()
     {
         base.ActionEnd();
+        StopAllCoroutines();
     }
     #endregion
     #region Public
