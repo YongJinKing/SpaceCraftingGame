@@ -25,7 +25,7 @@ public class WaveMonster : Monster
     protected override void Initialize()
     {
         base.Initialize();
-        stateMachine.ChangeState<MonsterInitState>();
+        stateMachine.ChangeState<WaveMonsterInitState>();
     }
     #endregion
     #region Public

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterMovableActionState : MonsterState
+public class WaveMonsterUnmovableActionState : MonsterState
 {
     #region Properties
     #region Private
@@ -44,13 +44,11 @@ public class MonsterMovableActionState : MonsterState
     public override void Enter()
     {
         base.Enter();
-        StartCoroutine(FollowingTarget());
     }
     public override void Exit()
     {
         owner.activatedAction.Deactivate();
         base.Exit();
-        StopAllCoroutines();
     }
     #endregion
     #endregion
@@ -58,23 +56,14 @@ public class MonsterMovableActionState : MonsterState
     #region EventHandlers
     public void OnActionEnd()
     {
-        if(owner.target != null)
-            owner.stateMachine.ChangeState<MonsterDetectState>();
+        if (owner.target != null)
+            owner.stateMachine.ChangeState<WaveMonsterDetectState>();
         else
-            owner.stateMachine.ChangeState<MonsterIdleState>();
+            owner.stateMachine.ChangeState<WaveMonsterIdleState>();
     }
     #endregion
 
     #region Coroutines
-    protected IEnumerator FollowingTarget()
-    {
-        //현재는 감지하면 무조건 쫒아가기만 하는 알고리즘
-        while (owner.target != null)
-        {
-            owner.dirMove?.Activate(owner.target.transform.position - transform.position);
-            yield return null;
-        }
-    }
     #endregion
 
     #region MonoBehaviour

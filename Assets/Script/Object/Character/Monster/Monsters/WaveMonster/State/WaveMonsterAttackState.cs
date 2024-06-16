@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MonsterAttackState : MonsterState
+public class WaveMonsterAttackState : MonsterState
 {
     #region Properties
     #region Private
@@ -60,7 +60,7 @@ public class MonsterAttackState : MonsterState
     {
         if(owner.activatedAction == null)
         {
-            owner.stateMachine.ChangeState<MonsterIdleState>();
+            owner.stateMachine.ChangeState<WaveMonsterIdleState>();
         }
 
 
@@ -71,27 +71,36 @@ public class MonsterAttackState : MonsterState
         float dist;
         do
         {
+            if (owner.target == null) break;
+
             dir = owner.target.transform.position - transform.position;
             dist = dir.magnitude;
             yield return null;
         }
         while (dist > owner.activatedAction.activeRadius);
+
+        if(owner.target == null)
+        {
+            owner.stateMachine.ChangeState<WaveMonsterIdleState>();
+            yield break;
+        }
+
         owner.activatedAction.Activate(owner.target.transform.position);
 
         if (owner.activatedAction.fireAndForget)
-            owner.stateMachine.ChangeState<MonsterMovableActionState>();
+            owner.stateMachine.ChangeState<WaveMonsterMovableActionState>();
         else
-            owner.stateMachine.ChangeState<MonsterUnmovableActionState>();
+            owner.stateMachine.ChangeState<WaveMonsterUnmovableActionState>();
     }
 
     protected IEnumerator TravelingPath()
     {
         Vector2 dir;
 
-        while (true)
+        while (owner.target != null)
         {
             dir = owner.target.transform.position - transform.position;
-            if(dir.magnitude < 1.5f)
+            if(dir.magnitude < owner.activatedAction.activeRadius)
             {
                 owner.dirMove.Activate(owner.target.transform.position);
             }
@@ -109,7 +118,7 @@ public class MonsterAttackState : MonsterState
         }
 
         //if cannot find path
-        owner.stateMachine.ChangeState<MonsterIdleState> ();
+        owner.stateMachine.ChangeState<WaveMonsterIdleState> ();
     }
     #endregion
 

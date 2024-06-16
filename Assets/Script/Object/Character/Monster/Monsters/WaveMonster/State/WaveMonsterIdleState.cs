@@ -3,7 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MonsterIdleState : MonsterState
+public class WaveMonsterIdleState : MonsterState
 {
     #region Properties
     #region Private
@@ -37,6 +37,7 @@ public class MonsterIdleState : MonsterState
     {
         base.Enter();
         StartCoroutine(Detecting());
+        StartCoroutine(ApproachingToSpaceShip());
     }
     public override void Exit()
     {
@@ -54,9 +55,11 @@ public class MonsterIdleState : MonsterState
     {
         //for Test, Hard Coded
         //Must be Change Later
-        owner.dirMove.Activate(Vector2.zero);
-
-        yield return null;
+        while (true) 
+        {
+            owner.dirMove.Activate(Vector2.zero);
+            yield return null;
+        }
     }
     protected IEnumerator Detecting()
     {
@@ -71,7 +74,7 @@ public class MonsterIdleState : MonsterState
         }
 
         owner.target = target;
-        owner.stateMachine.ChangeState<MonsterDetectState>();
+        owner.stateMachine.ChangeState<WaveMonsterDetectState>();
     }
     #endregion
 

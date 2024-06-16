@@ -222,6 +222,7 @@ public class AI : MonoBehaviour
         //if cannot find Path
         if (!CList.ContainsKey(targetCoor))
         {
+            /*
             Debug.Log("AI.PathFinding.Cannot Find Path");
             Debug.Log(startCoor);
             Debug.Log(targetCoor);
@@ -243,7 +244,7 @@ public class AI : MonoBehaviour
                     $"node hscore = {node.HScore}\n" +
                     $"node parent node = {node.ParentNode}");
             }
-
+            */
             CList.Clear();
             OList.Clear();
 

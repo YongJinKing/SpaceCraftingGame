@@ -1,6 +1,6 @@
 using System.Collections;
 
-public class MonsterInitState : MonsterState
+public class WaveMonsterInitState : MonsterState
 {
     #region Properties
     #region Private
@@ -42,7 +42,7 @@ public class MonsterInitState : MonsterState
     private IEnumerator Init()
     {
         yield return null;
-        owner.stateMachine.ChangeState<MonsterIdleState>();
+        owner.stateMachine.ChangeState<WaveMonsterIdleState>();
     }
     #endregion
 

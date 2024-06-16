@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterDetectState : MonsterState
+public class WaveMonsterDetectState : MonsterState
 {
     #region Properties
     #region Private
@@ -55,28 +55,38 @@ public class MonsterDetectState : MonsterState
         //Wait until Select Action
         yield return StartCoroutine(SelectingAction());
 
-        while (!owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
+        while(owner.target != null)
         {
-            Vector2 dir = owner.target.transform.position - transform.position;
-
-            //targeting owner`s opponent
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dir.magnitude, owner.targetMask);
-            if(hit.collider != null)
+            if(!owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
             {
-                owner.target = hit.collider.gameObject;
-                Debug.Log(owner.target.transform.position);
+                Vector2 dir = owner.target.transform.position - transform.position;
+
+                //targeting owner`s opponent
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dir.magnitude, owner.targetMask);
+                if (hit.collider != null)
+                {
+                    owner.target = hit.collider.gameObject;
+                    Debug.Log(owner.target.transform.position);
+                }
+                yield return new WaitForSeconds(1.1f);
             }
-            yield return new WaitForSeconds(1.1f);
+            else
+            {
+                break;
+            }
         }
 
-        owner.stateMachine.ChangeState<MonsterAttackState>();
+        if (owner.target == null)
+            owner.stateMachine.ChangeState<WaveMonsterIdleState>();
+        else
+            owner.stateMachine.ChangeState<WaveMonsterAttackState>();
         yield return null;
     }
 
     protected IEnumerator FollowingTarget()
     {
         //현재는 감지하면 무조건 쫒아가기만 하는 알고리즘
-        while (true)
+        while (owner.target != null)
         {
             owner.dirMove?.Activate(owner.target.transform.position - transform.position);
             yield return null;
