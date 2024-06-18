@@ -7,6 +7,9 @@ public class RabbitBossPerception : MonoBehaviour
     public List<GameObject> mortalBoxes = new List<GameObject>();
     public LayerMask mortalBoxLayerMask;
 
+    public List<GameObject> GetList() {
+        return mortalBoxes; 
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (((1 << collision.gameObject.layer) & mortalBoxLayerMask) != 0)

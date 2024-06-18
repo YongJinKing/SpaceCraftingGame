@@ -65,6 +65,11 @@ public class MortalBox : MonoBehaviour
         }
     }
 
+    public int GetRice()
+    {
+        return riceCakes;
+    }
+
     public bool ReduceCake(int amount) // 패턴을 위해 떡을 소모하는 함수, 성공(= 패턴에 필요한 떡보다 절구통에 있는 떡이 많을 때)하면 true, 아니면 false 리턴
     {
         if (riceCakes >= amount)
