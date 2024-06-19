@@ -25,20 +25,18 @@ public class CraftBuildingUIManager : MonoBehaviour
     [SerializeField] int BuildUIIndex;
     CraftingUI BuildSet;
 
+   
     public static CraftBuildingUIManager instance;
-    public List<int> BuildingID, TurretID;
     
+    BuildingUISelectType BuildingType;
+ 
+    public List<int> TypeID;
     
-    public class SlotBuildingData
-    {
-        public int id;
-
-    }
-    //public List<SlotBuildingData> InventoryDatas = new List<>();
-
+   
     // Start is called before the first frame update
     void Start()
     {
+        
 
         BuildingUIStructure.GetInstance().LoadBuildingInfo();
         ButtonClick = 0;
@@ -48,7 +46,8 @@ public class CraftBuildingUIManager : MonoBehaviour
         //InventoryButton.SetActive(false);
         BuildSet = new CraftingUI();
         BuildUIIndex = 110000;
-        Debug.Log("콘솔창 오픈");
+        BuildingType = BuildingUISelectType.Resource;
+
 
         foreach (var data in BuildingUIStructure.GetInstance().dicBUIComponentTable)
         {
@@ -57,10 +56,11 @@ public class CraftBuildingUIManager : MonoBehaviour
             { 
                 Debug.Log(data.Value.ComponentDataTable_Index);
                 //json Index값을 가져와 새로운 리스트에 삽입
-                BuildingID.Add(data.Value.ComponentDataTable_Index);
+                TypeID.Add(data.Value.ComponentDataTable_Index);
             }
            
         }
+        
     }
 
     // Update is called once per frame
@@ -159,7 +159,7 @@ public class CraftBuildingUIManager : MonoBehaviour
 
 
     }
-
+    /*
     public void ResourceButtonClick()
     {
 
@@ -182,9 +182,9 @@ public class CraftBuildingUIManager : MonoBehaviour
     public void BringBuildData(int index)
     {
         GameObject ResourceBuilding = BuildSet.CraftBuildUI(index);
-        Debug.Log(ResourceBuilding);
+        //Debug.Log(ResourceBuilding);
     }
-
+    */
     public void BuildUIOpen()
     {
         BuildingButton.SetActive(true);
@@ -207,36 +207,50 @@ public class CraftBuildingUIManager : MonoBehaviour
         ButtonClick = 0;
     }
 
-    public void TestReadingJsonData()
+    public void ChangeMode(int index)
     {
-        Debug.Log("JsonTest");
+        BuildingType = (BuildingUISelectType)index;
+        BuildingTabFunction(BuildingType);
         
-        
+    }
+
+    public void BuildingTabFunction(BuildingUISelectType Type)
+    {
         
 
-        /*s
-        // 장비창 전부 탭
-        DisplayInven = InventoryDatas;
-        if (Type == SelelctType.All)
-            return;
-        
-        else
+        if (Type == BuildingUISelectType.Resource)
         {
-            DisplayInven = new List<SlotItemData>();
-            for (int i = 0; i < InventoryDatas.Count; i++)
+            Debug.Log(Type);
+            for (int i = 0; i < TypeID.Count; i++)
             {
-                var ItemData = ItemStaticDataManager.GetInstance().dicItemData[InventoryDatas[i].id];
-                //Debug.Log($"{ItemData.ItemType}아이템 타입, {Type}모드 타입");
-                if (ItemData.ItemType + 1 == (int)Type)
+                var BuildingData = BuildingUIStructure.GetInstance().dicBUIComponentTable[TypeID[i]];
+                if (((BuildingData.ComponentDataTable_Index / 10000) - 10) == (int)Type)
                 {
-                    //Debug.Log("실행 채크");
-                    SlotItemData SlotData = new SlotItemData();
-                    SlotData.id = InventoryDatas[i].id;
-                    SlotData.Amount = InventoryDatas[i].Amount;
-                    DisplayInven.Add(SlotData);
+                    Debug.Log(i);
+                    //TypeID.Add(BuildingData.ComponentDataTable_Index);
+
                 }
             }
-        }*/
+            
+        }
+        else
+        {
+            Debug.Log(Type);
+            // 10만 : 자원생산건물   11만 : 공성건물    12만 : 아이템 생산건물(?)     13만: 울타리 건물
+            for (int i = 0; i < TypeID.Count; i++)
+            {
+
+                var BuildingData = BuildingUIStructure.GetInstance().dicBUIComponentTable[TypeID[i]];
+
+                if(((BuildingData.ComponentDataTable_Index / 10000) - 10) == (int)Type)
+                {
+                    Debug.Log(i);
+                    //TypeID.Add(BuildingData.ComponentDataTable_Index);
+                    
+                }
+
+            }
+        }
 
     }
 }

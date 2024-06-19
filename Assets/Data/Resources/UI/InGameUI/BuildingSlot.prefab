@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 1195918560064911409}
   - component: {fileID: 7054522705246764665}
   - component: {fileID: 8388991855554738089}
+  - component: {fileID: 8785087401779014849}
   m_Layer: 5
   m_Name: BuildingSlot
   m_TagString: Untagged
@@ -284,3 +285,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8785087401779014849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3204765191250553894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403ffd7175d40904096b534f6677cd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1531620674744262352}
