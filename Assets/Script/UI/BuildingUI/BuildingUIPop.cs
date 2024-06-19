@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BuildingUIPop : MonoBehaviour
 {
+    public GameObject objSlotGridLine;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,10 @@ public class BuildingUIPop : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PopupBuildUpadate()
+    {
+       // if(CraftBuildingUIManager.instance.ApplyTypeID.Count > )
     }
 }

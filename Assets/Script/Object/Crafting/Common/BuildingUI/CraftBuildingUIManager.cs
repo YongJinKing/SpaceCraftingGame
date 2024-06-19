@@ -31,7 +31,7 @@ public class CraftBuildingUIManager : MonoBehaviour
     BuildingUISelectType BuildingType;
  
     public List<int> TypeID;
-    
+    public List<int> ApplyTypeID;
    
     // Start is called before the first frame update
     void Start()
@@ -216,8 +216,12 @@ public class CraftBuildingUIManager : MonoBehaviour
 
     public void BuildingTabFunction(BuildingUISelectType Type)
     {
-        
+        /*
+         * 리스트 하나 더 만들기
+         * 1. 리스트 초기화
 
+         * */
+        ApplyTypeID = new List<int>();
         if (Type == BuildingUISelectType.Resource)
         {
             Debug.Log(Type);
@@ -227,7 +231,7 @@ public class CraftBuildingUIManager : MonoBehaviour
                 if (((BuildingData.ComponentDataTable_Index / 10000) - 10) == (int)Type)
                 {
                     Debug.Log(i);
-                    //TypeID.Add(BuildingData.ComponentDataTable_Index);
+                    ApplyTypeID.Add(BuildingData.ComponentDataTable_Index);
 
                 }
             }
@@ -245,7 +249,7 @@ public class CraftBuildingUIManager : MonoBehaviour
                 if(((BuildingData.ComponentDataTable_Index / 10000) - 10) == (int)Type)
                 {
                     Debug.Log(i);
-                    //TypeID.Add(BuildingData.ComponentDataTable_Index);
+                    ApplyTypeID.Add(BuildingData.ComponentDataTable_Index);
                     
                 }
 

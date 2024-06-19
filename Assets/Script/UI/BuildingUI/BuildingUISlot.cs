@@ -25,14 +25,14 @@ public class BuildingUISlot : MonoBehaviour
     }
 
     public void InputSlotData()
-    {/*
-        var BuildingData = BuildingUIStructure.GetInstance().dicBUIComponentTable[CraftBuildingUIManager.instance.TypeID[transform.GetSiblingIndex()]];
+    {
+        var BuildingData = BuildingUIStructure.GetInstance().dicBUIComponentTable[CraftBuildingUIManager.instance.ApplyTypeID[transform.GetSiblingIndex()]];
         var BuildingSpriteData = BuildingUIStructure.GetInstance().dicBUIImgTable[BuildingData.Component_Image];
         //AmountTxt.text = "x" + UnitCalculate.GetInstance().Calculate(CraftBuildingUIManager.instance.TypeID[transform.GetSiblingIndex()]);
         spName = BuildingSpriteData.ImageResource_Name;
         Sprite sp = Resources.Load<Sprite>($"Component/Image/{spName}");
         image.sprite = sp;
-        */
+        
 
     }
 
