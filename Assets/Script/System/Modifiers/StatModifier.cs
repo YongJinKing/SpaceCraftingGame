@@ -16,7 +16,7 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
     #endregion
     #region Protected
     protected Dictionary<EStat, List<ValueModifier>> dicModifiers = new Dictionary<EStat, List<ValueModifier>>();
-    [SerializeField]protected bool _isActive;
+    [SerializeField]protected bool _isActive = true;
     #endregion
     #region Public
     public bool isActive
@@ -28,7 +28,7 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
             {
                 _isActive = value;
 
-                if (_isActive && myStat != null)
+                if (myStat != null)
                 {
                     for(int i = 0; i < (int)EStat.Count; ++i)
                     {
@@ -36,7 +36,7 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
                         {
                             //별 상관없는 숫자를 더함으로써 Stat 클래스에 있는 이벤트를 발동시키기
                             //위함이다.
-                            myStat[(EStat)i] += 0.0f;
+                            myStat[(EStat)i] = myStat.GetRawStat((EStat)i) + 0.0f;
                         }
                     }
                 }
@@ -106,7 +106,12 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
         isActive = true;
     }
 
-    private void OnDisable()
+    private void OnDisable() 
+    {
+        isActive = false; 
+    }
+
+    private void OnDestroy()
     {
         isActive = false;
     }

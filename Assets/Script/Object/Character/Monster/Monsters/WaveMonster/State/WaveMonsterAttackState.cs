@@ -95,12 +95,12 @@ public class WaveMonsterAttackState : MonsterState
 
     protected IEnumerator TravelingPath()
     {
-        Vector2 dir;
+        //Vector2 dir;
 
         while (owner.target != null)
         {
-            dir = owner.target.transform.position - transform.position;
             /*
+            dir = owner.target.transform.position - transform.position;
             if(dir.magnitude < owner.activatedAction.activeRadius)
             {
                 owner.dirMove.Activate(owner.target.transform.position);
