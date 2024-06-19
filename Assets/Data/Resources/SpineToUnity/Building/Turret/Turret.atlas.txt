@@ -1,0 +1,20 @@
+
+Turret.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Turret_Base
+  rotate: false
+  xy: 2, 223
+  size: 484, 360
+  orig: 484, 360
+  offset: 0, 0
+  index: -1
+Turret_Head
+  rotate: false
+  xy: 2, 2
+  size: 412, 219
+  orig: 412, 219
+  offset: 0, 0
+  index: -1

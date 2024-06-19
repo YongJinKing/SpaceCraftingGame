@@ -1,0 +1,41 @@
+
+Builder.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Dron_Body
+  rotate: true
+  xy: 467, 339
+  size: 392, 264
+  orig: 392, 264
+  offset: 0, 0
+  index: -1
+Dron_Head
+  rotate: false
+  xy: 2, 123
+  size: 92, 159
+  orig: 92, 159
+  offset: 0, 0
+  index: -1
+Dron_Nozzle
+  rotate: true
+  xy: 2, 77
+  size: 44, 64
+  orig: 44, 64
+  offset: 0, 0
+  index: -1
+Dron_Wing
+  rotate: false
+  xy: 467, 100
+  size: 217, 237
+  orig: 217, 237
+  offset: 0, 0
+  index: -1
+Scan
+  rotate: false
+  xy: 2, 284
+  size: 463, 447
+  orig: 463, 447
+  offset: 0, 0
+  index: -1

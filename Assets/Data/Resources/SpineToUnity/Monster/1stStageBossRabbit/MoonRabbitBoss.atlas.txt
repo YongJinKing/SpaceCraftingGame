@@ -4,6 +4,13 @@ size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+AstoningFace
+  rotate: false
+  xy: 846, 767
+  size: 168, 149
+  orig: 168, 149
+  offset: 0, 0
+  index: -1
 AttackFacce
   rotate: false
   xy: 337, 657
@@ -30,6 +37,20 @@ Dead
   xy: 208, 591
   size: 185, 113
   orig: 185, 113
+  offset: 0, 0
+  index: -1
+DizzyFace
+  rotate: false
+  xy: 323, 545
+  size: 182, 110
+  orig: 182, 110
+  offset: 0, 0
+  index: -1
+FunFace
+  rotate: false
+  xy: 761, 465
+  size: 205, 109
+  orig: 421, 109
   offset: 0, 0
   index: -1
 Hammer
@@ -62,7 +83,7 @@ RightArm
   index: -1
 LeftLeg
   rotate: true
-  xy: 846, 727
+  xy: 844, 576
   size: 189, 150
   orig: 189, 150
   offset: 0, 0
@@ -75,15 +96,15 @@ NormalFace
   offset: 0, 1
   index: -1
 RightLeg
-  rotate: true
-  xy: 844, 545
+  rotate: false
+  xy: 507, 427
   size: 180, 139
   orig: 181, 139
   offset: 0, 0
   index: -1
 Tails
   rotate: false
-  xy: 323, 571
+  xy: 2, 505
   size: 91, 84
   orig: 93, 86
   offset: 1, 1
