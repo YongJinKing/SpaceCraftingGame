@@ -46,17 +46,19 @@ public class AI : MonoBehaviour
 
     #region Methods
     #region Private
-    private void AddNodeToOList(Dictionary<Vector3Int, Node> CList, Dictionary<Vector3Int, Node> OList, Vector3Int key, Vector3Int targetCoor, Node parent)
+    //return false if not add to OList
+    //return true if add to OList
+    private bool AddNodeToOList(Dictionary<Vector3Int, Node> CList, Dictionary<Vector3Int, Node> OList, Vector3Int key, Vector3Int targetCoor, Node parent)
     {
         if (CList.ContainsKey(key))
         {
-            return;
+            return false;
         }
 
         if(key == targetCoor && !OList.ContainsKey(key))
         {
             OList.Add(key, new Node(key, 0, 0, parent.NodeID));
-            return;
+            return false;
         }
 
         if (TileManager.Instance.HasTile(key))
@@ -84,6 +86,7 @@ public class AI : MonoBehaviour
                 }
             }
         }
+        return true;
     }
     #endregion
     #region Protected
@@ -132,7 +135,7 @@ public class AI : MonoBehaviour
         return targets[bestTarget].gameObject;
     }
 
-    public bool PathFinding(Vector2 startPos, Vector2 targetPos ,out Vector2[] path)
+    public bool PathFinding(Vector2 startPos, Vector2 targetPos, out Vector2[] path)
     {
         Vector3Int targetCoor = TileManager.Instance.GetTileCoordinates(targetPos);
         Vector3Int startCoor = TileManager.Instance.GetTileCoordinates(startPos);
@@ -153,38 +156,53 @@ public class AI : MonoBehaviour
 
         CList.Add(startCoor, new Node(startCoor, 0, 0, startCoor));
 
-        //repeat 20 times
-        for(int i = 0; i < 20; ++i)
+        //repeat 5 times
+        for (int i = 0; i < 5; ++i)
         {
             //Add Node to Open Node List
             foreach(Node node in CList.Values)
             {
                 Vector3Int temp;
+                bool[] arrows = new bool[4]{ false, false, false, false};
 
-                //Add nodes clockwise
+                //Add Right Angle nodes
                 temp = node.NodeID + Vector3Int.up;
-                AddNodeToOList(CList, OList, temp, targetCoor, node);
-
-                //temp = node.NodeID + Vector3Int.up + Vector3Int.right;
-                //AddNodeToOList(CList, OList, temp, targetCoor, node);
+                arrows[0] = AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.right;
-                AddNodeToOList(CList, OList, temp, targetCoor, node);
-
-                //temp = node.NodeID + Vector3Int.down + Vector3Int.right;
-                //AddNodeToOList(CList, OList, temp, targetCoor, node);
+                arrows[1] = AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.down;
-                AddNodeToOList(CList, OList, temp, targetCoor, node);
-
-                //temp = node.NodeID + Vector3Int.down + Vector3Int.left;
-                //AddNodeToOList(CList, OList, temp, targetCoor, node);
+                arrows[2] = AddNodeToOList(CList, OList, temp, targetCoor, node);
 
                 temp = node.NodeID + Vector3Int.left;
-                AddNodeToOList(CList, OList, temp, targetCoor, node);
+                arrows[3] = AddNodeToOList(CList, OList, temp, targetCoor, node);
 
-                //temp = node.NodeID + Vector3Int.up + Vector3Int.left;
-                //AddNodeToOList(CList, OList, temp, targetCoor, node);
+                //for add diagonal
+                //대각선 추가
+                if (arrows[0] && arrows[1])
+                {
+                    temp = node.NodeID + Vector3Int.up + Vector3Int.right;
+                    AddNodeToOList(CList, OList, temp, targetCoor, node);
+                }
+
+                if (arrows[1] && arrows[2])
+                {
+                    temp = node.NodeID + Vector3Int.down + Vector3Int.right;
+                    AddNodeToOList(CList, OList, temp, targetCoor, node);
+                }
+
+                if (arrows[2] && arrows[3])
+                {
+                    temp = node.NodeID + Vector3Int.down + Vector3Int.left;
+                    AddNodeToOList(CList, OList, temp, targetCoor, node);
+                }
+
+                if (arrows[3] && arrows[0])
+                {
+                    temp = node.NodeID + Vector3Int.up + Vector3Int.left;
+                    AddNodeToOList(CList, OList, temp, targetCoor, node);
+                }
             }
 
             //find minimum FScore Node
@@ -280,7 +298,7 @@ public class AI : MonoBehaviour
             else
             {
                 path = new Vector2[1];
-                path[0] = TileManager.Instance.GetWorldPosCenterOfCell((Vector2Int)temp);
+                path[0] = TileManager.Instance.GetWorldPosCenterOfCell((Vector2Int)targetCoor);
             }
             /*
             //for debug

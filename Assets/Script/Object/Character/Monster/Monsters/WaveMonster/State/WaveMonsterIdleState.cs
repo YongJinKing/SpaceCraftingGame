@@ -23,14 +23,6 @@ public class WaveMonsterIdleState : MonsterState
     #region Private
     #endregion
     #region Protected
-    protected override void AddListeners()
-    {
-        base.AddListeners();
-    }
-    protected override void RemoveListeners()
-    {
-        base.RemoveListeners();
-    }
     #endregion
     #region Public
     public override void Enter()

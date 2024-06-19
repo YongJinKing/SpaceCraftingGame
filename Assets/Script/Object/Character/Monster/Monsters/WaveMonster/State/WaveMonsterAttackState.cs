@@ -100,11 +100,14 @@ public class WaveMonsterAttackState : MonsterState
         while (owner.target != null)
         {
             dir = owner.target.transform.position - transform.position;
+            /*
             if(dir.magnitude < owner.activatedAction.activeRadius)
             {
                 owner.dirMove.Activate(owner.target.transform.position);
             }
-            else if(owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
+            else 
+            */
+            if(owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
             {
                 moveToPathEvent?.Invoke(path);
                 yield return new WaitForSeconds(1.1f);

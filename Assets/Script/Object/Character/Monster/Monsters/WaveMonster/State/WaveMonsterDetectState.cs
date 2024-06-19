@@ -22,14 +22,6 @@ public class WaveMonsterDetectState : MonsterState
     #region Private
     #endregion
     #region Protected
-    protected override void AddListeners()
-    {
-        base.AddListeners();
-    }
-    protected override void RemoveListeners()
-    {
-        base.RemoveListeners();
-    }
     #endregion
     #region Public
     public override void Enter()
@@ -55,20 +47,12 @@ public class WaveMonsterDetectState : MonsterState
         //Wait until Select Action
         yield return StartCoroutine(SelectingAction());
 
-        while(owner.target != null)
+        for(int i = 0; i < owner[EStat.DetectRadius] && owner.target != null; ++i)
         {
-            if(!owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
+            if (!owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
             {
-                Vector2 dir = owner.target.transform.position - transform.position;
-
-                //targeting owner`s opponent
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dir.magnitude, owner.targetMask);
-                if (hit.collider != null)
-                {
-                    owner.target = hit.collider.gameObject;
-                    Debug.Log(owner.target.transform.position);
-                }
-                yield return new WaitForSeconds(1.1f);
+                owner.target = owner.ai.TargetSelect(owner.targetMask, owner[EStat.DetectRadius] - i);
+                yield return null;
             }
             else
             {
@@ -99,7 +83,7 @@ public class WaveMonsterDetectState : MonsterState
             Debug.Log("attackActions == null");
             yield break;
         }
-            
+        
         Action action = null;
         while (action == null)
         {
