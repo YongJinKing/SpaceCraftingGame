@@ -19,7 +19,7 @@ public class InvenItemSlot : MonoBehaviour
     {
         ItemStaticDataManager.GetInstance().LoadItemDatas();
     }
-    public void Display(int index)
+    public void Display(int index)//설명생략
     {
         var ItemData = ItemStaticDataManager.GetInstance().dicItemData[Inventory.instance.DisplayInven[transform.GetSiblingIndex() + (index * 25)].id];
         var SpriteData = ItemStaticDataManager.GetInstance().dicResouseTable[ItemData.ItemImage];
