@@ -7,6 +7,11 @@ public class RabbitBossPerception : MonoBehaviour
     public List<GameObject> mortalBoxes = new List<GameObject>();
     public LayerMask mortalBoxLayerMask;
 
+    private void Update()
+    {
+        this.transform.localPosition = Vector3.zero;
+    }
+
     public List<GameObject> GetList() {
         return mortalBoxes; 
     }

@@ -28,7 +28,7 @@ public class SlowGround : MonoBehaviour
             if (!slowed)
             {
                 slowed = true;
-                collision.gameObject.GetComponent<Unit>().moveSpeed *= 0.8f;
+                collision.gameObject.GetComponent<Unit>().moveSpeed *= 0.2f;
             }
             
         }
@@ -43,7 +43,7 @@ public class SlowGround : MonoBehaviour
             if (!slowed)
             {
                 slowed = true;
-                collision.gameObject.GetComponent<Unit>().moveSpeed *= 0.8f;
+                collision.gameObject.GetComponent<Unit>().moveSpeed *= 0.2f;
             }
             /*originSpeed = collision.gameObject.GetComponent<Unit>().moveSpeed;
             */
