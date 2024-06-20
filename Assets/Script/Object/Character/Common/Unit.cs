@@ -1,4 +1,3 @@
-using Spine.Unity;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,9 +10,7 @@ public abstract class Unit : Stat
     protected StateMachine _stateMachine;
     protected Action _activatedAction = null;
     
-    // 스파인 애니메이션 사용에 필요한 컴포넌트
-    protected SkeletonAnimation skeletonAnimation;
-    protected AnimationReferenceAsset[] animClip;
+    
     #endregion
     #region Public
     public float moveSpeed;

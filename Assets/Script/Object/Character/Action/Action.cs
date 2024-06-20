@@ -1,3 +1,4 @@
+using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,10 @@ public abstract class Action : MonoBehaviour, IGetPriority
     [SerializeField]protected float _priority = 0.0f;
     [SerializeField]protected float _coolTime = -1;
     [SerializeField]protected float _activeRadius = 1.0f;
+
+    //for spine animation
+    protected SkeletonAnimation skeletonAnimation;
+    protected AnimationReferenceAsset[] animClip;
     #endregion
     #region Public
     public bool fireAndForget
