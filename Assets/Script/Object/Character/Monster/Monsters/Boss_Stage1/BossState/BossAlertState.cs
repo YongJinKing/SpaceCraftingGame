@@ -74,6 +74,7 @@ public class BossAlertState : BossState
     private IEnumerator MoveTowardsTarget()
     {
         Debug.Log("π´∫Í≈ı≈∏∞Ÿ");
+        owner.animator.SetBool("Move", true);
         /*while (true)
         {
             Vector2 targetPosition = (Vector2)owner.transform.position;
@@ -172,6 +173,7 @@ public class BossAlertState : BossState
             yield return null;
         }
 
+        owner.animator.SetBool("Move", false);
         yield return StartCoroutine(ProcessingState());
     }
     private IEnumerator RotateAroundTarget()
@@ -201,6 +203,7 @@ public class BossAlertState : BossState
     protected IEnumerator ProcessingState()
     {
         //Wait until Select Action
+
         yield return StartCoroutine(SelectingAction());
         yield return new WaitForSeconds(3f);
         owner.stateMachine.ChangeState<BossAttackState>();

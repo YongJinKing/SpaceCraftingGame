@@ -17,11 +17,11 @@ public abstract class Action : MonoBehaviour, IGetPriority
     [SerializeField]protected float _coolTime = -1;
     [SerializeField]protected float _activeRadius = 1.0f;
 
-    //for spine animation
-    protected SkeletonAnimation skeletonAnimation;
-    protected AnimationReferenceAsset[] animClip;
     #endregion
     #region Public
+    //for spine animation
+    public SkeletonAnimation skeletonAnimation;
+    public AnimationReferenceAsset[] animClip;
     public bool fireAndForget
     {
         get { return _fireAndForget; }
