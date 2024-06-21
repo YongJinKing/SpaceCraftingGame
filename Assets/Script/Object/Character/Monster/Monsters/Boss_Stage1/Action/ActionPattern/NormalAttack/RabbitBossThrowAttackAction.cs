@@ -41,6 +41,10 @@ public class RabbitBossThrowAttackAction : AttackAction
     IEnumerator ThrowingAttack(Vector2 pos)
     {
         Debug.Log("스로잉");
+        //지금 당장은 딜레이로 조절하고 있는데 이벤트를 쓰는 법을 알아봐야하는데 잘 모르겠음.,.
+        AsyncAnimation(0, false);
+        yield return new WaitForSeconds(1);
+        AsyncAnimation(1, false);
         
         GameObject obj = Instantiate(riceCakes,ThrowingPos.position, Quaternion.identity);
         obj.transform.parent = null;

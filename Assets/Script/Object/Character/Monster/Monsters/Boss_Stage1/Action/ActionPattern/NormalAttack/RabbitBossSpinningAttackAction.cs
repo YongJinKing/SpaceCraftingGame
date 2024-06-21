@@ -10,7 +10,6 @@ public class RabbitBossSpinningAttackAction : AttackAction
     #region Protected
     #endregion
     #region Public
-    public SpriteRenderer renderer;
     #endregion
     #region Events
     #endregion
@@ -36,17 +35,16 @@ public class RabbitBossSpinningAttackAction : AttackAction
 
     IEnumerator SpinningAttack()
     {
-        while (true)
-        {
-            renderer.flipX = !renderer.flipX;
-            yield return null;
-        }
+        AsyncAnimation(0, false);
+        yield return new WaitForSeconds(1f);
+        AsyncAnimation(1, true);
     }
     #endregion
     #region Protected
     protected override void ActionEnd()
     {
         base.ActionEnd();
+        AsyncAnimation(2, false);
         StopAllCoroutines();
     }
     #endregion

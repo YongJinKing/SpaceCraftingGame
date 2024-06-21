@@ -49,9 +49,7 @@ public class RabbitBossJumpAttackAction : AttackAction
     IEnumerator JumpToTarget(Vector2 start, Vector2 target, float height, float duration)
     {
         float jumpTime = 0;
-        skeletonAnimation.state.SetAnimation(0, animClip[0], false).TimeScale = 1;
-        skeletonAnimation.loop = false;
-        skeletonAnimation.timeScale = 1;
+        AsyncAnimation(0,false);
 
         while (jumpTime < duration)
         {

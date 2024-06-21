@@ -12,7 +12,6 @@ public class Boss : Monster
     #endregion
     #region Public
     public BossDirMoveAction bossDirMove;
-    public Animator animator;
     #endregion
     #region Events
     #endregion

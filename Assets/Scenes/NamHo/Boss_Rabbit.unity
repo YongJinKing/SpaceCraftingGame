@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 45214046}
   - component: {fileID: 45214045}
   - component: {fileID: 45214044}
-  - component: {fileID: 45214047}
   m_Layer: 0
   m_Name: RabbitBoss_SpineImg
   m_TagString: Untagged
@@ -245,27 +244,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45214042}
   m_Mesh: {fileID: 0}
---- !u!95 &45214047
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45214042}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2b3a99ba4c1f0274e85fda54231f8c12, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &102596258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,8 +1531,10 @@ MonoBehaviour:
   _priority: 4
   _coolTime: 40
   _activeRadius: 1
-  skeletonAnimation: {fileID: 0}
-  animClip: []
+  skeletonAnimation: {fileID: 45214044}
+  animClip:
+  - {fileID: 11400000, guid: 679027ee648bb0a4e946623c8a389b63, type: 2}
+  - {fileID: 11400000, guid: 0644591606e737547aed4e287e209412, type: 2}
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1613,8 +1593,11 @@ MonoBehaviour:
   _priority: 2
   _coolTime: 60
   _activeRadius: 1
-  skeletonAnimation: {fileID: 0}
-  animClip: []
+  skeletonAnimation: {fileID: 45214044}
+  animClip:
+  - {fileID: 11400000, guid: 02a05f411eca1c445a7100ae80b7d8f5, type: 2}
+  - {fileID: 11400000, guid: ed42d7835e59f6d4facec90aee7a7321, type: 2}
+  - {fileID: 11400000, guid: 113f3fa2c357e3f4297c4c29d1353d88, type: 2}
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5242,7 +5225,6 @@ MonoBehaviour:
   - {fileID: 1953498056}
   ai: {fileID: 1940367737}
   bossDirMove: {fileID: 0}
-  animator: {fileID: 45214047}
   _animState: 0
   currentAnim: 
 --- !u!50 &1816270051
@@ -5572,8 +5554,11 @@ MonoBehaviour:
   _priority: 5
   _coolTime: 50
   _activeRadius: 1
-  skeletonAnimation: {fileID: 0}
-  animClip: []
+  skeletonAnimation: {fileID: 45214044}
+  animClip:
+  - {fileID: 11400000, guid: 33e0f6f3573ab754385a791e6e5aca3b, type: 2}
+  - {fileID: 11400000, guid: aac5aa40b07bbb24885a2ed7ade7c240, type: 2}
+  - {fileID: 11400000, guid: 2fa5a2817ce4bda4c9d5c5daf0367db5, type: 2}
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5582,7 +5567,6 @@ MonoBehaviour:
     m_Bits: 2097152
   hitBoxes:
   - {fileID: 1348615976}
-  renderer: {fileID: 680299616}
 --- !u!1 &1930143292
 GameObject:
   m_ObjectHideFlags: 0

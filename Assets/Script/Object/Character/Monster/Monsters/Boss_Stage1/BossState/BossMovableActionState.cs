@@ -73,6 +73,7 @@ public class BossMovableActionState : BossState
     #region Coroutines
     protected IEnumerator FollowingTarget()
     {
+        yield return new WaitForSeconds(1f);
         //보스의 이동속도의 80%(느리게 따라갈거면) 혹은 120%(빠르게 따라갈거면)로 플레이어를 따라감
         while(moveTimer >= 0.0f)
         {

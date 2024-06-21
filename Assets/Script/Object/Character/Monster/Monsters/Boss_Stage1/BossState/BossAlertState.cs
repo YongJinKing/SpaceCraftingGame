@@ -74,7 +74,6 @@ public class BossAlertState : BossState
     private IEnumerator MoveTowardsTarget()
     {
         Debug.Log("무브투타겟");
-        owner.animator.SetBool("Move", true);
         /*while (true)
         {
             Vector2 targetPosition = (Vector2)owner.transform.position;
@@ -173,7 +172,6 @@ public class BossAlertState : BossState
             yield return null;
         }
 
-        owner.animator.SetBool("Move", false);
         yield return StartCoroutine(ProcessingState());
     }
     private IEnumerator RotateAroundTarget()

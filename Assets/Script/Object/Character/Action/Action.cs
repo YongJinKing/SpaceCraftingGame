@@ -77,6 +77,12 @@ public abstract class Action : MonoBehaviour, IGetPriority
     {
         return priority;
     }
+    public void AsyncAnimation(int idx, bool loop)
+    {
+        skeletonAnimation.state.SetAnimation(0, animClip[idx], loop).TimeScale = 1;
+        skeletonAnimation.loop = loop;
+        skeletonAnimation.timeScale = 1;
+    }
     #endregion
     #endregion
 
