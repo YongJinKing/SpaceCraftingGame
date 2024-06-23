@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class RabbitBossSuperJumpAttackAction : AttackAction
+public class RabbitBossSuperJumpAttackAction : BossAction
 {
     #region Properties
     #region Private
@@ -46,8 +46,9 @@ public class RabbitBossSuperJumpAttackAction : AttackAction
         Debug.Log("슈ㅠ퍼 점프 시작");
         Rigidbody2D rb = transform.parent.GetComponentInParent<Rigidbody2D>();
         Transform rabbit = transform.parent.parent.transform;
-        AsyncAnimation(0, false);
-        yield return new WaitForSeconds(1f); // 일단은 1초 기다리고 점프 시작, 나중에는 애니메이션에 맞춰서 할듯
+        // AsyncAnimation(0, false);
+        
+        //yield return new WaitForSeconds(1f); // 일단은 1초 기다리고 점프 시작, 나중에는 애니메이션에 맞춰서 할듯
 
         // 초기 속도 설정
         float verticalSpeed = jumpHeight;
@@ -75,8 +76,9 @@ public class RabbitBossSuperJumpAttackAction : AttackAction
         yield return new WaitForSeconds(delayBeforeFall);
 
         // 중력 가속도로 플레이어 위치로 떨어지기
+        ownerAnim.SetBool("SuperJumping", true);
         verticalSpeed = 0f; // 속도 초기화
-        AsyncAnimation(1, true);
+        //AsyncAnimation(1, true);
         while (rabbit.position.y > targetPos.y)
         {
             verticalSpeed += gravity * Time.deltaTime * 2; // 중력 가속도 적용
@@ -88,7 +90,8 @@ public class RabbitBossSuperJumpAttackAction : AttackAction
         StartCoroutine(HitBoxOn(targetPos));
         // 토끼 위치를 플레이어 위치로 고정
         rabbit.position = targetPos;
-        AsyncAnimation(2, false);
+        ownerAnim.SetBool("SuperJumping", false);
+        //AsyncAnimation(2, false);
         rb.velocity = Vector2.zero; // 가해진 속도 초기화
 
     }
@@ -105,8 +108,13 @@ public class RabbitBossSuperJumpAttackAction : AttackAction
     public override void Activate(Vector2 pos)
     {
         base.Activate(pos);
-        StartCoroutine(SuperJumpingAttack());
+        
+        ownerAnim.SetTrigger("SuperJumpAttack");
+    }
 
+    public void StartSuperJump()
+    {
+        StartCoroutine(SuperJumpingAttack());
     }
     public override void Deactivate()
     {

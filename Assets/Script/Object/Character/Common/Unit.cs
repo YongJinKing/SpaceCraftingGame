@@ -9,10 +9,12 @@ public abstract class Unit : Stat
     #region Protected
     protected StateMachine _stateMachine;
     protected Action _activatedAction = null;
-    
-    
+
+
     #endregion
     #region Public
+
+    public Animator animator;
     public float moveSpeed;
     public float ATK;
     public float ATKSpeed;

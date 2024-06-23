@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RabbitBossSpinningAttackAction : AttackAction
+public class RabbitBossSpinningAttackAction : BossAction
 {
     #region Properties
     #region Private
@@ -35,16 +35,20 @@ public class RabbitBossSpinningAttackAction : AttackAction
 
     IEnumerator SpinningAttack()
     {
-        AsyncAnimation(0, false);
-        yield return new WaitForSeconds(1f);
-        AsyncAnimation(1, true);
+        //AsyncAnimation(0, false);
+        //yield return new WaitForSeconds(1f);
+        //AsyncAnimation(1, true);
+        ownerAnim.SetTrigger("SpinningAttack");
+        yield return new WaitForSeconds(5f);
+        ownerAnim.SetBool("SpinningAttackEnd", true);
     }
     #endregion
     #region Protected
     protected override void ActionEnd()
     {
         base.ActionEnd();
-        AsyncAnimation(2, false);
+        //AsyncAnimation(2, false);
+        ownerAnim.SetBool("SpinningAttackEnd", false);
         StopAllCoroutines();
     }
     #endregion

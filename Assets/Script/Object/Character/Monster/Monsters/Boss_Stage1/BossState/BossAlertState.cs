@@ -50,6 +50,7 @@ public class BossAlertState : BossState
     public override void Exit()
     {
         base.Exit();
+        
         StopAllCoroutines();
     }
     #endregion
@@ -61,6 +62,7 @@ public class BossAlertState : BossState
     #region Coroutines
     private IEnumerator FollowAndRotate()
     {
+        owner.animator.SetBool("Move", true);
         while (true)
         {
             // 1. 플레이어에게 일정 거리까지 다가간다.
@@ -201,9 +203,10 @@ public class BossAlertState : BossState
     protected IEnumerator ProcessingState()
     {
         //Wait until Select Action
-
+        owner.animator.SetBool("Move", false);
         yield return StartCoroutine(SelectingAction());
         yield return new WaitForSeconds(3f);
+        
         owner.stateMachine.ChangeState<BossAttackState>();
         Debug.Log("Boss Processing State");
         

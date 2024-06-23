@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SPAttackAction : AttackAction
+public class SPAttackAction : BossAction
 {
     #region Properties
     #region Private

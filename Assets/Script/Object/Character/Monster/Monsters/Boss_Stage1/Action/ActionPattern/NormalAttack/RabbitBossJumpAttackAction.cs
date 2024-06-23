@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class RabbitBossJumpAttackAction : AttackAction
+public class RabbitBossJumpAttackAction : BossAction
 {
     #region Properties
     #region Private
@@ -49,8 +49,8 @@ public class RabbitBossJumpAttackAction : AttackAction
     IEnumerator JumpToTarget(Vector2 start, Vector2 target, float height, float duration)
     {
         float jumpTime = 0;
-        AsyncAnimation(0,false);
-
+        //AsyncAnimation(0,false);
+        ownerAnim.SetTrigger("JumpAttack");
         while (jumpTime < duration)
         {
             jumpTime += Time.deltaTime;

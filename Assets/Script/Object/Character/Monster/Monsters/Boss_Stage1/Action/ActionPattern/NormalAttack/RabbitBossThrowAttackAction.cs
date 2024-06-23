@@ -4,10 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class RabbitBossThrowAttackAction : AttackAction
+public class RabbitBossThrowAttackAction : BossAction
 {
     #region Properties
     #region Private
+    Vector2 targetPos;
     #endregion
     #region Protected
     #endregion
@@ -38,17 +39,18 @@ public class RabbitBossThrowAttackAction : AttackAction
         yield return null;
     }
 
-    IEnumerator ThrowingAttack(Vector2 pos)
+    IEnumerator ThrowingAttack()
     {
         Debug.Log("스로잉");
         //지금 당장은 딜레이로 조절하고 있는데 이벤트를 쓰는 법을 알아봐야하는데 잘 모르겠음.,.
-        AsyncAnimation(0, false);
-        yield return new WaitForSeconds(1);
-        AsyncAnimation(1, false);
+        //AsyncAnimation(0, false);
+        
+        //yield return new WaitForSeconds(1);
+        //AsyncAnimation(1, false);
         
         GameObject obj = Instantiate(riceCakes,ThrowingPos.position, Quaternion.identity);
         obj.transform.parent = null;
-        obj.GetComponent<ThrownRice>().SetTarget(pos);
+        obj.GetComponent<ThrownRice>().SetTarget(targetPos);
         // 여기서 obj, 즉 떡의 타겟을 pos로 넘겨주는 작업을 하고 아래 포물선 코드는 싹다 떡 쪽으로 옮길거임
         /*float throwingTime = 0;
         while (throwingTime < 2f)
@@ -90,10 +92,14 @@ public class RabbitBossThrowAttackAction : AttackAction
     {
         base.Activate(pos);
         // 플레이어에게 떡(돌?)을 던짐, 해당 위치에 광역 슬로우 장판을 설치하는거까지 생각중
-        StartCoroutine(ThrowingAttack(pos));
-
+        ownerAnim.SetTrigger("ThrowAttack");
+        targetPos = pos;
     }
 
+    public void ThrowStoneEvent()
+    {
+        StartCoroutine(ThrowingAttack());
+    }
     public override void Deactivate()
     {
         for (int i = 0; i < hitBoxes.Length; ++i)
