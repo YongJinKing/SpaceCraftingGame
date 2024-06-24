@@ -53,6 +53,7 @@ public class WaveMonsterIdleState : MonsterState
             yield return null;
         }
     }
+
     protected IEnumerator Detecting()
     {
         if (owner.ai == null) yield break;

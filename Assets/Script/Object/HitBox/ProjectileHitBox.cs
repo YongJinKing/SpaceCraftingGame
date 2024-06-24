@@ -33,8 +33,26 @@ public class ProjectileHitBox : HitBox
 
     #region Methods
     #region Private
+    private void RotateToDir(Vector2 dir)
+    {
+        float direction = 1.0f;
+        if (Vector2.Dot(transform.up, dir) < 0.0f) direction = -1.0f;
+        float angle = Vector2.Angle(transform.right, dir) * direction;
+        transform.Rotate(Vector3.forward * angle, Space.World);
+    }
     #endregion
     #region Protected
+    protected override void HitCheckEnd()
+    {
+        OnDurationEndEvent?.Invoke();
+        gameObject.SetActive(false);
+
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+        transform.SetParent(parent, false);
+
+        base.HitCheckEnd();
+    }
     protected override void Initialize()
     {
         parent = transform.parent;
@@ -49,11 +67,6 @@ public class ProjectileHitBox : HitBox
         base.Activate(pos);
         StartCoroutine(LinearMoving());
     }
-    public override void Deactivate()
-    {
-        base.Deactivate();
-        transform.SetParent(parent);
-    }
     #endregion
     #endregion
 
@@ -64,8 +77,6 @@ public class ProjectileHitBox : HitBox
     protected override IEnumerator HitChecking()
     {
         float remainDuration = duration;
-        this.pos.Normalize();
-
 
         while (remainDuration >= 0.0f)
         {
@@ -104,14 +115,8 @@ public class ProjectileHitBox : HitBox
 
             yield return null;
         }
-        OnDurationEndEvent?.Invoke();
-        gameObject.SetActive(false);
 
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-        transform.SetParent(parent);
-
-        Refresh();
+        HitCheckEnd();
     }
     protected IEnumerator LinearMoving()
     {
@@ -122,7 +127,9 @@ public class ProjectileHitBox : HitBox
         if (gameObject.activeSelf)
         {
             dir = pos - (Vector2)transform.position;
-            transform.rotation = Quaternion.LookRotation(dir);
+
+            RotateToDir(dir);
+
             dir.Normalize();
 
             while (gameObject.activeSelf && dist >= 0.0f)
@@ -135,6 +142,8 @@ public class ProjectileHitBox : HitBox
                 yield return null;
             }
         }
+
+        HitCheckEnd();
     }
     #endregion
 

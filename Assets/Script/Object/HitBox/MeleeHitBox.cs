@@ -24,6 +24,16 @@ public class MeleeHitBox : HitBox
     #region Private
     #endregion
     #region Protected
+    protected override void HitCheckEnd()
+    {
+        OnDurationEndEvent?.Invoke();
+        gameObject.SetActive(false);
+
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+
+        base.HitCheckEnd();
+    }
     protected override void Initialize()
     {
         base.Initialize();
@@ -52,9 +62,7 @@ public class MeleeHitBox : HitBox
     protected override IEnumerator HitChecking()
     {
         float remainDuration = duration;
-        this.pos.Normalize();
         
-
         while(remainDuration >= 0.0f)
         {
             remainDuration -= Time.deltaTime;
@@ -92,13 +100,7 @@ public class MeleeHitBox : HitBox
 
             yield return null;
         }
-        OnDurationEndEvent?.Invoke();
-        gameObject.SetActive(false);
-
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-
-        Refresh();
+        HitCheckEnd();
     }
     #endregion
 

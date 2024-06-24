@@ -80,5 +80,16 @@ public class Monster : Unit
             }
         }
     }
+
+    protected void OnDestroy()
+    {
+        if (TileManager.Instance.HasTile(previousTilePos))
+        {
+            if (!TileManager.Instance.availablePlaces[previousTilePos].available)
+            {
+                TileManager.Instance.availablePlaces[previousTilePos].available = true;
+            }
+        }
+    }
     #endregion
 }

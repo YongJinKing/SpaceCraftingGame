@@ -96,6 +96,11 @@ public abstract class HitBox : MonoBehaviour
         }
     }
 
+    protected virtual void HitCheckEnd()
+    {
+        Refresh();
+    }
+
     protected virtual void DestroyHitBox()
     {
         if(destroyEffectPrefab != null)
@@ -121,7 +126,7 @@ public abstract class HitBox : MonoBehaviour
     {
         StopAllCoroutines();
         gameObject.SetActive(false);
-        Refresh();
+        HitCheckEnd();
     }
     #endregion
     #endregion

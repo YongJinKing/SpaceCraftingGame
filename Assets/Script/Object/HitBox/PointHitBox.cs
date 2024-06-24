@@ -23,6 +23,14 @@ public class PointHitBox : HitBox
     #region Private
     #endregion
     #region Protected
+    protected override void HitCheckEnd()
+    {
+        OnDurationEndEvent?.Invoke();
+        gameObject.SetActive(false);
+
+        transform.SetParent(parent);
+        base.HitCheckEnd();
+    }
     protected override void Initialize()
     {
         parent = transform.parent;
@@ -40,7 +48,6 @@ public class PointHitBox : HitBox
     public override void Deactivate()
     {
         base.Deactivate();
-        transform.SetParent(parent);
     }
     #endregion
     #endregion
@@ -90,12 +97,7 @@ public class PointHitBox : HitBox
 
             yield return null;
         }
-        OnDurationEndEvent?.Invoke();
-        gameObject.SetActive(false);
-
-        transform.SetParent(parent);
-
-        Refresh();
+        HitCheckEnd();
     }
     #endregion
 
