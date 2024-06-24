@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingUIPop : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class BuildingUIPop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PopupBuildUpadate();
     }
 
     // Update is called once per frame
@@ -23,6 +25,10 @@ public class BuildingUIPop : MonoBehaviour
 
     public void PopupBuildUpadate()
     {
+    
+        //Debug.Log("ÆË¾÷" + objSlotGridLine.transform.childCount);
+        //Debug.Log("ApplyID Ä«¿îÆ® " +CraftBuildingUIManager.instance.ApplyTypeID.Count);
+        //CraftBuildingUIManager.instance.ApplyTypeID.Count
         for (int i = 0; i < objSlotGridLine.transform.childCount; i++)
         {
             if (CraftBuildingUIManager.instance.ApplyTypeID.Count > objSlotGridLine.transform.GetChild(i).GetSiblingIndex())

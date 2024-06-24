@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class BuildingUISlot : MonoBehaviour
 {
     public Image image;
@@ -26,6 +27,7 @@ public class BuildingUISlot : MonoBehaviour
 
     public void InputSlotData()
     {
+       
         var BuildingData = BuildingUIStructure.GetInstance().dicBUIComponentTable[CraftBuildingUIManager.instance.ApplyTypeID[transform.GetSiblingIndex()]];
         var BuildingSpriteData = BuildingUIStructure.GetInstance().dicBUIImgTable[BuildingData.Component_Image];
         //AmountTxt.text = "x" + UnitCalculate.GetInstance().Calculate(CraftBuildingUIManager.instance.TypeID[transform.GetSiblingIndex()]);

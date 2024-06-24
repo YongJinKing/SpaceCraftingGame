@@ -24,23 +24,27 @@ public class CraftBuildingUIManager : MonoBehaviour
  
     public List<int> TypeID;
     public List<int> ApplyTypeID;
-   
+
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        
-
-        BuildingUIStructure.GetInstance().LoadBuildingInfo();
-        
-        //BuildingButton.SetActive(false);
-        //InventoryButton.SetActive(false);
-     
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if (instance == this)
+        {
+            Destroy(instance.gameObject);
+        }
+    }
+    void Start()
+    {        
+        BuildingUIStructure.GetInstance().LoadBuildingInfo();    
         BuildingType = BuildingUISelectType.Resource;
-
 
         foreach (var data in BuildingUIStructure.GetInstance().dicBUIComponentTable)
         {
-
             if (data.Value.ComponentDataTable_Index < 200000)
             { 
                 Debug.Log(data.Value.ComponentDataTable_Index);
@@ -96,6 +100,7 @@ public class CraftBuildingUIManager : MonoBehaviour
 
          * */
         ApplyTypeID = new List<int>();
+
         if (Type == BuildingUISelectType.Resource)
         {
             Debug.Log(Type);
@@ -109,6 +114,7 @@ public class CraftBuildingUIManager : MonoBehaviour
 
                 }
             }
+            
             
         }
         else
@@ -128,6 +134,7 @@ public class CraftBuildingUIManager : MonoBehaviour
                 }
 
             }
+            
         }
 
     }

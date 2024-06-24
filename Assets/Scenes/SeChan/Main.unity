@@ -4110,6 +4110,21 @@ MonoBehaviour:
   - {fileID: 2760949387056712801}
   TabSelectSprite: {fileID: 21300000, guid: 129cc2178bb2b304185eea7361f07589, type: 3}
   TabDeselectSprite: {fileID: 21300000, guid: fa4d9f55e911a4b40a51886114aee557, type: 3}
+  UpdateBuildPopup:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4180270033711845019}
+        m_TargetAssemblyTypeName: BuildingUIPop, Assembly-CSharp
+        m_MethodName: PopupBuildUpadate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   TypeID: 
   ApplyTypeID: 
 --- !u!1001 &2147037117
