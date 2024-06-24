@@ -69,7 +69,7 @@ public class Monster : Unit
             Vector3Int tempCoor = TileManager.Instance.GetTileCoordinates(collision.ClosestPoint(transform.position));
             if (previousTilePos != tempCoor)
             {
-                Debug.Log($"Stay : {tempCoor}");
+                //Debug.Log($"Stay : {tempCoor}");
 
                 if(TileManager.Instance.HasTile(previousTilePos))
                     TileManager.Instance.availablePlaces[previousTilePos].available = true;

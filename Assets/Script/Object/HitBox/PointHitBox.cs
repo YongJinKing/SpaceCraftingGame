@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeHitBox : HitBox
+public class PointHitBox : HitBox
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-    protected float offset;
-    protected float angle;
+    protected Transform parent;
     #endregion
     #region Public
     #endregion
@@ -26,21 +25,22 @@ public class MeleeHitBox : HitBox
     #region Protected
     protected override void Initialize()
     {
+        parent = transform.parent;
         base.Initialize();
-        offset = hitBoxSize.x * 0.5f;
     }
     #endregion
     #region Public
     public override void Activate(Vector2 pos)
     {
-        float dir = 1.0f;
-        if (Vector2.Dot(transform.up, pos - (Vector2)transform.position) < 0.0f) dir = -1.0f;
-        angle = Vector2.Angle(transform.right, pos - (Vector2)transform.position) * dir;
-        transform.Rotate(Vector3.forward * angle, Space.World);
-
-        transform.localPosition = new Vector2(offset * Mathf.Cos(angle * Mathf.Deg2Rad), offset * Mathf.Sin(angle * Mathf.Deg2Rad));
-
+        transform.parent = null;
+        transform.position = pos;
+        transform.rotation = Quaternion.identity;
         base.Activate(pos);
+    }
+    public override void Deactivate()
+    {
+        base.Deactivate();
+        transform.SetParent(parent);
     }
     #endregion
     #endregion
@@ -52,32 +52,30 @@ public class MeleeHitBox : HitBox
     protected override IEnumerator HitChecking()
     {
         float remainDuration = duration;
-        this.pos.Normalize();
-        
 
-        while(remainDuration >= 0.0f)
+        while (remainDuration >= 0.0f)
         {
             remainDuration -= Time.deltaTime;
             Collider2D[] tempcol;
             if (isCircle)
             {
-                tempcol = Physics2D.OverlapCircleAll((Vector2)transform.position, hitBoxSize.x, targetMask);
+                tempcol = Physics2D.OverlapCircleAll(pos, hitBoxSize.x, targetMask);
             }
             else
             {
-                tempcol = Physics2D.OverlapBoxAll((Vector2)transform.position, hitBoxSize, angle, targetMask);
+                tempcol = Physics2D.OverlapBoxAll(pos, hitBoxSize, 0.0f, targetMask);
             }
 
-            for(int i = 0; i < tempcol.Length; ++i) 
+            for (int i = 0; i < tempcol.Length; ++i)
             {
                 Stat temp = tempcol[i].GetComponentInParent<Stat>();
-                if(!calculatedObject.Contains(temp))
+                if (!calculatedObject.Contains(temp))
                 {
                     //Debug
                     //Debug.Log(tempcol[i].gameObject.name);
 
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, tempcol[i].bounds.center, 10.0f, targetMask);
-                    if(hit == default(RaycastHit2D))
+                    if (hit == default(RaycastHit2D))
                     {
                         hit.point = transform.position;
                     }
@@ -95,8 +93,7 @@ public class MeleeHitBox : HitBox
         OnDurationEndEvent?.Invoke();
         gameObject.SetActive(false);
 
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
+        transform.SetParent(parent);
 
         Refresh();
     }

@@ -10,6 +10,7 @@ public abstract class AttackAction : Action
     [SerializeField]protected LayerMask _targetMask;
     #endregion
     #region Public
+    public HitBox[] hitBoxPrefabs;
     public HitBox[] hitBoxes;
     public LayerMask targetMask
     {
@@ -30,6 +31,15 @@ public abstract class AttackAction : Action
     #region Protected
     protected override void Initialize()
     {
+        if(hitBoxPrefabs != null && hitBoxes == null)
+        {
+            hitBoxes = new HitBox[hitBoxPrefabs.Length];
+            for(int i = 0; i < hitBoxes.Length; ++i)
+            {
+                hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
+            }
+        }
+
         for (int i = 0; i < hitBoxes.Length; ++i)
         {
             hitBoxes[i].OnDurationEndEvent.AddListener(OnHitBoxEnd);

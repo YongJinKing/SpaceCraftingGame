@@ -250,6 +250,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3295,6 +3297,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3473,6 +3477,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3682,8 +3688,9 @@ MonoBehaviour:
   deadEvent:
     m_PersistentCalls:
       m_Calls: []
+  animator: {fileID: 0}
   moveSpeed: 1
-  ATK: 50
+  ATK: 1
   ATKSpeed: 0
   detectRadius: 10
   targetMask:
@@ -3939,6 +3946,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3974,12 +3983,15 @@ MonoBehaviour:
   _priority: 1
   _coolTime: -1
   _activeRadius: 1.2
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
   _targetMask:
     serializedVersion: 2
     m_Bits: 2162688
+  hitBoxPrefabs: []
   hitBoxes:
   - {fileID: 1116127362}
 --- !u!4 &841697447
@@ -4054,8 +4066,9 @@ MonoBehaviour:
   deadEvent:
     m_PersistentCalls:
       m_Calls: []
+  animator: {fileID: 0}
   moveSpeed: 1
-  ATK: 50
+  ATK: 1
   ATKSpeed: 0
   detectRadius: 10
   targetMask:
@@ -4194,12 +4207,15 @@ MonoBehaviour:
   _priority: 1
   _coolTime: -1
   _activeRadius: 1.2
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
   _targetMask:
     serializedVersion: 2
     m_Bits: 2162688
+  hitBoxPrefabs: []
   hitBoxes:
   - {fileID: 1065010942}
 --- !u!1 &924476285
@@ -4278,12 +4294,15 @@ MonoBehaviour:
   _priority: 1
   _coolTime: -1
   _activeRadius: 1.2
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
   _targetMask:
     serializedVersion: 2
     m_Bits: 2162688
+  hitBoxPrefabs: []
   hitBoxes:
   - {fileID: 474750072}
 --- !u!4 &986066125
@@ -4358,8 +4377,9 @@ MonoBehaviour:
   deadEvent:
     m_PersistentCalls:
       m_Calls: []
+  animator: {fileID: 0}
   moveSpeed: 1
-  ATK: 50
+  ATK: 1
   ATKSpeed: 0
   detectRadius: 10
   targetMask:
@@ -4682,6 +4702,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -4717,12 +4739,15 @@ MonoBehaviour:
   _priority: 1
   _coolTime: -1
   _activeRadius: 1.2
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
   _targetMask:
     serializedVersion: 2
     m_Bits: 2162688
+  hitBoxPrefabs: []
   hitBoxes:
   - {fileID: 685162986}
 --- !u!4 &1142274793
@@ -5242,9 +5267,80 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &1526467966
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1759674493}
+    m_Modifications:
+    - target: {fileID: 4390499503078326914, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_Name
+      value: PointHitBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507411145549505196, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: _targetMask.m_Bits
+      value: 851968
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869589720924011600, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: _duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869589720924011600, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: _targetMask.m_Bits
+      value: 851968
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6444e84073e33347a6e770e58218763, type: 3}
 --- !u!1 &1555308681
 GameObject:
   m_ObjectHideFlags: 0
@@ -5327,12 +5423,15 @@ MonoBehaviour:
   _priority: 1
   _coolTime: -1
   _activeRadius: 1.2
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
   _targetMask:
     serializedVersion: 2
     m_Bits: 2162688
+  hitBoxPrefabs: []
   hitBoxes:
   - {fileID: 2144685243}
 --- !u!4 &1580186360
@@ -5398,6 +5497,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5492,6 +5593,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5527,14 +5630,18 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
   _targetMask:
     serializedVersion: 2
     m_Bits: 524288
+  hitBoxPrefabs: []
   hitBoxes:
   - {fileID: 583728249}
+  - {fileID: 1958609229}
 --- !u!4 &1759674493
 Transform:
   m_ObjectHideFlags: 0
@@ -5549,6 +5656,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 583728248}
+  - {fileID: 1958609230}
   m_Father: {fileID: 76067947}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1816830381
@@ -5632,6 +5740,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5667,6 +5777,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5986,15 +6098,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: _duration
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: _targetMask.m_Bits
-      value: 524288
+      value: 851968
       objectReference: {fileID: 0}
     - target: {fileID: 4390499503078326914, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: m_Name
       value: MeleeHitBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507411145549505196, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
+      propertyPath: _targetMask.m_Bits
+      value: 589824
       objectReference: {fileID: 0}
     - target: {fileID: 7295757008676812936, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6115,8 +6231,9 @@ MonoBehaviour:
   deadEvent:
     m_PersistentCalls:
       m_Calls: []
+  animator: {fileID: 0}
   moveSpeed: 5
-  ATK: 1
+  ATK: 100
   ATKSpeed: 0
   moveAction: {fileID: 1854854244}
   attackAction: {fileID: 1759674492}
@@ -6238,8 +6355,9 @@ MonoBehaviour:
   deadEvent:
     m_PersistentCalls:
       m_Calls: []
+  animator: {fileID: 0}
   moveSpeed: 1
-  ATK: 50
+  ATK: 1
   ATKSpeed: 0
   detectRadius: 10
   targetMask:
@@ -6330,6 +6448,22 @@ Transform:
   - {fileID: 399720583}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1958609229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6869589720924011600, guid: c6444e84073e33347a6e770e58218763, type: 3}
+  m_PrefabInstance: {fileID: 1526467966}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5723b0e5ffa4e04daf942b28fb9b45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1958609230 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7295757008676812936, guid: c6444e84073e33347a6e770e58218763, type: 3}
+  m_PrefabInstance: {fileID: 1526467966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2006832372
 GameObject:
   m_ObjectHideFlags: 0
@@ -6466,8 +6600,9 @@ MonoBehaviour:
   deadEvent:
     m_PersistentCalls:
       m_Calls: []
+  animator: {fileID: 0}
   moveSpeed: 1
-  ATK: 100
+  ATK: 1
   ATKSpeed: 0
   detectRadius: 10
   targetMask:
@@ -6525,6 +6660,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6575,6 +6712,8 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  skeletonAnimation: {fileID: 0}
+  animClip: []
   OnActionEndEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -2,16 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeHitBox : HitBox
+public class ProjectileHitBox : HitBox
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-    protected float offset;
-    protected float angle;
+    [SerializeField] protected float _moveSpeed;
+    [SerializeField] protected float _maxDist;
+    protected Transform parent;
     #endregion
     #region Public
+    public float moveSpeed
+    {
+        get { return _moveSpeed; }
+        set { _moveSpeed = value; }
+    }
+    public float maxDist
+    {
+        get { return _maxDist; }
+        set { _maxDist = value; }
+    }
     #endregion
     #region Events
     #endregion
@@ -26,21 +37,22 @@ public class MeleeHitBox : HitBox
     #region Protected
     protected override void Initialize()
     {
+        parent = transform.parent;
         base.Initialize();
-        offset = hitBoxSize.x * 0.5f;
     }
     #endregion
     #region Public
     public override void Activate(Vector2 pos)
     {
-        float dir = 1.0f;
-        if (Vector2.Dot(transform.up, pos - (Vector2)transform.position) < 0.0f) dir = -1.0f;
-        angle = Vector2.Angle(transform.right, pos - (Vector2)transform.position) * dir;
-        transform.Rotate(Vector3.forward * angle, Space.World);
-
-        transform.localPosition = new Vector2(offset * Mathf.Cos(angle * Mathf.Deg2Rad), offset * Mathf.Sin(angle * Mathf.Deg2Rad));
-
+        transform.parent = null;
+        transform.rotation = Quaternion.identity;
         base.Activate(pos);
+        StartCoroutine(LinearMoving());
+    }
+    public override void Deactivate()
+    {
+        base.Deactivate();
+        transform.SetParent(parent);
     }
     #endregion
     #endregion
@@ -53,9 +65,9 @@ public class MeleeHitBox : HitBox
     {
         float remainDuration = duration;
         this.pos.Normalize();
-        
 
-        while(remainDuration >= 0.0f)
+
+        while (remainDuration >= 0.0f)
         {
             remainDuration -= Time.deltaTime;
             Collider2D[] tempcol;
@@ -65,19 +77,19 @@ public class MeleeHitBox : HitBox
             }
             else
             {
-                tempcol = Physics2D.OverlapBoxAll((Vector2)transform.position, hitBoxSize, angle, targetMask);
+                tempcol = Physics2D.OverlapBoxAll((Vector2)transform.position, hitBoxSize, transform.rotation.eulerAngles.z, targetMask);
             }
 
-            for(int i = 0; i < tempcol.Length; ++i) 
+            for (int i = 0; i < tempcol.Length; ++i)
             {
                 Stat temp = tempcol[i].GetComponentInParent<Stat>();
-                if(!calculatedObject.Contains(temp))
+                if (!calculatedObject.Contains(temp))
                 {
                     //Debug
                     //Debug.Log(tempcol[i].gameObject.name);
 
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, tempcol[i].bounds.center, 10.0f, targetMask);
-                    if(hit == default(RaycastHit2D))
+                    if (hit == default(RaycastHit2D))
                     {
                         hit.point = transform.position;
                     }
@@ -97,8 +109,32 @@ public class MeleeHitBox : HitBox
 
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+        transform.SetParent(parent);
 
         Refresh();
+    }
+    protected IEnumerator LinearMoving()
+    {
+        float delta = 0.0f;
+        float dist = maxDist;
+
+        Vector2 dir;
+        if (gameObject.activeSelf)
+        {
+            dir = pos - (Vector2)transform.position;
+            transform.rotation = Quaternion.LookRotation(dir);
+            dir.Normalize();
+
+            while (gameObject.activeSelf && dist >= 0.0f)
+            {
+                delta = Time.deltaTime * moveSpeed;
+                dist -= delta;
+
+                transform.Translate(dir * delta, Space.World);
+
+                yield return null;
+            }
+        }
     }
     #endregion
 

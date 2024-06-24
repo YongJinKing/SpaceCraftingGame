@@ -22,6 +22,11 @@ public class WaveMonster : Monster
     #region Private
     #endregion
     #region Protected
+    protected override void OnDead()
+    {
+        base.OnDead();
+        stateMachine.ChangeState<WaveMonsterDeadState>();
+    }
     protected override void Initialize()
     {
         base.Initialize();
