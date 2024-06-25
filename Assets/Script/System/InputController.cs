@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InputController : MonoBehaviour
+public class InputController : Singleton<InputController>
 {
     #region Properties
     #region Private

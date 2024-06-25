@@ -27,19 +27,14 @@ public class PlayerIdleState : PlayerState
     protected override void AddListeners()
     {
         base.AddListeners();
-        InputController inputController = GameObject.Find("InputController").GetComponent<InputController>();
-        inputController.moveEvent.AddListener(OnMove);
-        inputController.mouseEvent.AddListener(OnMouse);
+        InputController.Instance.moveEvent.AddListener(OnMove);
+        InputController.Instance.mouseEvent.AddListener(OnMouse);
     }
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
-        InputController inputController = GameObject.Find("InputController").GetComponent<InputController>();
-        if(inputController != null)
-        {
-            inputController.moveEvent.RemoveListener(OnMove);
-            inputController.mouseEvent.RemoveListener(OnMouse);
-        } 
+        InputController.Instance.moveEvent.RemoveListener(OnMove);
+        InputController.Instance.mouseEvent.RemoveListener(OnMouse);
     }
     #endregion
     #region Public

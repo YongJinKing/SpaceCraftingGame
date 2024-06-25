@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class Equipment : MonoBehaviour
+public class Weapon : Equipment
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-    [SerializeField] protected bool isEquiped = false;
+    //triggered by left mouse click
+    [SerializeField] protected Action mainAction;
+    //triggered by right mouse click
+    [SerializeField] protected Action subAction;
     #endregion
     #region Public
     #endregion
@@ -24,18 +26,29 @@ public abstract class Equipment : MonoBehaviour
     #region Private
     #endregion
     #region Protected
-    protected abstract void Initialize();
+    protected override void Initialize()
+    {
+        
+    }
+    protected virtual void AddListeners()
+    {
+
+    }
+    protected virtual void RemoveListeners()
+    {
+
+    }
     #endregion
     #region Public
-    public virtual void Equip()
+    public override void Equip()
     {
-        gameObject.SetActive(true);
-        isEquiped = true;
+        base.Equip();
+        AddListeners();
     }
-    public virtual void UnEquip()
+    public override void UnEquip()
     {
-        gameObject.SetActive(false);
-        isEquiped = false;
+        base.UnEquip();
+        RemoveListeners();
     }
     #endregion
     #endregion
@@ -47,9 +60,5 @@ public abstract class Equipment : MonoBehaviour
     #endregion
 
     #region MonoBehaviour
-    protected void Start()
-    {
-        Initialize();
-    }
     #endregion
 }
