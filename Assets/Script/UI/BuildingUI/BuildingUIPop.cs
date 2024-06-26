@@ -38,7 +38,7 @@ public class BuildingUIPop : MonoBehaviour
             }
             else
             {
-                objSlotGridLine.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);
+                objSlotGridLine.transform.GetChild(i).gameObject.SetActive(false);
             }
         }
     }

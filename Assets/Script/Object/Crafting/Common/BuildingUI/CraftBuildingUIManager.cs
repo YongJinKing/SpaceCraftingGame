@@ -25,6 +25,8 @@ public class CraftBuildingUIManager : MonoBehaviour
     public List<int> TypeID;
     public List<int> ApplyTypeID;
 
+    //public Image[] ExplainIMG;
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -42,17 +44,18 @@ public class CraftBuildingUIManager : MonoBehaviour
     {        
         BuildingUIStructure.GetInstance().LoadBuildingInfo();    
         BuildingType = BuildingUISelectType.Resource;
-
         foreach (var data in BuildingUIStructure.GetInstance().dicBUIComponentTable)
         {
             if (data.Value.ComponentDataTable_Index < 200000)
             { 
-                Debug.Log(data.Value.ComponentDataTable_Index);
+                //Debug.Log(data.Value.ComponentDataTable_Index);
                 //json Index값을 가져와 새로운 리스트에 삽입
                 TypeID.Add(data.Value.ComponentDataTable_Index);
             }
            
         }
+
+        BuildingTabFunction(BuildingType);
         
     }
 
@@ -84,6 +87,10 @@ public class CraftBuildingUIManager : MonoBehaviour
 
     }
  
+    public void StartMode()
+    {
+        ChangeMode(0);
+    }
     
     public void ChangeMode(int index)
     {
@@ -109,7 +116,7 @@ public class CraftBuildingUIManager : MonoBehaviour
                 var BuildingData = BuildingUIStructure.GetInstance().dicBUIComponentTable[TypeID[i]];
                 if (((BuildingData.ComponentDataTable_Index / 10000) - 10) == (int)Type)
                 {
-                    Debug.Log(i);
+                    //Debug.Log(i);
                     ApplyTypeID.Add(BuildingData.ComponentDataTable_Index);
 
                 }
@@ -128,7 +135,7 @@ public class CraftBuildingUIManager : MonoBehaviour
 
                 if(((BuildingData.ComponentDataTable_Index / 10000) - 10) == (int)Type)
                 {
-                    Debug.Log(i);
+                    //Debug.Log(i);
                     ApplyTypeID.Add(BuildingData.ComponentDataTable_Index);
                     
                 }
@@ -138,4 +145,12 @@ public class CraftBuildingUIManager : MonoBehaviour
         }
 
     }
+
+    public void BuildingUIExplanation()
+    {
+        Debug.Log("시작");
+        
+        Debug.Log(ApplyTypeID);
+    }
+
 }
