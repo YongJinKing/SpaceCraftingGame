@@ -63,7 +63,7 @@ public class RabbitBossJumpAttackAction : BossAction
         rb.position = target; // 정확한 위치 보정
 
         yield return StartCoroutine(HitBoxOn(target));
-        ActionEnd();
+        //ActionEnd();
     }
 
     // 포물선을 그리며 점프할 때, 주어진 높이와 목표 위치로 도달하기 위한 초기 속도를 계산하는 함수 >> Rigidbody2D gravityScale을 사용

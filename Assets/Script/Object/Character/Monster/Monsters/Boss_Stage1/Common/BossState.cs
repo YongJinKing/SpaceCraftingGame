@@ -9,6 +9,7 @@ public abstract class BossState : State
     #endregion
     #region Protected
     protected Boss owner;
+    
     #endregion
     #region Public
     #endregion

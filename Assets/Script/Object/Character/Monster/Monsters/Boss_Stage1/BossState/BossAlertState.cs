@@ -11,6 +11,7 @@ public class BossAlertState : BossState
     float moveSpeed = 1f;
     #endregion
     #region Protected
+    protected Transform ownerImg;
     #endregion
     #region Public
     #endregion
@@ -23,6 +24,11 @@ public class BossAlertState : BossState
 
     #region Methods
     #region Private
+    protected override void Awake()
+    {
+        base.Awake();
+        ownerImg = transform.GetChild(5).GetChild(0).transform;
+    }
     #endregion
     #region Protected
     protected override void AddListeners()
@@ -162,6 +168,15 @@ public class BossAlertState : BossState
 
         while (true)
         {
+            if (owner.target.transform.position.x > owner.transform.position.x)
+            {
+                ownerImg.transform.localScale = new Vector3(-0.25f, 0.25f, 0.25f);
+            }
+            else
+            {
+                ownerImg.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+            }
+
             Vector2 dir = (Vector2)owner.target.transform.position - (Vector2)transform.position;
             float dist = dir.magnitude - 0.5f;
             if (dist <= limitDist)

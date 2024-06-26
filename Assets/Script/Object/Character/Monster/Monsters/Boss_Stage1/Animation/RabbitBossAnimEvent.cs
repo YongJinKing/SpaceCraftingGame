@@ -7,6 +7,9 @@ public class RabbitBossAnimEvent : MonoBehaviour
 {
     public UnityEvent ThrowEvent;
     public UnityEvent SuperJumpEvent;
+    public UnityEvent SpinningEvent;
+
+    
     public void ThrowAnimation()
     {
         ThrowEvent?.Invoke();
@@ -15,5 +18,10 @@ public class RabbitBossAnimEvent : MonoBehaviour
     public void SuperJumpAnimation()
     {
         SuperJumpEvent?.Invoke();
+    }
+
+    public void SpinningAnimation()
+    {
+        SpinningEvent?.Invoke();
     }
 }

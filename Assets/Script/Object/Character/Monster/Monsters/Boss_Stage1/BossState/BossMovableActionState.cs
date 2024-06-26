@@ -48,13 +48,18 @@ public class BossMovableActionState : BossState
         base.Enter();
         moveTimer = 5f;
         moveSpeed = owner.moveSpeed * 0.6f;
-        StartCoroutine(FollowingTarget());
+        StartFollowing();
     }
     public override void Exit()
     {
         owner.activatedAction.Deactivate();
         base.Exit();
         StopAllCoroutines();
+    }
+
+    public void StartFollowing()
+    {
+        StartCoroutine(FollowingTarget());
     }
     #endregion
     #endregion

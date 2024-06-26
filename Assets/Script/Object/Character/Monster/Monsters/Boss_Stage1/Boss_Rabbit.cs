@@ -46,14 +46,7 @@ public class Boss_Rabbit : Boss
     // Update is called once per frame
     void Update()
     {
-        if (player.position.x > this.transform.position.x)
-        {
-            bossImg.localScale = new Vector3(-0.25f, 0.25f, 0.25f);
-        }
-        else
-        {
-            bossImg.localScale = new Vector3(0.25f, 0.25f, 0.25f);
-        }
+        
     }
     #endregion
     #endregion
