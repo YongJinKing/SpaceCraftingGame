@@ -10,7 +10,7 @@ public class ProjectileHitBox : HitBox
     #region Protected
     [SerializeField] protected float _moveSpeed;
     [SerializeField] protected float _maxDist;
-    protected Transform parent;
+    [SerializeField] protected bool _penetrable = false;
     #endregion
     #region Public
     public float moveSpeed
@@ -22,6 +22,11 @@ public class ProjectileHitBox : HitBox
     {
         get { return _maxDist; }
         set { _maxDist = value; }
+    }
+    public bool penetrable
+    {
+        get { return _penetrable; }
+        set { _penetrable = value; }
     }
     #endregion
     #region Events
@@ -47,15 +52,12 @@ public class ProjectileHitBox : HitBox
         OnDurationEndEvent?.Invoke();
         gameObject.SetActive(false);
 
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-        transform.SetParent(parent, false);
-
         base.HitCheckEnd();
+
+        Destroy(gameObject);
     }
     protected override void Initialize()
     {
-        parent = transform.parent;
         base.Initialize();
     }
     #endregion
@@ -110,6 +112,12 @@ public class ProjectileHitBox : HitBox
 
                     calculatedObject.Add(temp);
                     onHitEvents[targetMask & (1 << tempcol[i].gameObject.layer)]?.Invoke(tempcol[i], hit.point);
+
+                    if (!penetrable)
+                    {
+                        HitCheckEnd();
+                        yield break;
+                    }
                 }
             }
 

@@ -18,6 +18,10 @@ public abstract class Stat : MonoBehaviour, IDamage, IGetPriority
     #region Public
     public float MaxHP;
     public float Priority;
+    ///<summary>
+    ///버프 디버프에 의해서 변형된 스텟을 가져옴
+    ///set할때는 this[EStat.type] = this.GetRawStat(EStat.type) +- value 식으로 원래 값을 가져온 다음에 변형해야된다.
+    ///</summary>
     public float this[EStat type]
     {
         get

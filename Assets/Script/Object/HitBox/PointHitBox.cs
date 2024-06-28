@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PointHitBox : HitBox
@@ -8,7 +9,7 @@ public class PointHitBox : HitBox
     #region Private
     #endregion
     #region Protected
-    protected Transform parent;
+    protected bool deactivate = false;
     #endregion
     #region Public
     #endregion
@@ -28,12 +29,14 @@ public class PointHitBox : HitBox
         OnDurationEndEvent?.Invoke();
         gameObject.SetActive(false);
 
-        transform.SetParent(parent);
         base.HitCheckEnd();
+
+        DestroyHitBox();
     }
     protected override void Initialize()
     {
-        parent = transform.parent;
+        isDestroy = true;
+
         base.Initialize();
     }
     #endregion

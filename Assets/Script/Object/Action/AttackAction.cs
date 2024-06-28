@@ -10,8 +10,17 @@ public abstract class AttackAction : Action
     [SerializeField]protected LayerMask _targetMask;
     #endregion
     #region Public
+    ///<summary>
+    ///히트박스 프리펩
+    ///</summary>
     public HitBox[] hitBoxPrefabs;
+    ///<summary>
+    ///생성된 히트박스가 저장되는 공간
+    ///</summary>
     public HitBox[] hitBoxes;
+    ///<summary>
+    ///몬스터에서 이 액션이 타겟팅하는 타겟에대한 마스크
+    ///</summary>
     public LayerMask targetMask
     {
         get { return _targetMask; }
@@ -47,6 +56,16 @@ public abstract class AttackAction : Action
     }
     #endregion
     #region Public
+    public override void Deactivate()
+    {
+        for(int i = 0; i < hitBoxes.Length; ++i)
+        {
+            if (!hitBoxes[i].isDestroy)
+            {
+                hitBoxes[i].Deactivate();
+            }
+        }
+    }
     #endregion
     #endregion
 

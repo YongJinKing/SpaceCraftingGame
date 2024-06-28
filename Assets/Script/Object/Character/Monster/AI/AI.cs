@@ -48,6 +48,10 @@ public class AI : MonoBehaviour
     #region Private
     //return false if not add to OList
     //return true if add to OList
+    ///<summary>
+    ///OList에 노드를 추가하는 함수
+    ///</summary>
+    ///<returns>true : OList에 추가 성공, false : OList에 추가 실패</returns>
     private bool AddNodeToOList(Dictionary<Vector3Int, Node> CList, Dictionary<Vector3Int, Node> OList, Vector3Int key, Vector3Int targetCoor, Node parent)
     {
         if (CList.ContainsKey(key))
@@ -92,6 +96,11 @@ public class AI : MonoBehaviour
     #region Protected
     #endregion
     #region Public
+    ///<summary>
+    ///일정범위의 게임오브젝트의 우선순위를 조사하여 타겟을 설정하는 함수
+    ///</summary>
+    ///<param name="targetMask">타겟이 될 레이어 마스크</param>
+    ///<param name="Radius">범위</param>
     public GameObject TargetSelect(LayerMask targetMask, float Radius)
     {
         //Scan Targets

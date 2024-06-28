@@ -8,10 +8,16 @@ public class MeleeHitBox : HitBox
     #region Private
     #endregion
     #region Protected
+    [SerializeField] protected bool _isFollowDir = true;
     protected float offset;
     protected float angle;
     #endregion
     #region Public
+    public bool isFollowDir
+    {
+        get { return _isFollowDir; }
+        set { _isFollowDir = value; }
+    }
     #endregion
     #region Events
     #endregion
@@ -29,26 +35,33 @@ public class MeleeHitBox : HitBox
         OnDurationEndEvent?.Invoke();
         gameObject.SetActive(false);
 
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
+        if (isFollowDir)
+        {
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+        }
 
         base.HitCheckEnd();
     }
     protected override void Initialize()
     {
         base.Initialize();
+
         offset = hitBoxSize.x * 0.5f;
     }
     #endregion
     #region Public
     public override void Activate(Vector2 pos)
     {
-        float dir = 1.0f;
-        if (Vector2.Dot(transform.up, pos - (Vector2)transform.position) < 0.0f) dir = -1.0f;
-        angle = Vector2.Angle(transform.right, pos - (Vector2)transform.position) * dir;
-        transform.Rotate(Vector3.forward * angle, Space.World);
+        if (isFollowDir)
+        {
+            float dir = 1.0f;
+            if (Vector2.Dot(transform.up, pos - (Vector2)transform.position) < 0.0f) dir = -1.0f;
+            angle = Vector2.Angle(transform.right, pos - (Vector2)transform.position) * dir;
+            transform.Rotate(Vector3.forward * angle, Space.World);
 
-        transform.localPosition = new Vector2(offset * Mathf.Cos(angle * Mathf.Deg2Rad), offset * Mathf.Sin(angle * Mathf.Deg2Rad));
+            transform.localPosition = new Vector2(offset * Mathf.Cos(angle * Mathf.Deg2Rad), offset * Mathf.Sin(angle * Mathf.Deg2Rad));
+        }
 
         base.Activate(pos);
     }

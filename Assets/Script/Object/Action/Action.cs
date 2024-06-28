@@ -22,16 +22,25 @@ public abstract class Action : MonoBehaviour, IGetPriority
     //for spine animation
     public SkeletonAnimation skeletonAnimation;
     public AnimationReferenceAsset[] animClip;
+    ///<summary>
+    ///이 액션이 플레이어나 몬스터의 조작을 막는지 막지 않는지에 대한 bool값
+    ///</summary>
     public bool fireAndForget
     {
         get { return _fireAndForget; }
         protected set { _fireAndForget = value; }
     }
+    ///<summary>
+    ///이 액션이 지금현재 사용 가능한지 아닌지에 대한 bool값
+    ///</summary>
     public bool available
     {
         get { return _available; }
         protected set { _available = value; }
     }
+    ///<summary>
+    ///이 액션의 우선순위
+    ///</summary>
     public float priority
     {
         get { return _priority; }
@@ -42,6 +51,9 @@ public abstract class Action : MonoBehaviour, IGetPriority
         get { return _coolTime; }
         set { _coolTime = value; }
     }
+    ///<summary>
+    ///몬스터에서 사용하는 이 액션이 사용가능한 거리에 대한 float값
+    ///</summary>
     public float activeRadius
     {
         get { return _activeRadius; }
@@ -60,19 +72,34 @@ public abstract class Action : MonoBehaviour, IGetPriority
     #region Private
     #endregion
     #region Protected
+    ///<summary>
+    ///클래스 초기화, Start에서 실행
+    ///</summary>
     protected abstract void Initialize();
+    ///<summary>
+    ///이 액션이 끝났을때 실행되어 이벤트를 invoke 시켜주는 함수
+    ///</summary>
     protected virtual void ActionEnd()
     {
         OnActionEndEvent?.Invoke();
     }
     #endregion
     #region Public
+    ///<summary>
+    ///외부에서 이 액션을 실행시키는 함수
+    ///</summary>
     public virtual void Activate(Vector2 pos)
     {
         available = false;
         StartCoroutine(CoolTimeChecking());
     }
+    ///<summary>
+    ///외부에서 이 액션을 비활성화 시키는 함수
+    ///</summary>
     public abstract void Deactivate();
+    ///<summary>
+    ///인터페이스로 우선순위를 가져오기 위한 함수
+    ///</summary>
     public virtual float GetPriority()
     {
         return priority;
@@ -90,6 +117,9 @@ public abstract class Action : MonoBehaviour, IGetPriority
     #endregion
 
     #region Coroutines
+    ///<summary>
+    ///쿨타임을 위한 코루틴
+    ///</summary>
     protected IEnumerator CoolTimeChecking()
     {
         if (available && coolTime < 0)

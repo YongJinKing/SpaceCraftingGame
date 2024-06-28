@@ -16,14 +16,24 @@ public abstract class HitBox : MonoBehaviour
     //duration for safe
     [SerializeField]protected float _duration = 5.0f;
     [SerializeField]protected float _hitFrequency = -1.0f;
+    ///<summary>
+    ///이 히트박스가 발사후 삭제되는지에 대한 bool값
+    ///</summary>
+    [SerializeField] protected bool _isDestroy = false;
     protected Vector2 pos;
     protected bool isCircle = false;
+    ///<summary>
+    ///이미 히트가 처리된 게임 오브젝트들을 저장하는 저장소
+    ///</summary>
     protected HashSet<Stat> calculatedObject = new HashSet<Stat>();
-    //Dictionary`s UnityEvent<Collider hit_Collider, Vector2 hitPos>
+    ///<summary>
+    ///레이어 마스크에 따른 히트 이벤트를 저장한곳
+    ///LayerMask : 무조건 한개씩으로 저장된다. 모든 경우의 수를 넣으면 너무 많아지기 때문이다.
+    ///</summary>
     protected Dictionary<LayerMask, UnityEvent<Collider2D, Vector2>> onHitEvents = new Dictionary<LayerMask, UnityEvent<Collider2D, Vector2>>();
     #endregion
     #region Public
-    public GameObject hitEffectPrefeb;
+    public GameObject hitEffectPrefab;
     public GameObject destroyEffectPrefab;
     public Vector2 hitBoxSize
     {
@@ -46,6 +56,14 @@ public abstract class HitBox : MonoBehaviour
         set { _hitFrequency = value; }
         get { return _hitFrequency; }
     }
+    ///<summary>
+    ///이 히트박스가 발사후 삭제되는지에 대한 bool값
+    ///</summary>
+    public bool isDestroy
+    {
+        get { return _isDestroy; }
+        protected set { _isDestroy = value; }
+    }
     #endregion
     #region Events
     public UnityEvent OnDurationEndEvent = new UnityEvent();
@@ -59,6 +77,9 @@ public abstract class HitBox : MonoBehaviour
     #region Private
     #endregion
     #region Protected
+    ///<summary>
+    ///클래스 초기화, Start 함수에서 실행
+    ///</summary>
     protected virtual void Initialize()
     {
         if(hitBoxSize.y < 0) isCircle = true;
@@ -88,19 +109,29 @@ public abstract class HitBox : MonoBehaviour
         }
         gameObject.SetActive(false);
     }
+
+    ///<summary>
+    ///히트시에 이펙트를 출력하는 함수
+    ///</summary>
+    ///<param name="targetPos">히트 이펙트를 출력할 위치, 월드 포지션값</param>>
     protected virtual void HitEffectPlay(Vector2 targetPos)
     {
-        if(hitEffectPrefeb != null)
+        if(hitEffectPrefab != null)
         {
-            Instantiate(hitEffectPrefeb, targetPos, Quaternion.identity);
+            Instantiate(hitEffectPrefab, targetPos, Quaternion.identity);
         }
     }
-
+    ///<summary>
+    ///히트 체크가 끝날경우 호출되는 함수
+    ///</summary>
     protected virtual void HitCheckEnd()
     {
         Refresh();
     }
 
+    ///<summary>
+    ///투사체같은 경우 자기자신을 파괴할때 쓰는 함수. 파괴시의 이펙트가 있으면 출력
+    ///</summary>
     protected virtual void DestroyHitBox()
     {
         if(destroyEffectPrefab != null)
@@ -111,10 +142,16 @@ public abstract class HitBox : MonoBehaviour
     }
     #endregion
     #region Public
+    ///<summary>
+    ///히트가 계산되었던 게임 오브젝트들을 초기화 하여 다시 히트가 가능해지도록 만드는 힘수
+    ///</summary>
     public virtual void Refresh()
     {
         calculatedObject.Clear();
     }
+    ///<summary>
+    ///외부에서 호출하여 히트박스 활성화
+    ///</summary>
     public virtual void Activate(Vector2 pos)
     {
         gameObject.SetActive(true);
@@ -122,6 +159,9 @@ public abstract class HitBox : MonoBehaviour
         StartCoroutine(HitChecking());
         StartCoroutine(Refreshing());
     }
+    ///<summary>
+    ///외부에서 호출하여 히트박스 비활성화
+    ///</summary>
     public virtual void Deactivate()
     {
         StopAllCoroutines();
@@ -136,6 +176,9 @@ public abstract class HitBox : MonoBehaviour
 
     #region Coroutines
     protected abstract IEnumerator HitChecking();
+    ///<summary>
+    ///다단히트를 위한 Refresh함수를 계속 호출시키는 코루틴
+    ///</summary>
     protected virtual IEnumerator Refreshing()
     {
         if(hitFrequency < 0) yield break;
