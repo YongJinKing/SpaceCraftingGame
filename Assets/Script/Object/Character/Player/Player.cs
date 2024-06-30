@@ -1,6 +1,7 @@
-
-
 using UnityEngine;
+
+//플레이어는 공격 애니메이션을 트리거하지 않고 Action을 통해서 간접적으로 트리거
+//플레이어는 이동, idle 애니메이션을 트리거
 
 public class Player : Unit
 {
@@ -27,6 +28,10 @@ public class Player : Unit
     #region Private
     #endregion
     #region Protected
+    protected override void OnDead()
+    {
+        stateMachine.ChangeState<PlayerDeadState>();
+    }
     protected override void Initialize()
     {
         base.Initialize();

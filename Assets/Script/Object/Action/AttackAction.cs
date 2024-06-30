@@ -38,6 +38,19 @@ public abstract class AttackAction : Action
     #region Private
     #endregion
     #region Protected
+    protected virtual void ActivateHitBoxes(Vector2 pos)
+    {
+        for (int i = 0; i < hitBoxes.Length; ++i)
+        {
+            hitBoxes[i].Activate(pos);
+            //만약 날아가서 없어지는 타입의 히트박스의 경우 리로드
+            if (hitBoxes[i].isDestroy)
+            {
+                hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
+            }
+        }
+    }
+
     protected override void Initialize()
     {
         if(hitBoxPrefabs != null && hitBoxes == null)
@@ -51,7 +64,10 @@ public abstract class AttackAction : Action
 
         for (int i = 0; i < hitBoxes.Length; ++i)
         {
-            hitBoxes[i].OnDurationEndEvent.AddListener(OnHitBoxEnd);
+            if (!hitBoxes[i].isDestroy)
+            {
+                hitBoxes[i].OnDurationEndEvent.AddListener(OnHitBoxEnd);
+            }   
         }
     }
     #endregion
@@ -74,6 +90,11 @@ public abstract class AttackAction : Action
     {
         ActionEnd();
     }
+
+    public virtual void OnAnimationEnd()
+    {
+        ActionEnd();
+    }
     #endregion
 
     #region Coroutines
@@ -84,7 +105,8 @@ public abstract class AttackAction : Action
     {
         for (int i = 0; i < hitBoxes.Length; ++i)
         {
-            hitBoxes[i].OnDurationEndEvent.RemoveListener(OnHitBoxEnd);
+            if (!hitBoxes[i].isDestroy)
+                hitBoxes[i].OnDurationEndEvent.RemoveListener(OnHitBoxEnd);
         }
     }
     #endregion

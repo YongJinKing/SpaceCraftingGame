@@ -94,7 +94,7 @@ public abstract class Action : MonoBehaviour, IGetPriority
         StartCoroutine(CoolTimeChecking());
     }
     ///<summary>
-    ///외부에서 이 액션을 비활성화 시키는 함수
+    ///외부에서 이 액션을 취소 시키는 함수
     ///</summary>
     public abstract void Deactivate();
     ///<summary>

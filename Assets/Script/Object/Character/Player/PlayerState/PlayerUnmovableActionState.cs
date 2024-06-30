@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDeadState : PlayerState
+public class PlayerUnmovableActionState : PlayerState
 {
     #region Properties
     #region Private
@@ -24,35 +24,39 @@ public class PlayerDeadState : PlayerState
     #region Protected
     protected override void AddListeners()
     {
-        base.AddListeners();
+        base.AddListeners(); ;
+        if (owner.activatedAction != null)
+        {
+            owner.activatedAction.OnActionEndEvent.AddListener(OnActionEnd);
+        }
     }
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
+        if (owner.activatedAction != null)
+        {
+            owner.activatedAction.OnActionEndEvent.RemoveListener(OnActionEnd);
+        }
+        owner.activatedAction = null;
     }
     #endregion
     #region Public
-    public override void Enter()
-    {
-        base.Enter();
-        StartCoroutine(ProcessingState());
-    }
     public override void Exit()
     {
+        owner.activatedAction.Deactivate();
         base.Exit();
     }
     #endregion
     #endregion
 
     #region EventHandlers
+    public void OnActionEnd()
+    {
+        owner.stateMachine.ChangeState<PlayerIdleState>();
+    }
     #endregion
 
     #region Coroutines
-    protected IEnumerator ProcessingState()
-    {
-        yield return null;
-        //여기에 게임 매니저에게 자신이 죽었다고 이벤트 발생시키기
-    }
     #endregion
 
     #region MonoBehaviour

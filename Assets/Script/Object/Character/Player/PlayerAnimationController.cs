@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDeadState : PlayerState
+public class PlayerAnimationController : MonoBehaviour
 {
     #region Properties
     #region Private
@@ -22,25 +22,8 @@ public class PlayerDeadState : PlayerState
     #region Private
     #endregion
     #region Protected
-    protected override void AddListeners()
-    {
-        base.AddListeners();
-    }
-    protected override void RemoveListeners()
-    {
-        base.RemoveListeners();
-    }
     #endregion
     #region Public
-    public override void Enter()
-    {
-        base.Enter();
-        StartCoroutine(ProcessingState());
-    }
-    public override void Exit()
-    {
-        base.Exit();
-    }
     #endregion
     #endregion
 
@@ -48,11 +31,6 @@ public class PlayerDeadState : PlayerState
     #endregion
 
     #region Coroutines
-    protected IEnumerator ProcessingState()
-    {
-        yield return null;
-        //여기에 게임 매니저에게 자신이 죽었다고 이벤트 발생시키기
-    }
     #endregion
 
     #region MonoBehaviour

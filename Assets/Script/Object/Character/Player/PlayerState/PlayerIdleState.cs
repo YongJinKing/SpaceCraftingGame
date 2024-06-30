@@ -54,12 +54,17 @@ public class PlayerIdleState : PlayerState
     public void OnMove(Vector2 dir)
     {
         owner.moveAction.Activate(dir);
+        //여기에 이동 애니메이션 트리거
     }
     public void OnMouse(int type, Vector2 pos)
     {
         owner.attackAction.Activate(pos);
         owner.activatedAction = owner.attackAction;
-        owner.stateMachine.ChangeState<PlayerMovableActionState>();
+
+        if (owner.activatedAction.fireAndForget)
+            owner.stateMachine.ChangeState<PlayerMovableActionState>();
+        //else
+        //    owner.stateMachine.ChangeState<PlayerUnmovableState>();
     }
     #endregion
 
