@@ -43,7 +43,10 @@ public class SPAttackAction : BossAction
         ActionEnd();
     }
 
-
+    public void FininshAction()
+    {
+        ActionEnd();
+    }
     #endregion
     #endregion
 
@@ -81,6 +84,7 @@ public class SPAttackAction : BossAction
 
     protected IEnumerator MoveToMortalBox(MortalBox mortalBox)
     {
+        ownerAnim.SetBool("Move", true);
         Transform rabbit = transform.parent.parent;
         Vector2 dir = mortalBox.transform.position - rabbit.position;
         float dist = dir.magnitude;
@@ -94,6 +98,7 @@ public class SPAttackAction : BossAction
             yield return null;
         }
         yield return null;
+        ownerAnim.SetBool("Move", false);
     }
 
     #endregion

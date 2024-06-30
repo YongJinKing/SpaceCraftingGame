@@ -20,7 +20,7 @@ public class RabbitBossJumpAttackAction : BossAction
     public Vector2 targetPosition; // 목표 지점의 위치
     public float jumpHeight = 2.5f; // 점프 높이
     public float gravity = -9.81f; // 중력
-
+    public Transform attackEffect;
     #endregion
     #region Events
     #endregion
@@ -37,9 +37,13 @@ public class RabbitBossJumpAttackAction : BossAction
     #region Private
     IEnumerator HitBoxOn(Vector2 pos)
     {
+        attackEffect.gameObject.SetActive(true);
+        attackEffect.GetComponent<ParticleSystem>().Play();
+
         for (int i = 0; i < hitBoxes.Length; ++i)
         {
             hitBoxes[i].Activate(pos);
+            attackEffect.transform.localPosition = hitBoxes[i].transform.localPosition;
         }
         yield return null;
     }
@@ -126,9 +130,12 @@ public class RabbitBossJumpAttackAction : BossAction
     }
     public override void Deactivate()
     {
+        attackEffect.GetComponent<ParticleSystem>().Stop();
+        attackEffect.gameObject.SetActive(false);
         for (int i = 0; i < hitBoxes.Length; ++i)
         {
             hitBoxes[i].Deactivate();
+            
         }
         ActionEnd();
     }

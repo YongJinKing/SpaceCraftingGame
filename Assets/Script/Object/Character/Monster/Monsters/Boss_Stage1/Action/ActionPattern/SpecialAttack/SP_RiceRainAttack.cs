@@ -112,6 +112,7 @@ public class SP_RiceRainAttack : SPAttackAction
     // 실제로 떨어질 위치 위로 만든다. 떡 비를
     IEnumerator SpawnRiceRain()
     {
+        ownerAnim.SetBool("Teabagging", true);
         int cnt = 0;
         while(cnt < 4)
         {
@@ -132,7 +133,11 @@ public class SP_RiceRainAttack : SPAttackAction
             cnt++;
 
         }
+
+        
         yield return null;
+        ownerAnim.SetBool("Teabagging", false);
+        ActionEnd();
     }
 
     #endregion

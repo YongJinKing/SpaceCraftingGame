@@ -39,7 +39,7 @@ public class BossUnMovableActionState : BossState
             owner.activatedAction.OnActionEndEvent.RemoveListener(OnActionEnd);
             Debug.Log("보스 언무버블 리무브 리ㅏ스너");
         }
-        owner.activatedAction = null;
+        //owner.activatedAction = null;
     }
     #endregion
     #region Public
@@ -59,9 +59,16 @@ public class BossUnMovableActionState : BossState
     public void OnActionEnd()
     {
         if (owner.target != null)
+        {
             owner.stateMachine.ChangeState<BossAlertState>();
+            Debug.Log("unmovable -> alert");
+        }
         else
+        {
             owner.stateMachine.ChangeState<BossIdleState>();
+            Debug.Log("unmovable -> idle");
+        }
+            
         Debug.Log("보스 언무버블 액션앤드");
     }
     #endregion

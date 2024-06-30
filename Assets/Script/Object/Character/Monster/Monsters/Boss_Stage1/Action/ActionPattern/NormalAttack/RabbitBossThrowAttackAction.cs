@@ -50,6 +50,7 @@ public class RabbitBossThrowAttackAction : BossAction
         
         GameObject obj = Instantiate(riceCakes,ThrowingPos.position, Quaternion.identity);
         obj.transform.parent = null;
+        targetPos = FindFirstObjectByType<Player>().transform.position;
         obj.GetComponent<ThrownRice>().SetTarget(targetPos);
         // 여기서 obj, 즉 떡의 타겟을 pos로 넘겨주는 작업을 하고 아래 포물선 코드는 싹다 떡 쪽으로 옮길거임
         /*float throwingTime = 0;

@@ -64,7 +64,7 @@ public class Monster : Unit
     protected void OnTriggerStay2D(Collider2D collision)
     {
         //Layer Check
-        if ((collision.gameObject.layer & LayerMask.NameToLayer("Ground")) != 0)
+        /*if ((collision.gameObject.layer & LayerMask.NameToLayer("Ground")) != 0)
         {
             Vector3Int tempCoor = TileManager.Instance.GetTileCoordinates(collision.ClosestPoint(transform.position));
             if (previousTilePos != tempCoor)
@@ -78,7 +78,7 @@ public class Monster : Unit
                 if(TileManager.Instance.HasTile(tempCoor))
                     TileManager.Instance.RemopvePlace(tempCoor);
             }
-        }
+        }*/
     }
 
     protected void OnDestroy()

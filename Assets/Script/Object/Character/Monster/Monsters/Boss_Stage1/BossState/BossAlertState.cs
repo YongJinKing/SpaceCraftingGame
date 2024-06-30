@@ -9,6 +9,10 @@ public class BossAlertState : BossState
     #region Private
     float limitDist = 5f;
     float moveSpeed = 1f;
+    int idx = 0;
+    Queue<int> shuffledNormalIndices;
+    Queue<int> shuffledSpecialIndices;
+    bool specialToggle = false;
     #endregion
     #region Protected
     protected Transform ownerImg;
@@ -27,7 +31,66 @@ public class BossAlertState : BossState
     protected override void Awake()
     {
         base.Awake();
+        InitializeShuffledNormalIndices();
+        InitializeShuffledSpecialIndices();
         ownerImg = transform.GetChild(5).GetChild(0).transform;
+    }
+
+    // attackActions의 인덱스 번호들을 랜덤으로 섞고 큐에 넣은 뒤 하나하나 차례대로 빼내어 쓰는 형식
+    // 큐가 비었다면 다시 인덱스 번호들을 랜덤으로 섞어 큐에 넣는다.
+    void InitializeShuffledNormalIndices()
+    {
+        List<int> indices = new List<int>();
+        for (int i = 0; i < owner.attackActions.Length; i++)
+        {
+            indices.Add(i);
+        }
+        Shuffle(indices);
+
+        shuffledNormalIndices = new Queue<int>(indices);
+    }
+
+    void InitializeShuffledSpecialIndices()
+    {
+        List<int> indices = new List<int>();
+        for (int i = 0; i < owner.specialActions.Length; i++)
+        {
+            indices.Add(i);
+        }
+        Shuffle(indices);
+
+        shuffledSpecialIndices = new Queue<int>(indices);
+    }
+
+    void Shuffle(List<int> list)
+    {
+        System.Random random = new System.Random();
+        int n = list.Count;
+        for (int i = 0; i < n; i++)
+        {
+            int randomIndex = random.Next(i, n);
+            int temp = list[i];
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
+        }
+    }
+
+    int GetNextRandomIndex()
+    {
+        if (shuffledNormalIndices.Count == 0)
+        {
+            InitializeShuffledNormalIndices();
+        }
+        return shuffledNormalIndices.Dequeue();
+    }
+
+    int GetNextRandomSpecialIndex()
+    {
+        if (shuffledSpecialIndices.Count == 0)
+        {
+            InitializeShuffledSpecialIndices();
+        }
+        return shuffledSpecialIndices.Dequeue();
     }
     #endregion
     #region Protected
@@ -220,7 +283,7 @@ public class BossAlertState : BossState
         //Wait until Select Action
         owner.animator.SetBool("Move", false);
         yield return StartCoroutine(SelectingAction());
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         
         owner.stateMachine.ChangeState<BossAttackState>();
         Debug.Log("Boss Processing State");
@@ -229,7 +292,7 @@ public class BossAlertState : BossState
 
     protected IEnumerator SelectingAction()
     {
-        if (owner.attackActions == null)
+        /*if (owner.attackActions == null)
         {
             Debug.Log("attackActions == null");
             yield break;
@@ -242,6 +305,33 @@ public class BossAlertState : BossState
             yield return null;
         }
         Debug.Log("Selected");
+        owner.activatedAction = action;*/
+        if (owner.attackActions == null)
+        {
+            Debug.Log("attackActions == null");
+            yield break;
+        }
+        Debug.Log("Selecting");
+        Action action = null;
+        /*while (action == null)
+        {
+            action = owner.ai.SelectAction(owner.attackActions);
+            yield return null;
+        }*/
+        if (!specialToggle)
+        {
+            idx = GetNextRandomIndex();
+            specialToggle = !specialToggle;
+            action = owner.attackActions[idx];
+        }
+        else
+        {
+            idx = GetNextRandomSpecialIndex();
+            specialToggle = !specialToggle;
+            action = owner.specialActions[idx];
+        }
+
+        Debug.Log("Selected, " + action.name);
         owner.activatedAction = action;
     }
 
