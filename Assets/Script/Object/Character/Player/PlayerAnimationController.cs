@@ -4,10 +4,30 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
+    public enum EquipType
+    {
+        BareHand, Gun, Hammer, Pickaxe, Length
+    }
+
     #region Properties
     #region Private
+    private Animator _anim;
+    private Animator anim
+    {
+        get
+        {
+            if (_anim == null)
+            {
+                _anim = GetComponent<Animator>();
+            }
+            return _anim;
+        }
+    }
     #endregion
     #region Protected
+    protected EquipType I_EquipType;
+    protected int B_Move;
+    protected int B_LeftClick;
     #endregion
     #region Public
     #endregion
@@ -24,6 +44,21 @@ public class PlayerAnimationController : MonoBehaviour
     #region Protected
     #endregion
     #region Public
+    public void SetEquipType(int type)
+    {
+        if (type > (int)EquipType.Length)
+            I_EquipType = EquipType.BareHand;
+
+        anim.SetInteger((int)I_EquipType, type);
+    }
+    public void SetMove(bool move)
+    {
+        anim.SetBool(B_Move, move);
+    }
+    public void SetLeftClick(bool leftClick)
+    {
+        anim.SetBool(B_LeftClick, leftClick);
+    }
     #endregion
     #endregion
 
@@ -34,5 +69,11 @@ public class PlayerAnimationController : MonoBehaviour
     #endregion
 
     #region MonoBehaviour
+    private void Start()
+    {
+        I_EquipType = (EquipType)Animator.StringToHash("I_EquipType");
+        B_Move = Animator.StringToHash("B_Move");
+        B_LeftClick = Animator.StringToHash("B_LeftClick");
+    }
     #endregion
 }

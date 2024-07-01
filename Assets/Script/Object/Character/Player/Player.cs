@@ -13,6 +13,7 @@ public class Player : Unit
     #region Public
     public MoveAction moveAction;
     public AttackAction attackAction;
+    public Transform graphicTransform;
     #endregion
     #region Events
     #endregion
@@ -39,7 +40,6 @@ public class Player : Unit
     }
     #endregion
     #region Public
-
     #endregion
     #endregion
 

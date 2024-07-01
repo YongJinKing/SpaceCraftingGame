@@ -53,7 +53,7 @@ public abstract class AttackAction : Action
 
     protected override void Initialize()
     {
-        if(hitBoxPrefabs != null && hitBoxes == null)
+        if(hitBoxPrefabs != null)
         {
             hitBoxes = new HitBox[hitBoxPrefabs.Length];
             for(int i = 0; i < hitBoxes.Length; ++i)

@@ -133,15 +133,17 @@ MonoBehaviour:
   _hitBoxSize: {x: 0.5, y: 0.5}
   _targetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
   _duration: 1
   _hitFrequency: -1
-  hitEffectPrefeb: {fileID: 0}
+  _isDestroy: 0
+  hitEffectPrefab: {fileID: 0}
   destroyEffectPrefab: {fileID: 0}
   OnDurationEndEvent:
     m_PersistentCalls:
       m_Calls: []
   debuging: 1
+  _isFollowDir: 1
 --- !u!1 &6355715492983685595
 GameObject:
   m_ObjectHideFlags: 0

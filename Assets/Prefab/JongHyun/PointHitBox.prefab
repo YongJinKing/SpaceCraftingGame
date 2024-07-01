@@ -133,10 +133,11 @@ MonoBehaviour:
   _hitBoxSize: {x: 0.5, y: 0.5}
   _targetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 851968
   _duration: 5
   _hitFrequency: -1
-  hitEffectPrefeb: {fileID: 0}
+  _isDestroy: 0
+  hitEffectPrefab: {fileID: 0}
   destroyEffectPrefab: {fileID: 0}
   OnDurationEndEvent:
     m_PersistentCalls:
@@ -188,5 +189,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetMask:
     serializedVersion: 2
-    m_Bits: 2162688
+    m_Bits: 2424832
   _power: 1

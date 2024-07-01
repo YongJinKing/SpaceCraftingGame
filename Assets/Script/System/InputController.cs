@@ -13,6 +13,7 @@ public class InputController : Singleton<InputController>
     #region Events
     public UnityEvent<Vector2> moveEvent;
     public UnityEvent<int, Vector2> mouseEvent;
+    public UnityEvent<Vector2> getMousePosEvent;
     #endregion
     #endregion
 
@@ -42,19 +43,22 @@ public class InputController : Singleton<InputController>
     #region MonoBehaviour
     void Update()
     {
+        Vector2 mousePos = GetMousePoint();
+
         moveEvent?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+        getMousePosEvent?.Invoke(mousePos);
 
         if (Input.GetMouseButtonDown(0))
         {
-            mouseEvent?.Invoke(0, GetMousePoint());
+            mouseEvent?.Invoke(0, mousePos);
         }
         if (Input.GetMouseButtonDown(1))
         {
-            mouseEvent?.Invoke(1, GetMousePoint());
+            mouseEvent?.Invoke(1, mousePos);
         }
         if (Input.GetMouseButtonDown(2))
         {
-            mouseEvent?.Invoke(2, GetMousePoint());
+            mouseEvent?.Invoke(2, mousePos);
         }
     }
 
