@@ -58,6 +58,7 @@ public abstract class HitBox : MonoBehaviour
     }
     ///<summary>
     ///이 히트박스가 발사후 삭제되는지에 대한 bool값
+    ///SerializeField 된것은 디버깅을 위한것으로 수정하지 말것
     ///</summary>
     public bool isDestroy
     {

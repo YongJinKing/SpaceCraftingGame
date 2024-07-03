@@ -58,6 +58,8 @@ public class ProjectileHitBox : HitBox
     }
     protected override void Initialize()
     {
+        isDestroy = true;
+
         base.Initialize();
     }
     #endregion

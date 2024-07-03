@@ -191,6 +191,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   debuging: 0
-  _moveSpeed: 0
-  _maxDist: 0
+  _moveSpeed: 5
+  _maxDist: 10
   _penetrable: 0

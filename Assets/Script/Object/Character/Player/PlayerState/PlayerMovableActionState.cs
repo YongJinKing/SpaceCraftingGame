@@ -25,7 +25,7 @@ public class PlayerMovableActionState : PlayerState
     #region Protected
     protected override void AddListeners()
     {
-        base.AddListeners();;
+        base.AddListeners();
         InputController.Instance.moveEvent.AddListener(OnMove);
 
         if (owner.activatedAction != null)
@@ -46,14 +46,12 @@ public class PlayerMovableActionState : PlayerState
     }
     #endregion
     #region Public
-    public override void Enter()
-    {
-        base.Enter();
-    }
     public override void Exit()
     {
         owner.moveAction.Deactivate();
         owner.activatedAction.Deactivate();
+        owner.myAnim.SetLeftClick(false);
+        owner.weaponRotationAxis.SetActive(false);
         base.Exit();
     }
     #endregion
@@ -63,9 +61,14 @@ public class PlayerMovableActionState : PlayerState
     public void OnMove(Vector2 dir)
     {
         owner.moveAction.Activate(dir);
+        owner.myAnim.SetMove(true);
+
+        if (Mathf.Approximately(dir.x, 0.0f) && Mathf.Approximately(dir.y, 0.0f))
+            owner.myAnim.SetMove(false);
     }
     public void OnActionEnd()
     {
+        Debug.Log("movablestate.onactionend");
         owner.stateMachine.ChangeState<PlayerIdleState>();
     }
     #endregion

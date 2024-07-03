@@ -22,26 +22,19 @@ public class WeaponAttackAction : AttackAction
     #region Private
     #endregion
     #region Protected
-    [SerializeField] protected int componentIndex;
-    [SerializeField] protected int animationType;
-    [SerializeField] protected float actionDuration;
-    /// <summary>
-    /// 만약 componentIndex 나 animationType 둘중 하나라도 음수이면 false
-    /// </summary>
-    protected bool isAnimationed
-    {
-        get { return componentIndex > 0 || animationType > 0; }
-    }
+    [SerializeField] float _activeDuration = 0.0f;
     #endregion
     #region Public
+    /// <summary>
+    /// 다른 동작으로 캔슬이 가능할때까지의 시간
+    /// </summary>
+    public float activeDuration
+    {
+        get { return _activeDuration; }
+        set { _activeDuration = value; }
+    }
     #endregion
     #region Events
-    /// <summary>
-    /// 애니메이션을 트리거 해주는 이벤트
-    /// 첫 int는 컴포넌트 index, 두번째 int는 애니매이션 번호
-    /// </summary>
-    public UnityEvent<int, int> animationTriggerEvent = new UnityEvent<int, int>();
-    public UnityEvent animationEndEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -68,18 +61,8 @@ public class WeaponAttackAction : AttackAction
     {
         base.Activate(pos);
 
-        if (!isAnimationed) 
-        {
-            //애니메이션으로 제어가 되지 않는경우(애니메이션이 없는경우)
-            ActivateHitBoxes(pos);
-            //여기에 총을 회전시키는 함수
-            //여기에 총의 스프라이트를 비활성화는 함수
-            //여기에 
-        }
-        else
-        {
-            animationTriggerEvent?.Invoke(componentIndex, animationType);
-        }
+        ActivateHitBoxes(pos);
+        StartCoroutine(ActiveDurationChecking());
     }
     #endregion
     #endregion
@@ -91,6 +74,12 @@ public class WeaponAttackAction : AttackAction
     #endregion
 
     #region Coroutines
+    protected IEnumerator ActiveDurationChecking()
+    {
+        if(activeDuration > 0.0f)
+            yield return new WaitForSeconds(activeDuration);
+        ActionEnd();
+    }
     #endregion
 
     #region MonoBehaviour

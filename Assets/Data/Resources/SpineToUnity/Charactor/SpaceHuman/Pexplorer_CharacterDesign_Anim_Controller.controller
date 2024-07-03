@@ -327,9 +327,9 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 3463719209920697618}
-    second: []
   - first: {fileID: 2527925949484479791}
+    second: []
+  - first: {fileID: 3463719209920697618}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 120, y: 130, z: 0}
@@ -676,7 +676,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: B_Move
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8539948714527286032}
   m_Solo: 0
@@ -1440,7 +1443,7 @@ AnimatorController:
   - m_Name: I_EquipType
     m_Type: 3
     m_DefaultFloat: 0
-    m_DefaultInt: 0
+    m_DefaultInt: 1
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: B_Move

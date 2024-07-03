@@ -44,6 +44,8 @@ public class PlayerUnmovableActionState : PlayerState
     public override void Exit()
     {
         owner.activatedAction.Deactivate();
+        owner.myAnim.SetLeftClick(false);
+        owner.weaponRotationAxis.SetActive(false);
         base.Exit();
     }
     #endregion

@@ -72,6 +72,9 @@ public abstract class Stat : MonoBehaviour, IDamage, IGetPriority
     }
     #endregion
     #region Protected
+    /// <summary>
+    /// 클래스 초기화 함수, Start 함수에서 실행
+    /// </summary>
     protected virtual void Initialize()
     {
         this[EStat.MaxHP] = MaxHP;
@@ -88,6 +91,9 @@ public abstract class Stat : MonoBehaviour, IDamage, IGetPriority
         if (!_StatChangedEvents.ContainsKey(type))
             _StatChangedEvents.Add(type, new UnityEvent<float, float>());
     }
+    /// <summary>
+    /// TakeDamage 인터페이스에서 실행될 예정인 죽었을때 실행되는 함수
+    /// </summary>
     protected virtual void OnDead()
     {
     }
@@ -114,6 +120,11 @@ public abstract class Stat : MonoBehaviour, IDamage, IGetPriority
             return _Stats[type];
         return -1.0f;
     }
+    /// <summary>
+    /// IGetPriority 인터페이스 함수
+    /// 몬스터에서 이객체가 타겟이 될지 말지 우선순위를 주는 함수
+    /// </summary>
+    /// <returns>계산된 우선순위 float값</returns>
     public virtual float GetPriority()
     {
         //if Priority is below 0, this Object don`t becomes target

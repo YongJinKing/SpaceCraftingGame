@@ -42,6 +42,8 @@ public class PlayerInitState : PlayerState
     private IEnumerator Init()
     {
         yield return null;
+        owner.weaponRotationAxis.SetActive(false);
+
         owner.stateMachine.ChangeState<PlayerIdleState>();
     }
     #endregion

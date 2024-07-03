@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class PlayerIdleState : PlayerState
@@ -29,12 +30,14 @@ public class PlayerIdleState : PlayerState
         base.AddListeners();
         InputController.Instance.moveEvent.AddListener(OnMove);
         InputController.Instance.mouseEvent.AddListener(OnMouse);
+        InputController.Instance.numberKeyEvent.AddListener(OnNumberKey);
     }
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
         InputController.Instance.moveEvent.RemoveListener(OnMove);
         InputController.Instance.mouseEvent.RemoveListener(OnMouse);
+        InputController.Instance.numberKeyEvent.RemoveListener(OnNumberKey);
     }
     #endregion
     #region Public
@@ -54,17 +57,26 @@ public class PlayerIdleState : PlayerState
     public void OnMove(Vector2 dir)
     {
         owner.moveAction.Activate(dir);
-        //여기에 이동 애니메이션 트리거
+        owner.myAnim.SetMove(true);
+
+        if (Mathf.Approximately(dir.x, 0.0f) && Mathf.Approximately(dir.y, 0.0f))
+            owner.myAnim.SetMove(false);
     }
     public void OnMouse(int type, Vector2 pos)
     {
         owner.attackAction.Activate(pos);
+        owner.myAnim.SetLeftClick(true);
+        owner.weaponRotationAxis.SetActive(true);
         owner.activatedAction = owner.attackAction;
 
         if (owner.activatedAction.fireAndForget)
             owner.stateMachine.ChangeState<PlayerMovableActionState>();
-        //else
-        //    owner.stateMachine.ChangeState<PlayerUnmovableState>();
+        else
+            owner.stateMachine.ChangeState<PlayerUnmovableActionState>();
+    }
+    public void OnNumberKey(int num)
+    {
+        owner.myAnim.SetEquipType(num);
     }
     #endregion
 

@@ -90,11 +90,6 @@ public abstract class AttackAction : Action
     {
         ActionEnd();
     }
-
-    public virtual void OnAnimationEnd()
-    {
-        ActionEnd();
-    }
     #endregion
 
     #region Coroutines

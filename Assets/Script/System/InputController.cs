@@ -11,9 +11,10 @@ public class InputController : Singleton<InputController>
     #region Public
     #endregion
     #region Events
-    public UnityEvent<Vector2> moveEvent;
-    public UnityEvent<int, Vector2> mouseEvent;
-    public UnityEvent<Vector2> getMousePosEvent;
+    public UnityEvent<Vector2> moveEvent = new UnityEvent<Vector2>();
+    public UnityEvent<int, Vector2> mouseEvent = new UnityEvent<int, Vector2>();
+    public UnityEvent<int> numberKeyEvent = new UnityEvent<int>();
+    public UnityEvent<Vector2> getMousePosEvent = new UnityEvent<Vector2>();
     #endregion
     #endregion
 
@@ -48,17 +49,58 @@ public class InputController : Singleton<InputController>
         moveEvent?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
         getMousePosEvent?.Invoke(mousePos);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             mouseEvent?.Invoke(0, mousePos);
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
         {
             mouseEvent?.Invoke(1, mousePos);
         }
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButton(2))
         {
             mouseEvent?.Invoke(2, mousePos);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            numberKeyEvent?.Invoke(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            numberKeyEvent?.Invoke(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            numberKeyEvent?.Invoke(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            numberKeyEvent?.Invoke(4);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            numberKeyEvent?.Invoke(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            numberKeyEvent?.Invoke(6);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            numberKeyEvent?.Invoke(7);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            numberKeyEvent?.Invoke(8);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            numberKeyEvent?.Invoke(9);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            numberKeyEvent?.Invoke(0);
         }
     }
 
