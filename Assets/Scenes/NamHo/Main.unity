@@ -2633,10 +2633,7 @@ MonoBehaviour:
   mineralPrefab: {fileID: 1024083977}
   gasPrefab: {fileID: 683521096}
   plusResource: {fileID: 0}
-  tilemap: {fileID: 1107091910}
-  mapWidth: 5
-  mapHeight: 5
-  totalResources: 3
+  tileManager: {fileID: 0}
   mineralLayer:
     serializedVersion: 2
     m_Bits: 131072
@@ -2646,6 +2643,8 @@ MonoBehaviour:
   plusResourceLayer:
     serializedVersion: 2
     m_Bits: 0
+  resourceIndex: 500000
+  resourceDataList: []
 --- !u!4 &273932520
 Transform:
   m_ObjectHideFlags: 0
@@ -3003,10 +3002,7 @@ MonoBehaviour:
   mineralPrefab: {fileID: 1024083977}
   gasPrefab: {fileID: 683521096}
   plusResource: {fileID: 0}
-  tilemap: {fileID: 1107091910}
-  mapWidth: 5
-  mapHeight: 5
-  totalResources: 3
+  tileManager: {fileID: 0}
   mineralLayer:
     serializedVersion: 2
     m_Bits: 131072
@@ -3016,6 +3012,8 @@ MonoBehaviour:
   plusResourceLayer:
     serializedVersion: 2
     m_Bits: 0
+  resourceIndex: 500000
+  resourceDataList: []
 --- !u!4 &354587450
 Transform:
   m_ObjectHideFlags: 0
@@ -12101,7 +12099,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
+    m_Bits: 1114112
+  structureMask:
+    serializedVersion: 2
     m_Bits: 65536
+  resourceMask:
+    serializedVersion: 2
+    m_Bits: 32768
   viewStructure: {fileID: 0}
 --- !u!4 &1508308767
 Transform:

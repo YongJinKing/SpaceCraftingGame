@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -121,6 +122,7 @@ public class TileManager : Singleton<TileManager>
         availablePlaces[coordinates].available = false;
         availablePlaces[coordinates].Object = obj;
         availablePlaces[coordinates].size = size;
+        Debug.Log("WritePlace " + availablePlaces[coordinates].available + ", " + availablePlaces[coordinates].Object + ", " + availablePlaces[coordinates].size);
     }
 
     public void RemopvePlace(Vector3Int coordinates)
@@ -128,7 +130,25 @@ public class TileManager : Singleton<TileManager>
         availablePlaces[coordinates].available = false;
     }
 
-    
+    public void RevokePlace(Vector3Int coordinates)
+    {
+        Vector3Int cellPos = Vector3Int.zero;
+        //Vector3Int tmpPos = new Vector3Int((int)pos.x, (int)pos.y, (int)pos.z);
+        int size = availablePlaces[coordinates].size;
+        Debug.Log("revoke "+size);
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                cellPos = coordinates + new Vector3Int((int)tileMap.cellSize.x * j, (int)tileMap.cellSize.y * i, 0);
+                availablePlaces[cellPos].available = true;
+                availablePlaces.Remove(cellPos);
+                availablePlaces[cellPos] = new Tile(true, null, 0);
+            }
+        }
+        
+    }
+
     public int GetTileLength()
     {
         return (int)Mathf.Sqrt(availablePlaces.Count);
@@ -167,12 +187,12 @@ public class TileManager : Singleton<TileManager>
 
     public void DestoryObjectOnTile(Vector3 pos) // 해당 위치에 있던 타일 제거
     {
-        
         Vector3Int coordiantes = tileMap.WorldToCell(pos);
         if (tileMap.HasTile(coordiantes))
         {
-            availablePlaces.Remove(coordiantes);
-            availablePlaces[coordiantes] = new Tile(true, null, 0);
+            RevokePlace(coordiantes);
+            /*availablePlaces.Remove(coordiantes);
+            availablePlaces[coordiantes] = new Tile(true, null, 0);*/
             Debug.Log(coordiantes + "위치 건물 삭제");
         }
     }

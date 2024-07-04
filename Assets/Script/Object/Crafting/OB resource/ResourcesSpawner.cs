@@ -41,10 +41,14 @@ public class ResourcesSpawner : MonoBehaviour
                 Vector3Int cellPosition = new Vector3Int(x, y, 0);
                 //Vector3 worldPos = tileMap.GetCellCenterLocal(cellPosition);
                 Vector3 worldPos = tileMap.WorldToCell(cellPosition);
-                if (!tileMap.HasTile(cellPosition)) continue;
 
+                if (!tileMap.HasTile(cellPosition)) continue;
+                if (!TileManager.Instance.IsCraftable(cellPosition)) continue;
                 // 구역 내에서 랜덤 위치 계산
                 Vector3 randomWorldPosition = GetRandomPositionInCell(worldPos);
+                Vector3Int convertPos = ConvertMinusPos(randomWorldPosition);
+
+                if (!TileManager.Instance.IsCraftable(convertPos)) continue;
 
                 // 랜덤하게 자원 종류를 선택하여 배치
                 float randomValue = Random.value;
@@ -77,11 +81,24 @@ public class ResourcesSpawner : MonoBehaviour
                         RemovePlaceForResource(randomWorldPosition);
                     }
                 }
-                
+
             }
         }
     }
 
+    Vector3Int ConvertMinusPos(Vector3 pos)
+    {
+        Vector3 tmpPos = pos;
+        if (tmpPos.x < 0)
+        {
+            tmpPos.x--;
+        }
+        if (tmpPos.y < 0)
+        {
+            tmpPos.y--;
+        }
+        return new Vector3Int((int)tmpPos.x, (int)tmpPos.y, 0);
+    }
     void RemovePlaceForResource(Vector3 pos)
     {
         if (pos.x < 0)
@@ -97,7 +114,7 @@ public class ResourcesSpawner : MonoBehaviour
         TileManager.Instance.RemopvePlace(resourcePos, obj, size);
         for (int i = 0; i < size; i++)
         {
-            for(int j = 0; j< size; j++)
+            for (int j = 0; j < size; j++)
             {
                 Vector3Int cellPos = resourcePos + new Vector3Int((int)tileMap.cellSize.x * j, (int)tileMap.cellSize.y * i, 0);
                 TileManager.Instance.RemopvePlace(cellPos);
@@ -118,9 +135,9 @@ public class ResourcesSpawner : MonoBehaviour
     {
         Vector3Int[] offsets = new Vector3Int[placementInterval * placementInterval];
         int idx = 0;
-        for(int i = 0; i < placementInterval; i++)
+        for (int i = 0; i < placementInterval; i++)
         {
-            for(int j = 0; j < placementInterval; j++)
+            for (int j = 0; j < placementInterval; j++)
             {
                 offsets[idx++] = new Vector3Int(i, j, 0);
             }

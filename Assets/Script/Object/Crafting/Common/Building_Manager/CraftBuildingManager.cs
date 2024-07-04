@@ -174,13 +174,14 @@ public class CraftBuildingManager : MonoBehaviour
             craft.transform.SetParent(TurretParent);
 
             cellPos = Vector3Int.zero;
-            WritePlaceInfoEvent?.Invoke(tmpPos, craft, size);
+            //WritePlaceInfoEvent?.Invoke(tmpPos, craft, size);
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
                 {
                     cellPos = tmpPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
-                    RemovePlaceEvent?.Invoke(cellPos);
+                    WritePlaceInfoEvent?.Invoke(cellPos, craft, size);
+                    //RemovePlaceEvent?.Invoke(cellPos);
                 }
             }
         }
