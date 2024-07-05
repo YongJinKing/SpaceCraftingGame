@@ -8,7 +8,7 @@ public class MeleeHitBox : HitBox
     #region Private
     #endregion
     #region Protected
-    [SerializeField] protected bool _isFollowDir = true;
+    [SerializeField] protected bool _isFollowDir = false;
     protected float offset;
     protected float angle;
     #endregion

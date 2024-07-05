@@ -46,15 +46,6 @@ public class WeaponAttackAction : AttackAction
     #region Private
     #endregion
     #region Protected
-    protected override void Initialize()
-    {
-        base.Initialize();
-        //플레이어의 애니메이션과 총의 애니메이션이 분리 되어 있어야함
-        //
-        //여기에 애니메이션 컨트롤러의 이벤트에 이 클래스의 핸들러를 등록
-        //또한 이 클래스의 이벤트도 애니메이션 컨트롤러의 핸들러를 등록
-        //애니메이션이 필요하지 않으면 등록하지 않음
-    }
     #endregion
     #region Public
     public override void Activate(Vector2 pos)

@@ -41,7 +41,7 @@ public class DamageAffect : BaseAffect
             float temp = 0;
             if (myStat != null) 
             {
-                temp = myStat[EStat.ATK];
+                temp = myStat[EStat.ATK] * power;
             }
 
             damage.TakeDamage(temp);

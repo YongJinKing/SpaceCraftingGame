@@ -104,11 +104,13 @@ public abstract class HitBox : MonoBehaviour
                         }
                     }
 
-                    Debug.Log($"{LayerMask.LayerToName(i)}");
+                    //Debug.Log($"{LayerMask.LayerToName(i)}");
                 }
             }
         }
-        gameObject.SetActive(false);
+        //곧바로 false 해버리면 자식 오브젝트들의 초기화가 오류가남
+        StartCoroutine(DelaiedInit());
+        //gameObject.SetActive(false);
     }
 
     ///<summary>
@@ -188,6 +190,11 @@ public abstract class HitBox : MonoBehaviour
             yield return new WaitForSeconds(hitFrequency);
             Refresh();
         }
+    }
+    private IEnumerator DelaiedInit()
+    {
+        yield return null;
+        gameObject.SetActive(false);
     }
     #endregion
 
