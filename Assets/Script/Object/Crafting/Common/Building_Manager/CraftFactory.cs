@@ -147,13 +147,16 @@ public class CraftFactory
             imgData = structureDataManger.dicCBImgTable[index];
         }
 
-
+        size = abilityData.BuildingScale;
         //Collider, Rigidbody, Scale Setting
         obj.transform.localScale = Vector3.one;
         obj.name = "Turret";
         obj.layer = 16;
 
-        obj.AddComponent<BoxCollider2D>();
+        BoxCollider2D mainBoxCollider2D = obj.AddComponent<BoxCollider2D>();
+        mainBoxCollider2D.size = new Vector2(1f * size, 1f* size);
+        mainBoxCollider2D.offset = new Vector2(0.5f * (size - 1), 0.5f * (size - 1));
+
         Turret turret = obj.AddComponent<Turret>();
         if (Hp == 0f) turret.MaxHP = componentData.Component_Hp;
         else turret.MaxHP = Hp;
@@ -179,14 +182,14 @@ public class CraftFactory
         attackPoint.transform.localPosition = new Vector3(0, 0, 0);
         turret.attackPoint = attackPoint.transform;
 
-        GameObject body = new GameObject();
-        body.name = "body";
-        body.transform.SetParent(obj.transform);
-        body.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        body.transform.localPosition = new Vector3(0, 0, 0);
-        SpriteRenderer renderer = body.AddComponent<SpriteRenderer>();
+        // 향후 이미지의 크기에 따라 아래 컴포넌트 수치들은 변경될 수 있음
+        GameObject image = new GameObject();
+        image.name = "image";
+        image.transform.SetParent(obj.transform);
+        image.transform.localScale = new Vector3(0.5f * size, 0.5f * size, 0.5f * size);
+        image.transform.localPosition = new Vector3(0.5f * (size - 1), 0.5f * (size-1), 0.5f * (size - 1));
+        SpriteRenderer renderer = image.AddComponent<SpriteRenderer>();
         renderer.sprite = Resources.Load<Sprite>($"Component/Image/{imgData.ImageResource_Name}");
-
 
         GameObject bullet = new GameObject();
         bullet.name = "bullet";
@@ -212,7 +215,7 @@ public class CraftFactory
         perception.transform.localPosition = new Vector3(0, 0, 0);
 
         obj.transform.localPosition = pos;
-        obj.transform.localScale = Vector3.one * size;
+        obj.transform.localScale = Vector3.one;
         
         return obj;
     }

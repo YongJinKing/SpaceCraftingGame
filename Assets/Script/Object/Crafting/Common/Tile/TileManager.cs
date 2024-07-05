@@ -122,7 +122,7 @@ public class TileManager : Singleton<TileManager>
         availablePlaces[coordinates].available = false;
         availablePlaces[coordinates].Object = obj;
         availablePlaces[coordinates].size = size;
-        Debug.Log("WritePlace " + availablePlaces[coordinates].available + ", " + availablePlaces[coordinates].Object + ", " + availablePlaces[coordinates].size);
+        Debug.Log("WritePlace At :" + coordinates + ", " + availablePlaces[coordinates].available + ", " + availablePlaces[coordinates].Object + ", " + availablePlaces[coordinates].size);
     }
 
     public void RemopvePlace(Vector3Int coordinates)
@@ -133,14 +133,34 @@ public class TileManager : Singleton<TileManager>
     public void RevokePlace(Vector3Int coordinates)
     {
         Vector3Int cellPos = Vector3Int.zero;
+        Vector3Int tmpPos = coordinates;
         //Vector3Int tmpPos = new Vector3Int((int)pos.x, (int)pos.y, (int)pos.z);
         int size = availablePlaces[coordinates].size;
         Debug.Log("revoke "+size);
+        
+        availablePlaces[coordinates].available = true;
+        availablePlaces.Remove(coordinates);
+        availablePlaces[coordinates] = new Tile(true, null, 0);
+        // 이 아래 음수 처리는 임시 코드
+        // 나중에 nxn 크기의 건물을 처리하는 코드 자체를 고칠 예정
+        /*if(size > 1)
+        {
+            if (tmpPos.x < 0)
+            {
+                tmpPos.x--;
+            }
+            if (tmpPos.y < 0)
+            {
+                tmpPos.y--;
+            }
+        }*/
+        
         for (int i = 0; i < size; i++)
         {
             for (int j = 0; j < size; j++)
             {
-                cellPos = coordinates + new Vector3Int((int)tileMap.cellSize.x * j, (int)tileMap.cellSize.y * i, 0);
+                cellPos = tmpPos + new Vector3Int((int)tileMap.cellSize.x * j, (int)tileMap.cellSize.y * i, 0);
+                Debug.Log(cellPos);
                 availablePlaces[cellPos].available = true;
                 availablePlaces.Remove(cellPos);
                 availablePlaces[cellPos] = new Tile(true, null, 0);
