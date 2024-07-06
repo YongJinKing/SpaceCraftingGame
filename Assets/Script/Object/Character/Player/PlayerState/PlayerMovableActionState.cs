@@ -27,6 +27,7 @@ public class PlayerMovableActionState : PlayerState
     {
         base.AddListeners();
         InputController.Instance.moveEvent.AddListener(OnMove);
+        InputController.Instance.mouseUpEvent.AddListener(OnMouseUpEvent);
 
         if (owner.activatedAction != null)
         {
@@ -37,8 +38,9 @@ public class PlayerMovableActionState : PlayerState
     {
         base.RemoveListeners();
         InputController.Instance.moveEvent.RemoveListener(OnMove);
+        InputController.Instance.mouseUpEvent.RemoveListener(OnMouseUpEvent);
 
-        if(owner.activatedAction != null)
+        if (owner.activatedAction != null)
         {
             owner.activatedAction.OnActionEndEvent.RemoveListener(OnActionEnd);
         }
@@ -50,7 +52,6 @@ public class PlayerMovableActionState : PlayerState
     {
         owner.moveAction.Deactivate();
         owner.activatedAction.Deactivate();
-        owner.myAnim.SetLeftClick(false);
         owner.weaponRotationAxis.SetActive(false);
         base.Exit();
     }
@@ -65,6 +66,11 @@ public class PlayerMovableActionState : PlayerState
 
         if (Mathf.Approximately(dir.x, 0.0f) && Mathf.Approximately(dir.y, 0.0f))
             owner.myAnim.SetMove(false);
+    }
+    public void OnMouseUpEvent(int type)
+    {
+        //나중에 마우스 뗀 타입에 따른 스위치문 작성 필요
+        owner.myAnim.SetLeftClick(false);
     }
     public void OnActionEnd()
     {

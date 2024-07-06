@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerUnmovableActionState : PlayerState
 {
@@ -25,6 +26,8 @@ public class PlayerUnmovableActionState : PlayerState
     protected override void AddListeners()
     {
         base.AddListeners(); ;
+        InputController.Instance.mouseUpEvent.AddListener(OnMouseUpEvent);
+
         if (owner.activatedAction != null)
         {
             owner.activatedAction.OnActionEndEvent.AddListener(OnActionEnd);
@@ -33,6 +36,8 @@ public class PlayerUnmovableActionState : PlayerState
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
+        InputController.Instance.mouseUpEvent.RemoveListener(OnMouseUpEvent);
+
         if (owner.activatedAction != null)
         {
             owner.activatedAction.OnActionEndEvent.RemoveListener(OnActionEnd);
@@ -44,7 +49,6 @@ public class PlayerUnmovableActionState : PlayerState
     public override void Exit()
     {
         owner.activatedAction.Deactivate();
-        owner.myAnim.SetLeftClick(false);
         owner.weaponRotationAxis.SetActive(false);
         base.Exit();
     }
@@ -52,6 +56,11 @@ public class PlayerUnmovableActionState : PlayerState
     #endregion
 
     #region EventHandlers
+    public void OnMouseUpEvent(int type)
+    {
+        //나중에 마우스 뗀 타입에 따른 스위치문 작성 필요
+        owner.myAnim.SetLeftClick(false);
+    }
     public void OnActionEnd()
     {
         owner.stateMachine.ChangeState<PlayerIdleState>();

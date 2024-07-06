@@ -54,7 +54,7 @@ public class ProjectileHitBox : HitBox
 
         base.HitCheckEnd();
 
-        Destroy(gameObject);
+        DestroyHitBox();
     }
     protected override void Initialize()
     {

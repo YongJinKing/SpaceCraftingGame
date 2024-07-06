@@ -13,6 +13,7 @@ public class InputController : Singleton<InputController>
     #region Events
     public UnityEvent<Vector2> moveEvent = new UnityEvent<Vector2>();
     public UnityEvent<int, Vector2> mouseEvent = new UnityEvent<int, Vector2>();
+    public UnityEvent<int> mouseUpEvent = new UnityEvent<int>();
     public UnityEvent<int> numberKeyEvent = new UnityEvent<int>();
     public UnityEvent<Vector2> getMousePosEvent = new UnityEvent<Vector2>();
     #endregion
@@ -61,6 +62,20 @@ public class InputController : Singleton<InputController>
         {
             mouseEvent?.Invoke(2, mousePos);
         }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            mouseUpEvent?.Invoke(0);
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            mouseUpEvent?.Invoke(1);
+        }
+        if (Input.GetMouseButtonUp(2))
+        {
+            mouseUpEvent?.Invoke(2);
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

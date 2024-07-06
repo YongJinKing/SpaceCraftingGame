@@ -141,7 +141,7 @@ public abstract class HitBox : MonoBehaviour
         {
             Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
         }
-        Destroy(this);
+        Destroy(gameObject);
     }
     #endregion
     #region Public
