@@ -52,6 +52,10 @@ public class Player : Unit
     }
     #endregion
     #region Public
+    public GameObject GetWeaponRotationAxis()
+    {
+        return weaponRotationAxis;
+    }
     #endregion
     #endregion
 
