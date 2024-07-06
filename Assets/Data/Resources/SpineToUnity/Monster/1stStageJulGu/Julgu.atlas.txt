@@ -1,0 +1,20 @@
+
+Julgu.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Julgu
+  rotate: false
+  xy: 2, 96
+  size: 259, 313
+  orig: 262, 315
+  offset: 1, 1
+  index: -1
+filled
+  rotate: true
+  xy: 263, 122
+  size: 287, 146
+  orig: 287, 146
+  offset: 0, 0
+  index: -1
