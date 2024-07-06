@@ -3354,9 +3354,9 @@ MonoBehaviour:
   _targetMask:
     serializedVersion: 2
     m_Bits: 2097152
-  hitBoxPrefabs: []
-  hitBoxes:
+  hitBoxPrefabs:
   - {fileID: 2008033565}
+  hitBoxes: []
   owner: {fileID: 1816270050}
   fallPosImage: {fileID: 7577407123778418410, guid: b026bbd6404329c43a0457281ba0502b, type: 3}
   jumpHeight: 20
@@ -6877,7 +6877,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: _duration
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
       propertyPath: _hitBoxSize.x
@@ -7881,6 +7881,9 @@ MonoBehaviour:
   pointMove: {fileID: 0}
   attackActions:
   - {fileID: 1869338159}
+  - {fileID: 1915992402}
+  - {fileID: 707610223}
+  - {fileID: 746036847}
   ai: {fileID: 1940367737}
   player: {fileID: 1504991607}
   bossDirMove: {fileID: 0}
@@ -8086,9 +8089,9 @@ MonoBehaviour:
   _targetMask:
     serializedVersion: 2
     m_Bits: 2097152
-  hitBoxPrefabs: []
-  hitBoxes:
+  hitBoxPrefabs:
   - {fileID: 1288445622}
+  hitBoxes: []
   owner: {fileID: 1816270050}
   targetPosition: {x: 0, y: 0}
   jumpHeight: 1
@@ -8321,9 +8324,9 @@ MonoBehaviour:
   _targetMask:
     serializedVersion: 2
     m_Bits: 2097152
-  hitBoxPrefabs: []
-  hitBoxes:
+  hitBoxPrefabs:
   - {fileID: 1348615976}
+  hitBoxes: []
   owner: {fileID: 1816270050}
   moveSpeed: 2
   target: {fileID: 1504991607}
