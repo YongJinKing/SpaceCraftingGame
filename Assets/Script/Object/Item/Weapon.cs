@@ -46,9 +46,10 @@ public class Weapon : Equipment
     protected override void Initialize()
     {
         myPlayer = GetComponentInParent<Player>();
-        if(myPlayer != null)
+        if(myPlayer != null && graphic != null)
         {
             graphic.SetParent(myPlayer.weaponRotationAxis.transform, false);
+            graphic.gameObject.SetActive(false);
         }
     }
     protected virtual void AddListeners()
@@ -64,13 +65,23 @@ public class Weapon : Equipment
     public override void Equip()
     {
         base.Equip();
-        graphic.gameObject.SetActive(true);
+        if(graphic != null)
+            graphic.gameObject.SetActive(true);
+
+        myPlayer.mainAction = this.mainAction;
+        myPlayer.secondAction = this.subAction;
+
         AddListeners();
     }
     public override void UnEquip()
     {
         base.UnEquip();
-        graphic.gameObject.SetActive(false);
+        if (graphic != null)
+            graphic.gameObject.SetActive(false);
+
+        myPlayer.mainAction = null;
+        myPlayer.secondAction = null;
+
         RemoveListeners();
     }
     #endregion

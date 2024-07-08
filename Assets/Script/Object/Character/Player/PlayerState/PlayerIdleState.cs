@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
+
+/// <summary>
+/// #need to modify later
+/// </summary>
 public class PlayerIdleState : PlayerState
 {
     #region Properties
@@ -62,21 +66,84 @@ public class PlayerIdleState : PlayerState
         if (Mathf.Approximately(dir.x, 0.0f) && Mathf.Approximately(dir.y, 0.0f))
             owner.myAnim.SetMove(false);
     }
+    /// <summary>
+    /// 현재 하드코딩 되어있음 수정 필요
+    /// #need to modify later
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="pos"></param>
     public void OnMouse(int type, Vector2 pos)
     {
-        owner.attackAction.Activate(pos);
-        owner.myAnim.SetLeftClick(true);
-        owner.weaponRotationAxis.SetActive(true);
-        owner.activatedAction = owner.attackAction;
+        //여기부분에서 Player의 Action 부분을 배열로 만들어서
+        //하는것도 가능성 있을듯
+        switch (type)
+        {
+            case 0:
+                {
+                    if(owner.mainAction != null)
+                    {
+                        owner.mainAction.Activate(pos);
+                        owner.myAnim.SetLeftClick(true);
 
-        if (owner.activatedAction.fireAndForget)
-            owner.stateMachine.ChangeState<PlayerMovableActionState>();
-        else
-            owner.stateMachine.ChangeState<PlayerUnmovableActionState>();
+                        owner.weaponRotationAxis.SetActive(true);
+                        owner.activatedAction = owner.mainAction;
+                    }
+                }
+                break;
+            case 1:
+                {
+                    if (owner.secondAction != null)
+                    {
+                        owner.secondAction.Activate(pos);
+                        //owner.myAnim.SetRightClick(true);
+
+                        owner.weaponRotationAxis.SetActive(true);
+                        owner.activatedAction = owner.secondAction;
+                    }
+                }
+                break;
+            case 2:
+                break;
+        }
+        
+        if(owner.activatedAction != null)
+        {
+            if (owner.activatedAction.fireAndForget)
+                owner.stateMachine.ChangeState<PlayerMovableActionState>();
+            else
+                owner.stateMachine.ChangeState<PlayerUnmovableActionState>();
+        }
     }
+    /// <summary>
+    /// 현재 하드코딩 되어 있음
+    /// 수정 필요
+    /// #need to modify later
+    /// </summary>
+    /// <param name="num"></param>
     public void OnNumberKey(int num)
     {
+        //나중에 아이템에서 타입을 받아서 하는 방식으로 바꿀것.
+        //현재는 하드코딩
+        //Equipment Manager를 만들어서 호출하는 방식도 좋을듯
+        //현재는 0은 맨손 1은 총, 2는 망치, 3은 곡괭이
         owner.myAnim.SetEquipType(num);
+        owner.AR.UnEquip();
+        owner.Hammer.UnEquip();
+        owner.PickAxe.UnEquip();
+        switch (num)
+        {
+            case 0:
+                break;
+            case 1:
+                owner.AR.Equip();
+                break;
+            case 2:
+                owner.Hammer.Equip();
+                break;
+            case 3:
+                owner.PickAxe.Equip();
+                break;
+        }
     }
     #endregion
 

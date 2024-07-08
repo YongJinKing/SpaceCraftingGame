@@ -16,10 +16,23 @@ public class Player : Unit
     #endregion
     #region Public
     public MoveAction moveAction;
-    public AttackAction attackAction;
+    /// <summary>
+    /// mainAction과 secondAction은 임시
+    /// 나중에 아이템에서 액션을 가져올건데 배열로 만드는게 좋을듯
+    /// #need to modify later
+    /// </summary>
+    public Action mainAction;
+    public Action secondAction;
     public PlayerAnimationController myAnim;
     public Transform graphicTransform;
     public GameObject weaponRotationAxis;
+    /// <summary>
+    /// 이건 나중에 UI에서 받아야 한다. 지금은 하드코딩
+    /// #need to modify later
+    /// </summary>
+    public Weapon AR;
+    public Weapon Hammer;
+    public Weapon PickAxe;
     #endregion
     #region Events
     #endregion
@@ -52,10 +65,6 @@ public class Player : Unit
     }
     #endregion
     #region Public
-    public GameObject GetWeaponRotationAxis()
-    {
-        return weaponRotationAxis;
-    }
     #endregion
     #endregion
 
@@ -63,6 +72,7 @@ public class Player : Unit
     /// <summary>
     /// InputController에서 위치를 받는 이벤트 함수
     /// 여기서 플레이어의 스프라이트를 뒤집는 역할을 함
+    /// 애니메이션 컨트롤러로 기능을 옮길까?
     /// </summary>
     /// <param name="mousePos">InputController 클래스가 보내준 마우스 월드 위치</param>
     public void OnGetMousePos(Vector2 mousePos)

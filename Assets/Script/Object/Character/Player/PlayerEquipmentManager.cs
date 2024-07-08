@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class Equipment : MonoBehaviour
+public class PlayerEquipmentManager : MonoBehaviour
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-    [SerializeField] protected bool isEquiped = false;
     #endregion
     #region Public
     #endregion
@@ -24,25 +22,8 @@ public abstract class Equipment : MonoBehaviour
     #region Private
     #endregion
     #region Protected
-    protected abstract void Initialize();
     #endregion
     #region Public
-    public virtual void Equip()
-    {
-        if (isEquiped == true)
-            return;
-
-        gameObject.SetActive(true);
-        isEquiped = true;
-    }
-    public virtual void UnEquip()
-    {
-        if (isEquiped == false)
-            return;
-
-        gameObject.SetActive(false);
-        isEquiped = false;
-    }
     #endregion
     #endregion
 
@@ -53,9 +34,5 @@ public abstract class Equipment : MonoBehaviour
     #endregion
 
     #region MonoBehaviour
-    protected void Start()
-    {
-        Initialize();
-    }
     #endregion
 }
