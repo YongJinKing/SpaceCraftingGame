@@ -6,6 +6,7 @@ using UnityEngine;
 public class BossAction : AttackAction
 {
     public Unit owner; // <<< 움직이는 유닛을 바인딩, 여긴 보스 액션이니깐 보스를 가져다 바인딩한다.
+    
     protected Animator ownerAnim;
     public override void Deactivate()
     {

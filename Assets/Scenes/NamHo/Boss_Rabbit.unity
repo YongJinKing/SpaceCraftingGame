@@ -1169,6 +1169,7 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  delayTime: 0
   skeletonAnimation: {fileID: 0}
   animClip: []
   OnActionEndEvent:
@@ -1610,6 +1611,7 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  delayTime: 0
   skeletonAnimation: {fileID: 0}
   animClip: []
   OnActionEndEvent:
@@ -3033,6 +3035,7 @@ MonoBehaviour:
   _priority: 4
   _coolTime: 1
   _activeRadius: 1
+  delayTime: 1
   skeletonAnimation: {fileID: 45214044}
   animClip:
   - {fileID: 11400000, guid: 679027ee648bb0a4e946623c8a389b63, type: 2}
@@ -3343,6 +3346,7 @@ MonoBehaviour:
   _priority: 3
   _coolTime: 1
   _activeRadius: 1
+  delayTime: 3
   skeletonAnimation: {fileID: 45214044}
   animClip:
   - {fileID: 11400000, guid: 02a05f411eca1c445a7100ae80b7d8f5, type: 2}
@@ -5457,6 +5461,7 @@ MonoBehaviour:
   _priority: 101
   _coolTime: 1
   _activeRadius: 1
+  delayTime: 4
   skeletonAnimation: {fileID: 0}
   animClip: []
   OnActionEndEvent:
@@ -5472,6 +5477,7 @@ MonoBehaviour:
   idx: -1
   moveSpeed: 4
   riceCost: 3
+  chk: 0
   perception: {fileID: 1207989209}
   xShapeLines:
   - {fileID: 1113738180}
@@ -5748,6 +5754,7 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  delayTime: 0
   skeletonAnimation: {fileID: 0}
   animClip: []
   OnActionEndEvent:
@@ -6297,6 +6304,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   mouseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  mouseUpEvent:
     m_PersistentCalls:
       m_Calls: []
   numberKeyEvent:
@@ -7095,6 +7105,7 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  delayTime: 0
   skeletonAnimation: {fileID: 0}
   animClip: []
   OnActionEndEvent:
@@ -7881,15 +7892,11 @@ MonoBehaviour:
   pointMove: {fileID: 0}
   attackActions:
   - {fileID: 1869338159}
-  - {fileID: 1915992402}
-  - {fileID: 707610223}
-  - {fileID: 746036847}
   ai: {fileID: 1940367737}
   player: {fileID: 1504991607}
   bossDirMove: {fileID: 0}
   bossImg: {fileID: 646591673}
   specialActions:
-  - {fileID: 933351663}
   - {fileID: 1953498056}
   _animState: 0
   currentAnim: 
@@ -8080,6 +8087,7 @@ MonoBehaviour:
   _priority: 6
   _coolTime: 1
   _activeRadius: 1
+  delayTime: 2
   skeletonAnimation: {fileID: 45214044}
   animClip:
   - {fileID: 11400000, guid: 251633e3d3853994bb45e576793feaca, type: 2}
@@ -8313,6 +8321,7 @@ MonoBehaviour:
   _priority: 105
   _coolTime: 1
   _activeRadius: 1
+  delayTime: 3
   skeletonAnimation: {fileID: 45214044}
   animClip:
   - {fileID: 11400000, guid: 33e0f6f3573ab754385a791e6e5aca3b, type: 2}
@@ -8362,6 +8371,7 @@ MonoBehaviour:
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  delayTime: 0
   skeletonAnimation: {fileID: 0}
   animClip: []
   OnActionEndEvent:
@@ -8606,6 +8616,7 @@ MonoBehaviour:
   _priority: 1
   _coolTime: 1
   _activeRadius: 1
+  delayTime: 1
   skeletonAnimation: {fileID: 0}
   animClip: []
   OnActionEndEvent:
@@ -8621,6 +8632,7 @@ MonoBehaviour:
   idx: -1
   moveSpeed: 4
   riceCost: 2
+  chk: 0
   perception: {fileID: 1207989209}
   healAmount: 1
 --- !u!1 &1987127890
@@ -8881,6 +8893,7 @@ MonoBehaviour:
   _priority: 1
   _coolTime: -1
   _activeRadius: 1.2
+  delayTime: 0
   skeletonAnimation: {fileID: 0}
   animClip: []
   OnActionEndEvent:

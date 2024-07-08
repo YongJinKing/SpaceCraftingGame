@@ -19,6 +19,9 @@ public abstract class Action : MonoBehaviour, IGetPriority
 
     #endregion
     #region Public
+    // 각 액션간에 딜레이를 주기 위한 변수
+    public float delayTime;
+
     //for spine animation
     public SkeletonAnimation skeletonAnimation;
     public AnimationReferenceAsset[] animClip;

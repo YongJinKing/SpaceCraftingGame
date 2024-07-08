@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class ResourcesSpawner : MonoBehaviour
+public class ResourcesSpawner : Singleton<ResourcesSpawner>
 {
     public GameObject mineralPrefab; // 1x1 크기의 미네랄 프리팹
     public GameObject gasPrefab; // 1x1 크기의 가스 프리팹
@@ -16,6 +16,7 @@ public class ResourcesSpawner : MonoBehaviour
     public Transform largeMinerals;
 
     public Tilemap tileMap; // 타일맵
+    public LayerMask layerMask; // 건물과 자원이 있는지 없는지 검사하기 위한 layerMask
 
     public int placementInterval = 4; // 자원을 배치할 간격 (NxN 크기)
     private float mineralRatio = 0.6f; // 미네랄의 비율
@@ -26,10 +27,10 @@ public class ResourcesSpawner : MonoBehaviour
 
     void Start()
     {
-        SpawnResources();
+        StartSpawnResources();
     }
 
-    public void SpawnResources()
+    public void RespawnResources()
     {
         // 타일맵의 모든 셀을 일정 크기로 나눔
         for (int y = tileMap.cellBounds.yMin + placementInterval / 2; y <= tileMap.cellBounds.yMax - placementInterval / 2; y += placementInterval)
@@ -44,13 +45,42 @@ public class ResourcesSpawner : MonoBehaviour
 
                 if (!tileMap.HasTile(cellPosition)) continue;
                 if (!TileManager.Instance.IsCraftable(cellPosition)) continue;
+                // 여기에 조건 추가
+                if (CheckObjectsInArea(cellPosition, placementInterval, layerMask)) continue;
+
                 // 구역 내에서 랜덤 위치 계산
                 Vector3 randomWorldPosition = GetRandomPositionInCell(worldPos);
                 Vector3Int convertPos = ConvertMinusPos(randomWorldPosition);
 
                 if (!TileManager.Instance.IsCraftable(convertPos)) continue;
 
-                // 랜덤하게 자원 종류를 선택하여 배치
+
+                SpawnResource(randomWorldPosition, cellPosition, false);
+            }
+        }
+    }
+    public void StartSpawnResources()
+    {
+        // 타일맵의 모든 셀을 일정 크기로 나눔
+        for (int y = tileMap.cellBounds.yMin + placementInterval / 2; y <= tileMap.cellBounds.yMax - placementInterval / 2; y += placementInterval)
+        {
+            for (int x = tileMap.cellBounds.xMin + placementInterval / 2; x <= tileMap.cellBounds.xMax - placementInterval / 2; x += placementInterval)
+            {
+                size = 0;
+                obj = null;
+                Vector3Int cellPosition = new Vector3Int(x, y, 0);
+                Vector3 worldPos = tileMap.WorldToCell(cellPosition);
+
+                if (!tileMap.HasTile(cellPosition)) continue;
+                if (!TileManager.Instance.IsCraftable(cellPosition)) continue;
+                // 구역 내에서 랜덤 위치 계산
+                Vector3 randomWorldPosition = GetRandomPositionInCell(worldPos);
+                Vector3Int convertPos = ConvertMinusPos(randomWorldPosition);
+
+                if (!TileManager.Instance.IsCraftable(convertPos)) continue;
+
+                SpawnResource(randomWorldPosition, cellPosition, true);
+                /*// 랜덤하게 자원 종류를 선택하여 배치
                 float randomValue = Random.value;
                 if (randomValue < mineralRatio)
                 {
@@ -80,10 +110,106 @@ public class ResourcesSpawner : MonoBehaviour
                         obj.transform.SetParent(largeMinerals);
                         RemovePlaceForResource(randomWorldPosition);
                     }
-                }
+                }*/
 
             }
         }
+    }
+
+    void SpawnResource(Vector3 randomWorldPosition, Vector3Int cellPosition, bool randomable)
+    {
+        if (randomable)
+        {
+            // 랜덤하게 자원 종류를 선택하여 배치
+            float randomValue = Random.value;
+            if (randomValue < mineralRatio)
+            {
+                size = 1;
+                // 1x1 크기의 자원1 배치
+                obj = Instantiate(mineralPrefab, randomWorldPosition, Quaternion.identity);
+                obj.transform.SetParent(minerals);
+                RemovePlaceForResource(randomWorldPosition);
+
+            }
+            else if (randomValue < mineralRatio + gasRatio)
+            {
+                size = 1;
+                // 1x1 크기의 자원2 배치
+                obj = Instantiate(gasPrefab, randomWorldPosition, Quaternion.identity);
+                obj.transform.SetParent(gases);
+                RemovePlaceForResource(randomWorldPosition);
+            }
+            else
+            {
+                // 2x2 크기의 자원 배치
+                if (CanPlaceLargeResource(cellPosition))
+                {
+                    size = 2;
+                    randomWorldPosition = GetRandomPositionInCell(cellPosition);
+                    obj = Instantiate(largeResourcePrefab, randomWorldPosition, Quaternion.identity);
+                    obj.transform.SetParent(largeMinerals);
+                    RemovePlaceForResource(randomWorldPosition);
+                }
+            }
+        }
+        else
+        {
+            int randomValue = Random.Range(0, 3);
+            if(randomValue == 0)
+            {
+                size = 1;
+                // 1x1 크기의 자원1 배치
+                obj = Instantiate(mineralPrefab, randomWorldPosition, Quaternion.identity);
+                obj.transform.SetParent(minerals);
+                RemovePlaceForResource(randomWorldPosition);
+            }
+            else if (randomValue == 1)
+            {
+                size = 1;
+                // 1x1 크기의 자원2 배치
+                obj = Instantiate(gasPrefab, randomWorldPosition, Quaternion.identity);
+                obj.transform.SetParent(gases);
+                RemovePlaceForResource(randomWorldPosition);
+            }
+            else
+            {
+                // 2x2 크기의 자원 배치
+                if (CanPlaceLargeResource(cellPosition))
+                {
+                    size = 2;
+                    randomWorldPosition = GetRandomPositionInCell(cellPosition);
+                    obj = Instantiate(largeResourcePrefab, randomWorldPosition, Quaternion.identity);
+                    obj.transform.SetParent(largeMinerals);
+                    RemovePlaceForResource(randomWorldPosition);
+                }
+            }
+        }
+    }
+
+    bool checkCraftable(Vector3Int cellPosition)
+    {
+        if (!tileMap.HasTile(cellPosition)) return false;
+        if (!TileManager.Instance.IsCraftable(cellPosition)) return false;
+
+        Vector3 worldPos = tileMap.WorldToCell(cellPosition);
+
+        Vector3 randomWorldPosition = GetRandomPositionInCell(worldPos);
+        Vector3Int convertPos = ConvertMinusPos(randomWorldPosition);
+
+        if (!TileManager.Instance.IsCraftable(convertPos)) return false;
+
+        return true;
+    }
+    bool CheckObjectsInArea(Vector3Int startPosition, float size, LayerMask layerMask)
+    {
+        // 박스 중심 위치 계산
+        Vector3 centerPosition = startPosition + new Vector3(size / 2, size / 2, 0);
+
+        // NxN 크기의 박스 영역 내에 있는 오브젝트를 검사
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(centerPosition, new Vector2(size, size), 0f, layerMask);
+
+        // 오브젝트가 있는지 확인
+        return colliders.Length > 0;
     }
 
     Vector3Int ConvertMinusPos(Vector3 pos)
@@ -153,5 +279,13 @@ public class ResourcesSpawner : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            RespawnResources();
+        }
     }
 }

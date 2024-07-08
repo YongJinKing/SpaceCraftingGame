@@ -33,8 +33,9 @@ public class SP_Healing : SPAttackAction
     IEnumerator HealingPattern()
     {
         yield return StartCoroutine(FindMortalBox());
+
         // 떡을 먹는 애니메이션을 여기서 출력해야함~
-        transform.parent.parent.GetComponent<Unit>()[EStat.HP] += healAmount; // 여긴 힐하는 곳이니깐 힐을 한다.
+        if (chk) transform.parent.parent.GetComponent<Unit>()[EStat.HP] += healAmount; // 여긴 힐하는 곳이니깐 힐을 한다.
 
         yield return null;
 
@@ -53,6 +54,7 @@ public class SP_Healing : SPAttackAction
     public override void Activate(Vector2 pos)
     {
         base.Activate(pos);
+        chk = false;
         mortalBoxesList = perception.GetList();
         StartCoroutine(HealingPattern());
 

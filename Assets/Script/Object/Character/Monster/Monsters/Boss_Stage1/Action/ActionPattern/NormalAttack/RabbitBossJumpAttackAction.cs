@@ -38,13 +38,18 @@ public class RabbitBossJumpAttackAction : BossAction
     IEnumerator HitBoxOn(Vector2 pos)
     {
         attackEffect.gameObject.SetActive(true);
-        attackEffect.GetComponent<ParticleSystem>().Play();
 
         for (int i = 0; i < hitBoxes.Length; ++i)
         {
             hitBoxes[i].Activate(pos);
-            attackEffect.transform.localPosition = hitBoxes[i].transform.localPosition;
+            Quaternion rot = hitBoxes[i].transform.rotation;
+
+            Vector3 eulerRotation = rot.eulerAngles;
+            eulerRotation.z += 180f;
+            attackEffect.gameObject.transform.rotation = Quaternion.Euler(eulerRotation);
         }
+
+        attackEffect.GetComponent<ParticleSystem>().Play();
         yield return null;
     }
     

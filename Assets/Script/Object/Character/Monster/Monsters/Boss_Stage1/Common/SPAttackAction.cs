@@ -13,6 +13,7 @@ public class SPAttackAction : BossAction
     [SerializeField] protected int idx = -1;
     [SerializeField] protected float moveSpeed = 4f;
     [SerializeField] protected int riceCost = 5;
+    [SerializeField] protected bool chk = false;
     #endregion
     #region Public
     public RabbitBossPerception perception;
@@ -64,6 +65,7 @@ public class SPAttackAction : BossAction
 
         yield return StartCoroutine(MoveToMortalBox(mortalBox)); // 해당 절구통으로 이동하고
 
+        chk = true;
         mortalBox.ReduceCake(riceCost); // 떡을 패턴에 필요한 갯수만큼 차감하고
     }
 

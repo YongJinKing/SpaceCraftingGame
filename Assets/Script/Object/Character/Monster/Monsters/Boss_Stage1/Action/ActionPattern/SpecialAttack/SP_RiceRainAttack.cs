@@ -71,6 +71,11 @@ public class SP_RiceRainAttack : SPAttackAction
     {
         yield return StartCoroutine(FindMortalBox()); // 주변 절구통 중 가장 떡을 많이 가지고 있는 것을 골라 그곳으로 이동하고 패턴에 필요한 떡 갯수만큼 차감시킨다.
         // 여기서부터 패턴 시작하면 됨
+        if (!chk)
+        {
+            ActionEnd();
+            yield break;
+        }
 
         // 일단 절구통을 때리는 애니메이션을 여기서 실행한다.
         // 지금 당장은 애니메이션이 없으니 여기서 그냥 시작
@@ -82,9 +87,9 @@ public class SP_RiceRainAttack : SPAttackAction
     {
         yield return new WaitForSeconds(1f);
         int cnt = 0;
-        while(cnt < 4)
+        while (cnt < 4)
         {
-            if(cnt % 2 == 0)
+            if (cnt % 2 == 0)
             {
                 ShowPatternLines(xShapeLines, true);
             }
@@ -108,15 +113,15 @@ public class SP_RiceRainAttack : SPAttackAction
 
         yield return StartCoroutine(SpawnRiceRain());
     }
-    
+
     // 실제로 떨어질 위치 위로 만든다. 떡 비를
     IEnumerator SpawnRiceRain()
     {
         ownerAnim.SetBool("Teabagging", true);
         int cnt = 0;
-        while(cnt < 4)
+        while (cnt < 4)
         {
-            if(cnt % 2 == 0)
+            if (cnt % 2 == 0)
             {
                 ShowPatternLines(xShapeWarningLines, true);
                 SpawnRiceWithList(xShapeLines);
@@ -126,15 +131,15 @@ public class SP_RiceRainAttack : SPAttackAction
                 ShowPatternLines(plusShapeWarningLines, true);
                 SpawnRiceWithList(plusShapeLines);
             }
-            
+
             yield return new WaitForSeconds(3f);
-            if(cnt % 2 == 0) ShowPatternLines(xShapeWarningLines, false);
+            if (cnt % 2 == 0) ShowPatternLines(xShapeWarningLines, false);
             else ShowPatternLines(plusShapeWarningLines, false);
             cnt++;
 
         }
 
-        
+
         yield return null;
         ownerAnim.SetBool("Teabagging", false);
         ActionEnd();
@@ -158,6 +163,7 @@ public class SP_RiceRainAttack : SPAttackAction
     {
         base.Activate(pos);
         mortalBoxesList = perception.GetList();
+        chk = false;
         StartCoroutine(StartRiceRainPattern());
 
     }
