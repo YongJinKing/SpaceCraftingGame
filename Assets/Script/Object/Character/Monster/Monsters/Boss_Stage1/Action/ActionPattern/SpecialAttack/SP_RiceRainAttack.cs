@@ -78,14 +78,14 @@ public class SP_RiceRainAttack : SPAttackAction
         }
 
         // 일단 절구통을 때리는 애니메이션을 여기서 실행한다.
-        // 지금 당장은 애니메이션이 없으니 여기서 그냥 시작
-        yield return StartCoroutine(ShowPatternLines());
+        owner.animator.SetTrigger("JulguHit");
     }
 
     // 떡이 떨어질 위치, x,+자로 할지 체스판 모양으로 할지 어쩔지 모르겠는데 일단은 해당 위치를 깜빡깜빡 보여줌, 끝날 때 실제로 그 위치로 떨어지도록 코루틴을 시작하게 한다.
     IEnumerator ShowPatternLines()
     {
-        yield return new WaitForSeconds(1f);
+        mortalBox.anim.SetTrigger("RiceAttack");
+        yield return new WaitForSeconds(2f);
         int cnt = 0;
         while (cnt < 4)
         {
@@ -156,6 +156,11 @@ public class SP_RiceRainAttack : SPAttackAction
     #region Public
     // 절구통을 치는 애니메이션 마지막에 이걸 실행
     public void StartShowPattern()
+    {
+        StartCoroutine(ShowPatternLines());
+    }
+
+    public void StartWarningPattern()
     {
         StartCoroutine(ShowPatternLines());
     }

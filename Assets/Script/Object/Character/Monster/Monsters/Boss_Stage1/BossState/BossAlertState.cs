@@ -282,8 +282,8 @@ public class BossAlertState : BossState
     {
         //Wait until Select Action
         owner.animator.SetBool("Move", false);
+        if (owner.activatedAction != null) yield return new WaitForSeconds(owner.activatedAction.delayTime);
         yield return StartCoroutine(SelectingAction());
-        yield return new WaitForSeconds(1f);
         
         owner.stateMachine.ChangeState<BossAttackState>();
         Debug.Log("Boss Processing State");

@@ -73,7 +73,7 @@ public class RabbitBossSuperJumpAttackAction : BossAction
         // 위의 이미지는 켜지면 n초 뒤에 스스로 꺼지도록 간단하게 스크립트를 짠다.
 
         // 대기 시간
-        //yield return new WaitForSeconds(delayBeforeFall);
+        yield return new WaitForSeconds(delayBeforeFall);
 
         // 중력 가속도로 플레이어 위치로 떨어지기
         ownerAnim.SetBool("SuperJumping", true);

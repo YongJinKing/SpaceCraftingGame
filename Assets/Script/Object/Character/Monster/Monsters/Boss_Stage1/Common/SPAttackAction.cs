@@ -14,6 +14,7 @@ public class SPAttackAction : BossAction
     [SerializeField] protected float moveSpeed = 4f;
     [SerializeField] protected int riceCost = 5;
     [SerializeField] protected bool chk = false;
+    [SerializeField] protected MortalBox mortalBox;
     #endregion
     #region Public
     public RabbitBossPerception perception;
@@ -61,7 +62,7 @@ public class SPAttackAction : BossAction
 
         if (idx == -1) yield break; // 만약에 절구통을 찾지 못한다면 그냥 break
 
-        MortalBox mortalBox = mortalBoxesList[idx].GetComponent<MortalBox>(); // 가장 떡이 많이 있는 절구통
+        mortalBox = mortalBoxesList[idx].GetComponent<MortalBox>(); // 가장 떡이 많이 있는 절구통
 
         yield return StartCoroutine(MoveToMortalBox(mortalBox)); // 해당 절구통으로 이동하고
 
@@ -88,6 +89,14 @@ public class SPAttackAction : BossAction
     {
         ownerAnim.SetBool("Move", true);
         Transform rabbit = transform.parent.parent;
+        if(rabbit.transform.position.x > mortalBox.transform.position.x)
+        {
+            rabbit.transform.localScale = new Vector3(1,1,-1);
+        }
+        else
+        {
+            rabbit.transform.localScale = new Vector3(1, 1, 1);
+        }
         Vector2 dir = mortalBox.transform.position - rabbit.position;
         float dist = dir.magnitude;
         dir.Normalize();

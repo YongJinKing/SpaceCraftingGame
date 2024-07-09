@@ -6,9 +6,9 @@ public class RabbitBossSpinningAttackAction : BossAction
 {
     #region Properties
     #region Private
-    [SerializeField] float moveSpeed = 2f;
+    [SerializeField] float moveSpeed = 1f;
     float moveTimer;
-
+    Transform boss;
     Vector2 targetPos;
     #endregion
     #region Protected
@@ -42,20 +42,19 @@ public class RabbitBossSpinningAttackAction : BossAction
     IEnumerator SpinningAttack()
     {
         yield return StartCoroutine(HitBoxOn(transform.position));
-        Transform boss = this.transform.parent.parent;
-        //AsyncAnimation(0, false);
-        //yield return new WaitForSeconds(1f);
-        //AsyncAnimation(1, true);
+        
+
         while (moveTimer >= 0.0f)
         {
             moveTimer -= Time.deltaTime;
-            Vector2 dir = target.transform.position - boss.position;
+
+            Vector2 dir = (Vector2)target.transform.position - (Vector2)boss.position;
             dir.Normalize();
+            
             boss.Translate(dir * moveSpeed * Time.deltaTime, Space.World);
             yield return null;
         }
         
-
         yield return StartCoroutine(StopSpinningAttack());
     }
 
@@ -68,8 +67,7 @@ public class RabbitBossSpinningAttackAction : BossAction
     protected override void ActionEnd()
     {
         base.ActionEnd();
-        //AsyncAnimation(2, false);
-        //ownerAnim.SetBool("SpinningAttackEnd", false);
+        
         ownerAnim.SetTrigger("SpinningAttackEnd");
         StopAllCoroutines();
     }
@@ -77,6 +75,7 @@ public class RabbitBossSpinningAttackAction : BossAction
     #region Public
     public void StartSpinning()
     {
+        StopAllCoroutines();
         StartCoroutine(SpinningAttack());
     }
     public override void Activate(Vector2 pos)
@@ -84,6 +83,7 @@ public class RabbitBossSpinningAttackAction : BossAction
         base.Activate(pos);
         // 빙글빙글 돌며 플레이어를 따라가는 액션
         // 아직 애니메이션이 없어 당장은 이미지를 플립하며 따라가게 합시다
+        boss = this.transform.parent.parent;
         moveTimer = 5f;
         ownerAnim.SetTrigger("SpinningAttack");
     }

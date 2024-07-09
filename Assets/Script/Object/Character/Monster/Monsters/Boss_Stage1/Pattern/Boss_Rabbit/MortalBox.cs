@@ -13,6 +13,8 @@ public class MortalBox : MonoBehaviour
     [SerializeField] float countSpeed = 2f;
     [SerializeField] float timer = 0;
     [SerializeField] float spawnTime;
+
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +62,13 @@ public class MortalBox : MonoBehaviour
         while (true)
         {
             riceCakes++;
-            if (riceCakes >= maxCakes) riceCakes = maxCakes;
+            if (riceCakes >= maxCakes)
+            {
+                riceCakes = maxCakes;
+                anim.SetTrigger("MakeFull");
+                anim.SetBool("IsFull", true);
+                break;
+            }
             yield return new WaitForSeconds(countSpeed);
         }
     }
@@ -75,6 +83,8 @@ public class MortalBox : MonoBehaviour
         if (riceCakes >= amount)
         {
             riceCakes -= amount;
+            anim.SetBool("IsFull", false);
+            StartCoroutine(MakingCake());
             return true;
         }
         return false;

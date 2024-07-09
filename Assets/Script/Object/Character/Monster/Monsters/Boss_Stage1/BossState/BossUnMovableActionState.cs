@@ -58,7 +58,7 @@ public class BossUnMovableActionState : BossState
     #region EventHandlers
     public void OnActionEnd()
     {
-        /*if (owner.target != null)
+        if (owner.target != null)
         {
             owner.stateMachine.ChangeState<BossAlertState>();
             Debug.Log("unmovable -> alert");
@@ -67,8 +67,8 @@ public class BossUnMovableActionState : BossState
         {
             owner.stateMachine.ChangeState<BossIdleState>();
             Debug.Log("unmovable -> idle");
-        }*/
-        StartCoroutine(ChangeStateAfterDelay(owner.activatedAction.delayTime));
+        }
+        //StartCoroutine(ChangeStateAfterDelay(owner.activatedAction.delayTime));
         Debug.Log("보스 언무버블 액션앤드");
     }
     #endregion
