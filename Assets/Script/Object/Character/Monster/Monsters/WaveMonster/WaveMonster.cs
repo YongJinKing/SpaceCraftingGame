@@ -30,6 +30,7 @@ public class WaveMonster : Monster
     protected override void Initialize()
     {
         base.Initialize();
+        animator = GetComponentInChildren<Animator>();
         stateMachine.ChangeState<WaveMonsterInitState>();
     }
     #endregion
