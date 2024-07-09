@@ -131,9 +131,6 @@ public class CraftFactory
 
     GameObject CraftTurret(int index, Vector3 pos, float Hp = 0f, int size = 0)
     {
-        GameObject obj = new GameObject();
-        
-
         if (structureDataManger.dicCBComponentTable.ContainsKey(index))
         {
             componentData = structureDataManger.dicCBComponentTable[index];
@@ -147,17 +144,23 @@ public class CraftFactory
             imgData = structureDataManger.dicCBImgTable[index];
         }
 
+        
+        //GameObject obj = new GameObject();
+        GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
+        GameObject obj = GameObject.Instantiate(tmp);
+        obj = tmp;
         size = abilityData.BuildingScale;
         //Collider, Rigidbody, Scale Setting
         obj.transform.localScale = Vector3.one;
         obj.name = "Turret";
         obj.layer = 16;
+        /*
+                BoxCollider2D mainBoxCollider2D = obj.AddComponent<BoxCollider2D>();
+                mainBoxCollider2D.size = new Vector2(1f * size, 1f* size);
+                mainBoxCollider2D.offset = new Vector2(0.5f * (size - 1), 0.5f * (size - 1));*/
 
-        BoxCollider2D mainBoxCollider2D = obj.AddComponent<BoxCollider2D>();
-        mainBoxCollider2D.size = new Vector2(1f * size, 1f* size);
-        mainBoxCollider2D.offset = new Vector2(0.5f * (size - 1), 0.5f * (size - 1));
-
-        Turret turret = obj.AddComponent<Turret>();
+        //Turret turret = obj.AddComponent<Turret>();
+        Turret turret = obj.GetComponent<Turret>();
         if (Hp == 0f) turret.MaxHP = componentData.Component_Hp;
         else turret.MaxHP = Hp;
         turret.mComponentName = componentData.Component_Name.ToString();
@@ -167,10 +170,7 @@ public class CraftFactory
         turret[EStat.ATKSpeed] = 0;
         turret.DestroyEvent = new UnityEngine.Events.UnityEvent<Vector3>();
         
-
-
-
-        GameObject head = new GameObject();
+        /*GameObject head = new GameObject();
         head.name = "head";
         head.transform.SetParent(obj.transform);
         head.transform.localPosition = new Vector3(0, 0.5f, 0);
@@ -180,16 +180,16 @@ public class CraftFactory
         attackPoint.name = "attackPoint";
         attackPoint.transform.SetParent(head.transform);
         attackPoint.transform.localPosition = new Vector3(0, 0, 0);
-        turret.attackPoint = attackPoint.transform;
+        turret.attackPoint = attackPoint.transform;*/
 
         // 향후 이미지의 크기에 따라 아래 컴포넌트 수치들은 변경될 수 있음
-        GameObject image = new GameObject();
+        /*GameObject image = new GameObject();
         image.name = "image";
         image.transform.SetParent(obj.transform);
         image.transform.localScale = new Vector3(0.5f * size, 0.5f * size, 0.5f * size);
         image.transform.localPosition = new Vector3(0.5f * (size - 1), 0.5f * (size-1), 0.5f * (size - 1));
         SpriteRenderer renderer = image.AddComponent<SpriteRenderer>();
-        renderer.sprite = Resources.Load<Sprite>($"Component/Image/{imgData.ImageResource_Name}");
+        renderer.sprite = Resources.Load<Sprite>($"Component/Image/{imgData.ImageResource_Name}");*/
 
         GameObject bullet = new GameObject();
         bullet.name = "bullet";
@@ -201,7 +201,7 @@ public class CraftFactory
 
         turret.bullet = bullet.transform;
         
-        GameObject perception = new GameObject();
+        /*GameObject perception = new GameObject();
         perception.name = "TurretPerception";
         TurretPerception turretPerception = perception.AddComponent<TurretPerception>();
         CircleCollider2D circleCollider = perception.AddComponent<CircleCollider2D>();
@@ -212,7 +212,7 @@ public class CraftFactory
         turretPerception.lostEnemyEvents = new UnityEngine.Events.UnityEvent<GameObject>();
         turretPerception.destroyBulletEvents = new UnityEngine.Events.UnityEvent();
         perception.transform.SetParent(obj.transform);
-        perception.transform.localPosition = new Vector3(0, 0, 0);
+        perception.transform.localPosition = new Vector3(0, 0, 0);*/
 
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one;

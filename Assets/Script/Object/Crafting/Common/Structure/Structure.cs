@@ -17,6 +17,7 @@ public abstract class Structure : Stat
     [SerializeField] protected byte priority;
     [SerializeField] protected string componentName;
     [SerializeField] protected int scale;
+    [SerializeField] protected Animator animator;
     #endregion
     #region Public
     public byte mPriority

@@ -37,8 +37,6 @@ public class Turret : Structure
     #region OnEnable, Start, Update
     private void OnEnable()
     {
-        
-
         Debug.Log("터렛 onenable");
         /*turretAttackTimer = this[EStat.ATKSpeed];
         turretAttackCooldown = this[EStat.ATKDelay];*/
@@ -76,7 +74,7 @@ public class Turret : Structure
 
             if (targetEnemy != null)
             {
-                Vector2 dir = targetEnemy.transform.position - attackPoint.transform.position;
+                /*Vector2 dir = targetEnemy.transform.position - attackPoint.transform.position;
                 float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 float currentAngle = header.rotation.eulerAngles.z;
 
@@ -92,9 +90,13 @@ public class Turret : Structure
                 // Smoothly rotate towards the clamped angle
                 float newAngle = Mathf.LerpAngle(currentAngle, clampedAngle, Time.deltaTime * 5f); // Adjust 5f to control rotation speed
                 header.rotation = Quaternion.Euler(0, 0, newAngle);
-
+*/
                 Attack(targetEnemy);
                 turretAttackTimer = turretAttackCooldown;
+            }
+            else
+            {
+                animator.SetBool("Attack", false);
             }
         }
     }
@@ -151,13 +153,14 @@ public class Turret : Structure
 
     // 적을 공격하는 함수
     // 무조건 맞는건데 투사체가 보였으면 좋겠음
-    void Attack(GameObject enemy)
+    public void Attack(GameObject enemy)
     {
         IDamage targetEnemy = enemy.GetComponent<IDamage>();
-
+        Debug.Log("어탴킹 준비 포탑");
         //if (targetEnemy != null && bullet != null)
         if (targetEnemy != null)
         {
+            animator.SetBool("Attack", true);
             //targetEnemy.TakeDamage(damage * GetEfficiency()); // 현재 내구도 상태에 따라 데미지를 달리 줌
             //targetEnemy.TakeDamage(damage);
 
@@ -177,6 +180,7 @@ public class Turret : Structure
                 }
             }*/
             //var towerBullet = Instantiate(bullet, attackPoint.transform.position, Quaternion.identity);
+            Debug.Log("어탴킹 포탑");
             var towerBullet = ObjectPool.Instance.GetObject<TestBullet>(bullet.gameObject, attackPoint);
             //towerBullet.SetActive(true);
             towerBullet.transform.position = attackPoint.position;
