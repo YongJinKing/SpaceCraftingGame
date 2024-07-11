@@ -1,0 +1,97 @@
+
+GasGasGas.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/GasGas_Base
+  rotate: false
+  xy: 2, 1852
+  size: 489, 136
+  orig: 492, 138
+  offset: 1, 1
+  index: -1
+0/GasGas_Gool
+  rotate: true
+  xy: 2, 1278
+  size: 315, 402
+  orig: 317, 405
+  offset: 1, 2
+  index: -1
+0/GasGas_Main
+  rotate: true
+  xy: 1770, 1695
+  size: 293, 218
+  orig: 295, 221
+  offset: 1, 2
+  index: -1
+0/GasTank
+  rotate: true
+  xy: 718, 1576
+  size: 244, 419
+  orig: 244, 419
+  offset: 0, 0
+  index: -1
+1/GasGas_Base
+  rotate: false
+  xy: 493, 1841
+  size: 489, 147
+  orig: 492, 149
+  offset: 1, 1
+  index: -1
+1/GasGas_Gool
+  rotate: true
+  xy: 810, 1191
+  size: 331, 402
+  orig: 333, 405
+  offset: 1, 2
+  index: -1
+1/GasGas_Main
+  rotate: false
+  xy: 2, 1632
+  size: 293, 218
+  orig: 295, 221
+  offset: 1, 2
+  index: -1
+1/GasTank
+  rotate: true
+  xy: 1139, 1524
+  size: 244, 419
+  orig: 244, 419
+  offset: 0, 0
+  index: -1
+2/GasGas_Base
+  rotate: false
+  xy: 984, 1822
+  size: 489, 166
+  orig: 492, 168
+  offset: 1, 1
+  index: -1
+2/GasGas_Beam
+  rotate: true
+  xy: 1560, 1431
+  size: 262, 375
+  orig: 264, 377
+  offset: 1, 1
+  index: -1
+2/GasGas_Gool
+  rotate: true
+  xy: 406, 1256
+  size: 318, 402
+  orig: 320, 405
+  offset: 1, 2
+  index: -1
+2/GasGas_Main
+  rotate: false
+  xy: 1475, 1770
+  size: 293, 218
+  orig: 295, 221
+  offset: 1, 2
+  index: -1
+2/GasTank
+  rotate: true
+  xy: 297, 1595
+  size: 244, 419
+  orig: 244, 419
+  offset: 0, 0
+  index: -1

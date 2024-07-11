@@ -1,0 +1,97 @@
+
+Minner.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/Minner_Base
+  rotate: false
+  xy: 2, 1788
+  size: 503, 90
+  orig: 505, 92
+  offset: 1, 1
+  index: -1
+0/Minner_Mid
+  rotate: false
+  xy: 552, 1536
+  size: 312, 237
+  orig: 315, 239
+  offset: 2, 1
+  index: -1
+0/Minner_Tank
+  rotate: false
+  xy: 402, 1225
+  size: 398, 309
+  orig: 398, 309
+  offset: 0, 0
+  index: -1
+0/Minner_Top
+  rotate: false
+  xy: 2, 1565
+  size: 234, 221
+  orig: 236, 223
+  offset: 1, 1
+  index: -1
+1/Minner_Base
+  rotate: false
+  xy: 870, 1756
+  size: 503, 122
+  orig: 505, 125
+  offset: 1, 1
+  index: -1
+1/Minner_Mid
+  rotate: false
+  xy: 866, 1517
+  size: 312, 237
+  orig: 315, 239
+  offset: 2, 1
+  index: -1
+1/Minner_Tank
+  rotate: false
+  xy: 802, 1169
+  size: 398, 309
+  orig: 398, 309
+  offset: 0, 0
+  index: -1
+1/Minner_Top
+  rotate: true
+  xy: 1471, 1437
+  size: 287, 303
+  orig: 289, 305
+  offset: 1, 1
+  index: -1
+2/Minner_Base
+  rotate: false
+  xy: 1375, 1726
+  size: 503, 152
+  orig: 505, 154
+  offset: 1, 1
+  index: -1
+2/Minner_Mid
+  rotate: false
+  xy: 238, 1541
+  size: 312, 232
+  orig: 315, 235
+  offset: 2, 2
+  index: -1
+2/Minner_Tank
+  rotate: false
+  xy: 2, 1230
+  size: 398, 309
+  orig: 398, 309
+  offset: 0, 0
+  index: -1
+2/Minner_Top
+  rotate: false
+  xy: 1180, 1480
+  size: 289, 244
+  orig: 291, 246
+  offset: 1, 1
+  index: -1
+Drill
+  rotate: true
+  xy: 507, 1775
+  size: 103, 361
+  orig: 105, 363
+  offset: 1, 1
+  index: -1
