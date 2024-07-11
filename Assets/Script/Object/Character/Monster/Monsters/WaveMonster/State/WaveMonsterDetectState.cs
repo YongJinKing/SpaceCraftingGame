@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaveMonsterDetectState : MonsterState
 {
@@ -12,6 +13,7 @@ public class WaveMonsterDetectState : MonsterState
     #region Public
     #endregion
     #region Events
+    public UnityEvent<Vector2> moveToDirEvent = new UnityEvent<Vector2>();
     #endregion
     #endregion
 
@@ -22,6 +24,18 @@ public class WaveMonsterDetectState : MonsterState
     #region Private
     #endregion
     #region Protected
+    protected override void AddListeners()
+    {
+        UnitMovement movement = GetComponent<UnitMovement>();
+        if (movement != null)
+            moveToDirEvent.AddListener(movement.OnMoveToDir);
+    }
+    protected override void RemoveListeners()
+    {
+        UnitMovement movement = GetComponent<UnitMovement>();
+        if (movement != null)
+            moveToDirEvent?.RemoveListener(movement.OnMoveToDir);
+    }
     #endregion
     #region Public
     public override void Enter()
@@ -69,12 +83,15 @@ public class WaveMonsterDetectState : MonsterState
 
     protected IEnumerator FollowingTarget()
     {
+
+        owner.animator.SetBool("B_Move", true);
         //현재는 감지하면 무조건 쫒아가기만 하는 알고리즘
         while (owner.target != null)
         {
-            owner.dirMove?.Activate(owner.target.transform.position - transform.position);
+            moveToDirEvent?.Invoke(owner.target.transform.position - transform.position);
             yield return null;
         }
+        owner.animator.SetBool("B_Move", false);
     }
     protected IEnumerator SelectingAction()
     {

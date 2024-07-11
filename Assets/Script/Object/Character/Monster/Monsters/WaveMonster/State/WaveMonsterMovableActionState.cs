@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaveMonsterMovableActionState : MonsterState
 {
@@ -12,6 +13,7 @@ public class WaveMonsterMovableActionState : MonsterState
     #region Public
     #endregion
     #region Events
+    public UnityEvent<Vector2> moveToDirEvent = new UnityEvent<Vector2>();
     #endregion
     #endregion
 
@@ -25,6 +27,11 @@ public class WaveMonsterMovableActionState : MonsterState
     protected override void AddListeners()
     {
         base.AddListeners();
+
+        UnitMovement movement = GetComponent<UnitMovement>();
+        if (movement != null)
+            moveToDirEvent.AddListener(movement.OnMoveToDir);
+
         if (owner.activatedAction != null)
         {
             owner.activatedAction.OnActionEndEvent.AddListener(OnActionEnd);
@@ -33,6 +40,11 @@ public class WaveMonsterMovableActionState : MonsterState
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
+
+        UnitMovement movement = GetComponent<UnitMovement>();
+        if (movement != null)
+            moveToDirEvent?.RemoveListener(movement.OnMoveToDir);
+
         if (owner.activatedAction != null)
         {
             owner.activatedAction.OnActionEndEvent.RemoveListener(OnActionEnd);
@@ -49,6 +61,8 @@ public class WaveMonsterMovableActionState : MonsterState
     public override void Exit()
     {
         owner.activatedAction.Deactivate();
+        owner.animator.SetBool("B_Move", false);
+        owner.animator.SetBool("B_Attack", false);
         base.Exit();
         StopAllCoroutines();
     }
@@ -68,12 +82,14 @@ public class WaveMonsterMovableActionState : MonsterState
     #region Coroutines
     protected IEnumerator FollowingTarget()
     {
+        owner.animator.SetBool("B_Move", true);
         //현재는 감지하면 무조건 쫒아가기만 하는 알고리즘
         while (owner.target != null)
         {
-            owner.dirMove?.Activate(owner.target.transform.position - transform.position);
+            moveToDirEvent?.Invoke(owner.target.transform.position - transform.position);
             yield return null;
         }
+        owner.animator.SetBool("B_Move", false);
     }
     #endregion
 

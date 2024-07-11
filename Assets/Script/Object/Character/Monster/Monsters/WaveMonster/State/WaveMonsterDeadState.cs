@@ -22,25 +22,12 @@ public class WaveMonsterDeadState : MonsterState
     #region Private
     #endregion
     #region Protected
-    protected override void AddListeners()
-    {
-        base.AddListeners();
-    }
-    protected override void RemoveListeners()
-    {
-        base.RemoveListeners();
-    }
     #endregion
     #region Public
     public override void Enter()
     {
         base.Enter();
         StartCoroutine(Dying());
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
     #endregion
     #endregion
@@ -55,8 +42,8 @@ public class WaveMonsterDeadState : MonsterState
         float time = 5.0f;
 
         //Dying animation here
-        //animation.dying() ~~~
-        //
+        owner.animator.SetTrigger("T_Dead");
+
         GetComponent<Collider2D>().enabled = false;
 
         while(time > 0)

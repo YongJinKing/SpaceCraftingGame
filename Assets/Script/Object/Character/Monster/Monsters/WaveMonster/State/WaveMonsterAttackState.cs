@@ -14,6 +14,7 @@ public class WaveMonsterAttackState : MonsterState
     #endregion
     #region Events
     public UnityEvent<Vector2[]> moveToPathEvent = new UnityEvent<Vector2[]>();
+    public UnityEvent stopMoveEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -28,12 +29,14 @@ public class WaveMonsterAttackState : MonsterState
     {
         base.AddListeners();
         UnitMovement movement = GetComponent<UnitMovement>();
+        stopMoveEvent.AddListener(movement.OnStop);
         moveToPathEvent.AddListener(movement.OnMoveToPath);
 
     }
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
+        stopMoveEvent.RemoveAllListeners();
         moveToPathEvent.RemoveAllListeners();
     }
     #endregion
@@ -46,6 +49,8 @@ public class WaveMonsterAttackState : MonsterState
     }
     public override void Exit()
     {
+        stopMoveEvent?.Invoke();
+        owner.animator.SetBool("B_Move", false);
         base.Exit();
         StopAllCoroutines();
     }
@@ -86,6 +91,7 @@ public class WaveMonsterAttackState : MonsterState
         }
 
         owner.activatedAction.Activate(owner.target.transform.position);
+        owner.animator.SetBool("B_Attack", true);
 
         if (owner.activatedAction.fireAndForget)
             owner.stateMachine.ChangeState<WaveMonsterMovableActionState>();
@@ -97,6 +103,7 @@ public class WaveMonsterAttackState : MonsterState
     {
         //Vector2 dir;
 
+        owner.animator.SetBool("B_Move", true);
         while (owner.target != null)
         {
             /*
@@ -119,6 +126,7 @@ public class WaveMonsterAttackState : MonsterState
 
             yield return null;
         }
+        owner.animator.SetBool("B_Move", false);
 
         //if cannot find path
         owner.stateMachine.ChangeState<WaveMonsterIdleState> ();

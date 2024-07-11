@@ -47,7 +47,7 @@ public abstract class Action : MonoBehaviour, IGetPriority
     public float priority
     {
         get { return _priority; }
-        protected set { _priority = value; }
+        set { _priority = value; }
     }
     public float coolTime
     {
@@ -60,7 +60,7 @@ public abstract class Action : MonoBehaviour, IGetPriority
     public float activeRadius
     {
         get { return _activeRadius; }
-        protected set { _activeRadius = value; }
+        set { _activeRadius = value; }
     }
     #endregion
     #region Events

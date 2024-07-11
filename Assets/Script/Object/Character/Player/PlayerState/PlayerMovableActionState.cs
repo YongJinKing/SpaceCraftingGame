@@ -74,7 +74,7 @@ public class PlayerMovableActionState : PlayerState
     }
     public void OnActionEnd()
     {
-        Debug.Log("movablestate.onactionend");
+        //Debug.Log("movablestate.onactionend");
         owner.stateMachine.ChangeState<PlayerIdleState>();
     }
     #endregion

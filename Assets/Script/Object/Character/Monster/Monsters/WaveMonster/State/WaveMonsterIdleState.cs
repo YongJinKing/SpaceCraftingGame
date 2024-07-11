@@ -1,8 +1,11 @@
 using System.Collections;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
+
+/// <summary>
+/// #need to modify later
+/// </summary>
 public class WaveMonsterIdleState : MonsterState
 {
     #region Properties
@@ -13,6 +16,7 @@ public class WaveMonsterIdleState : MonsterState
     #region Public
     #endregion
     #region Events
+    public UnityEvent<Vector2> moveToDirEvent = new UnityEvent<Vector2>();
     #endregion
     #endregion
 
@@ -23,6 +27,22 @@ public class WaveMonsterIdleState : MonsterState
     #region Private
     #endregion
     #region Protected
+    protected override void AddListeners()
+    {
+        UnitMovement movement = GetComponent<UnitMovement>();
+        if(movement != null)
+        {
+            moveToDirEvent.AddListener(movement.OnMoveToDir);
+        }
+    }
+    protected override void RemoveListeners()
+    {
+        UnitMovement movement = GetComponent<UnitMovement>();
+        if (movement != null)
+        {
+            moveToDirEvent?.RemoveListener(movement.OnMoveToDir);
+        }
+    }
     #endregion
     #region Public
     public override void Enter()
@@ -33,6 +53,7 @@ public class WaveMonsterIdleState : MonsterState
     }
     public override void Exit()
     {
+        owner.animator.SetBool("B_Move", false);
         base.Exit();
         StopAllCoroutines();
     }
@@ -43,15 +64,21 @@ public class WaveMonsterIdleState : MonsterState
     #endregion
 
     #region Coroutines
+    /// <summary>
+    /// #need to modify later
+    /// </summary>
     protected IEnumerator ApproachingToSpaceShip()
     {
         //for Test, Hard Coded
         //Must be Change Later
+
+        owner.animator.SetBool("B_Move", true);
         while (true) 
         {
-            owner.dirMove.Activate(Vector2.zero);
+            moveToDirEvent?.Invoke(Vector2.zero);
             yield return null;
         }
+        //owner.animator.SetBool("B_Move", false);
     }
 
     protected IEnumerator Detecting()

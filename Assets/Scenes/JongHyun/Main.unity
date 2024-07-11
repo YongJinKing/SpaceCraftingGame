@@ -3578,6 +3578,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  onMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3609,8 +3612,6 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 2162688
-  dirMove: {fileID: 1134088992}
-  pointMove: {fileID: 348995589}
   attackActions:
   - {fileID: 1142274792}
   ai: {fileID: 193798757}
@@ -3958,6 +3959,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  onMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3989,8 +3993,6 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 2162688
-  dirMove: {fileID: 1742728361}
-  pointMove: {fileID: 1728754110}
   attackActions:
   - {fileID: 841697446}
   ai: {fileID: 308490159}
@@ -4287,6 +4289,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  onMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -4318,8 +4323,6 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 2162688
-  dirMove: {fileID: 2035788683}
-  pointMove: {fileID: 1831405333}
   attackActions:
   - {fileID: 986066124}
   ai: {fileID: 1735864837}
@@ -4714,7 +4717,7 @@ Transform:
   m_GameObject: {fileID: 1223034235}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0.1}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6133,6 +6136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  onMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6151,7 +6157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db58ccce4d9e86b44a435c1e7cafd3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 10
+  MaxHP: 100
   Priority: 2
   deadEvent:
     m_PersistentCalls:
@@ -6264,6 +6270,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  onMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6295,8 +6304,6 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 2162688
-  dirMove: {fileID: 73069639}
-  pointMove: {fileID: 1512141350}
   attackActions:
   - {fileID: 1580186359}
   ai: {fileID: 399720582}
@@ -6447,6 +6454,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  onMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6540,8 +6550,6 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 2162688
-  dirMove: {fileID: 740402379}
-  pointMove: {fileID: 2088204755}
   attackActions:
   - {fileID: 876089727}
   ai: {fileID: 924476287}

@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HitBoxFactory : MonoBehaviour
+public class HitBoxFactory
 {
-    // Start is called before the first frame update
-    void Start()
+    /*
+    public HitBox CreateHitBox(int index)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
+    */
 }

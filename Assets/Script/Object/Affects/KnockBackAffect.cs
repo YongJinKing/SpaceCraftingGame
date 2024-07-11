@@ -9,18 +9,12 @@ public class KnockBackAffect : BaseAffect
     #endregion
     #region Protected
     [SerializeField] protected float _knockBackPower;
-    [SerializeField] protected float _knockUpPower;
     #endregion
     #region Public
     public float knockBackPower
     {
         get { return _knockBackPower; }
         set { _knockBackPower = value; }
-    }
-    public float knockUpPower
-    {
-        get { return _knockUpPower; }
-        set { _knockUpPower = value; }
     }
     #endregion
     #region Events
@@ -45,7 +39,6 @@ public class KnockBackAffect : BaseAffect
         dir.Normalize();
 
         rb.AddForce(dir * knockBackPower, ForceMode2D.Impulse);
-        rb.AddForce(Vector3.up * knockUpPower, ForceMode2D.Impulse);
     }
     #endregion
     #endregion

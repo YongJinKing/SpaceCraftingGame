@@ -18,6 +18,7 @@ public class UnitMovement : MonoBehaviour
     #region Public
     #endregion
     #region Events
+    public UnityEvent onMovingEvent = new UnityEvent();
     public UnityEvent moveEndEvent = new UnityEvent();
     public UnityEvent pathEndEvent = new UnityEvent();
     #endregion
@@ -98,6 +99,7 @@ public class UnitMovement : MonoBehaviour
             dist -= delta;
 
             transform.Translate(dir * delta);
+            onMovingEvent?.Invoke();
             yield return null;
         }
 

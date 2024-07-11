@@ -70,8 +70,6 @@ public class PlayerIdleState : PlayerState
     /// 현재 하드코딩 되어있음 수정 필요
     /// #need to modify later
     /// </summary>
-    /// <param name="type"></param>
-    /// <param name="pos"></param>
     public void OnMouse(int type, Vector2 pos)
     {
         //여기부분에서 Player의 Action 부분을 배열로 만들어서
@@ -119,7 +117,6 @@ public class PlayerIdleState : PlayerState
     /// 수정 필요
     /// #need to modify later
     /// </summary>
-    /// <param name="num"></param>
     public void OnNumberKey(int num)
     {
         //나중에 아이템에서 타입을 받아서 하는 방식으로 바꿀것.
