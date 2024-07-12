@@ -17,14 +17,14 @@ public class CraftBuildingManager : MonoBehaviour
     public int size;
     [SerializeField] int buildingIndex;
     //TileManager tileManage;
-    CraftFactory factory;
+    //CraftFactory factory;
     // Start is called before the first frame update
     void Start()
     {
         //tileManage = FindObjectOfType<TileManager>(); // tilemanager singleton화 시키는중
-        factory = new CraftFactory();
+        //factory = new CraftFactory();
         buildingIndex = 110000; // 빌딩 인덱스, 추후 건축 모드에서 Ui를 통해 이 인덱스를 원하는 건물의 인덱스로 변경할 수 있어야함  <<<<<<<<<<<<
-        size = factory.GetBuildingSize(buildingIndex);
+        size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
     }
 
     // Update is called once per frame
@@ -34,13 +34,13 @@ public class CraftBuildingManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             buildingIndex = 110000;
-            size = factory.GetBuildingSize(buildingIndex);
+            size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
             Debug.Log("현재 건설 선택된 인덱스 : " + buildingIndex);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             buildingIndex = 100000;
-            size = factory.GetBuildingSize(buildingIndex);
+            size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
             Debug.Log("현재 건설 선택된 인덱스 : " + buildingIndex);
         }
         //===========================위의 코드들은 수정해야함==================================================
@@ -170,7 +170,7 @@ public class CraftBuildingManager : MonoBehaviour
             //Inventory.instance.UseItem(10000, 5); // <<<<<<<< 인벤토리에서 10000번 인덱스의 자원을 5개 만큼 사용한다. 그런데 이제 10000번이나 5개 모두 json에서 읽어와서 적용해야함, 건물마다 다르니깐
             //Vector3 craftPos = new Vector3((pos.x + (ground.tileAnchor.x * size)), (pos.y + (ground.tileAnchor.y * size)), 0);
             Vector3 craftPos = new Vector3((pos.x + ground.tileAnchor.x), (pos.y + ground.tileAnchor.y), 0);
-            GameObject craft = factory.CraftBuilding(index, craftPos, 0, size);
+            GameObject craft = CraftFactory.Instance.CraftBuilding(index, craftPos, 0, size);
             craft.transform.localScale = Vector3.one * size;
             craft.transform.SetParent(TurretParent);
 
