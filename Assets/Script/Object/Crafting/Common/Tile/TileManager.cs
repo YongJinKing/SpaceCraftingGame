@@ -27,11 +27,11 @@ public class TileManager : Singleton<TileManager>
     public Dictionary<Vector3Int, Tile> availablePlaces;
     ComponetsInfo componentsInfo;
     CraftBuildingManager craftmanager;
-    CraftFactory factory;
+    //CraftFactory factory;
     void Awake()
     {
         craftmanager = FindObjectOfType<CraftBuildingManager>();
-        factory = new CraftFactory();
+        //factory = new CraftFactory();
         craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
         craftmanager.WritePlaceInfoEvent.AddListener(RemopvePlace);
         tileMap = transform.GetComponent<Tilemap>();
@@ -100,7 +100,7 @@ public class TileManager : Singleton<TileManager>
                 componetPlace.y + (tileMap.tileAnchor.y * size), componetPlace.z);
 
             Tile isPlacedTile = null;
-            if (size != 0) isPlacedTile = new Tile(false, factory.CraftBuilding(index, componentPos, Hp, size), size);
+            if (size != 0) isPlacedTile = new Tile(false, CraftFactory.Instance.CraftBuilding(index, componentPos, Hp, size), size);
             else isPlacedTile = new Tile(false, null, 0);
 
             availablePlaces[componetPlace] = isPlacedTile;

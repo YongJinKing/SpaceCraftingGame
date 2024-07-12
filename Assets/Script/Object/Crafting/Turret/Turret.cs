@@ -19,7 +19,12 @@ public class Turret : Structure
     public Transform bullet;
     public Transform attackPoint;
     public Transform header;
+    public Transform headerImg;
     public List<GameObject> bulletList = new List<GameObject>();
+
+    public float rotationSpeed = 5f; // 회전 속도
+    public float minAngle = -60f; // 회전 가능 최소 각도
+    public float maxAngle = 60f; // 회전 가능 최대 각도
     #endregion
     #region Events
     #endregion
@@ -68,37 +73,43 @@ public class Turret : Structure
     {
         turretAttackTimer -= Time.deltaTime;
 
-        if (turretAttackTimer <= 0f)
+        GameObject targetEnemy = FindClosestEnemy();
+
+        if (targetEnemy != null)
         {
-            GameObject targetEnemy = FindClosestEnemy();
+            // 타겟 방향 계산
+            Vector2 dir = targetEnemy.transform.position - header.transform.position;
+            float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-            if (targetEnemy != null)
+            // 현재 각도 계산
+            float currentAngle = header.rotation.eulerAngles.z;
+
+            // Convert angles to range [-180, 180]
+            if (targetAngle > 180f) targetAngle -= 360f;
+            if (currentAngle > 180f) currentAngle -= 360f;
+
+            // Clamp targetAngle to the desired range [-60, 60] based on currentAngle
+            float clampedAngle = Mathf.Clamp(targetAngle, -60f, 60f);
+
+            // 부드럽게 회전
+            float newAngle = Mathf.LerpAngle(currentAngle, clampedAngle, Time.deltaTime * 5f); // Adjust 5f to control rotation speed
+            Debug.Log(currentAngle + ", " + clampedAngle + " " + newAngle);
+
+            // 회전 속도를 조절하면서 새로운 각도로 회전
+            header.rotation = Quaternion.Euler(0, 0, newAngle);
+
+            if (turretAttackTimer <= 0f)
             {
-                /*Vector2 dir = targetEnemy.transform.position - attackPoint.transform.position;
-                float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-                float currentAngle = header.rotation.eulerAngles.z;
-
-                // Convert angles to range [-180, 180]
-                targetAngle = (targetAngle + 360f) % 360f;
-                currentAngle = (currentAngle + 360f) % 360f;
-                if (targetAngle > 180f) targetAngle -= 360f;
-                if (currentAngle > 180f) currentAngle -= 360f;
-
-                // Clamp targetAngle to the desired range [-60, 60] based on currentAngle
-                float clampedAngle = Mathf.Clamp(targetAngle, -60f, 60f);
-
-                // Smoothly rotate towards the clamped angle
-                float newAngle = Mathf.LerpAngle(currentAngle, clampedAngle, Time.deltaTime * 5f); // Adjust 5f to control rotation speed
-                header.rotation = Quaternion.Euler(0, 0, newAngle);
-*/
                 Attack(targetEnemy);
                 turretAttackTimer = turretAttackCooldown;
             }
-            else
-            {
-                animator.SetBool("Attack", false);
-            }
         }
+        else
+        {
+            headerImg.transform.gameObject.SetActive(false);
+            animator.SetBool("Attack", false);
+        }
+
     }
     #endregion
 
@@ -149,7 +160,7 @@ public class Turret : Structure
 
     #endregion
     #region public
-    
+
 
     // 적을 공격하는 함수
     // 무조건 맞는건데 투사체가 보였으면 좋겠음
@@ -161,6 +172,7 @@ public class Turret : Structure
         if (targetEnemy != null)
         {
             animator.SetBool("Attack", true);
+            headerImg.transform.gameObject.SetActive(true);
             //targetEnemy.TakeDamage(damage * GetEfficiency()); // 현재 내구도 상태에 따라 데미지를 달리 줌
             //targetEnemy.TakeDamage(damage);
 
@@ -189,7 +201,6 @@ public class Turret : Structure
             //towerBullet.GetComponent<TestBullet>().SetDamage(this[EStat.ATK]);
             towerBullet.GetComponent<TestBullet>().SetDamage(dmg);
             towerBullet.GetComponent<TestBullet>().SetRotation(enemy.transform);
-
         }
     }
     #endregion
