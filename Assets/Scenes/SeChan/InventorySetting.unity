@@ -291,6 +291,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5636628775958387, guid: 6530ffbd5c8ed904c903ef5b25276ac5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 09c548bf391ae074aa7e557382810af7, type: 3}
     - target: {fileID: 10501419776392354, guid: 6530ffbd5c8ed904c903ef5b25276ac5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1150.044
@@ -331,10 +335,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 177566635033301386, guid: 6530ffbd5c8ed904c903ef5b25276ac5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c5918b6efea9a94b8f8749430c9ab6c, type: 3}
+    - target: {fileID: 3953594952482744017, guid: 6530ffbd5c8ed904c903ef5b25276ac5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8b79c53b0c4014546aec35876cab6146, type: 3}
     - target: {fileID: 5502186467584562160, guid: 6530ffbd5c8ed904c903ef5b25276ac5, type: 3}
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 7594093885088330645, guid: 6530ffbd5c8ed904c903ef5b25276ac5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ab82d446036e9a343885104b841513d7, type: 3}
+    - target: {fileID: 7907795059741449043, guid: 6530ffbd5c8ed904c903ef5b25276ac5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0fdfda79f0fe34841a2e308ea6e8f6db, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
