@@ -192,7 +192,7 @@ public class CraftFactory : Singleton<CraftFactory>
         SpriteRenderer renderer = image.AddComponent<SpriteRenderer>();
         renderer.sprite = Resources.Load<Sprite>($"Component/Image/{imgData.ImageResource_Name}");*/
 
-        GameObject bullet = new GameObject();
+        /*GameObject bullet = new GameObject();
         bullet.name = "bullet";
         bullet.AddComponent<SpriteRenderer>();
         TestBullet testBullet = bullet.AddComponent<TestBullet>();
@@ -200,7 +200,7 @@ public class CraftFactory : Singleton<CraftFactory>
         BoxCollider2D boxCollider2D = bullet.AddComponent<BoxCollider2D>();
         boxCollider2D.size = new Vector2(1f, 0.5f);
 
-        turret.bullet = bullet.transform;
+        turret.bullet = bullet.transform;*/
         
         /*GameObject perception = new GameObject();
         perception.name = "TurretPerception";

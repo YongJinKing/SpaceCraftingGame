@@ -78,9 +78,9 @@ public class Turret : Structure
         if (targetEnemy != null)
         {
             // 타겟 방향 계산
-            Vector2 dir = targetEnemy.transform.position - header.transform.position;
+            Vector2 dir = targetEnemy.transform.position - this.transform.position;
             float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-
+/*
             // 현재 각도 계산
             float currentAngle = header.rotation.eulerAngles.z;
 
@@ -94,9 +94,9 @@ public class Turret : Structure
             // 부드럽게 회전
             float newAngle = Mathf.LerpAngle(currentAngle, clampedAngle, Time.deltaTime * 5f); // Adjust 5f to control rotation speed
             Debug.Log(currentAngle + ", " + clampedAngle + " " + newAngle);
-
+*/
             // 회전 속도를 조절하면서 새로운 각도로 회전
-            header.rotation = Quaternion.Euler(0, 0, newAngle);
+            header.rotation = Quaternion.Euler(new Vector3(0,0,targetAngle));
 
             if (turretAttackTimer <= 0f)
             {
