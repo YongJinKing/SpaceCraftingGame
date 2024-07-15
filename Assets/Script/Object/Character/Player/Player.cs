@@ -11,6 +11,7 @@ public class Player : Unit
     /// 마우스가 플레이어 기준 오른쪽에 있는지에 대한 bool값
     /// </summary>
     private bool isRight;
+    private bool _isDead = false;
     #endregion
     #region Protected
     #endregion
@@ -26,6 +27,10 @@ public class Player : Unit
     public PlayerAnimationController myAnim;
     public Transform graphicTransform;
     public GameObject weaponRotationAxis;
+    public bool isDead
+    {
+        get { return _isDead; }
+    }
     /// <summary>
     /// 이건 나중에 UI에서 받아야 한다. 지금은 하드코딩
     /// #need to modify later
@@ -50,7 +55,12 @@ public class Player : Unit
     #region Protected
     protected override void OnDead()
     {
-        stateMachine.ChangeState<PlayerDeadState>();
+        if (!isDead)
+        {
+            stateMachine.ChangeState<PlayerDeadState>();
+            _isDead = true;
+            InputController.Instance.getMousePosEvent.RemoveListener(OnGetMousePos);
+        }
     }
     protected override void Initialize()
     {

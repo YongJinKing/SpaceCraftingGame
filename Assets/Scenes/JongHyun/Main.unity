@@ -6753,6 +6753,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3165868066495151984, guid: fbf3c0084200edb438aff27064253bff, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165868066495151984, guid: fbf3c0084200edb438aff27064253bff, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165868066495151984, guid: fbf3c0084200edb438aff27064253bff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -6770,15 +6778,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3165868066495151984, guid: fbf3c0084200edb438aff27064253bff, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3165868066495151984, guid: fbf3c0084200edb438aff27064253bff, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3165868066495151984, guid: fbf3c0084200edb438aff27064253bff, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3165868066495151984, guid: fbf3c0084200edb438aff27064253bff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6792,6 +6800,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4502969370847824030, guid: fbf3c0084200edb438aff27064253bff, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 298e1ad5cceb2bc42a76106227eae7e9, type: 2}
+    - target: {fileID: 5220799396979502754, guid: fbf3c0084200edb438aff27064253bff, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6a4f6d706732f645880576781f2a83f, type: 2}
     - target: {fileID: 5452862944334318286, guid: fbf3c0084200edb438aff27064253bff, type: 3}
       propertyPath: m_Name
       value: SpaceHuman

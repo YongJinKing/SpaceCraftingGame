@@ -51,6 +51,8 @@ public class PlayerDeadState : PlayerState
     protected IEnumerator ProcessingState()
     {
         yield return null;
+        owner.weaponRotationAxis.SetActive(false);
+        owner.myAnim.TriggerDeath();
         //여기에 게임 매니저에게 자신이 죽었다고 이벤트 발생시키기
     }
     #endregion

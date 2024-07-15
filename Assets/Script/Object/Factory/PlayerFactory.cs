@@ -8,6 +8,7 @@ public class PlayerFactory
         
         PlayerDataStruct playerData = new PlayerDataStruct();
         //여기에서 Json으로 데이터 불러오기
+        //if(index == ~~~)
         //playerData = ~~~~;
         
         Rigidbody2D rb = playerObject.AddComponent<Rigidbody2D>();
@@ -24,6 +25,10 @@ public class PlayerFactory
         player.moveSpeed = playerData.moveSpeed;
         player.ATK = playerData.ATK;
         player.ATKSpeed = playerData.ATKSpeed;
+
+        
+        //GameObject model = GetModel(playerData.ModelPrefabIndex);
+        //model.transform.SetParent(playerObject, false);
 
         playerObject.AddComponent<UnitMovement>();
         //playerObject.AddComponent<PlayerEquipmentManager>();

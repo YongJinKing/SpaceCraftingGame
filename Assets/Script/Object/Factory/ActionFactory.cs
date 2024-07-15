@@ -10,6 +10,7 @@ public class ActionFactory
         Action action = null;
         switch(index / 10000)
         {
+            //WeaponAction
             case 1:
                 {
                     WeaponActionStruct tempStruct = new WeaponActionStruct();

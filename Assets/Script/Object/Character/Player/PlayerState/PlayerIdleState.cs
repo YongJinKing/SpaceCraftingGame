@@ -104,7 +104,7 @@ public class PlayerIdleState : PlayerState
                 break;
         }
         
-        if(owner.activatedAction != null)
+        if(owner.activatedAction != null && !owner.isDead)
         {
             if (owner.activatedAction.fireAndForget)
                 owner.stateMachine.ChangeState<PlayerMovableActionState>();

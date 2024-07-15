@@ -74,8 +74,11 @@ public class PlayerMovableActionState : PlayerState
     }
     public void OnActionEnd()
     {
-        //Debug.Log("movablestate.onactionend");
-        owner.stateMachine.ChangeState<PlayerIdleState>();
+        if(!owner.isDead)
+        {
+            //Debug.Log("movablestate.onactionend");
+            owner.stateMachine.ChangeState<PlayerIdleState>();
+        }
     }
     #endregion
 

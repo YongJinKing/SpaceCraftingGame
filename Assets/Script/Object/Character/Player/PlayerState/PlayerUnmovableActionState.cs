@@ -63,7 +63,10 @@ public class PlayerUnmovableActionState : PlayerState
     }
     public void OnActionEnd()
     {
-        owner.stateMachine.ChangeState<PlayerIdleState>();
+        if (!owner.isDead)
+        {
+            owner.stateMachine.ChangeState<PlayerIdleState>();
+        }
     }
     #endregion
 

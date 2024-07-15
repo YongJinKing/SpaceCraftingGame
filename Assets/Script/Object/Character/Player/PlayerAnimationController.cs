@@ -28,6 +28,7 @@ public class PlayerAnimationController : MonoBehaviour
     protected EquipType I_EquipType;
     protected int B_Move;
     protected int B_LeftClick;
+    protected int T_Dead;
     #endregion
     #region Public
     #endregion
@@ -59,6 +60,10 @@ public class PlayerAnimationController : MonoBehaviour
     {
         anim.SetBool(B_LeftClick, leftClick);
     }
+    public void TriggerDeath()
+    {
+        anim.SetTrigger(T_Dead);
+    }
     #endregion
     #endregion
 
@@ -74,6 +79,7 @@ public class PlayerAnimationController : MonoBehaviour
         I_EquipType = (EquipType)Animator.StringToHash("I_EquipType");
         B_Move = Animator.StringToHash("B_Move");
         B_LeftClick = Animator.StringToHash("B_LeftClick");
+        T_Dead = Animator.StringToHash("T_Dead");
     }
     #endregion
 }
