@@ -55,6 +55,7 @@ public class Player : Unit
     #region Protected
     protected override void OnDead()
     {
+        base.OnDead();
         if (!isDead)
         {
             stateMachine.ChangeState<PlayerDeadState>();

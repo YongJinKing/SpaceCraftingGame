@@ -14,6 +14,10 @@ public abstract class AttackAction : Action
     ///히트박스 프리펩
     ///</summary>
     public HitBox[] hitBoxPrefabs;
+    /// <summary>
+    /// 히트박스 시작 위치
+    /// </summary>
+    public Transform[] attackStartPos;
     ///<summary>
     ///생성된 히트박스가 저장되는 공간
     ///</summary>
@@ -46,7 +50,10 @@ public abstract class AttackAction : Action
             //만약 날아가서 없어지는 타입의 히트박스의 경우 리로드
             if (hitBoxes[i].isDestroy)
             {
-                hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
+                if(i < attackStartPos.Length && attackStartPos[i] != null)
+                    hitBoxes[i] = Instantiate(hitBoxPrefabs[i], attackStartPos[i], false);
+                else
+                    hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
             }
         }
     }

@@ -96,6 +96,7 @@ public abstract class Stat : MonoBehaviour, IDamage, IGetPriority
     /// </summary>
     protected virtual void OnDead()
     {
+        deadEvent?.Invoke();
     }
     #endregion
     #region Public
