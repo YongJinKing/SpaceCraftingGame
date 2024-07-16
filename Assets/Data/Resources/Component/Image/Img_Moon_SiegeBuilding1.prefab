@@ -162,11 +162,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2097635686830817506}
-  - component: {fileID: 77869612845397029}
   - component: {fileID: 7779152742673181560}
   - component: {fileID: 867766252215366199}
   - component: {fileID: 5204452331467546118}
   - component: {fileID: 7504228634355529942}
+  - component: {fileID: 1356144091486573029}
   m_Layer: 0
   m_Name: Spine Mecanim GameObject (Turret)
   m_TagString: Untagged
@@ -189,33 +189,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 102415558822031885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &77869612845397029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2506198783482565030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 252fb5cc5fc71104d8dd6d02da628c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2434437683462348332}
-        m_TargetAssemblyTypeName: Turret, Assembly-CSharp
-        m_MethodName: Attack
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!33 &7779152742673181560
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -326,6 +299,33 @@ MonoBehaviour:
     useCustomMixMode: 1
     layerMixModes: 01000000
     layerBlendModes: 01000000
+--- !u!114 &1356144091486573029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2506198783482565030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca909e1392de3ff45add1e793430bd5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2434437683462348332}
+        m_TargetAssemblyTypeName: Structure, Assembly-CSharp
+        m_MethodName: DestoryEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3845572844576577225
 GameObject:
   m_ObjectHideFlags: 0

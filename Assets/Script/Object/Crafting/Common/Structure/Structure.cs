@@ -20,6 +20,7 @@ public abstract class Structure : Stat
     [SerializeField] protected Animator animator;
     #endregion
     #region Public
+    public Transform destroyVFX;
     public byte mPriority
     {
         get
@@ -103,8 +104,14 @@ public abstract class Structure : Stat
     {
         base.OnDead();
         Debug.Log("Ondead ½ÇÇà");
+        animator.SetTrigger("Destroy");
         DestroyEvent?.Invoke(this.transform.position);
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 2f);
+    }
+
+    public void DestoryEvent()
+    {
+        destroyVFX.gameObject.SetActive(true);
     }
 
     #endregion

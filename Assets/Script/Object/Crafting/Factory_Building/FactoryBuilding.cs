@@ -13,6 +13,8 @@ public class FactoryBuilding : Structure
     [SerializeField] int produceAmount;
     [SerializeField] float produceTime;
 
+    public Transform miningVFX;
+
     public FactoryBuilding() : base()
     {
         AddStat(EStat.Efficiency, produceTime);
@@ -51,12 +53,28 @@ public class FactoryBuilding : Structure
     public void DestoryBuilding()
     {
         StopCoroutine(FactoryWorking());
-        Destroy(this.gameObject);
+    }
+
+    protected override void OnDead()
+    {
+        base.OnDead();
+        DestoryBuilding();
+    }
+
+    public void TurnOnMiningVFX()
+    {
+        if(!miningVFX.gameObject.activeSelf) miningVFX.gameObject.SetActive(true);
+    }
+
+    public void TurnOffMiningVFX()
+    {
+        if (!miningVFX.gameObject.activeSelf) miningVFX.gameObject.SetActive(false);
     }
 
     IEnumerator FactoryWorking() // 1초에 json으로 정의된 양만큼(produceCount)만큼 produceIndex에 해당하는 아이템을 생산한다
     {
         yield return new WaitForSeconds(1f);
+        
         while (true)
         {
             if (this[EStat.HP] <= 0.0f)
