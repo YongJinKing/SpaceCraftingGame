@@ -34,6 +34,7 @@ public class AI : MonoBehaviour
     #region Protected
     protected bool isWave;
     protected Monster owner;
+    protected TileChargeManager tileChargeManager;
     #endregion
     #region Public
     #endregion
@@ -67,7 +68,7 @@ public class AI : MonoBehaviour
 
         if (TileManager.Instance.HasTile(key))
         {
-            if (TileManager.Instance.availablePlaces[key].available)
+            if (TileManager.Instance.availablePlaces[key].available || tileChargeManager.previousTilePos.Contains(key))
             {
                 float gscore = 1 + parent.GScore;
                 float hscore = Mathf.Abs(targetCoor.x - key.x) + Mathf.Abs(targetCoor.y - key.y);
@@ -403,6 +404,7 @@ public class AI : MonoBehaviour
     private void Start()
     {
         owner = GetComponentInParent<Monster>();
+        tileChargeManager = GetComponentInParent<TileChargeManager>();
     }
     #endregion
 }

@@ -46,8 +46,8 @@ public class WaveMonsterDetectState : MonsterState
     }
     public override void Exit()
     {
-        base.Exit();
         StopAllCoroutines();
+        base.Exit();
     }
     #endregion
     #endregion
@@ -75,15 +75,19 @@ public class WaveMonsterDetectState : MonsterState
         }
 
         if (owner.target == null)
+        {
+            Debug.Log("WaveMonsterDetectState.ProcessingState Idle 전환");
             owner.stateMachine.ChangeState<WaveMonsterIdleState>();
+        }
         else
+        {
             owner.stateMachine.ChangeState<WaveMonsterAttackState>();
+        }
         yield return null;
     }
 
     protected IEnumerator FollowingTarget()
     {
-
         owner.animator.SetBool("B_Move", true);
         //현재는 감지하면 무조건 쫒아가기만 하는 알고리즘
         while (owner.target != null)

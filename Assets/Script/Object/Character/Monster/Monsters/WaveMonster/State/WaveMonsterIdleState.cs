@@ -54,8 +54,8 @@ public class WaveMonsterIdleState : MonsterState
     public override void Exit()
     {
         owner.animator.SetBool("B_Move", false);
-        base.Exit();
         StopAllCoroutines();
+        base.Exit();
     }
     #endregion
     #endregion

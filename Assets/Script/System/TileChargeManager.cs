@@ -20,7 +20,7 @@ public class TileChargeManager : MonoBehaviour
     #region Public
     public HashSet<Vector3Int> previousTilePos
     {
-        get { return previousTilePos; }
+        get { return _previousTilePos; }
     }
     #endregion
     #region Events

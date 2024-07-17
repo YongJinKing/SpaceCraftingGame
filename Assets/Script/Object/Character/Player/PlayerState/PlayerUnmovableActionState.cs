@@ -60,6 +60,7 @@ public class PlayerUnmovableActionState : PlayerState
     {
         //나중에 마우스 뗀 타입에 따른 스위치문 작성 필요
         owner.myAnim.SetLeftClick(false);
+        owner.weaponRotationAxis.SetActive(false);
     }
     public void OnActionEnd()
     {
