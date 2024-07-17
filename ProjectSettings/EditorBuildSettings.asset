@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TotalGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/SeChan/StageSelect.unity
+    guid: 3f557f670cb046a489e0678adac92e69
+  - enabled: 1
+    path: Assets/Scenes/NamHo/Main.unity
+    guid: 06361ef3e7367c44ebd794e7bc3e3019
   m_configObjects: {}
