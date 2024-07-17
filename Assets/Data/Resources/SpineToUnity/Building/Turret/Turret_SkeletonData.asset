@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Turret_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 65e8e867698c5244caca106c275998f5, type: 2}
+  - {fileID: 11400000, guid: 0ffdb3a29d0e972418e4668b94cd1fce, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 2603644bcef36dc46878d3b4cb1494b0, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: add2092de75a9d944bca1fdd9bab4b3c, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
@@ -28,4 +28,4 @@ MonoBehaviour:
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: e18c17e6c5433644aae8295eb18c29c5, type: 2}
+  controller: {fileID: 0}
