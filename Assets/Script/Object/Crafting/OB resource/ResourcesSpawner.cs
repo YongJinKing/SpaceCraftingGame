@@ -27,7 +27,14 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
 
     void Start()
     {
-        StartSpawnResources();
+        //StartSpawnResources();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            RespawnResources();
+        }
     }
 
     public void RespawnResources()
@@ -281,11 +288,5 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
         return true;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            RespawnResources();
-        }
-    }
+    
 }

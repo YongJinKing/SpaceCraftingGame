@@ -80,7 +80,12 @@ public class TileManager : Singleton<TileManager>
 
 
         componentsInfo = ComponentSaveSystem.Instance.LoadTileInfo();
-        if (componentsInfo == null) return;
+        if (componentsInfo == null)
+        {
+            // 여기서 자원 최초 생성
+            ResourcesSpawner.Instance.StartSpawnResources();
+            return;
+        }
         else
         {
             Debug.Log("읽어서 가져옴");

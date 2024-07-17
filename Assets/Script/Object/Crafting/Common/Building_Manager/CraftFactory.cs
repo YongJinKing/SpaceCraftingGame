@@ -9,19 +9,38 @@ using static UnityEngine.GraphicsBuffer;
 
 public class CraftFactory : Singleton<CraftFactory>
 {
-    StructureDataManager structureDataManger = StructureDataManager.GetInstance();
+    StructureDataManager structureDataManger; //= StructureDataManager.GetInstance();
     CraftBuildingComponentTable componentData = default;
     CraftBuildingAbilityTable abilityData = default;
     CraftBuildImageTable imgData = default;
 
     void Awake()
     {
+        structureDataManger = StructureDataManager.GetInstance();
         structureDataManger.LoadCraftInfo();
     }
 
     void OnDestroy()
     {
         structureDataManger = null;
+    }
+
+    public List<int> CheckResourcesCount(int index) // 해당 index에 맞는 건물을 지을 때 필요한 재료들(0번, 1번)과 그 갯수(2번,3번)을 담은 리스트를 리턴, 받는 쪽에서 이걸 가지고 인벤과 연결해서 비교
+    {
+        List<int> resourcesList = new List<int>();
+
+        
+        if (structureDataManger.dicCBAbilityTable.ContainsKey(index))
+        {
+            abilityData = structureDataManger.dicCBAbilityTable[index];
+        }
+
+        resourcesList.Add(abilityData.Consume_IndexArr[0]);
+        resourcesList.Add(abilityData.Consume_IndexArr[1]);
+        resourcesList.Add(abilityData.Consume_CountArr[0]);
+        resourcesList.Add(abilityData.Consume_CountArr[1]);
+
+        return resourcesList;
     }
 
     public GameObject CraftBuilding(int index, Vector3 pos , float Hp = 0f, int size = 0)
@@ -125,6 +144,8 @@ public class CraftFactory : Singleton<CraftFactory>
                 return CraftMiner(index, pos, Hp, size);
             case 11:
                 return CraftTurret(index, pos,Hp, size);
+            case 50:
+                return CraftResources(index, pos, Hp, size);
             default:
                 return null;
         }
@@ -278,6 +299,21 @@ public class CraftFactory : Singleton<CraftFactory>
         
         Debug.Log("생산 건물 건설 끝");
         Debug.Log(obj);
+        return obj;
+    }
+
+    GameObject CraftResources(int index, Vector3 pos, float Hp = 0f, int size = 1)
+    {
+        if (structureDataManger.dicCBImgTable.ContainsKey(index))
+        {
+            imgData = structureDataManger.dicCBImgTable[index];
+        }
+
+        GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
+        GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
+
+        obj.transform.localPosition = pos;
+        obj.transform.localScale = Vector3.one * size;
         return obj;
     }
 

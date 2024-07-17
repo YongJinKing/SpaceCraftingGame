@@ -75,6 +75,8 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
 {
     ComponetsInfo componetsInfo;
     string savePath;
+    public LayerMask structureLayerMask;
+    public LayerMask resourcesLayerMask;
     
     // Start is called before the first frame update
     private void Awake()
@@ -90,7 +92,10 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            SaveTilesInfo();
+        }
     }
 
     public void SaveTilesInfo()
@@ -110,11 +115,23 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
                 component.OnBeforeSerialize();
                 if (!(tile.Value.Object == null))
                 {
-                    component.index = int.Parse(tile.Value.Object.GetComponent<Structure>().mComponentName);
-                    component.Hp = tile.Value.Object.GetComponent<Structure>().MaxHP;
+                    Debug.Log("널 아님");
+                    if ((structureLayerMask & 1 << tile.Value.Object.layer) != 0)
+                    {
+                        Debug.Log("건물");
+                        component.index = int.Parse(tile.Value.Object.GetComponent<Structure>().mComponentName);
+                        component.Hp = tile.Value.Object.GetComponent<Structure>().MaxHP;
+                    }
+                    else if ((resourcesLayerMask & 1 << tile.Value.Object.layer) != 0)
+                    {
+                        Debug.Log("자연 광물");
+                        component.index = tile.Value.Object.GetComponent<NaturalResources>().indexNum;
+                        component.Hp = tile.Value.Object.GetComponent<NaturalResources>().hp;
+                    }
                 }
                 else
                 {
+                    Debug.Log("널임");
                     component.index = 0;
                     component.Hp = 0;
                 }
