@@ -9,7 +9,8 @@ public class RabbitBossAnimEvent : MonoBehaviour
     public UnityEvent SuperJumpEvent;
     public UnityEvent SpinningEvent;
     public UnityEvent RiceRainEvent;
-    
+    public UnityEvent BuffEvent;
+
     public void ThrowAnimation()
     {
         ThrowEvent?.Invoke();
@@ -28,5 +29,10 @@ public class RabbitBossAnimEvent : MonoBehaviour
     public void RiceRainAnimation()
     {
         RiceRainEvent?.Invoke();
+    }
+
+    public void BuffAnimation()
+    {
+        BuffEvent?.Invoke();
     }
 }

@@ -43,6 +43,12 @@ public class CraftBuildingManager : MonoBehaviour
             size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
             Debug.Log("현재 건설 선택된 인덱스 : " + buildingIndex);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            buildingIndex = 100001;
+            size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
+            Debug.Log("현재 건설 선택된 인덱스 : " + buildingIndex);
+        }
         //===========================위의 코드들은 수정해야함==================================================
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -169,8 +175,14 @@ public class CraftBuildingManager : MonoBehaviour
             // 건물 건설 연출 코루틴 -> 코루틴이 끝날때 아래 건설 코드들 실행
             //Inventory.instance.UseItem(10000, 5); // <<<<<<<< 인벤토리에서 10000번 인덱스의 자원을 5개 만큼 사용한다. 그런데 이제 10000번이나 5개 모두 json에서 읽어와서 적용해야함, 건물마다 다르니깐
             //Vector3 craftPos = new Vector3((pos.x + (ground.tileAnchor.x * size)), (pos.y + (ground.tileAnchor.y * size)), 0);
+
             Vector3 craftPos = new Vector3((pos.x + ground.tileAnchor.x), (pos.y + ground.tileAnchor.y), 0);
-            GameObject craft = CraftFactory.Instance.CraftBuilding(index, craftPos, 0, size);
+
+            //GameObject craft = CraftFactory.Instance.CraftBuilding(index, craftPos, 0, size);
+
+            GameObject craft = CraftFactory.Instance.ReadyToCraftBuilding(index, craftPos, 0, size);
+
+            if (craft == null) return;
             craft.transform.localScale = Vector3.one * size;
             craft.transform.SetParent(TurretParent);
 

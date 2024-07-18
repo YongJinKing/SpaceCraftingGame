@@ -40,8 +40,9 @@ public class Turret : Structure
     #endregion
 
     #region OnEnable, Start, Update
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         Debug.Log("≈Õ∑ø onenable");
         /*turretAttackTimer = this[EStat.ATKSpeed];
         turretAttackCooldown = this[EStat.ATKDelay];*/

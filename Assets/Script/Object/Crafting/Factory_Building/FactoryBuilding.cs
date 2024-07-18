@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class FactoryBuilding : Structure
 {
-    // 건물 제작에 필요한 재료, 재료 갯수, 생산 목록, 생산 갯수
-    public int consumeIndex;
-    public int consumeCount;
-    public int produceIndex;
-    public int produceCount;
-    public int maxAmount;
-    [SerializeField] int produceAmount;
-    [SerializeField] float produceTime;
+    public int consumeIndex1; // 건물 제작에 필요한 재료1
+    public int consumeIndex2; // 건물 제작에 필요한 재료2
+    public int consumeCount1; // 재료1의 갯수
+    public int consumeCount2; // 재료2의 갯수
+    public int produceCount; // 생산량
+    public int maxAmount; // 저장 가능한 최대 용량
+    [SerializeField] int produceResourceIndex; // 제작하는 자원의 인덱스
+    [SerializeField] int produceAmount; // 건물이 제작한 재료의 갯수
+    [SerializeField] float produceTime; // 건물의 생산 속도
 
     public Transform miningVFX;
 
@@ -32,8 +33,9 @@ public class FactoryBuilding : Structure
 
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         StartProducing();
     }
 
@@ -100,7 +102,7 @@ public class FactoryBuilding : Structure
 
     public void FactoryClickEvent() // 만약 플레이어가 어떠한 루트로 공장에서 생산한 재료를 가져가려할 때 이 함수를 호출해 index에 맞는 현재까지 생산한 produceAmount만큼의 양의 재료를 Add한다
     {
-        if(Inventory.instance != null) Inventory.instance.AddItem(produceIndex, produceAmount);
+        if(Inventory.instance != null) Inventory.instance.AddItem(produceResourceIndex, produceAmount);
         produceAmount = 0;
     }
 }

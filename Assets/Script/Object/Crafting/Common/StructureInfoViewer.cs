@@ -18,7 +18,7 @@ public class StructureInfoViewer : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            HandleRightClick(layerMask);
+            HandleRightClick(structureMask);
         }
     }
 

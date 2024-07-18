@@ -21,6 +21,7 @@ public abstract class Structure : Stat
     #endregion
     #region Public
     public Transform destroyVFX;
+    public Transform buildVFX;
     public byte mPriority
     {
         get
@@ -109,9 +110,19 @@ public abstract class Structure : Stat
         Destroy(this.gameObject, 2f);
     }
 
-    public void DestoryEvent()
+    public void PlayDestoryVFX()
     {
         destroyVFX.gameObject.SetActive(true);
+    }
+
+    public void PlayBuildVFX()
+    {
+        buildVFX.gameObject.SetActive(true);
+    }
+
+    public void StopBuildVFX()
+    {
+        buildVFX.gameObject.SetActive(false);
     }
 
     #endregion
@@ -124,6 +135,11 @@ public abstract class Structure : Stat
         AddStat(EStat.DEF, def);
         AddStat(EStat.BuildingSpeed, buildingSpd);
         
+    }
+
+    protected virtual void OnEnable()
+    {
+        PlayBuildVFX();
     }
 
     #endregion

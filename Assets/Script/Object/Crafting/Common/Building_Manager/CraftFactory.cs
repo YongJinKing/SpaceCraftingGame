@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using static UnityEngine.GraphicsBuffer;
 
 public class CraftFactory : Singleton<CraftFactory>
@@ -14,6 +16,7 @@ public class CraftFactory : Singleton<CraftFactory>
     CraftBuildingAbilityTable abilityData = default;
     CraftBuildImageTable imgData = default;
 
+    public Transform constructionSite;
     void Awake()
     {
         structureDataManger = StructureDataManager.GetInstance();
@@ -25,22 +28,19 @@ public class CraftFactory : Singleton<CraftFactory>
         structureDataManger = null;
     }
 
-    public List<int> CheckResourcesCount(int index) // 해당 index에 맞는 건물을 지을 때 필요한 재료들(0번, 1번)과 그 갯수(2번,3번)을 담은 리스트를 리턴, 받는 쪽에서 이걸 가지고 인벤과 연결해서 비교
+    public GameObject ReadyToCraftBuilding(int index, Vector3 pos, float Hp = 0f, int size = 0)
     {
-        List<int> resourcesList = new List<int>();
-
-        
-        if (structureDataManger.dicCBAbilityTable.ContainsKey(index))
+        if (!CheckInventory(index)) // 인벤토리에 써야하는 그 재료들이 다 있는지 확인하고 있으면 저기서 소모하고 없으면 여기로 와서 null 리턴
         {
-            abilityData = structureDataManger.dicCBAbilityTable[index];
+            return null;
         }
 
-        resourcesList.Add(abilityData.Consume_IndexArr[0]);
-        resourcesList.Add(abilityData.Consume_IndexArr[1]);
-        resourcesList.Add(abilityData.Consume_CountArr[0]);
-        resourcesList.Add(abilityData.Consume_CountArr[1]);
+        Transform obj = Instantiate(constructionSite, pos, Quaternion.identity);
+        obj.SetParent(null);
+        // 건축에 필요한 설정들을 해줘야함
 
-        return resourcesList;
+
+        return obj.gameObject;
     }
 
     public GameObject CraftBuilding(int index, Vector3 pos , float Hp = 0f, int size = 0)
@@ -144,6 +144,8 @@ public class CraftFactory : Singleton<CraftFactory>
                 return CraftMiner(index, pos, Hp, size);
             case 11:
                 return CraftTurret(index, pos,Hp, size);
+            case 13:
+                return CraftBarricade(index, pos, Hp, size);
             case 50:
                 return CraftResources(index, pos, Hp, size);
             default:
@@ -151,7 +153,46 @@ public class CraftFactory : Singleton<CraftFactory>
         }
 
     }
+    bool CheckInventory(int index)
+    {
+        if (structureDataManger.dicCBAbilityTable.ContainsKey(index))
+        {
+            abilityData = structureDataManger.dicCBAbilityTable[index];
+        }
 
+        int chkCount1 = 0;
+        int chkCount2 = 0;
+
+        int consume_Index1 = abilityData.Consume_IndexArr[0]; 
+        int consume_Index2 = abilityData.Consume_IndexArr[1];
+
+        int consume_Count1 = abilityData.Consume_CountArr[0];
+        int consume_Count2 = abilityData.Consume_CountArr[1];
+
+
+        // InventoryDatas 리스트를 순회하면서 각 id의 개수를 셉니다.
+        foreach (var item in Inventory.instance.InventoryDatas)
+        {
+            if (item.id == consume_Index1)
+            {
+                chkCount1 += item.Amount;
+            }
+            else if (item.id == consume_Index2)
+            {
+                chkCount2 += item.Amount;
+            }
+        }
+
+        // 두 개의 id가 주어진 개수 이상 존재하는지 확인합니다.
+        if (chkCount1 >= consume_Count1 && chkCount2 >= consume_Count2)
+        {
+            Inventory.instance.UseItem(consume_Index1, consume_Count1);
+            Inventory.instance.UseItem(consume_Index2, consume_Count2);
+            return true;
+        }
+
+        return false;
+    }
     GameObject CraftTurret(int index, Vector3 pos, float Hp = 0f, int size = 0)
     {
         if (structureDataManger.dicCBComponentTable.ContainsKey(index))
@@ -268,11 +309,12 @@ public class CraftFactory : Singleton<CraftFactory>
         obj.AddComponent<BoxCollider2D>();*/
 
         FactoryBuilding factoryBuilding =  obj.GetComponent<FactoryBuilding>();
-        factoryBuilding.mComponentName = componentData.Component_Name.ToString();
-        factoryBuilding.consumeIndex = abilityData.Consume_IndexArr[0]; // 건물 건설 시 소모되는 자원 인덱스
-        factoryBuilding.consumeCount = abilityData.Consume_CountArr[0]; // 건물 건설 시 소모되는 자원량
-        factoryBuilding.produceIndex = abilityData.Consume_IndexArr[1]; // 건물에서 생산되는 자원 인덱스
-        factoryBuilding.produceCount = abilityData.Consume_CountArr[1]; // 건물에서 생산 되는 자원량
+        /*factoryBuilding.mComponentName = componentData.Component_Name.ToString();
+        factoryBuilding.consumeIndex1 = abilityData.Consume_IndexArr[0]; // 건물 건설 시 소모되는 자원1 인덱스
+        factoryBuilding.consumeCount1 = abilityData.Consume_CountArr[0]; // 건물 건설 시 소모되는 자원1 갯수
+        factoryBuilding.consumeIndex2 = abilityData.Consume_IndexArr[1]; // 건물에서 생산되는 자원2 인덱스
+        factoryBuilding.consumeCount2 = abilityData.Consume_CountArr[1]; // 건물에서 생산 되는 자원2 갯수*/
+        factoryBuilding.produceCount = abilityData.BuildingDetail_Value;
         factoryBuilding.DestroyEvent = new UnityEngine.Events.UnityEvent<Vector3>();
         //if (Hp != 0) factoryBuilding.MaxHP = componentData.Component_Hp; // 건물의 체력
 
@@ -283,7 +325,7 @@ public class CraftFactory : Singleton<CraftFactory>
         else factoryBuilding.MaxHP = Hp; // 건물의 체력
 
         factoryBuilding[EStat.Efficiency] = abilityData.BuildingDetail_Delay; // 건물의 생산 속도
-        factoryBuilding.maxAmount = abilityData.BuildingDetail_Value; // 건물이 보관할 수 있는 자원의 최대량
+        //factoryBuilding.maxAmount = abilityData.BuildingDetail_Value; // 건물이 보관할 수 있는 자원의 최대량
 
         /*GameObject objImg = new GameObject();
         objImg.name = "Image";
@@ -314,6 +356,37 @@ public class CraftFactory : Singleton<CraftFactory>
 
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
+        return obj;
+    }
+
+    GameObject CraftBarricade(int index, Vector3 pos, float Hp = 0f, int size = 1)
+    {
+        if (structureDataManger.dicCBComponentTable.ContainsKey(index))
+        {
+            componentData = structureDataManger.dicCBComponentTable[index];
+        }
+        if (structureDataManger.dicCBAbilityTable.ContainsKey(index))
+        {
+            abilityData = structureDataManger.dicCBAbilityTable[index];
+        }
+        if (structureDataManger.dicCBImgTable.ContainsKey(index))
+        {
+            imgData = structureDataManger.dicCBImgTable[index];
+        }
+
+        GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
+        GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
+        size = abilityData.BuildingScale;
+        //Collider, Rigidbody, Scale Setting
+        obj.transform.localScale = Vector3.one;
+        obj.name = "Barricade";
+        obj.layer = 16;
+
+        Barricade barricade = obj.GetComponent<Barricade>();
+
+        if (Hp == 0) barricade.MaxHP = componentData.Component_Hp; // 건물의 체력
+        else barricade.MaxHP = Hp; // 건물의 체력
+
         return obj;
     }
 

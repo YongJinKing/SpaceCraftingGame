@@ -14,6 +14,7 @@ public class RabbitBossSuperJumpAttackAction : BossAction
     #endregion
     #region Public
     public GameObject fallPosImage;
+    public Transform attackVFX;
     public float jumpHeight = 20f; // 토끼가 점프하는 높이
     public float delayBeforeFall = 2f; // 토끼가 떨어지기 전에 대기하는 시간
     public float gravity = -9.8f; // 중력 가속도
@@ -38,6 +39,8 @@ public class RabbitBossSuperJumpAttackAction : BossAction
         {
             hitBoxes[i].Activate(pos);
         }
+
+        attackVFX.GetComponent<ParticleSystem>().Play();
         yield return null;
     }
 

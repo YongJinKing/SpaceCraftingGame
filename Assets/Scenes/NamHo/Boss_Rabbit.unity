@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9db98c60740638449864eb028fbe7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 96ba4cf36d40cb44b8a3c33b97a3e153, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: a980b04096cce2449aabab4c663b9e26, type: 2}
   initialSkinName: 
   initialFlipX: 0
   initialFlipY: 0
@@ -2872,6 +2872,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  BuffEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1953498056}
+        m_TargetAssemblyTypeName: SP_Healing, Assembly-CSharp
+        m_MethodName: ActEndForAnim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &658415561
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,6 +3217,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2097152
   hitBoxPrefabs: []
+  attackStartPos: []
   hitBoxes: []
   owner: {fileID: 1816270050}
   riceCakes: {fileID: 1735542251873017580, guid: 64b5a383663259f4cabe41e3a16e669b, type: 3}
@@ -3552,6 +3568,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2008033564}
+  - {fileID: 1046677526}
   m_Father: {fileID: 1809045653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &746036847
@@ -3580,9 +3597,11 @@ MonoBehaviour:
     m_Bits: 2097152
   hitBoxPrefabs:
   - {fileID: 2008033565}
+  attackStartPos: []
   hitBoxes: []
   owner: {fileID: 1816270050}
-  fallPosImage: {fileID: 7577407123778418410, guid: b026bbd6404329c43a0457281ba0502b, type: 3}
+  fallPosImage: {fileID: 3554064976167618964, guid: 880893390fdabf54dadbdfd8caf9c3c7, type: 3}
+  attackVFX: {fileID: 1046677526}
   jumpHeight: 20
   delayBeforeFall: 2
   gravity: -9.8
@@ -5789,6 +5808,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   hitBoxPrefabs: []
+  attackStartPos: []
   hitBoxes: []
   owner: {fileID: 1816270050}
   mortalBoxesList: []
@@ -5796,6 +5816,7 @@ MonoBehaviour:
   moveSpeed: 4
   riceCost: 3
   chk: 0
+  mortalBox: {fileID: 0}
   perception: {fileID: 1207989209}
   xShapeLines:
   - {fileID: 1113738180}
@@ -6110,6 +6131,11 @@ Transform:
   - {fileID: 646591673}
   m_Father: {fileID: 1816270049}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1046677526 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+  m_PrefabInstance: {fileID: 1936213537}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1053461229
 GameObject:
   m_ObjectHideFlags: 0
@@ -6227,6 +6253,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  onMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6258,11 +6287,10 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 2162688
-  dirMove: {fileID: 354822331}
-  pointMove: {fileID: 1402239707}
   attackActions:
   - {fileID: 2037133335}
   ai: {fileID: 1855386084}
+  graphicTransform: {fileID: 0}
 --- !u!58 &1056012760
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7506,6 +7534,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 4
+  onMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
   moveEndEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -8406,12 +8437,7 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 2097152
-  dirMove: {fileID: 0}
-  pointMove: {fileID: 0}
   attackActions:
-  - {fileID: 1869338159}
-  - {fileID: 1915992402}
-  - {fileID: 707610223}
   - {fileID: 746036847}
   ai: {fileID: 1940367737}
   player: {fileID: 1504991607}
@@ -8620,6 +8646,7 @@ MonoBehaviour:
     m_Bits: 2097152
   hitBoxPrefabs:
   - {fileID: 1288445622}
+  attackStartPos: []
   hitBoxes: []
   owner: {fileID: 1816270050}
   targetPosition: {x: 0, y: 0}
@@ -8769,6 +8796,7 @@ MonoBehaviour:
     m_Bits: 2097152
   hitBoxPrefabs:
   - {fileID: 1348615976}
+  attackStartPos: []
   hitBoxes: []
   owner: {fileID: 1816270050}
   moveSpeed: 2
@@ -8818,6 +8846,7 @@ MonoBehaviour:
   - {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
   - {fileID: 6869589720924011600, guid: c6444e84073e33347a6e770e58218763, type: 3}
   - {fileID: 7470054711152491448, guid: 39df4aeb29ebfd440830acd9312f25e1, type: 3}
+  attackStartPos: []
   hitBoxes:
   - {fileID: 0}
   - {fileID: 0}
@@ -8870,6 +8899,119 @@ Transform:
   - {fileID: 1913613381}
   m_Father: {fileID: 111532279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1936213537
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 746036846}
+    m_Modifications:
+    - target: {fileID: 301393688009871078, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_Name
+      value: FloorLargeCrack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178184613538145783, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178184613538145783, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712126565594000548, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712126565594000548, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712126565594000548, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538393710488055241, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538393710488055241, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538393710488055241, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280635538376675331, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280635538376675331, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280635538376675331, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074413452624272006, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962049246524179748, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962049246524179748, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962049246524179748, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4530e08cbcc9f8747a66ce38af19ddd7, type: 3}
 --- !u!1 &1940367736
 GameObject:
   m_ObjectHideFlags: 0
@@ -9060,6 +9202,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   hitBoxPrefabs: []
+  attackStartPos: []
   hitBoxes: []
   owner: {fileID: 1816270050}
   mortalBoxesList: []
@@ -9067,8 +9210,10 @@ MonoBehaviour:
   moveSpeed: 4
   riceCost: 2
   chk: 0
+  mortalBox: {fileID: 0}
   perception: {fileID: 1207989209}
   healAmount: 1
+  atkAmount: 5
 --- !u!1 &1987127890
 GameObject:
   m_ObjectHideFlags: 0
@@ -9337,6 +9482,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2162688
   hitBoxPrefabs: []
+  attackStartPos: []
   hitBoxes:
   - {fileID: 1217514671}
 --- !u!4 &2037133336
