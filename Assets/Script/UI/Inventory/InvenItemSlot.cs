@@ -32,5 +32,6 @@ public class InvenItemSlot : MonoBehaviour
     {
         AmountTxt.text = "";
     }
+    
 
 }

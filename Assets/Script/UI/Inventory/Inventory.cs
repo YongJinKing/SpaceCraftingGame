@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
         public int id;
         public int Amount;
     }
-    SelelctType InvenSoltType;
+    InvenSelelctType InvenSoltType;
     public List<SlotItemData> InventoryDatas = new List<SlotItemData>();
     public static Inventory instance;
     
@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
     private void Start() 
     {
         ItemStaticDataManager.GetInstance().LoadItemDatas();//Json뿌리기
-        InvenSoltType = SelelctType.All;
+        InvenSoltType = InvenSelelctType.all;
     }
     
     public void Testbtn()
@@ -75,15 +75,15 @@ public class Inventory : MonoBehaviour
     public void ChangeMode(int index)//이부분 보셔야됨
     {
         
-        InvenSoltType = (SelelctType)index;//인벤토리 타입 어떤것으로 할지 Int값 전송
+        InvenSoltType = (InvenSelelctType)index;//인벤토리 타입 어떤것으로 할지 Int값 전송
         ModeDisplay(InvenSoltType);//Mode에 알맞는 디스플레이 시작
         UpdatePopup?.Invoke(1);//디스플레이 완료 후 팝업창 업데이트
     }
 
-    void ModeDisplay(SelelctType Type)
+    void ModeDisplay(InvenSelelctType Type)
     {
         DisplayInven = InventoryDatas;//전체 보여줄 땐 다 보여줘야 되니까 invendata그대로 display데이터로 송신
-        if(Type == SelelctType.All)//all일땐 리턴
+        if(Type == InvenSelelctType.all)//all일땐 리턴
             return;
         else
         {

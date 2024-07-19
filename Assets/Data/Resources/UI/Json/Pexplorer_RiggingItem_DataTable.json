@@ -7,6 +7,10 @@
     "RiggingItemLevel": 1,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 10,
+    "RiggingItem_AttackSpeed": 0.5,
+    "RiggingItem_Range": 10,
+    "RiggingItem_BulletPrefab": 100000,
     "RiggingItemImage": 10000
   },
   {
@@ -17,6 +21,10 @@
     "RiggingItemLevel": 2,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [10, 15],
+    "RiggingItem_AttackPower": 20,
+    "RiggingItem_AttackSpeed": 0.5,
+    "RiggingItem_Range": 10,
+    "RiggingItem_BulletPrefab": 100001,
     "RiggingItemImage": 10001
   },
   {
@@ -27,6 +35,10 @@
     "RiggingItemLevel": 3,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 30,
+    "RiggingItem_AttackSpeed": 0.5,
+    "RiggingItem_Range": 10,
+    "RiggingItem_BulletPrefab": 100002,
     "RiggingItemImage": 10002
   },
   {
@@ -37,6 +49,10 @@
     "RiggingItemLevel": 4,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 40,
+    "RiggingItem_AttackSpeed": 0.5,
+    "RiggingItem_Range": 10,
+    "RiggingItem_BulletPrefab": 100003,
     "RiggingItemImage": 10003
   },
   {
@@ -47,6 +63,10 @@
     "RiggingItemLevel": 5,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 50,
+    "RiggingItem_AttackSpeed": 0.5,
+    "RiggingItem_Range": 10,
+    "RiggingItem_BulletPrefab": 100004,
     "RiggingItemImage": 10004
   },
   {
@@ -57,6 +77,10 @@
     "RiggingItemLevel": 6,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 60,
+    "RiggingItem_AttackSpeed": 0.5,
+    "RiggingItem_Range": 10,
+    "RiggingItem_BulletPrefab": 100005,
     "RiggingItemImage": 10005
   },
   {
@@ -67,6 +91,10 @@
     "RiggingItemLevel": 7,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 70,
+    "RiggingItem_AttackSpeed": 0.5,
+    "RiggingItem_Range": 10,
+    "RiggingItem_BulletPrefab": 100006,
     "RiggingItemImage": 10006
   },
   {
@@ -77,6 +105,10 @@
     "RiggingItemLevel": 8,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 80,
+    "RiggingItem_AttackSpeed": 0.5,
+    "RiggingItem_Range": 10,
+    "RiggingItem_BulletPrefab": 100007,
     "RiggingItemImage": 10007
   },
   {
@@ -87,6 +119,10 @@
     "RiggingItemLevel": 9,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 90,
+    "RiggingItem_AttackSpeed": 0.5,
+    "RiggingItem_Range": 10,
+    "RiggingItem_BulletPrefab": 100008,
     "RiggingItemImage": 10008
   },
   {
@@ -97,6 +133,10 @@
     "RiggingItemLevel": 10,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 100,
+    "RiggingItem_AttackSpeed": 0.5,
+    "RiggingItem_Range": 10,
+    "RiggingItem_BulletPrefab": 100009,
     "RiggingItemImage": 10009
   },
   {
@@ -107,6 +147,10 @@
     "RiggingItemLevel": 1,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 10,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 15,
+    "RiggingItem_BulletPrefab": 200000,
     "RiggingItemImage": 20000
   },
   {
@@ -117,6 +161,10 @@
     "RiggingItemLevel": 2,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [10, 15],
+    "RiggingItem_AttackPower": 20,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 15,
+    "RiggingItem_BulletPrefab": 200001,
     "RiggingItemImage": 20001
   },
   {
@@ -127,6 +175,10 @@
     "RiggingItemLevel": 3,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 30,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 15,
+    "RiggingItem_BulletPrefab": 200002,
     "RiggingItemImage": 20002
   },
   {
@@ -137,6 +189,10 @@
     "RiggingItemLevel": 4,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 40,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 15,
+    "RiggingItem_BulletPrefab": 200003,
     "RiggingItemImage": 20003
   },
   {
@@ -147,6 +203,10 @@
     "RiggingItemLevel": 5,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 50,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 15,
+    "RiggingItem_BulletPrefab": 200004,
     "RiggingItemImage": 20004
   },
   {
@@ -157,6 +217,10 @@
     "RiggingItemLevel": 6,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 60,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 15,
+    "RiggingItem_BulletPrefab": 200005,
     "RiggingItemImage": 20005
   },
   {
@@ -167,6 +231,10 @@
     "RiggingItemLevel": 7,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 70,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 15,
+    "RiggingItem_BulletPrefab": 200006,
     "RiggingItemImage": 20006
   },
   {
@@ -177,6 +245,10 @@
     "RiggingItemLevel": 8,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 80,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 15,
+    "RiggingItem_BulletPrefab": 200007,
     "RiggingItemImage": 20007
   },
   {
@@ -187,6 +259,10 @@
     "RiggingItemLevel": 9,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 90,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 15,
+    "RiggingItem_BulletPrefab": 200008,
     "RiggingItemImage": 20008
   },
   {
@@ -197,6 +273,10 @@
     "RiggingItemLevel": 10,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 100,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 15,
+    "RiggingItem_BulletPrefab": 200009,
     "RiggingItemImage": 20009
   },
   {
@@ -207,6 +287,10 @@
     "RiggingItemLevel": 1,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 10,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 5,
+    "RiggingItem_BulletPrefab": 300000,
     "RiggingItemImage": 30000
   },
   {
@@ -217,6 +301,10 @@
     "RiggingItemLevel": 2,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [10, 15],
+    "RiggingItem_AttackPower": 20,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 5,
+    "RiggingItem_BulletPrefab": 300001,
     "RiggingItemImage": 30001
   },
   {
@@ -227,6 +315,10 @@
     "RiggingItemLevel": 3,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 30,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 5,
+    "RiggingItem_BulletPrefab": 300002,
     "RiggingItemImage": 30002
   },
   {
@@ -237,6 +329,10 @@
     "RiggingItemLevel": 4,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 40,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 5,
+    "RiggingItem_BulletPrefab": 300003,
     "RiggingItemImage": 30003
   },
   {
@@ -247,6 +343,10 @@
     "RiggingItemLevel": 5,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 50,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 5,
+    "RiggingItem_BulletPrefab": 300004,
     "RiggingItemImage": 30004
   },
   {
@@ -257,6 +357,10 @@
     "RiggingItemLevel": 6,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 60,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 5,
+    "RiggingItem_BulletPrefab": 300005,
     "RiggingItemImage": 30005
   },
   {
@@ -267,6 +371,10 @@
     "RiggingItemLevel": 7,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 70,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 5,
+    "RiggingItem_BulletPrefab": 300006,
     "RiggingItemImage": 30006
   },
   {
@@ -277,6 +385,10 @@
     "RiggingItemLevel": 8,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 80,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 5,
+    "RiggingItem_BulletPrefab": 300007,
     "RiggingItemImage": 30007
   },
   {
@@ -287,6 +399,10 @@
     "RiggingItemLevel": 9,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 90,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 5,
+    "RiggingItem_BulletPrefab": 300008,
     "RiggingItemImage": 30008
   },
   {
@@ -297,6 +413,10 @@
     "RiggingItemLevel": 10,
     "Consume_IndexArr": [10000, 10001],
     "Consume_CountArr": [5, 10],
+    "RiggingItem_AttackPower": 100,
+    "RiggingItem_AttackSpeed": 1,
+    "RiggingItem_Range": 5,
+    "RiggingItem_BulletPrefab": 300009,
     "RiggingItemImage": 30009
   }
 ]
