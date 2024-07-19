@@ -14,5 +14,13 @@
     "GameResources_ItemMinCount": [1],
     "GameResources_ItemMaxCount": [5],
     "GameResources_SpecialPercent": 0
+  },
+  {
+    "GameResources_Index": 500002,
+    "GameResources_Type": 0,
+    "GameResources_SponItem": [100000],
+    "GameResources_ItemMinCount": [10],
+    "GameResources_ItemMaxCount": [20],
+    "GameResources_SpecialPercent": 0
   }
 ]

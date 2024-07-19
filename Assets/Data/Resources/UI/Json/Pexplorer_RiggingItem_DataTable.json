@@ -1,0 +1,302 @@
+[
+  {
+    "RiggingItemData_Index": 10000,
+    "RiggingItemType": 0,
+    "RiggingItemName": 10000,
+    "RiggingItemDesc": 100000,
+    "RiggingItemLevel": 1,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 10000
+  },
+  {
+    "RiggingItemData_Index": 10001,
+    "RiggingItemType": 0,
+    "RiggingItemName": 10001,
+    "RiggingItemDesc": 100001,
+    "RiggingItemLevel": 2,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [10, 15],
+    "RiggingItemImage": 10001
+  },
+  {
+    "RiggingItemData_Index": 10002,
+    "RiggingItemType": 0,
+    "RiggingItemName": 10002,
+    "RiggingItemDesc": 100002,
+    "RiggingItemLevel": 3,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 10002
+  },
+  {
+    "RiggingItemData_Index": 10003,
+    "RiggingItemType": 0,
+    "RiggingItemName": 10003,
+    "RiggingItemDesc": 100003,
+    "RiggingItemLevel": 4,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 10003
+  },
+  {
+    "RiggingItemData_Index": 10004,
+    "RiggingItemType": 0,
+    "RiggingItemName": 10004,
+    "RiggingItemDesc": 100004,
+    "RiggingItemLevel": 5,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 10004
+  },
+  {
+    "RiggingItemData_Index": 10005,
+    "RiggingItemType": 0,
+    "RiggingItemName": 10005,
+    "RiggingItemDesc": 100005,
+    "RiggingItemLevel": 6,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 10005
+  },
+  {
+    "RiggingItemData_Index": 10006,
+    "RiggingItemType": 0,
+    "RiggingItemName": 10006,
+    "RiggingItemDesc": 100006,
+    "RiggingItemLevel": 7,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 10006
+  },
+  {
+    "RiggingItemData_Index": 10007,
+    "RiggingItemType": 0,
+    "RiggingItemName": 10007,
+    "RiggingItemDesc": 100007,
+    "RiggingItemLevel": 8,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 10007
+  },
+  {
+    "RiggingItemData_Index": 10008,
+    "RiggingItemType": 0,
+    "RiggingItemName": 10008,
+    "RiggingItemDesc": 100008,
+    "RiggingItemLevel": 9,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 10008
+  },
+  {
+    "RiggingItemData_Index": 10009,
+    "RiggingItemType": 0,
+    "RiggingItemName": 10009,
+    "RiggingItemDesc": 100009,
+    "RiggingItemLevel": 10,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 10009
+  },
+  {
+    "RiggingItemData_Index": 20000,
+    "RiggingItemType": 1,
+    "RiggingItemName": 20000,
+    "RiggingItemDesc": 200000,
+    "RiggingItemLevel": 1,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 20000
+  },
+  {
+    "RiggingItemData_Index": 20001,
+    "RiggingItemType": 1,
+    "RiggingItemName": 20001,
+    "RiggingItemDesc": 200001,
+    "RiggingItemLevel": 2,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [10, 15],
+    "RiggingItemImage": 20001
+  },
+  {
+    "RiggingItemData_Index": 20002,
+    "RiggingItemType": 1,
+    "RiggingItemName": 20002,
+    "RiggingItemDesc": 200002,
+    "RiggingItemLevel": 3,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 20002
+  },
+  {
+    "RiggingItemData_Index": 20003,
+    "RiggingItemType": 1,
+    "RiggingItemName": 20003,
+    "RiggingItemDesc": 200003,
+    "RiggingItemLevel": 4,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 20003
+  },
+  {
+    "RiggingItemData_Index": 20004,
+    "RiggingItemType": 1,
+    "RiggingItemName": 20004,
+    "RiggingItemDesc": 200004,
+    "RiggingItemLevel": 5,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 20004
+  },
+  {
+    "RiggingItemData_Index": 20005,
+    "RiggingItemType": 1,
+    "RiggingItemName": 20005,
+    "RiggingItemDesc": 200005,
+    "RiggingItemLevel": 6,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 20005
+  },
+  {
+    "RiggingItemData_Index": 20006,
+    "RiggingItemType": 1,
+    "RiggingItemName": 20006,
+    "RiggingItemDesc": 200006,
+    "RiggingItemLevel": 7,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 20006
+  },
+  {
+    "RiggingItemData_Index": 20007,
+    "RiggingItemType": 1,
+    "RiggingItemName": 20007,
+    "RiggingItemDesc": 200007,
+    "RiggingItemLevel": 8,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 20007
+  },
+  {
+    "RiggingItemData_Index": 20008,
+    "RiggingItemType": 1,
+    "RiggingItemName": 20008,
+    "RiggingItemDesc": 200008,
+    "RiggingItemLevel": 9,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 20008
+  },
+  {
+    "RiggingItemData_Index": 20009,
+    "RiggingItemType": 1,
+    "RiggingItemName": 20009,
+    "RiggingItemDesc": 200009,
+    "RiggingItemLevel": 10,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 20009
+  },
+  {
+    "RiggingItemData_Index": 30000,
+    "RiggingItemType": 2,
+    "RiggingItemName": 30000,
+    "RiggingItemDesc": 300000,
+    "RiggingItemLevel": 1,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 30000
+  },
+  {
+    "RiggingItemData_Index": 30001,
+    "RiggingItemType": 2,
+    "RiggingItemName": 30001,
+    "RiggingItemDesc": 300001,
+    "RiggingItemLevel": 2,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [10, 15],
+    "RiggingItemImage": 30001
+  },
+  {
+    "RiggingItemData_Index": 30002,
+    "RiggingItemType": 2,
+    "RiggingItemName": 30002,
+    "RiggingItemDesc": 300002,
+    "RiggingItemLevel": 3,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 30002
+  },
+  {
+    "RiggingItemData_Index": 30003,
+    "RiggingItemType": 2,
+    "RiggingItemName": 30003,
+    "RiggingItemDesc": 300003,
+    "RiggingItemLevel": 4,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 30003
+  },
+  {
+    "RiggingItemData_Index": 30004,
+    "RiggingItemType": 2,
+    "RiggingItemName": 30004,
+    "RiggingItemDesc": 300004,
+    "RiggingItemLevel": 5,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 30004
+  },
+  {
+    "RiggingItemData_Index": 30005,
+    "RiggingItemType": 2,
+    "RiggingItemName": 30005,
+    "RiggingItemDesc": 300005,
+    "RiggingItemLevel": 6,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 30005
+  },
+  {
+    "RiggingItemData_Index": 30006,
+    "RiggingItemType": 2,
+    "RiggingItemName": 30006,
+    "RiggingItemDesc": 300006,
+    "RiggingItemLevel": 7,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 30006
+  },
+  {
+    "RiggingItemData_Index": 30007,
+    "RiggingItemType": 2,
+    "RiggingItemName": 30007,
+    "RiggingItemDesc": 300007,
+    "RiggingItemLevel": 8,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 30007
+  },
+  {
+    "RiggingItemData_Index": 30008,
+    "RiggingItemType": 2,
+    "RiggingItemName": 30008,
+    "RiggingItemDesc": 300008,
+    "RiggingItemLevel": 9,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 30008
+  },
+  {
+    "RiggingItemData_Index": 30009,
+    "RiggingItemType": 2,
+    "RiggingItemName": 30009,
+    "RiggingItemDesc": 300009,
+    "RiggingItemLevel": 10,
+    "Consume_IndexArr": [10000, 10001],
+    "Consume_CountArr": [5, 10],
+    "RiggingItemImage": 30009
+  }
+]
