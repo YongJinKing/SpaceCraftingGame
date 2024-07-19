@@ -646,12 +646,20 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 867092283188420774, guid: 61c16764362b1cc44a87ce76229158e4, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4586661941482468803, guid: 61c16764362b1cc44a87ce76229158e4, type: 3}
       propertyPath: m_Name
       value: Building_Destroy
       objectReference: {fileID: 0}
     - target: {fileID: 4586661941482468803, guid: 61c16764362b1cc44a87ce76229158e4, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099664093020668126, guid: 61c16764362b1cc44a87ce76229158e4, type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7671834496800560136, guid: 61c16764362b1cc44a87ce76229158e4, type: 3}
@@ -728,6 +736,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7418966102191864164}
     m_Modifications:
+    - target: {fileID: 2431056505560075142, guid: 590b254737c977243b0fc29939cd35aa, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5460282672935715747, guid: 590b254737c977243b0fc29939cd35aa, type: 3}
       propertyPath: m_Name
       value: Building_Building
@@ -791,6 +803,14 @@ PrefabInstance:
     - target: {fileID: 5959538685893770901, guid: 590b254737c977243b0fc29939cd35aa, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975988524557596667, guid: 590b254737c977243b0fc29939cd35aa, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523250134265275871, guid: 590b254737c977243b0fc29939cd35aa, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

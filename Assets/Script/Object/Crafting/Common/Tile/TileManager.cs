@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 
@@ -78,6 +79,7 @@ public class TileManager : Singleton<TileManager>
             }
         }
 
+        SpaceShipInitiallize();
 
         componentsInfo = ComponentSaveSystem.Instance.LoadTileInfo();
         if (componentsInfo == null)
@@ -220,6 +222,34 @@ public class TileManager : Singleton<TileManager>
             availablePlaces[coordiantes] = new Tile(true, null, 0);*/
             Debug.Log(coordiantes + "위치 건물 삭제");
         }
+    }
+
+    void SpaceShipInitiallize()
+    {
+        int centerY = (tileMap.cellBounds.yMin + tileMap.cellBounds.yMax) / 2;
+        int centerX = (tileMap.cellBounds.xMin + tileMap.cellBounds.xMax) / 2;
+        for (int y = centerY; y > centerY - 2; y--)
+        {
+            for (int x = centerX; x > centerX - 2; x--)
+            {
+                Vector3Int localPlace = (new Vector3Int(x, y, (int)tileMap.transform.position.z));
+                /*Vector3 place = tileMap.CellToWorld(localPlace);
+                if (tileMap.HasTile(localPlace))
+                {
+                    Vector3Int _place = new Vector3Int((int)place.x, (int)place.y, (int)place.z);
+                    //Tile at "place"
+                    availablePlaces[_place] = new Tile(true, null, 0);
+                    *//*availablePlaces[_place].available = true;
+                    availablePlaces[_place].Object = null;*//*
+                }
+                else
+                {
+                    //No tile at "place"
+                }*/
+                RemopvePlace(localPlace);
+            }
+        }
+
     }
 
     public Dictionary<Vector3Int, Tile> GetTileMap()

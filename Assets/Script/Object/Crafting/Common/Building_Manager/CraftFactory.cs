@@ -17,6 +17,7 @@ public class CraftFactory : Singleton<CraftFactory>
     CraftBuildImageTable imgData = default;
 
     public Transform constructionSite;
+    SpaceShip spaceShip;
     void Awake()
     {
         structureDataManger = StructureDataManager.GetInstance();
@@ -28,8 +29,15 @@ public class CraftFactory : Singleton<CraftFactory>
         structureDataManger = null;
     }
 
+    private void Start()
+    {
+        spaceShip = FindObjectOfType<SpaceShip>();
+    }
+
     public GameObject ReadyToCraftBuilding(int index, Vector3 pos, float Hp = 0f, int size = 0)
     {
+        if (!spaceShip.IsDronReady()) return null;
+
         if (!CheckInventory(index)) // 인벤토리에 써야하는 그 재료들이 다 있는지 확인하고 있으면 저기서 소모하고 없으면 여기로 와서 null 리턴
         {
             return null;
@@ -38,7 +46,15 @@ public class CraftFactory : Singleton<CraftFactory>
         Transform obj = Instantiate(constructionSite, pos, Quaternion.identity);
         obj.SetParent(null);
         // 건축에 필요한 설정들을 해줘야함
+        obj.GetComponent<ConstructionSite>().SetIndex(index);
+        obj.GetComponent<ConstructionSite>().SetHp(Hp);
+        obj.GetComponent<ConstructionSite>().SetInPos(pos);
+        obj.GetComponent<ConstructionSite>().SetSize(size);
 
+        //obj.GetComponent<ConstructionSite>().StartBuilding(); // 건축 시작 << 이걸 드론이 해야됨
+
+        // 드론을 건축현장으로 보내는 함수를 여기서 실행한다!, 이때 드론을 건축 현장으로 보내는 함수는 인자로 obj를 타겟으로 받는다 
+        spaceShip.TakeOffDron(obj);
 
         return obj.gameObject;
     }
@@ -166,12 +182,14 @@ public class CraftFactory : Singleton<CraftFactory>
         int consume_Index1 = abilityData.Consume_IndexArr[0]; 
         int consume_Index2 = abilityData.Consume_IndexArr[1];
 
-        int consume_Count1 = abilityData.Consume_CountArr[0];
-        int consume_Count2 = abilityData.Consume_CountArr[1];
+        //int consume_Count1 = abilityData.Consume_CountArr[0];
+        //int consume_Count2 = abilityData.Consume_CountArr[1];
 
+        int consume_Count1 = 0;
+        int consume_Count2 = 0;
 
         // InventoryDatas 리스트를 순회하면서 각 id의 개수를 셉니다.
-        foreach (var item in Inventory.instance.InventoryDatas)
+        /*foreach (var item in Inventory.instance.InventoryDatas)
         {
             if (item.id == consume_Index1)
             {
@@ -190,8 +208,10 @@ public class CraftFactory : Singleton<CraftFactory>
             Inventory.instance.UseItem(consume_Index2, consume_Count2);
             return true;
         }
+*/
+        //return false; // 지금 인벤이랑 연결이 안돼서 막아놨는데 나중에 다 주석 해제하고 저 위에 count가 0인것도 지워야함
 
-        return false;
+        return true;
     }
     GameObject CraftTurret(int index, Vector3 pos, float Hp = 0f, int size = 0)
     {
