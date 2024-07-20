@@ -127,6 +127,7 @@ public class Inventory : MonoBehaviour
                 if(InventoryDatas[i].Amount >= Amount)
                 {
                     InventoryDatas[i].Amount -= Amount;
+                    UpdatePopup?.Invoke(0);
                 }
                 else
                 {
@@ -138,6 +139,24 @@ public class Inventory : MonoBehaviour
                 Debug.Log("재료 없음");
             }
         }
+    }
+    public bool GetItemCheck(int id, int Amount)
+    {
+        for(int i = 0; i < InventoryDatas.Count; i++)
+        {
+            if(InventoryDatas[i].id == id)
+            {
+                if(InventoryDatas[i].Amount >= Amount)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        return false;
     }
 
 }
