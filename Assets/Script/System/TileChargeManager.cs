@@ -13,9 +13,10 @@ public class TileChargeManager : MonoBehaviour
     private HashSet<Vector3Int> _previousTilePos = new HashSet<Vector3Int>();
     private Collider2D myCol;
     private TileManager tileManager;
+    private Coroutine charging;
     #endregion
     #region Protected
-    [SerializeField]protected float updateFrequency = 0.1f;
+    [SerializeField]protected float updateFrequency = 1.0f;
     #endregion
     #region Public
     public HashSet<Vector3Int> previousTilePos
@@ -43,7 +44,7 @@ public class TileChargeManager : MonoBehaviour
         {
             stat.deadEvent.AddListener(OnDead);
         }
-        StartCoroutine(UpdatingTile());
+        charging = StartCoroutine(UpdatingTile());
     }
 
     protected void UnChargeTiles()
@@ -139,6 +140,17 @@ public class TileChargeManager : MonoBehaviour
     protected void Start()
     {
         Initialize();
+    }
+
+    protected void OnEnable()
+    {
+        if(charging == null)
+            Initialize();
+    }
+
+    protected void OnDisable()
+    {
+        UnChargeTiles();
     }
 
     protected void OnDestroy()

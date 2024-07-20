@@ -31,7 +31,6 @@ public class WaveMonsterAttackState : MonsterState
         UnitMovement movement = GetComponent<UnitMovement>();
         stopMoveEvent.AddListener(movement.OnStop);
         moveToPathEvent.AddListener(movement.OnMoveToPath);
-
     }
     protected override void RemoveListeners()
     {
@@ -67,10 +66,6 @@ public class WaveMonsterAttackState : MonsterState
         {
             owner.stateMachine.ChangeState<WaveMonsterIdleState>();
         }
-
-
-        StartCoroutine(TravelingPath());
-        yield return null;
 
         Vector2 dir;
         float dist;

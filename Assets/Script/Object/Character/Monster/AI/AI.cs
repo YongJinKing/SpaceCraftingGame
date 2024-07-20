@@ -99,6 +99,7 @@ public class AI : MonoBehaviour
     #region Public
     ///<summary>
     ///일정범위의 게임오브젝트의 우선순위를 조사하여 타겟을 설정하는 함수
+    ///범위내의 목표중 우선순위가 가장 높은것을 반환하되 길을 찾을 수 있는 목표만 반환
     ///</summary>
     ///<param name="targetMask">타겟이 될 레이어 마스크</param>
     ///<param name="Radius">범위</param>
@@ -108,11 +109,11 @@ public class AI : MonoBehaviour
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, Radius, targetMask);
         if (targets.Length <= 0) { return null; }
 
-        int bestTarget = 0;
-        float max = 0;
+        int bestTarget = -1;
+        float max = -1.0f;
 
         IGetPriority getValue;
-        float computedVal;
+        float computedVal = 0;
         for (int i = 0; i < targets.Length; ++i)
         {
             //Compute Best Target
@@ -124,24 +125,34 @@ public class AI : MonoBehaviour
             if (computedVal < 0)
                 continue;
 
+            if(!this.PathFinding(this.transform.position, targets[i].transform.position, out Vector2[] path))
+            {
+                continue;
+            }
+
             if (max < computedVal)
             {
                 max = computedVal;
                 bestTarget = i;
             }
-        }
-
-        getValue = targets[bestTarget].GetComponentInParent<IGetPriority>();
-        //find target but, that can not become target
-        if (getValue != null)
-        {
-            if (getValue.GetPriority() < 0)
+            else if(Mathf.Approximately(max, computedVal))
             {
-                return null;
+                if (((Vector2)targets[bestTarget].transform.position - (Vector2)transform.position).sqrMagnitude
+                    - ((Vector2)targets[i].transform.position - (Vector2)transform.position).sqrMagnitude
+                    > 0)
+                {
+                    max = computedVal;
+                    bestTarget = i;
+                }
             }
         }
-        else { return null; }
-
+        
+        if(bestTarget < 0)
+        {
+            Debug.Log("AI.TargetSelect.if(bestTarget < 0)");
+            return null;
+        }
+        
         return targets[bestTarget].gameObject;
     }
 

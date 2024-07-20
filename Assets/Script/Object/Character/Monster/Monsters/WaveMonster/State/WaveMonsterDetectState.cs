@@ -61,19 +61,6 @@ public class WaveMonsterDetectState : MonsterState
         //Wait until Select Action
         yield return StartCoroutine(SelectingAction());
 
-        for(int i = 0; i < owner[EStat.DetectRadius] && owner.target != null; ++i)
-        {
-            if (!owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
-            {
-                owner.target = owner.ai.TargetSelect(owner.targetMask, owner[EStat.DetectRadius] - i);
-                yield return null;
-            }
-            else
-            {
-                break;
-            }
-        }
-
         if (owner.target == null)
         {
             Debug.Log("WaveMonsterDetectState.ProcessingState Idle ÀüÈ¯");

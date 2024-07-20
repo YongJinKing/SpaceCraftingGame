@@ -75,12 +75,16 @@ public class WaveMonsterIdleState : MonsterState
         owner.animator.SetBool("B_Move", true);
         while (true) 
         {
-            moveToDirEvent?.Invoke(Vector2.zero);
+            moveToDirEvent?.Invoke(Vector3.zero - transform.position);
             yield return null;
         }
         //owner.animator.SetBool("B_Move", false);
     }
 
+    /// <summary>
+    /// 일단 1.0초 마다 디텍트 하기로 함
+    /// </summary>
+    /// <returns></returns>
     protected IEnumerator Detecting()
     {
         if (owner.ai == null) yield break;
@@ -90,7 +94,7 @@ public class WaveMonsterIdleState : MonsterState
         while(target == null)
         {
             target = owner.ai.TargetSelect(owner.targetMask, owner[EStat.DetectRadius]);
-            yield return null;
+            yield return new WaitForSeconds(1.0f);
         }
 
         owner.target = target;
