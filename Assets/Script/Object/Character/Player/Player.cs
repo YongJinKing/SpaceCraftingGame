@@ -38,6 +38,7 @@ public class Player : Unit
     public Weapon AR;
     public Weapon Hammer;
     public Weapon PickAxe;
+    internal int layer;
     #endregion
     #region Events
     #endregion
@@ -109,4 +110,6 @@ public class Player : Unit
 
     #region MonoBehaviour
     #endregion
+
+
 }

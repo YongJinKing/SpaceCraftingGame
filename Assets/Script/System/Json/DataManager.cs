@@ -6,18 +6,6 @@ using System.IO;
 using Spine;
 using System;
 
-/*[Serializable]
-public class PlayerDataManager:MonoBehaviour
-{
-    public int index;
-    public int ModelPreFabIndex;
-    public float MaxHP;
-    public float Priority;
-    public float moveSpeed;
-    public float ATK;
-    public float ATKSpeed;
-
-}*/ //삭제 예정
 [System.Serializable]
 public class UnitData : MonoBehaviour
 {
@@ -29,6 +17,7 @@ public class UnitData : MonoBehaviour
     public float ATK;
     public float ATKSpeed;
 
+    public string playerdataString;
     public UnitData(Unit unit)
     {
         this.moveSpeed = unit.GetRawStat(EStat.MoveSpeed);
@@ -36,18 +25,21 @@ public class UnitData : MonoBehaviour
         this.ATKSpeed = unit.GetRawStat(EStat.ATKSpeed);
         this.MaxHP = unit.GetRawStat(EStat.MaxHP);
     }
+
+    public void PlayerDataSerialize()
+    {
+        playerdataString = $"{MaxHP},{moveSpeed},{ATK},{ATKSpeed}";
+    }
+
+    public void PlayerDataDeserialize()
+    {
+        var state = playerdataString.Split(',');
+    }
 }
 
 [Serializable]
 public class PlayerDataMansgerInfo
 {
-    /*public List<PlayerDataManager> playerDataManagers;
-
-    public PlayerDataMansgerInfo(List<PlayerDataManager> playerDataManagers)
-    {
-        this.playerDataManagers = playerDataManagers;
-    }*/ // 삭제예정
-
     public List<UnitData> units;
 
     public PlayerDataMansgerInfo(List<Unit> units)
@@ -64,6 +56,26 @@ public class PlayerDataManagerSaveSystem : Singleton<PlayerDataManagerSaveSystem
 {
     PlayerDataMansgerInfo playerDataMansgerInfo;
     string savePath;
+    public LayerMask playerLayerMask;
+    public LayerMask EnemyLayerMask;
+
+    private void Awake()
+    {
+        
+    }
+
+    void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SavePlayerInfo();
+        }
+    }
 
     List<Unit> unitsList = new List<Unit>();
     public void SavePlayerInfo()
@@ -71,7 +83,39 @@ public class PlayerDataManagerSaveSystem : Singleton<PlayerDataManagerSaveSystem
         Debug.Log("SavePlayerInfo called");
 
         Unit[] units = FindObjectsOfType<Unit>();
-        Debug.Log($"Found {units.Length} units");
+        Dictionary<int, Player> keyValuePairs = new Dictionary<int, Player>();
+
+        List<UnitData> playerdataList = new List<UnitData>();
+        foreach (var player in keyValuePairs)
+        {
+            UnitData unitData = gameObject.AddComponent<UnitData>();
+            unitData.PlayerDataDeserialize();
+            if (player.Value.gameObject == null)
+            {
+                if ((playerLayerMask & 1 << player.Value.layer)!=0)
+                {
+                    unitData.MaxHP = player.Value.gameObject.GetComponent<Player>().MaxHP;
+                    unitData.moveSpeed = player.Value.gameObject.GetComponent<Player>().moveSpeed;
+                    unitData.ATK = player.Value.gameObject.GetComponent<Player>().ATK;
+                    unitData.ATKSpeed = player.Value.gameObject.GetComponent<Player>().ATKSpeed;
+                }
+                else if((EnemyLayerMask & 1 << player.Value.layer) !=0)
+                {
+                    unitData.MaxHP = player.Value.gameObject.GetComponent<Monster>().MaxHP;
+                    unitData.moveSpeed = player.Value.gameObject.GetComponent<Monster>().moveSpeed;
+                    unitData.ATK = player.Value.gameObject.GetComponent<Monster>().ATK;
+                    unitData.ATKSpeed = player.Value.gameObject.GetComponent<Monster>().ATKSpeed;
+                }
+            }
+            else
+            {
+                unitData.MaxHP = 0;
+                unitData.moveSpeed = 0;
+                unitData.ATK = 0;
+                unitData.ATKSpeed = 0;
+            }
+            playerdataList.Add(unitData);
+        }
 
         unitsList.Clear();
         unitsList.AddRange(units);
@@ -81,7 +125,7 @@ public class PlayerDataManagerSaveSystem : Singleton<PlayerDataManagerSaveSystem
         //직렬화 코드
         var json = JsonConvert.SerializeObject(playerDataMansgerInfo, Formatting.Indented);
 
-        savePath = "SaveTestJson.json";
+        savePath = "PlayerDataStruct.json";
         File.WriteAllText(savePath, json);
 
         Debug.Log($"Data saved to: {savePath}");
@@ -92,7 +136,7 @@ public class PlayerDataManagerSaveSystem : Singleton<PlayerDataManagerSaveSystem
     {
         Debug.Log("LoadJson called");
 
-        var jsonPath = "SaveTestJson.json";
+        var jsonPath = "PlayerDataStruct.json";
         if (File.Exists(jsonPath))
         {
             string JsonString = File.ReadAllText(jsonPath);
@@ -124,7 +168,10 @@ public class PlayerDataManagerSaveSystem : Singleton<PlayerDataManagerSaveSystem
             Debug.LogError("JSON 데이터를 역직렬화하는데 실패했습니다.");
         }
 
-        Debug.Log($"Loaded JSON: {jsonString}");
+        foreach (var item in playerDataManagersList.units)
+        {
+            item.PlayerDataDeserialize();
+        }
 
         return playerDataManagersList;
 
