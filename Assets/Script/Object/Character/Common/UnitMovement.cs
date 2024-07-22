@@ -74,7 +74,10 @@ public class UnitMovement : MonoBehaviour
         dir.Normalize();
         transform.Translate(dir * Speed * Time.deltaTime);
     }
-
+    public float GetSpeed()
+    {
+        return Speed;
+    }
     public void OnMoveSpeedStatChanged(float oldSpeed ,float newSpeed)
     {
         this.Speed = newSpeed;

@@ -6,16 +6,21 @@ public class SlowGround : MonoBehaviour
 {
     public LayerMask layerMask;
     float originSpeed;
-    Unit player;
+    float slowSpeed;
+    UnitMovement player;
     bool slowed;
     // Start is called before the first frame update
     private void Start()
     {
-        player = FindObjectOfType<Unit>();
-        originSpeed = player.moveSpeed;
+        //player = FindObjectOfType<UnitMovement>();
     }
+
     void OnEnable()
     {
+        player = FindObjectOfType<UnitMovement>();
+        originSpeed = player.GetSpeed();
+        slowSpeed = originSpeed * 0.7f;
+        Debug.Log(originSpeed);
         Destroy(gameObject, 5f);
         slowed = false;
     }
@@ -28,7 +33,7 @@ public class SlowGround : MonoBehaviour
             if (!slowed)
             {
                 slowed = true;
-                collision.gameObject.GetComponent<Unit>().moveSpeed *= 0.2f;
+                collision.gameObject.GetComponent<UnitMovement>().OnMoveSpeedStatChanged(originSpeed, slowSpeed);
             }
             
         }
@@ -43,7 +48,7 @@ public class SlowGround : MonoBehaviour
             if (!slowed)
             {
                 slowed = true;
-                collision.gameObject.GetComponent<Unit>().moveSpeed *= 0.2f;
+                collision.gameObject.GetComponent<UnitMovement>().OnMoveSpeedStatChanged(originSpeed, slowSpeed);
             }
             /*originSpeed = collision.gameObject.GetComponent<Unit>().moveSpeed;
             */
@@ -54,13 +59,15 @@ public class SlowGround : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & layerMask) != 0)
         {
+            Debug.Log("플레이어 빠져나감");
             slowed = false;
-            collision.gameObject.GetComponent<Unit>().moveSpeed = originSpeed;
+            collision.gameObject.GetComponent<UnitMovement>().OnMoveSpeedStatChanged(collision.gameObject.GetComponent<UnitMovement>().GetSpeed(),originSpeed);
         }
     }
 
     private void OnDestroy()
     {
-        player.moveSpeed = originSpeed;
+        Debug.Log("사라짐");
+        player.OnMoveSpeedStatChanged(player.GetSpeed(), originSpeed);
     }
 }

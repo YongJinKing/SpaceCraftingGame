@@ -69,7 +69,7 @@ public class RabbitBossThrowAttackAction : BossAction
         //StartCoroutine(SpawnSlowSpot(pos)); // 슬로우 장판 생성
         yield return new WaitForSeconds(1f);
 
-        ActionEnd();
+       // ActionEnd();
     }
 
     IEnumerator SpawnSlowSpot(Vector2 pos)
@@ -100,6 +100,11 @@ public class RabbitBossThrowAttackAction : BossAction
     public void ThrowStoneEvent()
     {
         StartCoroutine(ThrowingAttack());
+    }
+
+    public void ThrowEndEvent()
+    {
+        ActionEnd();
     }
     public override void Deactivate()
     {

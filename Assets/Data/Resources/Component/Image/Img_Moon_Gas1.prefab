@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexNum: 500001
   outputIndexNum: 100001
-  hp: 1
+  hp: 6
   minAmount: 1
   maxAmount: 5
   size: 1

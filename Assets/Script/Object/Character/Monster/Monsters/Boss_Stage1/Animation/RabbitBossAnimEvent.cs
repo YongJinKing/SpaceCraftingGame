@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class RabbitBossAnimEvent : MonoBehaviour
 {
     public UnityEvent ThrowEvent;
+    public UnityEvent ThrownEndEvent;
     public UnityEvent SuperJumpEvent;
     public UnityEvent SpinningEvent;
     public UnityEvent RiceRainEvent;
@@ -14,6 +15,11 @@ public class RabbitBossAnimEvent : MonoBehaviour
     public void ThrowAnimation()
     {
         ThrowEvent?.Invoke();
+    }
+
+    public void ThrowEndAnimation()
+    {
+        ThrownEndEvent?.Invoke();
     }
 
     public void SuperJumpAnimation()
