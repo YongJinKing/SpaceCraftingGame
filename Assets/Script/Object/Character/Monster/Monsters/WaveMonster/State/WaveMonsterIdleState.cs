@@ -84,7 +84,6 @@ public class WaveMonsterIdleState : MonsterState
     /// <summary>
     /// 일단 1.0초 마다 디텍트 하기로 함
     /// </summary>
-    /// <returns></returns>
     protected IEnumerator Detecting()
     {
         if (owner.ai == null) yield break;
@@ -94,11 +93,18 @@ public class WaveMonsterIdleState : MonsterState
         while(target == null)
         {
             target = owner.ai.TargetSelect(owner.targetMask, owner[EStat.DetectRadius]);
-            yield return new WaitForSeconds(1.0f);
+            //못찾았을때만 1초 대기
+            if(target == null)
+                yield return new WaitForSeconds(1.0f);
+            else
+            {
+                yield return null;
+            }
         }
 
         owner.target = target;
         owner.stateMachine.ChangeState<WaveMonsterDetectState>();
+        yield return null;
     }
     #endregion
 

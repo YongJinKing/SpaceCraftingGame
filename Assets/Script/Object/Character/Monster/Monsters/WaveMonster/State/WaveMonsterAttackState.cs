@@ -124,7 +124,7 @@ public class WaveMonsterAttackState : MonsterState
         owner.animator.SetBool("B_Move", false);
 
         //if cannot find path
-        owner.stateMachine.ChangeState<WaveMonsterIdleState> ();
+        owner.stateMachine.ChangeState<WaveMonsterIdleState>();
     }
     #endregion
 

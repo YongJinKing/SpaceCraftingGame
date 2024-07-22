@@ -177,8 +177,8 @@ public class AI : MonoBehaviour
 
         CList.Add(startCoor, new Node(startCoor, 0, 0, startCoor));
 
-        //repeat 5 times
-        for (int i = 0; i < 5; ++i)
+        //repeat 10 times
+        for (int i = 0; i < 10; ++i)
         {
             //Add Node to Open Node List
             foreach(Node node in CList.Values)

@@ -33,7 +33,7 @@ public class State : MonoBehaviour
     #region Public
     public virtual void Enter()
     {
-        Debug.Log(this.GetType());
+        Debug.Log($"{this.gameObject.name}, {this.GetType()}");
         AddListeners();
     }
 

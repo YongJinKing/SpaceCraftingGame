@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -102,12 +103,11 @@ public class TileChargeManager : MonoBehaviour
                 {
                     Vector3Int tilePosition = new Vector3Int(x, y, 0);
 
-                    if (tileManager.HasTile(tilePosition) && !_previousTilePos.Contains(tilePosition))
+                    if (tileManager.HasTile(tilePosition))
                     {
-                        if (tileManager.availablePlaces[tilePosition].available)
+                        if (tileManager.availablePlaces[tilePosition].available || _previousTilePos.Contains(tilePosition))
                         {
                             tileManager.RemopvePlace(tilePosition);
-                            _previousTilePos.Add(tilePosition);
                             tempSet.Add(tilePosition);
                         }
                     }
@@ -115,20 +115,18 @@ public class TileChargeManager : MonoBehaviour
             }
 
             //차지를 품
-            foreach(Vector3Int coorPos in _previousTilePos)
+            foreach (Vector3Int coorPos in _previousTilePos)
             {
                 if (!tempSet.Contains(coorPos))
                 {
-                    if (tileManager.HasTile(coorPos))
+                    if (tileManager.availablePlaces[coorPos].Object == null)
                     {
-                        if (tileManager.availablePlaces[coorPos].Object == null)
-                        {
-                            tileManager.availablePlaces[coorPos].available = true;
-                        }
+                        tileManager.availablePlaces[coorPos].available = true;
                     }
                 }
             }
-            _previousTilePos = tempSet;
+            
+            _previousTilePos = tempSet.ToHashSet();
 
             //updateFrequency마다 반복
             yield return new WaitForSeconds(updateFrequency);
@@ -140,17 +138,6 @@ public class TileChargeManager : MonoBehaviour
     protected void Start()
     {
         Initialize();
-    }
-
-    protected void OnEnable()
-    {
-        if(charging == null)
-            Initialize();
-    }
-
-    protected void OnDisable()
-    {
-        UnChargeTiles();
     }
 
     protected void OnDestroy()
