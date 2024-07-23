@@ -12,6 +12,7 @@ public class SP_RiceRainAttack : SPAttackAction
 
     #endregion
     #region Public
+    public Transform julguHitVFX;
     public Transform[] xShapeLines;
     public Transform[] plusShapeLines; // 이 두개는 떨어질 위치
     public Transform[] xShapeWarningLines;
@@ -162,6 +163,7 @@ public class SP_RiceRainAttack : SPAttackAction
 
     public void StartWarningPattern()
     {
+        Instantiate(julguHitVFX, mortalBox.transform.position, Quaternion.identity);
         StartCoroutine(ShowPatternLines());
     }
     public override void Activate(Vector2 pos)

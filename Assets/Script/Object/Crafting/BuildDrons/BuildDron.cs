@@ -1,6 +1,7 @@
 using Spine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -39,8 +40,19 @@ public class BuildDron : MonoBehaviour
 
     IEnumerator MoveToTarget(Transform target)
     {
+        Transform targetPos = target;
+        if(target.transform.position.x < this.transform.position.x)
+        {
+            dronImg.transform.rotation = Quaternion.Euler(0, 180, 0);
+            targetPos.position = new Vector3(target.transform.position.x + 1f, target.transform.position.y, target.transform.position.z);
+        }
+        else
+        {
+            dronImg.transform.rotation = Quaternion.Euler(0, 0, 0);
+            targetPos.position = new Vector3(target.transform.position.x - 1f, target.transform.position.y, target.transform.position.z);
+        }
         animator.SetBool("Move", true);
-        Vector3 dir = target.position - this.transform.position;
+        Vector3 dir = targetPos.position - this.transform.position;
         float dist = dir.magnitude;
         float delta = Time.deltaTime * moveSpeed;
         dir.Normalize();
@@ -53,7 +65,6 @@ public class BuildDron : MonoBehaviour
             }
 
             dist -= delta;
-
             this.transform.Translate(dir * delta, Space.World);
 
             yield return null;

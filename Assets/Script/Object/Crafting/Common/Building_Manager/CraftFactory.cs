@@ -334,6 +334,7 @@ public class CraftFactory : Singleton<CraftFactory>
         factoryBuilding.consumeCount1 = abilityData.Consume_CountArr[0]; // 건물 건설 시 소모되는 자원1 갯수
         factoryBuilding.consumeIndex2 = abilityData.Consume_IndexArr[1]; // 건물에서 생산되는 자원2 인덱스
         factoryBuilding.consumeCount2 = abilityData.Consume_CountArr[1]; // 건물에서 생산 되는 자원2 갯수*/
+        factoryBuilding.mComponentName = componentData.Component_Name.ToString();
         factoryBuilding.produceCount = abilityData.BuildingDetail_Value;
         factoryBuilding.DestroyEvent = new UnityEngine.Events.UnityEvent<Vector3>();
         //if (Hp != 0) factoryBuilding.MaxHP = componentData.Component_Hp; // 건물의 체력
@@ -403,7 +404,7 @@ public class CraftFactory : Singleton<CraftFactory>
         obj.layer = 16;
 
         Barricade barricade = obj.GetComponent<Barricade>();
-
+        barricade.mComponentName = componentData.Component_Name.ToString();
         if (Hp == 0) barricade.MaxHP = componentData.Component_Hp; // 건물의 체력
         else barricade.MaxHP = Hp; // 건물의 체력
 

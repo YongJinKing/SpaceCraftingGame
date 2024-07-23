@@ -13,7 +13,7 @@ public class ConstructionSite : MonoBehaviour
     [SerializeField] Vector3 pos;
     [SerializeField] float Hp;
     [SerializeField] int size;
-    [SerializeField] float craftingTime = 2f;
+    [SerializeField] float craftingTime = 4f;
     
     public void SetIndex(int _index)
     {
@@ -32,6 +32,11 @@ public class ConstructionSite : MonoBehaviour
         size = _size;
     }
 
+    public void SetCraftingTime(float _time)
+    {
+        craftingTime = _time;
+    }
+
     public void StartBuilding()
     {
         StartCoroutine(CraftBuildingCoroutine());
@@ -39,10 +44,12 @@ public class ConstructionSite : MonoBehaviour
 
     IEnumerator CraftBuildingCoroutine()
     {
-        yield return new WaitForSeconds(craftingTime);
+        yield return new WaitForSeconds(10f);
 
         finishWorkEvent?.Invoke();
-        CraftFactory.Instance.CraftBuilding(index, pos, Hp, size);
+        GameObject obj = CraftFactory.Instance.CraftBuilding(index, pos, Hp, size);
+        Vector3Int tmpPos = new Vector3Int((int)(pos.x - TileManager.Instance.tileMap.tileAnchor.x), (int)(pos.y - TileManager.Instance.tileMap.tileAnchor.y), (int)pos.z);
+        TileManager.Instance.RemopvePlace(tmpPos, obj, size);
         Destroy(this.gameObject);
     }
 

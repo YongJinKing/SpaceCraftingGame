@@ -55,9 +55,12 @@ public class ThrownRice : MonoBehaviour
         yield return new WaitForEndOfFrame();
         Vector2 dir = targetPos - (Vector2)this.transform.position;
         dir.Normalize();
+        float currentSpeed = throwSpeed;
         while (true)
         {
-            this.transform.Translate(dir * throwSpeed * Time.deltaTime, Space.World);
+            currentSpeed += throwSpeed * Time.deltaTime; // 가속도를 이용해 속도 증가
+            this.transform.Translate(dir * currentSpeed * Time.deltaTime, Space.World);
+            //this.transform.Translate(dir * throwSpeed * Time.deltaTime, Space.World);
             yield return null;
         }
         

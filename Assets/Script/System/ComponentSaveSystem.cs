@@ -119,6 +119,7 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
                     if ((structureLayerMask & 1 << tile.Value.Object.layer) != 0)
                     {
                         Debug.Log("°Ç¹°");
+                        Debug.Log(tile.Value.Object.GetComponent<Structure>().mComponentName);
                         component.index = int.Parse(tile.Value.Object.GetComponent<Structure>().mComponentName);
                         component.Hp = tile.Value.Object.GetComponent<Structure>().MaxHP;
                     }

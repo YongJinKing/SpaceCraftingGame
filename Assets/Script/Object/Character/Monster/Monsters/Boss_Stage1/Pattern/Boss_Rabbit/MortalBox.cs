@@ -14,6 +14,7 @@ public class MortalBox : MonoBehaviour
     [SerializeField] float timer = 0;
     [SerializeField] float spawnTime;
 
+    public ParticleSystem riceRainVFX;
     public Animator anim;
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,11 @@ public class MortalBox : MonoBehaviour
     public void SpawnRabbitWorker()
     {
         if(rabbitWorker != null) rabbitWorker.SetActive(true);
+    }
+
+    public void PlayVFX()
+    {
+        riceRainVFX.Play();
     }
 
     public void StartProducingCake()
