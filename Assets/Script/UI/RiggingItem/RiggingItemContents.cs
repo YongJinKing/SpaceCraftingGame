@@ -20,6 +20,7 @@ public class RiggingItemContents : MonoBehaviour
     private int sniperLevel = 1;
     private int pickLevel = 1;
     private int hammerLevel = 2;
+    private int levelUpSlotNum = 0;
 
     private int riggingItemCount = 3;
     private void Start() 
@@ -45,6 +46,7 @@ public class RiggingItemContents : MonoBehaviour
     private void PressedLevelUpBtn(int index)
     {
         transform.GetChild(1).gameObject.SetActive(true);
+        levelUpSlotNum = index;
         transform.GetChild(1).GetComponent<AlarmPopup>().
         UpdatePopup(transform.GetChild(0).GetChild(0).GetChild(0).GetChild(index).GetComponent<RiggingItemSlot>().GetSlotId());
         //
@@ -66,7 +68,7 @@ public class RiggingItemContents : MonoBehaviour
                 }
                 checkInven = true;
             }
-            Debug.Log(checkInven);
+            
             if(checkInven)
             {
                 for(int i = 0; i < AlarmContents.childCount; i++)
@@ -75,7 +77,7 @@ public class RiggingItemContents : MonoBehaviour
                     (AlarmContents.GetChild(i).GetComponent<ResourceSlot>().resourceId,
                     AlarmContents.GetChild(i).GetComponent<ResourceSlot>().resourceAmount);
                 }
-                transform.GetChild(0).GetChild(0).GetChild(0).GetChild(index).GetComponent<RiggingItemSlot>().Init(index, ++riggingItemLevelData[index]);
+                transform.GetChild(0).GetChild(0).GetChild(0).GetChild(levelUpSlotNum).GetComponent<RiggingItemSlot>().Init(levelUpSlotNum, ++riggingItemLevelData[levelUpSlotNum]);
             }
             else
             {
