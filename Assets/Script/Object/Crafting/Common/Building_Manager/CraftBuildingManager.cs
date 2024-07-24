@@ -181,7 +181,7 @@ public class CraftBuildingManager : MonoBehaviour
             //GameObject craft = CraftFactory.Instance.CraftBuilding(index, craftPos, 0, size);
 
             GameObject craft = CraftFactory.Instance.ReadyToCraftBuilding(index, craftPos, 0, size);
-
+            //GameObject craft = CraftFactory.Instance.ReadyToCraftBuilding(index, pos, 0, size);
             if (craft == null) return;
             craft.transform.localScale = Vector3.one * size;
             craft.transform.SetParent(TurretParent);

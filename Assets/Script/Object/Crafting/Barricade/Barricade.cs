@@ -18,7 +18,7 @@ public class Barricade : Structure
     }
     protected override void OnDead()
     {
-        Instantiate(destroyVFX, this.transform);
+        destroyVFX.gameObject.SetActive(true);
         Destroy(this.transform.gameObject, 2f);
     }
 

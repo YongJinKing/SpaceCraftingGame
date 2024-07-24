@@ -13,7 +13,7 @@ public class ConstructionSite : MonoBehaviour
     [SerializeField] Vector3 pos;
     [SerializeField] float Hp;
     [SerializeField] int size;
-    [SerializeField] float craftingTime = 4f;
+    [SerializeField] float craftingTime = 1f;
     
     public void SetIndex(int _index)
     {
@@ -44,7 +44,7 @@ public class ConstructionSite : MonoBehaviour
 
     IEnumerator CraftBuildingCoroutine()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(1f);
 
         finishWorkEvent?.Invoke();
         GameObject obj = CraftFactory.Instance.CraftBuilding(index, pos, Hp, size);

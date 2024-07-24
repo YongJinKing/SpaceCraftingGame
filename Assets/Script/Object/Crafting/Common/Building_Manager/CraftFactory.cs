@@ -176,17 +176,12 @@ public class CraftFactory : Singleton<CraftFactory>
             abilityData = structureDataManger.dicCBAbilityTable[index];
         }
 
-        int chkCount1 = 0;
-        int chkCount2 = 0;
-
         int consume_Index1 = abilityData.Consume_IndexArr[0]; 
         int consume_Index2 = abilityData.Consume_IndexArr[1];
 
-        //int consume_Count1 = abilityData.Consume_CountArr[0];
-        //int consume_Count2 = abilityData.Consume_CountArr[1];
+        int consume_Count1 = abilityData.Consume_CountArr[0];
+        int consume_Count2 = abilityData.Consume_CountArr[1];
 
-        int consume_Count1 = 0;
-        int consume_Count2 = 0;
 
         // InventoryDatas 리스트를 순회하면서 각 id의 개수를 셉니다.
         /*foreach (var item in Inventory.instance.InventoryDatas)
