@@ -48,6 +48,7 @@ public class WaveMonsterUnmovableActionState : MonsterState
     public override void Exit()
     {
         owner.activatedAction.Deactivate();
+        owner.animator.SetBool("B_Attack", false);
         base.Exit();
     }
     #endregion

@@ -10,7 +10,7 @@ public abstract class Action : MonoBehaviour, IGetPriority
     #region Private
     #endregion
     #region Protected
-    protected bool _fireAndForget = false;
+    [SerializeField]protected bool _fireAndForget = false;
     protected bool _available = true;
     //for AI
     [SerializeField]protected float _priority = 0.0f;
@@ -31,7 +31,7 @@ public abstract class Action : MonoBehaviour, IGetPriority
     public bool fireAndForget
     {
         get { return _fireAndForget; }
-        protected set { _fireAndForget = value; }
+        set { _fireAndForget = value; }
     }
     ///<summary>
     ///이 액션이 지금현재 사용 가능한지 아닌지에 대한 bool값
