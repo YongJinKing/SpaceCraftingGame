@@ -64,6 +64,10 @@ public class Player : Unit
             InputController.Instance.getMousePosEvent.RemoveListener(OnGetMousePos);
         }
     }
+    protected void OnHit()
+    {
+        stateMachine.ChangeState<PlayerHitState>();
+    }
     protected override void Initialize()
     {
         base.Initialize();
@@ -77,6 +81,14 @@ public class Player : Unit
     }
     #endregion
     #region Public
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        if (!isDead)
+        {
+            OnHit();
+        }
+    }
     #endregion
     #endregion
 
@@ -110,6 +122,4 @@ public class Player : Unit
 
     #region MonoBehaviour
     #endregion
-
-
 }

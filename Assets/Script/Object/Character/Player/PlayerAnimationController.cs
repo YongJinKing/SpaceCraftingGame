@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAnimationController : MonoBehaviour
 {
@@ -29,10 +30,12 @@ public class PlayerAnimationController : MonoBehaviour
     protected int B_Move;
     protected int B_LeftClick;
     protected int T_Dead;
+    protected int T_Hit;
     #endregion
     #region Public
     #endregion
     #region Events
+    public UnityEvent<int> animEndEvent = new UnityEvent<int>();
     #endregion
     #endregion
 
@@ -64,10 +67,18 @@ public class PlayerAnimationController : MonoBehaviour
     {
         anim.SetTrigger(T_Dead);
     }
+    public void TriggerHit()
+    {
+        anim.SetTrigger(T_Hit);
+    }
     #endregion
     #endregion
 
     #region EventHandlers
+    public void OnAnimationEnd(int type)
+    {
+        animEndEvent?.Invoke(type);
+    }
     #endregion
 
     #region Coroutines
@@ -80,6 +91,7 @@ public class PlayerAnimationController : MonoBehaviour
         B_Move = Animator.StringToHash("B_Move");
         B_LeftClick = Animator.StringToHash("B_LeftClick");
         T_Dead = Animator.StringToHash("T_Dead");
+        T_Hit = Animator.StringToHash("T_Hit");
     }
     #endregion
 }

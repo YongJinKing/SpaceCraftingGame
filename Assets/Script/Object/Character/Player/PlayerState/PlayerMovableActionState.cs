@@ -52,7 +52,6 @@ public class PlayerMovableActionState : PlayerState
     {
         owner.moveAction.Deactivate();
         owner.activatedAction.Deactivate();
-        owner.weaponRotationAxis.SetActive(false);
         base.Exit();
     }
     #endregion
