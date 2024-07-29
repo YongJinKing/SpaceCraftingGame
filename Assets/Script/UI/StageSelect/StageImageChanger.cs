@@ -14,62 +14,62 @@ public class StageImageChanger : MonoBehaviour
     public TMP_Text StageDescription;
 
 
-    string EarthTitle;
-    string EarthDescription;
+    string Stage1Title;
+    string Stage1Description;
 
-    string MarsTitle;
-    string MarsDescription;
+    string Stage2Title;
+    string Stage2Description;
 
-    string JupiterTitle;
-    string JupiterDescription;
+    string Stage3Title;
+    string Stage3Description;
 
-    string SaturnTitle;
-    string SaturnDescription;
+    string Stage4Title;
+    string Stage4Description;
 
     private void Start()
     {
-        EarthTitle = "EARTH";
-        EarthDescription = "Bunny monster, T1 mineral, T1 Gas";
+        Stage1Title = "Bunnster";
+        Stage1Description = "Bunny monster, T1 mineral, T1 Gas";
 
-        MarsTitle = "MARS";
-        MarsDescription = "Mars, T2 mineral, T2 Gas";
+        Stage2Title = "Stage2";
+        Stage2Description = "Stage2, T2 mineral, T2 Gas";
 
-        JupiterTitle = "JUPITER";
-        JupiterDescription = "Jupiter monster, T3 mineral, T3 Gas";
+        Stage3Title = "Stage3";
+        Stage3Description = "Stage3 monster, T3 mineral, T3 Gas";
 
-        SaturnTitle = "SATURN";
-        SaturnDescription = "Saturn Monster, T4 Mineral, T4 Gas";
+        Stage4Title = "Stage4";
+        Stage4Description = "Stage4 Monster, T4 Mineral, T4 Gas";
 
-        StageTitle.GetComponent<TMP_Text>().text = EarthTitle;
-        StageDescription.text = EarthDescription;
+        StageTitle.GetComponent<TMP_Text>().text = Stage1Title;
+        StageDescription.text = Stage1Description;
 
     }
 
 
-    public void BtnClickEarth()
+    public void BtnClickStage1()
     {
         
         StageImage.GetComponent<Image>().sprite = sprites[0];
         
-        StageTitle.GetComponent<TMP_Text>().text = EarthTitle;
-        StageDescription.text = EarthDescription;
+        StageTitle.GetComponent<TMP_Text>().text = Stage1Title;
+        StageDescription.text = Stage1Description;
     }
-    public void BtnClickMars()
+    public void BtnClickStage2()
     {
         StageImage.GetComponent<Image>().sprite = sprites[1];
-        StageTitle.text = MarsTitle;
-        StageDescription.text = MarsDescription;
+        StageTitle.text = Stage2Title;
+        StageDescription.text = Stage2Description;
     }
-    public void BtnClickJupiter()
+    public void BtnClickStage3()
     {
         StageImage.GetComponent<Image>().sprite = sprites[2];
-        StageTitle.text = JupiterTitle;
-        StageDescription.text = JupiterDescription;
+        StageTitle.text = Stage3Title;
+        StageDescription.text = Stage3Description;
     }
-    public void BtnClickSaturn()
+    public void BtnClickStage4()
     {
         StageImage.GetComponent<Image>().sprite = sprites[3];
-        StageTitle.text = SaturnTitle;
-        StageDescription.text = SaturnDescription;
+        StageTitle.text = Stage4Title;
+        StageDescription.text = Stage4Description;
     }
 }
