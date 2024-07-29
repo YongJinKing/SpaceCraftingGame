@@ -80,6 +80,46 @@
     "ImageResource_Name": "Img_Moon_SiegeBuilding10"
   },
   {
+    "ComponentImage_Index": 130000,
+    "ImageResource_Name": "Img_Moon_Fence1"
+  },
+  {
+    "ComponentImage_Index": 130001,
+    "ImageResource_Name": "Img_Moon_Fence2"
+  },
+  {
+    "ComponentImage_Index": 130002,
+    "ImageResource_Name": "Img_Moon_Fence3"
+  },
+  {
+    "ComponentImage_Index": 130003,
+    "ImageResource_Name": "Img_Moon_Fence4"
+  },
+  {
+    "ComponentImage_Index": 130004,
+    "ImageResource_Name": "Img_Moon_Fence5"
+  },
+  {
+    "ComponentImage_Index": 130005,
+    "ImageResource_Name": "Img_Moon_Fence6"
+  },
+  {
+    "ComponentImage_Index": 130006,
+    "ImageResource_Name": "Img_Moon_Fence7"
+  },
+  {
+    "ComponentImage_Index": 130007,
+    "ImageResource_Name": "Img_Moon_Fence8"
+  },
+  {
+    "ComponentImage_Index": 130008,
+    "ImageResource_Name": "Img_Moon_Fence9"
+  },
+  {
+    "ComponentImage_Index": 130009,
+    "ImageResource_Name": "Img_Moon_Fence10"
+  },
+  {
     "ComponentImage_Index": 500000,
     "ImageResource_Name": "Img_Moon_Ore1"
   },
