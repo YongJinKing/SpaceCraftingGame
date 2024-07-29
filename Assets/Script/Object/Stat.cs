@@ -105,6 +105,7 @@ public abstract class Stat : MonoBehaviour, IDamage, IGetPriority
     {
         if (_StatChangedEvents.ContainsKey(type))
         {
+            Debug.Log("Stat.AddStatEventListener");
             _StatChangedEvents[type].AddListener(function);
         }
     }
