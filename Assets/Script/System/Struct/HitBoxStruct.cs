@@ -6,7 +6,8 @@ public struct MeleeHitBoxStruct
     public int Hit_Effect_Prefab_Index;
     public int Destroy_Effect_Prefab_Index;
     public int[] Affect_Index;
-    public Vector2 HitBox_Size;
+    public float HitBox_X_Size;
+    public float HitBox_Y_Size;
     public int[] LayerMask;
     public float HitBox_Duration;
     public float Hit_Frequency;
@@ -20,7 +21,8 @@ public struct PointHitBoxStruct
     public int Hit_Effect_Prefab_Index;
     public int Destroy_Effect_Prefab_Index;
     public int[] Affect_Index;
-    public Vector2 HitBox_Size;
+    public float HitBox_X_Size;
+    public float HitBox_Y_Size;
     public int[] LayerMask;
     public float HitBox_Duration;
     public float Hit_Frequency;
@@ -33,7 +35,8 @@ public struct ProjectileHitBoxStruct
     public int Hit_Effect_Prefab_Index;
     public int Destroy_Effect_Prefab_Index;
     public int[] Affect_Index;
-    public Vector2 HitBox_Size;
+    public float HitBox_X_Size;
+    public float HitBox_Y_Size;
     public int[] LayerMask;
     public float HitBox_Duration;
     public float Hit_Frequency;
