@@ -5,9 +5,12 @@ using UnityEngine;
 public class MeteorRice : MonoBehaviour
 {
     public LayerMask layerMask;
+    public Transform brokenVFX;
 
     private Vector3 targetPos;
     private Rigidbody2D rb;
+
+
     public void Initialize(Vector3 target)
     {
         this.targetPos = target;
@@ -42,6 +45,7 @@ public class MeteorRice : MonoBehaviour
             // 물체를 제거
             Destroy(gameObject);
             // 여기서 터지는 무언가를 생성한다. 터지는 이펙트 같은거.
+            Instantiate(brokenVFX, gameObject.transform.position, Quaternion.identity, null);
         }
 
     }

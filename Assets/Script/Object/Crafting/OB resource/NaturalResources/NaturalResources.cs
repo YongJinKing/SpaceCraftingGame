@@ -47,7 +47,6 @@ public class NaturalResources : MonoBehaviour
         }
 
         Vector3Int resourcePos = new Vector3Int((int)pos.x, (int)pos.y, 0);
-        //TileManager.Instance.RemopvePlace(resourcePos, obj, size);
         TileManager.Instance.RevokePlace(resourcePos);
     }
 }

@@ -44,9 +44,9 @@ public class Boss_Rabbit : Boss
     #endregion
     #region Public
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
     #endregion
     #endregion

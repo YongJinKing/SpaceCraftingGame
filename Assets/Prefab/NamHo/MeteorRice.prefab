@@ -82,6 +82,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 2097152
+  brokenVFX: {fileID: 4117117008987422152, guid: ba16ceac7af3dea429a91795780fc52a, type: 3}
 --- !u!58 &7758060151021656396
 CircleCollider2D:
   m_ObjectHideFlags: 0

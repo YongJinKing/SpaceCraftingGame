@@ -16,13 +16,9 @@ public class CraftBuildingManager : MonoBehaviour
 
     public int size;
     [SerializeField] int buildingIndex;
-    //TileManager tileManage;
-    //CraftFactory factory;
     // Start is called before the first frame update
     void Start()
     {
-        //tileManage = FindObjectOfType<TileManager>(); // tilemanager singleton화 시키는중
-        //factory = new CraftFactory();
         buildingIndex = 110000; // 빌딩 인덱스, 추후 건축 모드에서 Ui를 통해 이 인덱스를 원하는 건물의 인덱스로 변경할 수 있어야함  <<<<<<<<<<<<
         size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
     }
@@ -35,19 +31,21 @@ public class CraftBuildingManager : MonoBehaviour
         {
             buildingIndex = 110000;
             size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
-            Debug.Log("현재 건설 선택된 인덱스 : " + buildingIndex);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             buildingIndex = 100000;
             size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
-            Debug.Log("현재 건설 선택된 인덱스 : " + buildingIndex);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             buildingIndex = 100001;
             size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
-            Debug.Log("현재 건설 선택된 인덱스 : " + buildingIndex);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            buildingIndex = 130000;
+            size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
         }
         //===========================위의 코드들은 수정해야함==================================================
 
@@ -56,22 +54,18 @@ public class CraftBuildingManager : MonoBehaviour
         if (hit.collider != null)
         {
             ground = hit.collider.gameObject.GetComponent<Tilemap>();
-            // Vector3Int cellPosition = ground.LocalToCell(hit.point);
             Vector3Int cellPosition = ground.WorldToCell(hit.point);
 
             Draw_nSizeRectangle(cellPosition, size);
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log(cellPosition);
-                //if (tileManage.IsCraftable(cellPosition))  // 타일에 건축이 가능하다면<< 이것만 체크하는데 이제 필요한 자원까지 생각해서 건축할 수 있는지 검사해야함
                 if (TileManager.Instance.IsCraftable(cellPosition))
                 {
-
                     MakeFalseCoordinates(cellPosition, buildingIndex, size);
                 }
                 else
                 {
-                    Debug.Log("클릭한 위치에 건물이 있어 지을 수 없어요");
+                    
                 }
             }
         }
@@ -108,11 +102,9 @@ public class CraftBuildingManager : MonoBehaviour
                 tmpPos = intPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
                 cellPos = drawPos + new Vector3(ground.tileAnchor.x, ground.tileAnchor.y, 0);
 
-                //if (!tileManage.HasTile(tmpPos)) break;
                 if (!TileManager.Instance.HasTile(tmpPos)) break;
                 if (!rectangles[rectIdx].gameObject.activeSelf) rectangles[rectIdx].gameObject.SetActive(true);
                 rectangles[rectIdx].transform.position = cellPos;
-                //if (tileManage.IsCraftable(tmpPos))
                 if (TileManager.Instance.IsCraftable(tmpPos))
                 {
                     Color tmpColor = Color.green;
@@ -140,14 +132,12 @@ public class CraftBuildingManager : MonoBehaviour
             for (int j = 0; j < size; j++)
             {
                 cellPos = tmpPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
-                //if (!tileManage.HasTile(cellPos))
                 if (!TileManager.Instance.HasTile(cellPos))
                 {
                     canBuild = false;
                     break;
                 }
 
-                //if (tileManage.IsCraftable(cellPos))
                 if (TileManager.Instance.IsCraftable(cellPos))
                 {
                     continue;
@@ -160,40 +150,25 @@ public class CraftBuildingManager : MonoBehaviour
             }
             if (!canBuild)
             {
-                Debug.Log("클릭한 위치 범위 내에 건물이 있어 지을 수 없어요");
                 break;
             }
         }
 
         if (canBuild) // 해당 위치에 지을 수 있지만, 내가 가지고 있는 자원량과도 비교해야함 << 이거 추가해야함
         {
-            Debug.Log("여기엔 지을 수 있어요");
-
-            // 자원이 부족하면 못지어야함
-
-            // 아래는 건물을 짓는 코드들, 이것도 바로 짓는게 아니라 건물이 지어지는 느낌을 연출해야 하니 아래 코드들은 코루틴으로 이동?
-            // 건물 건설 연출 코루틴 -> 코루틴이 끝날때 아래 건설 코드들 실행
-            //Inventory.instance.UseItem(10000, 5); // <<<<<<<< 인벤토리에서 10000번 인덱스의 자원을 5개 만큼 사용한다. 그런데 이제 10000번이나 5개 모두 json에서 읽어와서 적용해야함, 건물마다 다르니깐
-            //Vector3 craftPos = new Vector3((pos.x + (ground.tileAnchor.x * size)), (pos.y + (ground.tileAnchor.y * size)), 0);
-
             Vector3 craftPos = new Vector3((pos.x + ground.tileAnchor.x), (pos.y + ground.tileAnchor.y), 0);
 
-            //GameObject craft = CraftFactory.Instance.CraftBuilding(index, craftPos, 0, size);
-
             GameObject craft = CraftFactory.Instance.ReadyToCraftBuilding(index, craftPos, 0, size);
-            //GameObject craft = CraftFactory.Instance.ReadyToCraftBuilding(index, pos, 0, size);
             if (craft == null) return;
             craft.transform.localScale = Vector3.one * size;
             craft.transform.SetParent(TurretParent);
 
             cellPos = Vector3Int.zero;
-           // WritePlaceInfoEvent?.Invoke(tmpPos, craft, size);
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
                 {
                     cellPos = tmpPos + new Vector3Int((int)ground.cellSize.x * j, (int)ground.cellSize.y * i, 0);
-                    //WritePlaceInfoEvent?.Invoke(cellPos, craft, size);
                     RemovePlaceEvent?.Invoke(cellPos);
                 }
             }

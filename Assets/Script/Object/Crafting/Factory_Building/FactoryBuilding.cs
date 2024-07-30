@@ -42,10 +42,7 @@ public class FactoryBuilding : Structure
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.L))
-        {
-            StartProducing(); // 임시, 작동 확인용
-        }*/
+        
     }
 
     public void StartProducing()

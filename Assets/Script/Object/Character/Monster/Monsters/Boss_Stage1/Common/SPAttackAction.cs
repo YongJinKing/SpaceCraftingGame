@@ -91,7 +91,7 @@ public class SPAttackAction : BossAction
         Transform rabbit = transform.parent.parent;
         if(rabbit.transform.position.x > mortalBox.transform.position.x)
         {
-            rabbit.transform.localScale = new Vector3(1,1,-1);
+            rabbit.transform.localScale = new Vector3(-1,1,1);
         }
         else
         {

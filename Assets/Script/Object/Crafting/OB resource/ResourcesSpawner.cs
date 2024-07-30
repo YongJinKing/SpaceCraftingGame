@@ -47,12 +47,10 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
                 size = 0;
                 obj = null;
                 Vector3Int cellPosition = new Vector3Int(x, y, 0);
-                //Vector3 worldPos = tileMap.GetCellCenterLocal(cellPosition);
                 Vector3 worldPos = tileMap.WorldToCell(cellPosition);
 
                 if (!tileMap.HasTile(cellPosition)) continue;
                 if (!TileManager.Instance.IsCraftable(cellPosition)) continue;
-                // 여기에 조건 추가
                 if (CheckObjectsInArea(cellPosition, placementInterval, layerMask)) continue;
 
                 // 구역 내에서 랜덤 위치 계산
@@ -87,38 +85,6 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
                 if (!TileManager.Instance.IsCraftable(convertPos)) continue;
 
                 SpawnResource(randomWorldPosition, cellPosition, true);
-                /*// 랜덤하게 자원 종류를 선택하여 배치
-                float randomValue = Random.value;
-                if (randomValue < mineralRatio)
-                {
-                    size = 1;
-                    // 1x1 크기의 자원1 배치
-                    obj = Instantiate(mineralPrefab, randomWorldPosition, Quaternion.identity);
-                    obj.transform.SetParent(minerals);
-                    RemovePlaceForResource(randomWorldPosition);
-
-                }
-                else if (randomValue < mineralRatio + gasRatio)
-                {
-                    size = 1;
-                    // 1x1 크기의 자원2 배치
-                    obj = Instantiate(gasPrefab, randomWorldPosition, Quaternion.identity);
-                    obj.transform.SetParent(gases);
-                    RemovePlaceForResource(randomWorldPosition);
-                }
-                else
-                {
-                    // 2x2 크기의 자원 배치
-                    if (CanPlaceLargeResource(cellPosition))
-                    {
-                        size = 2;
-                        randomWorldPosition = GetRandomPositionInCell(cellPosition);
-                        obj = Instantiate(largeResourcePrefab, randomWorldPosition, Quaternion.identity);
-                        obj.transform.SetParent(largeMinerals);
-                        RemovePlaceForResource(randomWorldPosition);
-                    }
-                }*/
-
             }
         }
     }
@@ -258,10 +224,8 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
 
     Vector3 GetRandomPositionInCell(Vector3 cellPosition)
     {
-        //Vector3 cellWorldPosition = tileMap.CellToWorld(cellPosition);
         int randomOffsetX = (int)Random.Range(0f, (placementInterval * tileMap.cellSize.x) / 2);
         int randomOffsetY = (int)Random.Range(0f, (placementInterval * tileMap.cellSize.y) / 2);
-        //return cellWorldPosition + new Vector3(randomOffsetX, randomOffsetY, 0);
         return cellPosition + new Vector3(randomOffsetX + 0.5f, randomOffsetY + 0.5f, 0);
     }
 

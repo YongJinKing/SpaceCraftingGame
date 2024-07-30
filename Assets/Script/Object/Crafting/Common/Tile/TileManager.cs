@@ -23,40 +23,17 @@ public class Tile
 public class TileManager : Singleton<TileManager>
 {
     public Tilemap tileMap = null;
-
-    //public List<Vector3> availablePlaces;
     public Dictionary<Vector3Int, Tile> availablePlaces;
     ComponetsInfo componentsInfo;
     CraftBuildingManager craftmanager;
-    //CraftFactory factory;
+
     void Awake()
     {
         craftmanager = FindObjectOfType<CraftBuildingManager>();
-        //factory = new CraftFactory();
         craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
         craftmanager.WritePlaceInfoEvent.AddListener(RemopvePlace);
         tileMap = transform.GetComponent<Tilemap>();
-        //availablePlaces = new List<Vector3>();
         availablePlaces = new Dictionary<Vector3Int, Tile>();
-
-        /*for (int x = tileMap.cellBounds.xMin; x < tileMap.cellBounds.xMax; x++)
-        {
-            for (int y = tileMap.cellBounds.yMin; y < tileMap.cellBounds.yMax; y++)
-            {
-                Vector3Int localPlace = (new Vector3Int(x, y, (int)tileMap.transform.position.z));
-                Vector3 place = tileMap.CellToWorld(localPlace);
-                if (tileMap.HasTile(localPlace))
-                {
-                    //Tile at "place"
-                    availablePlaces.Add(place);
-                }
-                else
-                {
-                    //No tile at "place"
-                }
-            }
-        }*/
-
 
         for (int y = tileMap.cellBounds.yMin; y < tileMap.cellBounds.yMax; y++)
         {
@@ -69,8 +46,6 @@ public class TileManager : Singleton<TileManager>
                     Vector3Int _place = new Vector3Int((int)place.x, (int)place.y, (int)place.z);
                     //Tile at "place"
                     availablePlaces[_place] = new Tile(true, null, 0);
-                    /*availablePlaces[_place].available = true;
-                    availablePlaces[_place].Object = null;*/
                 }
                 else
                 {
@@ -120,7 +95,6 @@ public class TileManager : Singleton<TileManager>
 
     public bool IsCraftable(Vector3Int coordinates)
     {
-        //return availablePlaces.Contains(coordinates);
         return availablePlaces[coordinates].available;
     }
 
@@ -141,26 +115,12 @@ public class TileManager : Singleton<TileManager>
     {
         Vector3Int cellPos = Vector3Int.zero;
         Vector3Int tmpPos = coordinates;
-        //Vector3Int tmpPos = new Vector3Int((int)pos.x, (int)pos.y, (int)pos.z);
         int size = availablePlaces[coordinates].size;
         Debug.Log("revoke "+size);
         
         availablePlaces[coordinates].available = true;
         availablePlaces.Remove(coordinates);
         availablePlaces[coordinates] = new Tile(true, null, 0);
-        // 이 아래 음수 처리는 임시 코드
-        // 나중에 nxn 크기의 건물을 처리하는 코드 자체를 고칠 예정
-        /*if(size > 1)
-        {
-            if (tmpPos.x < 0)
-            {
-                tmpPos.x--;
-            }
-            if (tmpPos.y < 0)
-            {
-                tmpPos.y--;
-            }
-        }*/
         
         for (int i = 0; i < size; i++)
         {
@@ -188,11 +148,6 @@ public class TileManager : Singleton<TileManager>
 
     public Vector3Int GetTileCoordinates(Vector2 worldPos)
     {
-        /*int x = Mathf.RoundToInt(worldPos.x);
-        int y = Mathf.RoundToInt(worldPos.y);
-        Vector3Int coordinates = (new Vector3Int(x, y, 0));*/
-        //Vector3Int coordinates = (new Vector3Int((int)worldPos.x, (int)worldPos.y, 0));
-        //Vector3 place = tileMap.CellToWorld(coordinates);
         Vector3Int coordinates = tileMap.WorldToCell(new Vector3(worldPos.x, worldPos.y, 0));
         if (HasTile(coordinates))
         {
@@ -218,9 +173,6 @@ public class TileManager : Singleton<TileManager>
         if (tileMap.HasTile(coordiantes))
         {
             RevokePlace(coordiantes);
-            /*availablePlaces.Remove(coordiantes);
-            availablePlaces[coordiantes] = new Tile(true, null, 0);*/
-            Debug.Log(coordiantes + "위치 건물 삭제");
         }
     }
 
@@ -233,19 +185,7 @@ public class TileManager : Singleton<TileManager>
             for (int x = centerX; x > centerX - 2; x--)
             {
                 Vector3Int localPlace = (new Vector3Int(x, y, (int)tileMap.transform.position.z));
-                /*Vector3 place = tileMap.CellToWorld(localPlace);
-                if (tileMap.HasTile(localPlace))
-                {
-                    Vector3Int _place = new Vector3Int((int)place.x, (int)place.y, (int)place.z);
-                    //Tile at "place"
-                    availablePlaces[_place] = new Tile(true, null, 0);
-                    *//*availablePlaces[_place].available = true;
-                    availablePlaces[_place].Object = null;*//*
-                }
-                else
-                {
-                    //No tile at "place"
-                }*/
+                
                 RemopvePlace(localPlace);
             }
         }
@@ -259,14 +199,6 @@ public class TileManager : Singleton<TileManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            foreach (KeyValuePair<Vector3Int, Tile> entry in availablePlaces)
-            {
-                Debug.Log(entry.Key + " : " + entry.Value);
-            }
-        }
-
         if (Input.GetKeyDown(KeyCode.F10))
         {
             ComponentSaveSystem.Instance.SaveTilesInfo();
