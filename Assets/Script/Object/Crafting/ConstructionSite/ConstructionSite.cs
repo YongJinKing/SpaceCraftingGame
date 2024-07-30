@@ -44,7 +44,7 @@ public class ConstructionSite : MonoBehaviour
 
     IEnumerator CraftBuildingCoroutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         finishWorkEvent?.Invoke();
         GameObject obj = CraftFactory.Instance.CraftBuilding(index, pos, Hp, size);

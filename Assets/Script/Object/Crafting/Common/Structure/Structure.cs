@@ -106,6 +106,7 @@ public abstract class Structure : Stat
         base.OnDead();
         Debug.Log("Ondead ½ÇÇà");
         animator.SetTrigger("Destroy");
+        this.GetComponent<BoxCollider2D>().enabled = false;
         DestroyEvent?.Invoke(this.transform.position);
         Destroy(this.gameObject, 2f);
     }

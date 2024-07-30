@@ -231,14 +231,14 @@ public class BossAlertState : BossState
 
         while (true)
         {
-            if (owner.target.transform.position.x > owner.transform.position.x)
+           /* if (owner.target.transform.position.x > owner.transform.position.x)
             {
                 ownerImg.transform.localScale = new Vector3(-0.25f, 0.25f, 0.25f);
             }
             else
             {
                 ownerImg.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
-            }
+            }*/
 
             Vector2 dir = (Vector2)owner.target.transform.position - (Vector2)transform.position;
             float dist = dir.magnitude - 0.5f;

@@ -49,7 +49,14 @@ public class Boss : Monster
     // Update is called once per frame
     void Update()
     {
-        
+        if (target.transform.position.x > transform.position.x)
+        {
+            bossImg.transform.localScale = new Vector3(-0.25f, 0.25f, 0.25f);
+        }
+        else
+        {
+            bossImg.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+        }
     }
     #endregion
     #endregion

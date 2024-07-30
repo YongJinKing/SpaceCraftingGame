@@ -94,7 +94,7 @@ public class FactoryBuilding : Structure
             }
 
             
-            yield return new WaitForSeconds(produceTime);
+            yield return new WaitForSeconds(produceTime + ((1f - GetEfficiency()) * 2f));
 
             
         }

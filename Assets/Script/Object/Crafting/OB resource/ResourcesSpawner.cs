@@ -163,7 +163,7 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
         else
         {
             int randomValue = Random.Range(0, 3);
-            if(randomValue == 0)
+            if (randomValue == 0)
             {
                 size = 1;
                 // 1x1 크기의 자원1 배치
@@ -289,5 +289,5 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
         return true;
     }
 
-    
+
 }

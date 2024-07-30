@@ -35,10 +35,13 @@ public class SP_Healing : SPAttackAction
         yield return StartCoroutine(FindMortalBox());
 
         // 떡을 먹는 애니메이션을 여기서 출력해야함~
-        owner.animator.SetTrigger("Eating");
-        if (chk) transform.parent.parent.GetComponent<Unit>()[EStat.HP] += healAmount; // 여긴 힐하는 곳이니깐 힐을 한다.
-        if (chk) transform.parent.parent.GetComponent<Unit>()[EStat.ATK] *= 1.2f;
-        
+        if (chk)
+        {
+            owner.animator.SetTrigger("Eating");
+            transform.parent.parent.GetComponent<Unit>()[EStat.HP] += healAmount; // 여긴 힐하는 곳이니깐 힐을 한다.
+            transform.parent.parent.GetComponent<Unit>()[EStat.ATK] *= 1.2f;
+        }
+
         yield return new WaitForSeconds(2f);
 
         //ActionEnd();

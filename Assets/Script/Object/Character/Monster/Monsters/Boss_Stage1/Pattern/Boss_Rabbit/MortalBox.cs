@@ -27,10 +27,6 @@ public class MortalBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.F9)) // 테스트용
-        {
-            SpawnRabbitWorker(); 
-        }*/
         if (!rabbitWorker.activeSelf)
         {
             timer += Time.deltaTime;
