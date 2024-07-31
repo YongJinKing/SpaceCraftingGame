@@ -41,6 +41,14 @@ public class BuildDron : MonoBehaviour
     IEnumerator MoveToTarget(Transform target)
     {
         animator.SetBool("Move", true);
+        if(this.transform.position.x > target.transform.position.x)
+        {
+            this.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            this.transform.localScale = new Vector3(1, 1, 1);
+        }
         Vector3 dir = target.position - this.transform.position;
         float dist = dir.magnitude;
         float delta = Time.deltaTime * moveSpeed;
