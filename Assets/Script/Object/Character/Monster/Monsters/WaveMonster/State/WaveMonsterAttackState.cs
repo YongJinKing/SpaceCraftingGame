@@ -71,19 +71,17 @@ public class WaveMonsterAttackState : MonsterState
         float dist;
         do
         {
-            if (owner.target == null) break;
+            if (owner.target == null)
+            {
+                owner.stateMachine.ChangeState<WaveMonsterIdleState>();
+                yield break;
+            }
 
             dir = owner.target.transform.position - transform.position;
             dist = dir.magnitude;
             yield return null;
         }
         while (dist > owner.activatedAction.activeRadius);
-
-        if(owner.target == null)
-        {
-            owner.stateMachine.ChangeState<WaveMonsterIdleState>();
-            yield break;
-        }
 
         owner.activatedAction.Activate(owner.target.transform.position);
         owner.animator.SetBool("B_Attack", true);
@@ -101,14 +99,6 @@ public class WaveMonsterAttackState : MonsterState
         owner.animator.SetBool("B_Move", true);
         while (owner.target != null)
         {
-            /*
-            dir = owner.target.transform.position - transform.position;
-            if(dir.magnitude < owner.activatedAction.activeRadius)
-            {
-                owner.dirMove.Activate(owner.target.transform.position);
-            }
-            else 
-            */
             if(owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
             {
                 moveToPathEvent?.Invoke(path);

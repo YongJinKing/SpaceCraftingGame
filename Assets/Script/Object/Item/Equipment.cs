@@ -29,7 +29,7 @@ public abstract class Equipment : MonoBehaviour
     #region Public
     public virtual void Equip()
     {
-        if (isEquiped == true)
+        if (isEquiped)
             return;
 
         gameObject.SetActive(true);
@@ -37,7 +37,7 @@ public abstract class Equipment : MonoBehaviour
     }
     public virtual void UnEquip()
     {
-        if (isEquiped == false)
+        if (!isEquiped)
             return;
 
         gameObject.SetActive(false);

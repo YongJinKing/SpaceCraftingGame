@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 public class HPBar : MonoBehaviour
 {
@@ -95,7 +92,8 @@ public class HPBar : MonoBehaviour
     }
     public void OnDead()
     {
-
+        RemoveListeners();
+        StartCoroutine(Dying());
     }
     #endregion
 
@@ -110,6 +108,11 @@ public class HPBar : MonoBehaviour
 
             yield return null;
         }
+    }
+    protected IEnumerator Dying()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(this.gameObject);
     }
     #endregion
 
