@@ -15,7 +15,7 @@ public class RabbitBossSpinningAttackAction : BossAction
 
     #endregion
     #region Public
-    public Transform target; // 일단 하는데 나중에 필히 수정할거임. 지금은 이 스크립트에서 플레이어를 추적하기 위해 플레이어를 바인딩할 변수를 그냥 만들었음..
+    public Transform target;
     #endregion
     #region Events
     #endregion
@@ -81,8 +81,6 @@ public class RabbitBossSpinningAttackAction : BossAction
     public override void Activate(Vector2 pos)
     {
         base.Activate(pos);
-        // 빙글빙글 돌며 플레이어를 따라가는 액션
-        // 아직 애니메이션이 없어 당장은 이미지를 플립하며 따라가게 합시다
         boss = this.transform.parent.parent;
         moveTimer = 5f;
         ownerAnim.SetTrigger("SpinningAttack");

@@ -11,10 +11,10 @@ public class SP_Healing : SPAttackAction
     [SerializeField] float atkAmount = 5f;
     #endregion
     #region Protected
-    
+
     #endregion
     #region Public
-    
+    public ParticleSystem buffVFX;
     #endregion
     #region Events
     #endregion
@@ -40,6 +40,7 @@ public class SP_Healing : SPAttackAction
             owner.animator.SetTrigger("Eating");
             transform.parent.parent.GetComponent<Unit>()[EStat.HP] += healAmount; // ¿©±ä ÈúÇÏ´Â °÷ÀÌ´Ï±ñ ÈúÀ» ÇÑ´Ù.
             transform.parent.parent.GetComponent<Unit>()[EStat.ATK] *= 1.2f;
+            if (!buffVFX.isPlaying) buffVFX.Play();
         }
 
         yield return new WaitForSeconds(2f);

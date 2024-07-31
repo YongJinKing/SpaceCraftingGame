@@ -56,7 +56,6 @@ public class BossIdleState : BossState
         while (target == null)
         {
             target = FindObjectOfType<Player>();
-            Debug.Log("Player searching..");
             yield return null;
         } 
 

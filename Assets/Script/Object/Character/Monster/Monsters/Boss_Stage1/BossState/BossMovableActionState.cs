@@ -71,7 +71,6 @@ public class BossMovableActionState : BossState
             owner.stateMachine.ChangeState<BossAlertState>();
         else
             owner.stateMachine.ChangeState<BossIdleState>();
-        Debug.Log("보스 무버블 앤드");
     }
     #endregion
 

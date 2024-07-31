@@ -12,7 +12,7 @@ public class SlowGround : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        //player = FindObjectOfType<UnitMovement>();
+        
     }
 
     void OnEnable()
@@ -20,7 +20,6 @@ public class SlowGround : MonoBehaviour
         player = FindObjectOfType<UnitMovement>();
         originSpeed = player.GetSpeed();
         slowSpeed = originSpeed * 0.7f;
-        Debug.Log(originSpeed);
         Destroy(gameObject, 5f);
         slowed = false;
     }
@@ -29,7 +28,7 @@ public class SlowGround : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & layerMask) != 0)
         {
-            Debug.Log(collision.name);
+            
             if (!slowed)
             {
                 slowed = true;
@@ -43,15 +42,13 @@ public class SlowGround : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & layerMask) != 0)
         {
-            Debug.Log(collision.name);
             
             if (!slowed)
             {
                 slowed = true;
                 collision.gameObject.GetComponent<UnitMovement>().OnMoveSpeedStatChanged(originSpeed, slowSpeed);
             }
-            /*originSpeed = collision.gameObject.GetComponent<Unit>().moveSpeed;
-            */
+            
         }
     }
 
@@ -59,7 +56,6 @@ public class SlowGround : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & layerMask) != 0)
         {
-            Debug.Log("플레이어 빠져나감");
             slowed = false;
             collision.gameObject.GetComponent<UnitMovement>().OnMoveSpeedStatChanged(collision.gameObject.GetComponent<UnitMovement>().GetSpeed(),originSpeed);
         }
@@ -67,7 +63,6 @@ public class SlowGround : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("사라짐");
         player.OnMoveSpeedStatChanged(player.GetSpeed(), originSpeed);
     }
 }

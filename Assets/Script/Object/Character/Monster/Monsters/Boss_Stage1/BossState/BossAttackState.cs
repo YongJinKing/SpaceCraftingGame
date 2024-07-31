@@ -53,7 +53,6 @@ public class BossAttackState : BossState
     #region Coroutines
     protected IEnumerator Attacking()
     {
-        Debug.Log("Attacking~");
         if (owner.activatedAction == null)
         {
             owner.stateMachine.ChangeState<BossIdleState>();

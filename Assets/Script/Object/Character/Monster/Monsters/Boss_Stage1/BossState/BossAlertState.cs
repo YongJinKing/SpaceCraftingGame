@@ -142,8 +142,6 @@ public class BossAlertState : BossState
 
     private IEnumerator MoveTowardsTarget()
     {
-        Debug.Log("무브투타겟");
-        
         while (true)
         {
             Vector2 dir = (Vector2)owner.target.transform.position - (Vector2)transform.position;
@@ -217,7 +215,6 @@ public class BossAlertState : BossState
             action = owner.specialActions[idx];
         }
 
-        Debug.Log("Selected, " + action.name);
         owner.activatedAction = action;
     }
 

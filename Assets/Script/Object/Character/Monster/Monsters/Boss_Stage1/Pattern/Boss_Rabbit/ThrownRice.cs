@@ -45,7 +45,6 @@ public class ThrownRice : MonoBehaviour
         }
         this.transform.position = targetPos; // 정확한 위치 보정
 
-        Destroy(this.gameObject);
         yield return null;
     }
 
@@ -60,7 +59,6 @@ public class ThrownRice : MonoBehaviour
         {
             currentSpeed += throwSpeed * Time.deltaTime; // 가속도를 이용해 속도 증가
             this.transform.Translate(dir * currentSpeed * Time.deltaTime, Space.World);
-            //this.transform.Translate(dir * throwSpeed * Time.deltaTime, Space.World);
             yield return null;
         }
         
@@ -70,7 +68,6 @@ public class ThrownRice : MonoBehaviour
     {
         StopAllCoroutines();
         Destroy(gameObject);
-        Debug.Log(collision.name);
         if(((1 << collision.gameObject.layer) & layerMask) != 0)
         {
             Instantiate(slowingGround, this.transform.position, Quaternion.identity);
