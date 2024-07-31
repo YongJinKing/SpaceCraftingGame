@@ -127,6 +127,10 @@ public class Inventory : MonoBehaviour
                 if(InventoryDatas[i].Amount >= Amount)
                 {
                     InventoryDatas[i].Amount -= Amount;
+                    if(InventoryDatas[i].Amount <= 0)
+                    {
+                        InventoryDatas.RemoveAt(i); 
+                    }
                     UpdatePopup?.Invoke(0);
                 }
                 else
