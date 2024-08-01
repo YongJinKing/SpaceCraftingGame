@@ -30,6 +30,21 @@ public class CraftFactory : Singleton<CraftFactory>
         spaceShip = FindObjectOfType<SpaceShip>();
     }
 
+    void FindComponentsByIndex(int index)
+    {
+        if (structureDataManger.dicCBComponentTable.ContainsKey(index))
+        {
+            componentData = structureDataManger.dicCBComponentTable[index];
+        }
+        if (structureDataManger.dicCBAbilityTable.ContainsKey(index))
+        {
+            abilityData = structureDataManger.dicCBAbilityTable[index];
+        }
+        if (structureDataManger.dicCBImgTable.ContainsKey(index))
+        {
+            imgData = structureDataManger.dicCBImgTable[index];
+        }
+    }
     public GameObject ReadyToCraftBuilding(int index, Vector3 pos, float Hp = 0f, int size = 0)
     {
         if (!spaceShip.IsDronReady()) return null;
@@ -38,6 +53,7 @@ public class CraftFactory : Singleton<CraftFactory>
         {
             return null;
         }
+        FindComponentsByIndex(index);
 
         Transform obj = Instantiate(constructionSite, pos, Quaternion.identity);
         obj.SetParent(null);
@@ -46,6 +62,7 @@ public class CraftFactory : Singleton<CraftFactory>
         obj.GetComponent<ConstructionSite>().SetHp(Hp);
         obj.GetComponent<ConstructionSite>().SetInPos(pos);
         obj.GetComponent<ConstructionSite>().SetSize(size);
+        obj.GetComponent<ConstructionSite>().SetCraftingTime(abilityData.BuildingSpeed);
 
         // 드론을 건축현장으로 보내는 함수를 여기서 실행한다!, 이때 드론을 건축 현장으로 보내는 함수는 인자로 obj를 타겟으로 받는다 
         spaceShip.TakeOffDron(obj);
@@ -115,7 +132,7 @@ public class CraftFactory : Singleton<CraftFactory>
     }
     GameObject CraftTurret(int index, Vector3 pos, float Hp = 0f, int size = 0)
     {
-        if (structureDataManger.dicCBComponentTable.ContainsKey(index))
+        /*if (structureDataManger.dicCBComponentTable.ContainsKey(index))
         {
             componentData = structureDataManger.dicCBComponentTable[index];
         }
@@ -126,7 +143,8 @@ public class CraftFactory : Singleton<CraftFactory>
         if (structureDataManger.dicCBImgTable.ContainsKey(index))
         {
             imgData = structureDataManger.dicCBImgTable[index];
-        }
+        }*/
+        FindComponentsByIndex(index);
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
@@ -153,7 +171,7 @@ public class CraftFactory : Singleton<CraftFactory>
 
     GameObject CraftMiner(int index, Vector3 pos, float Hp = 0f, int size = 1)
     {
-        if (structureDataManger.dicCBComponentTable.ContainsKey(index))
+        /*if (structureDataManger.dicCBComponentTable.ContainsKey(index))
         {
             componentData = structureDataManger.dicCBComponentTable[index];
         }
@@ -164,7 +182,10 @@ public class CraftFactory : Singleton<CraftFactory>
         if (structureDataManger.dicCBImgTable.ContainsKey(index))
         {
             imgData = structureDataManger.dicCBImgTable[index];
-        }
+        }*/
+
+        FindComponentsByIndex(index);
+
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
 
@@ -189,10 +210,12 @@ public class CraftFactory : Singleton<CraftFactory>
 
     GameObject CraftResources(int index, Vector3 pos, float Hp = 0f, int size = 1)
     {
-        if (structureDataManger.dicCBImgTable.ContainsKey(index))
+        /*if (structureDataManger.dicCBImgTable.ContainsKey(index))
         {
             imgData = structureDataManger.dicCBImgTable[index];
-        }
+        }*/
+
+        FindComponentsByIndex(index);
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
@@ -204,7 +227,7 @@ public class CraftFactory : Singleton<CraftFactory>
 
     GameObject CraftBarricade(int index, Vector3 pos, float Hp = 0f, int size = 1)
     {
-        if (structureDataManger.dicCBComponentTable.ContainsKey(index))
+        /*if (structureDataManger.dicCBComponentTable.ContainsKey(index))
         {
             componentData = structureDataManger.dicCBComponentTable[index];
         }
@@ -215,7 +238,9 @@ public class CraftFactory : Singleton<CraftFactory>
         if (structureDataManger.dicCBImgTable.ContainsKey(index))
         {
             imgData = structureDataManger.dicCBImgTable[index];
-        }
+        }*/
+
+        FindComponentsByIndex(index);
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
@@ -238,10 +263,11 @@ public class CraftFactory : Singleton<CraftFactory>
 
     public int GetBuildingSize(int index)
     {
-        if (structureDataManger.dicCBAbilityTable.ContainsKey(index))
+        /*if (structureDataManger.dicCBAbilityTable.ContainsKey(index))
         {
             abilityData = structureDataManger.dicCBAbilityTable[index];
-        }
+        }*/
+        FindComponentsByIndex(index);
 
         return abilityData.BuildingScale;
     }

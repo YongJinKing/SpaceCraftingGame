@@ -65,7 +65,7 @@ public class TileManager : Singleton<TileManager>
         }
         else
         {
-            Debug.Log("읽어서 가져옴");
+            
         }
         for (int i = 0; i < componentsInfo.components.Count; i++)
         {
@@ -74,10 +74,7 @@ public class TileManager : Singleton<TileManager>
             float Hp = componentsInfo.components[i].Hp;
             int size = componentsInfo.components[i].size;
 
-            Debug.Log("읽어온 좌표 : " + componetPlace);
-            Debug.Log("읽어온 인덱스 : " + index);
-            Debug.Log("읽어온 사이즈 : " + size);
-            Debug.Log("읽어온 Hp : " + Hp);
+            
             Vector3 componentPos = new Vector3(componetPlace.x + (tileMap.tileAnchor.x * size), 
                 componetPlace.y + (tileMap.tileAnchor.y * size), componetPlace.z);
 
@@ -90,7 +87,7 @@ public class TileManager : Singleton<TileManager>
         }
 
 
-        Debug.Log(availablePlaces.Count);
+        
     }
 
     public bool IsCraftable(Vector3Int coordinates)
@@ -103,7 +100,7 @@ public class TileManager : Singleton<TileManager>
         availablePlaces[coordinates].available = false;
         availablePlaces[coordinates].Object = obj;
         availablePlaces[coordinates].size = size;
-        Debug.Log("WritePlace At :" + coordinates + ", " + availablePlaces[coordinates].available + ", " + availablePlaces[coordinates].Object + ", " + availablePlaces[coordinates].size);
+        
     }
 
     public void RemopvePlace(Vector3Int coordinates)
@@ -116,7 +113,7 @@ public class TileManager : Singleton<TileManager>
         Vector3Int cellPos = Vector3Int.zero;
         Vector3Int tmpPos = coordinates;
         int size = availablePlaces[coordinates].size;
-        Debug.Log("revoke "+size);
+        
         
         availablePlaces[coordinates].available = true;
         availablePlaces.Remove(coordinates);
@@ -127,7 +124,7 @@ public class TileManager : Singleton<TileManager>
             for (int j = 0; j < size; j++)
             {
                 cellPos = tmpPos + new Vector3Int((int)tileMap.cellSize.x * j, (int)tileMap.cellSize.y * i, 0);
-                Debug.Log(cellPos);
+                
                 availablePlaces[cellPos].available = true;
                 availablePlaces.Remove(cellPos);
                 availablePlaces[cellPos] = new Tile(true, null, 0);

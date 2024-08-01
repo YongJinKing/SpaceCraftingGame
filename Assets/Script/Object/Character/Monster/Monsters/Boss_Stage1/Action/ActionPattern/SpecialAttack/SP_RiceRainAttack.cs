@@ -13,10 +13,15 @@ public class SP_RiceRainAttack : SPAttackAction
     #endregion
     #region Public
     public Transform julguHitVFX;
-    public Transform[] xShapeLines;
+    /*public Transform[] xShapeLines;
     public Transform[] plusShapeLines; // 이 두개는 떨어질 위치
     public Transform[] xShapeWarningLines;
-    public Transform[] plusShapeWarningLines; // 위 두개는 떨어질 위치에 경고 표시를 보여주는 것
+    public Transform[] plusShapeWarningLines; // 위 두개는 떨어질 위치에 경고 표시를 보여주는 것*/
+
+    public List<Transform> xShapeLines;
+    public List<Transform> plusShapeLines;
+    public List<Transform> xShapeWarningLines;
+    public List<Transform> plusShapeWarningLines;
     public GameObject Rice;
     public float tolerance = 0.1f; // 목표 위치에 도달했는지 확인할 때 사용할 오차 범위
     #endregion
@@ -33,9 +38,17 @@ public class SP_RiceRainAttack : SPAttackAction
 
     #region Methods
     #region Private
-    void ShowPatternLines(Transform[] list, bool toggle)
+    /*void ShowPatternLines(Transform[] list, bool toggle)
     {
         for (int i = 0; i < list.Length; i++)
+        {
+            list[i].gameObject.SetActive(toggle);
+        }
+    }*/
+
+    void ShowPatternLines(List<Transform> list, bool toggle)
+    {
+        for (int i = 0; i < list.Count; i++)
         {
             list[i].gameObject.SetActive(toggle);
         }
@@ -44,7 +57,7 @@ public class SP_RiceRainAttack : SPAttackAction
     void SpawnRiceAtPosition(Vector3 pos)
     {
         Vector3 targetPos = pos;
-        Vector3 spawnPos = pos + new Vector3(0f, Camera.main.orthographicSize + 10, 0f); // 메인 카메라의 사이즈보다 10칸 위로 보내서 거기서 떨어트린다.
+        Vector3 spawnPos = pos + new Vector3(0f, Camera.main.orthographicSize + 15, 0f); // 메인 카메라의 사이즈보다 10칸 위로 보내서 거기서 떨어트린다.
         var obj = Instantiate(Rice, spawnPos, Quaternion.identity);
         obj.transform.SetParent(null);
 
@@ -56,14 +69,22 @@ public class SP_RiceRainAttack : SPAttackAction
         }
 
         // 중력을 설정 (기본 중력 가속도를 사용)
-        rb.gravityScale = 1f;
+        rb.gravityScale = 2f;
 
         obj.GetComponent<MeteorRice>().Initialize(targetPos);
     }
 
-    void SpawnRiceWithList(Transform[] list)
+    /*void SpawnRiceWithList(Transform[] list)
     {
         for (int i = 0; i < list.Length; i++)
+        {
+            SpawnRiceAtPosition(list[i].position);
+        }
+    }*/
+
+    void SpawnRiceWithList(List<Transform> list)
+    {
+        for (int i = 0; i < list.Count; i++)
         {
             SpawnRiceAtPosition(list[i].position);
         }
@@ -133,7 +154,7 @@ public class SP_RiceRainAttack : SPAttackAction
                 SpawnRiceWithList(plusShapeLines);
             }
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1.5f);
             if (cnt % 2 == 0) ShowPatternLines(xShapeWarningLines, false);
             else ShowPatternLines(plusShapeWarningLines, false);
             cnt++;
@@ -155,6 +176,14 @@ public class SP_RiceRainAttack : SPAttackAction
     }
     #endregion
     #region Public
+    public void SetLists(List<Transform> xShapes, List<Transform> xWarnings, List<Transform> crossShapes, List<Transform> crossWarnings)
+    {
+        xShapeLines = xShapes;
+        plusShapeLines = crossShapes;
+        xShapeWarningLines = xWarnings;
+        plusShapeWarningLines = crossWarnings;
+    }
+
     // 절구통을 치는 애니메이션 마지막에 이걸 실행
     public void StartShowPattern()
     {
@@ -182,6 +211,8 @@ public class SP_RiceRainAttack : SPAttackAction
         }
         ActionEnd();
     }
+
+    
     #endregion
     #endregion
 
