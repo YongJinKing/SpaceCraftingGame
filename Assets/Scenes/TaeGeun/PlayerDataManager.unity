@@ -625,6 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a58a3c00d1e3a94a9e22a843801a052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fireAndForget: 0
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
@@ -929,7 +930,7 @@ MonoBehaviour:
   moveSpeed: 5
   ATK: 50
   ATKSpeed: 10
-  name: 
+  Name: 
   moveAction: {fileID: 211788912}
   mainAction: {fileID: 0}
   secondAction: {fileID: 0}
@@ -1162,60 +1163,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432905558}
   m_CullTransparentMesh: 1
---- !u!1 &577041336
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 577041337}
-  - component: {fileID: 577041338}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &577041337
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577041336}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.314698, y: 2.3497698, z: -1.1875769}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &577041338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577041336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6ea7ee9dfa371418f8d93dbae40e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  savePath: 
-  filename: save
-  nowSlot: 0
-  playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 2097152
-  EnemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  NowPlayer: {fileID: 0}
 --- !u!1 &604408052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,6 +1393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0747f27f164b07545aaa2ff6ed7ee3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fireAndForget: 1
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
@@ -1785,6 +1733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004021bff1c915444a8d147a68c1ca43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fireAndForget: 0
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
@@ -2583,7 +2532,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1863481596}
-  - {fileID: 577041337}
   - {fileID: 406941706}
   - {fileID: 342361065}
   - {fileID: 79524276}

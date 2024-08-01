@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 
@@ -16,6 +17,12 @@ public class DataViewUI : MonoBehaviour
     public void Start()
     {
         //name.text += DataManager.Instance.NowPlayer.name;
+        if (File.Exists("PlayerData" + DataManager.Instance.nowSlot.ToString() + ".json"))
+        {
+            DataManager.Instance.LoadJson("PlayerData" + DataManager.Instance.nowSlot.ToString() + ".json");
+            ShowData();
+        }
+        
     }
 
     void Update()

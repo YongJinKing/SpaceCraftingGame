@@ -21,7 +21,7 @@ public class DataManager : Singleton<DataManager>
     public Player NowPlayer = new Player();
     private void Awake()
     {
-
+        Initialize();
     }
 
     void Start()
@@ -38,7 +38,7 @@ public class DataManager : Singleton<DataManager>
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            LoadJson();
+            //LoadJson();
         }
 
         if (Input.GetKeyDown(KeyCode.I))
@@ -88,7 +88,7 @@ public class DataManager : Singleton<DataManager>
 
 
         //5.
-        savePath = "PlayerDataStruct.json";
+        savePath = "PlayerData" + nowSlot.ToString() + ".json";
         string data = JsonUtility.ToJson(NowPlayer);
         File.WriteAllText(savePath,json);
         File.WriteAllText(nowSlot.ToString(), data);
@@ -98,11 +98,11 @@ public class DataManager : Singleton<DataManager>
         Debug.Log($"Saved JSON: {json}");
     }
 
-    public void LoadJson()
+    public void LoadJson(string path) // LoadJson(string path)
     {
         Debug.Log("LoadJson called");
 
-        var jsonPath = "PlayerDataStruct.json";
+        var jsonPath = path;
         if (File.Exists(jsonPath))
         {
             string JsonString = File.ReadAllText(jsonPath);
