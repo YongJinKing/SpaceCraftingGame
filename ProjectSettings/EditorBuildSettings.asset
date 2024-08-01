@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NamHo/Main.unity
     guid: 06361ef3e7367c44ebd794e7bc3e3019
+  - enabled: 1
+    path: Assets/Scenes/TaeGeun/PlayerDataManager.unity
+    guid: c48bff023b615dd4bb75100e6cf02148
   m_configObjects: {}

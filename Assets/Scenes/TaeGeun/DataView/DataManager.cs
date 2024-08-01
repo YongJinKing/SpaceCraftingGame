@@ -10,14 +10,15 @@ using System.Linq;
 [Serializable]
 public class DataManager : Singleton<DataManager>
 {
-    string savePath;
+    public string savePath;
+    public int nowSlot;
     public LayerMask playerLayerMask;
     public LayerMask EnemyLayerMask;
     /// <summary>
     /// 플레이어 데이터 저장 배열
     /// </summary>
     public PlayerDataStruct[] pd = new PlayerDataStruct[1];
-
+    public Player NowPlayer = new Player();
     private void Awake()
     {
 
@@ -88,14 +89,16 @@ public class DataManager : Singleton<DataManager>
 
         //5.
         savePath = "PlayerDataStruct.json";
-        File.WriteAllText(savePath, json);
+        string data = JsonUtility.ToJson(NowPlayer);
+        File.WriteAllText(savePath,json);
+        File.WriteAllText(nowSlot.ToString(), data);
 
         //6.
         Debug.Log($"Data saved to: {savePath}");
         Debug.Log($"Saved JSON: {json}");
     }
 
-    private void LoadJson()
+    public void LoadJson()
     {
         Debug.Log("LoadJson called");
 
@@ -112,5 +115,13 @@ public class DataManager : Singleton<DataManager>
         {
             Debug.Log("없음");
         }
+        string data = File.ReadAllText(nowSlot.ToString());
+        //NowPlayer = JsonUtility.FromJson<Player>(data);
+    }
+
+    public void DataClear()
+    {
+        nowSlot = -1;
+        NowPlayer = new Player();
     }
 }

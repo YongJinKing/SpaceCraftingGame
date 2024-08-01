@@ -7,6 +7,7 @@ public class Player : Unit
 {
     #region Properties
     #region Private
+    public string Name;
     /// <summary>
     /// 마우스가 플레이어 기준 오른쪽에 있는지에 대한 bool값
     /// </summary>

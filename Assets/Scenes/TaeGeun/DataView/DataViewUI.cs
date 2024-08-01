@@ -10,7 +10,14 @@ public class DataViewUI : MonoBehaviour
     public TextMeshProUGUI tmp3;
     public TextMeshProUGUI tmp4;
     public TextMeshProUGUI tmp5;
-    
+
+    //public TextMeshProUGUI name;
+
+    public void Start()
+    {
+        //name.text += DataManager.Instance.NowPlayer.name;
+    }
+
     void Update()
     {
      if(Input.GetKeyDown(KeyCode.Z))
@@ -27,5 +34,10 @@ public class DataViewUI : MonoBehaviour
         tmp3.text = "ATK: " + DataManager.Instance.pd[0].ATK.ToString();
         tmp4.text = "ATKSpeed: " + DataManager.Instance.pd[0].ATKSpeed.ToString();
         tmp5.text = "Priority: " + DataManager.Instance.pd[0].Priority.ToString();
+    }
+
+    public void Save()
+    {
+        DataManager.Instance.SavePlayerInfo();
     }
 }
