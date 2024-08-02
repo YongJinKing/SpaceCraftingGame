@@ -40,7 +40,10 @@ public class MortalBox : MonoBehaviour
 
     public void SpawnRabbitWorker()
     {
-        if(rabbitWorker != null) rabbitWorker.SetActive(true);
+        if (rabbitWorker != null)
+        {
+            rabbitWorker.SetActive(true);
+        }
     }
 
     public void PlayVFX()
