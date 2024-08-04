@@ -80,10 +80,10 @@ public class PlayerIdleState : PlayerState
                 {
                     if(owner.mainAction != null)
                     {
+                        owner.weaponRotationAxis.SetActive(true);
                         owner.mainAction.Activate(pos);
                         owner.myAnim.SetLeftClick(true);
 
-                        owner.weaponRotationAxis.SetActive(true);
                         owner.activatedAction = owner.mainAction;
                     }
                 }
@@ -92,10 +92,10 @@ public class PlayerIdleState : PlayerState
                 {
                     if (owner.secondAction != null)
                     {
+                        owner.weaponRotationAxis.SetActive(true);
                         owner.secondAction.Activate(pos);
                         //owner.myAnim.SetRightClick(true);
 
-                        owner.weaponRotationAxis.SetActive(true);
                         owner.activatedAction = owner.secondAction;
                     }
                 }

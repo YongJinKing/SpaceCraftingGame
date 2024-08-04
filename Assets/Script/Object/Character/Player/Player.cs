@@ -27,7 +27,7 @@ public class Player : Unit
     public Action secondAction;
     public PlayerAnimationController myAnim;
     public Transform graphicTransform;
-    public GameObject weaponRotationAxis;
+    public WeaponRotationAxis weaponRotationAxis;
     public bool isDead
     {
         get { return _isDead; }

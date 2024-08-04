@@ -8615,11 +8615,17 @@ MonoBehaviour:
   attackStartPos: []
   hitBoxes:
   - {fileID: 0}
---- !u!1 &219324473 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3152213137251827993, guid: fbf3c0084200edb438aff27064253bff, type: 3}
+--- !u!114 &219324474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5643405585387391072, guid: fbf3c0084200edb438aff27064253bff, type: 3}
   m_PrefabInstance: {fileID: 5984639105542032803}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972f2087c1348b349a6a144e8573aa9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &235578679
 GameObject:
   m_ObjectHideFlags: 0
@@ -71849,12 +71855,13 @@ MonoBehaviour:
   moveSpeed: 2
   ATK: 100
   ATKSpeed: 0
+  Name: 
   moveAction: {fileID: 1854854244}
   mainAction: {fileID: 0}
   secondAction: {fileID: 0}
   myAnim: {fileID: 0}
   graphicTransform: {fileID: 16924747}
-  weaponRotationAxis: {fileID: 219324473}
+  weaponRotationAxis: {fileID: 219324474}
   AR: {fileID: 1814711158}
   Hammer: {fileID: 913126753}
   PickAxe: {fileID: 1968647579}

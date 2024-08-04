@@ -36,6 +36,18 @@ public class WeaponRotationAxis : MonoBehaviour
     #region Protected
     #endregion
     #region Public
+    public void SetActive(bool type)
+    {
+        if (type)
+        {
+            gameObject.SetActive(true);
+            FollowMousePos();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+    }
     #endregion
     #endregion
 
@@ -49,7 +61,6 @@ public class WeaponRotationAxis : MonoBehaviour
     #region Coroutines
     private IEnumerator FollowingMousePos()
     {
-        yield return null;
         //parent의 x 스케일이 마이너스일때는 right 기준
         //parent의 x 스케일이 플러스 일때는 left 기준
 
@@ -74,21 +85,16 @@ public class WeaponRotationAxis : MonoBehaviour
     #endregion
 
     #region MonoBehaviour
-    private void OnEnable()
-    {
-        FollowMousePos();
-    }
 
     private void OnDisable()
     {
         StopAllCoroutines();
     }
 
-    private void Start()
+    private void Awake()
     {
         parent = transform.parent;
         InputController.Instance.getMousePosEvent.AddListener(OnGetMousePos);
-        FollowMousePos();
     }
     #endregion
 }
