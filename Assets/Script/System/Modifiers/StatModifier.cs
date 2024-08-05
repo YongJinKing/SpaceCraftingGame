@@ -72,32 +72,6 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
     #endregion
 
     #region Coroutines
-    private IEnumerator DelaiedLoad()
-    {
-        yield return new WaitForEndOfFrame();
-
-        IGetStatValueModifier[] modifiers = GetComponentsInChildren<IGetStatValueModifier>();
-        Info<EStat, ValueModifier> temp;
-        foreach (IGetStatValueModifier data in modifiers)
-        {
-            temp = data.GetStatValueModifier();
-            if (temp.arg1 != null)
-            {
-                List<ValueModifier> tempList;
-                if (dicModifiers.ContainsKey(temp.arg0))
-                {
-                    tempList = dicModifiers[temp.arg0];
-                    tempList.Add(temp.arg1);
-                }
-                else
-                {
-                    tempList = new List<ValueModifier>();
-                    tempList.Add(temp.arg1);
-                    dicModifiers.Add(temp.arg0, tempList);
-                }
-            }
-        }
-    }
     #endregion
 
     #region MonoBehaviour
@@ -131,7 +105,27 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
 
         myStat = GetComponentInParent<Stat>();
 
-        StartCoroutine(DelaiedLoad());
+        IGetStatValueModifier[] modifiers = GetComponentsInChildren<IGetStatValueModifier>();
+        Info<EStat, ValueModifier> temp;
+        foreach (IGetStatValueModifier data in modifiers)
+        {
+            temp = data.GetStatValueModifier();
+            if (temp.arg1 != null)
+            {
+                List<ValueModifier> tempList;
+                if (dicModifiers.ContainsKey(temp.arg0))
+                {
+                    tempList = dicModifiers[temp.arg0];
+                    tempList.Add(temp.arg1);
+                }
+                else
+                {
+                    tempList = new List<ValueModifier>();
+                    tempList.Add(temp.arg1);
+                    dicModifiers.Add(temp.arg0, tempList);
+                }
+            }
+        }
     }
     #endregion
 }

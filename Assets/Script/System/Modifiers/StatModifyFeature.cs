@@ -46,6 +46,7 @@ public class StatModifyFeature : MonoBehaviour, IGetStatValueModifier
             Debug.Log($"Feature 값 전달 성공");
         }
         */
+
         return new Info<EStat, ValueModifier>(statType, VM);
     }
     #endregion
@@ -58,7 +59,7 @@ public class StatModifyFeature : MonoBehaviour, IGetStatValueModifier
     #endregion
 
     #region MonoBehaviour
-    private void Start()
+    private void Awake()
     {
         switch (modifierType)
         {

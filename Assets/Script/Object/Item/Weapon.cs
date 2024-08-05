@@ -14,6 +14,7 @@ public class Weapon : Equipment
     //triggered by right mouse click
     [SerializeField] protected Action _subAction;
     [SerializeField] protected Transform _graphic;
+    [SerializeField] protected int _itemType;
     #endregion
     #region Public
     public Action mainAction
@@ -30,6 +31,11 @@ public class Weapon : Equipment
     {
         get { return _graphic; }
         set { _graphic = value; }
+    }
+    public int itemType
+    {
+        get { return _itemType; }
+        set { _itemType = value; }
     }
     #endregion
     #region Events
@@ -51,6 +57,7 @@ public class Weapon : Equipment
             graphic.SetParent(myPlayer.weaponRotationAxis.transform, false);
             graphic.gameObject.SetActive(false);
         }
+        gameObject.SetActive(false);
     }
     protected virtual void AddListeners()
     {
