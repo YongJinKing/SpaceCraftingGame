@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.CinemachineTargetGroup;
 using static UnityEngine.GraphicsBuffer;
 
 public class BossAlertState : BossState
@@ -144,6 +145,15 @@ public class BossAlertState : BossState
     {
         while (true)
         {
+            if (owner.target.transform.position.x > this.transform.position.x)
+            {
+                this.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (owner.target.transform.position.x < this.transform.position.x)
+            {
+                this.transform.localScale = new Vector3(1, 1, 1);
+            }
+
             Vector2 dir = (Vector2)owner.target.transform.position - (Vector2)transform.position;
             float dist = dir.magnitude - 0.5f;
             if (dist <= limitDist)

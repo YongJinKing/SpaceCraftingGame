@@ -1,3 +1,4 @@
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class SP_RiceRainAttack : SPAttackAction
     public List<Transform> plusShapeWarningLines;
     public GameObject Rice;
     public float tolerance = 0.1f; // 목표 위치에 도달했는지 확인할 때 사용할 오차 범위
+    public Transform RiceSpawnPos;
     #endregion
     #region Events
     #endregion
@@ -58,7 +60,9 @@ public class SP_RiceRainAttack : SPAttackAction
     {
         Vector3 targetPos = pos;
         Vector3 spawnPos = pos + new Vector3(0f, Camera.main.orthographicSize + 15, 0f); // 메인 카메라의 사이즈보다 10칸 위로 보내서 거기서 떨어트린다.
-        var obj = Instantiate(Rice, spawnPos, Quaternion.identity);
+        RiceSpawnPos.transform.position = spawnPos;
+        //var obj = Instantiate(Rice, spawnPos, Quaternion.identity);
+        var obj = ObjectPool.Instance.GetObject<MeteorRice>(Rice, RiceSpawnPos);
         obj.transform.SetParent(null);
 
         // Rigidbody2D 컴포넌트를 추가하여 중력을 적용

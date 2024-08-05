@@ -43,11 +43,17 @@ public class MeteorRice : MonoBehaviour
                 }
             }
             // 물체를 제거
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Release();
             // 여기서 터지는 무언가를 생성한다. 터지는 이펙트 같은거.
             Instantiate(brokenVFX, gameObject.transform.position, Quaternion.identity, null);
         }
 
+    }
+
+    void Release()
+    {
+        ObjectPool.Instance.ReleaseObject<MeteorRice>(gameObject);
     }
 
 }

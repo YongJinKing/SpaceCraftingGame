@@ -64,10 +64,13 @@ public class SPAttackAction : BossAction
 
         mortalBox = mortalBoxesList[idx].GetComponent<MortalBox>(); // 가장 떡이 많이 있는 절구통
 
+        if(mortalBox.GetRice() < riceCost) yield break;
+
         yield return StartCoroutine(MoveToMortalBox(mortalBox)); // 해당 절구통으로 이동하고
 
         chk = true;
         mortalBox.ReduceCake(riceCost); // 떡을 패턴에 필요한 갯수만큼 차감하고
+        mortalBox.StartProducingCake();
     }
 
     protected IEnumerator SetPatternMortalBox()

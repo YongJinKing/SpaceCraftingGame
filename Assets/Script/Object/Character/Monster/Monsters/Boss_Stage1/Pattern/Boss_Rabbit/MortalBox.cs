@@ -43,6 +43,8 @@ public class MortalBox : MonoBehaviour
         if (rabbitWorker != null)
         {
             rabbitWorker.SetActive(true);
+            rabbitWorker.GetComponent<RabbitWorker>().StartWorking();
+            StartProducingCake();
         }
     }
 

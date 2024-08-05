@@ -28,9 +28,9 @@ public class RabbitWorker : MonoBehaviour, IDamage
         
     }
 
-    public void StartProducing()
+    public void StartWorking()
     {
-        mortalBox.StartProducingCake();
+        //animator.SetBool("Working", true);
     }
 
     public void DeadAnim()
@@ -44,6 +44,7 @@ public class RabbitWorker : MonoBehaviour, IDamage
         hp -= damage;
         if(hp <= 0f)
         {
+            //animator.SetBool("Working", false);
             //animator.SetTrigger("Dead");
             mortalBox.StopProducingCake();
         }
