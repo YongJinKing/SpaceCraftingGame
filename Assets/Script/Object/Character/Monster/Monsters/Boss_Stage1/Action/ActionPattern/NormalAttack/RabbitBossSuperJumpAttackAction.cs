@@ -46,9 +46,9 @@ public class RabbitBossSuperJumpAttackAction : BossAction
 
     IEnumerator SuperJumpingAttack()
     {
-        Rigidbody2D rb = transform.parent.GetComponentInParent<Rigidbody2D>();
-        Transform rabbit = transform.parent.parent.transform;
-        
+        Rigidbody2D rb = owner.GetComponent<Rigidbody2D>();
+        Transform rabbit = owner.transform;
+
         // 초기 속도 설정
         float verticalSpeed = jumpHeight;
 

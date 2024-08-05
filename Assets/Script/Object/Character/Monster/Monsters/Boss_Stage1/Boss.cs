@@ -44,13 +44,14 @@ public class Boss : Monster
         spawnPoint = transform.position;
         stateMachine.ChangeState<BossInitState>(); // 
     }
+    protected override void OnDead()
+    {
+        base.OnDead();
+        stateMachine.ChangeState<BossDeadState>();
+    }
     #endregion
     #region Public
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-        
-    }
+
     #endregion
     #endregion
 

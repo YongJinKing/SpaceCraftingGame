@@ -2,49 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_Rabbit : Boss
+public class BossDeadState : BossState
 {
     #region Properties
     #region Private
     #endregion
     #region Protected
-
     #endregion
     #region Public
-    
-    public RabitBossAnimState _animState;
-    public string currentAnim;
     #endregion
     #region Events
     #endregion
     #endregion
 
     #region Constructor
-    public Boss_Rabbit() : base()
-    {
-        _animState = RabitBossAnimState.Boss_Idle;
-    }
     #endregion
 
     #region Methods
     #region Private
     #endregion
     #region Protected
-    // Start is called before the first frame update
-    protected override void Start()
+    protected override void AddListeners()
     {
-        base.Start();
+        base.AddListeners();
     }
-
-    protected override void Initialize()
+    protected override void RemoveListeners()
     {
-        base.Initialize();
-        
+        base.RemoveListeners();
     }
-
     #endregion
     #region Public
-
+    public override void Enter()
+    {
+        base.Enter();
+        StartCoroutine(BossDead());
+    }
+    public override void Exit()
+    {
+        base.Exit();
+        StopAllCoroutines();
+    }
     #endregion
     #endregion
 
@@ -52,10 +49,14 @@ public class Boss_Rabbit : Boss
     #endregion
 
     #region Coroutines
+    protected IEnumerator BossDead()
+    {
+        owner.animator.SetTrigger("Dead");
+        yield return new WaitForSeconds(3f);
+        Destroy(owner.gameObject);
+    }
     #endregion
 
     #region MonoBehaviour
     #endregion
-
-
 }

@@ -38,8 +38,9 @@ public class SP_Healing : SPAttackAction
         if (chk)
         {
             owner.animator.SetTrigger("Eating");
-            transform.parent.parent.GetComponent<Unit>()[EStat.HP] += healAmount; // ¿©±ä ÈúÇÏ´Â °÷ÀÌ´Ï±ñ ÈúÀ» ÇÑ´Ù.
-            transform.parent.parent.GetComponent<Unit>()[EStat.ATK] *= 1.2f;
+            owner[EStat.HP] += healAmount;
+            owner[EStat.ATK] = 2f;
+            owner[EStat.MoveSpeed] *= 1.1f;
             if (!buffVFX.isPlaying) buffVFX.Play();
         }
 

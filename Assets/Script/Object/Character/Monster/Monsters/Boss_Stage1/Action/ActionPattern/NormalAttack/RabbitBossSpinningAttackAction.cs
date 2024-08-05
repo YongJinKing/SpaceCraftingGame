@@ -8,7 +8,7 @@ public class RabbitBossSpinningAttackAction : BossAction
     #region Private
     [SerializeField] float moveSpeed = 1f;
     float moveTimer;
-    Transform boss;
+    //Transform boss;
     Vector2 targetPos;
     #endregion
     #region Protected
@@ -48,10 +48,10 @@ public class RabbitBossSpinningAttackAction : BossAction
         {
             moveTimer -= Time.deltaTime;
 
-            Vector2 dir = (Vector2)target.transform.position - (Vector2)boss.position;
+            Vector2 dir = (Vector2)target.transform.position - (Vector2)owner.transform.position;
             dir.Normalize();
             
-            boss.Translate(dir * moveSpeed * Time.deltaTime, Space.World);
+            owner.transform.Translate(dir * moveSpeed * Time.deltaTime, Space.World);
             yield return null;
         }
         
@@ -81,7 +81,7 @@ public class RabbitBossSpinningAttackAction : BossAction
     public override void Activate(Vector2 pos)
     {
         base.Activate(pos);
-        boss = this.transform.parent.parent;
+        //boss = this.transform.parent.parent;
         moveTimer = 5f;
         ownerAnim.SetTrigger("SpinningAttack");
     }

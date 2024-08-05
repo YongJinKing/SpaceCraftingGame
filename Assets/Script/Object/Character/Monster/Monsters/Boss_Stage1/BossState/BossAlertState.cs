@@ -113,7 +113,7 @@ public class BossAlertState : BossState
         {
             limitDist = bossMovement.limitDist;
         }
-        moveSpeed = owner.moveSpeed;
+        
         //StartCoroutine(ProcessingState()); // 이동이 끝난 뒤에 State변경을 해야함..
         StartCoroutine(FollowAndRotate());
     }
@@ -162,7 +162,7 @@ public class BossAlertState : BossState
             }
 
             dir.Normalize();
-            transform.Translate(dir * moveSpeed * Time.deltaTime, Space.World);
+            transform.Translate(dir * owner[EStat.MoveSpeed] * Time.deltaTime, Space.World);
             yield return null;
         }
 

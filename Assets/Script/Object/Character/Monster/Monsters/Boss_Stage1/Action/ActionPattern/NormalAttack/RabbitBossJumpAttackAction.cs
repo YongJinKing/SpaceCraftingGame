@@ -87,7 +87,8 @@ public class RabbitBossJumpAttackAction : BossAction
     public override void Activate(Vector2 pos)
     {
         base.Activate(pos);
-        rb = transform.parent.GetComponentInParent<Rigidbody2D>();
+        //rb = transform.parent.GetComponentInParent<Rigidbody2D>();
+        owner.transform.GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         StartCoroutine(JumpToTarget(transform.position, pos, 2.5f, 1f));
         // 포물선을 그리면서 점프를 하는 함수를 만들고
