@@ -8,7 +8,6 @@ public class RabbitBossSuperJumpAttackAction : BossAction
     #region Properties
     #region Private
     Vector2 targetPos;
-    
     #endregion
     #region Protected
     #endregion
@@ -83,14 +82,12 @@ public class RabbitBossSuperJumpAttackAction : BossAction
             rabbit.position = new Vector2(rabbit.position.x, rabbit.position.y + verticalSpeed * Time.deltaTime);
             yield return null;
         }
-
-
-        StartCoroutine(HitBoxOn(targetPos));
+        
         // 토끼 위치를 플레이어 위치로 고정
         rabbit.position = targetPos;
         ownerAnim.SetBool("SuperJumping", false);
         rb.velocity = Vector2.zero; // 가해진 속도 초기화
-
+        StartCoroutine(HitBoxOn(targetPos));
     }
 
     #endregion

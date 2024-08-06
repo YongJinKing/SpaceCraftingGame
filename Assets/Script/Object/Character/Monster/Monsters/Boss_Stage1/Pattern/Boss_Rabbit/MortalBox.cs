@@ -16,11 +16,12 @@ public class MortalBox : MonoBehaviour
 
     public ParticleSystem riceRainVFX;
     public Animator anim;
+
+    Coroutine producing;
     // Start is called before the first frame update
     void Start()
     {
         riceCakes = 0;
-        maxCakes = 5;
         spawnTime = Random.Range(10f, 20f);
     }
 
@@ -55,12 +56,17 @@ public class MortalBox : MonoBehaviour
 
     public void StartProducingCake()
     {
-        StartCoroutine(MakingCake());
+        //if(producing == null)
+            producing = StartCoroutine(MakingCake());
     }
 
     public void StopProducingCake()
     {
-        StopCoroutine(MakingCake());
+        if (producing != null)
+        {
+            StopCoroutine(producing);
+            producing = null;
+        }
     }
 
     IEnumerator MakingCake()

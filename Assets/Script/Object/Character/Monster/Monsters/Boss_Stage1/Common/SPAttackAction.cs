@@ -91,14 +91,15 @@ public class SPAttackAction : BossAction
     protected IEnumerator MoveToMortalBox(MortalBox mortalBox)
     {
         ownerAnim.SetBool("Move", true);
-        Transform rabbit = transform.parent.parent;
-        if(rabbit.transform.position.x > mortalBox.transform.position.x)
+        //Transform rabbit = transform.parent.parent;
+        Transform rabbit = owner.transform;
+        if (rabbit.transform.position.x > mortalBox.transform.position.x)
         {
-            rabbit.transform.localScale = new Vector3(-1,1,1);
+            rabbit.transform.localScale = new Vector3(1, 1, 1); // 왼쪽 바라보기
         }
         else
         {
-            rabbit.transform.localScale = new Vector3(1, 1, 1);
+            rabbit.transform.localScale = new Vector3(-1, 1, 1); // 오른쪽 바라보기
         }
         Vector2 dir = mortalBox.transform.position - rabbit.position;
         float dist = dir.magnitude;

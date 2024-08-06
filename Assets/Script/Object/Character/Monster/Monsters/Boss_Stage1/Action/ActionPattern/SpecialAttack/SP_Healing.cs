@@ -8,7 +8,6 @@ public class SP_Healing : SPAttackAction
     #region Private
     
     [SerializeField] float healAmount = 10f;
-    [SerializeField] float atkAmount = 5f;
     #endregion
     #region Protected
 

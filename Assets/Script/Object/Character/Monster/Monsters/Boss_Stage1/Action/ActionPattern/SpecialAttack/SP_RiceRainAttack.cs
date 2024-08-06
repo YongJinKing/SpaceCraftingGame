@@ -176,6 +176,11 @@ public class SP_RiceRainAttack : SPAttackAction
     protected override void ActionEnd()
     {
         base.ActionEnd();
+        ShowPatternLines(xShapeLines, false);
+        ShowPatternLines(xShapeWarningLines, false);
+        ShowPatternLines(plusShapeLines, false);
+        ShowPatternLines(plusShapeWarningLines, false);
+
         StopAllCoroutines();
     }
     #endregion

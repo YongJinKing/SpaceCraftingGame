@@ -47,8 +47,8 @@ public class RabbitWorker : MonoBehaviour, IDamage
             //animator.SetBool("Working", false);
             //animator.SetTrigger("Dead");
             mortalBox.StopProducingCake();
+            hp = maxHp;
+            this.gameObject.SetActive(false);
         }
-
-        hp = maxHp;
     }
 }

@@ -47,6 +47,7 @@ public class Boss : Monster
     protected override void OnDead()
     {
         base.OnDead();
+        activatedAction.Deactivate();
         stateMachine.ChangeState<BossDeadState>();
     }
     #endregion
