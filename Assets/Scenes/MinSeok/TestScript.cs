@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    public GameObject objectToInstantiate;  // 생성할 오브젝트 프리팹
-    public Transform spawnPoint;            // 오브젝트가 생성될 위치
-    public float forceAmount = 10f;         // 발사할 때 가할 힘의 크기
+    public GameObject tthise;
+    public GameObject prefab; // 등록된 프리팹
+    private GameObject spawnedPrefab; // 소환된 프리팹
+    private bool isOriginalActive = true; // 원래 오브젝트 활성화 상태 추적
 
     void Update()
     {
-        // 스페이스바가 눌리면 오브젝트를 생성하고 발사
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Alpha1)) // 1번 키 입력
         {
-            // 오브젝트를 생성
-            GameObject instantiatedObject = Instantiate(objectToInstantiate, spawnPoint.position, spawnPoint.rotation);
-
-            // 생성된 오브젝트의 Rigidbody2D를 가져옴
-            Rigidbody2D rb = instantiatedObject.GetComponent<Rigidbody2D>();
-
-            // Rigidbody2D가 있는지 확인
-            if (rb != null)
+            if (isOriginalActive)
             {
-                // 오브젝트를 앞으로 발사 (2D에서는 transform.right 사용)
-                rb.AddForce(spawnPoint.right * forceAmount, ForceMode2D.Impulse);
+                // 현재 오브젝트 비활성화
+                tthise.gameObject.SetActive(false);
+                // 같은 위치에 프리팹 소환
+                spawnedPrefab = Instantiate(prefab, transform.position, transform.rotation);
+                isOriginalActive = false;
             }
-            else
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)) // 2번 키 입력
+        {
+            if (!isOriginalActive)
             {
-                Debug.LogWarning("생성된 오브젝트에 Rigidbody2D가 없습니다. Rigidbody2D 컴포넌트를 추가해주세요.");
+                // 비활성화 했던 오브젝트 다시 활성화
+                tthise.gameObject.SetActive(true);
+                isOriginalActive = true;
             }
         }
     }
