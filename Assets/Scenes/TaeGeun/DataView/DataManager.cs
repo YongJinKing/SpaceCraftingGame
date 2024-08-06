@@ -11,21 +11,25 @@ using System.Linq;
 public class DataManager : Singleton<DataManager>
 {
     public string savePath;
-    public int nowSlot;
+    public int nowSlot =0;
     public LayerMask playerLayerMask;
     public LayerMask EnemyLayerMask;
     /// <summary>
     /// 플레이어 데이터 저장 배열
     /// </summary>
     public PlayerDataStruct[] pd = new PlayerDataStruct[1];
-    public Player NowPlayer = new Player();
+    public Player NowPlayer;
     private void Awake()
     {
         Initialize();
+
     }
 
     void Start()
     {
+        
+        SavePlayerInfo();
+        LoadJson("PlayerData" + DataManager.Instance.nowSlot.ToString() + ".json");
 
     }
 
@@ -38,7 +42,7 @@ public class DataManager : Singleton<DataManager>
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            //LoadJson();
+            LoadJson("PlayerData" + DataManager.Instance.nowSlot.ToString() + ".json");
         }
 
         if (Input.GetKeyDown(KeyCode.I))
@@ -59,6 +63,8 @@ public class DataManager : Singleton<DataManager>
         //5. 파일로 저장
         //6. 디버그 로그
 
+        string currentTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+    
         //1.
         Unit[] units = FindObjectsOfType<Unit>();
 
@@ -78,6 +84,8 @@ public class DataManager : Singleton<DataManager>
                     pd[0].ATK = tempPl.GetRawStat(EStat.ATK);
                     pd[0].ATKSpeed = tempPl.GetRawStat(EStat.ATKSpeed);
                     pd[0].Priority = tempPl.GetRawStat(EStat.Priority);
+                    pd[0].saveTime = currentTime;
+
                 }
             }
         }
@@ -121,7 +129,7 @@ public class DataManager : Singleton<DataManager>
 
     public void DataClear()
     {
-        nowSlot = -1;
+        nowSlot = 0;
         NowPlayer = new Player();
     }
 }
