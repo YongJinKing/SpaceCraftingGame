@@ -16,7 +16,7 @@ public class BossAlertState : BossState
     bool specialToggle = false;
     #endregion
     #region Protected
-    protected Transform ownerImg;
+    
     #endregion
     #region Public
     #endregion
@@ -34,7 +34,6 @@ public class BossAlertState : BossState
         base.Awake();
         InitializeShuffledNormalIndices();
         InitializeShuffledSpecialIndices();
-        ownerImg = transform.GetChild(5).GetChild(0).transform;
     }
 
     // attackActions의 인덱스 번호들을 랜덤으로 섞고 큐에 넣은 뒤 하나하나 차례대로 빼내어 쓰는 형식

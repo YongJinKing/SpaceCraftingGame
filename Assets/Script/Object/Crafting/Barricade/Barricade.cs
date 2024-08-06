@@ -18,8 +18,9 @@ public class Barricade : Structure
     }
     protected override void OnDead()
     {
+        this.GetComponent<BoxCollider2D>().enabled = false;
         destroyVFX.gameObject.SetActive(true);
-        Destroy(this.transform.gameObject, 2f);
+        Destroy(this.transform.gameObject, 1f);
     }
 
     protected override void Initialize()

@@ -4049,6 +4049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MortalBox (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6662450693698412250, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7639933872661374566, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -4182,6 +4186,10 @@ PrefabInstance:
     - target: {fileID: 6482884609745746373, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
       propertyPath: m_Name
       value: MortalBox (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662450693698412250, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7639933872661374566, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
       propertyPath: m_Mesh
@@ -6128,7 +6136,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2097152
   attackActions:
+  - {fileID: 1869338159}
   - {fileID: 1915992402}
+  - {fileID: 707610223}
+  - {fileID: 746036847}
   ai: {fileID: 1940367737}
   player: {fileID: 0}
   bossDirMove: {fileID: 0}
@@ -7002,6 +7013,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MortalBox (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6662450693698412250, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7639933872661374566, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -7397,6 +7412,10 @@ PrefabInstance:
     - target: {fileID: 6482884609745746373, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
       propertyPath: m_Name
       value: MortalBox (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662450693698412250, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7639933872661374566, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
       propertyPath: m_Mesh
@@ -7863,6 +7882,10 @@ PrefabInstance:
     - target: {fileID: 6482884609745746373, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
       propertyPath: m_Name
       value: MortalBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662450693698412250, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7639933872661374566, guid: 6e80ed30d0a99c24eae76e1532ef0335, type: 3}
       propertyPath: m_Mesh

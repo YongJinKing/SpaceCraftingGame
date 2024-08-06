@@ -70,7 +70,6 @@ public class SPAttackAction : BossAction
 
         chk = true;
         mortalBox.ReduceCake(riceCost); // 떡을 패턴에 필요한 갯수만큼 차감하고
-        mortalBox.StartProducingCake();
     }
 
     protected IEnumerator SetPatternMortalBox()
