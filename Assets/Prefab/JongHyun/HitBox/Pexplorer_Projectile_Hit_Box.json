@@ -1,6 +1,6 @@
 [
   {
-    "Index": 10000,
+    "Index": 20000,
     "Effect_Index": 1,
     "Hit_Effect_Prefab_Index": 2,
     "Destroy_Effect_Prefab_Index": 5,
@@ -10,6 +10,8 @@
     "LayerMask": [16, 19, 21],
     "HitBox_Duration": 5.0,
     "Hit_Frequency": -1.0,
-    "IsFollowDir": true
+    "Move_Speed": 5.0,
+    "Max_Dist": 20.0,
+    "Penetrable": false
   }
 ]

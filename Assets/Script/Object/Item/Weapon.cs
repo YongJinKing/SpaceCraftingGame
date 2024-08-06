@@ -14,7 +14,7 @@ public class Weapon : Equipment
     //triggered by right mouse click
     [SerializeField] protected Action _subAction;
     [SerializeField] protected Transform _graphic;
-    [SerializeField] protected int _itemType;
+    [SerializeField] protected int _weaponType;
     #endregion
     #region Public
     public Action mainAction
@@ -34,8 +34,8 @@ public class Weapon : Equipment
     }
     public int itemType
     {
-        get { return _itemType; }
-        set { _itemType = value; }
+        get { return _weaponType; }
+        set { _weaponType = value; }
     }
     #endregion
     #region Events

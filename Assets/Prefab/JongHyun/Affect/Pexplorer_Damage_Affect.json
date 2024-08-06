@@ -1,15 +1,12 @@
 [
   {
     "Index": 10000,
-    "Effect_Index": 1,
-    "Hit_Effect_Prefab_Index": 2,
-    "Destroy_Effect_Prefab_Index": 5,
-    "Affect_Index": [1, 2],
-    "HitBox_X_Size": 1,
-    "HitBox_Y_Size": 1,
-    "LayerMask": [20],
-    "HitBox_Duration": 5,
-    "Hit_Frequency": -1,
-    "IsFollowDir": true
+    "LayerMask": [19],
+    "power": 1
+  },
+  {
+    "Index": 10001,
+    "LayerMask": [16, 21],
+    "power": 1
   }
 ]

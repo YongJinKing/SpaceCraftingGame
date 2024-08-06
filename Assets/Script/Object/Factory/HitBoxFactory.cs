@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class HitBoxFactory
 {
-    public HitBox CreateHitBox(int index)
+    private AffectFactory affectFac; 
+
+    public HitBoxFactory() 
+    { 
+        affectFac = new AffectFactory();
+    }
+    public HitBoxFactory(AffectFactory affect)
     {
-        GameObject hitBoxObject = null;
+        affectFac = affect;
+    }
+
+
+    public GameObject Create(int index)
+    {
+        GameObject gameObject = null;
 
         switch(index / 10000)
         {
@@ -14,9 +26,9 @@ public class HitBoxFactory
             case 1:
                 {
                     //MeleeHitBoxStruct data = datamanager.gethitboxstruct(index);
-                    MeleeHitBoxStruct data = new MeleeHitBoxStruct();
+                    MeleeHitBoxStruct data = default;
 
-                    string s = File.ReadAllText("Assets/Prefab/JongHyun/HitBox/Pexploer_Melee_Hit_Box.json");
+                    string s = File.ReadAllText("Assets/Prefab/JongHyun/HitBox/Pexplorer_Melee_Hit_Box.json");
                     foreach (MeleeHitBoxStruct temp in JsonConvert.DeserializeObject<MeleeHitBoxStruct[]>(s))
                     {
                         if (temp.Index == index)
@@ -25,22 +37,28 @@ public class HitBoxFactory
                             break;
                         }
                     }
+                    if (data.Equals(default))
+                    {
+                        break;
+                    }
 
-                    hitBoxObject = new GameObject(data.Index.ToString());
+                    gameObject = new GameObject(index.ToString());
 
-                    MeleeHitBox melee = hitBoxObject.AddComponent<MeleeHitBox>();
+                    MeleeHitBox melee = gameObject.AddComponent<MeleeHitBox>();
 
                     //GameObject EffectPrefab = Resources.Load<GameObject>(data.Effect_Index);
-                    //EffectPrefab.SetParent(melee, false);
+                    //EffectPrefab.SetParent(melee.transform, false);
                     //melee.hitEffectPrefab = Resources.Load<GameObject>(data.Hit_Effect_Prefab_Index);
                     //melee.destroyEffectPrefab = Resources.Load<GameObject>(data.Destroy_Effect_Prefab_Index);
 
-                    /*
+                    
                     for(int i = 0;i < data.Affect_Index.Length ; ++i)
                     {
-                        AffectFactory.CreateAffect(data.Affect_Index[i]).transform.SetParent(melee, false);
+                        GameObject temp = affectFac.Create(data.Affect_Index[i]);
+                        if(temp != null)
+                            temp.transform.SetParent(melee.transform, false);
                     }
-                    */
+                    
 
                     melee.hitBoxSize = new Vector2(data.HitBox_X_Size, data.HitBox_Y_Size);
 
@@ -54,9 +72,52 @@ public class HitBoxFactory
                     melee.isFollowDir = data.IsFollowDir;
                 }   
                 break;
+            //ProjectileHitBox
             case 2:
                 {
+                    ProjectileHitBoxStruct data = default;
 
+                    string s = File.ReadAllText("Assets/Prefab/JongHyun/HitBox/Pexplorer_Projectile_Hit_Box.json");
+                    foreach (ProjectileHitBoxStruct temp in JsonConvert.DeserializeObject<ProjectileHitBoxStruct[]>(s))
+                    {
+                        if (temp.Index == index)
+                        {
+                            data = temp;
+                            break;
+                        }
+                    }
+                    if (data.Equals(default))
+                    {
+                        break;
+                    }
+
+                    gameObject = new GameObject(index.ToString());
+
+                    ProjectileHitBox projectile = gameObject.AddComponent<ProjectileHitBox>();
+
+                    //GameObject EffectPrefab = Resources.Load<GameObject>(data.Effect_Index);
+                    //EffectPrefab.SetParent(projectile.transform, false);
+                    //projectile.hitEffectPrefab = Resources.Load<GameObject>(data.Hit_Effect_Prefab_Index);
+                    //projectile.destroyEffectPrefab = Resources.Load<GameObject>(data.Destroy_Effect_Prefab_Index);
+
+                    for (int i = 0; i < data.Affect_Index.Length; ++i)
+                    {
+                        GameObject temp = affectFac.Create(data.Affect_Index[i]);
+                        if (temp != null)
+                            temp.transform.SetParent(projectile.transform, false);
+                    }
+
+                    projectile.hitBoxSize = new Vector2(data.HitBox_X_Size, data.HitBox_Y_Size);
+                    for (int i = 0; i < data.LayerMask.Length; ++i)
+                    {
+                        projectile.targetMask = projectile.targetMask | (1 << data.LayerMask[i]);
+                    }
+
+                    projectile.duration = data.HitBox_Duration;
+                    projectile.hitFrequency = data.Hit_Frequency;
+                    projectile.moveSpeed = data.Move_Speed;
+                    projectile.maxDist = data.Max_Dist;
+                    projectile.penetrable = data.Penetrable;
                 }
                 break;
             case 3:
@@ -66,6 +127,6 @@ public class HitBoxFactory
                 break;
         }
 
-        return hitBoxObject.GetComponent<HitBox>();
+        return gameObject;
     }
 }

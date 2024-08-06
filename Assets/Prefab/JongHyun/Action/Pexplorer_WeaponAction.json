@@ -1,0 +1,11 @@
+[
+  {
+    "Index": 10000,
+    "Priority": 0,
+    "CoolTime": -1,
+    "ActiveRadius": 1.5,
+    "HitBox_Index": [20000],
+    "LayerMask": [0],
+    "ActiveDuration": 0.1
+  }
+]
