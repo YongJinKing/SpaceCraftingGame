@@ -4,11 +4,12 @@ public struct PlayerDataStruct
     /// <summary>
     /// ∏µ® «¡∏Æ∆È ¿Œµ¶Ω∫ -> ∏µ® «¡∏Æ∆È µ•¿Ã≈Õ∑Œ ¿Ãµø
     /// </summary>
-    public int Name;
+    public string Name;
     public int ModelPrefabIndex;
     public float MaxHP;
     public float Priority;
     public float moveSpeed;
     public float ATK;
     public float ATKSpeed;
+    public string saveTime;
 }
