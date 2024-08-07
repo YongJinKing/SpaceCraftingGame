@@ -147,7 +147,7 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
 
 
         componetsInfo = new ComponetsInfo(componentList);
-        var json = JsonConvert.SerializeObject(componetsInfo);
+        var json = JsonConvert.SerializeObject(componetsInfo, Formatting.Indented);
         //savePath = SceneManager.GetActiveScene().name + "/" + json;
         savePath = "SaveTestJson.json";
         File.WriteAllText(savePath, json);
