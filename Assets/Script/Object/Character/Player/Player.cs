@@ -17,7 +17,6 @@ public class Player : Unit
     #region Protected
     #endregion
     #region Public
-    public MoveAction moveAction;
     /// <summary>
     /// mainAction과 secondAction은 임시
     /// 나중에 아이템에서 액션을 가져올건데 배열로 만드는게 좋을듯
@@ -32,13 +31,7 @@ public class Player : Unit
     {
         get { return _isDead; }
     }
-    /// <summary>
-    /// 이건 나중에 UI에서 받아야 한다. 지금은 하드코딩
-    /// #need to modify later
-    /// </summary>
-    public Weapon AR;
-    public Weapon Hammer;
-    public Weapon PickAxe;
+    public bool canEquip = false;
     internal int layer;
     #endregion
     #region Events

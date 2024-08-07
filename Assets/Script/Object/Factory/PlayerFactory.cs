@@ -6,7 +6,7 @@ public class PlayerFactory
     {
         GameObject playerObject = new GameObject(index.ToString());
         
-        PlayerDataStruct playerData = new PlayerDataStruct();
+        PlayerDataStruct playerData = default;
         //여기에서 Json으로 데이터 불러오기
         //if(index == ~~~)
         //playerData = ~~~~;
@@ -31,7 +31,7 @@ public class PlayerFactory
         //model.transform.SetParent(playerObject, false);
 
         playerObject.AddComponent<UnitMovement>();
-        //playerObject.AddComponent<PlayerEquipmentManager>();
+        playerObject.AddComponent<PlayerEquipmentManager>();
 
         return playerObject;
     }

@@ -19,6 +19,7 @@ public class PlayerIdleState : PlayerState
     #region Public
     #endregion
     #region Events
+    private UnityEvent<Vector2> moveEvent = new UnityEvent<Vector2>();
     #endregion
     #endregion
 
@@ -34,25 +35,30 @@ public class PlayerIdleState : PlayerState
         base.AddListeners();
         InputController.Instance.moveEvent.AddListener(OnMove);
         InputController.Instance.mouseEvent.AddListener(OnMouse);
-        InputController.Instance.numberKeyEvent.AddListener(OnNumberKey);
+
+        UnitMovement unitMovement = GetComponent<UnitMovement>();
+        moveEvent.AddListener(unitMovement.OnMoveToDir);
     }
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
         InputController.Instance.moveEvent.RemoveListener(OnMove);
         InputController.Instance.mouseEvent.RemoveListener(OnMouse);
-        InputController.Instance.numberKeyEvent.RemoveListener(OnNumberKey);
+
+        UnitMovement unitMovement = GetComponent<UnitMovement>();
+        moveEvent.RemoveListener(unitMovement.OnMoveToDir);
     }
     #endregion
     #region Public
     public override void Enter()
     {
         base.Enter();
+        owner.canEquip = true;
     }
     public override void Exit() 
     {
-        owner.moveAction.Deactivate();
         base.Exit();
+        owner.canEquip = false;
     }
     #endregion
     #endregion
@@ -60,7 +66,8 @@ public class PlayerIdleState : PlayerState
     #region EventHandlers
     public void OnMove(Vector2 dir)
     {
-        owner.moveAction.Activate(dir);
+        moveEvent?.Invoke(dir);
+
         owner.myAnim.SetMove(true);
 
         if (Mathf.Approximately(dir.x, 0.0f) && Mathf.Approximately(dir.y, 0.0f))
@@ -110,36 +117,6 @@ public class PlayerIdleState : PlayerState
                 owner.stateMachine.ChangeState<PlayerMovableActionState>();
             else
                 owner.stateMachine.ChangeState<PlayerUnmovableActionState>();
-        }
-    }
-    /// <summary>
-    /// 현재 하드코딩 되어 있음
-    /// 수정 필요
-    /// #need to modify later
-    /// </summary>
-    public void OnNumberKey(int num)
-    {
-        //나중에 아이템에서 타입을 받아서 하는 방식으로 바꿀것.
-        //현재는 하드코딩
-        //Equipment Manager를 만들어서 호출하는 방식도 좋을듯
-        //현재는 0은 맨손 1은 총, 2는 망치, 3은 곡괭이
-        owner.myAnim.SetEquipType(num);
-        owner.AR.UnEquip();
-        owner.Hammer.UnEquip();
-        owner.PickAxe.UnEquip();
-        switch (num)
-        {
-            case 0:
-                break;
-            case 1:
-                owner.AR.Equip();
-                break;
-            case 2:
-                owner.Hammer.Equip();
-                break;
-            case 3:
-                owner.PickAxe.Equip();
-                break;
         }
     }
     #endregion
