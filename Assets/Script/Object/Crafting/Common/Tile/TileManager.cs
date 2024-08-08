@@ -26,7 +26,7 @@ public class TileManager : Singleton<TileManager>
     public Dictionary<Vector3Int, Tile> availablePlaces;
     ComponetsInfo componentsInfo;
     CraftBuildingManager craftmanager;
-
+    string path;
     void Awake()
     {
         craftmanager = FindObjectOfType<CraftBuildingManager>();
@@ -34,7 +34,7 @@ public class TileManager : Singleton<TileManager>
         craftmanager.WritePlaceInfoEvent.AddListener(RemopvePlace);
         tileMap = transform.GetComponent<Tilemap>();
         availablePlaces = new Dictionary<Vector3Int, Tile>();
-
+        path = "TileSaveData" + DataManager.Instance.nowSlot + ".json";
         for (int y = tileMap.cellBounds.yMin; y < tileMap.cellBounds.yMax; y++)
         {
             for (int x = tileMap.cellBounds.xMin; x < tileMap.cellBounds.xMax; x++)
@@ -56,7 +56,7 @@ public class TileManager : Singleton<TileManager>
 
         SpaceShipInitiallize();
 
-        componentsInfo = ComponentSaveSystem.Instance.LoadTileInfo();
+        componentsInfo = ComponentSaveSystem.Instance.LoadTileInfo(path);
         if (componentsInfo == null)
         {
             // 여기서 자원 최초 생성
