@@ -49,7 +49,7 @@ public class CraftFactory : Singleton<CraftFactory>
     {
         if (!spaceShip.IsDronReady()) return null;
 
-        if (!CheckInventory(index)) // ÀÎº¥Åä¸®¿¡ ½á¾ßÇÏ´Â ±× Àç·áµéÀÌ ´Ù ÀÖ´ÂÁö È®ÀÎÇÏ°í ÀÖÀ¸¸é Àú±â¼­ ¼Ò¸ðÇÏ°í ¾øÀ¸¸é ¿©±â·Î ¿Í¼­ null ¸®ÅÏ
+        if (!CheckInventory(index)) // ï¿½Îºï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­ ï¿½Ò¸ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í¼ï¿½ null ï¿½ï¿½ï¿½ï¿½
         {
             return null;
         }
@@ -57,14 +57,14 @@ public class CraftFactory : Singleton<CraftFactory>
 
         Transform obj = Instantiate(constructionSite, pos, Quaternion.identity);
         obj.SetParent(null);
-        // °ÇÃà¿¡ ÇÊ¿äÇÑ ¼³Á¤µéÀ» ÇØÁà¾ßÇÔ
+        // ï¿½ï¿½ï¿½à¿¡ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         obj.GetComponent<ConstructionSite>().SetIndex(index);
         obj.GetComponent<ConstructionSite>().SetHp(Hp);
         obj.GetComponent<ConstructionSite>().SetInPos(pos);
         obj.GetComponent<ConstructionSite>().SetSize(size);
         obj.GetComponent<ConstructionSite>().SetCraftingTime(abilityData.BuildingSpeed);
 
-        // µå·ÐÀ» °ÇÃàÇöÀåÀ¸·Î º¸³»´Â ÇÔ¼ö¸¦ ¿©±â¼­ ½ÇÇàÇÑ´Ù!, ÀÌ¶§ µå·ÐÀ» °ÇÃà ÇöÀåÀ¸·Î º¸³»´Â ÇÔ¼ö´Â ÀÎÀÚ·Î obj¸¦ Å¸°ÙÀ¸·Î ¹Þ´Â´Ù 
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½!, ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú·ï¿½ objï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´Â´ï¿½ 
         spaceShip.TakeOffDron(obj);
 
         return obj.gameObject;
@@ -105,20 +105,20 @@ public class CraftFactory : Singleton<CraftFactory>
         int chkCount1 = 0;
         int chkCount2 = 0;
 
-        // InventoryDatas ¸®½ºÆ®¸¦ ¼øÈ¸ÇÏ¸é¼­ °¢ idÀÇ °³¼ö¸¦ ¼Á´Ï´Ù.
+        // InventoryDatas ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ï¸é¼­ ï¿½ï¿½ idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½.
         foreach (var item in Inventory.instance.InventoryDatas)
         {
             if (item.id == consume_Index1)
             {
-                chkCount1 += item.Amount;
+                chkCount1 += item.amount;
             }
             else if (item.id == consume_Index2)
             {
-                chkCount2 += item.Amount;
+                chkCount2 += item.amount;
             }
         }
 
-        // µÎ °³ÀÇ id°¡ ÁÖ¾îÁø °³¼ö ÀÌ»ó Á¸ÀçÇÏ´ÂÁö È®ÀÎÇÕ´Ï´Ù.
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ idï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         if (chkCount1 >= consume_Count1 && chkCount2 >= consume_Count2)
         {
             Inventory.instance.UseItem(consume_Index1, consume_Count1);
@@ -126,7 +126,7 @@ public class CraftFactory : Singleton<CraftFactory>
             return true;
         }
 
-        return false; // Áö±Ý ÀÎº¥ÀÌ¶û ¿¬°áÀÌ ¾ÈµÅ¼­ ¸·¾Æ³ù´Âµ¥ ³ªÁß¿¡ ´Ù ÁÖ¼® ÇØÁ¦ÇÏ°í Àú À§¿¡ count°¡ 0ÀÎ°Íµµ Áö¿ö¾ßÇÔ
+        return false; // ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÅ¼ï¿½ ï¿½ï¿½ï¿½Æ³ï¿½ï¿½Âµï¿½ ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ countï¿½ï¿½ 0ï¿½Î°Íµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
         //return true;
     }
@@ -196,11 +196,11 @@ public class CraftFactory : Singleton<CraftFactory>
         factoryBuilding.produceCount = abilityData.BuildingDetail_Value;
         factoryBuilding.DestroyEvent = new UnityEngine.Events.UnityEvent<Vector3>();
         
-        // Ã¼·Â °ü·ÃÀº ¼öÁ¤ ÇÊ¿ä
-        if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; // °Ç¹°ÀÇ Ã¼·Â
-        else factoryBuilding.MaxHP = Hp; // °Ç¹°ÀÇ Ã¼·Â
+        // Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
+        if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; // ï¿½Ç¹ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½
+        else factoryBuilding.MaxHP = Hp; // ï¿½Ç¹ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½
 
-        factoryBuilding[EStat.Efficiency] = abilityData.BuildingDetail_Delay; // °Ç¹°ÀÇ »ý»ê ¼Óµµ
+        factoryBuilding[EStat.Efficiency] = abilityData.BuildingDetail_Delay; // ï¿½Ç¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
         
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
@@ -252,8 +252,8 @@ public class CraftFactory : Singleton<CraftFactory>
 
         Barricade barricade = obj.GetComponent<Barricade>();
         barricade.mComponentName = componentData.Component_Name.ToString();
-        if (Hp == 0) barricade.MaxHP = componentData.Component_Hp; // °Ç¹°ÀÇ Ã¼·Â
-        else barricade.MaxHP = Hp; // °Ç¹°ÀÇ Ã¼·Â
+        if (Hp == 0) barricade.MaxHP = componentData.Component_Hp; // ï¿½Ç¹ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½
+        else barricade.MaxHP = Hp; // ï¿½Ç¹ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½
 
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
