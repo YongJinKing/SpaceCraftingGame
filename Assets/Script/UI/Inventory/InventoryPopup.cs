@@ -13,13 +13,10 @@ public class InventoryPopup : MonoBehaviour
 
     private void Start() 
     {
-     
-        PopupUpdate();
-        //팝업 업데이트
+        PopupUpdate();//팝업 업데이트   
     }
     public void PopupUpdate()
-    {
-        
+    {   
         for(int i = 0; i < ObjSlotGridLine.transform.childCount; i++)
         {
             if(Inventory.instance.GetDisplayInvenDataWithIdLength() > ObjSlotGridLine.transform.GetChild(i).GetSiblingIndex())

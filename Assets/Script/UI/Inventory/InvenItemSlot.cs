@@ -8,13 +8,6 @@ public class InvenItemSlot : MonoBehaviour
 {
     public Image image;
     public TMP_Text AmountTxt;
-
-    private int amount;
-
-    int id;
-    string ItemName;
-    string ItemDesc;
-    int ItemValue;
     string spName;
     
     private void Start() 
