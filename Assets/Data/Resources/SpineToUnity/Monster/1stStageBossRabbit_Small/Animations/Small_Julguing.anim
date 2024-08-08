@@ -120,7 +120,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.016666668
+  - time: 0.16666667
     functionName: StartWorkingEvent
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: d8fea747987da0c49b0597a902608dc3, type: 3}
