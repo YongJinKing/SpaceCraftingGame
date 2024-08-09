@@ -14,6 +14,7 @@ public class BossAlertState : BossState
     Queue<int> shuffledNormalIndices;
     Queue<int> shuffledSpecialIndices;
     bool specialToggle = false;
+    Transform bossImg;
     #endregion
     #region Protected
     
@@ -34,6 +35,10 @@ public class BossAlertState : BossState
         base.Awake();
         InitializeShuffledNormalIndices();
         InitializeShuffledSpecialIndices();
+    }
+    private void Start()
+    {
+        
     }
 
     // attackActions의 인덱스 번호들을 랜덤으로 섞고 큐에 넣은 뒤 하나하나 차례대로 빼내어 쓰는 형식
@@ -142,15 +147,16 @@ public class BossAlertState : BossState
 
     private IEnumerator MoveTowardsTarget()
     {
+        bossImg = this.transform.GetChild(this.transform.childCount - 1);
         while (true)
         {
             if (owner.target.transform.position.x > this.transform.position.x)
             {
-                this.transform.localScale = new Vector3(-1, 1, 1);
+                bossImg.transform.localScale = new Vector3(-1, 1, 1);
             }
             else if (owner.target.transform.position.x < this.transform.position.x)
             {
-                this.transform.localScale = new Vector3(1, 1, 1);
+                bossImg.transform.localScale = new Vector3(1, 1, 1);
             }
 
             Vector2 dir = (Vector2)owner.target.transform.position - (Vector2)transform.position;
