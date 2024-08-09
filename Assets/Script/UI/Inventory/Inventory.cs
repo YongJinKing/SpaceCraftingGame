@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.Events;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 
 public class Inventory : MonoBehaviour
 {
@@ -30,13 +31,15 @@ public class Inventory : MonoBehaviour
     InvenSelelctType InvenSoltType;
     public List<SlotItemData> InventoryDatas = new List<SlotItemData>();
 
+    public List<SlotItemData> DisplayInven= new List<SlotItemData>();
+
     private int inventoryDatasMaxCount;
     private int slotMaxCount;
     public static Inventory instance;
     
-    public UnityEvent UpdatePopup;
+    public UnityEvent updatePopup;
 
-    public List<SlotItemData> DisplayInven= new List<SlotItemData>();
+    
     public int Testid;
     public int TestAmout;
 
@@ -52,17 +55,12 @@ public class Inventory : MonoBehaviour
 
         slotMaxCount = 99;
 
-        
-
         for(int i = 0; i < inventoryDatasMaxCount; i++)
         {
             SlotItemData slotItemData = new SlotItemData();
             InventoryDatas.Add(slotItemData);
         }
-        foreach(SlotItemData slotItemData in InventoryDatas)
-        {
-            DisplayInven.Add(slotItemData);
-        }
+        DisplayInven.AddRange(InventoryDatas);
         
         
     }
@@ -72,9 +70,16 @@ public class Inventory : MonoBehaviour
         
     }
     
-    public void Testbtn()
+    public void TestAddBtn()
     {
-        AddItem(Testid,TestAmout);
+        bool check = AddItem(Testid,TestAmout);
+        Debug.Log(check);
+        
+    }
+     public void TestUseBtn()
+    {
+        UseItem(Testid, TestAmout);
+        
     }
 
     
@@ -83,25 +88,45 @@ public class Inventory : MonoBehaviour
     {
         int remainingAmout = amount;
 
-        for(int i = 0; i < inventoryDatasMaxCount; i++)
+        for(int i = 0; i < inventoryDatasMaxCount; i++)//똑같은 id를 가지고 있는 아이템 서칭
         {
-            if(InventoryDatas[i].id == id)
+            if(InventoryDatas[i].id == id)//아이템이 같으면 실행
             {
-                int spaceLeft = slotMaxCount - InventoryDatas[i].amount;
-                if(spaceLeft > 0)
+                if(InventoryDatas[i].amount >= slotMaxCount) continue;//최대 계수 이상을 가진 아이템 컨티뉴
+
+                if(remainingAmout >= slotMaxCount)//최대 갯수보다 잔여 갯수의 아이템 양이 많으면
                 {
-                    InventoryDatas[i].amount += spaceLeft;
-                    remainingAmout -= spaceLeft;
-                    SortInventoryDatas();
-                    ModeDisplay(InvenSoltType);
-                    UpdatePopup?.Invoke();
-                    if(remainingAmout <= 0)
-                    {   
-                        return true;
+                    int spaceLeft = slotMaxCount - InventoryDatas[i].amount;// 최대 갯수에서 현재 인벤토리 아이템 갯수를 마이너스하여 잔여값을 서칭함
+                    if(spaceLeft > 0)
+                    {
+                        InventoryDatas[i].amount += spaceLeft;
+                        remainingAmout -= spaceLeft;
                     }
+                }
+
+                else
+                {
+                    int spaceLeft = InventoryDatas[i].amount + remainingAmout - slotMaxCount;
+                    if(spaceLeft > 0)
+                    {
+                        InventoryDatas[i].amount += spaceLeft;
+                        remainingAmout -= spaceLeft;
+                    }
+                    else
+                    {
+                        InventoryDatas[i].amount += remainingAmout;
+                        remainingAmout = 0;
+                    }
+                    
+                }
+                if(remainingAmout <= 0)
+                {  
+                    UpdateInventory();
+                    return true;
                 }
             }
         }
+
         for(int i = 0; i < inventoryDatasMaxCount; i++)// 나머지값 빈자리에 정착
         {
             if(InventoryDatas[i].id == 0 && remainingAmout > 0)
@@ -110,17 +135,23 @@ public class Inventory : MonoBehaviour
                 InventoryDatas[i].id = id;
                 InventoryDatas[i].amount = addAmount;
                 remainingAmout -= addAmount;
-                SortInventoryDatas();
-                ModeDisplay(InvenSoltType);
-                UpdatePopup?.Invoke();
+                UpdateInventory();
                 if(remainingAmout <= 0)
                 {   
                     return true;
                 }
             }
         }
+        Debug.Log(remainingAmout);//창고 채운뒤 남은 오브젝트 처리하면 좋을듯?
         return false;
 
+    }
+
+    private void UpdateInventory()
+    {
+        SortInventoryDatas();
+        ModeDisplay(InvenSoltType);
+        updatePopup?.Invoke();
     }
     public void ChangeMode(int index)//이부분 보셔야됨
     {
@@ -138,10 +169,9 @@ public class Inventory : MonoBehaviour
         }
         if(Type == InvenSelelctType.all)//all일땐 리턴
         {
-            UpdatePopup?.Invoke();
+            updatePopup?.Invoke();
             return;
         }
-            
         else
         {   
             ClearDisplayInven();
@@ -158,78 +188,82 @@ public class Inventory : MonoBehaviour
                     j++;
                 }
             }
-            UpdatePopup?.Invoke();
+            updatePopup?.Invoke();
         }
     }
 
-    private void ClearDisplayInven()
+    
+
+    public void UseItem(int id, int amount)// 안보셔도되요
     {
-        DisplayInven.Clear();
-        for(int i = 0; i < 25; i++)
+        if(GetItemCheck(id, amount))
         {
-            DisplayInven.Add(new SlotItemData());
-        }
-    }
-    void SortInventoryDatas()//아이디 순서대로 정렬하는 버블 정렬 알고리즘
-    {
-        for(int i = 0; i < GetInvenDataWithIdLength() - 1; i++)//ItemSort
-        {
-            for(int j = 0; j < GetInvenDataWithIdLength() - 1; j++)
+            int remainingAmout = amount;
+
+            for(int i = inventoryDatasMaxCount - 1; i >= 0; i--)
             {
-                if(InventoryDatas[j].id > InventoryDatas[j + 1].id)
+                if(InventoryDatas[i].id == id)
                 {
-                    SlotItemData Temp = InventoryDatas[j];
-                    InventoryDatas[j] = InventoryDatas[j + 1];
-                    InventoryDatas[j + 1] = Temp;
-                }
-            }
-        }
-    }
-    public void UseItem(int id, int Amount)// 안보셔도되요
-    {
-        /* for(int i = 0; i < InventoryDatas.Count; i++)
-        {
-            if(InventoryDatas[i].id == id)
-            {
-                if(InventoryDatas[i].amount >= Amount)
-                {
-                    InventoryDatas[i].amount -= Amount;
-                    if(InventoryDatas[i].amount <= 0)
+                    if(remainingAmout >= InventoryDatas[i].amount)
                     {
-                        InventoryDatas.RemoveAt(i); 
+                        remainingAmout -= InventoryDatas[i].amount;
+                        InventoryDatas[i].id = 0;
+                        InventoryDatas[i].amount = 0;
+                        
                     }
-                    UpdatePopup?.Invoke();
+                    else
+                    {
+                        int spaceLeft = InventoryDatas[i].amount - remainingAmout;
+                        InventoryDatas[i].amount = spaceLeft;
+                        remainingAmout = 0;
+                        if(InventoryDatas[i].amount <= 0)
+                        {
+                            InventoryDatas[i].id = 0;
+                            InventoryDatas[i].amount = 0;
+                        }
+                       
+                    }
+                    UpdateInventory();
+                    
                 }
-                else
+                if(remainingAmout <= 0)
                 {
-                    Debug.Log("재료 부족");
+                    return;
                 }
             }
-            else
-            {
-                Debug.Log("재료 없음");
-            }
-        } */
+
+
+        }
+        else
+        {
+            Debug.Log("아이템 없음");
+            return ;
+        }
+        
     }
-    public bool GetItemCheck(int id, int Amount)
+
+
+    public bool GetItemCheck(int id, int amount)
     {
-        for(int i = 0; i < InventoryDatas.Count; i++)
+        int remainingAmout = amount;
+
+        for(int i = inventoryDatasMaxCount - 1; i >= 0; i--)
         {
             if(InventoryDatas[i].id == id)
             {
-                if(InventoryDatas[i].amount >= Amount)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                remainingAmout -= InventoryDatas[i].amount;
             }
         }
-        return false;
+        if(remainingAmout <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-
+    
 
 
 
@@ -256,6 +290,29 @@ public class Inventory : MonoBehaviour
             }
         }
         return count;
+    }
+    private void ClearDisplayInven()
+    {
+        DisplayInven.Clear();
+        for(int i = 0; i < inventoryDatasMaxCount; i++)
+        {
+            DisplayInven.Add(new SlotItemData());
+        }
+    }
+    private void SortInventoryDatas()//아이디 순서대로 정렬하는 버블 정렬 알고리즘
+    {
+        for(int i = 0; i < GetInvenDataWithIdLength() - 1; i++)//ItemSort
+        {
+            for(int j = 0; j < GetInvenDataWithIdLength() - 1; j++)
+            {
+                if(InventoryDatas[j].id > InventoryDatas[j + 1].id)
+                {
+                    SlotItemData Temp = InventoryDatas[j];
+                    InventoryDatas[j] = InventoryDatas[j + 1];
+                    InventoryDatas[j + 1] = Temp;
+                }
+            }
+        }
     }
 
 }
