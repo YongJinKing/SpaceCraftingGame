@@ -26,9 +26,13 @@ public class PlayerFactory
         player.ATK = playerData.ATK;
         player.ATKSpeed = playerData.ATKSpeed;
 
-        
+
         //GameObject model = GetModel(playerData.ModelPrefabIndex);
-        //model.transform.SetParent(playerObject, false);
+        GameObject model = Resources.Load<GameObject>("SpineToUnity/Charactor/SpaceHuman");
+        model.transform.SetParent(playerObject.transform, false);
+
+        player.graphicTransform = model.transform;
+        player.weaponRotationAxis = model.GetComponentInChildren<WeaponRotationAxis>();
 
         playerObject.AddComponent<UnitMovement>();
         playerObject.AddComponent<PlayerEquipmentManager>();
