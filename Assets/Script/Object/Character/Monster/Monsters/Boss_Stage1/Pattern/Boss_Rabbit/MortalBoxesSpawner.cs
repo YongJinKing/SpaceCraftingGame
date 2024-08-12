@@ -21,7 +21,6 @@ public class MortalBoxesSpawner : MonoBehaviour
         {
             int idx = Random.Range(0, idxList.Count);
             idxs[i] = idxList[idx];
-            Debug.Log(idxs[i]);
             idxList.RemoveAt(idx);
         }
         SpawnMortals();
