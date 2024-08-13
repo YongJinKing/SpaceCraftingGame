@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ·¹ÀÌ¾î¸¦ ¹Ù²ã¼­ ¹«Àû½Ã°£ ±¸Çö
+/// ï¿½ï¿½ï¿½Ì¾î¸¦ ï¿½Ù²ã¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
 /// </summary>
 public class PlayerHitState : PlayerState
 {
@@ -68,7 +68,7 @@ public class PlayerHitState : PlayerState
     #region Coroutines
     private IEnumerator ProcessingState()
     {
-
+        yield return null;
     }
 
     #endregion

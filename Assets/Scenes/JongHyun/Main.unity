@@ -74692,7 +74692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1663404369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82516,7 +82516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1948805411
 Transform:
   m_ObjectHideFlags: 0
@@ -108636,6 +108636,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5220799396979502754, guid: fbf3c0084200edb438aff27064253bff, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6a4f6d706732f645880576781f2a83f, type: 2}
     - target: {fileID: 5452862944334318286, guid: fbf3c0084200edb438aff27064253bff, type: 3}
       propertyPath: m_Name
       value: SpaceHuman
