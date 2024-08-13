@@ -32,7 +32,7 @@ public class FactoryDIContainer
         affectFac = new AffectFactory();
         hitBoxFac = new HitBoxFactory(affectFac);
         actionFac = new ActionFactory(hitBoxFac);
-
+        itemFac = new ItemFactory(actionFac);
     }
 
 }

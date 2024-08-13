@@ -42,6 +42,7 @@ public class RabbitBossJumpAttackAction : BossAction
         for (int i = 0; i < hitBoxes.Length; ++i)
         {
             hitBoxes[i].Activate(pos);
+
             Quaternion rot = hitBoxes[i].transform.rotation;
 
             Vector3 eulerRotation = rot.eulerAngles;
@@ -58,21 +59,32 @@ public class RabbitBossJumpAttackAction : BossAction
     IEnumerator JumpToTarget(Vector2 start, Vector2 target, float height, float duration)
     {
         float jumpTime = 0;
-        //AsyncAnimation(0,false);
+
+        // 플레이어의 위치를 보정하여 타겟보다 앞쪽으로 떨어지게 함
+        Vector2 direction = (target - start).normalized;  // 타겟 방향 벡터
+        float offsetDistance = 2f;  // 히트박스가 플레이어에 맞도록 조정할 거리
+        Vector2 adjustedTarget = target - direction * offsetDistance;
+
+        // 애니메이션 트리거
         ownerAnim.SetTrigger("JumpAttack");
+
         while (jumpTime < duration)
         {
             jumpTime += Time.deltaTime;
             float t = jumpTime / duration;
-            float x = Mathf.Lerp(start.x, target.x, t);
-            float y = Mathf.Lerp(start.y, target.y, t) + height * Mathf.Sin(Mathf.PI * t);
+
+            // 포물선 이동 계산
+            float x = Mathf.Lerp(start.x, adjustedTarget.x, t);
+            float y = Mathf.Lerp(start.y, adjustedTarget.y, t) + height * Mathf.Sin(Mathf.PI * t);
             rb.position = new Vector2(x, y);
             yield return null;
         }
-        rb.position = target; // 정확한 위치 보정
 
+        // 정확한 위치 보정
+        rb.position = adjustedTarget;
+
+        // 착지 후 히트박스 활성화
         yield return StartCoroutine(HitBoxOn(target));
-        //ActionEnd();
     }
 
     #endregion

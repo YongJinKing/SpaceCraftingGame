@@ -6,7 +6,7 @@ public class PlayerFactory
     {
         GameObject playerObject = new GameObject(index.ToString());
         
-        PlayerDataStruct playerData = new PlayerDataStruct();
+        PlayerDataStruct playerData = default;
         //여기에서 Json으로 데이터 불러오기
         //if(index == ~~~)
         //playerData = ~~~~;
@@ -26,12 +26,16 @@ public class PlayerFactory
         player.ATK = playerData.ATK;
         player.ATKSpeed = playerData.ATKSpeed;
 
-        
+
         //GameObject model = GetModel(playerData.ModelPrefabIndex);
-        //model.transform.SetParent(playerObject, false);
+        GameObject model = Resources.Load<GameObject>("SpineToUnity/Charactor/SpaceHuman");
+        model.transform.SetParent(playerObject.transform, false);
+
+        player.graphicTransform = model.transform;
+        player.weaponRotationAxis = model.GetComponentInChildren<WeaponRotationAxis>();
 
         playerObject.AddComponent<UnitMovement>();
-        //playerObject.AddComponent<PlayerEquipmentManager>();
+        playerObject.AddComponent<PlayerEquipmentManager>();
 
         return playerObject;
     }

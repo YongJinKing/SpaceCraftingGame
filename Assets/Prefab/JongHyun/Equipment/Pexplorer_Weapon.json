@@ -1,0 +1,18 @@
+[
+  {
+    "Index": 10000,
+    "Anim_Type": 1,
+    "Stat_Modify_Values": 
+    [
+      {
+        "stattype": 3,
+        "modiType": 0,
+        "sortOrder": 1,
+        "value": 10
+      }
+    ],
+    "Main_Action_Index": 10000,
+    "Second_Action_Index": -1,
+    "Weapon_Prefab_Index": -1
+  }
+]

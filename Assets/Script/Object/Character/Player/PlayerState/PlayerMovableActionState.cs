@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovableActionState : PlayerState
 {
@@ -13,6 +14,7 @@ public class PlayerMovableActionState : PlayerState
     #region Public
     #endregion
     #region Events
+    private UnityEvent<Vector2> moveEvent = new UnityEvent<Vector2>();
     #endregion
     #endregion
 
@@ -33,6 +35,9 @@ public class PlayerMovableActionState : PlayerState
         {
             owner.activatedAction.OnActionEndEvent.AddListener(OnActionEnd);
         }
+
+        UnitMovement unitMovement = GetComponent<UnitMovement>();
+        moveEvent.AddListener(unitMovement.OnMoveToDir);
     }
     protected override void RemoveListeners()
     {
@@ -45,12 +50,14 @@ public class PlayerMovableActionState : PlayerState
             owner.activatedAction.OnActionEndEvent.RemoveListener(OnActionEnd);
         }
         owner.activatedAction = null;
+
+        UnitMovement unitMovement = GetComponent<UnitMovement>();
+        moveEvent.RemoveListener(unitMovement.OnMoveToDir);
     }
     #endregion
     #region Public
     public override void Exit()
     {
-        owner.moveAction.Deactivate();
         owner.activatedAction.Deactivate();
         base.Exit();
     }
@@ -60,7 +67,8 @@ public class PlayerMovableActionState : PlayerState
     #region EventHandlers
     public void OnMove(Vector2 dir)
     {
-        owner.moveAction.Activate(dir);
+        moveEvent?.Invoke(dir);
+
         owner.myAnim.SetMove(true);
 
         if (Mathf.Approximately(dir.x, 0.0f) && Mathf.Approximately(dir.y, 0.0f))

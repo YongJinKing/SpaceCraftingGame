@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 // 던전 안의 보스방에서 사용될 절구통(mortal box) 패턴을 위한 스크립트
@@ -16,6 +17,7 @@ public class MortalBox : MonoBehaviour
 
     public ParticleSystem riceRainVFX;
     public Animator anim;
+    public UnityEvent<float> changeSlider; 
 
     Coroutine producing;
     // Start is called before the first frame update
@@ -75,6 +77,7 @@ public class MortalBox : MonoBehaviour
         while (true)
         {
             riceCakes++;
+            changeSlider.Invoke(riceCakes / (float)maxCakes);
             if (riceCakes >= maxCakes)
             {
                 riceCakes = maxCakes;
@@ -97,9 +100,15 @@ public class MortalBox : MonoBehaviour
         {
             riceCakes -= amount;
             anim.SetBool("IsFull", false);
+            changeSlider.Invoke(riceCakes / (float)maxCakes);
             StartCoroutine(MakingCake());
             return true;
         }
         return false;
+    }
+
+    public void AddRiceEventListener(UnityAction<float> action)
+    {
+        changeSlider.AddListener(action);
     }
 }

@@ -1,0 +1,13 @@
+[
+  {
+    "Index": 10000,
+    "Name": "John",
+    "ModelPrefabIndex": 2,
+    "MaxHP": 1000.0,
+    "Priority": 0.0,
+    "moveSpeed": 1.0,
+    "ATK": 0.0,
+    "ATKSpeed": 2.0,
+    "saveTime": null
+  }
+]

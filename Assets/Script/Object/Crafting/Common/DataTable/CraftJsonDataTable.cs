@@ -19,6 +19,7 @@ public struct CraftBuildingAbilityTable
     public int BuildingDetail_Value;
     public int BuildingDetail_Delay;
     public int BuildingDetail_Range;
+    public int BuildingDetail_GeneratedItem;
 }
 
 public struct CraftBuildImageTable

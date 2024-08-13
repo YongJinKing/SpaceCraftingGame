@@ -147,15 +147,15 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
 
 
         componetsInfo = new ComponetsInfo(componentList);
-        var json = JsonConvert.SerializeObject(componetsInfo);
+        var json = JsonConvert.SerializeObject(componetsInfo, Formatting.Indented);
         //savePath = SceneManager.GetActiveScene().name + "/" + json;
-        savePath = "SaveTestJson.json";
+        savePath = "TileSaveData" + DataManager.Instance.nowSlot + ".json";
         File.WriteAllText(savePath, json);
     }
 
-    string LoadJson()
+    string LoadJson(string path)
     {
-        var jsonPath = "SaveTestJson.json";
+        var jsonPath = path;
         if (File.Exists(jsonPath))
         {
             string JsonString = File.ReadAllText(jsonPath);
@@ -169,9 +169,9 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
         }
     }
 
-    public ComponetsInfo LoadTileInfo()
+    public ComponetsInfo LoadTileInfo(string path)
     {
-        var jsonString = LoadJson();
+        var jsonString = LoadJson(path);
         if (string.IsNullOrEmpty(jsonString))
         {
             Debug.LogError("JSON 데이터가 비어 있습니다.");

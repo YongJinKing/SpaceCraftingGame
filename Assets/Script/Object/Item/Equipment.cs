@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Equipment : MonoBehaviour
@@ -10,8 +7,20 @@ public abstract class Equipment : MonoBehaviour
     #endregion
     #region Protected
     [SerializeField] protected bool isEquiped = false;
+    [SerializeField] protected EEquipmentType _itemType;
+    [SerializeField] protected int _animType;
     #endregion
     #region Public
+    public EEquipmentType itemType
+    {
+        get { return _itemType; }
+        set { _itemType = value; }
+    }
+    public int animType
+    {
+        get { return _animType; }
+        set { _animType = value; }
+    }
     #endregion
     #region Events
     #endregion

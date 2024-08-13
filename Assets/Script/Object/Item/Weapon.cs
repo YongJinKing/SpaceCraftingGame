@@ -14,7 +14,7 @@ public class Weapon : Equipment
     //triggered by right mouse click
     [SerializeField] protected Action _subAction;
     [SerializeField] protected Transform _graphic;
-    [SerializeField] protected int _weaponType;
+
     #endregion
     #region Public
     public Action mainAction
@@ -32,11 +32,7 @@ public class Weapon : Equipment
         get { return _graphic; }
         set { _graphic = value; }
     }
-    public int itemType
-    {
-        get { return _weaponType; }
-        set { _weaponType = value; }
-    }
+
     #endregion
     #region Events
     #endregion
@@ -51,7 +47,9 @@ public class Weapon : Equipment
     #region Protected
     protected override void Initialize()
     {
-        myPlayer = GetComponentInParent<Player>();
+        if(myPlayer == null)
+            myPlayer = GetComponentInParent<Player>();
+
         if(myPlayer != null && graphic != null)
         {
             graphic.SetParent(myPlayer.weaponRotationAxis.transform, false);

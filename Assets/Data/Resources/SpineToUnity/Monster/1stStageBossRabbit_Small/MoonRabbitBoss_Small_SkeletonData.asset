@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MoonRabbitBoss_Small_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: a4f95f79e92ef584c886638c87017069, type: 2}
+  - {fileID: 11400000, guid: cb9068b8321d2604f9a66f5f19c92051, type: 2}
   scale: 0.01
   skeletonJSON: {fileID: 4900000, guid: 0e04eb363b9064f48976852987521339, type: 3}
   isUpgradingBlendModeMaterials: 0

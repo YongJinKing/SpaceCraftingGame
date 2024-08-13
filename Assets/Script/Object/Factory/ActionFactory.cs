@@ -15,7 +15,7 @@ public class ActionFactory
         this.hitBoxFac = hitBoxFac;
     }
 
-    public GameObject Create(int index)
+    public GameObject Create(int index, Transform AttackStartPos = null)
     {
         GameObject gameObject = null;
 
@@ -48,6 +48,8 @@ public class ActionFactory
                     weapon.activeRadius = data.ActiveRadius;
                     weapon.activeDuration = data.ActiveDuration;
 
+
+
                     for(int i = 0; i < data.LayerMask.Length; ++i)
                     {
                         weapon.targetMask = weapon.targetMask | (1 << data.LayerMask[i]);
@@ -60,6 +62,15 @@ public class ActionFactory
                         hitbox.transform.SetParent(gameObject.transform, false);
                         weapon.hitBoxPrefabs[i] = hitbox.GetComponent<HitBox>();
                         hitbox.SetActive(false);
+                    }
+
+                    if (AttackStartPos != null)
+                    {
+                        weapon.attackStartPos = new Transform[data.HitBox_Index.Length];
+                        for(int i = 0; i < data.HitBox_Index.Length; ++i)
+                        {
+                            weapon.attackStartPos[i] = AttackStartPos;
+                        }
                     }
                 }
                 break;

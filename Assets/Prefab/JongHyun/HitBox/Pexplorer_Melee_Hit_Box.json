@@ -1,9 +1,9 @@
 [
   {
     "Index": 10000,
-    "Effect_Index": 1,
-    "Hit_Effect_Prefab_Index": 2,
-    "Destroy_Effect_Prefab_Index": 5,
+    "Effect_Index": -1,
+    "Hit_Effect_Prefab_Index": -1,
+    "Destroy_Effect_Prefab_Index": -1,
     "Affect_Index": [10000, 10001],
     "HitBox_X_Size": 1.0,
     "HitBox_Y_Size": 1.0,
