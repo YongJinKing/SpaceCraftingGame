@@ -15,6 +15,7 @@ public class PlayerHitState : PlayerState
     #region Protected
     #endregion
     #region Public
+    public float invincibleTime;
     #endregion
     #region Events
     #endregion
@@ -65,6 +66,11 @@ public class PlayerHitState : PlayerState
     #endregion
 
     #region Coroutines
+    private IEnumerator ProcessingState()
+    {
+
+    }
+
     #endregion
 
     #region MonoBehaviour

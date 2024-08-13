@@ -90,6 +90,7 @@ public class ItemFactory
                         {
                             weapon.mainAction = actionFac.Create(data.Main_Action_Index).GetComponent<Action>();
                         }
+                        weapon.mainAction.transform.SetParent(gameObject.transform, false);
                     }
                     if(data.Second_Action_Index > 0)
                     {
@@ -101,6 +102,7 @@ public class ItemFactory
                         {
                             weapon.subAction = actionFac.Create(data.Second_Action_Index).GetComponent<Action>();
                         }
+                        weapon.mainAction.transform.SetParent(gameObject.transform, false);
                     }
 
                 }
