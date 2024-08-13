@@ -27,7 +27,7 @@ public class StatController : MonoBehaviour
                   );
 
         // 데이터 저장
-        DataManager.Instance.SavePlayerInfo();
-        DataManager.Instance.LoadJson("PlayerData" + DataManager.Instance.nowSlot.ToString() + ".json");
+        //DataManager.Instance.SavePlayerInfo();
+        //DataManager.Instance.LoadJson("PlayerData" + DataManager.Instance.nowSlot.ToString() + ".json");
     }
 }

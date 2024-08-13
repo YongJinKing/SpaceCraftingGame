@@ -922,14 +922,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db58ccce4d9e86b44a435c1e7cafd3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 150
+  MaxHP: 200
   Priority: 2
   deadEvent:
     m_PersistentCalls:
       m_Calls: []
   animator: {fileID: 0}
   moveSpeed: 5
-  ATK: 50
+  ATK: 70
   ATKSpeed: 10
   Name: 
   moveAction: {fileID: 211788912}
@@ -937,7 +937,7 @@ MonoBehaviour:
   secondAction: {fileID: 0}
   myAnim: {fileID: 0}
   graphicTransform: {fileID: 686274835}
-  weaponRotationAxis: {fileID: 901453308}
+  weaponRotationAxis: {fileID: 901453309}
   AR: {fileID: 1416538908}
   Hammer: {fileID: 366050252}
   PickAxe: {fileID: 397121411}
@@ -1685,11 +1685,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &901453308 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3152213137251827993, guid: fbf3c0084200edb438aff27064253bff, type: 3}
+--- !u!114 &901453309 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5643405585387391072, guid: fbf3c0084200edb438aff27064253bff, type: 3}
   m_PrefabInstance: {fileID: 1363875095}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972f2087c1348b349a6a144e8573aa9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1081152572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2036,11 +2042,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6ea7ee9dfa371418f8d93dbae40e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerNumber: 21
+  layerNumber2: 22
   savePath: 
   nowSlot: 0
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 2097152
+    m_Bits: 6291456
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -2264,11 +2272,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5379531672078dd4982a43625d433d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myStat: {fileID: 406941703}
   tmp1: {fileID: 788816933}
   tmp2: {fileID: 70107573}
   tmp3: {fileID: 889136292}
   tmp4: {fileID: 167335001}
   tmp5: {fileID: 1328408192}
+  tmp6: {fileID: 2098949340}
 --- !u!1 &1810098507
 GameObject:
   m_ObjectHideFlags: 0

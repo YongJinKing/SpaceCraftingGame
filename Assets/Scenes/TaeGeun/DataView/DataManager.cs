@@ -10,27 +10,29 @@ using System.Linq;
 [Serializable]
 public class DataManager : Singleton<DataManager>
 {
-    public string savePath;
-    public int nowSlot =0;
-    public LayerMask playerLayerMask;
+    public int layerNumber = 21;
+    public int layerNumber2 = 22;
+    public string savePath = "PlayerData";
+    public int nowSlot;
+    public LayerMask playerLayerMask ;
     public LayerMask EnemyLayerMask;
     /// <summary>
     /// 플레이어 데이터 저장 배열
     /// </summary>
     public PlayerDataStruct[] pd = new PlayerDataStruct[1];
     public Player NowPlayer;
+
     private void Awake()
     {
         Initialize();
-
     }
-
     void Start()
     {
-        
-        SavePlayerInfo();
-        LoadJson("PlayerData" + DataManager.Instance.nowSlot.ToString() + ".json");
+        // 레이어 번호를 사용하여 레이어 마스크 설정
+        playerLayerMask = (1 << layerNumber) | (1 << layerNumber2);
 
+        // 레이어 마스크 확인
+        Debug.Log("Layer Mask: " + playerLayerMask.value);
     }
 
     private void Update()
@@ -49,7 +51,7 @@ public class DataManager : Singleton<DataManager>
         {
             for (int i = 0; i < pd.Length; ++i)
             {
-                Debug.Log($"{pd[i].Index}, {pd[i].MaxHP}, {pd[i].Priority}, {pd[i].moveSpeed}, {pd[i].ATK} {pd[i].ATKSpeed}");
+                Debug.Log($"{pd[i].Index}, {pd[i].MaxHP}, {pd[i].moveSpeed}, {pd[i].ATK} {pd[i].ATKSpeed}");
             }
         }
     }
@@ -63,8 +65,9 @@ public class DataManager : Singleton<DataManager>
         //5. 파일로 저장
         //6. 디버그 로그
 
-        string currentTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-    
+        string currentTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+        Debug.Log(currentTime);
+
         //1.
         Unit[] units = FindObjectsOfType<Unit>();
 
@@ -96,10 +99,8 @@ public class DataManager : Singleton<DataManager>
 
 
         //5.
-        savePath = "PlayerData" + nowSlot.ToString() + ".json";
-        string data = JsonUtility.ToJson(NowPlayer);
-        File.WriteAllText(savePath,json);
-        File.WriteAllText(nowSlot.ToString(), data);
+        string tempSavePath = savePath + nowSlot.ToString() + ".json";
+        File.WriteAllText(tempSavePath, json);
 
         //6.
         Debug.Log($"Data saved to: {savePath}");
@@ -118,18 +119,18 @@ public class DataManager : Singleton<DataManager>
 
             Dictionary<int, PlayerDataStruct> playerdataDic = new Dictionary<int, PlayerDataStruct>();
             playerdataDic = pd.ToDictionary(x => x.Index);
+            
         }
         else
         {
             Debug.Log("없음");
         }
-        string data = File.ReadAllText(nowSlot.ToString());
         //NowPlayer = JsonUtility.FromJson<Player>(data);
     }
 
     public void DataClear()
     {
-        nowSlot = 0;
+        nowSlot = -1;
         NowPlayer = new Player();
     }
 }
