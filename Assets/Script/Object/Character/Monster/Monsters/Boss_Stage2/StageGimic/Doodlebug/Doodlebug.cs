@@ -45,7 +45,7 @@ public class Doodlebug : MonoBehaviour, IDamage
     {
         if (target != null)
         {
-            target.GetComponent<Unit>().TakeDamage(1000f); // 그냥 즉사시키는 코드, 안에 1000f는 정확히 얼마나 줘야 죽을지 몰라서 대충 넣음
+            target.GetComponent<IDamage>().TakeDamage(1000f); // 그냥 즉사시키는 코드, 안에 1000f는 정확히 얼마나 줘야 죽을지 몰라서 대충 넣음
             MissTarget(); // 죽인 뒤엔 그냥 null로 보내주기
         }
     }
