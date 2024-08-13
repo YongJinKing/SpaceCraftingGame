@@ -194,8 +194,9 @@ public class CraftFactory : Singleton<CraftFactory>
         
         factoryBuilding.mComponentName = componentData.Component_Name.ToString();
         factoryBuilding.produceCount = abilityData.BuildingDetail_Value;
+        factoryBuilding.produceResourceIndex = abilityData.BuildingDetail_GeneratedItem;
         factoryBuilding.DestroyEvent = new UnityEngine.Events.UnityEvent<Vector3>();
-        
+
         // ü�� ������ ���� �ʿ�
         if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; // �ǹ��� ü��
         else factoryBuilding.MaxHP = Hp; // �ǹ��� ü��

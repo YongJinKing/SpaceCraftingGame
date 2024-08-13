@@ -71,7 +71,7 @@ public class GimicStone : MonoBehaviour
 
     }
 
-    // 플레이어를 일정 시간 후에 멈추게 하는 코루틴
+    // 플레이어를 일정 시간 후에 멈추게 하는 코루틴 << 이건 여기에 둬야할지 플레이어한테 둬야할 지 잘 모르겠음
     private IEnumerator StopKnockback(Rigidbody2D rb, float duration)
     {
         yield return new WaitForSeconds(duration);
