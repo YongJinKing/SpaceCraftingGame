@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7237257582105329283}
   - component: {fileID: 8592815170644020225}
   m_Layer: 15
-  m_Name: Img_Moon_Ore1
+  m_Name: Img_Stage1_Ore1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
