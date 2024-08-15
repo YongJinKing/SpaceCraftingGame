@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8117256519111807322}
+  - component: {fileID: 3595152935396548677}
   m_Layer: 0
   m_Name: RiceRainWarningPosWithDestroy
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   - {fileID: 5883621712470688410}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3595152935396548677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535761720737688753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e8036b48104a141a963179fc4c54b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: 2.5
 --- !u!1001 &8553702069227762146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,7 +116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3900046625790718957, guid: 880893390fdabf54dadbdfd8caf9c3c7, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

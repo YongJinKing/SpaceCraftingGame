@@ -46,7 +46,7 @@ public class RandomStoneSpawner : MonoBehaviour
             }
         } // 보스 스테이지의 타일맵을 모두 '배치 가능'으로 초기화
 
-        StartSpawnStones();
+        //StartSpawnStones();
 
     }
 
@@ -126,9 +126,7 @@ public class RandomStoneSpawner : MonoBehaviour
         }
     }
 
-
-
-    void StartSpawnStones()
+    public void StartSpawnStones()
     {
         spawner = StartCoroutine(SpawnStoneAtRandomPlace());
     }

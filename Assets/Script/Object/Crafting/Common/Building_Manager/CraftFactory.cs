@@ -49,7 +49,7 @@ public class CraftFactory : Singleton<CraftFactory>
     {
         if (!spaceShip.IsDronReady()) return null;
 
-        if (!CheckInventory(index)) // �κ��丮�� ����ϴ� �� ������ �� �ִ��� Ȯ���ϰ� ������ ���⼭ �Ҹ��ϰ� ������ ����� �ͼ� null ����
+        if (!CheckInventory(index)) // 인벤토리에 해당 index에 해당하는 건물의 재료들이 있는지 확인하고 있으면 거기서 차감까지 해버림
         {
             return null;
         }
@@ -57,14 +57,13 @@ public class CraftFactory : Singleton<CraftFactory>
 
         Transform obj = Instantiate(constructionSite, pos, Quaternion.identity);
         obj.SetParent(null);
-        // ���࿡ �ʿ��� �������� �������
         obj.GetComponent<ConstructionSite>().SetIndex(index);
         obj.GetComponent<ConstructionSite>().SetHp(Hp);
         obj.GetComponent<ConstructionSite>().SetInPos(pos);
         obj.GetComponent<ConstructionSite>().SetSize(size);
         obj.GetComponent<ConstructionSite>().SetCraftingTime(abilityData.BuildingSpeed);
 
-        // ����� ������������ ������ �Լ��� ���⼭ �����Ѵ�!, �̶� ����� ���� �������� ������ �Լ��� ���ڷ� obj�� Ÿ������ �޴´� 
+        // 우주선에서 드론을 보내고 그 드론이 건물을 짓는다
         spaceShip.TakeOffDron(obj);
 
         return obj.gameObject;
@@ -99,13 +98,13 @@ public class CraftFactory : Singleton<CraftFactory>
         int consume_Index1 = abilityData.Consume_IndexArr[0]; 
         int consume_Index2 = abilityData.Consume_IndexArr[1];
 
-        int consume_Count1 = abilityData.Consume_CountArr[0];
-        int consume_Count2 = abilityData.Consume_CountArr[1];
+        int consume_Count1 = abilityData.Consume_CountArr;
+        int consume_Count2 = abilityData.Consume_CountArr;
 
         int chkCount1 = 0;
         int chkCount2 = 0;
 
-        // InventoryDatas ����Ʈ�� ��ȸ�ϸ鼭 �� id�� ������ ���ϴ�.
+        // InventoryDatas안에 아이템들을 순회하며 필요한 재료 확인
         foreach (var item in Inventory.instance.InventoryDatas)
         {
             if (item.id == consume_Index1)
@@ -118,7 +117,7 @@ public class CraftFactory : Singleton<CraftFactory>
             }
         }
 
-        // �� ���� id�� �־��� ���� �̻� �����ϴ��� Ȯ���մϴ�.
+        // 재료가 충분히 있다면 true 리턴하고 아이템 차감
         if (chkCount1 >= consume_Count1 && chkCount2 >= consume_Count2)
         {
             Inventory.instance.UseItem(consume_Index1, consume_Count1);
@@ -126,7 +125,7 @@ public class CraftFactory : Singleton<CraftFactory>
             return true;
         }
 
-        return false; // ���� �κ��̶� ������ �ȵż� ���Ƴ��µ� ���߿� �� �ּ� �����ϰ� �� ���� count�� 0�ΰ͵� ��������
+        return false; // 없으면 false 리턴
 
         //return true;
     }
@@ -144,6 +143,7 @@ public class CraftFactory : Singleton<CraftFactory>
         {
             imgData = structureDataManger.dicCBImgTable[index];
         }*/
+
         FindComponentsByIndex(index);
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
@@ -197,11 +197,10 @@ public class CraftFactory : Singleton<CraftFactory>
         factoryBuilding.produceResourceIndex = abilityData.BuildingDetail_GeneratedItem;
         factoryBuilding.DestroyEvent = new UnityEngine.Events.UnityEvent<Vector3>();
 
-        // ü�� ������ ���� �ʿ�
-        if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; // �ǹ��� ü��
-        else factoryBuilding.MaxHP = Hp; // �ǹ��� ü��
+        if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; 
+        else factoryBuilding.MaxHP = Hp; 
 
-        factoryBuilding[EStat.Efficiency] = abilityData.BuildingDetail_Delay; // �ǹ��� ���� �ӵ�
+        factoryBuilding[EStat.Efficiency] = abilityData.BuildingDetail_Delay; 
         
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
@@ -253,8 +252,8 @@ public class CraftFactory : Singleton<CraftFactory>
 
         Barricade barricade = obj.GetComponent<Barricade>();
         barricade.mComponentName = componentData.Component_Name.ToString();
-        if (Hp == 0) barricade.MaxHP = componentData.Component_Hp; // �ǹ��� ü��
-        else barricade.MaxHP = Hp; // �ǹ��� ü��
+        if (Hp == 0) barricade.MaxHP = componentData.Component_Hp; 
+        else barricade.MaxHP = Hp; 
 
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;

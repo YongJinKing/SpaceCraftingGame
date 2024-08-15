@@ -64,9 +64,9 @@ using UnityEngine.UI;
             FactoryBuilding factoryBuilding = obj.AddComponent<FactoryBuilding>();
             factoryBuilding.mComponentName = componentData.Component_Name.ToString();
             factoryBuilding.consumeIndex1 = abilityData.Consume_IndexArr[0]; // 건물 건설 시 소모되는 자원 인덱스
-            factoryBuilding.consumeCount1 = abilityData.Consume_CountArr[0]; // 건물 건설 시 소모되는 자원량
+            factoryBuilding.consumeCount1 = abilityData.Consume_CountArr; // 건물 건설 시 소모되는 자원량
             factoryBuilding.consumeIndex2 = abilityData.Consume_IndexArr[1]; // 건물에서 생산되는 자원 인덱스
-            factoryBuilding.consumeCount2 = abilityData.Consume_CountArr[1]; // 건물에서 생산 되는 자원량
+            factoryBuilding.consumeCount2 = abilityData.Consume_CountArr; // 건물에서 생산 되는 자원량
             return obj;
         }
 
