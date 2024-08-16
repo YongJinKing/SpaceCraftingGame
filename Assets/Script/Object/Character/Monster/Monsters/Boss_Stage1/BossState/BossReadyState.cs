@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossIdleState : BossState
+public class BossReadyState : BossState
 {
     #region Properties
     #region Private
+    Coroutine readyCoroutine;
     #endregion
     #region Protected
     #endregion
@@ -35,12 +36,19 @@ public class BossIdleState : BossState
     public override void Enter()
     {
         base.Enter();
-        StartCoroutine(SetTarget());
+        readyCoroutine = StartCoroutine(WaitUntilReady());
     }
     public override void Exit()
     {
         base.Exit();
         StopAllCoroutines();
+    }
+
+    public void StartFight()
+    {
+        StopCoroutine(readyCoroutine);
+        readyCoroutine = null;
+        StartCoroutine(GoToFight());
     }
     #endregion
     #endregion
@@ -49,18 +57,18 @@ public class BossIdleState : BossState
     #endregion
 
     #region Coroutines
-    protected IEnumerator SetTarget()
+    private IEnumerator GoToFight()
     {
-        Player target = null;
+        yield return null;
+        owner.stateMachine.ChangeState<BossAlertState>();
+    }
 
-        while (target == null)
+    private IEnumerator WaitUntilReady()
+    {
+        while (true)
         {
-            target = FindObjectOfType<Player>();
             yield return null;
-        } 
-
-        owner.target = target.gameObject; // 타겟을 플레이어로 정하고
-        owner.stateMachine.ChangeState<BossReadyState>(); // 준비 상태로 보낸다.
+        }
     }
     #endregion
 

@@ -101,31 +101,13 @@ public class CraftFactory : Singleton<CraftFactory>
         int consume_Count1 = abilityData.Consume_CountArr[0];
         int consume_Count2 = abilityData.Consume_CountArr[1];
 
-        int chkCount1 = 0;
-        int chkCount2 = 0;
-
-        // InventoryDatas안에 아이템들을 순회하며 필요한 재료 확인
-        foreach (var item in Inventory.instance.InventoryDatas)
-        {
-            if (item.id == consume_Index1)
-            {
-                chkCount1 += item.amount;
-            }
-            else if (item.id == consume_Index2)
-            {
-                chkCount2 += item.amount;
-            }
-        }
-
-        // 재료가 충분히 있다면 true 리턴하고 아이템 차감
-        if (chkCount1 >= consume_Count1 && chkCount2 >= consume_Count2)
+        if (Inventory.instance.GetItemCheck(consume_Index1, consume_Count1) && Inventory.instance.GetItemCheck(consume_Index2, consume_Count2))
         {
             Inventory.instance.UseItem(consume_Index1, consume_Count1);
             Inventory.instance.UseItem(consume_Index2, consume_Count2);
             return true;
         }
-
-        return false; // 없으면 false 리턴
+        else return false; // 없으면 false 리턴
 
         //return true;
     }

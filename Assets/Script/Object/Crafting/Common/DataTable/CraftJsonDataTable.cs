@@ -12,7 +12,7 @@ public struct CraftBuildingComponentTable
 public struct CraftBuildingAbilityTable
 {
     public int BuildingAbility_Index;
-    public int[] BuildingDetailType;
+    public int BuildingDetailType;
     public int[] Consume_IndexArr;
     public int[] Consume_CountArr;
     public int BuildingSpeed;
