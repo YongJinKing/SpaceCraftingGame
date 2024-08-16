@@ -98,8 +98,8 @@ public class CraftFactory : Singleton<CraftFactory>
         int consume_Index1 = abilityData.Consume_IndexArr[0]; 
         int consume_Index2 = abilityData.Consume_IndexArr[1];
 
-        int consume_Count1 = abilityData.Consume_CountArr;
-        int consume_Count2 = abilityData.Consume_CountArr;
+        int consume_Count1 = abilityData.Consume_CountArr[0];
+        int consume_Count2 = abilityData.Consume_CountArr[1];
 
         int chkCount1 = 0;
         int chkCount2 = 0;
