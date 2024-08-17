@@ -6,71 +6,127 @@ filter: Linear,Linear
 repeat: none
 Bag
   rotate: false
-  xy: 2, 411
+  xy: 818, 290
   size: 195, 287
   orig: 197, 289
   offset: 1, 1
   index: -1
 Body
-  rotate: true
-  xy: 199, 482
+  rotate: false
+  xy: 593, 204
   size: 216, 181
   orig: 218, 183
   offset: 1, 1
   index: -1
 Hammer
   rotate: false
-  xy: 269, 735
+  xy: 811, 30
   size: 149, 258
   orig: 149, 259
   offset: 0, 0
   index: -1
 Head
-  rotate: true
-  xy: 2, 160
+  rotate: false
+  xy: 166, 305
   size: 249, 208
   orig: 251, 211
   offset: 1, 2
   index: -1
-HoldGun
-  rotate: false
-  xy: 2, 2
-  size: 321, 156
-  orig: 323, 158
-  offset: 1, 1
-  index: -1
 LeftArm
-  rotate: false
-  xy: 212, 306
+  rotate: true
+  xy: 417, 311
   size: 74, 174
   orig: 76, 176
   offset: 1, 1
   index: -1
 LeftLeg
   rotate: true
-  xy: 288, 356
+  xy: 912, 579
   size: 124, 89
   orig: 126, 91
   offset: 1, 1
   index: -1
 Minning
   rotate: false
-  xy: 2, 700
+  xy: 320, 10
   size: 265, 293
   orig: 266, 293
   offset: 0, 0
   index: -1
+Rifle_LV1
+  rotate: true
+  xy: 166, 2
+  size: 301, 152
+  orig: 303, 157
+  offset: 1, 2
+  index: -1
+Rifle_Lv2
+  rotate: true
+  xy: 2, 17
+  size: 368, 162
+  orig: 370, 164
+  offset: 1, 1
+  index: -1
+Rifle_Lv3
+  rotate: false
+  xy: 493, 823
+  size: 470, 196
+  orig: 472, 198
+  offset: 1, 1
+  index: -1
 RightArm
   rotate: true
-  xy: 212, 225
+  xy: 2, 434
   size: 79, 155
   orig: 81, 157
   offset: 1, 1
   index: -1
 RightLeg
   rotate: true
-  xy: 325, 107
+  xy: 912, 705
   size: 116, 95
   orig: 118, 97
+  offset: 1, 1
+  index: -1
+ShotGun_Lv1
+  rotate: false
+  xy: 417, 535
+  size: 399, 134
+  orig: 401, 136
+  offset: 1, 1
+  index: -1
+ShotGun_Lv2
+  rotate: false
+  xy: 468, 671
+  size: 442, 150
+  orig: 444, 152
+  offset: 1, 1
+  index: -1
+ShotGun_Lv3
+  rotate: false
+  xy: 2, 688
+  size: 464, 156
+  orig: 466, 158
+  offset: 1, 1
+  index: -1
+Sniper_LV1
+  rotate: false
+  xy: 417, 387
+  size: 396, 146
+  orig: 398, 149
+  offset: 1, 2
+  index: -1
+Sniper_Lv2
+  rotate: false
+  xy: 2, 515
+  size: 413, 171
+  orig: 415, 173
+  offset: 1, 1
+  index: -1
+Snipver_Lv3
+  rotate: false
+  xy: 2, 846
+  size: 489, 173
+  orig: 491, 175
   offset: 1, 1
   index: -1
