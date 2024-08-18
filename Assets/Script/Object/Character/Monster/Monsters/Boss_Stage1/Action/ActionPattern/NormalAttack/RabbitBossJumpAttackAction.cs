@@ -51,6 +51,7 @@ public class RabbitBossJumpAttackAction : BossAction
         }
 
         attackEffect.GetComponent<ParticleSystem>().Play();
+        camController.StartCameraShake(3f,0.5f);
         yield return null;
     }
     
@@ -58,6 +59,7 @@ public class RabbitBossJumpAttackAction : BossAction
     // 타겟의 위치에 다다르면 히트박스를 킨다.
     IEnumerator JumpToTarget(Vector2 start, Vector2 target, float height, float duration)
     {
+        SetRabbitLookPlayer(target);
         float jumpTime = 0;
 
         // 플레이어의 위치를 보정하여 타겟보다 앞쪽으로 떨어지게 함

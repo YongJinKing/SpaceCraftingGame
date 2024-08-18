@@ -62,6 +62,7 @@ public class RabbitBossThrowAttackAction : BossAction
     {
         base.Activate(pos);
         // 플레이어에게 떡(돌?)을 던짐, 해당 위치에 광역 슬로우 장판을 설치하는거까지 생각중
+        SetRabbitLookPlayer(pos);
         ownerAnim.SetTrigger("ThrowAttack");
         targetPos = pos;
     }

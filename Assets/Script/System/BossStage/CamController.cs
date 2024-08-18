@@ -1,31 +1,73 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CamController : MonoBehaviour
 {
+    [Header("플레이어의 보스전 입장 위치"), Space(0.5f)]
     public Transform playerLandingPos;
-    public Vector3 camRotate;
-    public float defalutOrthoSize;
-    public float zoomInOrthoSize;
-    public float zoomOutOrthoSize;
-    public float zoomTime;
-    public float camMoveSpeed;
-   
 
+    [Header("카메라 기본 줌 수치"), Space(0.5f)]
+    public float defalutOrthoSize;
+    [Header("카메라 줌 인 수치"), Space(0.5f)]
+    public float zoomInOrthoSize;
+    [Header("카메라 줌 아웃 수치"), Space(0.5f)]
+    public float zoomOutOrthoSize;
+    [Header("카메라 줌 시간"), Space(0.5f)]
+    public float zoomTime;
+    [Header("카메라 이동 속도"), Space(0.5f)]
+    public float camMoveSpeed;
+
+    [Header("보스의 부모 말풍선"), Space(0.5f)]
+    public Transform bossText;
+    [Header("보스의 대사"), Space(0.5f)]
+    public BossDialogue bossDialogue;
+    [Header("보스 입장 시 나올 텍스트"), Space(0.5f)]
+    public Transform bossIntranceText;
+
+    [Header("스테이지1 게임 매니저"), Space(0.5f)]
+    public BossStage1Manager bossStage1Manager;
+
+    [Header("카메라"), Space(0.5f)]
     [SerializeField] Transform Cam;
+    [Header("카메라 포커스 오브젝트"), Space(0.5f)]
     [SerializeField] Transform CamFocus;
+    [Header("플레이어"), Space(0.5f)]
     [SerializeField] Transform Player;
+    [Header("보스"), Space(0.5f)]
     [SerializeField] Transform Boss;
+    [Header("시네머신 버추얼 카메라"), Space(0.5f)]
     CinemachineVirtualCamera CVC;
+
+    CinemachineBasicMultiChannelPerlin perlin;
+    Coroutine camShake;
 
     // Start is called before the first frame update
     void Start()
     {
         CVC = Cam.GetComponent<CinemachineVirtualCamera>();
         CVC.m_Lens.OrthographicSize = zoomOutOrthoSize;
+        perlin = CVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
         StartCoroutine(BossStage1Direction());
+    }
+    void MoveToTarget(Vector3 StartPos, Vector3 EndPos)
+    {
+        Vector3 dir = EndPos - StartPos;
+        float dist = dir.magnitude;
+        float delta = Time.deltaTime * camMoveSpeed;
+        dir.Normalize();
+
+        while (dist > 0f)
+        {
+            dist -= delta;
+            if (dist <= 0f) dist = 0f;
+
+            CamFocus.Translate(dir * delta, Space.World);
+        }
     }
 
     IEnumerator BossStage1Direction()
@@ -33,8 +75,10 @@ public class CamController : MonoBehaviour
         yield return StartCoroutine(PlayerLandingToStage());
         yield return StartCoroutine(FocusBoss());
         yield return StartCoroutine(FocusPlayer());
-    }
 
+        bossStage1Manager.StartGame();
+    }
+    #region ForPlayer
     IEnumerator PlayerLandingToStage()
     {
         float landingTime = 1.5f; // 총 이동 시간
@@ -55,15 +99,6 @@ public class CamController : MonoBehaviour
         Player.transform.position = targetPos; // 목표 위치로 정확히 이동
     }
 
-    IEnumerator FocusBoss()
-    {
-        yield return new WaitForSeconds(1f);
-        CamFocus.SetParent(null);
-        MoveToTarget(CamFocus.position, Boss.position);
-        CamFocus.SetParent(Boss);
-        yield return StartCoroutine(BossIntroDirection());
-        yield return StartCoroutine(TweakCamForBossIntroDirection());
-    }
     IEnumerator FocusPlayer()
     {
         yield return StartCoroutine(RevokeCamForPlayer());
@@ -71,8 +106,8 @@ public class CamController : MonoBehaviour
         CamFocus.SetParent(null);
         MoveToTarget(CamFocus.position, Player.position);
         CamFocus.SetParent(Player);
-    }
 
+    }
     IEnumerator RevokeCamForPlayer()
     {
         float curTime = 0f; // 경과 시간
@@ -90,6 +125,17 @@ public class CamController : MonoBehaviour
         CVC.m_Lens.OrthographicSize = defalutOrthoSize;
     }
 
+    #endregion
+
+    #region ForBoss
+    IEnumerator FocusBoss()
+    {
+        yield return new WaitForSeconds(1f);
+        CamFocus.SetParent(null);
+        MoveToTarget(CamFocus.position, Boss.position);
+        CamFocus.SetParent(Boss);
+        yield return StartCoroutine(BossIntroDirection());
+    }
     IEnumerator BossIntroDirection() // 이 아래에 뭐 말풍선이라던가 기타 등등 추가
     {
         float curTime = 0f; // 경과 시간
@@ -103,32 +149,52 @@ public class CamController : MonoBehaviour
             CVC.m_Lens.OrthographicSize = Mathf.Lerp(initialOrthoSize, zoomInOrthoSize, t);
             yield return null; // 다음 프레임까지 대기
         }
-
         CVC.m_Lens.OrthographicSize = zoomInOrthoSize;
-        yield return new WaitForSeconds(3f);
+        // 대사 출력
+        yield return StartCoroutine(ActiveBossScript());
+
+        Boss.GetComponent<Boss>().animator.SetBool("Intro", true);
+        bossIntranceText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(8f);
+        Boss.GetComponent<Boss>().animator.SetBool("Intro", false);
+        bossIntranceText.gameObject.SetActive(false);
     }
-  
 
-
-    IEnumerator TweakCamForBossIntroDirection()
+    IEnumerator ActiveBossScript()
     {
-        yield return null;
+        bossText.gameObject.SetActive(true);
+        bossDialogue.StartDialogue(bossDialogue.openningDialogues);
+        yield return new WaitForSeconds(9.5f); // 이걸로 대사 출력 길이 조절 가능
+
+        bossText.gameObject.SetActive(false);
     }
+    #endregion
 
-
-    void MoveToTarget(Vector3 StartPos, Vector3 EndPos)
+    #region Camera Action
+    public void StartCameraShake(float strength, float duration)
     {
-        Vector3 dir = EndPos - StartPos;
-        float dist = dir.magnitude;
-        float delta = Time.deltaTime * camMoveSpeed;
-        dir.Normalize();
-
-        while(dist > 0f)
+        if(camShake != null)
         {
-            dist -= delta;
-            if (dist <= 0f) dist = 0f;
-
-            CamFocus.Translate(dir * delta, Space.World);
+            StopCoroutine(camShake);
+            camShake = null;
         }
+        camShake = StartCoroutine(CamShakeAction(strength, duration));
     }
+
+    IEnumerator CamShakeAction(float strength, float duration)
+    {
+        CamShake(strength);
+        yield return new WaitForSeconds(duration);
+        CamShake(0);
+    }
+
+    void CamShake(float strength)
+    {
+        perlin.m_AmplitudeGain = strength;
+        perlin.m_FrequencyGain = strength;
+    }
+
+    #endregion
+
 }

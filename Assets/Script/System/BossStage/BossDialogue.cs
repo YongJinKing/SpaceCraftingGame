@@ -1,0 +1,62 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class BossDialogue : MonoBehaviour
+{
+    public Text openningText;
+    public Transform backgroundImg;
+    public Transform myTarget;
+    
+    string dialogue;
+
+    public string[] openningDialogues;
+    public string[] dialogues;
+
+    public int talkNum;
+
+    [SerializeField] protected Vector2 offSet;
+    public void StartDialogue(string[] talks)
+    {
+        dialogues = talks;
+        Vector2 screenPos;
+        screenPos = Camera.main.WorldToScreenPoint(myTarget.transform.position);
+        openningText.transform.position = screenPos + offSet;
+        backgroundImg.position = screenPos + offSet;
+
+        StartCoroutine(Typing(dialogues[talkNum]));
+    }
+
+    void NextDialogue()
+    {
+        openningText.text = null;
+        talkNum++;
+
+        if(talkNum == dialogues.Length)
+        {
+            talkNum = 0;
+            return;
+        }
+
+        StartCoroutine(Typing(dialogues[talkNum]));
+    }
+
+    
+    IEnumerator Typing(string talk)
+    {
+        openningText.text = null;
+
+        if (talk.Contains("  ")) talk = talk.Replace("  ", "\n");
+
+        for(int i = 0; i < talk.Length; i++)
+        {
+            openningText.text += talk[i];
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        yield return new WaitForSeconds(2f);
+        NextDialogue();
+    }
+}

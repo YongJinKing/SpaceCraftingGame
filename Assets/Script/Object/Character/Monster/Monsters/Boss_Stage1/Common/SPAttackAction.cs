@@ -91,16 +91,8 @@ public class SPAttackAction : BossAction
     {
         ownerAnim.SetBool("Move", true);
         //Transform rabbit = transform.parent.parent;
-        Transform rabbit = owner.transform;
-        if (rabbit.transform.position.x > mortalBox.transform.position.x)
-        {
-            rabbit.transform.localScale = new Vector3(1, 1, 1); // 왼쪽 바라보기
-        }
-        else
-        {
-            rabbit.transform.localScale = new Vector3(-1, 1, 1); // 오른쪽 바라보기
-        }
-        Vector2 dir = mortalBox.transform.position - rabbit.position;
+        SetRabbitLookPlayer(mortalBox.transform);
+        Vector2 dir = mortalBox.transform.position - owner.transform.position;
         float dist = dir.magnitude;
         dir.Normalize();
 
@@ -108,7 +100,7 @@ public class SPAttackAction : BossAction
         {
             float delta = moveSpeed * Time.deltaTime;
             dist -= delta;
-            rabbit.Translate(dir * delta, Space.World);
+            owner.transform.Translate(dir * delta, Space.World);
             yield return null;
         }
         yield return null;

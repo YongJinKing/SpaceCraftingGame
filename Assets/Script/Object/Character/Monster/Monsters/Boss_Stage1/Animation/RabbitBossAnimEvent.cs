@@ -11,7 +11,7 @@ public class RabbitBossAnimEvent : MonoBehaviour
     public UnityEvent SpinningEvent;
     public UnityEvent RiceRainEvent;
     public UnityEvent BuffEvent;
-
+    public UnityEvent<float, float> CamShakeEvent;
     public void ThrowAnimation()
     {
         ThrowEvent?.Invoke();
@@ -40,5 +40,10 @@ public class RabbitBossAnimEvent : MonoBehaviour
     public void BuffAnimation()
     {
         BuffEvent?.Invoke();
+    }
+
+    public void CamShakeAnimation()
+    {
+        CamShakeEvent?.Invoke(7f, 0.75f);
     }
 }

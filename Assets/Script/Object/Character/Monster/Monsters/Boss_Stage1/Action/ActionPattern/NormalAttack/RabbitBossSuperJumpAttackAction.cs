@@ -40,6 +40,7 @@ public class RabbitBossSuperJumpAttackAction : BossAction
         }
 
         attackVFX.GetComponent<ParticleSystem>().Play();
+        camController.StartCameraShake(5f, 0.7f);
         yield return null;
     }
 
