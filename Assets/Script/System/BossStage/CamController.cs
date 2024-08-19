@@ -26,7 +26,7 @@ public class CamController : MonoBehaviour
     [Header("보스의 대사"), Space(0.5f)]
     public BossDialogue bossDialogue;
     [Header("보스 입장 시 나올 텍스트"), Space(0.5f)]
-    public Transform bossIntranceText;
+    public Transform bossEntranceText;
 
     [Header("스테이지1 게임 매니저"), Space(0.5f)]
     public BossStage1Manager bossStage1Manager;
@@ -154,18 +154,18 @@ public class CamController : MonoBehaviour
         yield return StartCoroutine(ActiveBossScript());
 
         Boss.GetComponent<Boss>().animator.SetBool("Intro", true);
-        bossIntranceText.gameObject.SetActive(true);
+        bossEntranceText.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(8f);
         Boss.GetComponent<Boss>().animator.SetBool("Intro", false);
-        bossIntranceText.gameObject.SetActive(false);
+        bossEntranceText.gameObject.SetActive(false);
     }
 
     IEnumerator ActiveBossScript()
     {
         bossText.gameObject.SetActive(true);
         bossDialogue.StartDialogue(bossDialogue.openningDialogues);
-        yield return new WaitForSeconds(9.5f); // 이걸로 대사 출력 길이 조절 가능
+        yield return new WaitForSeconds(12f); // 이걸로 대사 출력 길이 조절 가능
 
         bossText.gameObject.SetActive(false);
     }
