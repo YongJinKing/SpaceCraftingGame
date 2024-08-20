@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 
@@ -34,7 +35,7 @@ public class TileManager : Singleton<TileManager>
         craftmanager.WritePlaceInfoEvent.AddListener(RemopvePlace);
         tileMap = transform.GetComponent<Tilemap>();
         availablePlaces = new Dictionary<Vector3Int, Tile>();
-        path = "TileSaveData" + DataManager.Instance.nowSlot + ".json";
+        path = "TileSaveData_" + SceneManager.GetActiveScene().name + DataManager.Instance.nowSlot + ".json";
         for (int y = tileMap.cellBounds.yMin; y < tileMap.cellBounds.yMax; y++)
         {
             for (int x = tileMap.cellBounds.xMin; x < tileMap.cellBounds.xMax; x++)
