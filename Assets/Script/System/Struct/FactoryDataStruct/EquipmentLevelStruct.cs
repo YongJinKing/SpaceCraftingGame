@@ -8,5 +8,6 @@ public struct EquipmentLevelStruct
     public int Rifle_Level;
     public int Shotgun_Level;
     public int SniperRifle_Level;
+    public int Hammer_Level;
     public int PicKax_Level;
 }
