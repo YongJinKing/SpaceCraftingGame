@@ -5,16 +5,24 @@ using UnityEngine;
 public class HitBoxFactory
 {
     private AffectFactory affectFac; 
+    private PrefabLoader prefabLoader;
 
     public HitBoxFactory() 
     { 
         affectFac = new AffectFactory();
+        prefabLoader = new PrefabLoader();
     }
     public HitBoxFactory(AffectFactory affect)
     {
         affectFac = affect;
+        prefabLoader = new PrefabLoader();
     }
 
+    public HitBoxFactory(AffectFactory affectFac, PrefabLoader prefabLoader)
+    {
+        this.affectFac = affectFac;
+        this.prefabLoader = prefabLoader;
+    }
 
     public GameObject Create(int index)
     {
@@ -25,7 +33,6 @@ public class HitBoxFactory
             //MeleeHitBox
             case 1:
                 {
-                    //MeleeHitBoxStruct data = datamanager.gethitboxstruct(index);
                     MeleeHitBoxStruct data = default;
 
                     string s = File.ReadAllText("Assets/Prefab/JongHyun/HitBox/Pexplorer_Melee_Hit_Box.json");
@@ -95,10 +102,21 @@ public class HitBoxFactory
 
                     ProjectileHitBox projectile = gameObject.AddComponent<ProjectileHitBox>();
 
-                    //GameObject EffectPrefab = Resources.Load<GameObject>(data.Effect_Index);
-                    //EffectPrefab.SetParent(projectile.transform, false);
-                    //projectile.hitEffectPrefab = Resources.Load<GameObject>(data.Hit_Effect_Prefab_Index);
-                    //projectile.destroyEffectPrefab = Resources.Load<GameObject>(data.Destroy_Effect_Prefab_Index);
+                    if(data.Effect_Index > 0)
+                    {
+                        GameObject EffectPrefab = prefabLoader.Load(data.Effect_Index);
+                        EffectPrefab.transform.SetParent(projectile.transform, false);
+                    }
+
+                    if (data.Hit_Effect_Prefab_Index > 0) 
+                    {
+                        projectile.hitEffectPrefab = prefabLoader.Load(data.Hit_Effect_Prefab_Index);
+                    }
+
+                    if(data.Destroy_Effect_Prefab_Index > 0)
+                    {
+                        projectile.destroyEffectPrefab = prefabLoader.Load(data.Destroy_Effect_Prefab_Index);
+                    }
 
                     for (int i = 0; i < data.Affect_Index.Length; ++i)
                     {

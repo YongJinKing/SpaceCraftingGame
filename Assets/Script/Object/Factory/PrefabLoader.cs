@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -25,10 +24,14 @@ public class PrefabLoader
     {
         if (Datas.ContainsKey(index))
         {
-            return Resources.Load<GameObject>($"SpineToUnity/WeaponPrefab/{Datas[index].Name}");
+            return GameObject.Instantiate(Resources.Load<GameObject>($"SpineToUnity/WeaponPrefab/{Datas[index].Name}"));
         }
         else
+        {
+            Debug.Log("Fail to Load Prefab");
             return null;
+        }
+            
     }
 
 }

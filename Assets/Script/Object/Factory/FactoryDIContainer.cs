@@ -37,9 +37,9 @@ public class FactoryDIContainer
     {
         prefabLoader = new PrefabLoader();
         affectFac = new AffectFactory();
-        hitBoxFac = new HitBoxFactory(affectFac);
+        hitBoxFac = new HitBoxFactory(affectFac, prefabLoader);
         actionFac = new ActionFactory(hitBoxFac);
-        itemFac = new ItemFactory(actionFac);
+        itemFac = new ItemFactory(actionFac, prefabLoader);
     }
 
 }

@@ -60356,6 +60356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HPBar (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5827985049717185079, guid: b79ca0c3bcd78cd4985a77164632a7da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -67292,7 +67296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1422396393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82421,7 +82425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db58ccce4d9e86b44a435c1e7cafd3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 1000
+  MaxHP: 6
   Priority: 2
   deadEvent:
     m_PersistentCalls:
@@ -87772,7 +87776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2006832373
 Transform:
   m_ObjectHideFlags: 0
@@ -108539,11 +108543,11 @@ PrefabInstance:
       objectReference: {fileID: 1948805413}
     - target: {fileID: 4423974053271881732, guid: b79ca0c3bcd78cd4985a77164632a7da, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.73
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423974053271881732, guid: b79ca0c3bcd78cd4985a77164632a7da, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5824893883465249792, guid: b79ca0c3bcd78cd4985a77164632a7da, type: 3}
       propertyPath: m_Pivot.x

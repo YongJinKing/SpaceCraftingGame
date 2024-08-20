@@ -80,13 +80,12 @@ public class ItemFactory
                     bool isStartPos = false;
                     if (data.Weapon_Prefab_Index > 0)
                     {
-                        //weapon.graphic = PrefabLoader.Load(data.Weapon_Prefab_Index);
-                        /*
-                         * if(weapon.graphic.childCount > 0)
-                         * {
-                         *     isStartPos = true;
-                         * }
-                         */
+                        weapon.graphic = prefabLoader.Load(data.Weapon_Prefab_Index).transform;
+                        
+                        if(weapon.graphic.childCount > 0)
+                        {
+                            isStartPos = true;
+                        }
                     }
 
                     if (data.Main_Action_Index > 0)
