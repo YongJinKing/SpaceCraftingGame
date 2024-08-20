@@ -44,7 +44,7 @@ public class StructureInfoViewer : MonoBehaviour
                 naturalResource = hit.collider.GetComponent<NaturalResources>();
                 if (naturalResource != null)
                 {
-                    naturalResource.TakeMining();
+                    naturalResource.TakeDamage(1f);
                 }
             }
         }

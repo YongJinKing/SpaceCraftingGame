@@ -149,7 +149,7 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
         componetsInfo = new ComponetsInfo(componentList);
         var json = JsonConvert.SerializeObject(componetsInfo, Formatting.Indented);
         //savePath = SceneManager.GetActiveScene().name + "/" + json;
-        savePath = "TileSaveData" + DataManager.Instance.nowSlot + ".json";
+        savePath = "TileSaveData_" + SceneManager.GetActiveScene().name + DataManager.Instance.nowSlot + ".json";
         File.WriteAllText(savePath, json);
     }
 
@@ -189,7 +189,6 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
         {
             // 역직렬화 후 coordinates 복원
             item.OnAfterDeserialize();
-            Debug.Log(item.coordinates + ", " + item.index + ", " + item.Hp);
         }
 
         return componetsList;

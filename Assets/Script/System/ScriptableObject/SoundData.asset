@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca4498aa6e04a94c92f3896eb467601, type: 3}
+  m_Name: SoundData
+  m_EditorClassIdentifier: 
+  bgm:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: a5b7fe5a466f7c94aa06f20a0e72a838, type: 3}
+  - {fileID: 8300000, guid: 127b7245ae66c534ca970d740e3b3294, type: 3}
+  typingSFX: {fileID: 8300000, guid: 434a984c6a6bb8e42a56c84e20f63684, type: 3}
+  bossJumpAttack: {fileID: 8300000, guid: 2e8fd142b73118c499159fb0a05cac2e, type: 3}
+  bossSpinAttack: {fileID: 8300000, guid: 256bf1376c8b34145b425d7ee75060e9, type: 3}
+  bossSuperJumpAttack: {fileID: 8300000, guid: 972e2ec74d1c24c46b4fee0cd99a97a0, type: 3}
+  bossThrowAttack: {fileID: 8300000, guid: d4f161bc50bf43549a439b8051cb17ed, type: 3}
+  bossFootstep: {fileID: 0}
+  bossDead: {fileID: 0}

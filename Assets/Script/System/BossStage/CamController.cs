@@ -81,6 +81,7 @@ public class CamController : MonoBehaviour
     #region ForPlayer
     IEnumerator PlayerLandingToStage()
     {
+        SoundManager.Instance.PlayBGM(SoundManager.Instance.soundData.bgm[(int)BGM.BOSSENTRANCE]);
         float landingTime = 1.5f; // 총 이동 시간
         float curTime = 0f; // 경과 시간
 
@@ -153,6 +154,7 @@ public class CamController : MonoBehaviour
         // 대사 출력
         yield return StartCoroutine(ActiveBossScript());
 
+        SoundManager.Instance.PlayBGM(SoundManager.Instance.soundData.bgm[(int)BGM.BOSS]);
         Boss.GetComponent<Boss>().animator.SetBool("Intro", true);
         bossEntranceText.gameObject.SetActive(true);
 

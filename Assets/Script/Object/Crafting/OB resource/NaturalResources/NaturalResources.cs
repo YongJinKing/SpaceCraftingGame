@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class NaturalResources : MonoBehaviour
+public class NaturalResources : MonoBehaviour, IDamage
 {
     public int indexNum; // 자원의 인덱스 넘버
     public int outputIndexNum; // 자원을 캤을 때 산출물의 인덱스 넘버
-    public int hp; // 자원의 hp = 몇번 뚜들겨야 캐질지
+    public float hp; // 자원의 hp = 몇번 뚜들겨야 캐질지
     public int minAmount; // 최소 생산량
     public int maxAmount; // 최대 생산량
     public int size;
@@ -17,21 +17,6 @@ public class NaturalResources : MonoBehaviour
     private void OnEnable()
     {
         inventory = FindObjectOfType<Inventory>();
-    }
-
-    public void TakeMining()
-    {
-        hp--;
-        if(hp <= 0)
-        {
-            if(inventory != null)
-            {
-                amount = Random.Range(minAmount, maxAmount+1);
-                inventory.AddItem(outputIndexNum, amount);
-            }
-            RevokeTile();
-            Destroy(this.gameObject);
-        }
     }
 
     void RevokeTile()
@@ -48,5 +33,20 @@ public class NaturalResources : MonoBehaviour
 
         Vector3Int resourcePos = new Vector3Int((int)pos.x, (int)pos.y, 0);
         TileManager.Instance.RevokePlace(resourcePos);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            if (inventory != null)
+            {
+                amount = Random.Range(minAmount, maxAmount + 1);
+                inventory.AddItem(outputIndexNum, amount);
+            }
+            RevokeTile();
+            Destroy(this.gameObject);
+        }
     }
 }

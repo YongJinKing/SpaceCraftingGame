@@ -41,6 +41,7 @@ public class RabbitBossSuperJumpAttackAction : BossAction
 
         attackVFX.GetComponent<ParticleSystem>().Play();
         camController.StartCameraShake(5f, 0.7f);
+        
         yield return null;
     }
 
@@ -96,6 +97,7 @@ public class RabbitBossSuperJumpAttackAction : BossAction
     protected override void ActionEnd()
     {
         base.ActionEnd();
+        if (ownerAnim.GetBool("SuperJumping")) ownerAnim.SetBool("SuperJumping", false);
         StopAllCoroutines();
     }
     #endregion

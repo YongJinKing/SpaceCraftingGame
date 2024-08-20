@@ -1,13 +1,15 @@
 using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SP_RiceRainAttack : SPAttackAction
 {
     #region Properties
     #region Private
-
+    List<int> randomPattern = new List<int>();
     #endregion
     #region Protected
 
@@ -115,7 +117,9 @@ public class SP_RiceRainAttack : SPAttackAction
         int cnt = 0;
         while (cnt < 4)
         {
-            if (cnt % 2 == 0)
+            int rnd = Random.Range(0, 10);
+            randomPattern.Add(rnd);
+            if ((rnd % 2) == 0)
             {
                 ShowPatternLines(xShapeLines, true);
             }
@@ -126,7 +130,7 @@ public class SP_RiceRainAttack : SPAttackAction
 
             yield return new WaitForSeconds(0.5f);
 
-            if (cnt % 2 == 0)
+            if ((rnd % 2) == 0)
             {
                 ShowPatternLines(xShapeLines, false);
             }
@@ -134,6 +138,8 @@ public class SP_RiceRainAttack : SPAttackAction
             {
                 ShowPatternLines(plusShapeLines, false);
             }
+
+            yield return new WaitForSeconds(0.5f);
             cnt++;
         }
 
@@ -147,7 +153,8 @@ public class SP_RiceRainAttack : SPAttackAction
         int cnt = 0;
         while (cnt < 4)
         {
-            if (cnt % 2 == 0)
+            int idx = randomPattern[0];
+            if ((idx % 2) == 0)
             {
                 ShowPatternLines(xShapeWarningLines, true);
                 SpawnRiceWithList(xShapeLines);
@@ -158,9 +165,11 @@ public class SP_RiceRainAttack : SPAttackAction
                 SpawnRiceWithList(plusShapeLines);
             }
 
-            yield return new WaitForSeconds(1.5f);
-            if (cnt % 2 == 0) ShowPatternLines(xShapeWarningLines, false);
+            yield return new WaitForSeconds(2f);
+            if ((idx % 2) == 0) ShowPatternLines(xShapeWarningLines, false);
             else ShowPatternLines(plusShapeWarningLines, false);
+
+            randomPattern.RemoveAt(0);
             cnt++;
 
         }
@@ -181,6 +190,7 @@ public class SP_RiceRainAttack : SPAttackAction
         ShowPatternLines(plusShapeLines, false);
         ShowPatternLines(plusShapeWarningLines, false);
 
+        randomPattern.Clear();
         StopAllCoroutines();
     }
     #endregion
@@ -208,6 +218,7 @@ public class SP_RiceRainAttack : SPAttackAction
     {
         base.Activate(pos);
         mortalBoxesList = perception.GetList();
+        
         chk = false;
         StartCoroutine(StartRiceRainPattern());
 
