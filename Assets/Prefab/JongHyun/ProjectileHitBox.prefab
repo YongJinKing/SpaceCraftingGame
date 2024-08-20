@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b7a97b4a2ec2d49bb41dbbcea02b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitBoxSize: {x: 0.5, y: 0.18}
+  _hitBoxSize: {x: 0.5, y: 0.1}
   _targetMask:
     serializedVersion: 2
     m_Bits: 851968

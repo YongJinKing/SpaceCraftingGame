@@ -5,14 +5,23 @@ using UnityEngine;
 public class ItemFactory
 {
     private ActionFactory actionFac;
+    private PrefabLoader prefabLoader;
 
     public ItemFactory()
     {
         actionFac = new ActionFactory();
+        prefabLoader = new PrefabLoader();
     }
     public ItemFactory(ActionFactory actionFac)
     {
         this.actionFac = actionFac;
+        prefabLoader = new PrefabLoader();
+    }
+
+    public ItemFactory(ActionFactory actionFac, PrefabLoader prefabLoader)
+    {
+        this.actionFac = actionFac;
+        this.prefabLoader = prefabLoader;
     }
 
     public GameObject Create(int index)

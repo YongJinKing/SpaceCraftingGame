@@ -1,12 +1,17 @@
 [
   {
-    "Index": 10000,
+    "Index": 10100,
     "LayerMask": [19],
-    "power": 1
+    "power": 0.3
   },
   {
-    "Index": 10001,
-    "LayerMask": [16, 21],
-    "power": 1
+    "Index": 10200,
+    "LayerMask": [19],
+    "power": 0.15
+  },
+  {
+    "Index": 10300,
+    "LayerMask": [19],
+    "power": 2
   }
 ]

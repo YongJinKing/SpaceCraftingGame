@@ -1,0 +1,38 @@
+[
+  {
+    "Index": 10100,
+    "Name": "Rifle_Lv1"
+  },
+  {
+    "Index": 10101,
+    "Name": "Rifle_Lv2"
+  },
+  {
+    "Index": 10102,
+    "Name": "Rifle_Lv3"
+  },
+  {
+    "Index": 10200,
+    "Name": "ShotGun_Lv1"
+  },
+  {
+    "Index": 10201,
+    "Name": "ShotGun_Lv2"
+  },
+  {
+    "Index": 10202,
+    "Name": "ShotGun_Lv3"
+  },
+  {
+    "Index": 10300,
+    "Name": "Sniper_Lv1"
+  },
+  {
+    "Index": 10301,
+    "Name": "Sniper_Lv2"
+  },
+  {
+    "Index": 10302,
+    "Name": "Sniper_Lv3"
+  }
+]

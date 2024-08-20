@@ -1,6 +1,6 @@
 [
   {
-    "Index": 10000,
+    "Index": 10100,
     "Anim_Type": 1,
     "Stat_Modify_Values": 
     [
@@ -11,8 +11,136 @@
         "value": 10
       }
     ],
-    "Main_Action_Index": 10000,
+    "Main_Action_Index": 10100,
     "Second_Action_Index": -1,
-    "Weapon_Prefab_Index": -1
+    "Weapon_Prefab_Index": 10100
+  },
+  {
+    "Index": 10101,
+    "Anim_Type": 1,
+    "Stat_Modify_Values": 
+    [
+      {
+        "stattype": 3,
+        "modiType": 0,
+        "sortOrder": 1,
+        "value": 20
+      }
+    ],
+    "Main_Action_Index": 10101,
+    "Second_Action_Index": -1,
+    "Weapon_Prefab_Index": 10101
+  },
+  {
+    "Index": 10102,
+    "Anim_Type": 1,
+    "Stat_Modify_Values": 
+    [
+      {
+        "stattype": 3,
+        "modiType": 0,
+        "sortOrder": 1,
+        "value": 30
+      }
+    ],
+    "Main_Action_Index": 10102,
+    "Second_Action_Index": -1,
+    "Weapon_Prefab_Index": 10102
+  },
+  {
+    "Index": 10200,
+    "Anim_Type": 1,
+    "Stat_Modify_Values": 
+    [
+      {
+        "stattype": 3,
+        "modiType": 0,
+        "sortOrder": 1,
+        "value": 10
+      }
+    ],
+    "Main_Action_Index": 10200,
+    "Second_Action_Index": -1,
+    "Weapon_Prefab_Index": 10200
+  },
+  {
+    "Index": 10201,
+    "Anim_Type": 1,
+    "Stat_Modify_Values": 
+    [
+      {
+        "stattype": 3,
+        "modiType": 0,
+        "sortOrder": 1,
+        "value": 20
+      }
+    ],
+    "Main_Action_Index": 10201,
+    "Second_Action_Index": -1,
+    "Weapon_Prefab_Index": 10201
+  },
+  {
+    "Index": 10202,
+    "Anim_Type": 1,
+    "Stat_Modify_Values": 
+    [
+      {
+        "stattype": 3,
+        "modiType": 0,
+        "sortOrder": 1,
+        "value": 30
+      }
+    ],
+    "Main_Action_Index": 10202,
+    "Second_Action_Index": -1,
+    "Weapon_Prefab_Index": 10202
+  },
+  {
+    "Index": 10300,
+    "Anim_Type": 1,
+    "Stat_Modify_Values": 
+    [
+      {
+        "stattype": 3,
+        "modiType": 0,
+        "sortOrder": 1,
+        "value": 10
+      }
+    ],
+    "Main_Action_Index": 10300,
+    "Second_Action_Index": -1,
+    "Weapon_Prefab_Index": 10300
+  },
+  {
+    "Index": 10301,
+    "Anim_Type": 1,
+    "Stat_Modify_Values": 
+    [
+      {
+        "stattype": 3,
+        "modiType": 0,
+        "sortOrder": 1,
+        "value": 20
+      }
+    ],
+    "Main_Action_Index": 10301,
+    "Second_Action_Index": -1,
+    "Weapon_Prefab_Index": 10301
+  },
+  {
+    "Index": 10302,
+    "Anim_Type": 1,
+    "Stat_Modify_Values": 
+    [
+      {
+        "stattype": 3,
+        "modiType": 0,
+        "sortOrder": 1,
+        "value": 30
+      }
+    ],
+    "Main_Action_Index": 10302,
+    "Second_Action_Index": -1,
+    "Weapon_Prefab_Index": 10302
   }
 ]

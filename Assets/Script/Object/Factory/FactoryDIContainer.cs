@@ -27,8 +27,15 @@ public class FactoryDIContainer
         private set;
     }
 
+    public PrefabLoader prefabLoader
+    {
+        get;
+        private set;
+    }
+
     public FactoryDIContainer() 
     {
+        prefabLoader = new PrefabLoader();
         affectFac = new AffectFactory();
         hitBoxFac = new HitBoxFactory(affectFac);
         actionFac = new ActionFactory(hitBoxFac);
