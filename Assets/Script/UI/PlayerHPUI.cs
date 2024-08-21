@@ -67,6 +67,16 @@ public class PlayerHPUI : MonoBehaviour
     #region EventHandlers
     public void OnMaxHPChanged(float oldVal, float newVal)
     {
+        if (Hearts.Count > 0)
+        {
+            Image[] temp = Hearts.ToArray();
+            Hearts.Clear();
+            for(int i = 0; i < temp.Length; ++i)
+            {
+                Destroy(temp[i].gameObject);
+            }
+        }
+
         heartCount = (int)(_myTarget[EStat.MaxHP] + 0.5) / 2;
         fulls = (int)(_myTarget[EStat.HP] + 0.5) / 2;
         half = (int)(_myTarget[EStat.HP] + 0.5) % 2 == 0 ? 0 : 1;

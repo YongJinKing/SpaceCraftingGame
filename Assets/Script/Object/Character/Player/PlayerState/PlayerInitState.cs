@@ -43,6 +43,7 @@ public class PlayerInitState : PlayerState
     {
         yield return null;
         owner.weaponRotationAxis.SetActive(false);
+        owner.UIChangeEvent?.Invoke(0);
 
         owner.stateMachine.ChangeState<PlayerIdleState>();
     }

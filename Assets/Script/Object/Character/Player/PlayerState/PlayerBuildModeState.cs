@@ -45,10 +45,12 @@ public class PlayerBuildModeState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        owner.UIChangeEvent?.Invoke(1);
     }
     public override void Exit()
     {
         base.Exit();
+        owner.UIChangeEvent?.Invoke(0);
     }
     #endregion
     #endregion
