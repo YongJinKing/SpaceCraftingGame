@@ -72,7 +72,7 @@ public class Inventory : MonoBehaviour
     
     public void TestAddBtn()
     {
-        bool check = AddItem(Testid,TestAmout);
+        int check = AddItem(Testid,TestAmout);
         Debug.Log(check);
         
     }
@@ -84,7 +84,7 @@ public class Inventory : MonoBehaviour
 
     
 
-    public bool AddItem(int id, int amount)
+    public int AddItem(int id, int amount)
     {
         int remainingAmout = amount;
 
@@ -122,7 +122,7 @@ public class Inventory : MonoBehaviour
                 if(remainingAmout <= 0)
                 {  
                     UpdateInventory();
-                    return true;
+                    return 0;
                 }
             }
         }
@@ -138,12 +138,14 @@ public class Inventory : MonoBehaviour
                 UpdateInventory();
                 if(remainingAmout <= 0)
                 {   
-                    return true;
+                    return 0;
                 }
             }
         }
+        UpdateInventory();
+
         Debug.Log(remainingAmout);//창고 채운뒤 남은 오브젝트 처리하면 좋을듯?
-        return false;
+        return remainingAmout;
 
     }
 
