@@ -35,6 +35,7 @@ public class PlayerIdleState : PlayerState
         base.AddListeners();
         InputController.Instance.moveEvent.AddListener(OnMove);
         InputController.Instance.mouseEvent.AddListener(OnMouse);
+        InputController.Instance.keyEvent.AddListener(OnKeyDown);
 
         UnitMovement unitMovement = GetComponent<UnitMovement>();
         moveEvent.AddListener(unitMovement.OnMoveToDir);
@@ -44,6 +45,7 @@ public class PlayerIdleState : PlayerState
         base.RemoveListeners();
         InputController.Instance.moveEvent.RemoveListener(OnMove);
         InputController.Instance.mouseEvent.RemoveListener(OnMouse);
+        InputController.Instance.keyEvent.RemoveListener(OnKeyDown);
 
         UnitMovement unitMovement = GetComponent<UnitMovement>();
         moveEvent.RemoveListener(unitMovement.OnMoveToDir);
@@ -117,6 +119,18 @@ public class PlayerIdleState : PlayerState
                 owner.stateMachine.ChangeState<PlayerMovableActionState>();
             else
                 owner.stateMachine.ChangeState<PlayerUnmovableActionState>();
+        }
+    }
+
+    public void OnKeyDown(KeyCode keyCode) 
+    {
+        switch (keyCode) 
+        {
+            case KeyCode.B:
+                {
+                    owner.stateMachine.ChangeState<PlayerBuildModeState>();
+                }
+                break;
         }
     }
     #endregion

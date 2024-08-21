@@ -21,8 +21,9 @@ public class CopyPosition : MonoBehaviour
     {
         if(!target) return;
 
-        transform.position = new Vector2(
+        transform.position = new Vector3(
             (x ? target.position.x : transform.position.x),
-            (y ? target.position.y : transform.position.y));
+            (y ? target.position.y : transform.position.y),
+            -10);
     }
 }

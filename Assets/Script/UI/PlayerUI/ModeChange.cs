@@ -14,7 +14,7 @@ public class ModeChange : MonoBehaviour
     void Start()
     {
         WeaponBox.SetActive(false);
-        Count = 0;
+        Count = 1;
     }
 
     // Update is called once per frame
