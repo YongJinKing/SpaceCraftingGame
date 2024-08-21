@@ -22,7 +22,7 @@ public class DataManager : Singleton<DataManager>
     /// 플레이어 데이터 저장 배열
     /// </summary>
     public PlayerDataStruct[] pd = new PlayerDataStruct[1];
-    public EquipmentLevelStruct el = new EquipmentLevelStruct();
+    public WeaponDataStruct[] el = new WeaponDataStruct[1];
     public Player NowPlayer;
     #endregion
 
@@ -61,6 +61,7 @@ public class DataManager : Singleton<DataManager>
         }
     }
     #endregion
+
     #region player_data_save
     public void SavePlayerInfo()
     {
@@ -113,6 +114,7 @@ public class DataManager : Singleton<DataManager>
         Debug.Log($"Saved JSON: {json}");
     }
     #endregion
+
     #region player_data_load
     public void LoadJson(string path) // LoadJson(string path)
     {
@@ -135,41 +137,12 @@ public class DataManager : Singleton<DataManager>
         //NowPlayer = JsonUtility.FromJson<Player>(data);
     }
     #endregion
-    #region weapon_level_save
-    public void EquipmentLevelSave()
-    {
-        //1. 무기 데이터
-        //2. 무기 데이터를 가져와 el 저장
-        //3. 직렬화
-        //4. 파일로 저장
 
-        //1
-        Weapon weapon = FindObjectOfType<Weapon>();
-
-        //3
-        var json = JsonConvert.SerializeObject(el, Formatting.Indented);
-
-        //4
-        string SavePath = savePath2 + nowSlot.ToString() + ".json";
-        File.WriteAllText(SavePath, json);
-
-    }
-    #endregion
-
-    public void EquipmentLevelLoad(string path)
-    {
-        var jsonPath = path;
-        if(File.Exists(jsonPath))
-        {
-            string JsonString = File.ReadAllText(jsonPath);
-            el = JsonConvert.DeserializeObject<EquipmentLevelStruct>(JsonString);
-
-            Dictionary<int, EquipmentLevelStruct> weaponlevelDic = new Dictionary<int, EquipmentLevelStruct>();
-        }
-    }
+    #region
     public void DataClear()
     {
         nowSlot = -1;
         NowPlayer = new Player();
     }
+    #endregion
 }
