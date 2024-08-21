@@ -31,6 +31,8 @@ public class BuildingUIPop : MonoBehaviour
         //CraftBuildingUIManager.instance.ApplyTypeID.Count
         for (int i = 0; i < objSlotGridLine.transform.childCount; i++)
         {
+         
+
             if (CraftBuildingUIManager.instance.ApplyTypeID.Count > objSlotGridLine.transform.GetChild(i).GetSiblingIndex())
             {
                 objSlotGridLine.transform.GetChild(i).GetComponent<BuildingUISlot>().InputSlotData();

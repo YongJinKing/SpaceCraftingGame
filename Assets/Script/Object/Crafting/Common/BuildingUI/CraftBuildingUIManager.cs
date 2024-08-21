@@ -107,7 +107,7 @@ public class CraftBuildingUIManager : MonoBehaviour
 
          * */
         ApplyTypeID = new List<int>();
-
+       
         if (Type == BuildingUISelectType.Resource)
         {
             Debug.Log(Type);
