@@ -15,7 +15,7 @@ public class SoundManager : Singleton<SoundManager>
     private void Awake()
     {
         Initialize();
-
+        DontDestroyOnLoad(this.gameObject);
         volume = 1f;
     }
 
