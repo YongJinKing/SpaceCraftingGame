@@ -18,7 +18,7 @@ public class CraftBuildingUIManager : MonoBehaviour
    
     public static CraftBuildingUIManager instance;
 
-    public UnityEvent<int> UpdateBuildPopup;
+    public UnityEvent UpdateBuildPopup;
 
     BuildingUISelectType BuildingType;
  
@@ -96,7 +96,7 @@ public class CraftBuildingUIManager : MonoBehaviour
     {
         BuildingType = (BuildingUISelectType)index;
         BuildingTabFunction(BuildingType);
-        UpdateBuildPopup?.Invoke(1);
+        UpdateBuildPopup?.Invoke();
     }
 
     public void BuildingTabFunction(BuildingUISelectType Type)
@@ -111,10 +111,11 @@ public class CraftBuildingUIManager : MonoBehaviour
         if (Type == BuildingUISelectType.Resource)
         {
             Debug.Log(Type);
+            Debug.Log(TypeID.Count);
             for (int i = 0; i < TypeID.Count; i++)
             {
                 var BuildingData = BuildingUIStructure.GetInstance().dicBUIComponentTable[TypeID[i]];
-                if (((BuildingData.ComponentDataTable_Index / 10000) - 10) == (int)Type)
+                if (((BuildingData.ComponentDataTable_Index / 10000) - 10) == (int)Type || ((BuildingData.ComponentDataTable_Index / 10000) -13) == (int)Type)
                 {
                     //Debug.Log(i);
                     ApplyTypeID.Add(BuildingData.ComponentDataTable_Index);
@@ -130,10 +131,9 @@ public class CraftBuildingUIManager : MonoBehaviour
             // 10만 : 자원생산건물   11만 : 공성건물    12만 : 아이템 생산건물(?)     13만: 울타리 건물
             for (int i = 0; i < TypeID.Count; i++)
             {
-
                 var BuildingData = BuildingUIStructure.GetInstance().dicBUIComponentTable[TypeID[i]];
-
-                if(((BuildingData.ComponentDataTable_Index / 10000) - 10) == (int)Type)
+                
+                if (((BuildingData.ComponentDataTable_Index / 10000) - 10) == (int)Type)
                 {
                     //Debug.Log(i);
                     ApplyTypeID.Add(BuildingData.ComponentDataTable_Index);

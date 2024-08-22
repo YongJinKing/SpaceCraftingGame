@@ -27,67 +27,31 @@
     "Component_Detail": 100002
   },
   {
-    "ComponentDataTable_Index": 100003,
+    "ComponentDataTable_Index": 100100,
     "Component_Type": 0,
-    "Component_Name": 100003,
-    "Component_Desc": 1000003,
-    "Component_Image": 100003,
+    "Component_Name": 100100,
+    "Component_Desc": 100100,
+    "Component_Image": 100100,
     "Component_Hp": 200,
-    "Component_Detail": 100003
+    "Component_Detail": 100100
   },
   {
-    "ComponentDataTable_Index": 100004,
+    "ComponentDataTable_Index": 100101,
     "Component_Type": 0,
-    "Component_Name": 100004,
-    "Component_Desc": 1000004,
-    "Component_Image": 100004,
+    "Component_Name": 100101,
+    "Component_Desc": 100101,
+    "Component_Image": 100101,
     "Component_Hp": 200,
-    "Component_Detail": 100004
+    "Component_Detail": 100101
   },
   {
-    "ComponentDataTable_Index": 100005,
+    "ComponentDataTable_Index": 100102,
     "Component_Type": 0,
-    "Component_Name": 100005,
-    "Component_Desc": 1000005,
-    "Component_Image": 100005,
+    "Component_Name": 100102,
+    "Component_Desc": 100102,
+    "Component_Image": 100102,
     "Component_Hp": 200,
-    "Component_Detail": 100005
-  },
-  {
-    "ComponentDataTable_Index": 100006,
-    "Component_Type": 0,
-    "Component_Name": 100006,
-    "Component_Desc": 1000006,
-    "Component_Image": 100006,
-    "Component_Hp": 201,
-    "Component_Detail": 100006
-  },
-  {
-    "ComponentDataTable_Index": 100007,
-    "Component_Type": 0,
-    "Component_Name": 100007,
-    "Component_Desc": 1000007,
-    "Component_Image": 100007,
-    "Component_Hp": 202,
-    "Component_Detail": 100007
-  },
-  {
-    "ComponentDataTable_Index": 100008,
-    "Component_Type": 0,
-    "Component_Name": 100008,
-    "Component_Desc": 1000008,
-    "Component_Image": 100008,
-    "Component_Hp": 203,
-    "Component_Detail": 100008
-  },
-  {
-    "ComponentDataTable_Index": 100009,
-    "Component_Type": 0,
-    "Component_Name": 100009,
-    "Component_Desc": 1000009,
-    "Component_Image": 100009,
-    "Component_Hp": 204,
-    "Component_Detail": 100009
+    "Component_Detail": 100102
   },
   {
     "ComponentDataTable_Index": 110000,

@@ -32,10 +32,16 @@ public class BuildingUISlot : MonoBehaviour
         var BuildingSpriteData = BuildingUIStructure.GetInstance().dicBUIImgTable[BuildingData.Component_Image];
         //AmountTxt.text = "x" + UnitCalculate.GetInstance().Calculate(CraftBuildingUIManager.instance.TypeID[transform.GetSiblingIndex()]);
         spName = BuildingSpriteData.ImageResource_Name;
-        Sprite sp = Resources.Load<Sprite>($"Component/Image/{spName}");
+        Sprite sp = Resources.Load<Sprite>($"Component/Image/Sprite/{spName}");
         image.sprite = sp;
-        
-
+        if(sp == null)
+        {
+            image.color = Color.black;
+        }
+        else
+        {
+            image.color = Color.white;
+        }
     }
 
 }

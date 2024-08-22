@@ -1,242 +1,186 @@
 [
-   {
-      "ComponentImage_Index":100000,
-      "ImageResource_Name":"Img_Stage1_ResourceGenerationBuilding1"
-   },
-   {
-      "ComponentImage_Index":100001,
-      "ImageResource_Name":"Img_Stage1_ResourceGenerationBuilding2"
-   },
-   {
-      "ComponentImage_Index":100002,
-      "ImageResource_Name":"Img_Stage1_ResourceGenerationBuilding3"
-   },
-   {
-      "ComponentImage_Index":100003,
-      "ImageResource_Name":"Img_Stage1_ResourceGenerationBuilding4"
-   },
-   {
-      "ComponentImage_Index":100004,
-      "ImageResource_Name":"Img_Stage1_ResourceGenerationBuilding5"
-   },
-   {
-      "ComponentImage_Index":100005,
-      "ImageResource_Name":"Img_Stage1_ResourceGenerationBuilding6"
-   },
-   {
-      "ComponentImage_Index":100006,
-      "ImageResource_Name":"Img_Stage1_ResourceGenerationBuilding7"
-   },
-   {
-      "ComponentImage_Index":100007,
-      "ImageResource_Name":"Img_Stage1_ResourceGenerationBuilding8"
-   },
-   {
-      "ComponentImage_Index":100008,
-      "ImageResource_Name":"Img_Stage1_ResourceGenerationBuilding9"
-   },
-   {
-      "ComponentImage_Index":100009,
-      "ImageResource_Name":"Img_Stage1_ResourceGenerationBuilding10"
-   },
-   {
-      "ComponentImage_Index":100100,
-      "ImageResource_Name":"Img_Stage2_ResourceGenerationBuilding1"
-   },
-   {
-      "ComponentImage_Index":100101,
-      "ImageResource_Name":"Img_Stage2_ResourceGenerationBuilding2"
-   },
-   {
-      "ComponentImage_Index":100102,
-      "ImageResource_Name":"Img_Stage2_ResourceGenerationBuilding3"
-   },
-   {
-      "ComponentImage_Index":100103,
-      "ImageResource_Name":"Img_Stage2_ResourceGenerationBuilding4"
-   },
-   {
-      "ComponentImage_Index":100104,
-      "ImageResource_Name":"Img_Stage2_ResourceGenerationBuilding5"
-   },
-   {
-      "ComponentImage_Index":100105,
-      "ImageResource_Name":"Img_Stage2_ResourceGenerationBuilding6"
-   },
-   {
-      "ComponentImage_Index":100106,
-      "ImageResource_Name":"Img_Stage2_ResourceGenerationBuilding7"
-   },
-   {
-      "ComponentImage_Index":100107,
-      "ImageResource_Name":"Img_Stage2_ResourceGenerationBuilding8"
-   },
-   {
-      "ComponentImage_Index":100108,
-      "ImageResource_Name":"Img_Stage2_ResourceGenerationBuilding9"
-   },
-   {
-      "ComponentImage_Index":100109,
-      "ImageResource_Name":"Img_Stage2_ResourceGenerationBuilding10"
-   },
-   {
-      "ComponentImage_Index":110000,
-      "ImageResource_Name":"Img_Stage1_SiegeBuilding1"
-   },
-   {
-      "ComponentImage_Index":110001,
-      "ImageResource_Name":"Img_Stage1_SiegeBuilding2"
-   },
-   {
-      "ComponentImage_Index":110002,
-      "ImageResource_Name":"Img_Stage1_SiegeBuilding3"
-   },
-   {
-      "ComponentImage_Index":110003,
-      "ImageResource_Name":"Img_Stage1_SiegeBuilding4"
-   },
-   {
-      "ComponentImage_Index":110004,
-      "ImageResource_Name":"Img_Stage1_SiegeBuilding5"
-   },
-   {
-      "ComponentImage_Index":110005,
-      "ImageResource_Name":"Img_Stage1_SiegeBuilding6"
-   },
-   {
-      "ComponentImage_Index":110006,
-      "ImageResource_Name":"Img_Stage1_SiegeBuilding7"
-   },
-   {
-      "ComponentImage_Index":110007,
-      "ImageResource_Name":"Img_Stage1_SiegeBuilding8"
-   },
-   {
-      "ComponentImage_Index":110008,
-      "ImageResource_Name":"Img_Stage1_SiegeBuilding9"
-   },
-   {
-      "ComponentImage_Index":110009,
-      "ImageResource_Name":"Img_Stage1_SiegeBuilding10"
-   },
-   {
-      "ComponentImage_Index":110100,
-      "ImageResource_Name":"Img_Stage2_SiegeBuilding1"
-   },
-   {
-      "ComponentImage_Index":110101,
-      "ImageResource_Name":"Img_Stage2_SiegeBuilding2"
-   },
-   {
-      "ComponentImage_Index":110102,
-      "ImageResource_Name":"Img_Stage2_SiegeBuilding3"
-   },
-   {
-      "ComponentImage_Index":110103,
-      "ImageResource_Name":"Img_Stage2_SiegeBuilding4"
-   },
-   {
-      "ComponentImage_Index":110104,
-      "ImageResource_Name":"Img_Stage2_SiegeBuilding5"
-   },
-   {
-      "ComponentImage_Index":110105,
-      "ImageResource_Name":"Img_Stage2_SiegeBuilding6"
-   },
-   {
-      "ComponentImage_Index":110106,
-      "ImageResource_Name":"Img_Stage2_SiegeBuilding7"
-   },
-   {
-      "ComponentImage_Index":110107,
-      "ImageResource_Name":"Img_Stage2_SiegeBuilding8"
-   },
-   {
-      "ComponentImage_Index":110108,
-      "ImageResource_Name":"Img_Stage2_SiegeBuilding9"
-   },
-   {
-      "ComponentImage_Index":110109,
-      "ImageResource_Name":"Img_Stage2_SiegeBuilding10"
-   },
-   {
-      "ComponentImage_Index":130000,
-      "ImageResource_Name":"Img_Stage1_Fence1"
-   },
-   {
-      "ComponentImage_Index":130001,
-      "ImageResource_Name":"Img_Stage1_Fence2"
-   },
-   {
-      "ComponentImage_Index":130002,
-      "ImageResource_Name":"Img_Stage1_Fence3"
-   },
-   {
-      "ComponentImage_Index":130003,
-      "ImageResource_Name":"Img_Stage1_Fence4"
-   },
-   {
-      "ComponentImage_Index":130004,
-      "ImageResource_Name":"Img_Stage1_Fence5"
-   },
-   {
-      "ComponentImage_Index":130005,
-      "ImageResource_Name":"Img_Stage1_Fence6"
-   },
-   {
-      "ComponentImage_Index":130006,
-      "ImageResource_Name":"Img_Stage1_Fence7"
-   },
-   {
-      "ComponentImage_Index":130007,
-      "ImageResource_Name":"Img_Stage1_Fence8"
-   },
-   {
-      "ComponentImage_Index":130008,
-      "ImageResource_Name":"Img_Stage1_Fence9"
-   },
-   {
-      "ComponentImage_Index":130009,
-      "ImageResource_Name":"Img_Stage1_Fence10"
-   },
-   {
-      "ComponentImage_Index":130100,
-      "ImageResource_Name":"Img_Stage2_Fence1"
-   },
-   {
-      "ComponentImage_Index":130101,
-      "ImageResource_Name":"Img_Stage2_Fence2"
-   },
-   {
-      "ComponentImage_Index":130102,
-      "ImageResource_Name":"Img_Stage2_Fence3"
-   },
-   {
-      "ComponentImage_Index":130103,
-      "ImageResource_Name":"Img_Stage2_Fence4"
-   },
-   {
-      "ComponentImage_Index":130104,
-      "ImageResource_Name":"Img_Stage2_Fence5"
-   },
-   {
-      "ComponentImage_Index":130105,
-      "ImageResource_Name":"Img_Stage2_Fence6"
-   },
-   {
-      "ComponentImage_Index":130106,
-      "ImageResource_Name":"Img_Stage2_Fence7"
-   },
-   {
-      "ComponentImage_Index":130107,
-      "ImageResource_Name":"Img_Stage2_Fence8"
-   },
-   {
-      "ComponentImage_Index":130108,
-      "ImageResource_Name":"Img_Stage2_Fence9"
-   },
-   {
-      "ComponentImage_Index":130109,
-      "ImageResource_Name":"Img_Stage2_Fence10"
-   }
+  {
+    "ComponentImage_Index": 100000,
+    "ImageResource_Name": "Img_Stage1_MineralResourceGenerationBuilding_Lv1"
+  },
+  {
+    "ComponentImage_Index": 100001,
+    "ImageResource_Name": "Img_Stage1_MineralResourceGenerationBuilding_Lv2"
+  },
+  {
+    "ComponentImage_Index": 100002,
+    "ImageResource_Name": "Img_Stage1_MineralResourceGenerationBuilding_Lv3"
+  },
+  {
+    "ComponentImage_Index": 100100,
+    "ImageResource_Name": "Img_Stage1_GasResourceGenerationBuilding_Lv1"
+  },
+  {
+    "ComponentImage_Index": 100101,
+    "ImageResource_Name": "Img_Stage1_GasResourceGenerationBuilding_Lv2"
+  },
+  {
+    "ComponentImage_Index": 100102,
+    "ImageResource_Name": "Img_Stage1_GasResourceGenerationBuilding_Lv3"
+  },
+  {
+    "ComponentImage_Index": 110000,
+    "ImageResource_Name": "Img_Stage1_SiegeBuilding1"
+  },
+  {
+    "ComponentImage_Index": 110001,
+    "ImageResource_Name": "Img_Stage1_SiegeBuilding2"
+  },
+  {
+    "ComponentImage_Index": 110002,
+    "ImageResource_Name": "Img_Stage1_SiegeBuilding3"
+  },
+  {
+    "ComponentImage_Index": 110003,
+    "ImageResource_Name": "Img_Stage1_SiegeBuilding4"
+  },
+  {
+    "ComponentImage_Index": 110004,
+    "ImageResource_Name": "Img_Stage1_SiegeBuilding5"
+  },
+  {
+    "ComponentImage_Index": 110005,
+    "ImageResource_Name": "Img_Stage1_SiegeBuilding6"
+  },
+  {
+    "ComponentImage_Index": 110006,
+    "ImageResource_Name": "Img_Stage1_SiegeBuilding7"
+  },
+  {
+    "ComponentImage_Index": 110007,
+    "ImageResource_Name": "Img_Stage1_SiegeBuilding8"
+  },
+  {
+    "ComponentImage_Index": 110008,
+    "ImageResource_Name": "Img_Stage1_SiegeBuilding9"
+  },
+  {
+    "ComponentImage_Index": 110009,
+    "ImageResource_Name": "Img_Stage1_SiegeBuilding10"
+  },
+  {
+    "ComponentImage_Index": 110100,
+    "ImageResource_Name": "Img_Stage2_SiegeBuilding1"
+  },
+  {
+    "ComponentImage_Index": 110101,
+    "ImageResource_Name": "Img_Stage2_SiegeBuilding2"
+  },
+  {
+    "ComponentImage_Index": 110102,
+    "ImageResource_Name": "Img_Stage2_SiegeBuilding3"
+  },
+  {
+    "ComponentImage_Index": 110103,
+    "ImageResource_Name": "Img_Stage2_SiegeBuilding4"
+  },
+  {
+    "ComponentImage_Index": 110104,
+    "ImageResource_Name": "Img_Stage2_SiegeBuilding5"
+  },
+  {
+    "ComponentImage_Index": 110105,
+    "ImageResource_Name": "Img_Stage2_SiegeBuilding6"
+  },
+  {
+    "ComponentImage_Index": 110106,
+    "ImageResource_Name": "Img_Stage2_SiegeBuilding7"
+  },
+  {
+    "ComponentImage_Index": 110107,
+    "ImageResource_Name": "Img_Stage2_SiegeBuilding8"
+  },
+  {
+    "ComponentImage_Index": 110108,
+    "ImageResource_Name": "Img_Stage2_SiegeBuilding9"
+  },
+  {
+    "ComponentImage_Index": 110109,
+    "ImageResource_Name": "Img_Stage2_SiegeBuilding10"
+  },
+  {
+    "ComponentImage_Index": 130000,
+    "ImageResource_Name": "Img_Stage1_Fence1"
+  },
+  {
+    "ComponentImage_Index": 130001,
+    "ImageResource_Name": "Img_Stage1_Fence2"
+  },
+  {
+    "ComponentImage_Index": 130002,
+    "ImageResource_Name": "Img_Stage1_Fence3"
+  },
+  {
+    "ComponentImage_Index": 130003,
+    "ImageResource_Name": "Img_Stage1_Fence4"
+  },
+  {
+    "ComponentImage_Index": 130004,
+    "ImageResource_Name": "Img_Stage1_Fence5"
+  },
+  {
+    "ComponentImage_Index": 130005,
+    "ImageResource_Name": "Img_Stage1_Fence6"
+  },
+  {
+    "ComponentImage_Index": 130006,
+    "ImageResource_Name": "Img_Stage1_Fence7"
+  },
+  {
+    "ComponentImage_Index": 130007,
+    "ImageResource_Name": "Img_Stage1_Fence8"
+  },
+  {
+    "ComponentImage_Index": 130008,
+    "ImageResource_Name": "Img_Stage1_Fence9"
+  },
+  {
+    "ComponentImage_Index": 130009,
+    "ImageResource_Name": "Img_Stage1_Fence10"
+  },
+  {
+    "ComponentImage_Index": 130100,
+    "ImageResource_Name": "Img_Stage2_Fence1"
+  },
+  {
+    "ComponentImage_Index": 130101,
+    "ImageResource_Name": "Img_Stage2_Fence2"
+  },
+  {
+    "ComponentImage_Index": 130102,
+    "ImageResource_Name": "Img_Stage2_Fence3"
+  },
+  {
+    "ComponentImage_Index": 130103,
+    "ImageResource_Name": "Img_Stage2_Fence4"
+  },
+  {
+    "ComponentImage_Index": 130104,
+    "ImageResource_Name": "Img_Stage2_Fence5"
+  },
+  {
+    "ComponentImage_Index": 130105,
+    "ImageResource_Name": "Img_Stage2_Fence6"
+  },
+  {
+    "ComponentImage_Index": 130106,
+    "ImageResource_Name": "Img_Stage2_Fence7"
+  },
+  {
+    "ComponentImage_Index": 130107,
+    "ImageResource_Name": "Img_Stage2_Fence8"
+  },
+  {
+    "ComponentImage_Index": 130108,
+    "ImageResource_Name": "Img_Stage2_Fence9"
+  },
+  {
+    "ComponentImage_Index": 130109,
+    "ImageResource_Name": "Img_Stage2_Fence10"
+  }
 ]

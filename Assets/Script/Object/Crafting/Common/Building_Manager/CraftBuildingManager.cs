@@ -15,17 +15,21 @@ public class CraftBuildingManager : MonoBehaviour
     public Transform TurretParent;
 
     public int size;
+    public bool craftReady;
     [SerializeField] int buildingIndex;
     // Start is called before the first frame update
     void Start()
     {
         buildingIndex = 110000; // 빌딩 인덱스, 추후 건축 모드에서 Ui를 통해 이 인덱스를 원하는 건물의 인덱스로 변경할 수 있어야함  <<<<<<<<<<<<
         size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
+        craftReady = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!craftReady) return; // 건축 준비가 완료 되어야 아래 코드들을 진행
+
         // 지금은 단순히 1번,2번키를 눌러서 지을 건물을 바꾸지만 아래에 else if 까지의 코드는 UI 개발시 버튼을 클릭해서 바꾸는 식으로 바꿔야함
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -174,7 +178,7 @@ public class CraftBuildingManager : MonoBehaviour
             }
         }
 
-
+        craftReady = false;
     }
 
     void StopDrawingRectangle()
