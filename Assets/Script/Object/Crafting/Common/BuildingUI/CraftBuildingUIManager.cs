@@ -17,6 +17,7 @@ public class CraftBuildingUIManager : MonoBehaviour
     public Sprite TabSelectSprite, TabDeselectSprite;
    
     public static CraftBuildingUIManager instance;
+    public CraftBuildingManager buildingManager;
 
     public UnityEvent UpdateBuildPopup;
 
@@ -24,6 +25,8 @@ public class CraftBuildingUIManager : MonoBehaviour
  
     public List<int> TypeID;
     public List<int> ApplyTypeID;
+
+    public int buildIndex;
 
     //public Image[] ExplainIMG;
 
@@ -151,6 +154,11 @@ public class CraftBuildingUIManager : MonoBehaviour
         Debug.Log("Ω√¿€");
         
         Debug.Log(ApplyTypeID);
+    }
+
+    public void ReadyToBuild()
+    {
+        buildingManager.BuildingSetting(buildIndex);
     }
 
 }

@@ -28,10 +28,14 @@ public class CraftBuildingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!craftReady) return; // 건축 준비가 완료 되어야 아래 코드들을 진행
+        if (!craftReady)
+        {
+            StopDrawingRectangle();
+            return; // 건축 준비가 완료 되어야 아래 코드들을 진행
+        }
 
         // 지금은 단순히 1번,2번키를 눌러서 지을 건물을 바꾸지만 아래에 else if 까지의 코드는 UI 개발시 버튼을 클릭해서 바꾸는 식으로 바꿔야함
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        /*if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             buildingIndex = 110000;
             size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
@@ -50,6 +54,10 @@ public class CraftBuildingManager : MonoBehaviour
         {
             buildingIndex = 130000;
             size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
+        }*/
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            craftReady = false;
         }
         //===========================위의 코드들은 수정해야함==================================================
 
@@ -80,6 +88,12 @@ public class CraftBuildingManager : MonoBehaviour
 
     }
 
+    public void BuildingSetting(int index)
+    {
+        craftReady = true;
+        buildingIndex = index;
+        size = CraftFactory.Instance.GetBuildingSize(buildingIndex);
+    }
     void DrawRectangle(Vector3 pos, Color color)
     {
         if (!rectangles[0].gameObject.activeSelf) rectangles[0].gameObject.SetActive(true);
@@ -163,7 +177,12 @@ public class CraftBuildingManager : MonoBehaviour
             Vector3 craftPos = new Vector3((pos.x + ground.tileAnchor.x), (pos.y + ground.tileAnchor.y), 0);
 
             GameObject craft = CraftFactory.Instance.ReadyToCraftBuilding(index, craftPos, 0, size);
-            if (craft == null) return;
+            if (craft == null)
+            {
+                craftReady = false;
+                StopDrawingRectangle();
+                return;
+            }
             craft.transform.localScale = Vector3.one * size;
             craft.transform.SetParent(TurretParent);
 
@@ -177,8 +196,8 @@ public class CraftBuildingManager : MonoBehaviour
                 }
             }
         }
-
         craftReady = false;
+        StopDrawingRectangle();
     }
 
     void StopDrawingRectangle()
@@ -187,6 +206,7 @@ public class CraftBuildingManager : MonoBehaviour
         {
             if (rectangles[i].gameObject.activeSelf) rectangles[i].gameObject.SetActive(false);
         }
+        
     }
 
 }

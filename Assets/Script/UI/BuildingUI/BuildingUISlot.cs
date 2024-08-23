@@ -62,6 +62,7 @@ public class BuildingUISlot : MonoBehaviour
         selectedImage.sprite = sp;
         selectedName.text = ItemName;
         selectedDesc.text = ItemDesc;
+        CraftBuildingUIManager.instance.buildIndex = buildIndex;
     }
 
 }
