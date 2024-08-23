@@ -6,7 +6,7 @@
     "ActiveRadius": 1.5,
     "HitBox_Index": [20100],
     "LayerMask": [0],
-    "ActiveDuration": 0.2
+    "ActiveDuration": 0.15
   },
   {
     "Index": 10101,
@@ -15,7 +15,7 @@
     "ActiveRadius": 1.5,
     "HitBox_Index": [20101],
     "LayerMask": [0],
-    "ActiveDuration": 0.2
+    "ActiveDuration": 0.15
   },
   {
     "Index": 10102,
@@ -24,14 +24,14 @@
     "ActiveRadius": 1.5,
     "HitBox_Index": [20102],
     "LayerMask": [0],
-    "ActiveDuration": 0.2
+    "ActiveDuration": 0.15
   },
   {
     "Index": 10200,
     "Priority": 0,
     "CoolTime": -1,
     "ActiveRadius": 1.5,
-    "HitBox_Index": [20200],
+    "HitBox_Index": [10200],
     "LayerMask": [0],
     "ActiveDuration": 0.5
   },
@@ -40,7 +40,7 @@
     "Priority": 0,
     "CoolTime": -1,
     "ActiveRadius": 1.5,
-    "HitBox_Index": [20201],
+    "HitBox_Index": [10201],
     "LayerMask": [0],
     "ActiveDuration": 0.5
   },
@@ -49,7 +49,7 @@
     "Priority": 0,
     "CoolTime": -1,
     "ActiveRadius": 1.5,
-    "HitBox_Index": [20202],
+    "HitBox_Index": [10202],
     "LayerMask": [0],
     "ActiveDuration": 0.5
   },

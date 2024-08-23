@@ -80,8 +80,10 @@ public class ItemFactory
                     bool isStartPos = false;
                     if (data.Weapon_Prefab_Index > 0)
                     {
-                        weapon.graphic = prefabLoader.Load(data.Weapon_Prefab_Index).transform;
+                        weapon.graphic = GameObject.Instantiate(prefabLoader.Load(data.Weapon_Prefab_Index)).transform;
                         
+                        weapon.graphic.SetParent(gameObject.transform, false);
+
                         if(weapon.graphic.childCount > 0)
                         {
                             isStartPos = true;

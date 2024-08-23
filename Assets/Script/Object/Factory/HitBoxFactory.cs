@@ -53,13 +53,24 @@ public class HitBoxFactory
 
                     MeleeHitBox melee = gameObject.AddComponent<MeleeHitBox>();
 
-                    //GameObject EffectPrefab = Resources.Load<GameObject>(data.Effect_Index);
-                    //EffectPrefab.SetParent(melee.transform, false);
-                    //melee.hitEffectPrefab = Resources.Load<GameObject>(data.Hit_Effect_Prefab_Index);
-                    //melee.destroyEffectPrefab = Resources.Load<GameObject>(data.Destroy_Effect_Prefab_Index);
+                    if (data.Effect_Index > 0)
+                    {
+                        GameObject EffectPrefab = GameObject.Instantiate(prefabLoader.Load(data.Effect_Index));
+                        EffectPrefab.transform.SetParent(melee.transform, false);
+                    }
 
-                    
-                    for(int i = 0;i < data.Affect_Index.Length ; ++i)
+                    if (data.Hit_Effect_Prefab_Index > 0)
+                    {
+                        melee.hitEffectPrefab = prefabLoader.Load(data.Hit_Effect_Prefab_Index);
+                    }
+
+                    if (data.Destroy_Effect_Prefab_Index > 0)
+                    {
+                        melee.destroyEffectPrefab = prefabLoader.Load(data.Destroy_Effect_Prefab_Index);
+                    }
+
+
+                    for (int i = 0;i < data.Affect_Index.Length ; ++i)
                     {
                         GameObject temp = affectFac.Create(data.Affect_Index[i]);
                         if(temp != null)
@@ -104,7 +115,7 @@ public class HitBoxFactory
 
                     if(data.Effect_Index > 0)
                     {
-                        GameObject EffectPrefab = prefabLoader.Load(data.Effect_Index);
+                        GameObject EffectPrefab = GameObject.Instantiate(prefabLoader.Load(data.Effect_Index));
                         EffectPrefab.transform.SetParent(projectile.transform, false);
                     }
 

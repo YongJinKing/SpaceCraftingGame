@@ -24,7 +24,7 @@ public class PrefabLoader
     {
         if (Datas.ContainsKey(index))
         {
-            return GameObject.Instantiate(Resources.Load<GameObject>($"SpineToUnity/WeaponPrefab/{Datas[index].Name}"));
+            return Resources.Load<GameObject>($"{Datas[index].Name}");
         }
         else
         {
