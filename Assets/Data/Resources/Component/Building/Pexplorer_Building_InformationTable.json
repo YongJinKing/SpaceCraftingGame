@@ -1,0 +1,232 @@
+﻿[
+  {
+    "BuildingInformation_Index": 100000,
+    "BuildingInformation_Name" : "미네랄 채굴 건물 Lv1",
+    "BuildingInformation_Text": "기초적인 미네랄 자동 채굴 건물"
+  },
+  {
+    "BuildingInformation_Index": 100001,
+    "BuildingInformation_Name": "미네랄 채굴 건물 Lv2",
+    "BuildingInformation_Text": "향상된 성능의 미네랄 자동 채굴 건물"
+  },
+  {
+    "BuildingInformation_Index": 100002,
+    "BuildingInformation_Name": "미네랄 채굴 건물 Lv3",
+    "BuildingInformation_Text": "최고 성능의 미네랄 자동 채굴 건물"
+  },
+  {
+    "BuildingInformation_Index": 100100,
+    "BuildingInformation_Name": "가스 채굴 건물 Lv1",
+    "BuildingInformation_Text": "기초적인 가스 자동 채굴 건물"
+  },
+  {
+    "BuildingInformation_Index": 100101,
+    "BuildingInformation_Name": "가스 채굴 건물 Lv2",
+    "BuildingInformation_Text": "향상된 성능의 가스 자동 채굴 건물"
+  },
+  {
+    "BuildingInformation_Index": 100102,
+    "BuildingInformation_Name": "가스 채굴 건물 Lv3",
+    "BuildingInformation_Text": "최고 성능의 가스 자동 채굴 건물"
+  },
+  {
+    "BuildingInformation_Index": 110000,
+    "BuildingInformation_Name": "터렛",
+    "BuildingInformation_Text": "자동 공격 시스템 터렛"
+  },
+  {
+    "BuildingInformation_Index": 110001,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_SiegeBuilding2"
+  },
+  {
+    "BuildingInformation_Index": 110002,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_SiegeBuilding3"
+  },
+  {
+    "BuildingInformation_Index": 110003,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_SiegeBuilding4"
+  },
+  {
+    "BuildingInformation_Index": 110004,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_SiegeBuilding5"
+  },
+  {
+    "BuildingInformation_Index": 110005,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_SiegeBuilding6"
+  },
+  {
+    "BuildingInformation_Index": 110006,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_SiegeBuilding7"
+  },
+  {
+    "BuildingInformation_Index": 110007,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_SiegeBuilding8"
+  },
+  {
+    "BuildingInformation_Index": 110008,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_SiegeBuilding9"
+  },
+  {
+    "BuildingInformation_Index": 110009,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_SiegeBuilding10"
+  },
+  {
+    "BuildingInformation_Index": 110100,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_SiegeBuilding1"
+  },
+  {
+    "BuildingInformation_Index": 110101,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_SiegeBuilding2"
+  },
+  {
+    "BuildingInformation_Index": 110102,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_SiegeBuilding3"
+  },
+  {
+    "BuildingInformation_Index": 110103,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_SiegeBuilding4"
+  },
+  {
+    "BuildingInformation_Index": 110104,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_SiegeBuilding5"
+  },
+  {
+    "BuildingInformation_Index": 110105,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_SiegeBuilding6"
+  },
+  {
+    "BuildingInformation_Index": 110106,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_SiegeBuilding7"
+  },
+  {
+    "BuildingInformation_Index": 110107,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_SiegeBuilding8"
+  },
+  {
+    "BuildingInformation_Index": 110108,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_SiegeBuilding9"
+  },
+  {
+    "BuildingInformation_Index": 110109,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_SiegeBuilding10"
+  },
+  {
+    "BuildingInformation_Index": 130000,
+    "BuildingInformation_Name": "바리케이드 Lv1",
+    "BuildingInformation_Text": "적의 진격을 막는 기초적인 바리케이드"
+  },
+  {
+    "BuildingInformation_Index": 130001,
+    "BuildingInformation_Name": "바리케이드 Lv2",
+    "BuildingInformation_Text": "적의 진격을 막는 향상된 성능의 바리케이드"
+  },
+  {
+    "BuildingInformation_Index": 130002,
+    "BuildingInformation_Name": "바리케이드 Lv3",
+    "BuildingInformation_Text": "적의 진격을 막는 최고 성능의 바리케이드"
+  },
+  {
+    "BuildingInformation_Index": 130003,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_Fence4"
+  },
+  {
+    "BuildingInformation_Index": 130004,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "TextStage1_Fence5"
+  },
+  {
+    "BuildingInformation_Index": 130005,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_Fence6"
+  },
+  {
+    "BuildingInformation_Index": 130006,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_Fence7"
+  },
+  {
+    "BuildingInformation_Index": 130007,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_Fence8"
+  },
+  {
+    "BuildingInformation_Index": 130008,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_Fence9"
+  },
+  {
+    "BuildingInformation_Index": 130009,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage1_Fence10"
+  },
+  {
+    "BuildingInformation_Index": 130100,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_Fence1"
+  },
+  {
+    "BuildingInformation_Index": 130101,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_Fence2"
+  },
+  {
+    "BuildingInformation_Index": 130102,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_Fence3"
+  },
+  {
+    "BuildingInformation_Index": 130103,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_Fence4"
+  },
+  {
+    "BuildingInformation_Index": 130104,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_Fence5"
+  },
+  {
+    "BuildingInformation_Index": 130105,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_Fence6"
+  },
+  {
+    "BuildingInformation_Index": 130106,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_Fence7"
+  },
+  {
+    "BuildingInformation_Index": 130107,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_Fence8"
+  },
+  {
+    "BuildingInformation_Index": 130108,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_Fence9"
+  },
+  {
+    "BuildingInformation_Index": 130109,
+    "BuildingInformation_Name": "Empty",
+    "BuildingInformation_Text": "Text_Stage2_Fence10"
+  }
+]

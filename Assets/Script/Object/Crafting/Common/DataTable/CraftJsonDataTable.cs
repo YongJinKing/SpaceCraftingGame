@@ -28,3 +28,10 @@ public struct CraftBuildImageTable
     public int ComponentImage_Index;
     public string ImageResource_Name;
 }
+
+public struct CraftBuildingInfoTable
+{
+    public int BuildingInformation_Index;
+    public string BuildingInformation_Name;
+    public string BuildingInformation_Text;
+}
