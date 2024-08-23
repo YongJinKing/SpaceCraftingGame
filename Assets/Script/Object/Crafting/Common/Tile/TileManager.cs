@@ -179,9 +179,9 @@ public class TileManager : Singleton<TileManager>
     {
         int centerY = (tileMap.cellBounds.yMin + tileMap.cellBounds.yMax) / 2;
         int centerX = (tileMap.cellBounds.xMin + tileMap.cellBounds.xMax) / 2;
-        for (int y = centerY; y > centerY - 2; y--)
+        for (int y = centerY + 1; y > centerY - 3; y--)
         {
-            for (int x = centerX; x > centerX - 2; x--)
+            for (int x = centerX + 1; x > centerX - 3; x--)
             {
                 Vector3Int localPlace = (new Vector3Int(x, y, (int)tileMap.transform.position.z));
                 
