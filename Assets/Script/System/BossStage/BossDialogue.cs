@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 public class BossDialogue : MonoBehaviour
 {
+    [Header("보스 스테이지 연출용 이펙트 프리펩 배열"), Space(0.5f)]
+    public GameObject[] bossEntranceVFX;
+
+    [Header("보스 스테이지 연출용 이펙트 프리펩 배열 위치 오프셋"), Space(0.5f)]
+    public Vector3[] bossEntranceVFXOffsets;
+
     public Text openningText;
     public Transform backgroundImg;
     public Transform myTarget;
@@ -16,12 +22,13 @@ public class BossDialogue : MonoBehaviour
     public string[] dialogues;
 
     public int talkNum;
+    int VFXNum;
+    Vector2 screenPos;
 
     [SerializeField] protected Vector2 offSet;
     public void StartDialogue(string[] talks)
     {
         dialogues = talks;
-        Vector2 screenPos;
         screenPos = Camera.main.WorldToScreenPoint(myTarget.transform.position);
         openningText.transform.position = screenPos + offSet;
         backgroundImg.position = screenPos + offSet;
@@ -47,6 +54,12 @@ public class BossDialogue : MonoBehaviour
     IEnumerator Typing(string talk)
     {
         openningText.text = null;
+
+        if (VFXNum < bossEntranceVFX.Length)
+        {
+            Instantiate(bossEntranceVFX[VFXNum], myTarget.transform.position + bossEntranceVFXOffsets[VFXNum], Quaternion.identity, null);
+            VFXNum++;
+        }
 
         if (talk.Contains("  ")) talk = talk.Replace("  ", "\n");
 
