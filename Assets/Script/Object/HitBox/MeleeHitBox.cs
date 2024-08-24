@@ -9,6 +9,7 @@ public class MeleeHitBox : HitBox
     #endregion
     #region Protected
     [SerializeField] protected bool _isFollowDir = false;
+    protected Vector2 hitPosition = Vector2.zero;
     protected float offset;
     protected float angle;
     #endregion
@@ -60,7 +61,7 @@ public class MeleeHitBox : HitBox
             angle = Vector2.Angle(transform.right, pos - (Vector2)transform.position) * dir;
             transform.Rotate(Vector3.forward * angle, Space.World);
 
-            transform.localPosition = new Vector2(offset * Mathf.Cos(angle * Mathf.Deg2Rad), offset * Mathf.Sin(angle * Mathf.Deg2Rad));
+            hitPosition = new Vector2(transform.position.x + offset * Mathf.Cos(angle * Mathf.Deg2Rad), transform.position.y + offset * Mathf.Sin(angle * Mathf.Deg2Rad));
         }
 
         base.Activate(pos);
@@ -82,11 +83,11 @@ public class MeleeHitBox : HitBox
             Collider2D[] tempcol;
             if (isCircle)
             {
-                tempcol = Physics2D.OverlapCircleAll((Vector2)transform.position, hitBoxSize.x, targetMask);
+                tempcol = Physics2D.OverlapCircleAll(hitPosition, hitBoxSize.x, targetMask);
             }
             else
             {
-                tempcol = Physics2D.OverlapBoxAll((Vector2)transform.position, hitBoxSize, angle, targetMask);
+                tempcol = Physics2D.OverlapBoxAll(hitPosition, hitBoxSize, angle, targetMask);
             }
 
             for(int i = 0; i < tempcol.Length; ++i) 
@@ -118,5 +119,21 @@ public class MeleeHitBox : HitBox
     #endregion
 
     #region MonoBehaviour
+    //for Debug
+#if UNITY_EDITOR
+    protected override void OnDrawGizmos()
+    {
+        if (debuging)
+        {
+            //Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.color = new Color(0.0f, 1.0f, 0.0f, 0.1f);
+            if (!isCircle)
+                Gizmos.DrawCube(hitPosition, hitBoxSize);
+            else
+                Gizmos.DrawSphere(hitPosition, hitBoxSize.x * 0.5f);
+        }
+    }
+#endif
+    
     #endregion
 }

@@ -65,7 +65,10 @@ public abstract class AttackAction : Action
             hitBoxes = new HitBox[hitBoxPrefabs.Length];
             for(int i = 0; i < hitBoxes.Length; ++i)
             {
-                hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
+                if (i < attackStartPos.Length && attackStartPos[i] != null)
+                    hitBoxes[i] = Instantiate(hitBoxPrefabs[i], attackStartPos[i], false);
+                else
+                    hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
             }
         }
 
