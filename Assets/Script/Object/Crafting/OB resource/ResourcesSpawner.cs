@@ -152,6 +152,8 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
                 {
                     size = 2;
                     randomWorldPosition = GetRandomPositionInCell(cellPosition);
+                    Vector3Int rndPos = new Vector3Int((int)randomWorldPosition.x, (int)randomWorldPosition.y, (int)randomWorldPosition.z);
+                    if (!CanPlaceLargeResource(rndPos)) return;
                     obj = Instantiate(largeResourcePrefab, randomWorldPosition, Quaternion.identity);
                     obj.transform.SetParent(largeMinerals);
                     RemovePlaceForResource(randomWorldPosition);
