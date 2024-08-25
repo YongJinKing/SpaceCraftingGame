@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class GunManager : Singleton<GunManager>
 {
+    public enum GunType
+    {
+        Rifle = 10100,
+        Shotgun = 10200,
+        Sniper = 10300,
+    }
     public int[] gunIndexes = new int[3];
     public string savePath;
     void Start()
@@ -50,9 +56,9 @@ public class GunManager : Singleton<GunManager>
         else
         {
             // ÃÑ±â¹øÈ£ ÀÎµ¦½º ³Ö±â
-            gunIndexes[0] = 10100;
-            gunIndexes[1] = 10200;
-            gunIndexes[2] = 10300;
+            gunIndexes[0] = (int)GunType.Rifle;
+            gunIndexes[1] = (int)GunType.Shotgun;
+            gunIndexes[2] = (int)GunType.Sniper;
             SaveGunIndexs();
         }
     }

@@ -15,6 +15,15 @@ EditorBuildSettings:
     path: Assets/Scenes/NamHo/Main.unity
     guid: 06361ef3e7367c44ebd794e7bc3e3019
   - enabled: 1
-    path: Assets/Scenes/TaeGeun/PlayerDataManager.unity
+    path: Assets/Scenes/TaeGeun/StartScenes/Start.unity
+    guid: e0fea12b6f663ce4ebb36969a8e77259
+  - enabled: 1
+    path: Assets/Scenes/TaeGeun/StartScenes/DataSlots.unity
+    guid: 52ab66909b8e1bf48a978fa0cc17f3f5
+  - enabled: 1
+    path: Assets/Scenes/TaeGeun/StartScenes/Loading.unity
+    guid: 2a0da08eaece6be4c8c9542c5ad9f1ba
+  - enabled: 1
+    path: Assets/Scenes/TaeGeun/StartScenes/PlayerDataManager.unity
     guid: c48bff023b615dd4bb75100e6cf02148
   m_configObjects: {}

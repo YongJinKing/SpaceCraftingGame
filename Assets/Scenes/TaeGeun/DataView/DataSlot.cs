@@ -64,6 +64,6 @@ public class DataSlot : MonoBehaviour
         {
            
         }
-        SceneManager.LoadScene("PlayerDataManager"); // 게임 씬 이동
+        SceneManager.LoadScene("Loading"); // 로딩 씬 이동
     }
 }
