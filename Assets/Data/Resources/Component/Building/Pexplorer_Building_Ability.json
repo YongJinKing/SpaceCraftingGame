@@ -79,7 +79,7 @@
     "BuildingSpeed": 10,
     "BuildingScale": 1,
     "BuildingDetail_Value": 5,
-    "BuildingDetail_Delay": 10,
+    "BuildingDetail_Delay": 3,
     "BuildingDetail_Range": 5,
     "BuildingDetail_GeneratedItem": 0
   },
