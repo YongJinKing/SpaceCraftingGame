@@ -83,6 +83,7 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
                 Vector3Int convertPos = ConvertMinusPos(randomWorldPosition);
 
                 if (!TileManager.Instance.IsCraftable(convertPos)) continue;
+                if (!CanPlaceAt(randomWorldPosition, placementInterval)) continue;
 
                 SpawnResource(randomWorldPosition, cellPosition, true);
             }
@@ -253,6 +254,24 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
         }
 
         return true;
+    }
+
+    bool CanPlaceAt(Vector3 pos, int interval)
+    {
+        /*
+         인자로 받은 pos를 기준으로 반지름이 interval의 절반인 OverlapSphere을 그려 그 안에 내가 설정한 레이어 마스크에 걸리는
+        어떤 물체가 있다면 false를 리턴하고 없다면 true를 리턴한다.
+         */
+
+        // 반지름을 interval의 절반으로 설정
+        float radius = interval / 2f;
+
+        // OverlapCircle을 사용하여 주어진 위치(pos)를 기준으로 설정된 레이어 마스크에 해당하는 오브젝트가 있는지 확인
+        Collider2D hitCollider = Physics2D.OverlapCircle(pos, radius, layerMask);
+
+        // 충돌한 물체가 있다면 false를 리턴, 없으면 true를 리턴
+        return hitCollider == null;
+
     }
 
 

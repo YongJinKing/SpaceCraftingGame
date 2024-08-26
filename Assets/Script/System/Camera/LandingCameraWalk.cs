@@ -9,6 +9,7 @@ public class LandingCameraWalk : MonoBehaviour
     public Transform StartPos;
     public Transform EndPos;
     public float camMoveSpeed;
+    public FadeManager fadeManager;
     float time;
 
     // Start is called before the first frame update
@@ -37,6 +38,11 @@ public class LandingCameraWalk : MonoBehaviour
         }
 
         CamFocus.position = EndPos.position;
+
+        yield return new WaitForSeconds(3f);
+        fadeManager.StartFadeIn(2f);
+        yield return new WaitForSeconds(2.5f);
+        Debug.Log("æ¿ ¿Ãµø");
     }
 
     
