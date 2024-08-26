@@ -25,6 +25,7 @@ public class TileManager : Singleton<TileManager>
 {
     public Tilemap tileMap = null;
     public Dictionary<Vector3Int, Tile> availablePlaces;
+    public FadeManager fade;
     ComponetsInfo componentsInfo;
     CraftBuildingManager craftmanager;
     string path;
@@ -63,32 +64,32 @@ public class TileManager : Singleton<TileManager>
         {
             // 여기서 자원 최초 생성
             ResourcesSpawner.Instance.StartSpawnResources();
+
+            fade.StartFadeOut(3f);
             return;
         }
         else
         {
-            
+            for (int i = 0; i < componentsInfo.components.Count; i++)
+            {
+                Vector3Int componetPlace = componentsInfo.components[i].coordinates;
+                int index = componentsInfo.components[i].index;
+                float Hp = componentsInfo.components[i].Hp;
+                int size = componentsInfo.components[i].size;
+
+
+                Vector3 componentPos = new Vector3(componetPlace.x + (tileMap.tileAnchor.x * size),
+                    componetPlace.y + (tileMap.tileAnchor.y * size), componetPlace.z);
+
+                Tile isPlacedTile = null;
+                if (size != 0) isPlacedTile = new Tile(false, CraftFactory.Instance.CraftBuilding(index, componentPos, Hp, size), size);
+                else isPlacedTile = new Tile(false, null, 0);
+
+                availablePlaces[componetPlace] = isPlacedTile;
+
+            }
+            fade.StartFadeOut(3f);
         }
-        for (int i = 0; i < componentsInfo.components.Count; i++)
-        {
-            Vector3Int componetPlace = componentsInfo.components[i].coordinates;
-            int index = componentsInfo.components[i].index;
-            float Hp = componentsInfo.components[i].Hp;
-            int size = componentsInfo.components[i].size;
-
-            
-            Vector3 componentPos = new Vector3(componetPlace.x + (tileMap.tileAnchor.x * size), 
-                componetPlace.y + (tileMap.tileAnchor.y * size), componetPlace.z);
-
-            Tile isPlacedTile = null;
-            if (size != 0) isPlacedTile = new Tile(false, CraftFactory.Instance.CraftBuilding(index, componentPos, Hp, size), size);
-            else isPlacedTile = new Tile(false, null, 0);
-
-            availablePlaces[componetPlace] = isPlacedTile;
-
-        }
-
-
         
     }
 
