@@ -34,6 +34,7 @@ public class TileManager : Singleton<TileManager>
         craftmanager = FindObjectOfType<CraftBuildingManager>();
         craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
         craftmanager.WritePlaceInfoEvent.AddListener(RemopvePlace);
+
         tileMap = transform.GetComponent<Tilemap>();
         availablePlaces = new Dictionary<Vector3Int, Tile>();
         path = "TileSaveData_" + SceneManager.GetActiveScene().name + DataManager.Instance.nowSlot + ".json";

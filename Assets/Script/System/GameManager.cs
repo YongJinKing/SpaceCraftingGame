@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     #region Protected
     #endregion
     #region Public
+    public TimeManager TimeManager;
     #endregion
     #region Events
     #endregion
