@@ -40,7 +40,7 @@ public class LandingCameraWalk : MonoBehaviour
         CamFocus.position = EndPos.position;
 
         yield return new WaitForSeconds(3f);
-        fadeManager.StartFadeIn(2f);
+        fadeManager.StartFadeOut(2f);
         yield return new WaitForSeconds(2.5f);
         Debug.Log("æ¿ ¿Ãµø");
     }

@@ -66,7 +66,7 @@ public class TileManager : Singleton<TileManager>
             // 여기서 자원 최초 생성
             ResourcesSpawner.Instance.StartSpawnResources();
 
-            fade.StartFadeOut(3f);
+            //fade.StartFadeIn(3f);
             return;
         }
         else
@@ -89,7 +89,7 @@ public class TileManager : Singleton<TileManager>
                 availablePlaces[componetPlace] = isPlacedTile;
 
             }
-            fade.StartFadeOut(3f);
+            //fade.StartFadeIn(3f);
         }
         
     }
@@ -198,11 +198,16 @@ public class TileManager : Singleton<TileManager>
         return availablePlaces;
     }
 
+    private void Start()
+    {
+        fade.StartFadeIn(3f);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F10))
         {
-            ComponentSaveSystem.Instance.SaveTilesInfo();
+            //ComponentSaveSystem.Instance.SaveTilesInfo();
         }
     }
 

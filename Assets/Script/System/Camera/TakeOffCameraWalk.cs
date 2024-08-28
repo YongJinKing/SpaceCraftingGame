@@ -23,11 +23,11 @@ public class TakeOffCameraWalk : MonoBehaviour
 
     IEnumerator StartTakeOff()
     {
-        fadeManager.StartFadeOut(1.5f);
+        fadeManager.StartFadeIn(1.5f);
         yield return new WaitForSeconds(1.5f);
         SetTakeOff();
         yield return new WaitForSeconds(time - 4f);
-        fadeManager.StartFadeIn(1.5f);
+        fadeManager.StartFadeOut(1.5f);
     }
 
     

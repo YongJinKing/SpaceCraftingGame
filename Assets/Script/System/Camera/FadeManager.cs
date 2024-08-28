@@ -17,7 +17,7 @@ public class FadeManager : MonoBehaviour
     }
 
     // 페이드 인 함수
-    IEnumerator FadeIn(float duration)
+    IEnumerator FadeOut(float duration)
     {
         float startAlpha = CG.alpha;
         float elapsedTime = 0f;
@@ -32,7 +32,7 @@ public class FadeManager : MonoBehaviour
     }
 
     // 페이드 아웃 함수
-    IEnumerator FadeOut(float duration)
+    IEnumerator FadeIn(float duration)
     {
         float startAlpha = CG.alpha;
         float elapsedTime = 0f;
