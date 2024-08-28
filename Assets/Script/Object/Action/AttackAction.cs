@@ -54,6 +54,8 @@ public abstract class AttackAction : Action
                     hitBoxes[i] = Instantiate(hitBoxPrefabs[i], attackStartPos[i], false);
                 else
                     hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
+
+                hitBoxes[i].gameObject.SetActive(true);
             }
         }
     }
@@ -69,6 +71,8 @@ public abstract class AttackAction : Action
                     hitBoxes[i] = Instantiate(hitBoxPrefabs[i], attackStartPos[i], false);
                 else
                     hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
+
+                hitBoxes[i].gameObject.SetActive(true);
             }
         }
 

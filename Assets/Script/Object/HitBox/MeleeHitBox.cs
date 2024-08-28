@@ -54,6 +54,8 @@ public class MeleeHitBox : HitBox
     #region Public
     public override void Activate(Vector2 pos)
     {
+        Deactivate();
+
         if (isFollowDir)
         {
             float dir = 1.0f;

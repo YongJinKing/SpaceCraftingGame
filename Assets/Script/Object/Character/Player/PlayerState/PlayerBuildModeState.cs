@@ -45,11 +45,13 @@ public class PlayerBuildModeState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        owner.canEquip = true;
         owner.UIChangeEvent?.Invoke(1);
     }
     public override void Exit()
     {
         base.Exit();
+        owner.canEquip = false;
         owner.UIChangeEvent?.Invoke(0);
     }
     #endregion

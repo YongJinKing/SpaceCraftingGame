@@ -8,6 +8,8 @@ public class PlayerMovableActionState : PlayerState
 {
     #region Properties
     #region Private
+    private bool isClick = false;
+    private Vector2 mousePos;
     #endregion
     #region Protected
     #endregion
@@ -30,6 +32,7 @@ public class PlayerMovableActionState : PlayerState
         base.AddListeners();
         InputController.Instance.moveEvent.AddListener(OnMove);
         InputController.Instance.mouseUpEvent.AddListener(OnMouseUpEvent);
+        InputController.Instance.getMousePosEvent.AddListener(OnMouseMove);
 
         if (owner.activatedAction != null)
         {
@@ -44,6 +47,7 @@ public class PlayerMovableActionState : PlayerState
         base.RemoveListeners();
         InputController.Instance.moveEvent.RemoveListener(OnMove);
         InputController.Instance.mouseUpEvent.RemoveListener(OnMouseUpEvent);
+        InputController.Instance.getMousePosEvent.RemoveListener(OnMouseMove);
 
         if (owner.activatedAction != null)
         {
@@ -56,9 +60,20 @@ public class PlayerMovableActionState : PlayerState
     }
     #endregion
     #region Public
+    public override void Enter()
+    {
+        isClick = true;
+
+        base.Enter();
+    }
     public override void Exit()
     {
         owner.activatedAction.Deactivate();
+
+        //나중에 마우스 뗀 타입에 따른 스위치문 작성 필요
+        owner.myAnim.SetLeftClick(false);
+        owner.weaponRotationAxis.SetActive(false);
+
         base.Exit();
     }
     #endregion
@@ -76,12 +91,20 @@ public class PlayerMovableActionState : PlayerState
     }
     public void OnMouseUpEvent(int type)
     {
-        //나중에 마우스 뗀 타입에 따른 스위치문 작성 필요
-        owner.myAnim.SetLeftClick(false);
-        owner.weaponRotationAxis.SetActive(false);
+        isClick = false;
+    }
+    public void OnMouseMove(Vector2 pos)
+    {
+        mousePos = pos;
     }
     public void OnActionEnd()
     {
+        if (isClick)
+        {
+            owner.activatedAction.Activate(mousePos);
+            return;
+        }
+
         if(!owner.isDead)
         {
             //Debug.Log("movablestate.onactionend");
