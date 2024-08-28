@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class CraftFactory : Singleton<CraftFactory>
@@ -13,6 +14,7 @@ public class CraftFactory : Singleton<CraftFactory>
     CraftBuildImageTable imgData = default;
 
     public Transform constructionSite;
+    public UnityEvent ActiveNoMoreResources;
     SpaceShip spaceShip;
     void Awake()
     {
@@ -51,6 +53,7 @@ public class CraftFactory : Singleton<CraftFactory>
 
         if (!CheckInventory(index)) // 인벤토리에 해당 index에 해당하는 건물의 재료들이 있는지 확인하고 있으면 거기서 차감까지 해버림
         {
+            ActiveNoMoreResources?.Invoke();
             return null;
         }
         FindComponentsByIndex(index);

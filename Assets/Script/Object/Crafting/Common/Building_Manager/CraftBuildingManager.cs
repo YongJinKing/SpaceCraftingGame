@@ -10,6 +10,7 @@ public class CraftBuildingManager : MonoBehaviour
     public Tilemap ground;
     public UnityEvent<Vector3Int, GameObject, int> WritePlaceInfoEvent;
     public UnityEvent<Vector3Int> RemovePlaceEvent;
+    public UnityEvent ActiveCantBuildThere;
     public Transform turret;
     public Transform[] rectangles;
     public Transform TurretParent;
@@ -195,6 +196,10 @@ public class CraftBuildingManager : MonoBehaviour
                     RemovePlaceEvent?.Invoke(cellPos);
                 }
             }
+        }
+        else
+        {
+            ActiveCantBuildThere?.Invoke();
         }
         craftReady = false;
         StopDrawingRectangle();

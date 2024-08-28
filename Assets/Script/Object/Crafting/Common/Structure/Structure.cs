@@ -118,7 +118,7 @@ public abstract class Structure : Stat
 
     public void PlayBuildVFX()
     {
-        buildVFX.gameObject.SetActive(true);
+        if(buildVFX != null) buildVFX.gameObject.SetActive(true);
     }
 
     public void StopBuildVFX()

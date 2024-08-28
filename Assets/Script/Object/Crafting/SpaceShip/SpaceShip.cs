@@ -54,7 +54,7 @@ public class SpaceShip : Structure
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 }
