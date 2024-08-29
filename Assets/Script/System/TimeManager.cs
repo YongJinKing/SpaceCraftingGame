@@ -47,20 +47,20 @@ public class TimeManager : MonoBehaviour
     #endregion
 
     #region EventHandlers
-    /*
+    
     public void TimeTest(int day, int hour, int minite)
     {
         Debug.Log($"TimeManager.TimeTest day : {day}, hour : {hour}, minite : {minite}");
     }
-    */
+    
     #endregion
 
     #region Coroutines
     private IEnumerator TimeChecking()
     {
-        int tempDay = 0;
-        int tempHour = 0;
-        int tempMinute = 0;
+        int tempDay = day;
+        int tempHour = hour;
+        int tempMinute = minute;
         bool isChanged = false;
 
         float tempTimeCount = 0;
