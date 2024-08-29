@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class TimeManager : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class TimeManager : MonoBehaviour
     private int day;
     private int hour;
     private int minute;
-
+    [SerializeField] private TMP_Text timeText;
+    [SerializeField] private TMP_Text dayText;
+   
     private float _gameDayPerRealMinute;
     private float _gameHourPerRealMinite;
     private float _gameMinutePerRealMinite;
@@ -23,7 +26,8 @@ public class TimeManager : MonoBehaviour
     /// 게임시간 1일이 현실시간으로 몇분인가
     /// </summary>
     public float gameDayPerRealMinite = 60.0f;
-    
+    public GameObject Sunimg;
+    public GameObject Nightimg;
     #endregion
     #region Events
     /// <summary>
@@ -51,6 +55,19 @@ public class TimeManager : MonoBehaviour
     public void TimeTest(int day, int hour, int minite)
     {
         Debug.Log($"TimeManager.TimeTest day : {day}, hour : {hour}, minite : {minite}");
+        timeText.text = hour.ToString("00") + ":" + minute.ToString("00");
+        dayText.text = day.ToString("day " + "00");
+        if(hour < 8 || hour > 21)
+        {
+            Sunimg.SetActive(false);
+            Nightimg.SetActive(true);
+        }
+        if (hour > 9 && hour < 21)
+        {
+            Sunimg.SetActive(true);
+            Nightimg.SetActive(false);
+        }
+
     }
     
     #endregion
@@ -97,6 +114,9 @@ public class TimeManager : MonoBehaviour
             {
                 timeChangeEvent?.Invoke(day, hour, minute);
             }
+
+
+
 
             yield return null;
         }

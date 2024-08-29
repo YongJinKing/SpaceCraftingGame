@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using System.ComponentModel;
 
 public class Timer : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class Timer : MonoBehaviour
     [SerializeField] private TMP_Text dayText;
     public GameObject dayImg;
     public GameObject NightImg;
+    public GameObject TimeManager;
+
+
     [SerializeField] private float time;
     [SerializeField] private float curTime;
     [SerializeField] public int timeFast;
@@ -31,7 +35,13 @@ public class Timer : MonoBehaviour
         
         time = 0.1f;
         StartCoroutine(StartTimer());
+
+        TimeManager.GetComponent<TimeManager>().TimeTest(0,0,0);
+      
     }
+
+    
+
 
     IEnumerator StartTimer()
     {
