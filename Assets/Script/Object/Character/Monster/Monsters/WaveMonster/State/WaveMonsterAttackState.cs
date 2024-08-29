@@ -48,10 +48,10 @@ public class WaveMonsterAttackState : MonsterState
     }
     public override void Exit()
     {
+        StopAllCoroutines();
         stopMoveEvent?.Invoke();
         owner.animator.SetBool("B_Move", false);
         base.Exit();
-        StopAllCoroutines();
     }
     #endregion
     #endregion
@@ -94,13 +94,12 @@ public class WaveMonsterAttackState : MonsterState
 
     protected IEnumerator TravelingPath()
     {
-        //Vector2 dir;
-
         owner.animator.SetBool("B_Move", true);
         while (owner.target != null)
         {
             if(owner.ai.PathFinding(transform.position, owner.target.transform.position, out Vector2[] path))
             {
+
                 moveToPathEvent?.Invoke(path);
                 yield return new WaitForSeconds(1.1f);
             }
@@ -108,9 +107,8 @@ public class WaveMonsterAttackState : MonsterState
             {
                 break;
             }
-
-            yield return null;
         }
+        yield return null;
         owner.animator.SetBool("B_Move", false);
 
         //if cannot find path
