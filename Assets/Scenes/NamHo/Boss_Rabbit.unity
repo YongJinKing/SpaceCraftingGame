@@ -901,15 +901,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
+  m_Color: {r: 1, g: 0.4660377, b: 0.7396367, a: 0.7058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e63169e2446a7ea4fa7ac1ffff3fe025, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3736,13 +3736,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossEntranceVFX:
-  - {fileID: 4445230944010249486, guid: 69cf003ef63b80445855481e40e9a802, type: 3}
-  - {fileID: 4445230944010249486, guid: 69cf003ef63b80445855481e40e9a802, type: 3}
-  - {fileID: 4445230944010249486, guid: 69cf003ef63b80445855481e40e9a802, type: 3}
+  - {fileID: 3940520762581935358, guid: 60e25d5da7302f741808b1a7a86f4820, type: 3}
+  - {fileID: 8128886125036801947, guid: afc1ec65248290f42a5735cc255dec9b, type: 3}
+  - {fileID: 4136079204635280526, guid: f44caa9eac52085478a32dec77e1a31a, type: 3}
   bossEntranceVFXOffsets:
-  - {x: 0, y: 5, z: 0}
-  - {x: 0, y: 5, z: 0}
-  - {x: 0, y: 5, z: 0}
+  - {x: -0.3, y: 0.3, z: 0}
+  - {x: 0.5, y: 1, z: 0}
+  - {x: 0, y: 0, z: 0}
   openningText: {fileID: 987299517}
   backgroundImg: {fileID: 259850967}
   myTarget: {fileID: 1816270049}
@@ -3750,10 +3750,9 @@ MonoBehaviour:
   - Test For Typing  Algorithm
   - Test For /br   line Change
   - we need  kor Font
-  - last dialogue
   dialogues: []
   talkNum: 0
-  offSet: {x: 400, y: 200}
+  offSet: {x: 450, y: 200}
 --- !u!1 &919087033
 GameObject:
   m_ObjectHideFlags: 0
