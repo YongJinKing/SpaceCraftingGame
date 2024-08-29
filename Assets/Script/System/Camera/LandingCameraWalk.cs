@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LandingCameraWalk : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class LandingCameraWalk : MonoBehaviour
         fadeManager.StartFadeOut(2f);
         yield return new WaitForSeconds(2.5f);
         Debug.Log("æ¿ ¿Ãµø");
+        AsyncOperation op = SceneManager.LoadSceneAsync("MainStage1");
     }
 
     

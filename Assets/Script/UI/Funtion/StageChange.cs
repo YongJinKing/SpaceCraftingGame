@@ -18,6 +18,6 @@ public class StageChange : MonoBehaviour
     }
     public void StageSelected()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Loading");
     }
 }

@@ -9,21 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/TotalGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/SeChan/StageSelect.unity
-    guid: 3f557f670cb046a489e0678adac92e69
+    path: Assets/Scenes/TotalGame/Start.unity
+    guid: 728147858682f7c40a931c4056e5aff9
   - enabled: 1
-    path: Assets/Scenes/NamHo/Main.unity
-    guid: 06361ef3e7367c44ebd794e7bc3e3019
+    path: Assets/Scenes/TotalGame/DataSlots.unity
+    guid: 11153b4aefcb6f744be28ab71b8ae4e1
   - enabled: 1
-    path: Assets/Scenes/TaeGeun/StartScenes/Start.unity
-    guid: e0fea12b6f663ce4ebb36969a8e77259
+    path: Assets/Scenes/TotalGame/StageSelect.unity
+    guid: 423be0e6306a1ed4495e3014fbad370f
   - enabled: 1
-    path: Assets/Scenes/TaeGeun/StartScenes/DataSlots.unity
-    guid: 52ab66909b8e1bf48a978fa0cc17f3f5
+    path: Assets/Scenes/TotalGame/Loading.unity
+    guid: 7ecef0ceb1f3fd140b2960994f3fa077
   - enabled: 1
-    path: Assets/Scenes/TaeGeun/StartScenes/Loading.unity
-    guid: 2a0da08eaece6be4c8c9542c5ad9f1ba
+    path: Assets/Scenes/TotalGame/StageLanding.unity
+    guid: 20ceb40d54a1f4a42ae1fb8b63273ed2
   - enabled: 1
-    path: Assets/Scenes/TaeGeun/StartScenes/PlayerDataManager.unity
-    guid: c48bff023b615dd4bb75100e6cf02148
+    path: Assets/Scenes/TotalGame/MainStage1.unity
+    guid: 6f1d9f73ba0268541a71358754dc8ad9
   m_configObjects: {}

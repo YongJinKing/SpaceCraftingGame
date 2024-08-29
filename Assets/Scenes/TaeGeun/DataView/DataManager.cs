@@ -14,7 +14,6 @@ public class DataManager : Singleton<DataManager>
     public int layerNumber = 21;
     public int layerNumber2 = 22;
     public string savePath = "PlayerData";
-    public string savePath2 = "WeaponLevelData";
     public int nowSlot;
     public LayerMask playerLayerMask ;
     public LayerMask EnemyLayerMask;
@@ -22,7 +21,6 @@ public class DataManager : Singleton<DataManager>
     /// 플레이어 데이터 저장 배열
     /// </summary>
     public PlayerDataStruct[] pd = new PlayerDataStruct[1];
-    public WeaponDataStruct[] el = new WeaponDataStruct[1];
     public Player NowPlayer;
     #endregion
 
