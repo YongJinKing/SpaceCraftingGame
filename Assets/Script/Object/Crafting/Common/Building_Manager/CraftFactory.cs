@@ -205,6 +205,7 @@ public class CraftFactory : Singleton<CraftFactory>
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
 
+        NaturalResources naturalResources = obj.GetComponent<NaturalResources>();
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
         return obj;

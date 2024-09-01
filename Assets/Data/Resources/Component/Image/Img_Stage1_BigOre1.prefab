@@ -130,12 +130,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0d12db82b65b94294b89c7c80ccffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 0
+  Priority: 0
+  deadEvent:
+    m_PersistentCalls:
+      m_Calls: []
   indexNum: 500002
   outputIndexNum: 100000
   hp: 12
   minAmount: 10
   maxAmount: 15
   size: 2
+  DestroyVFX: {fileID: 4231699886084168486, guid: b97d7cb182cc458409243f45c4e8ad27, type: 3}
 --- !u!61 &2608313521366291592
 BoxCollider2D:
   m_ObjectHideFlags: 0

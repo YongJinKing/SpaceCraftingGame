@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0747f27f164b07545aaa2ff6ed7ee3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fireAndForget: 1
   _priority: 0
   _coolTime: -1
   _activeRadius: 1
+  delayTime: 0
   skeletonAnimation: {fileID: 0}
   animClip: []
   OnActionEndEvent:
@@ -56,7 +58,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   hitBoxPrefabs:
-  - {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
+  - {fileID: 3589146985966173651, guid: 0619e1ff658d0d54ebbc5bb6d641ac6a, type: 3}
+  attackStartPos: []
   hitBoxes: []
   _activeDuration: 0.2
 --- !u!1 &3373396605049349390
@@ -105,6 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEquiped: 0
+  _itemType: 0
+  _animType: 0
   _mainAction: {fileID: 4837109351879094760}
   _subAction: {fileID: 0}
   _graphic: {fileID: 0}
