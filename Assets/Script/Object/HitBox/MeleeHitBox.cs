@@ -58,8 +58,8 @@ public class MeleeHitBox : HitBox
         if (isFollowDir)
         {
             float dir = 1.0f;
-            if (Vector2.Dot(transform.up, pos - (Vector2)transform.position) < 0.0f) dir = -1.0f;
-            angle = Vector2.Angle(transform.right, pos - (Vector2)transform.position) * dir;
+            if (Vector2.Dot(transform.up, pos - (Vector2)originPos.position) < 0.0f) dir = -1.0f;
+            angle = Vector2.Angle(transform.right, pos - (Vector2)originPos.position) * dir;
             transform.Rotate(Vector3.forward * angle, Space.World);
 
             transform.localPosition = new Vector2(offset * Mathf.Cos(angle * Mathf.Deg2Rad), offset * Mathf.Sin(angle * Mathf.Deg2Rad));

@@ -55,6 +55,7 @@ public abstract class AttackAction : Action
                 else
                     hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
 
+                hitBoxes[i].originPos = this.transform;
                 hitBoxes[i].gameObject.SetActive(true);
             }
         }
@@ -72,6 +73,7 @@ public abstract class AttackAction : Action
                 else
                     hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
 
+                hitBoxes[i].originPos = this.transform;
                 hitBoxes[i].gameObject.SetActive(true);
             }
         }

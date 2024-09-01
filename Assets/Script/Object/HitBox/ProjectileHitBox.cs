@@ -136,7 +136,7 @@ public class ProjectileHitBox : HitBox
         Vector2 dir;
         if (gameObject.activeSelf)
         {
-            dir = pos - (Vector2)transform.position;
+            dir = pos - (Vector2)originPos.position;
 
             RotateToDir(dir);
 

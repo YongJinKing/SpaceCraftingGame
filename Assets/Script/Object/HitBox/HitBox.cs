@@ -33,6 +33,7 @@ public abstract class HitBox : MonoBehaviour
     protected Dictionary<LayerMask, UnityEvent<Collider2D, Vector2>> onHitEvents = new Dictionary<LayerMask, UnityEvent<Collider2D, Vector2>>();
     #endregion
     #region Public
+    public Transform originPos;
     public GameObject hitEffectPrefab;
     public GameObject destroyEffectPrefab;
     public Vector2 hitBoxSize
