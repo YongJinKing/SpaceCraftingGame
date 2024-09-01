@@ -10,11 +10,15 @@ public class BossNameUI : MonoBehaviour
     public float shineDuration = 0.5f; // 빛나는 효과의 시간
     public Color shineColor = Color.red; // 빛날 때의 색상
     private Color originalColor;
+    public GameObject BossIntroVFX;
+    public Vector2 VFXPos;
 
     void OnEnable()
     {
         originalColor = bossEntranceText.color;
+        bossEntranceText.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
         StartCoroutine(FadeInAndShine());
+        Instantiate(BossIntroVFX,VFXPos,Quaternion.identity);
     }
 
     IEnumerator FadeInAndShine()
