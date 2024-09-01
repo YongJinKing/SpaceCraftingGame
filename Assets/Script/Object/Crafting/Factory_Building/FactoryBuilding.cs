@@ -15,7 +15,8 @@ public class FactoryBuilding : Structure
     [SerializeField] float produceTime; // 건물의 생산 속도
 
     public Transform miningVFX;
-
+    float mouseTime;
+    BuildingProduceAmountUI amountUI;
     public FactoryBuilding() : base()
     {
         AddStat(EStat.Efficiency, produceTime);
@@ -36,6 +37,7 @@ public class FactoryBuilding : Structure
     protected override void OnEnable()
     {
         base.OnEnable();
+        amountUI = FindObjectOfType<BuildingProduceAmountUI>();
         StartProducing();
     }
 
@@ -101,5 +103,20 @@ public class FactoryBuilding : Structure
     {
         if(Inventory.instance != null) Inventory.instance.AddItem(produceResourceIndex, produceAmount);
         produceAmount = 0;
+    }
+
+    private void OnMouseExit()
+    {
+        mouseTime = 0f;
+        amountUI.DeActiveAmountUI();
+    }
+
+    private void OnMouseOver()
+    {
+        mouseTime += Time.deltaTime;
+        if(mouseTime >= 0.8f)
+        {
+            amountUI.ActiveAmountUI(this.gameObject, produceAmount, maxAmount);
+        }
     }
 }

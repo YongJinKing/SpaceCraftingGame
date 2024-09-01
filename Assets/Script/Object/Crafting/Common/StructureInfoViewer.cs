@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StructureInfoViewer : MonoBehaviour
 {
+    // 
     public LayerMask layerMask;
     public LayerMask structureMask;
     public LayerMask resourceMask;
@@ -11,42 +12,9 @@ public class StructureInfoViewer : MonoBehaviour
     NaturalResources naturalResource;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            HandleClick(layerMask, structureMask, resourceMask);
-        }
-
         if (Input.GetMouseButtonDown(1))
         {
             HandleRightClick(structureMask);
-        }
-    }
-
-    private void HandleClick(LayerMask layerMask, LayerMask structureMask, LayerMask resourceMask)
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask);
-        if (hit.collider != null)
-        {
-            Debug.Log(hit.collider.gameObject.name);
-            Debug.Log(hit.collider.gameObject.layer);
-            if (((1 << hit.collider.gameObject.layer) & structureMask) != 0)
-            {
-                viewStructure = hit.collider.GetComponent<Structure>();
-                if (viewStructure != null)
-                {
-                    viewStructure.TakeDamage(1000f);
-                }
-            }
-            else if (((1 << hit.collider.gameObject.layer) & resourceMask) != 0)
-            {
-                Debug.Log("자원 히트");
-                naturalResource = hit.collider.GetComponent<NaturalResources>();
-                if (naturalResource != null)
-                {
-                    naturalResource.TakeDamage(1f);
-                }
-            }
         }
     }
 

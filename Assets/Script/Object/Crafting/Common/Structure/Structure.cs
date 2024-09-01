@@ -93,9 +93,18 @@ public abstract class Structure : Stat
 
     public override void TakeDamage(float damage)
     {
+        if(damage <= 0.0f)
+        {
+            this[EStat.HP] += (damage * -1f);
+            if (this[EStat.HP] >= this[EStat.MaxHP]) this[EStat.HP] = this[EStat.MaxHP];
+            Debug.Log("Building TakeDamage  " + this[EStat.HP]);
+            return;
+        }
+
         float dmg = damage - this[EStat.DEF];
         if (dmg <= 0.0f) dmg = 1f;
         this[EStat.HP] -= dmg;
+        Debug.Log("Building TakeDamage  " + this[EStat.HP]);
         if (this[EStat.HP] < 0)
         {
             OnDead();
