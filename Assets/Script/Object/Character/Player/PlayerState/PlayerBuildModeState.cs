@@ -48,6 +48,7 @@ public class PlayerBuildModeState : PlayerState
     {
         base.Enter();
         owner.canEquip = true;
+        owner.modeType = 1;
         owner.UIChangeEvent?.Invoke(1);
     }
     public override void Exit()

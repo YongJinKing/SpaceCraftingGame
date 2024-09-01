@@ -55,6 +55,7 @@ public class PlayerIdleState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        owner.modeType = 0;
         owner.canEquip = true;
     }
     public override void Exit() 

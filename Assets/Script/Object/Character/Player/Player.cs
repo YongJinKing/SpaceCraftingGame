@@ -28,6 +28,7 @@ public class Player : Unit
     public PlayerAnimationController myAnim;
     public Transform graphicTransform;
     public WeaponRotationAxis weaponRotationAxis;
+    public int modeType = 0; // 0 = 전투Idle, 1 = 건설 Idle
     public bool isDead
     {
         get { return _isDead; }

@@ -105,7 +105,18 @@ public class PlayerMovableActionState : PlayerState
             return;
         }
 
-        if(!owner.isDead)
+        if(owner.modeType == 0)
+        {
+            owner.stateMachine.ChangeState<PlayerIdleState>();
+            return;
+        }
+        else if (owner.modeType == 1)
+        {
+            owner.stateMachine.ChangeState<PlayerBuildModeState>();
+            return;
+        }
+
+        if (!owner.isDead)
         {
             //Debug.Log("movablestate.onactionend");
             owner.stateMachine.ChangeState<PlayerIdleState>();
