@@ -31,7 +31,7 @@
     "Priority": 0,
     "CoolTime": -1,
     "ActiveRadius": 1.5,
-    "HitBox_Index": [10200],
+    "HitBox_Index": [30200],
     "LayerMask": [0],
     "ActiveDuration": 0.5
   },
@@ -40,7 +40,7 @@
     "Priority": 0,
     "CoolTime": -1,
     "ActiveRadius": 1.5,
-    "HitBox_Index": [10201],
+    "HitBox_Index": [30201],
     "LayerMask": [0],
     "ActiveDuration": 0.5
   },
@@ -49,7 +49,7 @@
     "Priority": 0,
     "CoolTime": -1,
     "ActiveRadius": 1.5,
-    "HitBox_Index": [10202],
+    "HitBox_Index": [30202],
     "LayerMask": [0],
     "ActiveDuration": 0.5
   },

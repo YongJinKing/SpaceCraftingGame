@@ -14,6 +14,20 @@ public struct MeleeHitBoxStruct
     public bool IsFollowDir;
 }
 
+public struct ShotGunHitBoxStruct
+{
+    public int Index;
+    public int Effect_Index;
+    public int Hit_Effect_Prefab_Index;
+    public int Destroy_Effect_Prefab_Index;
+    public int[] Affect_Index;
+    public float HitBox_X_Size;
+    public float HitBox_Y_Size;
+    public int[] LayerMask;
+    public float HitBox_Duration;
+    public float Hit_Frequency;
+}
+
 public struct PointHitBoxStruct
 {
     public int Index;
