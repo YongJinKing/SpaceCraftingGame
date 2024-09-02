@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEquiped: 0
   _itemType: 0
-  _animType: 3
+  _animType: 10
   _mainAction: {fileID: 4760323387223245547}
   _subAction: {fileID: 0}
   _graphic: {fileID: 0}
