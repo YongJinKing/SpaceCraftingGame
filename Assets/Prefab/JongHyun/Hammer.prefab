@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2292317452285725536}
-  - component: {fileID: 4837109351879094760}
+  - component: {fileID: 8745815960882177459}
   m_Layer: 0
   m_Name: WeaponAction
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7904626654505038204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4837109351879094760
+--- !u!114 &8745815960882177459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2848379519619806451}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0747f27f164b07545aaa2ff6ed7ee3d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 65647a7d2bf154145b9fd3bae299bdc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _fireAndForget: 1
@@ -61,7 +61,10 @@ MonoBehaviour:
   - {fileID: 3589146985966173651, guid: d69ce0a3711c24c4a9cc5937c114e8c5, type: 3}
   attackStartPos: []
   hitBoxes: []
-  _activeDuration: 0.2
+  _animationType: 0
+  _animationOriented: 1
+  _activatingHitBoxTime: 0
+  _cancelableTime: 0
 --- !u!1 &3373396605049349390
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1136813787683292182
 Transform:
   m_ObjectHideFlags: 0
@@ -109,8 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEquiped: 0
   _itemType: 0
-  _animType: 0
-  _mainAction: {fileID: 4837109351879094760}
+  _animType: 11
+  _mainAction: {fileID: 8745815960882177459}
   _subAction: {fileID: 0}
   _graphic: {fileID: 0}
 --- !u!1 &5162814217321404953

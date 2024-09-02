@@ -5,17 +5,12 @@ using UnityEngine.Events;
 
 public class PlayerAnimationController : UnitAnimationController
 {
-    public enum EquipType
-    {
-        BareHand, Gun, Hammer, Pickaxe, Length
-    }
-
     #region Properties
     #region Private
 
     #endregion
     #region Protected
-    protected EquipType I_EquipType;
+    protected int I_EquipType;
     protected int B_Move;
     protected int B_LeftClick;
     protected int T_Dead;
@@ -39,9 +34,6 @@ public class PlayerAnimationController : UnitAnimationController
     #region Public
     public void SetEquipType(int type)
     {
-        if (type > (int)EquipType.Length)
-            I_EquipType = EquipType.BareHand;
-
         anim.SetInteger((int)I_EquipType, type);
     }
     public void SetMove(bool move)
@@ -80,7 +72,7 @@ public class PlayerAnimationController : UnitAnimationController
     #region MonoBehaviour
     private void Start()
     {
-        I_EquipType = (EquipType)Animator.StringToHash("I_EquipType");
+        I_EquipType = Animator.StringToHash("I_EquipType");
         B_Move = Animator.StringToHash("B_Move");
         B_LeftClick = Animator.StringToHash("B_LeftClick");
         T_Dead = Animator.StringToHash("T_Dead");

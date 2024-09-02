@@ -17,7 +17,7 @@
   },
   {
     "Index": 10101,
-    "Anim_Type": 1,
+    "Anim_Type": 2,
     "Stat_Modify_Values": 
     [
       {
@@ -33,7 +33,7 @@
   },
   {
     "Index": 10102,
-    "Anim_Type": 1,
+    "Anim_Type": 3,
     "Stat_Modify_Values": 
     [
       {
@@ -49,7 +49,7 @@
   },
   {
     "Index": 10200,
-    "Anim_Type": 1,
+    "Anim_Type": 4,
     "Stat_Modify_Values": 
     [
       {
@@ -65,7 +65,7 @@
   },
   {
     "Index": 10201,
-    "Anim_Type": 1,
+    "Anim_Type": 5,
     "Stat_Modify_Values": 
     [
       {
@@ -81,7 +81,7 @@
   },
   {
     "Index": 10202,
-    "Anim_Type": 1,
+    "Anim_Type": 6,
     "Stat_Modify_Values": 
     [
       {
@@ -97,7 +97,7 @@
   },
   {
     "Index": 10300,
-    "Anim_Type": 1,
+    "Anim_Type": 7,
     "Stat_Modify_Values": 
     [
       {
@@ -113,7 +113,7 @@
   },
   {
     "Index": 10301,
-    "Anim_Type": 1,
+    "Anim_Type": 8,
     "Stat_Modify_Values": 
     [
       {
@@ -129,7 +129,7 @@
   },
   {
     "Index": 10302,
-    "Anim_Type": 1,
+    "Anim_Type": 9,
     "Stat_Modify_Values": 
     [
       {
