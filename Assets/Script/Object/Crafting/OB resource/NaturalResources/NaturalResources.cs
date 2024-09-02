@@ -11,7 +11,9 @@ public class NaturalResources : Stat
     public int minAmount; // 최소 생산량
     public int maxAmount; // 최대 생산량
     public int size;
-    public GameObject DestroyVFX;
+    public GameObject DestroyVFX; // 파괴시 나타날 VFX
+    public GameObject dropItem; // 드랍 아이템 프리펩
+
     int amount; // 실제 생산량
     Inventory inventory;
 
@@ -22,7 +24,7 @@ public class NaturalResources : Stat
     }
     private void OnEnable()
     {
-        inventory = FindObjectOfType<Inventory>();
+        //inventory = FindObjectOfType<Inventory>();
     }
 
     void RevokeTile()
@@ -45,17 +47,26 @@ public class NaturalResources : Stat
     {
         Debug.Log($"NaturalResources.TakeDamage, now HP is {this[EStat.HP]}");
         this[EStat.HP] -= damage;
-        if (this[EStat.HP] >= this[EStat.MaxHP]) this[EStat.HP] = this[EStat.MaxHP];
         if (this[EStat.HP] <= 0)
         {
-            if (inventory != null)
+            /*if (inventory != null)
             {
                 amount = Random.Range(minAmount, maxAmount + 1);
                 inventory.AddItem(outputIndexNum, amount);
-            }
+            }*/
+            amount = Random.Range(minAmount, maxAmount + 1);
+            SpawnDropItem(amount);
             Instantiate(DestroyVFX, this.transform.position, Quaternion.identity, null);
             RevokeTile();
             Destroy(this.gameObject);
+        }
+    }
+
+    void SpawnDropItem(int cnt)
+    {
+        for(int i = 0; i < cnt; i++)
+        {
+            Instantiate(dropItem, this.transform.position,Quaternion.identity,null);
         }
     }
 }

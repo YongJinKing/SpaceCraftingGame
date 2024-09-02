@@ -34,7 +34,6 @@ public class TestBullet : MonoBehaviour
     {
         if ((1 << collision.gameObject.layer & layerMask) != 0)
         {
-            Debug.Log(collision.gameObject.name + " hit!");
             IDamage character = collision.gameObject.GetComponent<IDamage>();
             character.TakeDamage(damage);
             //Destroy(this.gameObject);

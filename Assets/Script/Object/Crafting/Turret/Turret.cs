@@ -43,7 +43,6 @@ public class Turret : Structure
     protected override void OnEnable()
     {
         base.OnEnable();
-        Debug.Log("ÅÍ·¿ onenable");
         /*turretAttackTimer = this[EStat.ATKSpeed];
         turretAttackCooldown = this[EStat.ATKDelay];*/
     }
@@ -65,7 +64,6 @@ public class Turret : Structure
         perception.detectEnemyEvents.AddListener(OnEnemyDetected);
         perception.lostEnemyEvents.AddListener(OnEnemyLost);
         this.DestroyEvent.AddListener(TileManager.Instance.DestoryObjectOnTile);
-        Debug.Log(this[EStat.MaxHP]);
 
     }
 
@@ -168,7 +166,6 @@ public class Turret : Structure
     public void Attack(GameObject enemy)
     {
         IDamage targetEnemy = enemy.GetComponent<IDamage>();
-        Debug.Log("¾îµ‘Å· ÁØºñ Æ÷Å¾");
         //if (targetEnemy != null && bullet != null)
         if (targetEnemy != null)
         {
@@ -193,7 +190,6 @@ public class Turret : Structure
                 }
             }*/
             //var towerBullet = Instantiate(bullet, attackPoint.transform.position, Quaternion.identity);
-            Debug.Log("¾îµ‘Å· Æ÷Å¾");
             var towerBullet = ObjectPool.Instance.GetObject<TestBullet>(bullet.gameObject, attackPoint);
             //towerBullet.SetActive(true);
             towerBullet.transform.position = attackPoint.position;

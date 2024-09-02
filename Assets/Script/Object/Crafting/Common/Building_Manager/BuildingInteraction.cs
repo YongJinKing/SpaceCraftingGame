@@ -10,7 +10,7 @@ public class BuildingInteraction : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            HandleLeftClick(structureMask);
+            //HandleLeftClick(structureMask);
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -18,7 +18,7 @@ public class BuildingInteraction : MonoBehaviour
         }
     }
 
-    private void HandleLeftClick(LayerMask layerMask)
+    private void HandleLeftClick(LayerMask layerMask) // 테스트용
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, layerMask);

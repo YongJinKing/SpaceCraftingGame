@@ -142,6 +142,7 @@ MonoBehaviour:
   maxAmount: 15
   size: 2
   DestroyVFX: {fileID: 4231699886084168486, guid: b97d7cb182cc458409243f45c4e8ad27, type: 3}
+  dropItem: {fileID: 1923448322732787196, guid: 6a795de0aec265e48a8aed68c6eaa004, type: 3}
 --- !u!61 &2608313521366291592
 BoxCollider2D:
   m_ObjectHideFlags: 0
