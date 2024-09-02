@@ -10,8 +10,11 @@ public class InventoryPopup : MonoBehaviour
     public GameObject ObjOptionPanel;
     public GameObject ObjSlotPopup;
     Coroutine SlotPopup;
-
-    private void Start() 
+    private void Start()
+    {
+        Inventory.instance.updatePopup.AddListener(PopupUpdate);
+    }
+    private void OnEnable() 
     {
         PopupUpdate();//팝업 업데이트   
     }
