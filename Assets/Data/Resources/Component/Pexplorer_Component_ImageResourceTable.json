@@ -182,5 +182,21 @@
   {
     "ComponentImage_Index": 130109,
     "ImageResource_Name": "Img_Stage2_Fence10"
+  },
+
+  {
+    "ComponentImage_Index": 500000,
+    "ImageResource_Name": "Img_Stage1_Ore1"
+  },
+
+  {
+    "ComponentImage_Index": 500001,
+    "ImageResource_Name": "Img_Stage1_Gas1"
+  },
+
+  {
+    "ComponentImage_Index": 500002,
+    "ImageResource_Name": "Img_Stage1_BigOre1"
   }
+
 ]

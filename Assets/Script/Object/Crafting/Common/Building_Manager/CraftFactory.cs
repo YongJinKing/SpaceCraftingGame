@@ -133,6 +133,8 @@ public class CraftFactory : Singleton<CraftFactory>
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
+
+        //GameObject obj = Resources.Load<GameObject>($"Component/Image/{imgData.ImageResource_Name}");
         size = abilityData.BuildingScale;
         //Collider, Rigidbody, Scale Setting
         obj.transform.localScale = Vector3.one;
@@ -174,7 +176,6 @@ public class CraftFactory : Singleton<CraftFactory>
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
 
-
         FactoryBuilding factoryBuilding =  obj.GetComponent<FactoryBuilding>();
         
         factoryBuilding.mComponentName = componentData.Component_Name.ToString();
@@ -204,8 +205,9 @@ public class CraftFactory : Singleton<CraftFactory>
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
+        //GameObject obj = Resources.Load<GameObject>($"Component/Image/{imgData.ImageResource_Name}");
 
-        NaturalResources naturalResources = obj.GetComponent<NaturalResources>();
+        //NaturalResources naturalResources = obj.GetComponent<NaturalResources>();
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
         return obj;
