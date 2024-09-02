@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MonsterAnimEvent : MonoBehaviour
+public class MonsterAnimationController : UnitAnimationController
 {
     #region Properties
     #region Private
@@ -13,8 +13,6 @@ public class MonsterAnimEvent : MonoBehaviour
     #region Public
     #endregion
     #region Events
-    public UnityEvent attackAnimEvent = new UnityEvent();
-    public UnityEvent attackAnimEndEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -33,11 +31,11 @@ public class MonsterAnimEvent : MonoBehaviour
     #region EventHandlers
     public void OnAttackAnim()
     {
-        attackAnimEvent?.Invoke();
+        attackAnimEvent?.Invoke(0);
     }
     public void OnAttackAnimEnd()
     {
-        attackAnimEndEvent?.Invoke(); 
+        animEndEvent?.Invoke(0); 
     }
     #endregion
 

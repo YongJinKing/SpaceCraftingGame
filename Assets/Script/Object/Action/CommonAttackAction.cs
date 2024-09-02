@@ -15,6 +15,7 @@ public class CommonAttackAction : AttackAction
     #region Animation Oriented
     // AnimationEvent에 의해서 HitBox가 생성되는가 에대한 bool 값
     [SerializeField] protected bool _animationOriented = false;
+    protected bool _isActivated = false;
     #endregion
 
     #region Time Oriented
@@ -54,6 +55,7 @@ public class CommonAttackAction : AttackAction
     #endregion
 
     #region Constructor
+    public CommonAttackAction() { fireAndForget = true; }
     #endregion
 
     #region Methods
@@ -66,6 +68,12 @@ public class CommonAttackAction : AttackAction
         if (_animationOriented)
         {
             //애니메이션 이벤트를 등록하는 코드 필요
+            UnitAnimationController animCtrl = GetComponentInParent<Stat>().GetComponentInChildren<UnitAnimationController>();
+            if (animCtrl != null) 
+            {
+                animCtrl.attackAnimEvent.AddListener(OnAttackAnimation);
+                animCtrl.animEndEvent.AddListener(OnAttackEndAnimation);
+            }
         }
     }
     #endregion
@@ -73,6 +81,7 @@ public class CommonAttackAction : AttackAction
     public override void Activate(Vector2 pos)
     {
         base.Activate(pos);
+        _isActivated = true;
         if (_animationOriented)
         {
             this.pos = pos;
@@ -85,23 +94,24 @@ public class CommonAttackAction : AttackAction
     }
     public override void Deactivate()
     {
+        _isActivated = false;
         base.Deactivate();
     }
     #endregion
     #endregion
 
     #region EventHandlers
-    public void OnAttackAnimation()
+    protected void OnAttackAnimation(int type)
     {
         if(_animationOriented)
             ActivateHitBoxes(pos);
     }
-    public void OnAttackEndAnimation()
+    protected void OnAttackEndAnimation(int type)
     {
         if(_animationOriented)
             ActionEnd();
     }
-    public override void OnHitBoxEnd()
+    protected override void OnHitBoxEnd()
     {
     }
     #endregion

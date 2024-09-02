@@ -46,7 +46,7 @@ public class WeaponAttackAction : AttackAction
     #endregion
 
     #region EventHandlers
-    public override void OnHitBoxEnd()
+    protected override void OnHitBoxEnd()
     {
     }
     #endregion

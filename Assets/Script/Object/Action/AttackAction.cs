@@ -102,7 +102,7 @@ public abstract class AttackAction : Action
     #endregion
 
     #region EventHandlers
-    public virtual void OnHitBoxEnd()
+    protected virtual void OnHitBoxEnd()
     {
         ActionEnd();
     }

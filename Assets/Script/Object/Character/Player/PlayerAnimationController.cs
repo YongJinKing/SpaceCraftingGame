@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerAnimationController : MonoBehaviour
+public class PlayerAnimationController : UnitAnimationController
 {
     public enum EquipType
     {
@@ -12,18 +12,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     #region Properties
     #region Private
-    private Animator _anim;
-    private Animator anim
-    {
-        get
-        {
-            if (_anim == null)
-            {
-                _anim = GetComponent<Animator>();
-            }
-            return _anim;
-        }
-    }
+
     #endregion
     #region Protected
     protected EquipType I_EquipType;
@@ -35,7 +24,7 @@ public class PlayerAnimationController : MonoBehaviour
     #region Public
     #endregion
     #region Events
-    public UnityEvent<int> animEndEvent = new UnityEvent<int>();
+
     #endregion
     #endregion
 
@@ -78,6 +67,10 @@ public class PlayerAnimationController : MonoBehaviour
     public void OnAnimationEnd(int type)
     {
         animEndEvent?.Invoke(type);
+    }
+    public void OnAttackAnim(int type)
+    {
+        attackAnimEvent?.Invoke(type);
     }
     #endregion
 
