@@ -30,11 +30,11 @@ TagManager:
   - Player_Avoid
   - MortalBox
   - Minimap
-  - 
+  - BaseCamp
   - EnemyMinimap
   - BuidlginMinimap
   - PlayerMinimap
-  - 
+  - BaseCampMinimap
   - 
   - 
   m_SortingLayers:
