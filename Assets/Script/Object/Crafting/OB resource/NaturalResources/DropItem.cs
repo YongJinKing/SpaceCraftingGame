@@ -83,7 +83,11 @@ public class DropItem : MonoBehaviour
     {
         if ((1 << collision.gameObject.layer & layerMask) != 0)
         {
-            Inventory.instance.AddItem(index, amount);
+            if(Inventory.instance.AddItem(index, amount) > 0)
+            {
+                return;
+            }
+
             Destroy(this.gameObject);
         }
     }
