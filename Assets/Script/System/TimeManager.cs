@@ -8,9 +8,9 @@ public class TimeManager : MonoBehaviour
 {
     #region Properties
     #region Private
-    private int day;
-    private int hour;
-    private int minute;
+    private int _day;
+    private int _hour;
+    private int _minute;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private TMP_Text dayText;
    
@@ -28,6 +28,11 @@ public class TimeManager : MonoBehaviour
     public float gameDayPerRealMinite = 60.0f;
     public GameObject Sunimg;
     public GameObject Nightimg;
+
+    public int day
+    {
+        get { return _day; }
+    }
     #endregion
     #region Events
     /// <summary>
@@ -52,9 +57,9 @@ public class TimeManager : MonoBehaviour
 
     #region EventHandlers
     
-    public void TimeTest(int day, int hour, int minite)
+    public void TimeTest(int day, int hour, int minute)
     {
-        Debug.Log($"TimeManager.TimeTest day : {day}, hour : {hour}, minite : {minite}");
+        Debug.Log($"TimeManager.TimeTest day : {day}, hour : {hour}, minute : {minute}");
         timeText.text = hour.ToString("00") + ":" + minute.ToString("00");
         dayText.text = day.ToString("day " + "00");
         if(hour < 8 || hour > 21)
@@ -75,9 +80,9 @@ public class TimeManager : MonoBehaviour
     #region Coroutines
     private IEnumerator TimeChecking()
     {
-        int tempDay = day;
-        int tempHour = hour;
-        int tempMinute = minute;
+        int tempDay = _day;
+        int tempHour = _hour;
+        int tempMinute = _minute;
         bool isChanged = false;
 
         float tempTimeCount = 0;
@@ -89,30 +94,30 @@ public class TimeManager : MonoBehaviour
             tempTimeCount = timeCount;
 
             tempDay = (int)(tempTimeCount / _gameDayPerRealMinute);
-            tempTimeCount -= _gameDayPerRealMinute * day;
+            tempTimeCount -= _gameDayPerRealMinute * _day;
 
-            if (tempDay != day)
+            if (tempDay != _day)
             {
+                _day = tempDay;
                 dayChangeEvent?.Invoke();
                 isChanged = true;
             }
 
             tempHour = (int)(tempTimeCount / _gameHourPerRealMinite);
-            tempTimeCount -= _gameHourPerRealMinite * hour;
+            tempTimeCount -= _gameHourPerRealMinite * _hour;
 
             tempMinute = (int)(tempTimeCount / _gameMinutePerRealMinite);
 
-            if(tempMinute != minute)
+            if(tempMinute != _minute)
             {
-                day = tempDay;
-                hour = tempHour;
-                minute = tempMinute;
+                _hour = tempHour;
+                _minute = tempMinute;
                 isChanged = true;
             }
 
             if (isChanged)
             {
-                timeChangeEvent?.Invoke(day, hour, minute);
+                timeChangeEvent?.Invoke(_day, _hour, _minute);
             }
 
 

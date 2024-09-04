@@ -67,9 +67,10 @@ public class WaveMonsterAttackState : MonsterState
             owner.stateMachine.ChangeState<WaveMonsterIdleState>();
         }
 
-        Vector2 dir;
-        float dist;
-        do
+        yield return null;
+
+        bool closeEnough = false;
+        while (!closeEnough)
         {
             if (owner.target == null)
             {
@@ -77,11 +78,17 @@ public class WaveMonsterAttackState : MonsterState
                 yield break;
             }
 
-            dir = owner.target.transform.position - transform.position;
-            dist = dir.magnitude;
+            Collider2D[] temp = Physics2D.OverlapCircleAll(transform.position, owner.activatedAction.activeRadius);
+
+            foreach (Collider2D c in temp) 
+            { 
+                if(c.gameObject == owner.target)
+                {
+                    closeEnough = true;
+                }
+            }
             yield return null;
         }
-        while (dist > owner.activatedAction.activeRadius);
 
         owner.activatedAction.Activate(owner.target.transform.position);
         owner.animator.SetBool("B_Attack", true);
