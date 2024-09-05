@@ -623,7 +623,6 @@ MonoBehaviour:
   layerNumber: 21
   layerNumber2: 22
   savePath: PlayerData
-  savePath2: WeaponLevelData
   nowSlot: 0
   playerLayerMask:
     serializedVersion: 2
