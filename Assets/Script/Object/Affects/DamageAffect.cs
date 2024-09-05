@@ -43,7 +43,7 @@ public class DamageAffect : BaseAffect
             {
                 temp = myStat[EStat.ATK] * power;
             }
-
+            Debug.Log("TakeDamage To " + target.name + " with " + temp.ToString());
             damage.TakeDamage(temp);
         }
     }

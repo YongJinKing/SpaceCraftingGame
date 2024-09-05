@@ -42,6 +42,9 @@ public class CamController : MonoBehaviour
     [Header("시네머신 버추얼 카메라"), Space(0.5f)]
     CinemachineVirtualCamera CVC;
 
+    [Header("페이드 매니저"), Space(.5f)]
+    [SerializeField] FadeManager FD;
+
     CinemachineBasicMultiChannelPerlin perlin;
     Coroutine camShake;
 
@@ -72,6 +75,7 @@ public class CamController : MonoBehaviour
 
     IEnumerator BossStage1Direction()
     {
+        FD.StartFadeIn(2f);
         yield return StartCoroutine(PlayerLandingToStage());
         yield return StartCoroutine(FocusBoss());
         yield return StartCoroutine(FocusPlayer());

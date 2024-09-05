@@ -41,7 +41,9 @@ public class RabbitBossSpinningAttackAction : BossAction
 
     IEnumerator SpinningAttack()
     {
-        yield return StartCoroutine(HitBoxOn(transform.position));
+        Debug.Log("허;전 사지ㅏ각가가각");
+        //yield return 
+            StartCoroutine(HitBoxOn(transform.position));
         
 
         while (moveTimer >= 0.0f)
@@ -67,7 +69,7 @@ public class RabbitBossSpinningAttackAction : BossAction
     protected override void ActionEnd()
     {
         base.ActionEnd();
-        
+        Debug.Log("허;ㅣ전종ㄹ룡로로로");
         ownerAnim.SetTrigger("SpinningAttackEnd");
         StopAllCoroutines();
     }
@@ -75,7 +77,6 @@ public class RabbitBossSpinningAttackAction : BossAction
     #region Public
     public void StartSpinning()
     {
-        StopAllCoroutines();
         StartCoroutine(SpinningAttack());
     }
     public override void Activate(Vector2 pos)
