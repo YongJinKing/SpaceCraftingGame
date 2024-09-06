@@ -39,13 +39,20 @@ public class BossSearchingUI : MonoBehaviour
 
     public UnityEvent<float> changeTimerTextAct;
 
+    public bool isSearching = false;
+    public float searchedTime = 0f;
+    private void Start()
+    {
+        if (isSearching)
+        {
+            StartSearching();
+        }
+    }
     public void TryToSearchBoss()
     {
         if(Inventory.instance.GetItemCheck(mineralInex, mineralAmount) && Inventory.instance.GetItemCheck(gasIndex, gasAmount))
         {
             Inventory.instance.UseItem(mineralInex, mineralAmount); Inventory.instance.UseItem(gasIndex, gasAmount);
-            AskSearchingScreen.SetActive(false);
-            SearchingScreen.SetActive(true);
             StartSearching();
         }
         else
@@ -69,20 +76,24 @@ public class BossSearchingUI : MonoBehaviour
 
     void StartSearching()
     {
+        isSearching = true;
+        AskSearchingScreen.SetActive(false);
+        SearchingScreen.SetActive(true);
         StartCoroutine(StartSearchingCoroutine());
     }
 
     IEnumerator StartSearchingCoroutine()
     {
-        float time = searchingTime;
+        if(searchedTime == 0f) searchedTime = searchingTime;
 
-        while(time >= 0f)
+        while(searchedTime >= 0f)
         {
-            time -= Time.deltaTime;
-            changeTimerTextAct?.Invoke(time);
+            searchedTime -= Time.deltaTime;
+            changeTimerTextAct?.Invoke(searchedTime);
             yield return null;
         }
 
+        searchedTime = 0f;
         SearchingScreen.SetActive(false);
         SearchingCompleteScreen.SetActive(true);
     }
