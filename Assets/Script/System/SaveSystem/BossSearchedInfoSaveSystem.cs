@@ -30,6 +30,7 @@ public class BossSearchedInfoSaveSystem : MonoBehaviour
     {
         bool isSearchedNow = bossSearching.isSearching;
         float searchingTimeNow = bossSearching.searchedTime;
+        if (!isSearchedNow) return;
 
         bossSearchedInfo = new BossSearchedInfo(isSearchedNow,searchingTimeNow);
         var json = JsonConvert.SerializeObject(bossSearchedInfo, Formatting.Indented);
@@ -53,7 +54,7 @@ public class BossSearchedInfoSaveSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            SaveBossSearchedInfo();
+            //SaveBossSearchedInfo();
         }
     }
 }
