@@ -33,6 +33,7 @@ public class Component
     public float Hp;
     public int size;
     public bool placeable;
+    public int producedAmount;
 
     // JSON 문자열에서 Vector3Int를 직접 처리할 수 없기 때문에,
     // 직렬화 및 역직렬화 시 문자열로 변환하는 추가 필드가 필요함
@@ -122,12 +123,14 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
                         Debug.Log(tile.Value.Object.GetComponent<Structure>().mComponentName);
                         component.index = int.Parse(tile.Value.Object.GetComponent<Structure>().mComponentName);
                         component.Hp = tile.Value.Object.GetComponent<Structure>().MaxHP;
+                        component.producedAmount = tile.Value.Object.GetComponent<FactoryBuilding>().produceAmount;
                     }
                     else if ((resourcesLayerMask & 1 << tile.Value.Object.layer) != 0)
                     {
                         Debug.Log("자연 광물");
                         component.index = tile.Value.Object.GetComponent<NaturalResources>().indexNum;
                         component.Hp = tile.Value.Object.GetComponent<NaturalResources>().hp;
+                        component.producedAmount = 0;
                     }
                 }
                 else
@@ -135,6 +138,7 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
                     Debug.Log("널임");
                     component.index = 0;
                     component.Hp = 0;
+                    component.producedAmount = 0;
                 }
 
                 

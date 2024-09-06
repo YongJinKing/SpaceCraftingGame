@@ -72,14 +72,14 @@ public class CraftFactory : Singleton<CraftFactory>
         return obj.gameObject;
     }
 
-    public GameObject CraftBuilding(int index, Vector3 pos , float Hp = 0f, int size = 0)
+    public GameObject CraftBuilding(int index, Vector3 pos , float Hp = 0f, int size = 0, int producedAmount = 0)
     {
         int idx = index / 10000;
         Debug.Log("Craft : " + idx);
         switch(idx)
         {
             case 10:
-                return CraftMiner(index, pos, Hp, size);
+                return CraftMiner(index, pos, Hp, size, producedAmount);
             case 11:
                 return CraftTurret(index, pos,Hp, size);
             case 13:
@@ -156,7 +156,7 @@ public class CraftFactory : Singleton<CraftFactory>
         return obj;
     }
 
-    GameObject CraftMiner(int index, Vector3 pos, float Hp = 0f, int size = 1)
+    GameObject CraftMiner(int index, Vector3 pos, float Hp = 0f, int size = 1, int producedAmount = 0)
     {
         /*if (structureDataManger.dicCBComponentTable.ContainsKey(index))
         {
@@ -182,6 +182,7 @@ public class CraftFactory : Singleton<CraftFactory>
         factoryBuilding.produceCount = abilityData.BuildingDetail_Value;
         factoryBuilding.produceResourceIndex = abilityData.BuildingDetail_GeneratedItem;
         factoryBuilding.DestroyEvent = new UnityEngine.Events.UnityEvent<Vector3>();
+        factoryBuilding.produceAmount = producedAmount;
 
         if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; 
         else factoryBuilding.MaxHP = Hp; 

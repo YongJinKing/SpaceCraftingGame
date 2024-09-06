@@ -77,13 +77,13 @@ public class TileManager : Singleton<TileManager>
                 int index = componentsInfo.components[i].index;
                 float Hp = componentsInfo.components[i].Hp;
                 int size = componentsInfo.components[i].size;
-
+                int producedAmount = componentsInfo.components[i].producedAmount;
 
                 Vector3 componentPos = new Vector3(componetPlace.x + (tileMap.tileAnchor.x * size),
                     componetPlace.y + (tileMap.tileAnchor.y * size), componetPlace.z);
 
                 Tile isPlacedTile = null;
-                if (size != 0) isPlacedTile = new Tile(false, CraftFactory.Instance.CraftBuilding(index, componentPos, Hp, size), size);
+                if (size != 0) isPlacedTile = new Tile(false, CraftFactory.Instance.CraftBuilding(index, componentPos, Hp, size, producedAmount), size);
                 else isPlacedTile = new Tile(false, null, 0);
 
                 availablePlaces[componetPlace] = isPlacedTile;

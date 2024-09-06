@@ -11,7 +11,7 @@ public class FactoryBuilding : Structure
     public int produceCount; // 생산량
     public int maxAmount; // 저장 가능한 최대 용량
     public int produceResourceIndex; // 제작하는 자원의 인덱스
-    [SerializeField] int produceAmount; // 건물이 제작한 재료의 갯수
+    public int produceAmount; // 건물이 제작한 재료의 갯수
     [SerializeField] float produceTime; // 건물의 생산 속도
 
     public Transform miningVFX;
