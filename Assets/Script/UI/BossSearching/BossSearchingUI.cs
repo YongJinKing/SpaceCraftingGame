@@ -37,12 +37,21 @@ public class BossSearchingUI : MonoBehaviour
     [Header("페이드 매니저"), Space(.5f)]
     public FadeManager FD;
 
+    [Header("보스 찾는 중 VFX"), Space(.5f)]
+    public ParticleSystem FindingVFX;
+
+    [Header("보스 찾은 VFX"), Space(.5f)]
+    public ParticleSystem FoundVFX;
+
     public UnityEvent<float> changeTimerTextAct;
 
     public bool isSearching = false;
     public float searchedTime = 0f;
     private void Start()
     {
+        FindingVFX.Stop();
+        FoundVFX.Stop();
+
         if (isSearching)
         {
             StartSearching();
@@ -79,6 +88,7 @@ public class BossSearchingUI : MonoBehaviour
         isSearching = true;
         AskSearchingScreen.SetActive(false);
         SearchingScreen.SetActive(true);
+        FindingVFX.Play();
         StartCoroutine(StartSearchingCoroutine());
     }
 
@@ -96,6 +106,8 @@ public class BossSearchingUI : MonoBehaviour
         searchedTime = 0f;
         SearchingScreen.SetActive(false);
         SearchingCompleteScreen.SetActive(true);
+        FindingVFX.Stop();
+        FoundVFX.Play();
     }
 
 }

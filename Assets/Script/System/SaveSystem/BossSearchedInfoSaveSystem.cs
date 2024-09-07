@@ -22,20 +22,16 @@ public class BossSearchedInfoSaveSystem : BaseSaveSystem
     BossSearchedInfo bossSearchedInfo;
     
 
-    private void Awake()
-    {
-        LoadBossSearchedInfo();
-    }
-
     public override void Save()
     {
         bool isSearchedNow = bossSearching.isSearching;
         float searchingTimeNow = bossSearching.searchedTime;
         if (!isSearchedNow) return;
 
-        bossSearchedInfo = new BossSearchedInfo(isSearchedNow,searchingTimeNow);
-        var json = JsonConvert.SerializeObject(bossSearchedInfo, Formatting.Indented);
-        
+        /*bossSearchedInfo = new BossSearchedInfo(isSearchedNow,searchingTimeNow);
+        var json = JsonConvert.SerializeObject(bossSearchedInfo, Formatting.Indented);*/
+        string json = JsonUtility.ToJson(new BossSearchedInfo(isSearchedNow, searchingTimeNow));
+
         File.WriteAllText(path, json);
     }
 
@@ -54,6 +50,8 @@ public class BossSearchedInfoSaveSystem : BaseSaveSystem
     {
         base.Start();
         path = Path.Combine(filePath, "BossSearchedInfoSaved_" + DataManager.Instance.nowSlot);
+
+        LoadBossSearchedInfo();
     }
 
 }
