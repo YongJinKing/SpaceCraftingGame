@@ -21,19 +21,11 @@ public class GunManager : BaseSaveSystem
         savePath = Path.Combine(filePath, "WeaponLevel_" + DataManager.Instance.nowSlot + ".json");
 
         LoadGunIndexes();
+        UpdateGunIndex(0, (int)GunType.Rifle);
+        UpdateGunIndex(1, (int)GunType.Shotgun);
+        UpdateGunIndex(2, (int)GunType.Sniper);
     }
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Save();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadGunIndexes();
-        }
-    }
+    
     public override void Save()
     {
         string json = JsonUtility.ToJson(new GunIndexData(gunIndexes));
