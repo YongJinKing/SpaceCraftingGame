@@ -1,0 +1,27 @@
+
+Stage1_ClearBox.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ChestDown
+  rotate: false
+  xy: 589, 118
+  size: 569, 297
+  orig: 571, 299
+  offset: 1, 1
+  index: -1
+ChestUp
+  rotate: false
+  xy: 2, 90
+  size: 585, 325
+  orig: 589, 327
+  offset: 1, 1
+  index: -1
+Glow
+  rotate: false
+  xy: 2, 417
+  size: 737, 741
+  orig: 746, 769
+  offset: 4, 11
+  index: -1
