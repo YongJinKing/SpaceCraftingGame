@@ -7,7 +7,7 @@ public class SlowGround : MonoBehaviour
     public LayerMask layerMask;
     float originSpeed;
     float slowSpeed;
-    UnitMovement player;
+    GameObject player;
     bool slowed;
     // Start is called before the first frame update
     private void Start()
@@ -17,9 +17,9 @@ public class SlowGround : MonoBehaviour
 
     void OnEnable()
     {
-        player = FindObjectOfType<UnitMovement>();
-        originSpeed = player.GetSpeed();
-        slowSpeed = originSpeed * 0.7f;
+        player = GameObject.Find("Player");
+        originSpeed = player.GetComponent<UnitMovement>().GetSpeed();
+        slowSpeed = originSpeed * 0.3f;
         Destroy(gameObject, 5f);
         slowed = false;
     }
@@ -63,6 +63,6 @@ public class SlowGround : MonoBehaviour
 
     private void OnDestroy()
     {
-        player.OnMoveSpeedStatChanged(player.GetSpeed(), originSpeed);
+        player.GetComponent<UnitMovement>().OnMoveSpeedStatChanged(player.GetComponent<UnitMovement>().GetSpeed(), originSpeed);
     }
 }

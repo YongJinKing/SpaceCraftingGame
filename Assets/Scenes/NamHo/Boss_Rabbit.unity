@@ -58767,6 +58767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08210eace26051d40a45a67f9175a557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filePath: 
+  savePath: 
   structureLayerMask:
     serializedVersion: 2
     m_Bits: 65536
@@ -60893,7 +60895,7 @@ MonoBehaviour:
   - {fileID: 605607992}
   - {fileID: 355368318}
   - {fileID: 1246702291}
-  TurretParent: {fileID: 0}
+  StructParent: {fileID: 0}
   size: 2
   craftReady: 0
   buildingIndex: 0
