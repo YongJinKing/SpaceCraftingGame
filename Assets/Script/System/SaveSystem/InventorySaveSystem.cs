@@ -14,17 +14,24 @@ public class InvenSaveInfo
         this.savedInvenList = savedInvenList;
     }
 }
-public class InventorySaveSystem : MonoBehaviour
+public class InventorySaveSystem : BaseSaveSystem
 {
     string path;
 
     public Inventory inven;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         path = "InventorySave_" + DataManager.Instance.nowSlot;
         LoadInventorySaved();
     }
+
+    public override void Save()
+    {
+        SaveInventory(inven.InventoryDatas);
+    }
+
     public void SaveInventory(List<SlotItemData> InventoryDatas)
     {
         InvenSaveInfo invenSaveInfo = new InvenSaveInfo(InventoryDatas);
@@ -54,12 +61,4 @@ public class InventorySaveSystem : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            Debug.Log("인벤 세이브");
-            SaveInventory(inven.InventoryDatas);
-        }
-    }
 }

@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 6711689322178622084}
   m_Layer: 16
   m_Name: Img_Stage1_MineralResourceGenerationBuilding_Lv1
-  m_TagString: Untagged
+  m_TagString: Factory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

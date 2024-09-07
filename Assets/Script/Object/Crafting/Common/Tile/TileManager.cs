@@ -28,12 +28,15 @@ public class TileManager : Singleton<TileManager>
     public FadeManager fade;
     ComponetsInfo componentsInfo;
     CraftBuildingManager craftmanager;
+    ComponentSaveSystem componentSaveSystem;
     string path;
     void Awake()
     {
         craftmanager = FindObjectOfType<CraftBuildingManager>();
         craftmanager.RemovePlaceEvent.AddListener(RemopvePlace);
         craftmanager.WritePlaceInfoEvent.AddListener(RemopvePlace);
+
+        componentSaveSystem = FindObjectOfType<ComponentSaveSystem>();
 
         tileMap = transform.GetComponent<Tilemap>();
         availablePlaces = new Dictionary<Vector3Int, Tile>();
@@ -60,7 +63,7 @@ public class TileManager : Singleton<TileManager>
 
         SpaceShipInitiallize();
 
-        componentsInfo = ComponentSaveSystem.Instance.LoadTileInfo(path);
+        componentsInfo = componentSaveSystem.LoadTileInfo(path);
         if (componentsInfo == null)
         {
             // 여기서 자원 최초 생성

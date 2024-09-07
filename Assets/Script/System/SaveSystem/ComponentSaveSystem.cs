@@ -72,7 +72,7 @@ public class ComponetsInfo
     }
 }
 
-public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
+public class ComponentSaveSystem : BaseSaveSystem
 {
     ComponetsInfo componetsInfo;
     string savePath;
@@ -85,18 +85,20 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
         
     }
 
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            SaveTilesInfo();
-        }
+        
+    }
+
+    public override void Save()
+    {
+        SaveTilesInfo();
     }
 
     public void SaveTilesInfo()
@@ -123,7 +125,8 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
                         Debug.Log(tile.Value.Object.GetComponent<Structure>().mComponentName);
                         component.index = int.Parse(tile.Value.Object.GetComponent<Structure>().mComponentName);
                         component.Hp = tile.Value.Object.GetComponent<Structure>().MaxHP;
-                        component.producedAmount = tile.Value.Object.GetComponent<FactoryBuilding>().produceAmount;
+                        component.producedAmount = 0;
+                        if (tile.Value.Object.CompareTag("Factory")) component.producedAmount = tile.Value.Object.GetComponent<FactoryBuilding>().produceAmount;
                     }
                     else if ((resourcesLayerMask & 1 << tile.Value.Object.layer) != 0)
                     {
@@ -199,4 +202,5 @@ public class ComponentSaveSystem : Singleton<ComponentSaveSystem>
 
     }
 
+    
 }

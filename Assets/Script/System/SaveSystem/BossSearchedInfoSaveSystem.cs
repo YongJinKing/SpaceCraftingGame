@@ -15,18 +15,19 @@ public class BossSearchedInfo
         searchedTime = _searchedTime;
     }
 }
-public class BossSearchedInfoSaveSystem : MonoBehaviour
+public class BossSearchedInfoSaveSystem : BaseSaveSystem
 {
     public BossSearchingUI bossSearching;
     string path;
     BossSearchedInfo bossSearchedInfo;
+    
 
     private void Awake()
     {
         LoadBossSearchedInfo();
     }
 
-    public void SaveBossSearchedInfo()
+    public override void Save()
     {
         bool isSearchedNow = bossSearching.isSearching;
         float searchingTimeNow = bossSearching.searchedTime;
@@ -50,11 +51,10 @@ public class BossSearchedInfoSaveSystem : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected override void Start()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            //SaveBossSearchedInfo();
-        }
+        base.Start();
+        
     }
+
 }
