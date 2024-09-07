@@ -28,9 +28,8 @@ public class BossSearchedInfoSaveSystem : BaseSaveSystem
         float searchingTimeNow = bossSearching.searchedTime;
         if (!isSearchedNow) return;
 
-        /*bossSearchedInfo = new BossSearchedInfo(isSearchedNow,searchingTimeNow);
-        var json = JsonConvert.SerializeObject(bossSearchedInfo, Formatting.Indented);*/
-        string json = JsonUtility.ToJson(new BossSearchedInfo(isSearchedNow, searchingTimeNow));
+        bossSearchedInfo = new BossSearchedInfo(isSearchedNow, searchingTimeNow);
+        var json = JsonConvert.SerializeObject(bossSearchedInfo, Formatting.Indented);
 
         File.WriteAllText(path, json);
     }
@@ -49,7 +48,7 @@ public class BossSearchedInfoSaveSystem : BaseSaveSystem
     protected override void Start()
     {
         base.Start();
-        path = Path.Combine(filePath, "BossSearchedInfoSaved_" + DataManager.Instance.nowSlot);
+        path = Path.Combine(filePath, "BossSearchedInfoSaved_" + DataManager.Instance.nowSlot +".json");
 
         LoadBossSearchedInfo();
     }
