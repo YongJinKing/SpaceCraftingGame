@@ -75,7 +75,7 @@ public class ComponetsInfo
 public class ComponentSaveSystem : BaseSaveSystem
 {
     ComponetsInfo componetsInfo;
-    string savePath;
+    public string savePath;
     public LayerMask structureLayerMask;
     public LayerMask resourcesLayerMask;
     
@@ -88,6 +88,9 @@ public class ComponentSaveSystem : BaseSaveSystem
     protected override void Start()
     {
         base.Start();
+        savePath = filePath + "TileSaveData_" + SceneManager.GetActiveScene().name + "_" +DataManager.Instance.nowSlot + ".json";
+
+        MakeDir(savePath);
     }
 
     // Update is called once per frame
@@ -156,7 +159,6 @@ public class ComponentSaveSystem : BaseSaveSystem
         componetsInfo = new ComponetsInfo(componentList);
         var json = JsonConvert.SerializeObject(componetsInfo, Formatting.Indented);
         //savePath = SceneManager.GetActiveScene().name + "/" + json;
-        savePath = "TileSaveData_" + SceneManager.GetActiveScene().name + DataManager.Instance.nowSlot + ".json";
         File.WriteAllText(savePath, json);
     }
 

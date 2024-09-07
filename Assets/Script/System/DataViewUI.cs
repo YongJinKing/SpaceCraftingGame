@@ -81,14 +81,14 @@ public class DataViewUI : MonoBehaviour
 
     public void Save()
     {
-        DataManager.Instance.SavePlayerInfo();
+        DataManager.Instance.Save();
     }
 
     public void OnIncreaseStatsButtonClicked()
     {
         // StatController를 사용하여 스탯 증가
-        StatController statController = FindObjectOfType<StatController>();
-        statController.IncreasePlayerStats();
+        //StatController statController = FindObjectOfType<StatController>();
+        //statController.IncreasePlayerStats();
 
         // UI 업데이트
         UpdateStatUI();

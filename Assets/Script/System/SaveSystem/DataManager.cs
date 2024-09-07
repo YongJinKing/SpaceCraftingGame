@@ -8,46 +8,40 @@ using System;
 using System.Linq;
 
 [Serializable]
-public class DataManager : Singleton<DataManager>
+public class DataManager : BaseSaveSystem
 {
     #region variable
-    public int layerNumber = 21;
-    public int layerNumber2 = 22;
     public string savePath = "PlayerData";
     public int nowSlot;
     public LayerMask playerLayerMask ;
-    public LayerMask EnemyLayerMask;
     /// <summary>
     /// 플레이어 데이터 저장 배열
     /// </summary>
     public PlayerDataStruct[] pd = new PlayerDataStruct[1];
     public Player NowPlayer;
+
+    public static DataManager Instance;
+    string tempSavePath;
     #endregion
 
     #region start
     private void Awake()
     {
-        Initialize();
+        Instance = this;
     }
-    void Start()
+    protected override void Start()
     {
-        // 레이어 번호를 사용하여 레이어 마스크 설정
-        playerLayerMask = (1 << layerNumber) | (1 << layerNumber2);
+        base.Start();
+        tempSavePath = filePath + savePath + nowSlot.ToString() + ".json";
 
-        // 레이어 마스크 확인
-        Debug.Log("Layer Mask: " + playerLayerMask.value);
+        MakeDir(tempSavePath);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SavePlayerInfo();
-        }
-
         if (Input.GetKeyDown(KeyCode.P))
         {
-            LoadJson("PlayerData" + DataManager.Instance.nowSlot.ToString() + ".json");
+            LoadJson("PlayerData" + nowSlot.ToString() + ".json");
         }
 
         if (Input.GetKeyDown(KeyCode.I))
@@ -61,7 +55,7 @@ public class DataManager : Singleton<DataManager>
     #endregion
 
     #region player_data_save
-    public void SavePlayerInfo()
+    public override void Save()
     {
         //1. 유닛 찾기
         //2. 유닛이 플레이어 레이어 인지 확인
@@ -104,7 +98,6 @@ public class DataManager : Singleton<DataManager>
 
 
         //5.
-        string tempSavePath = savePath + nowSlot.ToString() + ".json";
         File.WriteAllText(tempSavePath, json);
 
         //6.

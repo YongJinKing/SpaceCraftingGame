@@ -13,7 +13,7 @@ public class CraftBuildingManager : MonoBehaviour
     public UnityEvent ActiveCantBuildThere;
     public Transform turret;
     public Transform[] rectangles;
-    public Transform TurretParent;
+    public Transform StructParent;
 
     public int size;
     public bool craftReady;
@@ -159,7 +159,7 @@ public class CraftBuildingManager : MonoBehaviour
                 return;
             }
             craft.transform.localScale = Vector3.one * size;
-            craft.transform.SetParent(TurretParent);
+            craft.transform.SetParent(StructParent);
 
             cellPos = Vector3Int.zero;
             for (int i = 0; i < size; i++)

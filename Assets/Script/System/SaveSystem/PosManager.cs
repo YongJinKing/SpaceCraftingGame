@@ -4,14 +4,17 @@ using UnityEngine;
 using System.IO;
 using System;
 
-public class PosManager : MonoBehaviour
+public class PosManager : BaseSaveSystem
 {
     public string savePos;
-    public GameObject player;
+    public Player player;
 
-    void Start()
+    protected override void Start()
     {
-        savePos = "PlayerPos" + DataManager.Instance.nowSlot;
+        base.Start();
+        savePos = filePath + "PlayerPos" + DataManager.Instance.nowSlot + ".json";
+        MakeDir(savePos);
+        player = FindObjectOfType<Player>();
         //저장된 위치가 있으면 불러와서 플레이어 위치 설정
         if (File.Exists(savePos))
         {
@@ -21,13 +24,10 @@ public class PosManager : MonoBehaviour
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            SavePos();
-        }
+        
     }
 
-    public void SavePos()
+    public override void Save()
     {
         Vector3 playerPosition = player.transform.position;
         string json = JsonUtility.ToJson(playerPosition);

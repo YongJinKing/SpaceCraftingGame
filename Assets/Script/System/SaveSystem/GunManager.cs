@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using System.IO;
 using UnityEngine;
 
-public class GunManager : Singleton<GunManager>
+public class GunManager : BaseSaveSystem
 {
     public enum GunType
     {
@@ -15,17 +15,19 @@ public class GunManager : Singleton<GunManager>
     }
     public int[] gunIndexes = new int[3];
     public string savePath;
-    void Start()
+    protected override void Start()
     {
-        savePath = "WeaponLevel" + DataManager.Instance.nowSlot;
-        SaveGunIndexs();
+        base.Start();
+        savePath = filePath + "WeaponLevel" + DataManager.Instance.nowSlot + ".json";
+
+        MakeDir(savePath);
         LoadGunIndexes();
     }
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            SaveGunIndexs();
+            Save();
         }
 
         if (Input.GetKeyDown(KeyCode.L))
@@ -33,7 +35,7 @@ public class GunManager : Singleton<GunManager>
             LoadGunIndexes();
         }
     }
-    public void SaveGunIndexs()
+    public override void Save()
     {
         string json = JsonUtility.ToJson(new GunIndexData(gunIndexes));
         File.WriteAllText(savePath, json);
@@ -56,7 +58,7 @@ public class GunManager : Singleton<GunManager>
             return;
         }
         gunIndexes[slot] = newIndex;
-        SaveGunIndexs();
+        Save();
     }
     public int GetGunIndex(int slot)
     {
@@ -84,7 +86,7 @@ public class GunManager : Singleton<GunManager>
             gunIndexes[0] = (int)GunType.Rifle;
             gunIndexes[1] = (int)GunType.Shotgun;
             gunIndexes[2] = (int)GunType.Sniper;
-            SaveGunIndexs();
+            Save();
         }
     }
 

@@ -23,7 +23,8 @@ public class InventorySaveSystem : BaseSaveSystem
     protected override void Start()
     {
         base.Start();
-        path = "InventorySave_" + DataManager.Instance.nowSlot;
+        path = filePath + "InventorySave_" + DataManager.Instance.nowSlot + ".json";
+        MakeDir(path);
         LoadInventorySaved();
     }
 

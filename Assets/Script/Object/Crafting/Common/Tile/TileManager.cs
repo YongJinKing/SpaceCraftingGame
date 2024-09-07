@@ -37,11 +37,10 @@ public class TileManager : Singleton<TileManager>
         craftmanager.WritePlaceInfoEvent.AddListener(RemopvePlace);
 
         componentSaveSystem = FindObjectOfType<ComponentSaveSystem>();
-
+        path = componentSaveSystem.savePath;
         tileMap = transform.GetComponent<Tilemap>();
         availablePlaces = new Dictionary<Vector3Int, Tile>();
-        path = "TileSaveData_" + SceneManager.GetActiveScene().name + DataManager.Instance.nowSlot + ".json";
-        Debug.Log(tileMap.cellBounds.yMin + ", " + tileMap.cellBounds.yMax + ", " + tileMap.cellBounds.xMin + ", " + tileMap.cellBounds.xMax);
+
         for (int y = tileMap.cellBounds.yMin; y < tileMap.cellBounds.yMax; y++)
         {
             for (int x = tileMap.cellBounds.xMin; x < tileMap.cellBounds.xMax; x++)

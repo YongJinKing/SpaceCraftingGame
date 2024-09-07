@@ -15,6 +15,9 @@ public class CraftFactory : Singleton<CraftFactory>
 
     public Transform constructionSite;
     public UnityEvent ActiveNoMoreResources;
+    public Transform ResourcesParent;
+    public Transform StructureParent;
+
     SpaceShip spaceShip;
     void Awake()
     {
@@ -191,7 +194,7 @@ public class CraftFactory : Singleton<CraftFactory>
         
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
-        
+        obj.transform.SetParent(StructureParent);
         return obj;
     }
 
@@ -211,6 +214,7 @@ public class CraftFactory : Singleton<CraftFactory>
         //NaturalResources naturalResources = obj.GetComponent<NaturalResources>();
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
+        obj.transform.SetParent(ResourcesParent);
         return obj;
     }
 
@@ -246,6 +250,7 @@ public class CraftFactory : Singleton<CraftFactory>
 
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
+        obj.transform.SetParent(StructureParent);
 
         return obj;
     }
