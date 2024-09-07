@@ -11,12 +11,19 @@ public class PosManager : MonoBehaviour
 
     void Start()
     {
-  
-        savePos = Path.Combine(Application.persistentDataPath, "PlayerPos.json");
+        savePos = "PlayerPos" + DataManager.Instance.nowSlot;
         //저장된 위치가 있으면 불러와서 플레이어 위치 설정
         if (File.Exists(savePos))
         {
             LoadPosition();
+        }
+    }
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            SavePos();
         }
     }
 

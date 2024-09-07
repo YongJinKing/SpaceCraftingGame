@@ -17,7 +17,7 @@ public class GunManager : Singleton<GunManager>
     public string savePath;
     void Start()
     {
-        savePath = Path.Combine(Application.persistentDataPath, "WeaponLevelData.json");
+        savePath = "WeaponLevel" + DataManager.Instance.nowSlot;
         SaveGunIndexs();
         LoadGunIndexes();
     }
