@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Animations;
 using Unity.VisualScripting;
+using static UnityEditor.PlayerSettings;
 
 public class AI : MonoBehaviour
 {
@@ -53,17 +54,20 @@ public class AI : MonoBehaviour
     ///OList에 노드를 추가하는 함수
     ///</summary>
     ///<returns>true : OList에 추가 성공, false : OList에 추가 실패</returns>
-    private bool AddNodeToOList(Dictionary<Vector3Int, Node> CList, Dictionary<Vector3Int, Node> OList, Vector3Int key, Vector3Int targetCoor, Node parent)
+    private bool AddNodeToOList(Dictionary<Vector3Int, Node> CList, Dictionary<Vector3Int, Node> OList, Vector3Int key, Vector3Int targetCoor, HashSet<Vector3Int> targetCoors, Node parent)
     {
         if (CList.ContainsKey(key))
         {
             return false;
         }
 
-        if(key == targetCoor && !OList.ContainsKey(key))
+        foreach (Vector3 temp in targetCoors)
         {
-            OList.Add(key, new Node(key, 0, 0, parent.NodeID));
-            return false;
+            if (key == temp && !OList.ContainsKey(key))
+            {
+                OList.Add(key, new Node(key, 0, 0, parent.NodeID));
+                return false;
+            }
         }
 
         if (TileManager.Instance.HasTile(key))
@@ -125,7 +129,7 @@ public class AI : MonoBehaviour
             if (computedVal < 0)
                 continue;
 
-            if(!this.PathFinding(this.transform.position, targets[i].transform.position, out Vector2[] path))
+            if (!this.PathFinding(this.transform.position, targets[i].transform.position, out Vector2[] path))
             {
                 continue;
             }
@@ -135,7 +139,7 @@ public class AI : MonoBehaviour
                 max = computedVal;
                 bestTarget = i;
             }
-            else if(Mathf.Approximately(max, computedVal))
+            else if (Mathf.Approximately(max, computedVal))
             {
                 if (((Vector2)targets[bestTarget].transform.position - (Vector2)transform.position).sqrMagnitude
                     - ((Vector2)targets[i].transform.position - (Vector2)transform.position).sqrMagnitude
@@ -146,13 +150,13 @@ public class AI : MonoBehaviour
                 }
             }
         }
-        
-        if(bestTarget < 0)
+
+        if (bestTarget < 0)
         {
             Debug.Log("AI.TargetSelect.if(bestTarget < 0)");
             return null;
         }
-        
+
         return targets[bestTarget].gameObject;
     }
 
@@ -161,68 +165,106 @@ public class AI : MonoBehaviour
         Vector3Int targetCoor = TileManager.Instance.GetTileCoordinates(targetPos);
         Vector3Int startCoor = TileManager.Instance.GetTileCoordinates(startPos);
 
-        if(targetCoor.z < 0 || startCoor.z < 0)
+        if (targetCoor.z < 0 || startCoor.z < 0)
         {
             Debug.Log("AI.PathFinding.Not Available Pos");
             path = null;
             return false;
         }
 
+        HashSet<Vector3Int> targetCoors = new HashSet<Vector3Int>();
+        targetCoors.Add(targetCoor);
+
+        Collider2D[] targetCols = Physics2D.OverlapCircleAll(TileManager.Instance.GetWorldPosCenterOfCell((Vector2Int)targetCoor), 1.0f);
+        Collider2D targetCol = null;
+
+        foreach (Collider2D col in targetCols) 
+        {
+            if((owner.targetMask & (1 << col.gameObject.layer)) > 0)
+            {
+                targetCol = col;
+                Debug.Log(targetCol.gameObject.name);
+                break;
+            }
+        }
+
+        if (targetCol != null)
+        {
+            Vector3Int minCoor = TileManager.Instance.GetTileCoordinates(targetCol.bounds.center - targetCol.bounds.extents);
+            Vector3Int maxCoor = TileManager.Instance.GetTileCoordinates(targetCol.bounds.center + targetCol.bounds.extents);
+
+            //타일 탐색
+            for (int x = minCoor.x; x <= maxCoor.x; ++x)
+            {
+                for (int y = minCoor.y; y <= maxCoor.y; y++)
+                {
+                    Vector3Int tilePosition = new Vector3Int(x, y, 0);
+
+                    if (TileManager.Instance.HasTile(tilePosition) && !targetCoors.Contains(tilePosition))
+                    {
+                        targetCoors.Add(tilePosition);
+                    }
+                }
+            }
+        }
+
         //use A* Algorisim
         //http://www.gisdeveloper.co.kr/?p=3897
         //휴리스틱 함수는 맨하탄 디스턴스
         //H(x) = |target.x - node.x| + |target.y - node.y|
-        Dictionary<Vector3Int, Node>OList = new Dictionary<Vector3Int, Node>();
-        Dictionary<Vector3Int, Node>CList = new Dictionary<Vector3Int, Node>();
+        Dictionary<Vector3Int, Node> OList = new Dictionary<Vector3Int, Node>();
+        Dictionary<Vector3Int, Node> CList = new Dictionary<Vector3Int, Node>();
 
         CList.Add(startCoor, new Node(startCoor, 0, 0, startCoor));
 
+        bool isFind = false;
         //repeat 10 times
         for (int i = 0; i < 10; ++i)
         {
+
             //Add Node to Open Node List
-            foreach(Node node in CList.Values)
+            foreach (Node node in CList.Values)
             {
                 Vector3Int temp;
-                bool[] arrows = new bool[4]{ false, false, false, false};
+                bool[] arrows = new bool[4] { false, false, false, false };
 
                 //Add Right Angle nodes
                 temp = node.NodeID + Vector3Int.up;
-                arrows[0] = AddNodeToOList(CList, OList, temp, targetCoor, node);
+                arrows[0] = AddNodeToOList(CList, OList, temp, targetCoor, targetCoors, node);
 
                 temp = node.NodeID + Vector3Int.right;
-                arrows[1] = AddNodeToOList(CList, OList, temp, targetCoor, node);
+                arrows[1] = AddNodeToOList(CList, OList, temp, targetCoor, targetCoors, node);
 
                 temp = node.NodeID + Vector3Int.down;
-                arrows[2] = AddNodeToOList(CList, OList, temp, targetCoor, node);
+                arrows[2] = AddNodeToOList(CList, OList, temp, targetCoor, targetCoors, node);
 
                 temp = node.NodeID + Vector3Int.left;
-                arrows[3] = AddNodeToOList(CList, OList, temp, targetCoor, node);
+                arrows[3] = AddNodeToOList(CList, OList, temp, targetCoor, targetCoors, node);
 
                 //for add diagonal
                 //대각선 추가
                 if (arrows[0] && arrows[1])
                 {
                     temp = node.NodeID + Vector3Int.up + Vector3Int.right;
-                    AddNodeToOList(CList, OList, temp, targetCoor, node);
+                    AddNodeToOList(CList, OList, temp, targetCoor, targetCoors, node);
                 }
 
                 if (arrows[1] && arrows[2])
                 {
                     temp = node.NodeID + Vector3Int.down + Vector3Int.right;
-                    AddNodeToOList(CList, OList, temp, targetCoor, node);
+                    AddNodeToOList(CList, OList, temp, targetCoor, targetCoors, node);
                 }
 
                 if (arrows[2] && arrows[3])
                 {
                     temp = node.NodeID + Vector3Int.down + Vector3Int.left;
-                    AddNodeToOList(CList, OList, temp, targetCoor, node);
+                    AddNodeToOList(CList, OList, temp, targetCoor, targetCoors, node);
                 }
 
                 if (arrows[3] && arrows[0])
                 {
                     temp = node.NodeID + Vector3Int.up + Vector3Int.left;
-                    AddNodeToOList(CList, OList, temp, targetCoor, node);
+                    AddNodeToOList(CList, OList, temp, targetCoor, targetCoors, node);
                 }
             }
 
@@ -244,7 +286,7 @@ public class AI : MonoBehaviour
             }
 
             //Remove node in OList, the nodes are inserted in CList
-            foreach(Vector3Int nodeID in CList.Keys)
+            foreach (Vector3Int nodeID in CList.Keys)
             {
                 if (OList.ContainsKey(nodeID))
                 {
@@ -253,13 +295,22 @@ public class AI : MonoBehaviour
             }
 
             //find Path
-            if (CList.ContainsKey(targetCoor))
+            foreach (Vector3Int coor in targetCoors)
+            {
+                if (CList.ContainsKey(coor))
+                {
+                    isFind = true;
+                    targetCoor = coor;
+                    break;
+                }
+            }
+            if (isFind)
                 break;
         }
 
 
         //if cannot find Path
-        if (!CList.ContainsKey(targetCoor))
+        if (!isFind)
         {
             /*
             Debug.Log("AI.PathFinding.Cannot Find Path");
@@ -299,7 +350,7 @@ public class AI : MonoBehaviour
             //for now, save coordinate point, because world pos saved in coordinate
             //later, need to translate coordinate pos to world pos
             //20 times repeat for safety
-            for(int i = 0; i < 20 && temp != startCoor; ++i)
+            for (int i = 0; i < 20 && temp != startCoor; ++i)
             {
                 temp = CList[temp].ParentNode;
                 reversePath.Add(TileManager.Instance.GetWorldPosCenterOfCell((Vector2Int)temp));
@@ -359,7 +410,7 @@ public class AI : MonoBehaviour
             OList.Clear();
             return true;
         }
-        
+
     }
     public Action SelectAction(Action[] actions)
     {
@@ -400,7 +451,7 @@ public class AI : MonoBehaviour
         {
             return null;
         }
-        
+
     }
     #endregion
     #endregion
