@@ -1,16 +1,22 @@
+using System;
 using UnityEngine;
 
 public class PlayerFactory
 {
-    public GameObject CreatePlayer(int index)
+    public GameObject Create(int index)
     {
-        GameObject playerObject = new GameObject(index.ToString());
-        
         PlayerDataStruct playerData = default;
         //여기에서 Json으로 데이터 불러오기
         //if(index == ~~~)
         //playerData = ~~~~;
-        
+
+        return Create(playerData);
+    }
+
+    public GameObject Create(PlayerDataStruct data)
+    {
+        GameObject playerObject = new GameObject(data.Index.ToString());
+
         Rigidbody2D rb = playerObject.AddComponent<Rigidbody2D>();
         rb.mass = 100;
         rb.gravityScale = 0;
@@ -20,15 +26,14 @@ public class PlayerFactory
         collider.radius = 0.5f;
 
         Player player = playerObject.AddComponent<Player>();
-        player.MaxHP = playerData.MaxHP;
-        player.Priority = playerData.Priority;
-        player.moveSpeed = playerData.MoveSpeed;
-        player.ATK = playerData.ATK;
-        player.ATKSpeed = playerData.ATKSpeed;
-
+        player.MaxHP = data.MaxHP;
+        player.Priority = data.Priority;
+        player.moveSpeed = data.MoveSpeed;
+        player.ATK = data.ATK;
+        player.ATKSpeed = data.ATKSpeed;
 
         //GameObject model = GetModel(playerData.ModelPrefabIndex);
-        GameObject model = Resources.Load<GameObject>("SpineToUnity/Charactor/SpaceHuman");
+        GameObject model = GameObject.Instantiate(Resources.Load<GameObject>("SpineToUnity/Charactor/SpaceHuman"));
         model.transform.SetParent(playerObject.transform, false);
 
         player.graphicTransform = model.transform;

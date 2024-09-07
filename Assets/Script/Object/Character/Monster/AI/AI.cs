@@ -183,7 +183,7 @@ public class AI : MonoBehaviour
             if((owner.targetMask & (1 << col.gameObject.layer)) > 0)
             {
                 targetCol = col;
-                Debug.Log(targetCol.gameObject.name);
+                //Debug.Log(targetCol.gameObject.name);
                 break;
             }
         }

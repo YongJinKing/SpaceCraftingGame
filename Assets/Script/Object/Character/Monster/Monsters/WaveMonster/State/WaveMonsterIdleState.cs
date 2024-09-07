@@ -17,6 +17,8 @@ public class WaveMonsterIdleState : MonsterState
     #endregion
     #region Events
     public UnityEvent<Vector2> moveToDirEvent = new UnityEvent<Vector2>();
+    public UnityEvent<Vector2[]> moveToPathEvent = new UnityEvent<Vector2[]>();
+    public UnityEvent stopMoveEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -33,6 +35,8 @@ public class WaveMonsterIdleState : MonsterState
         if(movement != null)
         {
             moveToDirEvent.AddListener(movement.OnMoveToDir);
+            stopMoveEvent.AddListener(movement.OnStop);
+            moveToPathEvent.AddListener(movement.OnMoveToPath);
         }
     }
     protected override void RemoveListeners()
@@ -41,6 +45,8 @@ public class WaveMonsterIdleState : MonsterState
         if (movement != null)
         {
             moveToDirEvent?.RemoveListener(movement.OnMoveToDir);
+            stopMoveEvent.RemoveAllListeners();
+            moveToPathEvent.RemoveAllListeners();
         }
     }
     #endregion
@@ -54,6 +60,7 @@ public class WaveMonsterIdleState : MonsterState
     public override void Exit()
     {
         owner.animator.SetBool("B_Move", false);
+        stopMoveEvent?.Invoke();
         StopAllCoroutines();
         base.Exit();
     }
@@ -73,10 +80,26 @@ public class WaveMonsterIdleState : MonsterState
         //Must be Change Later
 
         owner.animator.SetBool("B_Move", true);
+        Vector2 dir = Vector2.zero;
+        Vector2 temp = Vector2.zero;
         while (true) 
         {
-            moveToDirEvent?.Invoke(Vector3.zero - transform.position);
-            yield return null;
+            dir = Vector2.zero - (Vector2)transform.position;
+            dir.Normalize();
+
+            temp = (Vector2)transform.position + (dir * 6.0f);
+
+            if (owner.ai.PathFinding(transform.position, temp, out Vector2[] path))
+            {
+                moveToPathEvent?.Invoke(path);
+                yield return new WaitForSeconds(1.1f);
+            }
+            else
+            {
+                moveToDirEvent?.Invoke(dir);
+                yield return new WaitForSeconds(1.1f);
+            }
+           
         }
         //owner.animator.SetBool("B_Move", false);
     }
