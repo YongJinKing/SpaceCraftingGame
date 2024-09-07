@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     #region ForTest
     [SerializeField] protected GameObject WaveMonsterPrefab;
     [SerializeField] protected int monsterCount = 1;
-    public Vector2 SpawnPoint = new Vector2(30, 0);
+    public float SpawnOffset = 30.0f;
     #endregion
 
     #region Properties
@@ -60,9 +60,13 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
+            float angle = Random.Range(0.0f, 360.0f);
+
             //일단 임시로 한군데에서 스폰
             GameObject temp = Instantiate(WaveMonsterPrefab);
-            temp.transform.position = new Vector3(SpawnPoint.x, SpawnPoint.y, -0.1f);
+
+
+            temp.transform.position = new Vector3(SpawnOffset * Mathf.Cos(angle * Mathf.Deg2Rad), SpawnOffset * Mathf.Sin(angle * Mathf.Deg2Rad), -0.1f);
             temp.SetActive(true);
 
             yield return new WaitForSeconds(0.5f);

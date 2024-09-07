@@ -1,15 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WeaponSlot : MonoBehaviour
 {
     public Image image;
-    public Weapon weapon;
+    public GameObject selectImage;
 
-    public void SetWeapon(int index)
+    public void Select()
     {
+        selectImage.SetActive(true);
+    }
 
+    public void UnSelect()
+    {
+        selectImage.SetActive(false);
+    }
+
+    private void Start()
+    {
+        selectImage.SetActive(false);
     }
 }

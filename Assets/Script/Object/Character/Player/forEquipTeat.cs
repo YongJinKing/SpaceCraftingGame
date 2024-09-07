@@ -14,6 +14,7 @@ public class forEquipTeat : MonoBehaviour
     public Weapon PickAxe;
 
     public UnityEvent<Equipment> testEvent = new UnityEvent<Equipment>();
+    public UnityEvent<int> selectSlotEvent = new UnityEvent<int>();
 
     private void Start()
     {
