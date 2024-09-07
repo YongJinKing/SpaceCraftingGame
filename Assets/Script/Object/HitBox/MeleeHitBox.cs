@@ -99,7 +99,7 @@ public class MeleeHitBox : HitBox
                     //Debug
                     //Debug.Log(tempcol[i].gameObject.name);
 
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, tempcol[i].bounds.center, 10.0f, targetMask);
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, tempcol[i].bounds.center, 1.0f, targetMask);
                     if(hit == default(RaycastHit2D))
                     {
                         hit.point = transform.position;
