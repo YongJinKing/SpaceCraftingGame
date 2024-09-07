@@ -12,8 +12,7 @@ public class PosManager : BaseSaveSystem
     protected override void Start()
     {
         base.Start();
-        savePos = filePath + "PlayerPos" + DataManager.Instance.nowSlot + ".json";
-        MakeDir(savePos);
+        savePos = Path.Combine(filePath, "PlayerPos_" + DataManager.Instance.nowSlot + ".json");
         player = FindObjectOfType<Player>();
         //저장된 위치가 있으면 불러와서 플레이어 위치 설정
         if (File.Exists(savePos))
@@ -31,7 +30,7 @@ public class PosManager : BaseSaveSystem
     {
         Vector3 playerPosition = player.transform.position;
         string json = JsonUtility.ToJson(playerPosition);
-        File.WriteAllText(savePos + DataManager.Instance.nowSlot, json);
+        File.WriteAllText(savePos, json);
         Debug.Log("현재 위치 저장: " + savePos);
     }
 

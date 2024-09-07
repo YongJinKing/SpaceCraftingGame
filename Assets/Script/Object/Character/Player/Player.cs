@@ -118,5 +118,22 @@ public class Player : Unit
     #endregion
 
     #region MonoBehaviour
+
+    protected override void Start()
+    {
+        base.Start();
+
+        PlayerDataStruct loadedPD = DataManager.Instance.LoadJson(DataManager.Instance.tempSavePath);
+
+        if (loadedPD.Index == -1) return;
+
+        this[EStat.MaxHP] = loadedPD.MaxHP;
+        this[EStat.HP] = loadedPD.HP;
+        this[EStat.MoveSpeed] = loadedPD.MoveSpeed;
+        this[EStat.ATK] = loadedPD.ATK;
+        this[EStat.ATKSpeed] = loadedPD .ATKSpeed;
+        this[EStat.Priority] = loadedPD .Priority;
+
+    }
     #endregion
 }

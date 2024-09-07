@@ -73,7 +73,7 @@ public class DataViewUI : MonoBehaviour
     void UpdateStatUI()
     {
         tmp1.text = "MaxHP: " + DataManager.Instance.pd[0].MaxHP.ToString();
-        tmp2.text = "MoveSpeed: " + DataManager.Instance.pd[0].moveSpeed.ToString();
+        tmp2.text = "MoveSpeed: " + DataManager.Instance.pd[0].MoveSpeed.ToString();
         tmp3.text = "ATK: " + DataManager.Instance.pd[0].ATK.ToString();
         tmp4.text = "ATKSpeed: " + DataManager.Instance.pd[0].ATKSpeed.ToString();
         tmp5.text = "Priority: " + DataManager.Instance.pd[0].Priority.ToString();

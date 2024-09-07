@@ -22,7 +22,7 @@ public class PlayerFactory
         Player player = playerObject.AddComponent<Player>();
         player.MaxHP = playerData.MaxHP;
         player.Priority = playerData.Priority;
-        player.moveSpeed = playerData.moveSpeed;
+        player.moveSpeed = playerData.MoveSpeed;
         player.ATK = playerData.ATK;
         player.ATKSpeed = playerData.ATKSpeed;
 

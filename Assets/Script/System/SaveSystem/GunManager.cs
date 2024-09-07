@@ -18,9 +18,8 @@ public class GunManager : BaseSaveSystem
     protected override void Start()
     {
         base.Start();
-        savePath = filePath + "WeaponLevel" + DataManager.Instance.nowSlot + ".json";
+        savePath = Path.Combine(filePath, "WeaponLevel_" + DataManager.Instance.nowSlot + ".json");
 
-        MakeDir(savePath);
         LoadGunIndexes();
     }
     public void Update()

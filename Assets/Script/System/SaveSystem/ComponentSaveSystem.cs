@@ -82,15 +82,19 @@ public class ComponentSaveSystem : BaseSaveSystem
     // Start is called before the first frame update
     private void Awake()
     {
-        
+        filePath = Application.persistentDataPath + "/Save/" + DataManager.Instance.nowSlot.ToString();
+        MakeDir(filePath);
+
+        savePath = Path.Combine(filePath, "TileSaveData_" + DataManager.Instance.nowSlot + ".json");
     }
 
     protected override void Start()
     {
-        base.Start();
-        savePath = filePath + "TileSaveData_" + SceneManager.GetActiveScene().name + "_" +DataManager.Instance.nowSlot + ".json";
+        //base.Start();
+        totalSaveManager = this.GetComponentInParent<TotalSaveManager>();
+        totalSaveManager.saves.Add(this);
+        //savePath = Path.Combine(filePath, "TileSaveData_" + DataManager.Instance.nowSlot + ".json");
 
-        MakeDir(savePath);
     }
 
     // Update is called once per frame

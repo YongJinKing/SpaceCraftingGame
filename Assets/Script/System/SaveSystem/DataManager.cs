@@ -11,7 +11,7 @@ using System.Linq;
 public class DataManager : BaseSaveSystem
 {
     #region variable
-    public string savePath = "PlayerData";
+    public string savePath = "PlayerData_";
     public int nowSlot;
     public LayerMask playerLayerMask ;
     /// <summary>
@@ -20,8 +20,10 @@ public class DataManager : BaseSaveSystem
     public PlayerDataStruct[] pd = new PlayerDataStruct[1];
     public Player NowPlayer;
 
+    public Player LoadedPlayer;
+
     public static DataManager Instance;
-    string tempSavePath;
+    public string tempSavePath;
     #endregion
 
     #region start
@@ -32,23 +34,23 @@ public class DataManager : BaseSaveSystem
     protected override void Start()
     {
         base.Start();
-        tempSavePath = filePath + savePath + nowSlot.ToString() + ".json";
+        tempSavePath = Path.Combine(filePath, savePath + nowSlot.ToString() + ".json");
 
-        MakeDir(tempSavePath);
+        //LoadJson(tempSavePath);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            LoadJson("PlayerData" + nowSlot.ToString() + ".json");
+            //LoadJson("PlayerData" + nowSlot.ToString() + ".json");
         }
 
         if (Input.GetKeyDown(KeyCode.I))
         {
             for (int i = 0; i < pd.Length; ++i)
             {
-                Debug.Log($"{pd[i].Index}, {pd[i].MaxHP}, {pd[i].moveSpeed}, {pd[i].ATK} {pd[i].ATKSpeed}");
+                //Debug.Log($"{pd[i].Index}, {pd[i].MaxHP}, {pd[i].moveSpeed}, {pd[i].ATK} {pd[i].ATKSpeed}");
             }
         }
     }
@@ -82,7 +84,8 @@ public class DataManager : BaseSaveSystem
                     Player tempPl = player.GetComponent<Player>();
 
                     pd[0].MaxHP = tempPl.GetRawStat(EStat.MaxHP);
-                    pd[0].moveSpeed = tempPl.GetRawStat(EStat.MoveSpeed);
+                    pd[0].HP = tempPl.GetRawStat(EStat.HP);
+                    pd[0].MoveSpeed = tempPl.GetRawStat(EStat.MoveSpeed);
                     pd[0].ATK = tempPl.GetRawStat(EStat.ATK);
                     pd[0].ATKSpeed = tempPl.GetRawStat(EStat.ATKSpeed);
                     pd[0].Priority = tempPl.GetRawStat(EStat.Priority);
@@ -107,7 +110,7 @@ public class DataManager : BaseSaveSystem
     #endregion
 
     #region player_data_load
-    public void LoadJson(string path) // LoadJson(string path)
+    public PlayerDataStruct LoadJson(string path) // LoadJson(string path)
     {
         Debug.Log("LoadJson called");
 
@@ -119,11 +122,22 @@ public class DataManager : BaseSaveSystem
 
             Dictionary<int, PlayerDataStruct> playerdataDic = new Dictionary<int, PlayerDataStruct>();
             playerdataDic = pd.ToDictionary(x => x.Index);
-            
+
+            return playerdataDic[0];
+            /*LoadedPlayer[EStat.MaxHP] = playerdataDic[0].MaxHP;
+            LoadedPlayer[EStat.HP] = playerdataDic[0].HP;
+            LoadedPlayer[EStat.MoveSpeed] = playerdataDic[0].MoveSpeed;
+            LoadedPlayer[EStat.ATK] = playerdataDic[0].ATK;
+            LoadedPlayer[EStat.ATKSpeed] = playerdataDic[0].ATKSpeed;
+            LoadedPlayer[EStat.Priority] = playerdataDic[0].Priority;*/
         }
         else
         {
             Debug.Log("¾øÀ½");
+            PlayerDataStruct pd = new PlayerDataStruct();
+
+            pd.Index = -1;
+            return pd;
         }
         //NowPlayer = JsonUtility.FromJson<Player>(data);
     }
