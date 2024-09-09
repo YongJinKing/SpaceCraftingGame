@@ -17,6 +17,7 @@ public class RabbitBossSuperJumpAttackAction : BossAction
     public float jumpHeight = 20f; // 토끼가 점프하는 높이
     public float delayBeforeFall = 2f; // 토끼가 떨어지기 전에 대기하는 시간
     public float gravity = -9.8f; // 중력 가속도
+    [Header("떨어지는 속도"), Tooltip("얼마나 빠르게 떨어질 지 정할 변수"), Space(.5f)]public float fallPower;
     #endregion
     #region Events
     #endregion
@@ -80,7 +81,7 @@ public class RabbitBossSuperJumpAttackAction : BossAction
         verticalSpeed = 0f; // 속도 초기화
         while (rabbit.position.y > targetPos.y)
         {
-            verticalSpeed += gravity * Time.deltaTime * 2; // 중력 가속도 적용
+            verticalSpeed += gravity * Time.deltaTime * fallPower; // 중력 가속도 적용
             rabbit.position = new Vector2(rabbit.position.x, rabbit.position.y + verticalSpeed * Time.deltaTime);
             yield return null;
         }

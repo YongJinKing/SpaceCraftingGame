@@ -12,7 +12,7 @@ public class SPAttackAction : BossAction
     [SerializeField] protected List<GameObject> mortalBoxesList = new List<GameObject>();
     [SerializeField] protected int idx = -1;
     [SerializeField] protected float moveSpeed = 4f;
-    [SerializeField] protected int riceCost = 5;
+    [Header("패턴 실행에 필요한 떡 양"), Space(.5f)][SerializeField] protected int riceCost = 5;
     [SerializeField] protected bool chk = false;
     [SerializeField] protected MortalBox mortalBox;
     #endregion

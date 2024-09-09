@@ -6,7 +6,7 @@ public class SlowGround : MonoBehaviour
 {
     public LayerMask layerMask;
     float originSpeed;
-    float slowSpeed;
+    [Header("슬로우 강도") , Tooltip("0.x로 주면 됨"),Space(.5f)] public float slowSpeed;
     GameObject player;
     bool slowed;
     // Start is called before the first frame update

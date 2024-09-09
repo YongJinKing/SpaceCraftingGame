@@ -6,8 +6,8 @@ public class RabbitBossSpinningAttackAction : BossAction
 {
     #region Properties
     #region Private
-    [SerializeField] float moveSpeed = 1f;
-    float moveTimer;
+    [Header("이동 속도"), Space(.5f)][SerializeField] float moveSpeed = 1f;
+    [Header("회전 시간"), Tooltip("몇초 동안 회전할지, 히트박스의 Duration과 맞춰야함"), Space(.5f)] [SerializeField] float moveTimer;
     //Transform boss;
     Vector2 targetPos;
     #endregion
@@ -41,7 +41,6 @@ public class RabbitBossSpinningAttackAction : BossAction
 
     IEnumerator SpinningAttack()
     {
-        Debug.Log("허;전 사지ㅏ각가가각");
         //yield return 
             StartCoroutine(HitBoxOn(transform.position));
         
@@ -69,7 +68,6 @@ public class RabbitBossSpinningAttackAction : BossAction
     protected override void ActionEnd()
     {
         base.ActionEnd();
-        Debug.Log("허;ㅣ전종ㄹ룡로로로");
         ownerAnim.SetTrigger("SpinningAttackEnd");
         StopAllCoroutines();
     }
