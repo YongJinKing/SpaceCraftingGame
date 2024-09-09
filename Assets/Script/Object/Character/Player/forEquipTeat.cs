@@ -49,12 +49,15 @@ public class forEquipTeat : MonoBehaviour
         {
             case 1:
                 testEvent?.Invoke(AR);
+                selectSlotEvent?.Invoke(0);
                 break;
             case 2:
                 testEvent?.Invoke(SG);
+                selectSlotEvent?.Invoke(1);
                 break;
             case 3:
                 testEvent?.Invoke(SR);
+                selectSlotEvent?.Invoke(2);
                 break;
         }
     }
@@ -64,9 +67,11 @@ public class forEquipTeat : MonoBehaviour
         {
             case 1:
                 testEvent?.Invoke(PickAxe);
+                selectSlotEvent?.Invoke(0);
                 break;
             case 2:
                 testEvent?.Invoke(Hammer);
+                selectSlotEvent?.Invoke(1); 
                 break;
             case 3:
                 break;
