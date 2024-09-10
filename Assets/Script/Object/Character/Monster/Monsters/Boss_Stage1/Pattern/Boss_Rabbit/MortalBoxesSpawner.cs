@@ -33,4 +33,13 @@ public class MortalBoxesSpawner : MonoBehaviour
         mortalBoxes[idxs[2]].SpawnRabbitWorker();
     }
     
+    public void StopAllMortals()
+    {
+        foreach(MortalBox mb in mortalBoxes)
+        {
+            if(mb.rabbitWorker.activeSelf) mb.rabbitWorker.GetComponent<RabbitWorker>().TakeDamage(10000);
+            mb.endGame = true;
+            mb.StopProducingCake();
+        }
+    }
 }

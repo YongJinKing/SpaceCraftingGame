@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Boss : Monster
 {
@@ -14,6 +15,8 @@ public class Boss : Monster
     public Transform player; // 임시 변수, 플레이어 위치에 따라 보스가 좌우를 제대로 바라보도록 하려함
     public BossDirMoveAction bossDirMove;
     public Transform bossImg;
+
+    [Header("보스 보상 박스 오브젝트"), Space(.5f)] public GameObject rewardsBox;
 
     public Action[] specialActions;
     #endregion

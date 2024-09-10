@@ -10,6 +10,7 @@ public class BossDeadState : BossState
     #region Protected
     #endregion
     #region Public
+    
     #endregion
     #region Events
     #endregion
@@ -53,6 +54,8 @@ public class BossDeadState : BossState
     {
         owner.animator.SetTrigger("Dead");
         yield return new WaitForSeconds(3f);
+        // 여기서 뭔가를 함
+        owner.rewardsBox.SetActive(true);
         Destroy(owner.gameObject);
     }
     #endregion

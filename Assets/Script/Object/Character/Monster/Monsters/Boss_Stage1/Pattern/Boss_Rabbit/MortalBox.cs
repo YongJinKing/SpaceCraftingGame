@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 public class MortalBox : MonoBehaviour
 {
-    [SerializeField] GameObject rabbitWorker;
+    public GameObject rabbitWorker;
     [SerializeField] int riceCakes;
     [SerializeField] int maxCakes;
     [SerializeField] float countSpeed = 2f;
@@ -17,12 +17,15 @@ public class MortalBox : MonoBehaviour
 
     public ParticleSystem riceRainVFX;
     public Animator anim;
-    public UnityEvent<float> changeSlider; 
+    public UnityEvent<float> changeSlider;
+
+    public bool endGame;
 
     Coroutine producing;
     // Start is called before the first frame update
     void Start()
     {
+        endGame = false;
         riceCakes = 0;
         spawnTime = Random.Range(10f, 20f);
     }
@@ -30,6 +33,8 @@ public class MortalBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (endGame) return;
+
         if (!rabbitWorker.activeSelf)
         {
             timer += Time.deltaTime;

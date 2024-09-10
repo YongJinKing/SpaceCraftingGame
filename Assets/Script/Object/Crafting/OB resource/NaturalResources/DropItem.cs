@@ -27,14 +27,14 @@ public class DropItem : MonoBehaviour
 
     public Vector2 shadowSize;
 
-    void Start()
+    protected virtual void Start()
     {
         currentheight = Random.Range(yForce - 1, yForce);
         maxHeight = currentheight;
         Initialize(new Vector2(Random.Range(-xForce, xForce), Random.Range(-xForce, xForce)));
     }
 
-    void Update()
+    protected virtual void Update()
     {
 
         if (!isGrounded)
@@ -52,7 +52,7 @@ public class DropItem : MonoBehaviour
         }
     }
 
-    void Initialize(Vector2 _direction)
+    protected void Initialize(Vector2 _direction)
     {
         isGrounded = false;
         maxHeight /= 1.5f;
@@ -61,7 +61,7 @@ public class DropItem : MonoBehaviour
         currentBounce++;
     }
 
-    void CheckGroundHit()
+    protected void CheckGroundHit()
     {
         if (sprite.position.y < shadow.position.y)
         {
