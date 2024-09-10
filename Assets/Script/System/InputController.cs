@@ -9,6 +9,7 @@ public class InputController : Singleton<InputController>
     #region Protected
     #endregion
     #region Public
+    public bool canMove;
     #endregion
     #region Events
     public UnityEvent<Vector2> moveEvent = new UnityEvent<Vector2>();
@@ -46,6 +47,8 @@ public class InputController : Singleton<InputController>
     #region MonoBehaviour
     void Update()
     {
+        if (!canMove) return;
+
         Vector2 mousePos = GetMousePoint();
 
         moveEvent?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
@@ -128,13 +131,12 @@ public class InputController : Singleton<InputController>
 
     #endregion
 
-    /*
+    
     private void Start()
     {
-        //For Debug
-        moveEvent.AddListener(Fortest);
+        canMove = true;
     }
-
+    /*
     public void Fortest(Vector2 vec)
     {
         Debug.Log($"{Input.GetAxisRaw("Horizontal")}, {Input.GetAxisRaw("Vertical")}");

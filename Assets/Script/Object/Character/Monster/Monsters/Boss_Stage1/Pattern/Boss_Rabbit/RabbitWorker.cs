@@ -52,7 +52,7 @@ public class RabbitWorker : MonoBehaviour, IDamage
             rabbitCollider.enabled = false;
             animator.SetTrigger("Dead");
             mortalBox.StopProducingCake();
-            StopCoroutine(working);
+            if(working != null) StopCoroutine(working);
             working = null;
         }
     }

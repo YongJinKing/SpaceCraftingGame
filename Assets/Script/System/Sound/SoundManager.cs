@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class SoundManager : Singleton<SoundManager>
+public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioSource bgmPlayer = null;
     [SerializeField] List<AudioSource> sfxPlayer = null;
 
     public SoundData soundData;
-    
+    public static SoundManager Instance;
 
     float volume = 1f;
     private void Awake()
     {
-        Initialize();
-        DontDestroyOnLoad(this.gameObject);
+        Instance = this;
         volume = 1f;
     }
 

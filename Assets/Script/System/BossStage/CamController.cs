@@ -47,6 +47,7 @@ public class CamController : MonoBehaviour
 
     CinemachineBasicMultiChannelPerlin perlin;
     Coroutine camShake;
+    InputController controller;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,7 @@ public class CamController : MonoBehaviour
         CVC = Cam.GetComponent<CinemachineVirtualCamera>();
         CVC.m_Lens.OrthographicSize = zoomOutOrthoSize;
         perlin = CVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-
+        controller = FindObjectOfType<InputController>();
         StartCoroutine(BossStage1Direction());
     }
     void MoveToTarget(Vector3 StartPos, Vector3 EndPos)
@@ -76,6 +77,7 @@ public class CamController : MonoBehaviour
     IEnumerator BossStage1Direction()
     {
         FD.StartFadeIn(2f);
+        controller.canMove = false;
         yield return StartCoroutine(PlayerLandingToStage());
         yield return StartCoroutine(FocusBoss());
         yield return StartCoroutine(FocusPlayer());

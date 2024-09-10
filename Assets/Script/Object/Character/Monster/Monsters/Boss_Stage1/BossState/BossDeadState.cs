@@ -36,6 +36,7 @@ public class BossDeadState : BossState
     public override void Enter()
     {
         base.Enter();
+        owner.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         StartCoroutine(BossDead());
     }
     public override void Exit()

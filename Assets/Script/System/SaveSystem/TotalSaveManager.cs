@@ -7,7 +7,7 @@ public class TotalSaveManager : MonoBehaviour
 {
     public List<ISave> saves = new List<ISave>();
 
-    void SaveAll()
+    public void SaveAll()
     {
         foreach(ISave save in saves)
         {

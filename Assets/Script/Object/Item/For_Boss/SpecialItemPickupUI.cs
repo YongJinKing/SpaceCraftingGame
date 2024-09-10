@@ -16,8 +16,10 @@ public class SpecialItemPickupUI : MonoBehaviour
     public Text itemDescText; // 패널에 적용할 아이템 설명 텍스트
     public Button itemPickupBT; // 패널에 붙일 버튼
 
+    InputController inputController;
     private void Start()
     {
+        inputController = FindObjectOfType<InputController>();
         // UI 패널을 처음에 숨기기 위해 설정
         uiPanel.anchoredPosition = startPosition;
         itemPickupBT.interactable = false;
@@ -36,6 +38,7 @@ public class SpecialItemPickupUI : MonoBehaviour
     void ShowPanel()
     {
         // 패널을 보여주기 위한 애니메이션 시작
+        inputController.canMove = false;
         StartCoroutine(AnimatePanel());
     }
 
@@ -67,6 +70,7 @@ public class SpecialItemPickupUI : MonoBehaviour
 
     public void PressSpecialItemPannelButton()
     {
+        inputController.canMove = true;
         itemPickupBT.interactable = false;
         canvasGroup.alpha = 0f;
         uiPanel.anchoredPosition = startPosition;
