@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -12,6 +13,19 @@ public class SoundManager : MonoBehaviour
     public SoundData soundData;
     public static SoundManager Instance;
 
+    public AudioMixer audioMixer;
+    [SerializeField] private Slider BGMSlider;	// 볼륨을 조절할 Slider
+    [SerializeField] private Toggle BGMMute;	// Mute를 On / Off할 Toggle
+
+    [SerializeField] private Slider SFXSlider;	// 볼륨을 조절할 Slider
+    [SerializeField] private Toggle SFXMute;	// Mute를 On / Off할 Toggle
+
+    private bool isBGMMuted = false;
+    private bool isSFXMuted = false;
+
+    float bgmVolume;
+    float sfxVolume;
+
     float volume = 1f;
     private void Awake()
     {
@@ -19,10 +33,80 @@ public class SoundManager : MonoBehaviour
         volume = 1f;
     }
 
-    public void PlayBGM(AudioClip clip, float volumeMultiplier = 0.1f) // soundData.bgm[(int)BGM.BOSS] << 브금은 이렇게 쓰면 될 듯
+    private void Start()
+    {
+        BGMSlider.onValueChanged.AddListener(SetBGMVolume);
+        BGMMute.onValueChanged.AddListener(ToggleBGMMute);
+        SFXSlider.onValueChanged.AddListener(SetSFXVolume);
+        SFXMute.onValueChanged.AddListener(ToggleSFXMute);
+    }
+
+    public float GetBGMVolume()
+    {
+        return bgmVolume;
+    }
+
+    public float GetSFXVolume()
+    {
+        return sfxVolume;
+    }
+
+    // 배경음 볼륨 설정
+    public void SetBGMVolume(float _volume)
+    {
+        bgmVolume = _volume;  // 슬라이더 값을 변수에 저장
+        if (!isBGMMuted)  // 뮤트 상태가 아닐 때만 볼륨 조정
+        {
+            audioMixer.SetFloat("BGMVolume", Mathf.Log10(bgmVolume) * 20);
+        }
+    }
+
+    // 배경음 뮤트 토글
+    public void ToggleBGMMute(bool toggle)
+    {
+        isBGMMuted = toggle;
+        if (isBGMMuted)
+        {
+            audioMixer.SetFloat("BGMVolume", -80f);  // 음소거
+        }
+        else
+        {
+            // 슬라이더의 현재 값을 사용하여 볼륨 복원
+            audioMixer.SetFloat("BGMVolume", Mathf.Log10(BGMSlider.value) * 20);
+        }
+    }
+
+    // 효과음 볼륨 설정
+    public void SetSFXVolume(float _volume)
+    {
+        sfxVolume = _volume;  // 슬라이더 값을 변수에 저장
+        if (!isSFXMuted)  // 뮤트 상태가 아닐 때만 볼륨 조정
+        {
+            audioMixer.SetFloat("SFXVolume", Mathf.Log10(sfxVolume) * 20);
+        }
+    }
+
+    // 효과음 뮤트 토글
+    public void ToggleSFXMute(bool toggle)
+    {
+        isSFXMuted = toggle;
+        if (isSFXMuted)
+        {
+            audioMixer.SetFloat("SFXVolume", -80f);  // 음소거
+        }
+        else
+        {
+            // 슬라이더의 현재 값을 사용하여 볼륨 복원
+            audioMixer.SetFloat("SFXVolume", Mathf.Log10(SFXSlider.value) * 20);
+        }
+    }
+
+
+
+    public void PlayBGM(AudioClip clip) // soundData.bgm[(int)BGM.BOSS] << 브금은 이렇게 쓰면 될 듯
     {
         bgmPlayer.clip = clip;
-        bgmPlayer.volume = volumeMultiplier;
+        //bgmPlayer.volume = bgmVolume;
         bgmPlayer.Play();
     }
 
@@ -31,12 +115,12 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.Stop();
     }
 
-    public void PlaySound(AudioClip clip, Vector3 pos, float volumeMultiplier = 1f) // 생성과 삭제가 빈번한 사운드 출력 방법
+    public void PlaySound(AudioClip clip, Vector3 pos) // 생성과 삭제가 빈번한 사운드 출력 방법
     {
-        AudioSource.PlayClipAtPoint(clip, pos, volumeMultiplier * volume);
+        AudioSource.PlayClipAtPoint(clip, pos, sfxVolume);
     }
 
-    public void PlaySFX(AudioClip clip, bool allowDuplicate = true, float volumeMultiplier = 0.2f) // 총과 같이 소리가 겹쳐도 되는건 allowDuplicate를 true로, 소리가 겹치면 안되는 효과음은 false로 두고 쓰면 됨
+    public void PlaySFX(AudioClip clip, bool allowDuplicate = true) // 총과 같이 소리가 겹쳐도 되는건 allowDuplicate를 true로, 소리가 겹치면 안되는 효과음은 false로 두고 쓰면 됨
     {
         bool clipPlayed = false;
 
@@ -45,7 +129,7 @@ public class SoundManager : MonoBehaviour
             if (!sfxPlayer[i].isPlaying)
             {
                 sfxPlayer[i].clip = clip;
-                sfxPlayer[i].volume = volumeMultiplier * volume;
+                //sfxPlayer[i].volume = sfxVoume * volume;
                 sfxPlayer[i].Play();
                 clipPlayed = true;
                 break;
@@ -63,7 +147,14 @@ public class SoundManager : MonoBehaviour
             var obj = new GameObject("SFXPlayer");
             AudioSource objS = obj.AddComponent<AudioSource>();
             obj.transform.SetParent(transform);
-            objS.volume = volumeMultiplier * volume;
+            AudioMixerGroup[] mixerGroup = audioMixer.FindMatchingGroups("SFX");
+
+            // AudioSource의 outputAudioMixerGroup 설정
+            if (mixerGroup.Length > 0)
+            {
+                objS.outputAudioMixerGroup = mixerGroup[0];  // 첫 번째 그룹을 사용
+            }
+            //objS.volume = sfxVoume * volume;
             objS.clip = clip;
             objS.loop = false;
             objS.playOnAwake = false;
