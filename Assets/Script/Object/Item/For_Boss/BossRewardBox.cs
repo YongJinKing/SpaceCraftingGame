@@ -32,10 +32,7 @@ public class BossRewardBox : MonoBehaviour
 
     private void OnEnable()
     {
-        Vector3 viewportCenter = new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane);
-        Vector3 worldCenter = Camera.main.ViewportToWorldPoint(viewportCenter);
-
-        this.transform.position = new Vector3(worldCenter.x, worldCenter.y, 0);
+        this.transform.position = spawnPos.position;
     }
 
     void SpawnRewards(GameObject spawnItem, int cnt)

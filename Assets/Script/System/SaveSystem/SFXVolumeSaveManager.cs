@@ -9,11 +9,15 @@ public class SoundVolume
 {
     public float bgm;
     public float sfx;
+    public bool bgmMute;
+    public bool sfxMute;
 
-    public SoundVolume(float bgm, float sfx)
+    public SoundVolume(float bgm, float sfx, bool bgmMute, bool sfxMute)
     {
         this.bgm = bgm;
         this.sfx = sfx;
+        this.bgmMute = bgmMute;
+        this.sfxMute = sfxMute; 
     }
 }
 public class SFXVolumeSaveManager : BaseSaveSystem
@@ -31,7 +35,7 @@ public class SFXVolumeSaveManager : BaseSaveSystem
 
     public override void Save()
     {
-        SoundVolume Sv = new SoundVolume(SoundManager.Instance.GetBGMVolume(), SoundManager.Instance.GetSFXVolume());
+        SoundVolume Sv = new SoundVolume(SoundManager.Instance.GetBGMVolume(), SoundManager.Instance.GetSFXVolume(), SoundManager.Instance.isBGMMuted, SoundManager.Instance.isSFXMuted);
 
         var json = JsonConvert.SerializeObject(Sv, Formatting.Indented);
         File.WriteAllText(path, json);
@@ -54,7 +58,8 @@ public class SFXVolumeSaveManager : BaseSaveSystem
 
             SoundManager.Instance.SetBGMVolume(sfxSaveInfo.bgm);
             SoundManager.Instance.SetSFXVolume(sfxSaveInfo.sfx);
-            
+            SoundManager.Instance.ToggleBGMMute(sfxSaveInfo.bgmMute);
+            SoundManager.Instance.ToggleSFXMute(sfxSaveInfo.sfxMute);
         }
         else
         {

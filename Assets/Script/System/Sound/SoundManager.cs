@@ -20,8 +20,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private Slider SFXSlider;	// 볼륨을 조절할 Slider
     [SerializeField] private Toggle SFXMute;	// Mute를 On / Off할 Toggle
 
-    private bool isBGMMuted = false;
-    private bool isSFXMuted = false;
+    public bool isBGMMuted = false;
+    public bool isSFXMuted = false;
 
     float bgmVolume;
     float sfxVolume;
@@ -54,6 +54,7 @@ public class SoundManager : MonoBehaviour
     // 배경음 볼륨 설정
     public void SetBGMVolume(float _volume)
     {
+        BGMSlider.value = _volume;
         bgmVolume = _volume;  // 슬라이더 값을 변수에 저장
         if (!isBGMMuted)  // 뮤트 상태가 아닐 때만 볼륨 조정
         {
@@ -65,6 +66,7 @@ public class SoundManager : MonoBehaviour
     public void ToggleBGMMute(bool toggle)
     {
         isBGMMuted = toggle;
+        BGMMute.isOn = toggle;
         if (isBGMMuted)
         {
             audioMixer.SetFloat("BGMVolume", -80f);  // 음소거
@@ -79,6 +81,7 @@ public class SoundManager : MonoBehaviour
     // 효과음 볼륨 설정
     public void SetSFXVolume(float _volume)
     {
+        SFXSlider.value = _volume;
         sfxVolume = _volume;  // 슬라이더 값을 변수에 저장
         if (!isSFXMuted)  // 뮤트 상태가 아닐 때만 볼륨 조정
         {
@@ -90,6 +93,7 @@ public class SoundManager : MonoBehaviour
     public void ToggleSFXMute(bool toggle)
     {
         isSFXMuted = toggle;
+        SFXMute.isOn = toggle;
         if (isSFXMuted)
         {
             audioMixer.SetFloat("SFXVolume", -80f);  // 음소거
