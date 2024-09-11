@@ -80,6 +80,11 @@ public class CommonAttackAction : AttackAction
     #region Public
     public override void Activate(Vector2 pos)
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
         base.Activate(pos);
         _isActivated = true;
         if (_animationOriented)
@@ -94,6 +99,11 @@ public class CommonAttackAction : AttackAction
     }
     public override void Deactivate()
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
         _isActivated = false;
         base.Deactivate();
     }
@@ -103,12 +113,22 @@ public class CommonAttackAction : AttackAction
     #region EventHandlers
     protected void OnAttackAnimation(int type)
     {
-        if(_animationOriented)
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
+        if (_animationOriented)
             ActivateHitBoxes(pos);
     }
     protected void OnAttackEndAnimation(int type)
     {
-        if(_animationOriented)
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
+        if (_animationOriented)
             ActionEnd();
     }
     protected override void OnHitBoxEnd()

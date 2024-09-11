@@ -26,6 +26,7 @@ public class forEquipTeat : MonoBehaviour
     private void OnModeChange(int i)
     {
         mode = i;
+        OnNumInput(1);
     }
 
     public void OnNumInput(int i)
