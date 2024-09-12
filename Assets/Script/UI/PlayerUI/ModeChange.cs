@@ -17,7 +17,7 @@ public class ModeChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WeaponBox.SetActive(false);
+        OnUIModeChange(0);
         if (myPlayer == null) 
         {
             myPlayer = FindObjectOfType<Player>();
