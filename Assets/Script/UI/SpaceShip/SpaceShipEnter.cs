@@ -33,11 +33,11 @@ public class SpaceShipEnter : MonoBehaviour
             }
         }
 
-        /*if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             if (invenCanvas.activeSelf || buildingCanvas.activeSelf || pauseCanvas.activeSelf) return;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, spaceshipLayer);
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, spaceshipLayer);
 
             if (hit.collider != null)
             {
@@ -46,6 +46,6 @@ public class SpaceShipEnter : MonoBehaviour
                     spaceShipCanvas.SetActive(true);
                 }
             }
-        }*/
+        }
     }
 }

@@ -61,11 +61,13 @@ public class BossSearchingUI : MonoBehaviour
     {
         if(Inventory.instance.GetItemCheck(mineralInex, mineralAmount) && Inventory.instance.GetItemCheck(gasIndex, gasAmount))
         {
+            Debug.Log("찾기 시작");
             Inventory.instance.UseItem(mineralInex, mineralAmount); Inventory.instance.UseItem(gasIndex, gasAmount);
             StartSearching();
         }
         else
         {
+            Debug.Log("못찾음");
             ItemLessPanel.SetActive(true);
         }
     }

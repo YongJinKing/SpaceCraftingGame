@@ -10246,20 +10246,33 @@ PrefabInstance:
     - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: FoundVFX
       value: 
-      objectReference: {fileID: 5573951000799526609, guid: cdd9e258c9e2094449bb42ce1f700169, type: 3}
+      objectReference: {fileID: 294372850}
     - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: FindingVFX
       value: 
-      objectReference: {fileID: 1827681339978549578, guid: 5c7c562547055fa4996c1b4c572434d6, type: 3}
+      objectReference: {fileID: 294372849}
     - target: {fileID: 1166778781798874847, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: m_Name
       value: BossSearchingCanavs
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276762179346952064, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121737199814643548, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+--- !u!1 &240529982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8121737199814643548, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+  m_PrefabInstance: {fileID: 240529981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265849728
 GameObject:
   m_ObjectHideFlags: 0
@@ -10489,6 +10502,16 @@ Animator:
 --- !u!4 &294372848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2789577016032301022, guid: 4024fabb79f176041b9db58545241e8b, type: 3}
+  m_PrefabInstance: {fileID: 294372846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &294372849 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9184187535541364691, guid: 4024fabb79f176041b9db58545241e8b, type: 3}
+  m_PrefabInstance: {fileID: 294372846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &294372850 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4213522083957966303, guid: 4024fabb79f176041b9db58545241e8b, type: 3}
   m_PrefabInstance: {fileID: 294372846}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &309952823
@@ -16116,6 +16139,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -570
       objectReference: {fileID: 0}
+    - target: {fileID: 3812029243760741379, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812029243760741379, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 240529982}
+    - target: {fileID: 3812029243760741379, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812029243760741379, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4517825604569267666, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -16246,6 +16285,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692033099065739591, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312726780405545659, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7379565395944573428, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
@@ -16407,6 +16450,10 @@ PrefabInstance:
     - target: {fileID: 8194000901616890067, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -110
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259467530479202038, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8496895704108808856, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
       propertyPath: _myTarget
