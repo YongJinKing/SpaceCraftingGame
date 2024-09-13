@@ -28,6 +28,8 @@ public class GunManager : BaseSaveSystem
     
     public override void Save()
     {
+        if (DataManager.Instance.nowSlot == -1) return;
+        base.Save();
         string json = JsonUtility.ToJson(new GunIndexData(gunIndexes));
         File.WriteAllText(savePath, json);
 

@@ -29,6 +29,8 @@ public class InventorySaveSystem : BaseSaveSystem
 
     public override void Save()
     {
+        if (DataManager.Instance.nowSlot == -1) return;
+        base.Save();
         SaveInventory(inven.InventoryDatas);
     }
 

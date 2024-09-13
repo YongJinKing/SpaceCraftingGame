@@ -11,14 +11,17 @@ public class BaseSaveSystem : MonoBehaviour, ISave
     protected virtual void Start()
     {
         totalSaveManager = this.GetComponentInParent<TotalSaveManager>();
-        totalSaveManager.saves.Add(this);
+        //totalSaveManager = FindObjectOfType<TotalSaveManager>();
+        if(totalSaveManager != null) totalSaveManager.saves.Add(this);
 
         filePath = Application.persistentDataPath + "/Save/" + DataManager.Instance.nowSlot.ToString();
 
         MakeDir(filePath);
     }
 
-    public virtual void Save() { }
+    public virtual void Save() {
+        MakeDir(filePath);
+    }
 
     protected void MakeDir(string path)
     {

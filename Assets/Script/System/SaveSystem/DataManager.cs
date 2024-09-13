@@ -30,12 +30,13 @@ public class DataManager : BaseSaveSystem
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     protected override void Start()
     {
         base.Start();
         tempSavePath = Path.Combine(filePath, savePath + nowSlot.ToString() + ".json");
-
+        
         //LoadJson(tempSavePath);
     }
 
@@ -66,8 +67,13 @@ public class DataManager : BaseSaveSystem
         //5. 파일로 저장
         //6. 디버그 로그
 
+        if (nowSlot == -1) return;
+        filePath = Application.persistentDataPath + "/Save/" + nowSlot.ToString();
+        base.Save();
+        tempSavePath = Path.Combine(filePath, savePath + nowSlot.ToString() + ".json");
         string currentTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm");
         Debug.Log(currentTime);
+        
 
         //1.
         Unit[] units = FindObjectsOfType<Unit>();
@@ -113,7 +119,7 @@ public class DataManager : BaseSaveSystem
     public PlayerDataStruct LoadJson(string path) // LoadJson(string path)
     {
         Debug.Log("LoadJson called");
-
+        
         var jsonPath = path;
         if (File.Exists(jsonPath))
         {

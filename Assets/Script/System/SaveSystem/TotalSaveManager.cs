@@ -9,6 +9,7 @@ public class TotalSaveManager : MonoBehaviour
 
     public void SaveAll()
     {
+        DataManager.Instance.Save();
         foreach(ISave save in saves)
         {
             save.Save();
@@ -17,9 +18,9 @@ public class TotalSaveManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
+        /*if (Input.GetKeyDown(KeyCode.F1))
         {
             SaveAll();
-        }
+        }*/
     }
 }

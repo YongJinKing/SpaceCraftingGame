@@ -24,6 +24,8 @@ public class BossSearchedInfoSaveSystem : BaseSaveSystem
 
     public override void Save()
     {
+        if (DataManager.Instance.nowSlot == -1) return;
+        base.Save();
         bool isSearchedNow = bossSearching.isSearching;
         float searchingTimeNow = bossSearching.searchedTime;
         if (!isSearchedNow) return;

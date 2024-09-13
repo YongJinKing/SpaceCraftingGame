@@ -105,6 +105,8 @@ public class ComponentSaveSystem : BaseSaveSystem
 
     public override void Save()
     {
+        if (DataManager.Instance.nowSlot == -1) return;
+        base.Save();
         SaveTilesInfo();
     }
 

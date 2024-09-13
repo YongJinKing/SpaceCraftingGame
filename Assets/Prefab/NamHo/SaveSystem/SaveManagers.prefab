@@ -99,59 +99,6 @@ MonoBehaviour:
   resourcesLayerMask:
     serializedVersion: 2
     m_Bits: 32768
---- !u!1 &2145665124398448147
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2951154268833169843}
-  - component: {fileID: 4988288327572561244}
-  m_Layer: 0
-  m_Name: DataManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2951154268833169843
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145665124398448147}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7647790787710213617}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4988288327572561244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145665124398448147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6ea7ee9dfa371418f8d93dbae40e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filePath: 
-  savePath: PlayerData
-  nowSlot: 0
-  playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 2097152
-  NowPlayer: {fileID: 0}
-  LoadedPlayer: {fileID: 0}
-  tempSavePath: 
 --- !u!1 &2384925317446672923
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +161,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2951154268833169843}
   - {fileID: 985454233664466931}
   - {fileID: 4244243029676856676}
   - {fileID: 2495733981350256231}
@@ -418,3 +364,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9ae61c028a45f449438dbf1a9e65b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filePath: 

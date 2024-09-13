@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public Canvas DataSlotCanavs;
     public void OnClickStart()
     {
-        SceneManager.LoadScene("DataSlots");
+        //SceneManager.LoadScene("DataSlots");
+        DataSlotCanavs.gameObject.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void OnClickOption()

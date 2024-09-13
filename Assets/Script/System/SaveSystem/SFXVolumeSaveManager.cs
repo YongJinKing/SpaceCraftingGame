@@ -35,6 +35,10 @@ public class SFXVolumeSaveManager : BaseSaveSystem
 
     public override void Save()
     {
+        if (DataManager.Instance.nowSlot == -1) return;
+        filePath = Application.persistentDataPath + "/Save/" + DataManager.Instance.nowSlot.ToString();
+        base.Save();
+        path = Path.Combine(filePath, "SFXVolume_" + DataManager.Instance.nowSlot + ".json");
         SoundVolume Sv = new SoundVolume(SoundManager.Instance.GetBGMVolume(), SoundManager.Instance.GetSFXVolume(), SoundManager.Instance.isBGMMuted, SoundManager.Instance.isSFXMuted);
 
         var json = JsonConvert.SerializeObject(Sv, Formatting.Indented);

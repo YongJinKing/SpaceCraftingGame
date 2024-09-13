@@ -11,19 +11,25 @@ public class DataSlot : MonoBehaviour
     public GameObject creat; // 플레이어 닉네임 입력 UI
     public TextMeshProUGUI[] slotText; // 슬롯버튼 아래에 존재하는 텍스트들
     public string newPlayerName; // 새로 입력된 플레이어의 닉네임
-
+    public TotalSaveManager totalSaveManager;
     bool[] savefile = new bool[3]; // 세이브파일 존재 유무 저장
 
-    void Start()
+    string filePath;
+    string tmpPath;
+    void OnEnable()
     {
         for (int i = 0; i < 3; i++)
         {
-            if (File.Exists($"PlayerData{i}.json"))
+            filePath = Application.persistentDataPath + "/Save/" + i.ToString();
+            tmpPath = Path.Combine(filePath, "PlayerData_" + i.ToString() + ".json");
+            Debug.Log(filePath + "<<<<<<<<<<<<<<<<<<<<");
+            Debug.Log(tmpPath + " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            if (File.Exists(tmpPath))
             {
                 savefile[i] = true; //해당 슬롯 번호의 불 배열 트루로 변환
 
                 DataManager.Instance.nowSlot = i; //선택한 슬롯 번호 저장
-                DataManager.Instance.LoadJson("PlayerData" + DataManager.Instance.nowSlot.ToString() + ".json"); //해당 슬롯 데이터 불러오기
+                DataManager.Instance.LoadJson(tmpPath); //해당 슬롯 데이터 불러오기
 
                 // Hp, 맵 아이콘 + 저장 시간 표시
                 string saveTime = DataManager.Instance.pd[0].saveTime;
@@ -43,7 +49,7 @@ public class DataSlot : MonoBehaviour
 
         if (savefile[number]) //불 배열에서 현재 슬롯번호가 트루면 = 데이터가 존재
         {
-            DataManager.Instance.LoadJson("PlayerData" + DataManager.Instance.nowSlot.ToString() + ".json");
+            DataManager.Instance.LoadJson(DataManager.Instance.tempSavePath);
             StartGame();
         }
         else
@@ -64,6 +70,7 @@ public class DataSlot : MonoBehaviour
         {
            
         }
+        //totalSaveManager.SaveAll();
         SceneManager.LoadScene("StageSelect"); // 로딩 씬 이동
     }
 }
