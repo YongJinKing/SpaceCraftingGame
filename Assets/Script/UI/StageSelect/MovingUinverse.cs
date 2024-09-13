@@ -34,6 +34,6 @@ public class MovingUinverse : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
         }
-        yield return null;
+        //yield return null;
     }
 }
