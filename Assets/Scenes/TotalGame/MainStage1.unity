@@ -32682,6 +32682,11 @@ MonoBehaviour:
   modifierType: 1
   sortOrder: 1
   value: 2
+--- !u!23 &1161361835 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2922169664700849040, guid: 4024fabb79f176041b9db58545241e8b, type: 3}
+  m_PrefabInstance: {fileID: 294372846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1195642717
 GameObject:
   m_ObjectHideFlags: 0
@@ -68685,6 +68690,18 @@ PrefabInstance:
       propertyPath: StructureParent
       value: 
       objectReference: {fileID: 2133827506}
+    - target: {fileID: 7695944021107177298, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: origin
+      value: 
+      objectReference: {fileID: 2100000, guid: b7cb539a64971db4ab5532556accc615, type: 2}
+    - target: {fileID: 7695944021107177298, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: meshRender
+      value: 
+      objectReference: {fileID: 1161361835}
+    - target: {fileID: 7695944021107177298, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: mouseEnter
+      value: 
+      objectReference: {fileID: 2100000, guid: 9423de92451e6034d829c037da8fe724, type: 2}
     - target: {fileID: 7695944021107177298, guid: 86de332166973d84687648ac728535d4, type: 3}
       propertyPath: invenCanvas
       value: 
