@@ -6,10 +6,10 @@ using UnityEngine.Events;
 public class TestController : MonoBehaviour
 {
     public GameObject craftToggle;
-    public Weapon AR;
-    public Weapon PickAxe;
+    //public Weapon AR;
+    //public Weapon PickAxe;
 
-    public UnityEvent<Equipment> weaponChange = new UnityEvent<Equipment>();
+    //public UnityEvent<Equipment> weaponChange = new UnityEvent<Equipment>();
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,7 @@ public class TestController : MonoBehaviour
         craftToggle.SetActive(false);
     }
 
+    /*
     // Update is called once per frame
     void Update()
     {
@@ -38,4 +39,5 @@ public class TestController : MonoBehaviour
             weaponChange?.Invoke(AR);
         }
     }
+    */
 }

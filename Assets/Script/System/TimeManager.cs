@@ -59,7 +59,7 @@ public class TimeManager : MonoBehaviour
     
     public void TimeTest(int day, int hour, int minute)
     {
-        Debug.Log($"TimeManager.TimeTest day : {day}, hour : {hour}, minute : {minute}");
+        //Debug.Log($"TimeManager.TimeTest day : {day}, hour : {hour}, minute : {minute}");
         timeText.text = hour.ToString("00") + ":" + minute.ToString("00");
         dayText.text = day.ToString("day " + "00");
         if(hour < 8 || hour > 21)
