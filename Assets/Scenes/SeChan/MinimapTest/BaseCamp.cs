@@ -2,39 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BaseCamp : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public GameObject OrgPos;
-    public Camera minimapCamera;
+    public GameObject Player;
+    public GameObject Arrows;
+    
+    [SerializeField] public float NavDistance = 5.0f;
     void Start()
     {
-        this.transform.position = OrgPos.transform.position;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = OrgPos.transform.position;
-        Vector3 viewportPosition = minimapCamera.WorldToViewportPoint(transform.position);
-        if (viewportPosition.x < 0 || viewportPosition.x > 1 || viewportPosition.y < 0 || viewportPosition.y > 1)
+     
+        Vector3 directionToTarget = OrgPos.gameObject.transform.position - Player.gameObject.transform.position;
+        float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+
+        Arrows.transform.rotation = Quaternion.Euler(0, 0, -90 + angle);
+        float dist = Vector3.Distance(OrgPos.transform.position, Player.transform.position);
+        //Debug.Log("집까지 거리는" + dist);
+        if(dist < NavDistance)
         {
-            // 화면을 벗어날 경우, 화면 가장자리에 위치시키기
-            this.GetComponent<SpriteRenderer>().enabled = true;
-            viewportPosition.x = Mathf.Clamp(viewportPosition.x, 0.03f, 0.97f);
-            viewportPosition.y = Mathf.Clamp(viewportPosition.y, 0.03f, 0.97f);
-           
+            //집이 dist범위 안에 있을 때 - 플레이어 시야에 집이 보일 때
+            this.GetComponent<SpriteRenderer>().enabled = false;    
         }
         else
         {
-            this.GetComponent<SpriteRenderer>().enabled = false;
+            this.GetComponent<SpriteRenderer>().enabled = true;
         }
-    
-        Vector3 worldPosition = minimapCamera.ViewportToWorldPoint(viewportPosition);
-        this.transform.position = worldPosition;
-
 
       
     }
