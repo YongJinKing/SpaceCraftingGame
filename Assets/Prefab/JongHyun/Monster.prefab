@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65647a7d2bf154145b9fd3bae299bdc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireAndForget: 0
+  _fireAndForget: 1
   _priority: 1
   _coolTime: -1
   _activeRadius: 1.5
@@ -276,7 +276,7 @@ MonoBehaviour:
       m_Calls: []
   _targetMask:
     serializedVersion: 2
-    m_Bits: 2162688
+    m_Bits: 2179072
   hitBoxPrefabs:
   - {fileID: 3589146985966173651, guid: 16a4cbf76ea953c4d86a45f4edfa5974, type: 3}
   attackStartPos: []
@@ -411,7 +411,7 @@ MonoBehaviour:
   detectRadius: 10
   targetMask:
     serializedVersion: 2
-    m_Bits: 2162688
+    m_Bits: 2179072
   attackActions:
   - {fileID: 3881376786422643875}
   ai: {fileID: 1438398751373865569}
