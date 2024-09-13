@@ -247,7 +247,7 @@ MonoBehaviour:
   timeText: {fileID: 0}
   dayText: {fileID: 0}
   timeCount: 0
-  gameDayPerRealMinite: 60
+  gameDayPerRealMinite: 1
   Sunimg: {fileID: 0}
   Nightimg: {fileID: 0}
   timeChangeEvent:
@@ -318,6 +318,57 @@ MonoBehaviour:
   spaceShipCanvas: {fileID: 0}
   invenCanvas: {fileID: 0}
   buildingCanvas: {fileID: 0}
+  pauseCanvas: {fileID: 0}
+--- !u!1 &3745771235465365395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5472225164564230121}
+  - component: {fileID: 2765275011479328568}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5472225164564230121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745771235465365395}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1223117295852275693}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2765275011479328568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745771235465365395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6d04b583ef6db4e81f00e7341ee5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaveMonsterPrefab: {fileID: 6916157678377449002, guid: 4d38738609e7b0b41878e3f1722be876, type: 3}
+  monsterCount: 6
+  SpawnOffset: 30
+  monsterWaveDay: 1
+  waveDifficultyScale: 1.5
+  timeManager: {fileID: 5783374359869393115}
 --- !u!1 &4028470316444808648
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,6 +593,7 @@ Transform:
   - {fileID: 8153842977816109783}
   - {fileID: 4358595029004636308}
   - {fileID: 9195669949197301087}
+  - {fileID: 5472225164564230121}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1331452753036497922

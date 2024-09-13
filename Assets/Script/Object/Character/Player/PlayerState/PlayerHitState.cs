@@ -11,11 +11,12 @@ public class PlayerHitState : PlayerState
     #region Private
     private LayerMask playerMask;
     private LayerMask playerAvoidMask;
+    private Coroutine process;
     #endregion
     #region Protected
     #endregion
     #region Public
-    public float invincibleTime;
+    public float invincibleTime = 1.0f;
     #endregion
     #region Events
     #endregion
@@ -43,13 +44,18 @@ public class PlayerHitState : PlayerState
     public override void Enter()
     {
         owner.weaponRotationAxis.SetActive(false);
-        owner.gameObject.layer = playerAvoidMask;
         owner.myAnim.TriggerHit();
+
+        if(process != null)
+        {
+            StopCoroutine(process);
+        }
+        process = StartCoroutine(ProcessingState());
+
         base.Enter();
     }
     public override void Exit()
     {
-        owner.gameObject.layer = playerMask;
         base.Exit();
     }
     #endregion
@@ -68,7 +74,10 @@ public class PlayerHitState : PlayerState
     #region Coroutines
     private IEnumerator ProcessingState()
     {
+        owner.gameObject.layer = playerAvoidMask;
         yield return null;
+        yield return new WaitForSeconds(invincibleTime);
+        owner.gameObject.layer = playerMask;
     }
 
     #endregion

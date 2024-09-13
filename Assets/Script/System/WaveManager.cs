@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class WaveManager : MonoBehaviour
 {
     #region ForTest
     [SerializeField] protected GameObject WaveMonsterPrefab;
