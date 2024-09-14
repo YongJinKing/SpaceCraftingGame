@@ -819,6 +819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RewardVFX
       objectReference: {fileID: 0}
+    - target: {fileID: 5617006808836823592, guid: ee7baf14b79e0a54b9899d8a0610f1a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -835,6 +839,10 @@ PrefabInstance:
     - target: {fileID: 703114233937713471, guid: cdf541a5fd02c054bbfe66b723568a68, type: 3}
       propertyPath: m_Name
       value: SpecialItemPickupCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 703114233937713471, guid: cdf541a5fd02c054bbfe66b723568a68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5048430311747128364, guid: cdf541a5fd02c054bbfe66b723568a68, type: 3}
       propertyPath: m_Pivot.x
@@ -973,6 +981,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossRabbitReward
       objectReference: {fileID: 0}
+    - target: {fileID: 7741143628827694239, guid: a36353dbc84839f41ae9b47efffdd170, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1091,6 +1103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossRewardBox
       objectReference: {fileID: 0}
+    - target: {fileID: 6262130786186073515, guid: 33e973a2626e3b747ad27e31cb5dba26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1107,6 +1123,10 @@ PrefabInstance:
     - target: {fileID: 3619799608844000909, guid: 474f44ee0d7d63143831e3a0a4beaacb, type: 3}
       propertyPath: m_Name
       value: NextPlanetPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619799608844000909, guid: 474f44ee0d7d63143831e3a0a4beaacb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4819400102818645906, guid: 474f44ee0d7d63143831e3a0a4beaacb, type: 3}
       propertyPath: m_LocalPosition.x

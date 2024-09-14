@@ -22692,6 +22692,9 @@ MonoBehaviour:
   UIChangeEvent:
     m_PersistentCalls:
       m_Calls: []
+  PlayerModeChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!58 &1003947056
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -68773,6 +68776,10 @@ PrefabInstance:
       propertyPath: AR
       value: 
       objectReference: {fileID: 651412494}
+    - target: {fileID: 9134859333896924047, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1003947055}
     - target: {fileID: 9134859333896924047, guid: 86de332166973d84687648ac728535d4, type: 3}
       propertyPath: PickAxe
       value: 

@@ -244,8 +244,8 @@ Transform:
   m_GameObject: {fileID: 5605903168711119444}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8347219984019697084}
@@ -291,7 +291,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7becb2cc1061f4546acffd47a5c58400, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 339c0f35eb146334da3163b925d9dbb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -379,6 +379,9 @@ MonoBehaviour:
   produceTime: 0
   miningVFX: {fileID: 4318741669205503847}
   produceIcon: {fileID: 8121279521004309244}
+  factoryMeshRender: {fileID: 5322812745460444939}
+  origin_Mat: {fileID: 2100000, guid: 679b4c257e467b7428e3eccfdffe6ca5, type: 2}
+  outLine_Mat: {fileID: 2100000, guid: 18ff88908f8ad35439c9b90ff9e9f6a5, type: 2}
 --- !u!61 &5803294529985349033
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -17,6 +17,13 @@ public class FactoryBuilding : Structure
     public Transform miningVFX;
     public GameObject produceIcon;
     float mouseTime;
+
+    [Header("매시 랜더러"), Space(.5f)]
+    [SerializeField] MeshRenderer factoryMeshRender;
+    [Header("오리지널 메테리얼"), Space(.5f)]
+    [SerializeField] Material origin_Mat;
+    [Header("아웃라인 메테리얼"), Space(.5f)]
+    [SerializeField] Material outLine_Mat;
     public FactoryBuilding() : base()
     {
         AddStat(EStat.Efficiency, produceTime);
@@ -104,6 +111,16 @@ public class FactoryBuilding : Structure
         if(Inventory.instance != null) Inventory.instance.AddItem(produceResourceIndex, produceAmount);
         produceAmount = 0;
         produceIcon.SetActive(false);
+    }
+
+    private void OnMouseEnter()
+    {
+        factoryMeshRender.material = outLine_Mat;
+    }
+
+    private void OnMouseExit()
+    {
+        factoryMeshRender.material = origin_Mat;
     }
 
 }

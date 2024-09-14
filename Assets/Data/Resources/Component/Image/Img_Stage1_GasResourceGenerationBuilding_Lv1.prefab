@@ -154,6 +154,9 @@ MonoBehaviour:
   produceTime: 0
   miningVFX: {fileID: 5510675446064054911}
   produceIcon: {fileID: 9133598316909450107}
+  factoryMeshRender: {fileID: 1174745519719545742}
+  origin_Mat: {fileID: 2100000, guid: b666e7c26c73d4e40b04f5a4bea7e10f, type: 2}
+  outLine_Mat: {fileID: 2100000, guid: aa73b0ddebc918c4c82bd660578187f2, type: 2}
 --- !u!1 &5644783658514764190
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,8 +401,8 @@ Transform:
   m_GameObject: {fileID: 7525992291799817128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6793384533283720780}
@@ -445,7 +448,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7becb2cc1061f4546acffd47a5c58400, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 858e4d5d7bf91924a9287562ee9b7a93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

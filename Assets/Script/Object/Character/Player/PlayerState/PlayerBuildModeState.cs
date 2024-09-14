@@ -50,6 +50,7 @@ public class PlayerBuildModeState : PlayerState
         owner.canEquip = true;
         owner.modeType = 1;
         owner.UIChangeEvent?.Invoke(1);
+        owner.PlayerModeChangeEvent?.Invoke(true);
     }
     public override void Exit()
     {
@@ -120,6 +121,7 @@ public class PlayerBuildModeState : PlayerState
                 {
                     owner.stateMachine.ChangeState<PlayerIdleState>();
                     owner.UIChangeEvent?.Invoke(0);
+                    owner.PlayerModeChangeEvent?.Invoke(false);
                 }
                 break;
         }

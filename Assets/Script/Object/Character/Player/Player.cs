@@ -38,6 +38,7 @@ public class Player : Unit
     #endregion
     #region Events
     public UnityEvent<int> UIChangeEvent = new UnityEvent<int>();
+    public UnityEvent<bool> PlayerModeChangeEvent = new UnityEvent<bool>();
     #endregion
     #endregion
 
