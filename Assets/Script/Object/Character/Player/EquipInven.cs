@@ -55,7 +55,7 @@ public class EquipInven : MonoBehaviour
 
         switch (index / 10000)
         {
-            case 0:
+            case 1:
                 {
                     UnEquipEvent?.Invoke(AR.itemType);
                     Destroy(AR.gameObject);
@@ -64,7 +64,7 @@ public class EquipInven : MonoBehaviour
                     selectSlotEvent?.Invoke(0);
                 }
                 break;
-            case 1:
+            case 2:
                 {
                     UnEquipEvent?.Invoke(SG.itemType);
                     Destroy(SG.gameObject);
@@ -73,7 +73,7 @@ public class EquipInven : MonoBehaviour
                     selectSlotEvent?.Invoke(0);
                 }
                 break;
-            case 2:
+            case 3:
                 {
                     UnEquipEvent?.Invoke(SR.itemType);
                     Destroy(SR.gameObject);
