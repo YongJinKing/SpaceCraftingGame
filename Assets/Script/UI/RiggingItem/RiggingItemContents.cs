@@ -91,8 +91,9 @@ public class RiggingItemContents : MonoBehaviour
                     (AlarmContents.GetChild(i).GetComponent<ResourceSlot>().resourceId,
                     AlarmContents.GetChild(i).GetComponent<ResourceSlot>().resourceAmount);
                 }
+                int lv = riggingItemLevelData[levelUpSlotNum];
                 transform.GetChild(0).GetChild(0).GetChild(0).GetChild(levelUpSlotNum).GetComponent<RiggingItemSlot>().Init(levelUpSlotNum, ++riggingItemLevelData[levelUpSlotNum]);
-                EI.Upgrade(levelUpSlotNum, riggingItemLevelData[levelUpSlotNum]);
+                EI.Upgrade(levelUpSlotNum, lv);
             }
             else
             {
