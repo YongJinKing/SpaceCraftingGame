@@ -17,6 +17,11 @@ public class HPBar : MonoBehaviour
     [SerializeField] protected Vector2 _offSet;
     #endregion
     #region Public
+    public Stat myTarget
+    {
+        get { return _myTarget; }
+        set { _myTarget = value; }
+    }
     #endregion
     #region Events
     #endregion

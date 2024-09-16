@@ -18,9 +18,11 @@ public class WaveManager : MonoBehaviour
     #region Protected
     [SerializeField] protected int monsterWaveDay = 7;
     [SerializeField] protected float waveDifficultyScale = 1.5f;
+    [SerializeField] protected HPBar hpBarPrefab;
     #endregion
     #region Public
     public TimeManager timeManager;
+    public Transform MonsterHPUICanvas;
     #endregion
     #region Events
 
@@ -64,7 +66,10 @@ public class WaveManager : MonoBehaviour
 
             //일단 임시로 한군데에서 스폰
             GameObject temp = Instantiate(WaveMonsterPrefab);
+            HPBar tempHPBar = Instantiate(hpBarPrefab);
+            tempHPBar.myTarget = temp.GetComponent<Stat>();
 
+            tempHPBar.transform.SetParent(MonsterHPUICanvas, false);
 
             temp.transform.position = new Vector3(SpawnOffset * Mathf.Cos(angle * Mathf.Deg2Rad), SpawnOffset * Mathf.Sin(angle * Mathf.Deg2Rad), -0.1f);
             temp.SetActive(true);
