@@ -46,9 +46,9 @@ public class EquipInven : MonoBehaviour
 
     public void Upgrade(int index)
     {
-
         Weapon upgraded = container.itemFac.Create(index).GetComponent<Weapon>();
         upgraded.gameObject.SetActive(false);
+        upgraded.transform.SetParent(transform, false);
 
         switch (index / 10000)
         {
