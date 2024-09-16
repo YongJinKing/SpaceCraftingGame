@@ -5271,12 +5271,27 @@ MonoBehaviour:
   SR: {fileID: 2145814719}
   Hammer: {fileID: 443921169}
   PickAxe: {fileID: 541320445}
-  testEvent:
+  EquipEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 859837154}
         m_TargetAssemblyTypeName: PlayerEquipmentManager, Assembly-CSharp
         m_MethodName: EquipItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  UnEquipEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 859837154}
+        m_TargetAssemblyTypeName: PlayerEquipmentManager, Assembly-CSharp
+        m_MethodName: UnEquip
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22095,6 +22110,9 @@ MonoBehaviour:
   modeType: 0
   canEquip: 0
   UIChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  PlayerModeChangeEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &859837156
@@ -57852,7 +57870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92288a53681e4194bb0b8042158893fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemIdx: 10302
+  itemIdx: 10000
   actionIdx: 10000
   hitboxIdx: 10000
   affectIdx: 10000

@@ -1,6 +1,6 @@
 [
   {
-    "Index": 10100,
+    "Index": 10000,
     "Anim_Type": 1,
     "Stat_Modify_Values": 
     [
@@ -16,7 +16,7 @@
     "Weapon_Prefab_Index": 10100
   },
   {
-    "Index": 10101,
+    "Index": 10001,
     "Anim_Type": 2,
     "Stat_Modify_Values": 
     [
@@ -32,7 +32,7 @@
     "Weapon_Prefab_Index": 10101
   },
   {
-    "Index": 10102,
+    "Index": 10002,
     "Anim_Type": 3,
     "Stat_Modify_Values": 
     [
@@ -48,7 +48,7 @@
     "Weapon_Prefab_Index": 10102
   },
   {
-    "Index": 10200,
+    "Index": 20000,
     "Anim_Type": 4,
     "Stat_Modify_Values": 
     [
@@ -64,7 +64,7 @@
     "Weapon_Prefab_Index": 10200
   },
   {
-    "Index": 10201,
+    "Index": 20001,
     "Anim_Type": 5,
     "Stat_Modify_Values": 
     [
@@ -80,7 +80,7 @@
     "Weapon_Prefab_Index": 10201
   },
   {
-    "Index": 10202,
+    "Index": 20002,
     "Anim_Type": 6,
     "Stat_Modify_Values": 
     [
@@ -96,7 +96,7 @@
     "Weapon_Prefab_Index": 10202
   },
   {
-    "Index": 10300,
+    "Index": 30000,
     "Anim_Type": 7,
     "Stat_Modify_Values": 
     [
@@ -112,7 +112,7 @@
     "Weapon_Prefab_Index": 10300
   },
   {
-    "Index": 10301,
+    "Index": 30001,
     "Anim_Type": 8,
     "Stat_Modify_Values": 
     [
@@ -128,7 +128,7 @@
     "Weapon_Prefab_Index": 10301
   },
   {
-    "Index": 10302,
+    "Index": 30002,
     "Anim_Type": 9,
     "Stat_Modify_Values": 
     [

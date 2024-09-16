@@ -50,6 +50,16 @@ public class PlayerEquipmentManager : MonoBehaviour
             }
         }
     }
+
+    public void UnEquip(EEquipmentType type)
+    {
+        if (equipment[(int)type] != null)
+        {
+            equipment[(int)type].UnEquip();
+
+            myPlayer.myAnim.SetEquipType(0);
+        }
+    }
     #endregion
     #endregion
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ModeChange : MonoBehaviour
 {
     [SerializeField] private Player myPlayer;
-    [SerializeField] private forEquipTeat equipTest;
+    [SerializeField] private EquipInven equipTest;
     private int UIMode = 0;
     private int priviousWeaponSelect = 0;
     private int priviousCraftSelect = 0;
@@ -29,7 +29,7 @@ public class ModeChange : MonoBehaviour
         }
         if(equipTest == null)
         {
-            equipTest = FindObjectOfType<forEquipTeat>();
+            equipTest = FindObjectOfType<EquipInven>();
             if(equipTest == null)
             {
                 Debug.Log("ModeChange.Start  need forEquipTest Class");
