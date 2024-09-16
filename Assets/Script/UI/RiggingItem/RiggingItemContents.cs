@@ -9,10 +9,12 @@ using System.Net.Http.Headers;
 public class RiggingItemContents : MonoBehaviour
 {
     [SerializeField] private Transform RiggingItemSlot;
-
+    EquipInven EI;
     private RiggingItemSlot riggingItemSlot;
     private ItemUpgradePopup itemUpgradePopup;
     public event EventHandler OnLevelUpAct;
+    GunManager weaponManager;
+    int[] weaponIndexes = new int[3];
 
     private int[] riggingItemLevelData = {1, 1, 1, 1, 1};
     private int rifleLevel = 1;
@@ -24,7 +26,19 @@ public class RiggingItemContents : MonoBehaviour
 
     private int riggingItemCount = 3;
     private void Start() 
-    { 
+    {
+        EI = FindObjectOfType<EquipInven>();
+
+        var instance = RiggingItemStaticDataManager.GetInstance();
+        instance.LoadRiggingItemDatas();
+        weaponManager = FindObjectOfType<GunManager>();
+
+        weaponIndexes = weaponManager.LoadGunIndexes();
+        Debug.Log(weaponIndexes[0] + ", " + weaponIndexes[1] + ", " + weaponIndexes[2] + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        rifleLevel = instance.dicRiggingItemData[++weaponIndexes[0]].RiggingItemLevel;
+        shotGunLevel = instance.dicRiggingItemData[++weaponIndexes[1]].RiggingItemLevel;
+        sniperLevel = instance.dicRiggingItemData[++weaponIndexes[2]].RiggingItemLevel;
+
         riggingItemLevelData[0] = rifleLevel;
         riggingItemLevelData[1] = shotGunLevel;
         riggingItemLevelData[2] = sniperLevel;
@@ -78,6 +92,7 @@ public class RiggingItemContents : MonoBehaviour
                     AlarmContents.GetChild(i).GetComponent<ResourceSlot>().resourceAmount);
                 }
                 transform.GetChild(0).GetChild(0).GetChild(0).GetChild(levelUpSlotNum).GetComponent<RiggingItemSlot>().Init(levelUpSlotNum, ++riggingItemLevelData[levelUpSlotNum]);
+                EI.Upgrade(levelUpSlotNum, riggingItemLevelData[levelUpSlotNum]);
             }
             else
             {

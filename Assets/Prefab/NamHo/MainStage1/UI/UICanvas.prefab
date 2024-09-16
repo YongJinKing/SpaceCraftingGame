@@ -1078,7 +1078,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 1000}
+  m_SizeDelta: {x: 1100, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1108662034591885632
 CanvasRenderer:
@@ -1169,6 +1169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 0}
+  equipTest: {fileID: 0}
   MainButton: {fileID: 4711180105935790792}
   CraftingBox: {fileID: 5289416889285252739}
   CraftingBoxGrid: {fileID: 2294470608398413099}
@@ -2910,7 +2911,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -68.14545}
-  m_SizeDelta: {x: 665.1666, y: 737.3409}
+  m_SizeDelta: {x: 850, y: 737.3409}
   m_Pivot: {x: 0.5, y: 0.4704867}
 --- !u!222 &7105892948983902031
 CanvasRenderer:

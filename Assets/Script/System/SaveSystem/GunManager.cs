@@ -9,9 +9,9 @@ public class GunManager : BaseSaveSystem
 {
     public enum GunType
     {
-        Rifle = 10100,
-        Shotgun = 10200,
-        Sniper = 10300,
+        Rifle = 10000,
+        Shotgun = 20000,
+        Sniper = 30000,
     }
     public int[] gunIndexes = new int[3];
     public string savePath;
@@ -20,10 +20,10 @@ public class GunManager : BaseSaveSystem
         base.Start();
         savePath = Path.Combine(filePath, "WeaponLevel_" + DataManager.Instance.nowSlot + ".json");
 
-        LoadGunIndexes();
-        UpdateGunIndex(0, (int)GunType.Rifle);
+        //LoadGunIndexes();
+        /*UpdateGunIndex(0, (int)GunType.Rifle);
         UpdateGunIndex(1, (int)GunType.Shotgun);
-        UpdateGunIndex(2, (int)GunType.Sniper);
+        UpdateGunIndex(2, (int)GunType.Sniper);*/
     }
     
     public override void Save()
@@ -64,7 +64,7 @@ public class GunManager : BaseSaveSystem
         return gunIndexes[slot];
     }
 
-    public void LoadGunIndexes()
+    public int[] LoadGunIndexes()
     {
         if(File.Exists(savePath))
         {
@@ -79,8 +79,10 @@ public class GunManager : BaseSaveSystem
             gunIndexes[0] = (int)GunType.Rifle;
             gunIndexes[1] = (int)GunType.Shotgun;
             gunIndexes[2] = (int)GunType.Sniper;
-            Save();
+            //Save();
         }
+
+        return gunIndexes;
     }
 
     [Serializable]

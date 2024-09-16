@@ -10,9 +10,10 @@ public class RiggingItemSlot : MonoBehaviour
     [SerializeField] private TMP_Text riggingItemName;
     [SerializeField] private TMP_Text riggingItemAttackPower;
     [SerializeField] private TMP_Text riggingItemAttackSpeed;
+    [SerializeField] private Image upgradeCompleteImage;
+    [SerializeField] private Button levelUpButton;
     private int id;
 
-   
 
     public void Init(int id, int level)
     {
@@ -20,6 +21,10 @@ public class RiggingItemSlot : MonoBehaviour
         instance.LoadRiggingItemDatas();
         foreach(var riggingItem in instance.dicRiggingItemData)
         {
+            if(level > 3)
+            {
+                UpgradeComplete();
+            }
             if(riggingItem.Value.RiggingItemType == id && riggingItem.Value.RiggingItemLevel == level)
             {
                 UpdateSlot(riggingItem);   
@@ -43,6 +48,12 @@ public class RiggingItemSlot : MonoBehaviour
         riggingItemName.text = "이름 : " + nameData;
         riggingItemAttackPower.text = "공격력 : " + attackPowerData.ToString();
         riggingItemAttackSpeed.text = "공격 속도 : " + attackSpeedData.ToString();
+    }
+
+    void UpgradeComplete()
+    {
+        upgradeCompleteImage.gameObject.SetActive(true);
+        levelUpButton.interactable = false;
     }
     /* public void LevelUpCheck(KeyValuePair<int, RiggingItem_DataTable> riggingItem)
     {
