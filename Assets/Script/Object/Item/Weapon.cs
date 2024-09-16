@@ -99,5 +99,12 @@ public class Weapon : Equipment
     #endregion
 
     #region MonoBehaviour
+    private void OnDestroy()
+    {
+        if (graphic != null) 
+        { 
+            Destroy(graphic.gameObject);
+        }
+    }
     #endregion
 }
