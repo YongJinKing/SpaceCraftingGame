@@ -29,6 +29,9 @@ public class EquipInven : MonoBehaviour
         InputController.Instance.numberKeyEvent.AddListener(OnNumInput);
         Player player = equipmentManager.GetComponent<Player>();
         player.UIChangeEvent.AddListener(OnModeChange);
+
+        EquipEvent.AddListener(equipmentManager.EquipItem);
+        UnEquipEvent.AddListener(equipmentManager.UnEquip);
     }
 
     private void OnModeChange(int i)
