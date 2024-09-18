@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class SpaceShipEnter : MonoBehaviour
 {
@@ -9,11 +11,29 @@ public class SpaceShipEnter : MonoBehaviour
     public GameObject invenCanvas;
     public GameObject buildingCanvas;
     public GameObject pauseCanvas;
+    public Button exitButton;
+
+    public UnityEvent UIEnterEvent = new UnityEvent();
+    public UnityEvent UIExitEvent = new UnityEvent();
 
     public Material origin;
     public Material mouseEnter;
 
     public MeshRenderer meshRender;
+
+    private void Start()
+    {
+        if(exitButton == null)
+        {
+            Debug.LogError("SpaceShipEnter class needs exitButton");
+        }
+        else
+        {
+            exitButton.onClick.AddListener(() => { UIExitEvent?.Invoke(); });
+        }
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -43,6 +63,7 @@ public class SpaceShipEnter : MonoBehaviour
             {
                 if (((1 << hit.collider.gameObject.layer) & spaceshipLayer) != 0)
                 {
+                    UIEnterEvent?.Invoke();
                     spaceShipCanvas.SetActive(true);
                 }
             }

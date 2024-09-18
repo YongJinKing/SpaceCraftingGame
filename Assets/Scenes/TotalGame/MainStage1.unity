@@ -32737,6 +32737,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2922169664700849040, guid: 4024fabb79f176041b9db58545241e8b, type: 3}
   m_PrefabInstance: {fileID: 294372846}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1164546601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 738153793541906142, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+  m_PrefabInstance: {fileID: 471455059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1195642717
 GameObject:
   m_ObjectHideFlags: 0
@@ -68377,21 +68388,12 @@ MonoBehaviour:
   SR: {fileID: 1264532354}
   Hammer: {fileID: 472605247}
   PickAxe: {fileID: 218809822}
-  testEvent:
+  EquipEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1003947053}
-        m_TargetAssemblyTypeName: PlayerEquipmentManager, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  UnEquipEvent:
+    m_PersistentCalls:
+      m_Calls: []
   selectSlotEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -68744,6 +68746,10 @@ PrefabInstance:
       propertyPath: origin
       value: 
       objectReference: {fileID: 2100000, guid: b7cb539a64971db4ab5532556accc615, type: 2}
+    - target: {fileID: 7695944021107177298, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: exitButton
+      value: 
+      objectReference: {fileID: 1164546601}
     - target: {fileID: 7695944021107177298, guid: 86de332166973d84687648ac728535d4, type: 3}
       propertyPath: meshRender
       value: 

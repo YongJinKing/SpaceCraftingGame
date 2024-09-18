@@ -28,7 +28,10 @@ public class Player : Unit
     public PlayerAnimationController myAnim;
     public Transform graphicTransform;
     public WeaponRotationAxis weaponRotationAxis;
-    public int modeType = 0; // 0 = 전투Idle, 1 = 건설 Idle
+    /// <summary>
+    /// 0 = 전투Idle, 1 = 건설 Idle
+    /// </summary>
+    public int modeType = 0;
     public bool isDead
     {
         get { return _isDead; }
@@ -70,11 +73,12 @@ public class Player : Unit
     {
         base.Initialize();
         isRight = graphicTransform.localScale.x < 0;
-        if(myAnim == null)
+        if (myAnim == null)
         {
             myAnim = GetComponentInChildren<PlayerAnimationController>();
         }
         InputController.Instance.getMousePosEvent.AddListener(OnGetMousePos);
+        FindObjectOfType<SpaceShipEnter>().UIEnterEvent.AddListener(OnEnterUIState);
         stateMachine.ChangeState<PlayerInitState>();
     }
     #endregion
@@ -100,18 +104,23 @@ public class Player : Unit
     public void OnGetMousePos(Vector2 mousePos)
     {
         float Dot = Vector2.Dot(transform.right, mousePos - (Vector2)transform.position);
-        
+
         //isRight와 XOR 연산해서 True가 나오면 이전값과 다르므로 위치가 달라졌다고 볼수 있다.
         //그때 Flip을 하는데 유니티 스프라이트 시스템이 아니므로 Scale의 x 값을 조정해서 한다.
         //isRight : ture, Dot >= 0 : true -> 오른쪽 바라보고 있고, 계산값 오른쪽 -> XOR값 false
         //ture, false -> 오른쪽 바라보고 있었고, 계산값 왼쪽 -> XOR 값 true
         //false, ture -> 왼쪽 바라보고 있었고, 계산값 오른쪽 -> XOR 값 true
         //false, false -> 왼쪽 바라보고 있었고, 계산값 왼쪽 -> XOR 값 false
-        if(Dot >= 0 ^ isRight)
+        if (Dot >= 0 ^ isRight)
         {
             graphicTransform.localScale = new Vector3(-graphicTransform.localScale.x, graphicTransform.localScale.y, graphicTransform.localScale.z);
             isRight = !isRight;
         }
+    }
+
+    public void OnEnterUIState()
+    {
+        stateMachine.ChangeState<PlayerEnterUIState>();
     }
     #endregion
 

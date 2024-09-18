@@ -66,7 +66,10 @@ public class PlayerHitState : PlayerState
     {
         if(type == 0)
         {
-            owner.stateMachine.ChangeState<PlayerIdleState>();
+            if(owner.modeType == 0)
+                owner.stateMachine.ChangeState<PlayerIdleState>();
+            else if(owner.modeType == 1)
+                owner.stateMachine.ChangeState<PlayerBuildModeState>();
         }
     }
     #endregion
