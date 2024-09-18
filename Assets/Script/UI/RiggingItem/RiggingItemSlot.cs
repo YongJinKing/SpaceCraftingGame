@@ -53,7 +53,12 @@ public class RiggingItemSlot : MonoBehaviour
     void UpgradeComplete()
     {
         upgradeCompleteImage.gameObject.SetActive(true);
+        riggingItemImage.gameObject.SetActive(false);
+        riggingItemName.text = "";
+        riggingItemAttackPower.text = "";
+        riggingItemAttackSpeed.text = "";
         levelUpButton.interactable = false;
+        levelUpButton.gameObject.SetActive(false);
     }
     /* public void LevelUpCheck(KeyValuePair<int, RiggingItem_DataTable> riggingItem)
     {

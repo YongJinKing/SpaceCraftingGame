@@ -176,7 +176,7 @@ public class SoundManager : MonoBehaviour
     /// 해당 효과음 강제 정지 함수
     /// </summary>
     /// <param name="clip">강제 정지하고자 할 오디오 클립</param>
-    public void StopPlayerSFX(AudioClip clip)
+    public void StopSFX(AudioClip clip)
     {
         for (int i = 0; i < sfxPlayer.Count; i++)
         {

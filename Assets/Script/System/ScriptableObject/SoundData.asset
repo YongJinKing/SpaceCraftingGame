@@ -23,5 +23,5 @@ MonoBehaviour:
   bossSpinAttack: {fileID: 8300000, guid: 256bf1376c8b34145b425d7ee75060e9, type: 3}
   bossSuperJumpAttack: {fileID: 8300000, guid: 972e2ec74d1c24c46b4fee0cd99a97a0, type: 3}
   bossThrowAttack: {fileID: 8300000, guid: d4f161bc50bf43549a439b8051cb17ed, type: 3}
-  bossFootstep: {fileID: 0}
+  bossFootstep: {fileID: 8300000, guid: 6b8ffe61e37e49a4f86a931a1ebd355c, type: 3}
   bossDead: {fileID: 0}

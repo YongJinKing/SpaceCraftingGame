@@ -150,7 +150,7 @@ public class BossAlertState : BossState
         bossImg = this.transform.GetChild(this.transform.childCount - 1);
         while (true)
         {
-            SoundManager.Instance.PlaySFX(SoundManager.Instance.soundData.bossFootstep, false);
+            //SoundManager.Instance.PlaySFX(SoundManager.Instance.soundData.bossFootstep, false);
             if (owner.target.transform.position.x > this.transform.position.x)
             {
                 bossImg.transform.localScale = new Vector3(-1, 1, 1);

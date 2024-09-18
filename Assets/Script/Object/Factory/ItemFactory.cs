@@ -33,6 +33,8 @@ public class ItemFactory
         {
             //Weapon
             case 1:
+            case 2:
+            case 3:
                 {
                     WeaponDataStruct data = default;
                     string s = File.ReadAllText("Assets/Prefab/JongHyun/Equipment/Pexplorer_Weapon.json");
@@ -117,8 +119,7 @@ public class ItemFactory
 
                 }
                 break;
-            case 2:
-                { }
+            default:
                 break;
         }
 

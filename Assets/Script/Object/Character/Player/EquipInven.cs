@@ -43,7 +43,7 @@ public class EquipInven : MonoBehaviour
     public void Upgrade(int itemType, int level)
     {
         int index = (itemType + 1) * 10000 + (level - 1);
-
+        Debug.Log("받은 type : " + itemType + ", 레벨은 : " + level + ", 로 만든 인덱스는 " + index);
         Upgrade(index);
     }
 
