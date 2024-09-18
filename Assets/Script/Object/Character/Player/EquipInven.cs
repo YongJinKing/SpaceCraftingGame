@@ -19,9 +19,12 @@ public class EquipInven : MonoBehaviour
     public UnityEvent<EEquipmentType> UnEquipEvent = new UnityEvent<EEquipmentType>();
     public UnityEvent<int> selectSlotEvent = new UnityEvent<int>();
 
+    int[] weapons;
+
     public EquipInven()
     {
         container = new FactoryDIContainer();
+        weapons = new int[3];
     }
 
     private void Start()
@@ -29,6 +32,14 @@ public class EquipInven : MonoBehaviour
         InputController.Instance.numberKeyEvent.AddListener(OnNumInput);
         Player player = equipmentManager.GetComponent<Player>();
         player.UIChangeEvent.AddListener(OnModeChange);
+
+        GunManager weaponManager = FindObjectOfType<GunManager>();
+        weapons = weaponManager.LoadGunIndexes();
+
+        for(int i = 0; i < weapons.Length; i++)
+        {
+            Upgrade(weapons[i]);
+        }
 
         EquipEvent.AddListener(equipmentManager.EquipItem);
         UnEquipEvent.AddListener(equipmentManager.UnEquip);
@@ -43,7 +54,6 @@ public class EquipInven : MonoBehaviour
     public void Upgrade(int itemType, int level)
     {
         int index = (itemType + 1) * 10000 + (level - 1);
-        Debug.Log("받은 type : " + itemType + ", 레벨은 : " + level + ", 로 만든 인덱스는 " + index);
         Upgrade(index);
     }
 
