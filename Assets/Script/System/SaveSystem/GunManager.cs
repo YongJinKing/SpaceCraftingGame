@@ -30,7 +30,9 @@ public class GunManager : BaseSaveSystem
     {
         if (DataManager.Instance.nowSlot == -1) return;
         base.Save();
-        string json = JsonUtility.ToJson(new GunIndexData(gunIndexes));
+        EquipInven EI = FindObjectOfType<EquipInven>();
+
+        string json = JsonUtility.ToJson(new GunIndexData(EI.weapons));
         File.WriteAllText(savePath, json);
 
         if (File.Exists(savePath))

@@ -19,7 +19,7 @@ public class EquipInven : MonoBehaviour
     public UnityEvent<EEquipmentType> UnEquipEvent = new UnityEvent<EEquipmentType>();
     public UnityEvent<int> selectSlotEvent = new UnityEvent<int>();
 
-    int[] weapons;
+    public int[] weapons;
 
     public EquipInven()
     {
@@ -55,6 +55,7 @@ public class EquipInven : MonoBehaviour
     {
         int index = (itemType + 1) * 10000 + (level - 1);
         Upgrade(index);
+        weapons[itemType] = index;
     }
 
     public void Upgrade(int index)
