@@ -123,7 +123,11 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(clip, pos, sfxVolume);
     }
-
+    /// <summary>
+    /// 효과음 재생 함수
+    /// </summary>
+    /// <param name="clip">스크립터블 오브젝트인 SoundData 안에 오디오 소스를 바인딩 후 SoundData.Instance.soundData.clip이름</param>
+    /// <param name="allowDuplicate">앞의 클립이 겹쳐도 되면 true(default), 이 소리가 끝나기 전까지 같은 소리는 반복하지 않을거면 false</param>
     public void PlaySFX(AudioClip clip, bool allowDuplicate = true) // 총과 같이 소리가 겹쳐도 되는건 allowDuplicate를 true로, 소리가 겹치면 안되는 효과음은 false로 두고 쓰면 됨
     {
         bool clipPlayed = false;
@@ -167,6 +171,20 @@ public class SoundManager : MonoBehaviour
         }
 
         ResetSFX();
+    }
+    /// <summary>
+    /// 해당 효과음 강제 정지 함수
+    /// </summary>
+    /// <param name="clip">강제 정지하고자 할 오디오 클립</param>
+    public void StopPlayerSFX(AudioClip clip)
+    {
+        for (int i = 0; i < sfxPlayer.Count; i++)
+        {
+            if (sfxPlayer[i].isPlaying && sfxPlayer[i].clip == clip)
+            {
+                sfxPlayer[i].Stop();
+            }
+        }
     }
 
     void ResetSFX()
