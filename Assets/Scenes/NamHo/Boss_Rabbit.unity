@@ -35405,7 +35405,7 @@ MonoBehaviour:
       m_Calls: []
   animator: {fileID: 0}
   moveSpeed: 2
-  ATK: 0
+  ATK: 1
   ATKSpeed: 0
   Name: 
   mainAction: {fileID: 0}
