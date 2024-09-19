@@ -16159,6 +16159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4527642912440591609, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+      propertyPath: m_text
+      value: day 00
+      objectReference: {fileID: 0}
     - target: {fileID: 4553530797965727336, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -16210,6 +16214,10 @@ PrefabInstance:
     - target: {fileID: 4892874124092053238, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -570
+      objectReference: {fileID: 0}
+    - target: {fileID: 4900089400177773156, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4978688211031058836, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
       propertyPath: m_IsActive
@@ -16459,6 +16467,10 @@ PrefabInstance:
       propertyPath: _myTarget
       value: 
       objectReference: {fileID: 1003947055}
+    - target: {fileID: 9003864581359793600, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+      propertyPath: m_text
+      value: '00 : 00'
+      objectReference: {fileID: 0}
     - target: {fileID: 9098421888020667833, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -16614,7 +16626,7 @@ Camera:
   far clip plane: 1000
   field of view: 24
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 12
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -17189,7 +17201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845759971199934334, guid: 0fd1b3a800067764689e025efef43832, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7307975761303718647, guid: 0fd1b3a800067764689e025efef43832, type: 3}
       propertyPath: m_Pivot.x
@@ -68397,6 +68409,7 @@ MonoBehaviour:
   selectSlotEvent:
     m_PersistentCalls:
       m_Calls: []
+  weapons: 000000000000000000000000
 --- !u!4 &2100087081
 Transform:
   m_ObjectHideFlags: 0
