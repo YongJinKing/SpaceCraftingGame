@@ -62,27 +62,27 @@ public class RabbitBossAnimEvent : MonoBehaviour
     public void JumpAttackSound()
     {
         Debug.Log("점프 공격 사운드 출력?");
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.soundData.bossJumpAttack);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossJumpAttack);
     }
 
     public void SpinAttackSound()
     {
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.soundData.bossSpinAttack);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossSpinAttack);
     }
 
     public void SuperJumpAttackSound()
     {
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.soundData.bossSuperJumpAttack);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossSuperJumpAttack);
     }
 
     public void ThrowAttackSound()
     {
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.soundData.bossThrowAttack);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossThrowAttack);
     }
 
     public void FootStepSound()
     {
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.soundData.bossFootstep);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossFootstep);
     }
 
     #endregion

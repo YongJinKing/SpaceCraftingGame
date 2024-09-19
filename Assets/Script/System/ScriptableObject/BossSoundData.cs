@@ -15,7 +15,7 @@ public enum BGM // 이 순서대로 스크립터블 오브젝트에 사운드를 넣어야함 꼭!
 
 [CreateAssetMenu(fileName = "SoundData", menuName = "Scriptable Object/SoundData")]
 
-public class SoundData: ScriptableObject
+public class BossSoundData: ScriptableObject
 {
     public AudioClip[] bgm;
 
@@ -28,5 +28,6 @@ public class SoundData: ScriptableObject
     public AudioClip bossThrowAttack;
     public AudioClip bossFootstep;
     public AudioClip bossDead;
+    public AudioClip meteorRiceFall;
     #endregion
 }

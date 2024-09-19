@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource bgmPlayer = null;
     [SerializeField] List<AudioSource> sfxPlayer = null;
 
-    public SoundData soundData;
+    public BossSoundData bossSoundData;
     public static SoundManager Instance;
 
     public AudioMixer audioMixer;

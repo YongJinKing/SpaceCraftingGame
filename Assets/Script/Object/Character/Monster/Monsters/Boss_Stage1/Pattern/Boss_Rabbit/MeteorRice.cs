@@ -45,7 +45,7 @@ public class MeteorRice : MonoBehaviour
             // 물체를 제거
             //Destroy(gameObject);
             Release();
-            SoundManager.Instance.PlaySFX(SoundManager.Instance.soundData.bossSpinAttack, false);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.meteorRiceFall, false);
             // 여기서 터지는 무언가를 생성한다. 터지는 이펙트 같은거.
             //Instantiate(brokenVFX, gameObject.transform.position, Quaternion.identity, null);
             var obj = ObjectPool.Instance.GetObject(brokenVFX.gameObject.name, brokenVFX.gameObject, gameObject.transform);

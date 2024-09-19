@@ -66,7 +66,7 @@ public class BossDialogue : MonoBehaviour
         for(int i = 0; i < talk.Length; i++)
         {
             openningText.text += talk[i];
-            SoundManager.Instance.PlaySFX(SoundManager.Instance.soundData.typingSFX);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.typingSFX);
             yield return new WaitForSeconds(0.1f);
         }
 
