@@ -78,7 +78,7 @@ public class Player : Unit
             myAnim = GetComponentInChildren<PlayerAnimationController>();
         }
         InputController.Instance.getMousePosEvent.AddListener(OnGetMousePos);
-        FindObjectOfType<SpaceShipEnter>().UIEnterEvent.AddListener(OnEnterUIState);
+        if(FindObjectOfType<SpaceShipEnter>() != null) FindObjectOfType<SpaceShipEnter>().UIEnterEvent.AddListener(OnEnterUIState);
         stateMachine.ChangeState<PlayerInitState>();
     }
     #endregion
