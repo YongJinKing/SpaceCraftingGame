@@ -49,8 +49,14 @@ MonoBehaviour:
   bgmPlayer: {fileID: 9029499453661848869}
   sfxPlayer:
   - {fileID: 7112906893446850357}
-  soundData: {fileID: 11400000, guid: e268dec2e2a084641b70f23987636d38, type: 2}
+  bossSoundData: {fileID: 11400000, guid: e268dec2e2a084641b70f23987636d38, type: 2}
   audioMixer: {fileID: 24100000, guid: 0d9f026d541ff874c8e70b39563be50e, type: 2}
+  BGMSlider: {fileID: 0}
+  BGMMute: {fileID: 0}
+  SFXSlider: {fileID: 0}
+  SFXMute: {fileID: 0}
+  isBGMMuted: 0
+  isSFXMuted: 0
 --- !u!1 &4613420671796179874
 GameObject:
   m_ObjectHideFlags: 0
