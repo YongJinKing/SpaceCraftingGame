@@ -80,6 +80,17 @@ public class Player : Unit
         InputController.Instance.getMousePosEvent.AddListener(OnGetMousePos);
         if(FindObjectOfType<SpaceShipEnter>() != null) FindObjectOfType<SpaceShipEnter>().UIEnterEvent.AddListener(OnEnterUIState);
         stateMachine.ChangeState<PlayerInitState>();
+
+        PlayerDataStruct loadedPD = DataManager.Instance.LoadJson(DataManager.Instance.tempSavePath);
+
+        if (loadedPD.Index == -1) return;
+
+        this[EStat.MaxHP] = loadedPD.MaxHP;
+        this[EStat.HP] = loadedPD.HP;
+        this[EStat.MoveSpeed] = loadedPD.MoveSpeed;
+        this[EStat.ATK] = loadedPD.ATK;
+        this[EStat.ATKSpeed] = loadedPD.ATKSpeed;
+        this[EStat.Priority] = loadedPD.Priority;
     }
     #endregion
     #region Public
@@ -132,18 +143,6 @@ public class Player : Unit
     protected override void Start()
     {
         base.Start();
-
-        PlayerDataStruct loadedPD = DataManager.Instance.LoadJson(DataManager.Instance.tempSavePath);
-
-        if (loadedPD.Index == -1) return;
-
-        this[EStat.MaxHP] = loadedPD.MaxHP;
-        this[EStat.HP] = loadedPD.HP;
-        this[EStat.MoveSpeed] = loadedPD.MoveSpeed;
-        this[EStat.ATK] = loadedPD.ATK;
-        this[EStat.ATKSpeed] = loadedPD .ATKSpeed;
-        this[EStat.Priority] = loadedPD .Priority;
-
     }
     #endregion
 }

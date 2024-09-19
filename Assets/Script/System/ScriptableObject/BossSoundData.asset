@@ -19,9 +19,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a5b7fe5a466f7c94aa06f20a0e72a838, type: 3}
   - {fileID: 8300000, guid: 127b7245ae66c534ca970d740e3b3294, type: 3}
   typingSFX: {fileID: 8300000, guid: 434a984c6a6bb8e42a56c84e20f63684, type: 3}
-  bossJumpAttack: {fileID: 8300000, guid: 2e8fd142b73118c499159fb0a05cac2e, type: 3}
-  bossSpinAttack: {fileID: 8300000, guid: 256bf1376c8b34145b425d7ee75060e9, type: 3}
-  bossSuperJumpAttack: {fileID: 8300000, guid: 972e2ec74d1c24c46b4fee0cd99a97a0, type: 3}
-  bossThrowAttack: {fileID: 8300000, guid: d4f161bc50bf43549a439b8051cb17ed, type: 3}
+  bossJump: {fileID: 8300000, guid: 6d3fe542b3d295343a749b66a413efd0, type: 3}
+  bossJumpAttack: {fileID: 8300000, guid: 79136252b9038eb4cb6921be1d7d71cc, type: 3}
+  bossSpinAttack: {fileID: 8300000, guid: 886c111d069bdcf4cb78448c7c2f6835, type: 3}
+  bossSuperJumpAttack: {fileID: 8300000, guid: c63ec8638095a2c4998aac413c392020, type: 3}
+  bossThrowReady: {fileID: 8300000, guid: 59b3f9bccaa381242ad152eb5ea57c9f, type: 3}
+  bossThrowAttack: {fileID: 8300000, guid: add2e15d46775a5408622f73f7268322, type: 3}
+  meteorRiceFall: {fileID: 8300000, guid: 256bf1376c8b34145b425d7ee75060e9, type: 3}
+  slowingGround: {fileID: 8300000, guid: 0b8bd466d2bdd414fb6a911cd58cb34e, type: 3}
+  bossEat: {fileID: 8300000, guid: 36148b89887f8e74ca0c1ff4ea3cad87, type: 3}
+  bossBuff: {fileID: 8300000, guid: 552462d43620ac147b6d4a1358c24716, type: 3}
+  bossHitMortalBox: {fileID: 8300000, guid: 56eb9b04585c2ad48828ffcea9a1c1f2, type: 3}
+  mortalBoxSpawnRice: {fileID: 8300000, guid: 5f70d7177edc02b46802e31a408e0754, type: 3}
   bossFootstep: {fileID: 8300000, guid: 6b8ffe61e37e49a4f86a931a1ebd355c, type: 3}
-  bossDead: {fileID: 0}
+  bossDead: {fileID: 8300000, guid: 597372d10770aa54c833e10021bd2717, type: 3}
+  bossDeadImpact: {fileID: 8300000, guid: 227352b61c9445640838760d283bbf4a, type: 3}
+  rewardBoxOpen: {fileID: 8300000, guid: 29ade215a7b3a174fba652ed84f4e299, type: 3}
+  rewardBoxShinning: {fileID: 8300000, guid: 20cbb82fcb9e2584d8f3a8084db40a24, type: 3}
+  rewardSpawnItem: {fileID: 8300000, guid: 9c8441d5cb0c1d040b90a825a84843f5, type: 3}

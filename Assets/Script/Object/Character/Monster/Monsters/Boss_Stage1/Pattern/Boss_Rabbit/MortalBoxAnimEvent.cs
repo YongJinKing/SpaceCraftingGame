@@ -12,4 +12,9 @@ public class MortalBoxAnimEvent : MonoBehaviour
     {
         riceRainAnimation?.Invoke();
     }
+
+    public void JulguSpawnRiceSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.mortalBoxSpawnRice);
+    }
 }

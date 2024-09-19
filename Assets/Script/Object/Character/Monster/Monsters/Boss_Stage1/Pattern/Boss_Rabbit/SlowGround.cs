@@ -17,6 +17,7 @@ public class SlowGround : MonoBehaviour
 
     void OnEnable()
     {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.slowingGround);
         player = GameObject.Find("Player");
         originSpeed = player.GetComponent<UnitMovement>().GetSpeed();
         slowSpeed = originSpeed * 0.3f;

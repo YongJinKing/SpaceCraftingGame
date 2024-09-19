@@ -78,7 +78,6 @@ public class CraftFactory : Singleton<CraftFactory>
     public GameObject CraftBuilding(int index, Vector3 pos , float Hp = 0f, int size = 0, int producedAmount = 0)
     {
         int idx = index / 10000;
-        Debug.Log("Craft : " + idx);
         switch(idx)
         {
             case 10:

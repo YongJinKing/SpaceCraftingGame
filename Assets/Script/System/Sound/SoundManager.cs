@@ -183,7 +183,7 @@ public class SoundManager : MonoBehaviour
         {
             if (sfxPlayer[i].isPlaying && sfxPlayer[i].clip == clip)
             {
-                sfxPlayer[i].Stop();
+                sfxPlayer[i].Pause();
             }
         }
     }

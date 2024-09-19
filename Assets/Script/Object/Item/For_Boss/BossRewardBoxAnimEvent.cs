@@ -14,6 +14,21 @@ public class BossRewardBoxAnimEvent : MonoBehaviour
         bossRewardsAct?.Invoke();
     }
 
+    public void DropBoxSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.rewardBoxDrop);
+    }
+
+    public void BoxMoveSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.rewardBoxMove);
+    }
+
+    public void ShinningBoxSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.rewardBoxShinning);
+    }
+
     public void TurnOnButtonAnimation()
     {
         turnOnButtonAct?.Invoke();

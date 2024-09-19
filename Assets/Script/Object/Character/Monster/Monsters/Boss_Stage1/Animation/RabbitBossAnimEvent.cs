@@ -58,10 +58,12 @@ public class RabbitBossAnimEvent : MonoBehaviour
     }
 
     #region Sound
-
+    public void JumpSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossJump);
+    }
     public void JumpAttackSound()
     {
-        Debug.Log("점프 공격 사운드 출력?");
         SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossJumpAttack);
     }
 
@@ -69,17 +71,52 @@ public class RabbitBossAnimEvent : MonoBehaviour
     {
         SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossSpinAttack);
     }
-
+    public void StopSpinAttackSound()
+    {
+        SoundManager.Instance.StopSFX(SoundManager.Instance.bossSoundData.bossSpinAttack);
+    }
     public void SuperJumpAttackSound()
     {
         SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossSuperJumpAttack);
     }
 
+    public void SuperJumpFallingSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.meteorRiceFall, false);
+    }
+
+    public void ThrowReadySound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossThrowReady);
+    }
     public void ThrowAttackSound()
     {
         SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossThrowAttack);
     }
 
+    public void EatRiceSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossEat);
+    }
+
+    public void BuffSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossBuff);
+    }
+
+    public void HitMortalBoxSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossHitMortalBox);
+    }
+
+    public void DeadSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossDead);
+    }
+    public void DeadImpactSound()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossDeadImpact);
+    }
     public void FootStepSound()
     {
         SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.bossFootstep);

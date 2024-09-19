@@ -68,7 +68,6 @@ public class RabbitBossSpinningAttackAction : BossAction
     protected override void ActionEnd()
     {
         base.ActionEnd();
-        SoundManager.Instance.StopSFX(SoundManager.Instance.bossSoundData.bossSpinAttack);
         ownerAnim.SetTrigger("SpinningAttackEnd");
         StopAllCoroutines();
     }
