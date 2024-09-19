@@ -46,17 +46,21 @@ public abstract class AttackAction : Action
     {
         for (int i = 0; i < hitBoxes.Length; ++i)
         {
-            hitBoxes[i].Activate(pos);
-            //만약 날아가서 없어지는 타입의 히트박스의 경우 리로드
-            if (hitBoxes[i].isDestroy)
+            if (hitBoxes[i] != null)
             {
-                if(i < attackStartPos.Length && attackStartPos[i] != null)
-                    hitBoxes[i] = Instantiate(hitBoxPrefabs[i], attackStartPos[i], false);
-                else
-                    hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
+                hitBoxes[i].Activate(pos);
 
-                hitBoxes[i].originPos = this.transform;
-                hitBoxes[i].gameObject.SetActive(true);
+                //만약 날아가서 없어지는 타입의 히트박스의 경우 리로드
+                if (hitBoxes[i].isDestroy)
+                {
+                    if (i < attackStartPos.Length && attackStartPos[i] != null)
+                        hitBoxes[i] = Instantiate(hitBoxPrefabs[i], attackStartPos[i], false);
+                    else
+                        hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
+
+                    hitBoxes[i].originPos = this.transform;
+                    hitBoxes[i].gameObject.SetActive(true);
+                }
             }
         }
     }

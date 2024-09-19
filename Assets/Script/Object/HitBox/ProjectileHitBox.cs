@@ -34,6 +34,7 @@ public class ProjectileHitBox : HitBox
     #endregion
 
     #region Constructor
+    public ProjectileHitBox() { isDestroy = true; }
     #endregion
 
     #region Methods
@@ -58,8 +59,6 @@ public class ProjectileHitBox : HitBox
     }
     protected override void Initialize()
     {
-        isDestroy = true;
-
         base.Initialize();
     }
     #endregion
