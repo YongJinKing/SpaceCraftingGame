@@ -34044,24 +34044,16 @@ MonoBehaviour:
   SR: {fileID: 688089372}
   Hammer: {fileID: 476946748}
   PickAxe: {fileID: 947343406}
-  testEvent:
+  EquipEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1015271561}
-        m_TargetAssemblyTypeName: PlayerEquipmentManager, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  UnEquipEvent:
+    m_PersistentCalls:
+      m_Calls: []
   selectSlotEvent:
     m_PersistentCalls:
       m_Calls: []
+  weapons: 000000000000000000000000
 --- !u!4 &807366317
 Transform:
   m_ObjectHideFlags: 0
@@ -35424,6 +35416,9 @@ MonoBehaviour:
   modeType: 0
   canEquip: 0
   UIChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  PlayerModeChangeEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!58 &1015271564
@@ -56697,6 +56692,7 @@ PrefabInstance:
     - {fileID: 1724463613235057993, guid: 86de332166973d84687648ac728535d4, type: 3}
     - {fileID: 3642257878192469730, guid: 86de332166973d84687648ac728535d4, type: 3}
     - {fileID: 4028470316444808648, guid: 86de332166973d84687648ac728535d4, type: 3}
+    - {fileID: 3745771235465365395, guid: 86de332166973d84687648ac728535d4, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1223117295852275693, guid: 86de332166973d84687648ac728535d4, type: 3}
       insertIndex: -1
