@@ -205,4 +205,18 @@ public class CamController : MonoBehaviour
 
     #endregion
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StopAllCoroutines();
+            SoundManager.Instance.PlayBGM(SoundManager.Instance.bossSoundData.bgm[(int)BGM.BOSS]);
+            Player.transform.position = playerLandingPos.transform.position; // 목표 위치로 정확히 이동
+            CVC.m_Lens.OrthographicSize = defalutOrthoSize;
+            CamFocus.SetParent(null);
+            MoveToTarget(CamFocus.position, Player.position);
+            CamFocus.SetParent(Player);
+            bossStage1Manager.StartGame();
+        }
+    }
 }

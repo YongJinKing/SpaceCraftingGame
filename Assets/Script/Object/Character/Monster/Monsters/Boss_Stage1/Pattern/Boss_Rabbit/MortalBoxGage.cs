@@ -57,7 +57,7 @@ public class MortalBoxGage : MonoBehaviour
     public void OnChangedCakes(float riceCake)
     {
         _mySlider.value = riceCake;
-        Debug.Log("Changed " + _mySlider.value);
+        //Debug.Log("Changed " + _mySlider.value);
     }
     #endregion
 
