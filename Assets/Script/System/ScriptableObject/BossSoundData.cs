@@ -13,7 +13,7 @@ public enum BGM // 이 순서대로 스크립터블 오브젝트에 사운드를 넣어야함 꼭!
 }
 
 
-[CreateAssetMenu(fileName = "SoundData", menuName = "Scriptable Object/SoundData")]
+[CreateAssetMenu(fileName = "BossSoundData", menuName = "Scriptable Object/BossSoundData")]
 
 public class BossSoundData: ScriptableObject
 {
