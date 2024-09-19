@@ -14978,6 +14978,67 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1001 &242648313
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4329979311129911320, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177278667719378058, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177278667719378058, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177278667719378058, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177278667719378058, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177278667719378058, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177278667719378058, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177278667719378058, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177278667719378058, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177278667719378058, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177278667719378058, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7393990322170865518, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
+      propertyPath: UISound
+      value: 
+      objectReference: {fileID: 11400000, guid: 52165084e4897ce458a4d2d024c8061b, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b248d1f15f33abe43ab43b96c521e519, type: 3}
 --- !u!1001 &248757634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100884,24 +100945,16 @@ MonoBehaviour:
   SR: {fileID: 0}
   Hammer: {fileID: 913126753}
   PickAxe: {fileID: 1968647579}
-  testEvent:
+  EquipEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1948805416}
-        m_TargetAssemblyTypeName: PlayerEquipmentManager, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  UnEquipEvent:
+    m_PersistentCalls:
+      m_Calls: []
   selectSlotEvent:
     m_PersistentCalls:
       m_Calls: []
+  weapons: 000000000000000000000000
 --- !u!4 &1663404370
 Transform:
   m_ObjectHideFlags: 0
@@ -107394,7 +107447,9 @@ MonoBehaviour:
   SpawnOffset: 30
   monsterWaveDay: 7
   waveDifficultyScale: 1.5
+  hpBarPrefab: {fileID: 0}
   timeManager: {fileID: 0}
+  MonsterHPUICanvas: {fileID: 0}
 --- !u!4 &1825365035
 Transform:
   m_ObjectHideFlags: 0
@@ -114038,6 +114093,9 @@ MonoBehaviour:
   modeType: 0
   canEquip: 0
   UIChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  PlayerModeChangeEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!58 &1948805414
@@ -145397,3 +145455,4 @@ SceneRoots:
   - {fileID: 2053131946}
   - {fileID: 419006518}
   - {fileID: 786731049}
+  - {fileID: 242648313}
