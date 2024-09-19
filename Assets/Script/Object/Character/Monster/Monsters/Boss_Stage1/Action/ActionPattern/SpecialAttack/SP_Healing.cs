@@ -32,6 +32,10 @@ public class SP_Healing : SPAttackAction
     IEnumerator HealingPattern()
     {
         yield return StartCoroutine(FindMortalBox());
+        if (!chk)
+        {
+            ActionEnd();
+        }
 
         // 떡을 먹는 애니메이션을 여기서 출력해야함~
         if (chk)
