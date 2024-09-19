@@ -10273,6 +10273,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8121737199814643548, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
   m_PrefabInstance: {fileID: 240529981}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &242761405 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 822280067608277639, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+  m_PrefabInstance: {fileID: 471455059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265849728
 GameObject:
   m_ObjectHideFlags: 0
@@ -68843,6 +68848,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2765275011479328568, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: hpBarPrefab
+      value: 
+      objectReference: {fileID: 442289299514592694, guid: b79ca0c3bcd78cd4985a77164632a7da, type: 3}
+    - target: {fileID: 2765275011479328568, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: MonsterHPUICanvas
+      value: 
+      objectReference: {fileID: 242761405}
     - target: {fileID: 4603840126810279232, guid: 86de332166973d84687648ac728535d4, type: 3}
       propertyPath: CG
       value: 

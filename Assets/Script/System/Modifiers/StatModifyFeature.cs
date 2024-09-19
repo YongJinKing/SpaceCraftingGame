@@ -59,7 +59,7 @@ public class StatModifyFeature : MonoBehaviour, IGetStatValueModifier
     #endregion
 
     #region MonoBehaviour
-    private void Awake()
+    private void OnEnable()
     {
         switch (modifierType)
         {

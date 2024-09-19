@@ -32,7 +32,7 @@ public class EquipInven : MonoBehaviour
         InputController.Instance.numberKeyEvent.AddListener(OnNumInput);
         Player player = equipmentManager.GetComponent<Player>();
         player.UIChangeEvent.AddListener(OnModeChange);
-
+        
         GunManager weaponManager = FindObjectOfType<GunManager>();
         weapons = weaponManager.LoadGunIndexes();
 
@@ -40,7 +40,7 @@ public class EquipInven : MonoBehaviour
         {
             Upgrade(weapons[i]);
         }
-
+        
         EquipEvent.AddListener(equipmentManager.EquipItem);
         UnEquipEvent.AddListener(equipmentManager.UnEquip);
     }
@@ -71,8 +71,8 @@ public class EquipInven : MonoBehaviour
                     UnEquipEvent?.Invoke(AR.itemType);
                     Destroy(AR.gameObject);
                     AR = upgraded;
-                    EquipEvent?.Invoke(AR);
-                    selectSlotEvent?.Invoke(0);
+                    //EquipEvent?.Invoke(AR);
+                    //selectSlotEvent?.Invoke(0);
                 }
                 break;
             case 2:
@@ -80,8 +80,8 @@ public class EquipInven : MonoBehaviour
                     UnEquipEvent?.Invoke(SG.itemType);
                     Destroy(SG.gameObject);
                     SG = upgraded;
-                    EquipEvent?.Invoke(SG);
-                    selectSlotEvent?.Invoke(0);
+                    //EquipEvent?.Invoke(SG);
+                    //selectSlotEvent?.Invoke(0);
                 }
                 break;
             case 3:
@@ -89,8 +89,8 @@ public class EquipInven : MonoBehaviour
                     UnEquipEvent?.Invoke(SR.itemType);
                     Destroy(SR.gameObject);
                     SR = upgraded;
-                    EquipEvent?.Invoke(SR);
-                    selectSlotEvent?.Invoke(0);
+                    //EquipEvent?.Invoke(SR);
+                    //selectSlotEvent?.Invoke(0);
                 }
                 break;
         }

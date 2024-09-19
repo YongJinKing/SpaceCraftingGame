@@ -16,7 +16,7 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
     #endregion
     #region Protected
     protected Dictionary<EStat, List<ValueModifier>> dicModifiers = new Dictionary<EStat, List<ValueModifier>>();
-    [SerializeField]protected bool _isActive = true;
+    [SerializeField]protected bool _isActive = false;
     #endregion
     #region Public
     public bool isActive
@@ -59,7 +59,13 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
     #region Public
     public List<ValueModifier> GetStatValueModifiers(EStat statType)
     {
-        //Debug.Log($"Modifiers 전달 성공, 이름 : {gameObject.name}");
+        /*
+        Debug.Log($"Modifiers 전달 성공, 이름 : {gameObject.name}");
+        foreach(List<ValueModifier> temp in dicModifiers.Values)
+        {
+            Debug.Log(temp.Count);
+        }
+        */
         if (_isActive && dicModifiers.ContainsKey(statType))
             return dicModifiers[statType];
         else
@@ -92,20 +98,12 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
 
     private void Start()
     {
-        /*
-        List<ValueModifier> modifierList = new List<ValueModifier>();
-        AddValueModifier add = new AddValueModifier(1, 20);
-        MultValueModifier mult = new MultValueModifier(2, 1.5f);
-
-        modifierList.Add(add);
-        modifierList.Add(mult);
-
-        dicModifiers.Add(E_BattleStat.ATK, modifierList);
-        */
-
         myStat = GetComponentInParent<Stat>();
 
         IGetStatValueModifier[] modifiers = GetComponentsInChildren<IGetStatValueModifier>();
+
+        //Debug.Log($"modifiers.Length : {modifiers.Length} myStat.GameObject {myStat.gameObject.name}");
+
         Info<EStat, ValueModifier> temp;
         foreach (IGetStatValueModifier data in modifiers)
         {

@@ -32,7 +32,7 @@ public class DamageAffect : BaseAffect
     #region Public
     public override void OnActivate(Collider2D target, Vector2 hitWorldPos)
     {
-        //Debug.Log("DamageAffect Activated");
+        //Debug.Log($"DamageAffect myStat[EStat.ATK] = {myStat[EStat.ATK]}, GetRawStat = {myStat.GetRawStat(EStat.ATK)}");
 
         IDamage damage = target.GetComponent<IDamage>();
 
