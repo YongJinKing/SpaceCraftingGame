@@ -127,28 +127,28 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.8333334
+  - time: 1.95
     functionName: JulguSpawnRiceSound
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: ab49c4d64751c4f479306c8c13aa3879, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.1333334
+  - time: 2.25
     functionName: JulguSpawnRiceSound
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: ab49c4d64751c4f479306c8c13aa3879, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.4
+  - time: 2.5166667
     functionName: JulguSpawnRiceSound
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: ab49c4d64751c4f479306c8c13aa3879, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.7
+  - time: 2.8166666
     functionName: JulguSpawnRiceSound
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: ab49c4d64751c4f479306c8c13aa3879, type: 3}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073bcb8b3b3a7d345a643b942b265e28, type: 3}
   m_Name: PlayerSoundData
   m_EditorClassIdentifier: 
-  Gun_Fire_Sound: {fileID: 0}
+  Gun_Fire_Sound: {fileID: 8300000, guid: f7c60562cb2e55d4d9fa0eb42e32007d, type: 3}
   Gun_Hit_Sound: {fileID: 0}
