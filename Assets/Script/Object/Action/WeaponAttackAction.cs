@@ -39,6 +39,7 @@ public class WeaponAttackAction : AttackAction
     {
         base.Activate(pos);
 
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.playerSoundData.Gun_Fire_Sound);
         ActivateHitBoxes(pos);
         StartCoroutine(ActiveDurationChecking());
     }

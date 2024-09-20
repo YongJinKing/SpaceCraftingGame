@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] List<AudioSource> sfxPlayer = null;
 
     public BossSoundData bossSoundData;
+    public PlayerSoundData playerSoundData;
     public UI_Sound UISound;
     public static SoundManager Instance;
 
