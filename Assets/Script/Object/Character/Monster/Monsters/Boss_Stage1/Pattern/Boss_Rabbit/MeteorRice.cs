@@ -42,7 +42,7 @@ public class MeteorRice : MonoBehaviour
                 if (player != null)
                 {
                     Debug.Log("플레이어 히트!");
-                    player.TakeDamage(1f);
+                    player.TakeDamage(3f);
                 }
             }
             // 물체를 제거
