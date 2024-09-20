@@ -70,5 +70,9 @@
   {
     "Index": 20302,
     "Name": "Effect/Player/Bullet/Bullet_Sniper_Lv3"
+  },
+  {
+    "Index": 30000,
+    "Name": "Effect/Player/Gun_Hit"
   }
 ]

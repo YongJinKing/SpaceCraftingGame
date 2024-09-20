@@ -139,7 +139,7 @@ MonoBehaviour:
   _hitFrequency: -1
   _isDestroy: 0
   originPos: {fileID: 0}
-  hitEffectPrefab: {fileID: 4194115300568944084, guid: f2decf17032abcc4a8aa9b2ffc81d88e, type: 3}
+  hitEffectPrefab: {fileID: 4773319160902644051, guid: f1f71e1c8ecd27b4a920dc8e1e999034, type: 3}
   destroyEffectPrefab: {fileID: 0}
   OnDurationEndEvent:
     m_PersistentCalls:
