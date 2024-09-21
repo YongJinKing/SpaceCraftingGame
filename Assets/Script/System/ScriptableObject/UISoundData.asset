@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3a2de7b70cf0b41b0a14ef02ff6e4e, type: 3}
   m_Name: UISoundData
   m_EditorClassIdentifier: 
-  Sound1: {fileID: 0}
+  NeedMoreResourceSFX: {fileID: 8300000, guid: 4597dcc227b2f2446a8c7051fd8ec932, type: 3}
+  EnterSpaceShipSFX: {fileID: 8300000, guid: 1366b51e5c3707f409b90de613457443, type: 3}
+  HammeringSFX: {fileID: 8300000, guid: 816749c46671731469c4d1e4f0dff3aa, type: 3}
+  MiningSFX: {fileID: 8300000, guid: cacf5fceba370704e9ebd07b355ed270, type: 3}
+  ChangeToolSFX: {fileID: 8300000, guid: d49b2a60ed2643c4da9ef803454c004e, type: 3}
+  ChangeWeaponSFX: {fileID: 8300000, guid: 5310333f4ee10424dbaafc3e69f23f2a, type: 3}
+  ChangingTabSFX: {fileID: 8300000, guid: 5aa2f3ffaa7f75041bf4e2a94e195e5a, type: 3}
+  OpenBuildingSFX: {fileID: 8300000, guid: 2585d0a51a83c84409fb2b64b003f8f9, type: 3}
+  BuildingSFX: {fileID: 8300000, guid: ec61a9a22a3873b47a88ebd932457f66, type: 3}
+  SuccesSFX: {fileID: 8300000, guid: e7f88f05e251f36409e482a5793bfd1a, type: 3}
