@@ -19,9 +19,11 @@ public class UI_Sound : ScriptableObject
     //무기 변경
     public AudioClip ChangeWeaponSFX;
     //제작무기탭 변경
-    public AudioClip ChangingTabSFX;
-    //건설 탭 열기
-    public AudioClip OpenBuildingSFX;
+    public AudioClip ChangeTabSFX;
+    // 탭 열기
+    public AudioClip OpenTabSFX;
+    // 탭 닫기
+    public AudioClip CloseTabSFX;
     //건물 제작 
     public AudioClip BuildingSFX;
     //강화 성공
