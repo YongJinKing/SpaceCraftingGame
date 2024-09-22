@@ -15,7 +15,7 @@ public class ModeChange : MonoBehaviour
     public GameObject WeaponBox;
     public GameObject WeaponBoxGrid;
     public GameObject UISoundManager;
-    
+   
 
     // Start is called before the first frame update
     void Start()
@@ -49,11 +49,14 @@ public class ModeChange : MonoBehaviour
             CraftingBox.SetActive(false);
             for(int i = 0; i < CraftingBoxGrid.transform.childCount; i++)
             {
-                CraftingBoxGrid.transform.GetChild(i).GetComponent<WeaponSlot>().UnSelect();
+                CraftingBoxGrid.transform.GetChild(i).GetComponent<ToolSlot>().UnSelect();
             }
             WeaponBox.SetActive(true);
-            if(Input.GetKeyDown(KeyCode.B)) UISoundManager.GetComponent<UISoundPlayer>().ChangeTab();
-            
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                UISoundManager.GetComponent<UISoundPlayer>().ChangeTab();
+                
+            }
         }
         else if(type == 1) 
         {
@@ -65,8 +68,11 @@ public class ModeChange : MonoBehaviour
             {
                 WeaponBoxGrid.transform.GetChild(i).GetComponent<WeaponSlot>().UnSelect();
             }
-            if (Input.GetKeyDown(KeyCode.B)) UISoundManager.GetComponent<UISoundPlayer>().ChangeTab();
-            
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                UISoundManager.GetComponent<UISoundPlayer>().ChangeTab();
+               
+            }
         }
         UIMode = type;
     }
@@ -80,13 +86,18 @@ public class ModeChange : MonoBehaviour
                     WeaponBoxGrid.transform.GetChild(priviousWeaponSelect).GetComponent<WeaponSlot>().UnSelect();
                     WeaponBoxGrid.transform.GetChild(type).GetComponent<WeaponSlot>().Select();
                     priviousWeaponSelect = type;
+                    if (Input.GetKeyDown(KeyCode.Alpha1)) UISoundManager.GetComponent<UISoundPlayer>().ChangeWeapon();
+                    if (Input.GetKeyDown(KeyCode.Alpha2)) UISoundManager.GetComponent<UISoundPlayer>().ChangeWeapon();
+                    if (Input.GetKeyDown(KeyCode.Alpha3)) UISoundManager.GetComponent<UISoundPlayer>().ChangeWeapon();
                 }
                 break;
             case 1:
                 {
-                    CraftingBoxGrid.transform.GetChild(priviousCraftSelect).GetComponent<WeaponSlot>().UnSelect();
-                    CraftingBoxGrid.transform.GetChild(type).GetComponent<WeaponSlot>().Select();
+                    CraftingBoxGrid.transform.GetChild(priviousCraftSelect).GetComponent<ToolSlot>().UnSelect();
+                    CraftingBoxGrid.transform.GetChild(type).GetComponent<ToolSlot>().Select();
                     priviousCraftSelect = type;
+                    if (Input.GetKeyDown(KeyCode.Alpha1)) UISoundManager.GetComponent<UISoundPlayer>().ChangeTool();
+                    if (Input.GetKeyDown(KeyCode.Alpha2)) UISoundManager.GetComponent<UISoundPlayer>().ChangeTool();
                 }
                 break;
         }

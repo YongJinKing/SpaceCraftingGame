@@ -11,7 +11,7 @@ public class ToolSlot : MonoBehaviour
     public void Select()
     {
         selectImage.SetActive(true);
-        SlotSoundManager.GetComponent<UISoundPlayer>().ChangeWeapon();
+        
     }
 
     public void UnSelect()

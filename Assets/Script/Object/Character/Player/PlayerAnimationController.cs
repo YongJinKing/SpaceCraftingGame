@@ -17,6 +17,7 @@ public class PlayerAnimationController : UnitAnimationController
     protected int T_Hit;
     #endregion
     #region Public
+    public GameObject PlayerSoundManager;
     #endregion
     #region Events
 
@@ -43,6 +44,7 @@ public class PlayerAnimationController : UnitAnimationController
     public void SetLeftClick(bool leftClick)
     {
         anim.SetBool(B_LeftClick, leftClick);
+        
     }
     public void TriggerDeath()
     {
@@ -79,4 +81,6 @@ public class PlayerAnimationController : UnitAnimationController
         T_Hit = Animator.StringToHash("T_Hit");
     }
     #endregion
+
+
 }

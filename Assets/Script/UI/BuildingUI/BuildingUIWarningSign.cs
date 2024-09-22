@@ -11,7 +11,7 @@ public class BuildingUIWarningSign : MonoBehaviour
     [SerializeField] GameObject buildWarning_NoMoreResources;
 
     public CraftBuildingManager craftManager;
-
+    public GameObject UISoundManager;
     private void Start()
     {
         craftManager.ActiveCantBuildThere.AddListener(TurnOnCantBuildThere);
@@ -21,10 +21,12 @@ public class BuildingUIWarningSign : MonoBehaviour
     public void TurnOnCantBuildThere()
     {
         if(!buildWarning_CantBuildThere.activeSelf) buildWarning_CantBuildThere.SetActive(true);
+        UISoundManager.GetComponent<UISoundPlayer>().NeedMoreResource();
     }
 
     public void TurnOnNoMoreResources()
     {
         if (!buildWarning_NoMoreResources.activeSelf) buildWarning_NoMoreResources.SetActive(true);
+        UISoundManager.GetComponent<UISoundPlayer>().NeedMoreResource();
     }
 }

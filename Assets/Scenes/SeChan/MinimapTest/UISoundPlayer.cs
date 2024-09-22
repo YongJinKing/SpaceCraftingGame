@@ -19,11 +19,11 @@ public class UISoundPlayer : MonoBehaviour
     }
     public void Hammering()
     {
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.HammeringSFX, true);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.HammeringSFX, false);
     }
     public void Mining()
     {
-        SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.MiningSFX, true);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.MiningSFX, false);
     }
     public void ChangeTool()
     {
