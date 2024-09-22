@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bc011a73e4400438226d058becba3c, type: 3}
   m_Name: SpaceShipSondData
   m_EditorClassIdentifier: 
-  sacpeshipBoost: {fileID: 0}
-  spaceshipChangeMode: {fileID: 0}
-  spaceshipSearching: {fileID: 0}
-  spaceshipLand: {fileID: 0}
+  sacpeshipBoost: {fileID: 8300000, guid: 6df4f143a9995c64aa89e6f2bbbf5bf4, type: 3}
+  spaceshipChangeMode: {fileID: 8300000, guid: 7ec16cc76964ca74cbfd0bf670c03e57, type: 3}
+  spaceshipSearching: {fileID: 8300000, guid: 26739ed36bce34a4780d0dee13d8f7d5, type: 3}
+  spaceshipLand: {fileID: 8300000, guid: dbe1f3434983803498bbc7ad1334aeb7, type: 3}
