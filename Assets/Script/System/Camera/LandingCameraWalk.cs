@@ -24,7 +24,7 @@ public class LandingCameraWalk : MonoBehaviour
     IEnumerator LandingCamFocus()
     {
         float elapsedTime = 0f;
-
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.sacpeshipBoost);
         CamFocus.position = StartPos.position;
 
         while (elapsedTime < time)
@@ -37,10 +37,13 @@ public class LandingCameraWalk : MonoBehaviour
 
             yield return null;
         }
-
+        SoundManager.Instance.StopSFX(SoundManager.Instance.spaceShipSondData.sacpeshipBoost);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.spaceshipLand);
         CamFocus.position = EndPos.position;
-
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.spaceshipChangeMode);
+        yield return new WaitForSeconds(2f);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.spaceshipSearching);
         fadeManager.StartFadeOut(2f);
         yield return new WaitForSeconds(2.5f);
         Debug.Log("¾À ÀÌµ¿");

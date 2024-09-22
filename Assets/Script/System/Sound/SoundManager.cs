@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     public BossSoundData bossSoundData;
     public PlayerSoundData playerSoundData;
     public UI_Sound UISound;
+    public SpaceShipSondData spaceShipSondData;
     public static SoundManager Instance;
 
     public AudioMixer audioMixer;

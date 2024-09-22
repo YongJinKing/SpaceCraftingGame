@@ -19,6 +19,7 @@ public class TakeOffCameraWalk : MonoBehaviour
     void SetTakeOff()
     {
         SpaceShipAnimator.SetTrigger("TakeOff");
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.spaceshipChangeMode);
     }
 
     IEnumerator StartTakeOff()
@@ -26,9 +27,11 @@ public class TakeOffCameraWalk : MonoBehaviour
         fadeManager.StartFadeIn(1.5f);
         yield return new WaitForSeconds(1.5f);
         SetTakeOff();
-        yield return new WaitForSeconds(time - 4f);
+        yield return new WaitForSeconds(1.5f);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.sacpeshipBoost);
+        yield return new WaitForSeconds(time - 5.5f);
         fadeManager.StartFadeOut(1.5f);
     }
 
-    
+
 }
