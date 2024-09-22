@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponSlot : MonoBehaviour
+
+public class ToolSlot : MonoBehaviour
 {
     public Image image;
     public GameObject selectImage;

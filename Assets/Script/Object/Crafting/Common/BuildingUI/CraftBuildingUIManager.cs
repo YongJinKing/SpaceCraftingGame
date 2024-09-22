@@ -12,7 +12,7 @@ public class CraftBuildingUIManager : MonoBehaviour
   
     public string curType = "Resource";
     //public List<Building> AllItemList, MyItemList,CurItemList;
-   
+
     public Image[] TabImage;
     public Sprite TabSelectSprite, TabDeselectSprite;
    

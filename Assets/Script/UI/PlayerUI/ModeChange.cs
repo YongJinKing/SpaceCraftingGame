@@ -14,6 +14,8 @@ public class ModeChange : MonoBehaviour
     public GameObject CraftingBoxGrid;
     public GameObject WeaponBox;
     public GameObject WeaponBoxGrid;
+    public GameObject UISoundManager;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +52,8 @@ public class ModeChange : MonoBehaviour
                 CraftingBoxGrid.transform.GetChild(i).GetComponent<WeaponSlot>().UnSelect();
             }
             WeaponBox.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.B)) UISoundManager.GetComponent<UISoundPlayer>().ChangeTab();
+            
         }
         else if(type == 1) 
         {
@@ -61,6 +65,8 @@ public class ModeChange : MonoBehaviour
             {
                 WeaponBoxGrid.transform.GetChild(i).GetComponent<WeaponSlot>().UnSelect();
             }
+            if (Input.GetKeyDown(KeyCode.B)) UISoundManager.GetComponent<UISoundPlayer>().ChangeTab();
+            
         }
         UIMode = type;
     }

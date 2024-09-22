@@ -13,6 +13,10 @@ public class UISoundPlayer : MonoBehaviour
     {
         SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.EnterSpaceShipSFX, true);
     }
+    public void ExitSpaceship()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.ExitSpaceShipSFX, true);
+    }
     public void Hammering()
     {
         SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.HammeringSFX, true);

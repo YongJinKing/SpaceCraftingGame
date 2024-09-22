@@ -10,6 +10,8 @@ public class UI_Sound : ScriptableObject
     public AudioClip NeedMoreResourceSFX;
     //우주선 입장
     public AudioClip EnterSpaceShipSFX;
+    //우주선 나가기
+    public AudioClip ExitSpaceShipSFX;
     //망치
     public AudioClip HammeringSFX;
     //곡괭이

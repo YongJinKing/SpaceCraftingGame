@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NeedMoreResourceSFX: {fileID: 8300000, guid: 4597dcc227b2f2446a8c7051fd8ec932, type: 3}
   EnterSpaceShipSFX: {fileID: 8300000, guid: 1366b51e5c3707f409b90de613457443, type: 3}
+  ExitSpaceShipSFX: {fileID: 8300000, guid: 7238c7e2c155aa248be8aa7b0699811d, type: 3}
   HammeringSFX: {fileID: 8300000, guid: 816749c46671731469c4d1e4f0dff3aa, type: 3}
   MiningSFX: {fileID: 8300000, guid: cacf5fceba370704e9ebd07b355ed270, type: 3}
   ChangeToolSFX: {fileID: 8300000, guid: d49b2a60ed2643c4da9ef803454c004e, type: 3}

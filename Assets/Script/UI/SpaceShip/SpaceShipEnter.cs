@@ -20,7 +20,7 @@ public class SpaceShipEnter : MonoBehaviour
     public Material mouseEnter;
 
     public MeshRenderer meshRender;
-
+    public GameObject UIsoundManger;
     private void Start()
     {
         if(exitButton == null)
@@ -37,6 +37,7 @@ public class SpaceShipEnter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, spaceshipLayer);
 
@@ -65,6 +66,7 @@ public class SpaceShipEnter : MonoBehaviour
                 {
                     UIEnterEvent?.Invoke();
                     spaceShipCanvas.SetActive(true);
+                    UIsoundManger.GetComponent<UISoundPlayer>().EnterSpaceship();
                 }
             }
         }
