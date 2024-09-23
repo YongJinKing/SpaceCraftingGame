@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class ConstructionSite : MonoBehaviour
 {
     public Transform[] buildingDrons;
-
+    public BuildSFXType buildingType;
     public UnityEvent finishWorkEvent;
 
     [SerializeField] int index;
@@ -14,7 +14,12 @@ public class ConstructionSite : MonoBehaviour
     [SerializeField] float Hp;
     [SerializeField] int size;
     [SerializeField] float craftingTime = 1f;
-    
+
+    private void OnEnable()
+    {
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.buildingSoundData.BuildSFXs[(int)buildingType]);
+    }
+
     public void SetIndex(int _index)
     {
         index = _index;
