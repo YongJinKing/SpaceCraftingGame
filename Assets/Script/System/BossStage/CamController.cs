@@ -87,7 +87,7 @@ public class CamController : MonoBehaviour
     #region ForPlayer
     IEnumerator PlayerLandingToStage()
     {
-        SoundManager.Instance.PlayBGM(SoundManager.Instance.bossSoundData.bgm[(int)BGM.BOSSENTRANCE]);
+        SoundManager.Instance.PlayBGM(SoundManager.Instance.BGMSoundData.bgm[(int)BGM.BOSSENTRANCE]);
         float landingTime = 1.5f; // 총 이동 시간
         float curTime = 0f; // 경과 시간
 
@@ -160,7 +160,7 @@ public class CamController : MonoBehaviour
         // 대사 출력
         yield return StartCoroutine(ActiveBossScript());
 
-        SoundManager.Instance.PlayBGM(SoundManager.Instance.bossSoundData.bgm[(int)BGM.BOSS]);
+        SoundManager.Instance.PlayBGM(SoundManager.Instance.BGMSoundData.bgm[(int)BGM.BOSS]);
         Boss.GetComponent<Boss>().animator.SetBool("Intro", true);
         bossEntranceText.gameObject.SetActive(true);
 
@@ -210,7 +210,7 @@ public class CamController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StopAllCoroutines();
-            SoundManager.Instance.PlayBGM(SoundManager.Instance.bossSoundData.bgm[(int)BGM.BOSS]);
+            SoundManager.Instance.PlayBGM(SoundManager.Instance.BGMSoundData.bgm[(int)BGM.BOSS]);
             Player.transform.position = playerLandingPos.transform.position; // 목표 위치로 정확히 이동
             CVC.m_Lens.OrthographicSize = defalutOrthoSize;
             CamFocus.SetParent(null);

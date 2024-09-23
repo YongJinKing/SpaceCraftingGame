@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     public PlayerSoundData playerSoundData;
     public UI_Sound UISound;
     public SpaceShipSondData spaceShipSondData;
+    public BGMSoundData BGMSoundData;
     public static SoundManager Instance;
 
     public AudioMixer audioMixer;

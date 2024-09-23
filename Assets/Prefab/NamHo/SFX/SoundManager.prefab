@@ -53,6 +53,7 @@ MonoBehaviour:
   playerSoundData: {fileID: 11400000, guid: e69a93b891ffb7f44ab56773fe637c47, type: 2}
   UISound: {fileID: 0}
   spaceShipSondData: {fileID: 11400000, guid: 2eaed1d9873090340ac25f1d9db7e251, type: 2}
+  BGMSoundData: {fileID: 11400000, guid: 44ecf3d0792767447a590399e1fa8328, type: 2}
   audioMixer: {fileID: 24100000, guid: 0d9f026d541ff874c8e70b39563be50e, type: 2}
   BGMSlider: {fileID: 0}
   BGMMute: {fileID: 0}

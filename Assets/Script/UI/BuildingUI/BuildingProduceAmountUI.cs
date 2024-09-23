@@ -25,7 +25,11 @@ public class BuildingProduceAmountUI : MonoBehaviour
 
     public void DeActiveAmountUI()
     {
-        StopCoroutine(following);
+        if (following != null)
+        {
+            StopCoroutine(following);
+            following = null;
+        }
         produceUI.SetActive(false);
     }
 
