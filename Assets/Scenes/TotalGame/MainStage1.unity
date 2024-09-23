@@ -10480,7 +10480,7 @@ PrefabInstance:
     - target: {fileID: 6346119074919893135, guid: 4024fabb79f176041b9db58545241e8b, type: 3}
       propertyPath: destroyVFX
       value: 
-      objectReference: {fileID: 1391310747}
+      objectReference: {fileID: 8405330026449053970, guid: 9b6cb45e5b665ea4b9e01017832cf442, type: 3}
     - target: {fileID: 6346119074919893135, guid: 4024fabb79f176041b9db58545241e8b, type: 3}
       propertyPath: builderDrons.Array.size
       value: 2

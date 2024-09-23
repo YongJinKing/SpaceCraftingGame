@@ -28,5 +28,15 @@ public class Barricade : Structure
         base.Initialize();
     }
 
-    
+    private void OnMouseEnter()
+    {
+        buildingProduceAmountUI.ActiveAmountUI(this);
+    }
+
+    private void OnMouseExit()
+    {
+        buildingProduceAmountUI.DeActiveAmountUI();
+    }
+
+
 }

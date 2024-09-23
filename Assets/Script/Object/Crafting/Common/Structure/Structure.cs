@@ -8,6 +8,7 @@ public abstract class Structure : Stat
 {
     #region Properties
     #region Private
+    protected BuildingProduceAmountUI buildingProduceAmountUI;
     private UnityEvent<StructureState> structureStateChangeEvents = new UnityEvent<StructureState>();
     #endregion
     #region Protected
@@ -22,6 +23,8 @@ public abstract class Structure : Stat
     #region Public
     public Transform destroyVFX;
     public Transform buildVFX;
+
+    
     public byte mPriority
     {
         get
@@ -144,12 +147,13 @@ public abstract class Structure : Stat
         _state = StructureState.BuildProgress;
         AddStat(EStat.DEF, def);
         AddStat(EStat.BuildingSpeed, buildingSpd);
-        
+        buildingProduceAmountUI = FindObjectOfType<BuildingProduceAmountUI>();
     }
 
     protected virtual void OnEnable()
     {
         PlayBuildVFX();
+        
     }
 
     #endregion

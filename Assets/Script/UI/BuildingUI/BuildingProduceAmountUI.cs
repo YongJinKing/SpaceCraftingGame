@@ -11,18 +11,16 @@ public class BuildingProduceAmountUI : MonoBehaviour
     [SerializeField] Text proudeAmountText;
 
     Vector3 screenPos;
-    GameObject target;
+    Structure target;
     int _produce;
     int _max;
     Coroutine following;
-    public void ActiveAmountUI(GameObject target, int produce, int max)
+    public void ActiveAmountUI(Structure target)
     {
         produceUI.SetActive(true);
         this.target = target;
-        _produce = produce;
-        _max = max;
         following = StartCoroutine(Following());
-        
+        Debug.Log("스타트");   
     }
 
     public void DeActiveAmountUI()
@@ -37,7 +35,7 @@ public class BuildingProduceAmountUI : MonoBehaviour
         {
             screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
             produceUI.transform.position = screenPos + offset;
-            proudeAmountText.text = "생산량\n" + _produce.ToString() + " / " + _max.ToString();
+            proudeAmountText.text = "현재 체력 : " + target[EStat.HP] + "/" + target[EStat.MaxHP];
 
             yield return null;
         }

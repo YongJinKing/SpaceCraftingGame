@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class SpaceShip : Structure
 {
     public List<BuildDron> builderDrons;
     public Tilemap tileMap;
-
+    public Transform gameOverCanvas;
+    public Transform spaceShipImg;
+    
     public bool IsDronReady()
     {
         return builderDrons.Count > 0;
@@ -44,6 +47,22 @@ public class SpaceShip : Structure
         this.transform.position = pos;
     }
 
+    protected override void OnDead()
+    {
+        deadEvent?.Invoke();
+        //animator.SetTrigger("Destroy");
+        spaceShipImg.gameObject.SetActive(false);
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        DestroyEvent?.Invoke(this.transform.position);
+        StartCoroutine(SpawnGameOver());
+    }
+
+    IEnumerator SpawnGameOver()
+    {
+        Instantiate(destroyVFX, this.transform.position, Quaternion.identity, null);
+        yield return new WaitForSeconds(2f);
+        Instantiate(gameOverCanvas, null);
+    }
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -54,7 +73,10 @@ public class SpaceShip : Structure
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            TakeDamage(10000f);
+        }
     }
 
 }

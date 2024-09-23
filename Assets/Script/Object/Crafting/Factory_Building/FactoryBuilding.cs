@@ -116,11 +116,13 @@ public class FactoryBuilding : Structure
     private void OnMouseEnter()
     {
         factoryMeshRender.material = outLine_Mat;
+        buildingProduceAmountUI.ActiveAmountUI(this);
     }
 
     private void OnMouseExit()
     {
         factoryMeshRender.material = origin_Mat;
+        buildingProduceAmountUI.DeActiveAmountUI();
     }
 
 }

@@ -21,6 +21,9 @@ public class SpaceShipEnter : MonoBehaviour
 
     public MeshRenderer meshRender;
     public GameObject UIsoundManger;
+
+    BuildingProduceAmountUI buildingInfoUI;
+    SpaceShip spaceShip;
     private void Start()
     {
         if(exitButton == null)
@@ -31,7 +34,8 @@ public class SpaceShipEnter : MonoBehaviour
         {
             exitButton.onClick.AddListener(() => { UIExitEvent?.Invoke(); });
         }
-        
+        spaceShip = FindObjectOfType<SpaceShip>();
+        buildingInfoUI = FindObjectOfType<BuildingProduceAmountUI>();
     }
 
     // Update is called once per frame
@@ -47,11 +51,17 @@ public class SpaceShipEnter : MonoBehaviour
             {
                 //spaceShipCanvas.SetActive(true);
                 meshRender.material = mouseEnter;
+                buildingInfoUI.ActiveAmountUI(spaceShip);
             }
             else
             {
                 meshRender.material = origin;
+                
             }
+        }
+        else
+        {
+            buildingInfoUI.DeActiveAmountUI();
         }
 
         if (Input.GetMouseButtonDown(0))
