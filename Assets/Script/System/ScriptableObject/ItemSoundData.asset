@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6d7bdae4c50ea459dd6b7224e49dc1, type: 3}
   m_Name: ItemSoundData
   m_EditorClassIdentifier: 
-  NaturalResourceBroken: {fileID: 0}
-  GetDropItem: {fileID: 0}
-  GetFactoryItem: {fileID: 0}
+  NaturalResourceBroken: {fileID: 8300000, guid: 744e977b137536840a782dd2b9b93865, type: 3}
+  GetDropItem: {fileID: 8300000, guid: d9898dbae65bffa43b2a4ff57d0e5c63, type: 3}
+  GetFactoryItem: {fileID: 8300000, guid: ffc7ee6a833b8ff4f892b35e083daa74, type: 3}

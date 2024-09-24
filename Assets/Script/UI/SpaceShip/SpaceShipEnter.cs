@@ -24,6 +24,7 @@ public class SpaceShipEnter : MonoBehaviour
 
     BuildingProduceAmountUI buildingInfoUI;
     SpaceShip spaceShip;
+    float hpUITime;
     private void Start()
     {
         if(exitButton == null)
@@ -49,9 +50,10 @@ public class SpaceShipEnter : MonoBehaviour
         {
             if (((1 << hit.collider.gameObject.layer) & spaceshipLayer) != 0)
             {
+                hpUITime += Time.deltaTime;
                 //spaceShipCanvas.SetActive(true);
                 meshRender.material = mouseEnter;
-                buildingInfoUI.ActiveAmountUI(spaceShip);
+                if(hpUITime >= 1.5f) buildingInfoUI.ActiveAmountUI(spaceShip);
             }
             else
             {
@@ -62,6 +64,7 @@ public class SpaceShipEnter : MonoBehaviour
         else
         {
             buildingInfoUI.DeActiveAmountUI();
+            hpUITime = 0f;
         }
 
         if (Input.GetMouseButtonDown(0))

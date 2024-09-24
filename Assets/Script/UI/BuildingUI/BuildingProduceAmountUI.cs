@@ -20,7 +20,6 @@ public class BuildingProduceAmountUI : MonoBehaviour
         produceUI.SetActive(true);
         this.target = target;
         following = StartCoroutine(Following());
-        Debug.Log("스타트");   
     }
 
     public void DeActiveAmountUI()
@@ -39,8 +38,6 @@ public class BuildingProduceAmountUI : MonoBehaviour
         {
             screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
             produceUI.transform.position = screenPos + offset;
-            proudeAmountText.text = "현재 체력 : " + target[EStat.HP] + "/" + target[EStat.MaxHP];
-
             yield return null;
         }
     }
