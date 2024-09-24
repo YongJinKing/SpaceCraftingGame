@@ -10255,6 +10255,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 762739261311746812, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+      propertyPath: m_Text
+      value: x 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: FD
       value: 
@@ -10264,12 +10268,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 294372850}
     - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+      propertyPath: gasAmount
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: FindingVFX
       value: 
       objectReference: {fileID: 294372849}
+    - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+      propertyPath: mineralAmount
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+      propertyPath: searchingTime
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1166778781798874847, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: m_Name
       value: BossSearchingCanavs
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814032839009294209, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+      propertyPath: m_Text
+      value: x 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5276762179346952064, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: m_SortingOrder

@@ -17,7 +17,6 @@ public class FactoryBuilding : Structure
     public Transform miningVFX;
     public GameObject produceIcon;
     float mouseTime;
-
     [Header("매시 랜더러"), Space(.5f)]
     [SerializeField] MeshRenderer factoryMeshRender;
     [Header("오리지널 메테리얼"), Space(.5f)]
@@ -79,13 +78,13 @@ public class FactoryBuilding : Structure
         if (!miningVFX.gameObject.activeSelf) miningVFX.gameObject.SetActive(false);
     }
 
-    IEnumerator FactoryWorking() // 1초에 json으로 정의된 양만큼(produceCount)만큼 produceIndex에 해당하는 아이템을 생산한다
-    {/*
+    IEnumerator FactoryWorking() // 1초 뒤에 json으로 정의된 양만큼(produceCount)만큼 produceIndex에 해당하는 아이템을 생산한다
+    {
         yield return new WaitForSeconds(1f);
-        */
+
         while (true)
         {
-            yield return new WaitForSeconds(produceTime + ((1f - GetEfficiency()) * 2f));
+            yield return new WaitForSeconds(this[EStat.Efficiency]);
 
             if (this[EStat.HP] <= 0.0f)
             {
@@ -100,9 +99,6 @@ public class FactoryBuilding : Structure
             {
                 produceAmount = maxAmount;
             }
-
-            
-            
 
             
         }
@@ -127,16 +123,16 @@ public class FactoryBuilding : Structure
     private void OnMouseOver()
     {
         factoryMeshRender.material = outLine_Mat;
-        mouseTime += Time.deltaTime;
-        Debug.Log("Tq");
-        if(mouseTime >= 1f)  buildingProduceAmountUI.ActiveAmountUI(this);
+        this.mouseTime += Time.deltaTime;
+        if(this.mouseTime > 0.8f)
+            buildingProduceAmountUI.ActiveAmountUI(this);
         
     }
 
     private void OnMouseExit()
     {
         factoryMeshRender.material = origin_Mat;
-        mouseTime = 0;
+        this.mouseTime = 0;
         buildingProduceAmountUI.DeActiveAmountUI();
     }
 

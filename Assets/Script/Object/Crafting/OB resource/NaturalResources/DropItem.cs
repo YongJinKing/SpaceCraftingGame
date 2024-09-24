@@ -27,6 +27,10 @@ public class DropItem : MonoBehaviour
 
     public Vector2 shadowSize;
 
+    private void OnEnable()
+    {
+        Destroy(this.gameObject, 15f);
+    }
     protected virtual void Start()
     {
         currentheight = Random.Range(yForce - 1, yForce);

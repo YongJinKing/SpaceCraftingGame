@@ -187,8 +187,8 @@ public class CraftFactory : Singleton<CraftFactory>
         factoryBuilding.produceAmount = producedAmount;
 
         if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; 
-        else factoryBuilding.MaxHP = Hp; 
-
+        else factoryBuilding.MaxHP = Hp;
+        Debug.Log(abilityData.BuildingDetail_Delay + "<<<<<<<<<<<<<<");
         factoryBuilding[EStat.Efficiency] = abilityData.BuildingDetail_Delay; 
         
         obj.transform.localPosition = pos;

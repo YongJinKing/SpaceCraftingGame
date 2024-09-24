@@ -57,7 +57,6 @@ public class SpaceShipEnter : MonoBehaviour
                 hpUITime += Time.deltaTime;
                 //spaceShipCanvas.SetActive(true);
                 meshRender.material = mouseEnter;
-                if(hpUITime >= 1.5f) buildingInfoUI.ActiveAmountUI(spaceShip);
             }
             else
             {
@@ -67,8 +66,7 @@ public class SpaceShipEnter : MonoBehaviour
         }
         else
         {
-            buildingInfoUI.DeActiveAmountUI();
-            hpUITime = 0f;
+            
         }
 
         if (Input.GetMouseButtonDown(0))
