@@ -7,6 +7,8 @@ public class TestBullet : MonoBehaviour
     public LayerMask layerMask;
     public Transform target;
     public float damage = 0f;
+    CircleCollider2D targetCollider;
+    public Transform destroyVFX;
     bool readyToFire = false;
 
     private void OnEnable()
@@ -16,7 +18,7 @@ public class TestBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null || !readyToFire)
+        if (target == null || !targetCollider.enabled || !readyToFire)
         {
             Release();
             return;
@@ -45,6 +47,7 @@ public class TestBullet : MonoBehaviour
     public void SetTarget(Transform _target)
     {
         this.target = _target;
+        targetCollider = target.GetComponent<CircleCollider2D>();
     }
 
     public void SetDamage(float _damage)
@@ -68,6 +71,7 @@ public class TestBullet : MonoBehaviour
     }
     void Release()
     {
+        Instantiate(destroyVFX, this.transform.position, Quaternion.identity, null);
         ObjectPool.Instance.ReleaseObject<TestBullet>(gameObject);
     }
 }

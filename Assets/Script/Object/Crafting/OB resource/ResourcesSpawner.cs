@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class ResourcesSpawner : Singleton<ResourcesSpawner>
 {
@@ -27,14 +28,17 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
 
     void Start()
     {
-        //StartSpawnResources();
+        StartCoroutine(RespawnCoroutine());
     }
-    private void Update()
+    
+    IEnumerator RespawnCoroutine()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
+        while (true)
         {
+            yield return new WaitForSeconds(120f);
             RespawnResources();
         }
+        
     }
 
     public void RespawnResources()

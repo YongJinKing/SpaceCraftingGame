@@ -381,6 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 4185711099375825117}
   selectImage: {fileID: 3352233262862232933}
+  SlotSoundManager: {fileID: 0}
 --- !u!1 &226289377081760027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2959,6 +2960,7 @@ MonoBehaviour:
   CraftingBoxGrid: {fileID: 2294470608398413099}
   WeaponBox: {fileID: 3024935173872104888}
   WeaponBoxGrid: {fileID: 2256503753363740306}
+  UISoundManager: {fileID: 0}
 --- !u!1 &1446337448157469540
 GameObject:
   m_ObjectHideFlags: 0
@@ -6466,6 +6468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 8590684013837225223}
   selectImage: {fileID: 7008761255053811935}
+  SlotSoundManager: {fileID: 0}
 --- !u!1 &2742057747160158176
 GameObject:
   m_ObjectHideFlags: 0
@@ -10235,6 +10238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 341988824625165678}
   selectImage: {fileID: 6267670097278745782}
+  SlotSoundManager: {fileID: 0}
 --- !u!1 &4638740193399948943
 GameObject:
   m_ObjectHideFlags: 0
@@ -10923,6 +10927,7 @@ MonoBehaviour:
   buildWarning_CantBuildThere: {fileID: 1446337448157469540}
   buildWarning_NoMoreResources: {fileID: 3340173643169658463}
   craftManager: {fileID: 0}
+  UISoundManager: {fileID: 0}
 --- !u!1 &4905363293366310006
 GameObject:
   m_ObjectHideFlags: 0
@@ -15541,6 +15546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 463026708398064727}
   selectImage: {fileID: 913260637692551608}
+  SlotSoundManager: {fileID: 0}
 --- !u!1 &7226386702034651050
 GameObject:
   m_ObjectHideFlags: 0
@@ -17587,7 +17593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4487424972865921944
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18725,6 +18731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 3794640664471522682}
   selectImage: {fileID: 942922905555170885}
+  SlotSoundManager: {fileID: 0}
 --- !u!1 &9124718699863103768
 GameObject:
   m_ObjectHideFlags: 0

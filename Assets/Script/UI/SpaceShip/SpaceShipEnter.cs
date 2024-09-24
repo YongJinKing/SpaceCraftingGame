@@ -42,7 +42,8 @@ public class SpaceShipEnter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (spaceShipCanvas.activeSelf) return;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, spaceshipLayer);
 

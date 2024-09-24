@@ -49,7 +49,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2097152
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -96,6 +96,7 @@ MonoBehaviour:
     m_Bits: 524288
   target: {fileID: 0}
   damage: 0
+  destroyVFX: {fileID: 4914696559742907488, guid: 79fd4609a8768f24c9a8b78780752c18, type: 3}
 --- !u!1001 &5056123929118910205
 PrefabInstance:
   m_ObjectHideFlags: 0

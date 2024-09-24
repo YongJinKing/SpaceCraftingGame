@@ -40,6 +40,7 @@ public class TimeManager : MonoBehaviour
     /// </summary>
     public UnityEvent<int, int, int> timeChangeEvent = new UnityEvent<int, int, int>();
     public UnityEvent dayChangeEvent = new UnityEvent();
+    public UnityEvent respawnEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -119,9 +120,6 @@ public class TimeManager : MonoBehaviour
             {
                 timeChangeEvent?.Invoke(_day, _hour, _minute);
             }
-
-
-
 
             yield return null;
         }

@@ -12,12 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca4498aa6e04a94c92f3896eb467601, type: 3}
   m_Name: BossSoundData
   m_EditorClassIdentifier: 
-  bgm:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: a5b7fe5a466f7c94aa06f20a0e72a838, type: 3}
-  - {fileID: 8300000, guid: 127b7245ae66c534ca970d740e3b3294, type: 3}
   typingSFX: {fileID: 8300000, guid: 434a984c6a6bb8e42a56c84e20f63684, type: 3}
   bossJump: {fileID: 8300000, guid: 6d3fe542b3d295343a749b66a413efd0, type: 3}
   bossJumpAttack: {fileID: 8300000, guid: 79136252b9038eb4cb6921be1d7d71cc, type: 3}
@@ -39,3 +33,4 @@ MonoBehaviour:
   rewardBoxMove: {fileID: 8300000, guid: 1342c336ee9e0af41807a2adf7f590a1, type: 3}
   rewardBoxShinning: {fileID: 8300000, guid: 6d5400e772d05034bbdd119fd2936837, type: 3}
   rewardSpawnItem: {fileID: 8300000, guid: 9c8441d5cb0c1d040b90a825a84843f5, type: 3}
+  waveMonsterAttack: {fileID: 8300000, guid: 01b5cd1835b254f4bba3c8c5d15e5e8f, type: 3}

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gun_Fire_Sound: {fileID: 8300000, guid: f7c60562cb2e55d4d9fa0eb42e32007d, type: 3}
   Gun_Hit_Sound: {fileID: 0}
+  pickAxeSFX: {fileID: 8300000, guid: cacf5fceba370704e9ebd07b355ed270, type: 3}
+  hammerSFX: {fileID: 8300000, guid: 816749c46671731469c4d1e4f0dff3aa, type: 3}

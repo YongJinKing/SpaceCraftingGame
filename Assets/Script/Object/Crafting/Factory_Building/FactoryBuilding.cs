@@ -119,11 +119,12 @@ public class FactoryBuilding : Structure
 
     private void OnMouseEnter()
     {
-        factoryMeshRender.material = outLine_Mat;
+        
     }
 
     private void OnMouseOver()
     {
+        factoryMeshRender.material = outLine_Mat;
         mouseTime += Time.deltaTime;
         Debug.Log("Tq");
         if(mouseTime >= 1f)  buildingProduceAmountUI.ActiveAmountUI(this);

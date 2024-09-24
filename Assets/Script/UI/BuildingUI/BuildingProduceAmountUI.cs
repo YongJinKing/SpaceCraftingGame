@@ -38,6 +38,7 @@ public class BuildingProduceAmountUI : MonoBehaviour
         {
             screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
             produceUI.transform.position = screenPos + offset;
+            proudeAmountText.text = "현재 체력 : " + target[EStat.HP] + "/" + target[EStat.MaxHP];
             yield return null;
         }
     }
