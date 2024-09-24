@@ -125,10 +125,9 @@ public class FactoryBuilding : Structure
     private void OnMouseOver()
     {
         mouseTime += Time.deltaTime;
-        if(mouseTime >= 1.5f)
-        {
-            buildingProduceAmountUI.ActiveAmountUI(this);
-        }
+        Debug.Log("Tq");
+        if(mouseTime >= 1f)  buildingProduceAmountUI.ActiveAmountUI(this);
+        
     }
 
     private void OnMouseExit()

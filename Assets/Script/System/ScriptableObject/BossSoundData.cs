@@ -34,6 +34,9 @@ public class BossSoundData: ScriptableObject
     public AudioClip rewardBoxMove;
     public AudioClip rewardBoxShinning;
     public AudioClip rewardSpawnItem;
+
+    [Header("웨이브 몬스터 사운드"), Space(.5f)]
+    public AudioClip waveMonsterAttack;
     
     #endregion
 }

@@ -12,6 +12,7 @@ public class RiggingItemContents : MonoBehaviour
     EquipInven EI;
     private RiggingItemSlot riggingItemSlot;
     private ItemUpgradePopup itemUpgradePopup;
+    BuildingUIWarningSign warningSign;
     public event EventHandler OnLevelUpAct;
     GunManager weaponManager;
     int[] weaponIndexes = new int[3];
@@ -28,6 +29,7 @@ public class RiggingItemContents : MonoBehaviour
     private void Start() 
     {
         EI = FindObjectOfType<EquipInven>();
+        warningSign = FindObjectOfType<BuildingUIWarningSign>();
 
         var instance = RiggingItemStaticDataManager.GetInstance();
         instance.LoadRiggingItemDatas();
@@ -91,12 +93,14 @@ public class RiggingItemContents : MonoBehaviour
                     (AlarmContents.GetChild(i).GetComponent<ResourceSlot>().resourceId,
                     AlarmContents.GetChild(i).GetComponent<ResourceSlot>().resourceAmount);
                 }
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.SuccesSFX);
                 int lv = riggingItemLevelData[levelUpSlotNum];
                 transform.GetChild(0).GetChild(0).GetChild(0).GetChild(levelUpSlotNum).GetComponent<RiggingItemSlot>().Init(levelUpSlotNum, ++riggingItemLevelData[levelUpSlotNum]);
                 EI.Upgrade(levelUpSlotNum, lv);
             }
             else
             {
+                warningSign.TurnOnNoMoreResources();
                 Debug.Log("아이템 없음");
             }
             for(int i = 0; i < AlarmContents.childCount; i++)

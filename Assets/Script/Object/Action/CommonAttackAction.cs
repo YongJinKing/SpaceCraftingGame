@@ -124,11 +124,14 @@ public class CommonAttackAction : AttackAction
 
             switch (type)
             {
-                case 0:
+                case 0: // °î±ªÀÌ
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.playerSoundData.pickAxeSFX);
                     break;
                 case 1:
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.playerSoundData.hammerSFX);
                     break;
                 case 2:
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.waveMonsterAttack);
                     break;
             }
         }
