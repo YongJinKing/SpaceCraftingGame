@@ -7,7 +7,7 @@
     "Affect_Index": [ 10200 ],
     "HitBox_X_Size": 3,
     "HitBox_Y_Size": 2,
-    "LayerMask": [ 15, 16, 17, 18, 19 ],
+    "LayerMask": [ 19 ],
     "HitBox_Duration": 5.0,
     "Hit_Frequency": -1.0,
     "IsFollowDir": true
@@ -20,7 +20,7 @@
     "Affect_Index": [ 10200 ],
     "HitBox_X_Size": 3.3,
     "HitBox_Y_Size": 3,
-    "LayerMask": [ 15, 16, 17, 18, 19 ],
+    "LayerMask": [ 19 ],
     "HitBox_Duration": 5.0,
     "Hit_Frequency": -1.0,
     "IsFollowDir": true
@@ -33,7 +33,7 @@
     "Affect_Index": [ 10200 ],
     "HitBox_X_Size": 3.5,
     "HitBox_Y_Size": 3.2,
-    "LayerMask": [ 15, 16, 17, 18, 19 ],
+    "LayerMask": [ 19 ],
     "HitBox_Duration": 5.0,
     "Hit_Frequency": -1.0,
     "IsFollowDir": true

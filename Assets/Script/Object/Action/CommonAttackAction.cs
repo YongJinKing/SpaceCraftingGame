@@ -119,7 +119,19 @@ public class CommonAttackAction : AttackAction
         }
 
         if (_animationOriented)
+        {
             ActivateHitBoxes(pos);
+
+            switch (type)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
+        }
     }
     protected void OnAttackEndAnimation(int type)
     {
