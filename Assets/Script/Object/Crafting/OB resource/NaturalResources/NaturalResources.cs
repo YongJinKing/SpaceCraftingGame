@@ -57,6 +57,7 @@ public class NaturalResources : Stat
             amount = Random.Range(minAmount, maxAmount + 1);
             SpawnDropItem(amount);
             Instantiate(DestroyVFX, this.transform.position, Quaternion.identity, null);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.itemSoundData.NaturalResourceBroken);
             RevokeTile();
             Destroy(this.gameObject);
         }

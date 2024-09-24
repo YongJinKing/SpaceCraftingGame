@@ -25,6 +25,7 @@ public class SpecialItem : DropItem
         if ((1 << collision.gameObject.layer & layerMask) != 0)
         {
             itemPickupPannel.SetUpPannel(img, itemName, itemDesc);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.itemSoundData.GetDropItem);
             Destroy(this.gameObject);
         }
     }

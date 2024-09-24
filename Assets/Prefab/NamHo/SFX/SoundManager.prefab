@@ -55,6 +55,7 @@ MonoBehaviour:
   spaceShipSondData: {fileID: 11400000, guid: 2eaed1d9873090340ac25f1d9db7e251, type: 2}
   BGMSoundData: {fileID: 11400000, guid: 44ecf3d0792767447a590399e1fa8328, type: 2}
   buildingSoundData: {fileID: 11400000, guid: 156d1a324f6c36445b9144f63b9ac6e5, type: 2}
+  itemSoundData: {fileID: 11400000, guid: d3a9ec06d26a62749a3fb278489375b8, type: 2}
   audioMixer: {fileID: 24100000, guid: 0d9f026d541ff874c8e70b39563be50e, type: 2}
   BGMSlider: {fileID: 0}
   BGMMute: {fileID: 0}

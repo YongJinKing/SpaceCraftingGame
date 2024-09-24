@@ -108,9 +108,13 @@ public class FactoryBuilding : Structure
 
     public void FactoryClickEvent() // 만약 플레이어가 어떠한 루트로 공장에서 생산한 재료를 가져가려할 때 이 함수를 호출해 index에 맞는 현재까지 생산한 produceAmount만큼의 양의 재료를 Add한다
     {
-        if(Inventory.instance != null) Inventory.instance.AddItem(produceResourceIndex, produceAmount);
-        produceAmount = 0;
-        produceIcon.SetActive(false);
+        if (Inventory.instance != null)
+        {
+            Inventory.instance.AddItem(produceResourceIndex, produceAmount);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.itemSoundData.GetFactoryItem);
+            produceAmount = 0;
+            produceIcon.SetActive(false);
+        }
     }
 
     private void OnMouseEnter()

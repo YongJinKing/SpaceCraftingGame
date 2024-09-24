@@ -87,7 +87,7 @@ public class DropItem : MonoBehaviour
             {
                 return;
             }
-
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.itemSoundData.GetDropItem);
             Destroy(this.gameObject);
         }
     }
