@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -73,7 +74,10 @@ public abstract class AttackAction : Action
             for(int i = 0; i < hitBoxes.Length; ++i)
             {
                 if (i < attackStartPos.Length && attackStartPos[i] != null)
-                    hitBoxes[i] = Instantiate(hitBoxPrefabs[i], attackStartPos[i], false);
+                {
+                    hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
+                    StartCoroutine(Tricking(hitBoxes[i], attackStartPos[i]));
+                }
                 else
                     hitBoxes[i] = Instantiate(hitBoxPrefabs[i], this.transform, false);
 
@@ -113,6 +117,14 @@ public abstract class AttackAction : Action
     #endregion
 
     #region Coroutines
+    protected IEnumerator Tricking(HitBox hitbox, Transform startpos)
+    {
+        Vector3 originLocal = hitbox.transform.localPosition;
+        hitbox.transform.localPosition = new Vector3(500, 500, 500);
+        yield return new WaitForEndOfFrame();
+        hitbox.transform.localPosition = originLocal;
+        hitbox.transform.SetParent(startpos, false);
+    }
     #endregion
 
     #region MonoBehaviour
