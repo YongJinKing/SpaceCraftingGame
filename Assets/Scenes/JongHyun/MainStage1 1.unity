@@ -23192,6 +23192,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089045564313ec84e80a28b277691c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipFailEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  equipSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1003947054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69403,9 +69409,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 442289299514592694, guid: b79ca0c3bcd78cd4985a77164632a7da, type: 3}
     - target: {fileID: 2765275011479328568, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: monsterCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765275011479328568, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: monsterWaveDay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765275011479328568, guid: 86de332166973d84687648ac728535d4, type: 3}
       propertyPath: MonsterHPUICanvas
       value: 
       objectReference: {fileID: 242761405}
+    - target: {fileID: 2765275011479328568, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: waveDifficultyScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4603840126810279232, guid: 86de332166973d84687648ac728535d4, type: 3}
       propertyPath: CG
       value: 
@@ -69430,6 +69448,10 @@ PrefabInstance:
       propertyPath: timeText
       value: 
       objectReference: {fileID: 1280488776}
+    - target: {fileID: 5783374359869393115, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: gameDayPerRealMinite
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6061153227860779536, guid: 86de332166973d84687648ac728535d4, type: 3}
       propertyPath: ResourcesParent
       value: 

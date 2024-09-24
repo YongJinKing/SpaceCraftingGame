@@ -59,7 +59,7 @@
     "Component_Name": 110000,
     "Component_Desc": 1110000,
     "Component_Image": 110000,
-    "Component_Hp": 300,
+    "Component_Hp": 10,
     "Component_Detail": 110000
   },
   {
@@ -149,7 +149,7 @@
     "Component_Name": 120000,
     "Component_Desc": 1220000,
     "Component_Image": 120000,
-    "Component_Hp": 300,
+    "Component_Hp": 20,
     "Component_Detail": 120000
   },
   {
@@ -158,7 +158,7 @@
     "Component_Name": 120001,
     "Component_Desc": 1220001,
     "Component_Image": 120001,
-    "Component_Hp": 300,
+    "Component_Hp": 30,
     "Component_Detail": 120001
   },
   {
@@ -167,7 +167,7 @@
     "Component_Name": 120002,
     "Component_Desc": 1220002,
     "Component_Image": 120002,
-    "Component_Hp": 300,
+    "Component_Hp": 40,
     "Component_Detail": 120002
   },
   {
@@ -239,7 +239,7 @@
     "Component_Name": 130000,
     "Component_Desc": 1330000,
     "Component_Image": 130000,
-    "Component_Hp": 300,
+    "Component_Hp": 15,
     "Component_Detail": 130000
   },
   {
@@ -248,7 +248,7 @@
     "Component_Name": 130001,
     "Component_Desc": 1330001,
     "Component_Image": 130001,
-    "Component_Hp": 300,
+    "Component_Hp": 20,
     "Component_Detail": 130001
   },
   {
@@ -257,7 +257,7 @@
     "Component_Name": 130002,
     "Component_Desc": 1330002,
     "Component_Image": 130002,
-    "Component_Hp": 300,
+    "Component_Hp": 25,
     "Component_Detail": 130002
   },
   {
