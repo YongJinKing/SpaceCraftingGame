@@ -57,7 +57,7 @@
     "Hit_Frequency": -1.0,
     "Move_Speed": 10.0,
     "Max_Dist": 50.0,
-    "Penetrable": false
+    "Penetrable": true
   },
   {
     "Index": 20301,
@@ -72,7 +72,7 @@
     "Hit_Frequency": -1.0,
     "Move_Speed": 10.0,
     "Max_Dist": 50.0,
-    "Penetrable": false
+    "Penetrable": true
   },
   {
     "Index": 20302,
@@ -87,6 +87,6 @@
     "Hit_Frequency": -1.0,
     "Move_Speed": 10.0,
     "Max_Dist": 50.0,
-    "Penetrable": false
+    "Penetrable": true
   }
 ]
