@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TakeOffCameraWalk : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class TakeOffCameraWalk : MonoBehaviour
         SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.sacpeshipBoost);
         yield return new WaitForSeconds(time - 5.5f);
         fadeManager.StartFadeOut(1.5f);
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("StageSelect");
     }
 
 

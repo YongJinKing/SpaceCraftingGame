@@ -80,11 +80,13 @@ public class FactoryBuilding : Structure
     }
 
     IEnumerator FactoryWorking() // 1초에 json으로 정의된 양만큼(produceCount)만큼 produceIndex에 해당하는 아이템을 생산한다
-    {
+    {/*
         yield return new WaitForSeconds(1f);
-        
+        */
         while (true)
         {
+            yield return new WaitForSeconds(produceTime + ((1f - GetEfficiency()) * 2f));
+
             if (this[EStat.HP] <= 0.0f)
             {
                 DestoryBuilding();
@@ -100,7 +102,7 @@ public class FactoryBuilding : Structure
             }
 
             
-            yield return new WaitForSeconds(produceTime + ((1f - GetEfficiency()) * 2f));
+            
 
             
         }

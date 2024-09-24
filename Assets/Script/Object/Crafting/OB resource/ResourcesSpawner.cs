@@ -23,6 +23,8 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
     private float mineralRatio = 0.6f; // 미네랄의 비율
     private float gasRatio = 0.3f; // 가스의 비율
 
+    public float respawnTime;
+
     GameObject obj;
     int size = 0;
 

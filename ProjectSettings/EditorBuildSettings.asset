@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NamHo/Boss_Rabbit.unity
     guid: cb7d3515d4b107a4c91c5756279c018c
+  - enabled: 1
+    path: Assets/Scenes/NamHo/SpaceShipTakeOffScene.unity
+    guid: a54ad76d5f92a4d429c855f2e069c892
   m_configObjects: {}

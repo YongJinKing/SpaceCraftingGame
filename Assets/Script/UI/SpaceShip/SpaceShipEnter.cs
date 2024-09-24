@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SpaceShipEnter : MonoBehaviour
 {
@@ -21,7 +22,9 @@ public class SpaceShipEnter : MonoBehaviour
 
     public MeshRenderer meshRender;
     public GameObject UIsoundManger;
-
+    
+    public FadeManager fadeManager;
+    public TotalSaveManager totalSaveManager;
     BuildingProduceAmountUI buildingInfoUI;
     SpaceShip spaceShip;
     float hpUITime;
@@ -85,4 +88,20 @@ public class SpaceShipEnter : MonoBehaviour
             }
         }
     }
+
+    public void GoOutPlanet()
+    {
+        spaceShipCanvas.SetActive(false);
+        fadeManager.StartFadeOut(3);
+        totalSaveManager.SaveAll();
+
+        Invoke("ChangeSceneToStageSelect", 5f);
+    }
+
+    void ChangeSceneToStageSelect()
+    {
+        SceneManager.LoadSceneAsync(7);
+    }
+
+    
 }
