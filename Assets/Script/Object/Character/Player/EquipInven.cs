@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class EquipInven : MonoBehaviour
 {
     private int mode = 0;
     private FactoryDIContainer container;
+    private int inputWeaponSlot = 0;
+    private int inputCraftSlot = 0;
 
     public PlayerEquipmentManager equipmentManager;
     public Weapon AR;
@@ -43,12 +46,28 @@ public class EquipInven : MonoBehaviour
         
         EquipEvent.AddListener(equipmentManager.EquipItem);
         UnEquipEvent.AddListener(equipmentManager.UnEquip);
+
+        equipmentManager.equipSuccessEvent.AddListener(OnSuccessEquip);
     }
 
     private void OnModeChange(int i)
     {
         mode = i;
         OnNumInput(1);
+    }
+
+    public void OnSuccessEquip()
+    {
+        switch (mode)
+        {
+            case 0:
+                selectSlotEvent?.Invoke(inputWeaponSlot - 1);
+                break;
+            case 1:
+                selectSlotEvent?.Invoke(inputCraftSlot - 1);
+                break;
+        }
+        
     }
 
     public void Upgrade(int itemType, int level)
@@ -113,33 +132,30 @@ public class EquipInven : MonoBehaviour
 
     private void WeaponModeProcess(int i)
     {
+        inputWeaponSlot = i;
         switch (i)
         {
             case 1:
                 EquipEvent?.Invoke(AR);
-                selectSlotEvent?.Invoke(0);
                 break;
             case 2:
                 EquipEvent?.Invoke(SG);
-                selectSlotEvent?.Invoke(1);
                 break;
             case 3:
                 EquipEvent?.Invoke(SR);
-                selectSlotEvent?.Invoke(2);
                 break;
         }
     }
     private void BuildModeProcess(int i)
     {
+        inputCraftSlot = i;
         switch (i)
         {
             case 1:
                 EquipEvent?.Invoke(PickAxe);
-                selectSlotEvent?.Invoke(0);
                 break;
             case 2:
                 EquipEvent?.Invoke(Hammer);
-                selectSlotEvent?.Invoke(1); 
                 break;
             case 3:
                 break;

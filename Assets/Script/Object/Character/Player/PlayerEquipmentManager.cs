@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerEquipmentManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerEquipmentManager : MonoBehaviour
     #region Public
     #endregion
     #region Events
+    public UnityEvent equipFailEvent = new UnityEvent();
+    public UnityEvent equipSuccessEvent = new UnityEvent();
     #endregion
     #endregion
 
@@ -29,7 +32,11 @@ public class PlayerEquipmentManager : MonoBehaviour
     public void EquipItem(Equipment equipment)
     {
         if (!myPlayer.canEquip)
+        {
+            equipFailEvent?.Invoke();
             return;
+        }
+            
 
         if (this.equipment[(int)equipment.itemType] != equipment)
         {
@@ -71,6 +78,7 @@ public class PlayerEquipmentManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         equipment.Equip();
+        equipSuccessEvent?.Invoke();
     }
     #endregion
 
