@@ -17302,10 +17302,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceHuman
       objectReference: {fileID: 0}
-    - target: {fileID: 8700476605998196561, guid: fbf3c0084200edb438aff27064253bff, type: 3}
-      propertyPath: PlayerSoundManager
-      value: 
-      objectReference: {fileID: 2144694499}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

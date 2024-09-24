@@ -31,7 +31,7 @@ public class MonsterAnimationController : UnitAnimationController
     #region EventHandlers
     public void OnAttackAnim()
     {
-        attackAnimEvent?.Invoke(0);
+        attackAnimEvent?.Invoke(2);
     }
     public void OnAttackAnimEnd()
     {
