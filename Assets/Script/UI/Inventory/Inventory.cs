@@ -106,8 +106,8 @@ public class Inventory : MonoBehaviour
 
                 else
                 {
-                    int spaceLeft = InventoryDatas[i].amount + remainingAmout - slotMaxCount;
-                    if(spaceLeft > 0)
+                    /*int spaceLeft = InventoryDatas[i].amount + remainingAmout - slotMaxCount;
+                    if (spaceLeft > 0)
                     {
                         InventoryDatas[i].amount += spaceLeft;
                         remainingAmout -= spaceLeft;
@@ -116,8 +116,18 @@ public class Inventory : MonoBehaviour
                     {
                         InventoryDatas[i].amount += remainingAmout;
                         remainingAmout = 0;
+                    }*/
+                    int spaceLeft = slotMaxCount - InventoryDatas[i].amount;
+                    if (spaceLeft >= remainingAmout)
+                    {
+                        InventoryDatas[i].amount += remainingAmout;
+                        remainingAmout = 0;
                     }
-                    
+                    else
+                    {
+                        InventoryDatas[i].amount += spaceLeft;
+                        remainingAmout -= spaceLeft;
+                    }
                 }
                 if(remainingAmout <= 0)
                 {  
@@ -204,15 +214,15 @@ public class Inventory : MonoBehaviour
 
             for(int i = inventoryDatasMaxCount - 1; i >= 0; i--)
             {
-                if(InventoryDatas[i].id == id)
+                if (InventoryDatas[i].id == id)
                 {
                     if(remainingAmout >= InventoryDatas[i].amount)
                     {
                         remainingAmout -= InventoryDatas[i].amount;
                         InventoryDatas[i].id = 0;
                         InventoryDatas[i].amount = 0;
-                        
                     }
+
                     else
                     {
                         int spaceLeft = InventoryDatas[i].amount - remainingAmout;
@@ -223,13 +233,12 @@ public class Inventory : MonoBehaviour
                             InventoryDatas[i].id = 0;
                             InventoryDatas[i].amount = 0;
                         }
-                       
                     }
-                    UpdateInventory();
-                    
                 }
-                if(remainingAmout <= 0)
+
+                if (remainingAmout <= 0)
                 {
+                    UpdateInventory();
                     return;
                 }
             }
@@ -303,15 +312,28 @@ public class Inventory : MonoBehaviour
     }
     private void SortInventoryDatas()//아이디 순서대로 정렬하는 버블 정렬 알고리즘
     {
-        for(int i = 0; i < GetInvenDataWithIdLength() - 1; i++)//ItemSort
+        /*for(int i = 0; i < GetInvenDataWithIdLength() - 1; i++)//ItemSort
         {
             for(int j = 0; j < GetInvenDataWithIdLength() - 1; j++)
             {
-                if(InventoryDatas[j].id > InventoryDatas[j + 1].id)
+                if (InventoryDatas[j].id < InventoryDatas[j + 1].id)
                 {
                     SlotItemData Temp = InventoryDatas[j];
                     InventoryDatas[j] = InventoryDatas[j + 1];
                     InventoryDatas[j + 1] = Temp;
+                }
+            }
+        }*/
+
+        for (int i = 0; i < InventoryDatas.Count - 1; i++)//ItemSort
+        {
+            for (int j = 1; j < InventoryDatas.Count - i; j++)
+            {
+                if(InventoryDatas[j].id > InventoryDatas[j - 1].id)
+                {
+                    SlotItemData Temp = InventoryDatas[j];
+                    InventoryDatas[j] = InventoryDatas[j - 1];
+                    InventoryDatas[j - 1] = Temp;
                 }
             }
         }
