@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class LandingCameraWalk : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LandingCameraWalk : MonoBehaviour
     public Transform EndPos;
     public float camMoveSpeed;
     public FadeManager fadeManager;
+    public SpaceShipLanding spaceLand;
     float time;
 
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class LandingCameraWalk : MonoBehaviour
 
     IEnumerator LandingCamFocus()
     {
+        spaceLand.StartExplain();
         float elapsedTime = 0f;
         SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.sacpeshipBoost);
         CamFocus.position = StartPos.position;
@@ -43,9 +46,13 @@ public class LandingCameraWalk : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.spaceshipChangeMode);
         yield return new WaitForSeconds(2f);
+        
+        yield return new WaitForSeconds(10f);
         SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.spaceshipSearching);
+        spaceLand.StopExplain();
+        yield return new WaitForSeconds(2f);
         fadeManager.StartFadeOut(2f);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(4f);
         Debug.Log("æ¿ ¿Ãµø");
         AsyncOperation op = SceneManager.LoadSceneAsync("MainStage1");
     }
