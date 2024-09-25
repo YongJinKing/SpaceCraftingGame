@@ -6,7 +6,6 @@ public class GameOverManager : MonoBehaviour
 {
     public Player player;
     public GameObject GameOverPrefab;
-    public Canvas canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +26,6 @@ public class GameOverManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
 
-        player.deadEvent.AddListener(() => { Instantiate(GameOverPrefab, canvas.transform, false); });
+        player.deadEvent.AddListener(() => { Instantiate(GameOverPrefab); });
     }
 }
