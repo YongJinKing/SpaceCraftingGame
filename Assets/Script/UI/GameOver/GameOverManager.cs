@@ -26,6 +26,12 @@ public class GameOverManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
 
-        player.deadEvent.AddListener(() => { Instantiate(GameOverPrefab); });
+        player.deadEvent.AddListener(() => { StartCoroutine(PlayerDead()); });
+    }
+
+    IEnumerator PlayerDead() 
+    {
+        yield return new WaitForSeconds(2.0f);
+        Instantiate(GameOverPrefab);
     }
 }
