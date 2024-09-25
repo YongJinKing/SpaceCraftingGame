@@ -11,6 +11,7 @@ public class GameOverController : MonoBehaviour
     void OnEnable()
     {
         Time.timeScale = 0f;
+        Debug.Log(goBackToStartScene);
         goBackToStartScene.onClick.AddListener(GoBackToStartScene);
     }
 
