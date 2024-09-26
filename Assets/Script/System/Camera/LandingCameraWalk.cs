@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -21,6 +22,15 @@ public class LandingCameraWalk : MonoBehaviour
         time = landingClip.length - 3f;
         StartCoroutine(LandingCamFocus());
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.PageDown))
+        {
+            StopAllCoroutines();
+            SceneManager.LoadScene("MainStage1");
+        }
     }
 
     IEnumerator LandingCamFocus()

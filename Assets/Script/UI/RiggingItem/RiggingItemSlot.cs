@@ -24,7 +24,9 @@ public class RiggingItemSlot : MonoBehaviour
             if(level > 3)
             {
                 UpgradeComplete();
+                continue;
             }
+
             if(riggingItem.Value.RiggingItemType == id && riggingItem.Value.RiggingItemLevel == level)
             {
                 UpdateSlot(riggingItem);   
@@ -53,12 +55,12 @@ public class RiggingItemSlot : MonoBehaviour
     void UpgradeComplete()
     {
         upgradeCompleteImage.gameObject.SetActive(true);
-        riggingItemImage.gameObject.SetActive(false);
+        riggingItemImage.gameObject.SetActive(true);
         riggingItemName.text = "";
         riggingItemAttackPower.text = "";
         riggingItemAttackSpeed.text = "";
         levelUpButton.interactable = false;
-        levelUpButton.gameObject.SetActive(false);
+        levelUpButton.gameObject.SetActive(true);
     }
     /* public void LevelUpCheck(KeyValuePair<int, RiggingItem_DataTable> riggingItem)
     {

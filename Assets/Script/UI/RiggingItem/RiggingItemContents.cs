@@ -26,6 +26,10 @@ public class RiggingItemContents : MonoBehaviour
     private int levelUpSlotNum = 0;
 
     private int riggingItemCount = 3;
+
+    int rf;
+    int sg;
+    int sr;
     private void Start() 
     {
         EI = FindObjectOfType<EquipInven>();
@@ -36,10 +40,14 @@ public class RiggingItemContents : MonoBehaviour
         weaponManager = FindObjectOfType<GunManager>();
 
         weaponIndexes = weaponManager.LoadGunIndexes();
-        Debug.Log(weaponIndexes[0] + ", " + weaponIndexes[1] + ", " + weaponIndexes[2] + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-        rifleLevel = instance.dicRiggingItemData[++weaponIndexes[0]].RiggingItemLevel;
-        shotGunLevel = instance.dicRiggingItemData[++weaponIndexes[1]].RiggingItemLevel;
-        sniperLevel = instance.dicRiggingItemData[++weaponIndexes[2]].RiggingItemLevel;
+        Debug.Log(weaponIndexes[0] + ", " + weaponIndexes[1] + ", " + weaponIndexes[2] + " <<<<<<<<<<<<<<<<<<<<kkkkkkkkkkkkkkkkk<<<<<<<<");
+        rf = weaponIndexes[0] + 1;
+        sg = weaponIndexes[1] + 1;
+        sr = weaponIndexes[2] + 1;
+
+        rifleLevel = instance.dicRiggingItemData[rf].RiggingItemLevel;
+        shotGunLevel = instance.dicRiggingItemData[sg].RiggingItemLevel;
+        sniperLevel = instance.dicRiggingItemData[sr].RiggingItemLevel;
 
         riggingItemLevelData[0] = rifleLevel;
         riggingItemLevelData[1] = shotGunLevel;
@@ -96,7 +104,9 @@ public class RiggingItemContents : MonoBehaviour
                 SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.SuccesSFX);
                 int lv = riggingItemLevelData[levelUpSlotNum];
                 transform.GetChild(0).GetChild(0).GetChild(0).GetChild(levelUpSlotNum).GetComponent<RiggingItemSlot>().Init(levelUpSlotNum, ++riggingItemLevelData[levelUpSlotNum]);
+                Debug.Log(lv + ", "+levelUpSlotNum + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
                 EI.Upgrade(levelUpSlotNum, lv);
+                
             }
             else
             {
