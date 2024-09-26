@@ -43,7 +43,7 @@ public class SpaceShipOperator : MonoBehaviour
         for (int i = 0; i < talk.Length; i++)
         {
             explainText.text += talk[i];
-            SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.typingSFX);
+            if (talk[i] != ' ')SoundManager.Instance.PlaySFX(SoundManager.Instance.bossSoundData.typingSFX);
             yield return new WaitForSeconds(0.1f);
         }
 

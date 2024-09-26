@@ -32,6 +32,7 @@ public class GunManager : BaseSaveSystem
         base.Save();
         EquipInven EI = FindObjectOfType<EquipInven>();
 
+        Debug.Log(EI.weapons[0] + " , " + EI.weapons[1] + ", " + EI.weapons[2]);
         string json = JsonUtility.ToJson(new GunIndexData(EI.weapons));
         File.WriteAllText(savePath, json);
 
