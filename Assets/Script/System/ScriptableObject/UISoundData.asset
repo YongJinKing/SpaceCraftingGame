@@ -24,3 +24,4 @@ MonoBehaviour:
   CloseTabSFX: {fileID: 8300000, guid: e2ce26e0db845974faa3b2ce27c00acf, type: 3}
   BuildingSFX: {fileID: 8300000, guid: ec61a9a22a3873b47a88ebd932457f66, type: 3}
   SuccesSFX: {fileID: 8300000, guid: e7f88f05e251f36409e482a5793bfd1a, type: 3}
+  IntroBGM: {fileID: 8300000, guid: a85b3c0a32a0e3048aa0c559ae9d2c78, type: 3}

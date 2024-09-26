@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NamHo/SpaceShipTakeOffScene.unity
     guid: a54ad76d5f92a4d429c855f2e069c892
+  - enabled: 1
+    path: Assets/Scenes/TotalGame/Intro.unity
+    guid: 14fbab971ec83c34493be74577f4db62
   m_configObjects: {}

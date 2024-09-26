@@ -30,5 +30,7 @@ public class UI_Sound : ScriptableObject
     public AudioClip BuildingSFX;
     //강화 성공
     public AudioClip SuccesSFX;
+    //Intro 사운드
+    public AudioClip IntroBGM;
     
 }

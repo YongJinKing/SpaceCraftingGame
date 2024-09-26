@@ -71,6 +71,6 @@ public class DataSlot : MonoBehaviour
            
         }
         //totalSaveManager.SaveAll();
-        SceneManager.LoadScene("StageSelect"); // 로딩 씬 이동
+        SceneManager.LoadScene("Intro"); // 인트로 씬 이동
     }
 }

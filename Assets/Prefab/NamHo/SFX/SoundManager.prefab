@@ -51,7 +51,7 @@ MonoBehaviour:
   - {fileID: 7112906893446850357}
   bossSoundData: {fileID: 11400000, guid: e268dec2e2a084641b70f23987636d38, type: 2}
   playerSoundData: {fileID: 11400000, guid: e69a93b891ffb7f44ab56773fe637c47, type: 2}
-  UISound: {fileID: 0}
+  UISound: {fileID: 11400000, guid: 52165084e4897ce458a4d2d024c8061b, type: 2}
   spaceShipSondData: {fileID: 11400000, guid: 2eaed1d9873090340ac25f1d9db7e251, type: 2}
   BGMSoundData: {fileID: 11400000, guid: 44ecf3d0792767447a590399e1fa8328, type: 2}
   buildingSoundData: {fileID: 11400000, guid: 156d1a324f6c36445b9144f63b9ac6e5, type: 2}

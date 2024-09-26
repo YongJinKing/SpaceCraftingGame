@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class IntroManager : MonoBehaviour
@@ -23,6 +24,7 @@ public class IntroManager : MonoBehaviour
 
     IEnumerator fadeOut()
     {
+        IntroBGM();
         yield return new WaitForSeconds(34.0f);
         Debug.Log("페이드아웃");
         float f = 0;
@@ -34,5 +36,11 @@ public class IntroManager : MonoBehaviour
             MyRenderer.GetComponent<Image>().color = ColorAlhpa;
             yield return new WaitForSeconds(0.02f);
         }
+       
+        SceneManager.LoadScene("StageSelect"); // 스테이지 씬 이동
+    }
+    public void IntroBGM()
+    {
+        SoundManager.Instance.PlayBGM(SoundManager.Instance.UISound.IntroBGM);
     }
 }
