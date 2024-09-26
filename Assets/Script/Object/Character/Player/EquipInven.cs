@@ -8,6 +8,8 @@ public class EquipInven : MonoBehaviour
 {
     private int mode = 0;
     private FactoryDIContainer container;
+    private int priviousWeaponSlot = -1;
+    private int priviousCraftSlot = -1;
     private int inputWeaponSlot = 0;
     private int inputCraftSlot = 0;
 
@@ -53,7 +55,33 @@ public class EquipInven : MonoBehaviour
     private void OnModeChange(int i)
     {
         mode = i;
-        OnNumInput(1);
+
+        switch (i)
+        {
+            case 0:
+                {
+                    if (priviousWeaponSlot > 0)
+                        OnNumInput(priviousWeaponSlot);
+                    else
+                        OnNumInput(1);
+                }
+                break;
+            case 1:
+                {
+                    if(priviousCraftSlot > 0)
+                    {
+                        OnNumInput(priviousCraftSlot);
+                    }
+                    else
+                    {
+                        OnNumInput(1);
+                    }
+                }
+                
+                break;
+        }
+
+        
     }
 
     public void OnSuccessEquip()
@@ -62,9 +90,11 @@ public class EquipInven : MonoBehaviour
         {
             case 0:
                 selectSlotEvent?.Invoke(inputWeaponSlot - 1);
+                priviousWeaponSlot = inputWeaponSlot;
                 break;
             case 1:
                 selectSlotEvent?.Invoke(inputCraftSlot - 1);
+                priviousCraftSlot = inputCraftSlot;
                 break;
         }
         
