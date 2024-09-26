@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class InputController : Singleton<InputController>
 {
@@ -54,32 +55,34 @@ public class InputController : Singleton<InputController>
         moveEvent?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
         getMousePosEvent?.Invoke(mousePos);
 
-        if (Input.GetMouseButton(0))
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            mouseEvent?.Invoke(0, mousePos);
-        }
-        if (Input.GetMouseButton(1))
-        {
-            mouseEvent?.Invoke(1, mousePos);
-        }
-        if (Input.GetMouseButton(2))
-        {
-            mouseEvent?.Invoke(2, mousePos);
-        }
+            if (Input.GetMouseButton(0))
+            {
+                mouseEvent?.Invoke(0, mousePos);
+            }
+            if (Input.GetMouseButton(1))
+            {
+                mouseEvent?.Invoke(1, mousePos);
+            }
+            if (Input.GetMouseButton(2))
+            {
+                mouseEvent?.Invoke(2, mousePos);
+            }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            mouseUpEvent?.Invoke(0);
+            if (Input.GetMouseButtonUp(0))
+            {
+                mouseUpEvent?.Invoke(0);
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                mouseUpEvent?.Invoke(1);
+            }
+            if (Input.GetMouseButtonUp(2))
+            {
+                mouseUpEvent?.Invoke(2);
+            }
         }
-        if (Input.GetMouseButtonUp(1))
-        {
-            mouseUpEvent?.Invoke(1);
-        }
-        if (Input.GetMouseButtonUp(2))
-        {
-            mouseUpEvent?.Invoke(2);
-        }
-
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
