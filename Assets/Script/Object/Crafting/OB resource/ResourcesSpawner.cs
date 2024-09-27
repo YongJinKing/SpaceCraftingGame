@@ -21,7 +21,7 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
 
     public int placementInterval = 4; // 자원을 배치할 간격 (NxN 크기)
     private float mineralRatio = 0.6f; // 미네랄의 비율
-    private float gasRatio = 0.3f; // 가스의 비율
+    private float gasRatio = 0.9f; // 가스의 비율
 
     public float respawnTime;
 
@@ -100,9 +100,9 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
     {
         if (randomable)
         {
-            // 랜덤하게 자원 종류를 선택하여 배치
+            // 랜덤하게 자원 종류를 선택하여 배치(0.0 ~ 1.0)
             float randomValue = Random.value;
-            if (randomValue < mineralRatio)
+            if (0 <= randomValue  && randomValue <= mineralRatio)
             {
                 size = 1;
                 // 1x1 크기의 자원1 배치
@@ -111,7 +111,7 @@ public class ResourcesSpawner : Singleton<ResourcesSpawner>
                 RemovePlaceForResource(randomWorldPosition);
 
             }
-            else if (randomValue < mineralRatio + gasRatio)
+            else if (mineralRatio < randomValue && randomValue <= gasRatio)
             {
                 size = 1;
                 // 1x1 크기의 자원2 배치

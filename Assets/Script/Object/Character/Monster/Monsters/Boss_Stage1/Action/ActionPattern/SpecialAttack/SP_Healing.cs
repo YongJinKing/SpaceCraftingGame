@@ -7,7 +7,7 @@ public class SP_Healing : SPAttackAction
     #region Properties
     #region Private
     
-    [Header("Èú·®"), Space(.5f)] [SerializeField] float healAmount = 10f;
+    [Header("Èú·®"), Space(.5f)] [SerializeField] float healAmount;
     #endregion
     #region Protected
 

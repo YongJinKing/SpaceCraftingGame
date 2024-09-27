@@ -74241,6 +74241,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2428695415235028583, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: delayTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428695415235028583, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: RiceSpawnPos
       value: 
       objectReference: {fileID: 1330029688}
@@ -74326,7 +74330,7 @@ PrefabInstance:
       objectReference: {fileID: 314828418}
     - target: {fileID: 3952227370154546265, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: MaxHP
-      value: 500
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 3952227370154546265, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: player
@@ -74372,9 +74376,17 @@ PrefabInstance:
       propertyPath: deadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 380714087}
+    - target: {fileID: 4182572618763889380, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: delayTime
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5645708743843809836, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6357401163938722150, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: healAmount
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6574198756800706090, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: m_Name
@@ -74384,6 +74396,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1015271560}
+    - target: {fileID: 8534499887594943049, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: delayTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9104120620899300451, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: CamShakeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
