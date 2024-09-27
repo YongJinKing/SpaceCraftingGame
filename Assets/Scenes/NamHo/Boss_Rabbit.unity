@@ -34142,6 +34142,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1233169450066095781, guid: cdf541a5fd02c054bbfe66b723568a68, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560519091085075591, guid: cdf541a5fd02c054bbfe66b723568a68, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535919757384977283, guid: cdf541a5fd02c054bbfe66b723568a68, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039004589692183199, guid: cdf541a5fd02c054bbfe66b723568a68, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5048430311747128364, guid: cdf541a5fd02c054bbfe66b723568a68, type: 3}
       propertyPath: m_Pivot.x
       value: 0
