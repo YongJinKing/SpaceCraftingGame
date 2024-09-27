@@ -107,7 +107,9 @@ public class PlayerHPUI : MonoBehaviour
     }
     public void OnHPChanged(float oldVal, float newVal)
     {
-        fulls = (int)(_myTarget[EStat.HP] + 0.5) / 2;
+        int fullCal = (int)(_myTarget[EStat.HP] + 0.5) / 2;
+
+        fulls = fullCal > 0 ? fullCal: 0;
         half = (int)(_myTarget[EStat.HP] + 0.5) % 2 > 0 ? 1 : 0;
 
         for (int i = 0; i < fulls; ++i)
