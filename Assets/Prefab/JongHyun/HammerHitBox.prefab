@@ -138,6 +138,7 @@ MonoBehaviour:
   _duration: 1
   _hitFrequency: -1
   _isDestroy: 0
+  originPos: {fileID: 0}
   hitEffectPrefab: {fileID: 4194115300568944084, guid: f2decf17032abcc4a8aa9b2ffc81d88e, type: 3}
   destroyEffectPrefab: {fileID: 0}
   OnDurationEndEvent:
@@ -192,7 +193,7 @@ MonoBehaviour:
   _targetMask:
     serializedVersion: 2
     m_Bits: 65536
-  _power: -1
+  _power: -5
 --- !u!1001 &2025784829030727152
 PrefabInstance:
   m_ObjectHideFlags: 0

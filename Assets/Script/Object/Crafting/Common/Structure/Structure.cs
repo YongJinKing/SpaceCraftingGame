@@ -29,6 +29,8 @@ public abstract class Structure : Stat
     public Vector2 screenOffset;
     public Vector3 barScale;
 
+    HPBar tempHPBar;
+
     public byte mPriority
     {
         get
@@ -103,7 +105,11 @@ public abstract class Structure : Stat
         if(damage <= 0.0f)
         {
             this[EStat.HP] += (damage * -1f);
-            if (this[EStat.HP] >= this[EStat.MaxHP]) this[EStat.HP] = this[EStat.MaxHP];
+            if (this[EStat.HP] >= this[EStat.MaxHP])
+            {
+                this[EStat.HP] = this[EStat.MaxHP];
+                tempHPBar.gameObject.SetActive(false);
+            }
             Debug.Log("Building TakeDamage  " + this[EStat.HP]);
             return;
         }
@@ -112,6 +118,7 @@ public abstract class Structure : Stat
         if (dmg <= 0.0f) dmg = 1f;
         this[EStat.HP] -= dmg;
         Debug.Log("Building TakeDamage  " + this[EStat.HP]);
+        tempHPBar.gameObject.SetActive(true);
         if (this[EStat.HP] < 0)
         {
             OnDead();
@@ -162,13 +169,13 @@ public abstract class Structure : Stat
     protected override void Initialize()
     {
         base.Initialize();
-        HPBar tempHPBar = Instantiate(structHpBar);
+        tempHPBar = Instantiate(structHpBar);
         tempHPBar.myTarget = this.GetComponent<Stat>();
         tempHPBar._offSet = screenOffset;
         tempHPBar.GetComponent<RectTransform>().localScale = barScale;
         tempHPBar.transform.SetParent(structHPBarCanvas, false);
+        tempHPBar.gameObject.SetActive(false);
     }
 
-    
     #endregion
 }
