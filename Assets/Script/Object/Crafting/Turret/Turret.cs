@@ -47,6 +47,11 @@ public class Turret : Structure
         turretAttackCooldown = this[EStat.ATKDelay];*/
     }
 
+    protected override void OnDead()
+    {
+        base.OnDead();
+        headerImg.transform.gameObject.SetActive(false);
+    }
     protected override void Initialize()
     {
         base.Initialize();
@@ -70,6 +75,8 @@ public class Turret : Structure
     // Update is called once per frame
     void Update()
     {
+        if (this[EStat.HP] <= 0f) return;
+
         turretAttackTimer -= Time.deltaTime;
 
         GameObject targetEnemy = FindClosestEnemy();
