@@ -3,24 +3,24 @@
     "GameResources_Index": 500000,
     "GameResources_Type": 0,
     "GameResources_SponItem": [100000],
-    "GameResources_ItemMinCount": [5],
-    "GameResources_ItemMaxCount": [10],
+    "GameResources_ItemMinCount": [4],
+    "GameResources_ItemMaxCount": [7],
     "GameResources_SpecialPercent": 0.05
   },
   {
     "GameResources_Index": 500001,
     "GameResources_Type": 0,
     "GameResources_SponItem": [100001],
-    "GameResources_ItemMinCount": [1],
-    "GameResources_ItemMaxCount": [5],
+    "GameResources_ItemMinCount": [3],
+    "GameResources_ItemMaxCount": [7],
     "GameResources_SpecialPercent": 0
   },
   {
     "GameResources_Index": 500002,
     "GameResources_Type": 0,
     "GameResources_SponItem": [100000],
-    "GameResources_ItemMinCount": [10],
-    "GameResources_ItemMaxCount": [20],
+    "GameResources_ItemMinCount": [8],
+    "GameResources_ItemMaxCount": [15],
     "GameResources_SpecialPercent": 0
   }
 ]

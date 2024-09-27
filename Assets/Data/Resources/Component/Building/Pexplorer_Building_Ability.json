@@ -75,7 +75,7 @@
     "BuildingAbility_Index": 110000,
     "BuildingDetailType": 1,
     "Consume_IndexArr": [100000, 100001],
-    "Consume_CountArr": [70, 70],
+    "Consume_CountArr": [60, 50],
     "BuildingSpeed": 10,
     "BuildingScale": 1,
     "BuildingDetail_Value": 5,
