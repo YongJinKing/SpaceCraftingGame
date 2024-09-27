@@ -20,7 +20,9 @@ public class ResourceSlot : MonoBehaviour
         resourceAmount = Amout;
         var itemInstance = ItemStaticDataManager.GetInstance();
         itemInstance.LoadItemDatas();
+        
         var itemData = itemInstance.dicItemData[id];
+        Debug.Log($"{id}리소스아이디임");
         var spName = itemInstance.dicResouseTable[itemData.ItemImage].ImageResource_Name;
         this.image.sprite = Resources.Load<Sprite>($"UI/ItemResources/{spName}");
         this.text.text = itemInstance.dicStringTable[itemData.ItemName].String_Desc + " x" + Amout;

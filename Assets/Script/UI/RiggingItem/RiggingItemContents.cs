@@ -25,7 +25,7 @@ public class RiggingItemContents : MonoBehaviour
     private int hammerLevel = 2;
     private int levelUpSlotNum = 0;
 
-    private int riggingItemCount = 3;
+    private int riggingItemCount = 5;
 
     int rf;
     int sg;

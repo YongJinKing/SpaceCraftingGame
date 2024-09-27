@@ -25,9 +25,9 @@ public class ItemStaticDataManager
         var arrItem_DataTables = JsonConvert.DeserializeObject<Item_DataTable[]>(Item_DataTable);
         var arrStringDatas = JsonConvert.DeserializeObject<Item_StringTable[]>(Item_StringTable);
         var arrResourceDatas = JsonConvert.DeserializeObject<Item_ImageResourceTable[]>(Item_IamgeResourceTable);
-        /* foreach(var data in arrStringDatas)
+        /* foreach(var data in arrItem_DataTables)
         {
-            Debug.LogFormat("{0}, {1}, {2} ",data.index, data.String_Type, data.String_Desc);
+            Debug.LogFormat("{0} ",data.ItemData_Index);
         } */
         this.dicItemData = arrItem_DataTables.ToDictionary(x => x.ItemData_Index);
         this.dicStringTable = arrStringDatas.ToDictionary(x => x.ItemString_Index);

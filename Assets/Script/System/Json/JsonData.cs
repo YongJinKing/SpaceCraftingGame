@@ -35,7 +35,7 @@ public struct RiggingItem_DataTable
     public int RiggingItem_AttackPower;
     public float RiggingItem_AttackSpeed;
     public float RiggingItem_Range;
-    public int RiggingItem_BulletPrefab;
+    public int RiggingItem_EffectPrefab;
     public int RiggingItemImage;
 }
 public struct RiggingItem_StringTable

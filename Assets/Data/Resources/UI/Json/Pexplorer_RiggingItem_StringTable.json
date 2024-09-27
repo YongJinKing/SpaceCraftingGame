@@ -1,122 +1,202 @@
 [
-  {
-    "RiggingItemString_Index": 10000,
-    "String_Desc": "라이플 Lv_1"
-  },
-  {
-    "RiggingItemString_Index": 10001,
-    "String_Desc": "라이플 Lv_2"
-  },
-  {
-    "RiggingItemString_Index": 10002,
-    "String_Desc": "라이플 Lv_3"
-  },
-  {
-    "RiggingItemString_Index": 10003,
-    "String_Desc": "라이플 Lv_4"
-  },
-  {
-    "RiggingItemString_Index": 10004,
-    "String_Desc": "라이플 Lv_5"
-  },
-  {
-    "RiggingItemString_Index": 10005,
-    "String_Desc": "라이플 Lv_6"
-  },
-  {
-    "RiggingItemString_Index": 10006,
-    "String_Desc": "라이플 Lv_7"
-  },
-  {
-    "RiggingItemString_Index": 10007,
-    "String_Desc": "라이플 Lv_8"
-  },
-  {
-    "RiggingItemString_Index": 10008,
-    "String_Desc": "라이플 Lv_9"
-  },
-  {
-    "RiggingItemString_Index": 10009,
-    "String_Desc": "라이플 Lv_10"
-  },
-  {
-    "RiggingItemString_Index": 20000,
-    "String_Desc": "샷건 Lv_1"
-  },
-  {
-    "RiggingItemString_Index": 20001,
-    "String_Desc": "샷건 Lv_2"
-  },
-  {
-    "RiggingItemString_Index": 20002,
-    "String_Desc": "샷건 Lv_3"
-  },
-  {
-    "RiggingItemString_Index": 20003,
-    "String_Desc": "샷건 Lv_4"
-  },
-  {
-    "RiggingItemString_Index": 20004,
-    "String_Desc": "샷건 Lv_5"
-  },
-  {
-    "RiggingItemString_Index": 20005,
-    "String_Desc": "샷건 Lv_6"
-  },
-  {
-    "RiggingItemString_Index": 20006,
-    "String_Desc": "샷건 Lv_7"
-  },
-  {
-    "RiggingItemString_Index": 20007,
-    "String_Desc": "샷건 Lv_8"
-  },
-  {
-    "RiggingItemString_Index": 20008,
-    "String_Desc": "샷건 Lv_9"
-  },
-  {
-    "RiggingItemString_Index": 20009,
-    "String_Desc": "샷건 Lv_10"
-  },
-  {
-    "RiggingItemString_Index": 30000,
-    "String_Desc": "스나이퍼 Lv_1"
-  },
-  {
-    "RiggingItemString_Index": 30001,
-    "String_Desc": "스나이퍼 Lv_2"
-  },
-  {
-    "RiggingItemString_Index": 30002,
-    "String_Desc": "스나이퍼 Lv_3"
-  },
-  {
-    "RiggingItemString_Index": 30003,
-    "String_Desc": "스나이퍼 Lv_4"
-  },
-  {
-    "RiggingItemString_Index": 30004,
-    "String_Desc": "스나이퍼 Lv_5"
-  },
-  {
-    "RiggingItemString_Index": 30005,
-    "String_Desc": "스나이퍼 Lv_6"
-  },
-  {
-    "RiggingItemString_Index": 30006,
-    "String_Desc": "스나이퍼 Lv_7"
-  },
-  {
-    "RiggingItemString_Index": 30007,
-    "String_Desc": "스나이퍼 Lv_8"
-  },
-  {
-    "RiggingItemString_Index": 30008,
-    "String_Desc": "스나이퍼 Lv_9"
-  },
-  {
-    "RiggingItemString_Index": 30009,
-    "String_Desc": "스나이퍼 Lv_10"
-  }
+   {
+      "RiggingItemString_Index":10000,
+      "String_Desc":"라이플 Lv_1"
+   },
+   {
+      "RiggingItemString_Index":10001,
+      "String_Desc":"라이플 Lv_2"
+   },
+   {
+      "RiggingItemString_Index":10002,
+      "String_Desc":"라이플 Lv_3"
+   },
+   {
+      "RiggingItemString_Index":10003,
+      "String_Desc":"라이플 Lv_4"
+   },
+   {
+      "RiggingItemString_Index":10004,
+      "String_Desc":"라이플 Lv_5"
+   },
+   {
+      "RiggingItemString_Index":10005,
+      "String_Desc":"라이플 Lv_6"
+   },
+   {
+      "RiggingItemString_Index":10006,
+      "String_Desc":"라이플 Lv_7"
+   },
+   {
+      "RiggingItemString_Index":10007,
+      "String_Desc":"라이플 Lv_8"
+   },
+   {
+      "RiggingItemString_Index":10008,
+      "String_Desc":"라이플 Lv_9"
+   },
+   {
+      "RiggingItemString_Index":10009,
+      "String_Desc":"라이플 Lv_10"
+   },
+   {
+      "RiggingItemString_Index":20000,
+      "String_Desc":"샷건 Lv_1"
+   },
+   {
+      "RiggingItemString_Index":20001,
+      "String_Desc":"샷건 Lv_2"
+   },
+   {
+      "RiggingItemString_Index":20002,
+      "String_Desc":"샷건 Lv_3"
+   },
+   {
+      "RiggingItemString_Index":20003,
+      "String_Desc":"샷건 Lv_4"
+   },
+   {
+      "RiggingItemString_Index":20004,
+      "String_Desc":"샷건 Lv_5"
+   },
+   {
+      "RiggingItemString_Index":20005,
+      "String_Desc":"샷건 Lv_6"
+   },
+   {
+      "RiggingItemString_Index":20006,
+      "String_Desc":"샷건 Lv_7"
+   },
+   {
+      "RiggingItemString_Index":20007,
+      "String_Desc":"샷건 Lv_8"
+   },
+   {
+      "RiggingItemString_Index":20008,
+      "String_Desc":"샷건 Lv_9"
+   },
+   {
+      "RiggingItemString_Index":20009,
+      "String_Desc":"샷건 Lv_10"
+   },
+   {
+      "RiggingItemString_Index":30000,
+      "String_Desc":"스나이퍼 Lv_1"
+   },
+   {
+      "RiggingItemString_Index":30001,
+      "String_Desc":"스나이퍼 Lv_2"
+   },
+   {
+      "RiggingItemString_Index":30002,
+      "String_Desc":"스나이퍼 Lv_3"
+   },
+   {
+      "RiggingItemString_Index":30003,
+      "String_Desc":"스나이퍼 Lv_4"
+   },
+   {
+      "RiggingItemString_Index":30004,
+      "String_Desc":"스나이퍼 Lv_5"
+   },
+   {
+      "RiggingItemString_Index":30005,
+      "String_Desc":"스나이퍼 Lv_6"
+   },
+   {
+      "RiggingItemString_Index":30006,
+      "String_Desc":"스나이퍼 Lv_7"
+   },
+   {
+      "RiggingItemString_Index":30007,
+      "String_Desc":"스나이퍼 Lv_8"
+   },
+   {
+      "RiggingItemString_Index":30008,
+      "String_Desc":"스나이퍼 Lv_9"
+   },
+   {
+      "RiggingItemString_Index":30009,
+      "String_Desc":"스나이퍼 Lv_10"
+   },
+   {
+      "RiggingItemString_Index":40000,
+      "String_Desc":"곡갱이 Lv_1"
+   },
+   {
+      "RiggingItemString_Index":40001,
+      "String_Desc":"곡갱이 Lv_2"
+   },
+   {
+      "RiggingItemString_Index":40002,
+      "String_Desc":"곡갱이 Lv_3"
+   },
+   {
+      "RiggingItemString_Index":40003,
+      "String_Desc":"곡갱이 Lv_4"
+   },
+   {
+      "RiggingItemString_Index":40004,
+      "String_Desc":"곡갱이 Lv_5"
+   },
+   {
+      "RiggingItemString_Index":40005,
+      "String_Desc":"곡갱이 Lv_6"
+   },
+   {
+      "RiggingItemString_Index":40006,
+      "String_Desc":"곡갱이 Lv_7"
+   },
+   {
+      "RiggingItemString_Index":40007,
+      "String_Desc":"곡갱이 Lv_8"
+   },
+   {
+      "RiggingItemString_Index":40008,
+      "String_Desc":"곡갱이 Lv_9"
+   },
+   {
+      "RiggingItemString_Index":40009,
+      "String_Desc":"곡갱이 Lv_10"
+   },
+   {
+      "RiggingItemString_Index":50000,
+      "String_Desc":"망치 Lv_1"
+   },
+   {
+      "RiggingItemString_Index":50001,
+      "String_Desc":"망치 Lv_2"
+   },
+   {
+      "RiggingItemString_Index":50002,
+      "String_Desc":"망치 Lv_3"
+   },
+   {
+      "RiggingItemString_Index":50003,
+      "String_Desc":"망치 Lv_4"
+   },
+   {
+      "RiggingItemString_Index":50004,
+      "String_Desc":"망치 Lv_5"
+   },
+   {
+      "RiggingItemString_Index":50005,
+      "String_Desc":"망치 Lv_6"
+   },
+   {
+      "RiggingItemString_Index":50006,
+      "String_Desc":"망치 Lv_7"
+   },
+   {
+      "RiggingItemString_Index":50007,
+      "String_Desc":"망치 Lv_8"
+   },
+   {
+      "RiggingItemString_Index":50008,
+      "String_Desc":"망치 Lv_9"
+   },
+   {
+      "RiggingItemString_Index":50009,
+      "String_Desc":"망치 Lv_10"
+   }
 ]
