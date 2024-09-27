@@ -17,6 +17,7 @@ public class CraftFactory : Singleton<CraftFactory>
     public UnityEvent ActiveNoMoreResources;
     public Transform ResourcesParent;
     public Transform StructureParent;
+    public Transform struchtHPBarCanvas;
 
     SpaceShip spaceShip;
     void Awake()
@@ -151,7 +152,8 @@ public class CraftFactory : Singleton<CraftFactory>
         turret[EStat.ATKDelay] = abilityData.BuildingDetail_Delay;
         turret[EStat.ATKSpeed] = 0;
         turret.DestroyEvent = new UnityEngine.Events.UnityEvent<Vector3>();
-        
+        turret.GetComponent<Structure>().structHPBarCanvas = struchtHPBarCanvas;
+
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one;
         
@@ -190,7 +192,9 @@ public class CraftFactory : Singleton<CraftFactory>
         else factoryBuilding.MaxHP = Hp;
         Debug.Log(abilityData.BuildingDetail_Delay + "<<<<<<<<<<<<<<");
         factoryBuilding[EStat.Efficiency] = abilityData.BuildingDetail_Delay; 
-        
+        factoryBuilding.GetComponent<Structure>().structHPBarCanvas = struchtHPBarCanvas;
+
+
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
         obj.transform.SetParent(StructureParent);
@@ -244,6 +248,7 @@ public class CraftFactory : Singleton<CraftFactory>
 
         Barricade barricade = obj.GetComponent<Barricade>();
         barricade.mComponentName = componentData.Component_Name.ToString();
+        barricade.GetComponent<Structure>().structHPBarCanvas = struchtHPBarCanvas;
         if (Hp == 0) barricade.MaxHP = componentData.Component_Hp; 
         else barricade.MaxHP = Hp; 
 

@@ -19,12 +19,16 @@ public abstract class Structure : Stat
     [SerializeField] protected string componentName;
     [SerializeField] protected int scale;
     [SerializeField] protected Animator animator;
+
     #endregion
     #region Public
     public Transform destroyVFX;
     public Transform buildVFX;
+    public HPBar structHpBar;
+    public Transform structHPBarCanvas;
+    public Vector2 screenOffset;
+    public Vector3 barScale;
 
-    
     public byte mPriority
     {
         get
@@ -153,7 +157,16 @@ public abstract class Structure : Stat
     protected virtual void OnEnable()
     {
         PlayBuildVFX();
-        
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        HPBar tempHPBar = Instantiate(structHpBar);
+        tempHPBar.myTarget = this.GetComponent<Stat>();
+        tempHPBar._offSet = screenOffset;
+        tempHPBar.GetComponent<RectTransform>().localScale = barScale;
+        tempHPBar.transform.SetParent(structHPBarCanvas, false);
     }
 
     #endregion

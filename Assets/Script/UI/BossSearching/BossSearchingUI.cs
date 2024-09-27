@@ -52,6 +52,7 @@ public class BossSearchingUI : MonoBehaviour
     public UnityEvent<float> changeTimerTextAct;
 
     public bool isSearching = false;
+    public bool isSearched = false;
     public float searchedTime = 0f;
 
     public TotalSaveManager TSM;
@@ -88,6 +89,7 @@ public class BossSearchingUI : MonoBehaviour
 
     IEnumerator JumpToBossScene()
     {
+        this.transform.GetChild(0).gameObject.SetActive(false);
         // 여기서 세이브를 한번 쭉 함
         if(TSM != null) TSM.SaveAll();
         FD.StartFadeOut(2f);
@@ -101,6 +103,11 @@ public class BossSearchingUI : MonoBehaviour
         AskSearchingScreen.SetActive(false);
         SearchingScreen.SetActive(true);
         FindingVFX.Play();
+        if (isSearched)
+        {
+            SearchComplete();
+            return;
+        }
         StartCoroutine(StartSearchingCoroutine());
     }
 
@@ -115,11 +122,22 @@ public class BossSearchingUI : MonoBehaviour
             yield return null;
         }
 
+        SearchComplete();
+        /*isSearched = true;
+        searchedTime = 0f;
+        SearchingScreen.SetActive(false);
+        SearchingCompleteScreen.SetActive(true);
+        FindingVFX.Stop();
+        FoundVFX.Play();*/
+    }
+
+    void SearchComplete()
+    {
+        isSearched = true;
         searchedTime = 0f;
         SearchingScreen.SetActive(false);
         SearchingCompleteScreen.SetActive(true);
         FindingVFX.Stop();
         FoundVFX.Play();
     }
-
 }

@@ -64,6 +64,10 @@ MonoBehaviour:
   animator: {fileID: 5204452331467546118}
   destroyVFX: {fileID: 6294124236570834862}
   buildVFX: {fileID: 2882411528274943466}
+  structHpBar: {fileID: 442289299514592694, guid: b79ca0c3bcd78cd4985a77164632a7da, type: 3}
+  structHPBarCanvas: {fileID: 0}
+  screenOffset: {x: 0, y: -50}
+  barScale: {x: 0.5, y: 0.5, z: 1}
   DestroyEvent:
     m_PersistentCalls:
       m_Calls: []

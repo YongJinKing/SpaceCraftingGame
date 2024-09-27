@@ -164,15 +164,6 @@ public class Turret : Structure
         return closestEnemy;
     }
 
-    private void OnMouseEnter()
-    {
-        buildingProduceAmountUI.ActiveAmountUI(this);
-    }
-
-    private void OnMouseExit()
-    {
-        buildingProduceAmountUI.DeActiveAmountUI();
-    }
 
     #endregion
     #region public

@@ -14,7 +14,7 @@ public class CraftBuildingManager : MonoBehaviour
     public Transform turret;
     public Transform[] rectangles;
     public Transform StructParent;
-
+    
     public int size;
     public bool craftReady;
     [SerializeField] int buildingIndex;
