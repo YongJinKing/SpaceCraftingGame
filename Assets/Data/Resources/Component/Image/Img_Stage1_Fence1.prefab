@@ -193,6 +193,7 @@ MonoBehaviour:
   DestroyEvent:
     m_PersistentCalls:
       m_Calls: []
+  barricadeImage: {fileID: 203156631143734965}
 --- !u!1 &4283474102857414869
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Barricade : Structure
 {
+    public GameObject barricadeImage;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -18,7 +19,9 @@ public class Barricade : Structure
     }
     protected override void OnDead()
     {
+        barricadeImage.gameObject.SetActive(false);
         this.GetComponent<BoxCollider2D>().enabled = false;
+        DestroyEvent?.Invoke(this.transform.position);
         destroyVFX.gameObject.SetActive(true);
         Destroy(this.transform.gameObject, 1f);
     }
