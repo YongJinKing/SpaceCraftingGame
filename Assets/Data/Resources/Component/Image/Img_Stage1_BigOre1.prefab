@@ -138,8 +138,8 @@ MonoBehaviour:
   indexNum: 500002
   outputIndexNum: 100000
   hp: 12
-  minAmount: 10
-  maxAmount: 15
+  minAmount: 7
+  maxAmount: 14
   size: 2
   DestroyVFX: {fileID: 4231699886084168486, guid: b97d7cb182cc458409243f45c4e8ad27, type: 3}
   dropItem: {fileID: 1923448322732787196, guid: 6a795de0aec265e48a8aed68c6eaa004, type: 3}

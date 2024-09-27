@@ -53833,6 +53833,50 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1738850887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738850888}
+  - component: {fileID: 1738850889}
+  m_Layer: 0
+  m_Name: TimeSclaeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1738850888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738850887}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8847888450153635369}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1738850889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738850887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd734bde77b5b794f8e2e669942ff40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1740849571
 GameObject:
   m_ObjectHideFlags: 0
@@ -69334,9 +69378,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 442289299514592694, guid: b79ca0c3bcd78cd4985a77164632a7da, type: 3}
     - target: {fileID: 2765275011479328568, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: monsterWaveDay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765275011479328568, guid: 86de332166973d84687648ac728535d4, type: 3}
       propertyPath: MonsterHPUICanvas
       value: 
       objectReference: {fileID: 1902787139}
+    - target: {fileID: 2765275011479328568, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: waveDifficultyScale
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4603840126810279232, guid: 86de332166973d84687648ac728535d4, type: 3}
       propertyPath: CG
       value: 
@@ -69447,6 +69499,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1223117295852275693, guid: 86de332166973d84687648ac728535d4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1504799183}
+    - targetCorrespondingSourceObject: {fileID: 1223117295852275693, guid: 86de332166973d84687648ac728535d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1738850888}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86de332166973d84687648ac728535d4, type: 3}
 --- !u!114 &8847888450153635368 stripped

@@ -81,7 +81,7 @@ public class CamController : MonoBehaviour
         yield return StartCoroutine(PlayerLandingToStage());
         yield return StartCoroutine(FocusBoss());
         yield return StartCoroutine(FocusPlayer());
-
+        controller.canMove = true;
         bossStage1Manager.StartGame();
     }
     #region ForPlayer

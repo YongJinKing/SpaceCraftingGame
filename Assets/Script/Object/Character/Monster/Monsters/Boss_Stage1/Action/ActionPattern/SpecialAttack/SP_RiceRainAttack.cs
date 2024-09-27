@@ -28,6 +28,7 @@ public class SP_RiceRainAttack : SPAttackAction
     public GameObject Rice;
     public float tolerance = 0.1f; // 목표 위치에 도달했는지 확인할 때 사용할 오차 범위
     public Transform RiceSpawnPos;
+    BoxCollider2D rabbitCollider;
     #endregion
     #region Events
     #endregion
@@ -149,6 +150,7 @@ public class SP_RiceRainAttack : SPAttackAction
     // 실제로 떨어질 위치 위로 만든다. 떡 비를
     IEnumerator SpawnRiceRain()
     {
+        rabbitCollider.enabled = false;
         ownerAnim.SetBool("Teabagging", true);
         int cnt = 0;
         while (cnt < 4)
@@ -177,6 +179,7 @@ public class SP_RiceRainAttack : SPAttackAction
 
         yield return null;
         ownerAnim.SetBool("Teabagging", false);
+        rabbitCollider.enabled = true;
         ActionEnd();
     }
 
@@ -218,7 +221,7 @@ public class SP_RiceRainAttack : SPAttackAction
     {
         base.Activate(pos);
         mortalBoxesList = perception.GetList();
-        
+        rabbitCollider = this.transform.parent.parent.GetComponent<BoxCollider2D>();
         chk = false;
         StartCoroutine(StartRiceRainPattern());
 
