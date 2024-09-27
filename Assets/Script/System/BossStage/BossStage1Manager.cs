@@ -15,12 +15,14 @@ public class BossStage1Manager : MonoBehaviour
 
     public GameObject goBackToSpaceShipButton;
     public TotalSaveManager totalSaveManager;
+    public InventorySaveSystem inventorySaveSystem;
     public void StartGame()
     {
         playerUI.SetActive(true);
         MortalBoxes.gameObject.SetActive(true);
         MortalGages.gameObject.SetActive(true);
         controller.canMove = true;
+        inventorySaveSystem.LoadInventorySaved();
         BossRabbit.GetComponent<BossReadyState>().StartFight();
         // 이 아래 보스를 위한 UI(ex 체력바)도 키면 됩니다.
     }

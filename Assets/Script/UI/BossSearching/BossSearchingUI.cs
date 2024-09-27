@@ -56,6 +56,7 @@ public class BossSearchingUI : MonoBehaviour
     public float searchedTime = 0f;
 
     public TotalSaveManager TSM;
+    public Transform SpaceShipCanvas;
     private void Start()
     {
         TSM = FindObjectOfType<TotalSaveManager>();
@@ -89,9 +90,11 @@ public class BossSearchingUI : MonoBehaviour
 
     IEnumerator JumpToBossScene()
     {
+        FindObjectOfType<InputController>().canMove = false;
         this.transform.GetChild(0).gameObject.SetActive(false);
         // 여기서 세이브를 한번 쭉 함
         if(TSM != null) TSM.SaveAll();
+        SpaceShipCanvas.gameObject.SetActive(false);
         FD.StartFadeOut(2f);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Boss_Rabbit"); // 이런식으로 넘길건데 잠깐

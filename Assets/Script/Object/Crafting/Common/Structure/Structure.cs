@@ -169,5 +169,6 @@ public abstract class Structure : Stat
         tempHPBar.transform.SetParent(structHPBarCanvas, false);
     }
 
+    
     #endregion
 }

@@ -42,7 +42,7 @@ public class InventorySaveSystem : BaseSaveSystem
         File.WriteAllText(path, json);
     }
 
-    void LoadInventorySaved()
+    public void LoadInventorySaved()
     {
         if (File.Exists(path))
         {

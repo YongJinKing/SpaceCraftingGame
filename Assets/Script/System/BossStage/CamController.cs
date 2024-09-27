@@ -207,7 +207,7 @@ public class CamController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.PageDown))
         {
             StopAllCoroutines();
             SoundManager.Instance.PlayBGM(SoundManager.Instance.BGMSoundData.bgm[(int)BGM.BOSS]);

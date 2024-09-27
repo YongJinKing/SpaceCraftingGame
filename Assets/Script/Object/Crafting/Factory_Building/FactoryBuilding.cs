@@ -115,5 +115,14 @@ public class FactoryBuilding : Structure
         }
     }
 
+    private void OnMouseOver()
+    {
+        factoryMeshRender.material = outLine_Mat;
+    }
+
+    private void OnMouseExit()
+    {
+        factoryMeshRender.material = origin_Mat;
+    }
 
 }

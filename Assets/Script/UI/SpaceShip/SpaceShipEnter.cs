@@ -98,7 +98,7 @@ public class SpaceShipEnter : MonoBehaviour
 
     void ChangeSceneToStageSelect()
     {
-        SceneManager.LoadSceneAsync(7);
+        SceneManager.LoadScene("SpaceShipTakeOffScene");
     }
 
     

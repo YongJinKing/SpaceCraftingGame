@@ -140,6 +140,8 @@ public class SoundManager : MonoBehaviour
 
         for (int i = 0; i < sfxPlayer.Count; i++)
         {
+            if (sfxPlayer[i] == null) continue;
+
             if (!sfxPlayer[i].isPlaying)
             {
                 sfxPlayer[i].clip = clip;
