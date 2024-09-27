@@ -86,9 +86,18 @@ public class ModeChange : MonoBehaviour
                     WeaponBoxGrid.transform.GetChild(priviousWeaponSelect).GetComponent<WeaponSlot>().UnSelect();
                     WeaponBoxGrid.transform.GetChild(type).GetComponent<WeaponSlot>().Select();
                     priviousWeaponSelect = type;
-                    if (Input.GetKeyDown(KeyCode.Alpha1)) UISoundManager.GetComponent<UISoundPlayer>().ChangeWeapon();
-                    if (Input.GetKeyDown(KeyCode.Alpha2)) UISoundManager.GetComponent<UISoundPlayer>().ChangeWeapon();
-                    if (Input.GetKeyDown(KeyCode.Alpha3)) UISoundManager.GetComponent<UISoundPlayer>().ChangeWeapon();
+                    switch (type)
+                    {
+                        case 0:
+                            UISoundManager.GetComponent<UISoundPlayer>().ChangeWeapon();
+                            break;
+                        case 1:
+                            UISoundManager.GetComponent<UISoundPlayer>().ChangeWeapon();
+                            break;
+                        case 2:
+                            UISoundManager.GetComponent<UISoundPlayer>().ChangeWeapon();
+                            break;
+                    }
                 }
                 break;
             case 1:
@@ -96,8 +105,15 @@ public class ModeChange : MonoBehaviour
                     CraftingBoxGrid.transform.GetChild(priviousCraftSelect).GetComponent<ToolSlot>().UnSelect();
                     CraftingBoxGrid.transform.GetChild(type).GetComponent<ToolSlot>().Select();
                     priviousCraftSelect = type;
-                    if (Input.GetKeyDown(KeyCode.Alpha1)) UISoundManager.GetComponent<UISoundPlayer>().ChangeTool();
-                    if (Input.GetKeyDown(KeyCode.Alpha2)) UISoundManager.GetComponent<UISoundPlayer>().ChangeTool();
+                    switch (type)
+                    {
+                        case 0:
+                            UISoundManager.GetComponent<UISoundPlayer>().ChangeTool();
+                            break;
+                        case 1:
+                            UISoundManager.GetComponent<UISoundPlayer>().ChangeTool();
+                            break;
+                    }
                 }
                 break;
         }

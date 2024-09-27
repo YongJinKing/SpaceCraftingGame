@@ -10,7 +10,7 @@
     "LayerMask": [19],
     "HitBox_Duration": 5.0,
     "Hit_Frequency": -1.0,
-    "Move_Speed": 5.0,
+    "Move_Speed": 10.0,
     "Max_Dist": 20.0,
     "Penetrable": false
   },
@@ -25,7 +25,7 @@
     "LayerMask": [ 19 ],
     "HitBox_Duration": 5.0,
     "Hit_Frequency": -1.0,
-    "Move_Speed": 5.0,
+    "Move_Speed": 10.0,
     "Max_Dist": 20.0,
     "Penetrable": false
   },
@@ -40,7 +40,7 @@
     "LayerMask": [ 19 ],
     "HitBox_Duration": 5.0,
     "Hit_Frequency": -1.0,
-    "Move_Speed": 5.0,
+    "Move_Speed": 10.0,
     "Max_Dist": 20.0,
     "Penetrable": false
   },
@@ -55,7 +55,7 @@
     "LayerMask": [ 19 ],
     "HitBox_Duration": 5.0,
     "Hit_Frequency": -1.0,
-    "Move_Speed": 10.0,
+    "Move_Speed": 20.0,
     "Max_Dist": 50.0,
     "Penetrable": true
   },
@@ -70,7 +70,7 @@
     "LayerMask": [ 19 ],
     "HitBox_Duration": 5.0,
     "Hit_Frequency": -1.0,
-    "Move_Speed": 10.0,
+    "Move_Speed": 20.0,
     "Max_Dist": 50.0,
     "Penetrable": true
   },
@@ -85,7 +85,7 @@
     "LayerMask": [ 19 ],
     "HitBox_Duration": 5.0,
     "Hit_Frequency": -1.0,
-    "Move_Speed": 10.0,
+    "Move_Speed": 20.0,
     "Max_Dist": 50.0,
     "Penetrable": true
   }
