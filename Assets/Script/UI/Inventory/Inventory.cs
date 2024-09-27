@@ -274,10 +274,20 @@ public class Inventory : MonoBehaviour
             return false;
         }
     }
+
+    public int GetItemAmount(int id)
+    {
+        int res = 0;
+        for (int i = 0; i < inventoryDatasMaxCount; i++)//똑같은 id를 가지고 있는 아이템 서칭
+        {
+            if (InventoryDatas[i].id == id)
+            {
+                res += InventoryDatas[i].amount;
+            }
+        }
+        return res;
+    }
     
-
-
-
     public int GetInvenDataWithIdLength()
     {
         int count = 0;

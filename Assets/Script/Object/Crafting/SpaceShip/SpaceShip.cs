@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
@@ -10,7 +11,8 @@ public class SpaceShip : Structure
     public Tilemap tileMap;
     public Transform gameOverCanvas;
     public Transform spaceShipImg;
-    
+
+    public UnityEvent<int> dronCountChangeAct;
     public bool IsDronReady()
     {
         return builderDrons.Count > 0;
@@ -27,12 +29,14 @@ public class SpaceShip : Structure
         builderDrons[0].dronImg.gameObject.SetActive(true);
         builderDrons[0].StartWorking();
         builderDrons.RemoveAt(0);
+        dronCountChangeAct?.Invoke(builderDrons.Count);
     }
 
     public void PutInDron(BuildDron dron)
     {
         builderDrons.Add(dron);
         dron.dronImg.gameObject.SetActive(false);
+        dronCountChangeAct?.Invoke(builderDrons.Count);
     }
 
 
