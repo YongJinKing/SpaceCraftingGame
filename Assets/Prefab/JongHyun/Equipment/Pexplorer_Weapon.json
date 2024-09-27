@@ -8,7 +8,7 @@
         "stattype": 3,
         "modiType": 0,
         "sortOrder": 1,
-        "value": 10
+        "value": 5
       }
     ],
     "Main_Action_Index": 10100,
@@ -24,7 +24,7 @@
         "stattype": 3,
         "modiType": 0,
         "sortOrder": 1,
-        "value": 20
+        "value": 10
       }
     ],
     "Main_Action_Index": 10101,
@@ -40,7 +40,7 @@
         "stattype": 3,
         "modiType": 0,
         "sortOrder": 1,
-        "value": 30
+        "value": 15
       }
     ],
     "Main_Action_Index": 10102,
@@ -56,7 +56,7 @@
         "stattype": 3,
         "modiType": 0,
         "sortOrder": 1,
-        "value": 10
+        "value": 5
       }
     ],
     "Main_Action_Index": 10200,
@@ -72,7 +72,7 @@
         "stattype": 3,
         "modiType": 0,
         "sortOrder": 1,
-        "value": 20
+        "value": 10
       }
     ],
     "Main_Action_Index": 10201,
@@ -88,7 +88,7 @@
         "stattype": 3,
         "modiType": 0,
         "sortOrder": 1,
-        "value": 30
+        "value": 15
       }
     ],
     "Main_Action_Index": 10202,
@@ -104,7 +104,7 @@
         "stattype": 3,
         "modiType": 0,
         "sortOrder": 1,
-        "value": 10
+        "value": 5
       }
     ],
     "Main_Action_Index": 10300,
@@ -120,7 +120,7 @@
         "stattype": 3,
         "modiType": 0,
         "sortOrder": 1,
-        "value": 20
+        "value": 10
       }
     ],
     "Main_Action_Index": 10301,
@@ -136,7 +136,7 @@
         "stattype": 3,
         "modiType": 0,
         "sortOrder": 1,
-        "value": 30
+        "value": 15
       }
     ],
     "Main_Action_Index": 10302,
