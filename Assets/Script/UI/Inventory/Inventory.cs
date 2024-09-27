@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     
     public UnityEvent updatePopup;
-
+    public UnityEvent<int, int> buildUIChangeAct;
     
     public int Testid;
     public int TestAmout;
@@ -132,6 +132,7 @@ public class Inventory : MonoBehaviour
                 if(remainingAmout <= 0)
                 {  
                     UpdateInventory();
+                    buildUIChangeAct?.Invoke(id, GetItemAmount(id));
                     return 0;
                 }
             }
@@ -147,13 +148,15 @@ public class Inventory : MonoBehaviour
                 remainingAmout -= addAmount;
                 UpdateInventory();
                 if(remainingAmout <= 0)
-                {   
+                {
+                    buildUIChangeAct?.Invoke(id, GetItemAmount(id));
                     return 0;
                 }
             }
         }
         UpdateInventory();
 
+        
         Debug.Log(remainingAmout);//창고 채운뒤 남은 오브젝트 처리하면 좋을듯?
         return remainingAmout;
 
@@ -285,6 +288,7 @@ public class Inventory : MonoBehaviour
                 res += InventoryDatas[i].amount;
             }
         }
+        Debug.Log(res + " <<<<<<<<<<<<<<<<");
         return res;
     }
     

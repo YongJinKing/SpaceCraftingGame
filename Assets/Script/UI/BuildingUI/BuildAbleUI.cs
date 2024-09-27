@@ -20,6 +20,7 @@ public class BuildAbleUI : MonoBehaviour
     private void Start()
     {
         spacship.dronCountChangeAct.AddListener(ChangeDronText);
+        Inventory.instance.buildUIChangeAct.AddListener(ChangeResourcesText);
     }
     private void OnEnable()
     {
@@ -32,13 +33,16 @@ public class BuildAbleUI : MonoBehaviour
     {
         dronAmount.text = "x " + amount.ToString();
     }
-    /*
-    public void ChangeMineralText(int amount)
+
+    public void ChangeResourcesText(int id, int amount)
     {
-        dronAmount.text = amount.ToString();
+        if (id == 100000)
+        {
+            mineralAmount.text = "x " + amount.ToString();
+        }
+        else if (id == 100001)
+        {
+            gasAmount.text = "x " + amount.ToString();
+        }
     }
-    public void ChangeDronText(int amount)
-    {
-        dronAmount.text = amount.ToString();
-    }*/
 }
