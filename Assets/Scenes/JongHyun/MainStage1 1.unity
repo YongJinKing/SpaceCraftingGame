@@ -15890,11 +15890,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 513585821}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!223 &469789367 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3224993310961467251, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
-  m_PrefabInstance: {fileID: 471455059}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &471308327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16348,6 +16343,10 @@ PrefabInstance:
     - target: {fileID: 2759133256019743205, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -340
+      objectReference: {fileID: 0}
+    - target: {fileID: 2920031352764116482, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3003024717586870118, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
       propertyPath: m_AnchorMax.y
@@ -44060,7 +44059,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1003947055}
   GameOverPrefab: {fileID: 8900715628835428975, guid: 6472e206297d1af44b7e076ed9c12d11, type: 3}
-  canvas: {fileID: 469789367}
 --- !u!1001 &1578604504
 PrefabInstance:
   m_ObjectHideFlags: 0
