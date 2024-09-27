@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 1
-  dropItem: {fileID: 2003313164366815474, guid: 1373bcc79ff1a3d4ca8b28e09d8ff8ab, type: 3}
+  dropItem: {fileID: 2003313164366815474, guid: 907c164cdcb39b4448dbc21e9b105682, type: 3}
 --- !u!1 &3701307092552309221
 GameObject:
   m_ObjectHideFlags: 0
