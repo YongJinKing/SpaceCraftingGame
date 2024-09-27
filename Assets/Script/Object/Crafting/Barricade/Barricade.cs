@@ -19,6 +19,7 @@ public class Barricade : Structure
     }
     protected override void OnDead()
     {
+        deadEvent?.Invoke();
         barricadeImage.gameObject.SetActive(false);
         this.GetComponent<BoxCollider2D>().enabled = false;
         DestroyEvent?.Invoke(this.transform.position);
