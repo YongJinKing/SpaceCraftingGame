@@ -12,7 +12,7 @@ public class StageImageChanger : MonoBehaviour
     public Image StageImage;
     public TMP_Text StageTitle;
     public TMP_Text StageDescription;
-
+    public Button SelectButton;
 
     string Stage1Title;
     string Stage1Description;
@@ -53,23 +53,27 @@ public class StageImageChanger : MonoBehaviour
         
         StageTitle.GetComponent<TMP_Text>().text = Stage1Title;
         StageDescription.text = Stage1Description;
+        SelectButton.interactable = true;
     }
     public void BtnClickStage2()
     {
         StageImage.GetComponent<Image>().sprite = sprites[1];
         StageTitle.text = Stage2Title;
         StageDescription.text = Stage2Description;
+        SelectButton.interactable = false;
     }
     public void BtnClickStage3()
     {
         StageImage.GetComponent<Image>().sprite = sprites[2];
         StageTitle.text = Stage3Title;
         StageDescription.text = Stage3Description;
+        SelectButton.interactable = false;
     }
     public void BtnClickStage4()
     {
         StageImage.GetComponent<Image>().sprite = sprites[3];
         StageTitle.text = Stage4Title;
         StageDescription.text = Stage4Description;
+        SelectButton.interactable = false;
     }
 }
