@@ -14,7 +14,7 @@ public class HPBar : MonoBehaviour
     [SerializeField] protected Color fullHPColor = Color.green;
     [SerializeField] protected Color halfHPColor = Color.yellow;
     [SerializeField] protected Color lowHPColor = Color.red;
-    [SerializeField] protected Vector2 _offSet;
+    
     #endregion
     #region Public
     public Stat myTarget
@@ -22,6 +22,7 @@ public class HPBar : MonoBehaviour
         get { return _myTarget; }
         set { _myTarget = value; }
     }
+    public Vector2 _offSet;
     #endregion
     #region Events
     #endregion
