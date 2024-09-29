@@ -8,10 +8,12 @@ using UnityEngine;
 public class RecentTime
 {
     public float time;
+    public int waveCount;
 
-    public RecentTime(float time)
+    public RecentTime(float time, int waveCount)
     {
         this.time = time;
+        this.waveCount = waveCount;
     }   
 
 }
@@ -19,6 +21,7 @@ public class TimeSaveManager : BaseSaveSystem
 {
     public string savePath;
     public TimeManager timeManager;
+    WaveManager waveManager;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -26,7 +29,8 @@ public class TimeSaveManager : BaseSaveSystem
         base.Start();
         savePath = Path.Combine(filePath, "RecentTime_" + DataManager.Instance.nowSlot + ".json");
         timeManager = FindObjectOfType<TimeManager>();
-        if(timeManager != null)
+        waveManager = FindObjectOfType<WaveManager>();
+        if (timeManager != null)
         {
             LoadTime(savePath);
         }
@@ -36,7 +40,7 @@ public class TimeSaveManager : BaseSaveSystem
     {
         if (DataManager.Instance.nowSlot == -1) return;
         base.Save();
-        RecentTime recentTime = new RecentTime(timeManager.timeCount);
+        RecentTime recentTime = new RecentTime(timeManager.timeCount, waveManager.waveCount);
 
         var json = JsonConvert.SerializeObject(recentTime, Formatting.Indented);
         File.WriteAllText(savePath, json);
@@ -50,6 +54,7 @@ public class TimeSaveManager : BaseSaveSystem
             string json = File.ReadAllText(jsonPath);
             RecentTime data = JsonUtility.FromJson<RecentTime>(json);
             timeManager.timeCount = data.time;
+            waveManager.waveCount = data.waveCount;
         }
         else
         {
