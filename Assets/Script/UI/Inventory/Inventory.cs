@@ -82,7 +82,54 @@ public class Inventory : MonoBehaviour
         
     }
 
-    
+    public bool CheckInvenLeft(int id, int amount)
+    {
+        int remainingAmout = amount;
+        for (int i = 0; i < inventoryDatasMaxCount; i++)
+        {
+            if (InventoryDatas[i].id == id)//아이템이 같으면 실행
+            {
+                if (InventoryDatas[i].amount >= slotMaxCount) continue;//최대 계수 이상을 가진 아이템 컨티뉴
+
+                if (remainingAmout >= slotMaxCount)//최대 갯수보다 잔여 갯수의 아이템 양이 많으면
+                {
+                    int spaceLeft = slotMaxCount - InventoryDatas[i].amount;// 최대 갯수에서 현재 인벤토리 아이템 갯수를 마이너스하여 잔여값을 서칭함
+                    if (spaceLeft > 0)
+                    {
+                        remainingAmout -= spaceLeft;
+                    }
+                }
+                else
+                {
+                    
+                    int spaceLeft = slotMaxCount - InventoryDatas[i].amount;
+                    if (spaceLeft >= remainingAmout)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        remainingAmout -= spaceLeft;
+                    }
+                }
+
+                if (remainingAmout <= 0)
+                {
+                    return true;
+                }
+            }
+        }
+
+        for (int i = 0; i < inventoryDatasMaxCount; i++)// 나머지값 빈자리에 정착
+        {
+            if (InventoryDatas[i].id == 0 && remainingAmout > 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public int AddItem(int id, int amount)
     {

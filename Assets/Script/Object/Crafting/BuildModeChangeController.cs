@@ -32,7 +32,8 @@ public class BuildModeChangeController : MonoBehaviour
             if(player.modeType == 1)
             {
                 invenCanvas.SetActive(!invenCanvas.activeSelf);
-                SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.OpenTabSFX);
+                if(invenCanvas.activeSelf) SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.OpenTabSFX);
+                else SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.CloseTabSFX);
             }
         }
 
@@ -41,7 +42,8 @@ public class BuildModeChangeController : MonoBehaviour
             if (player.modeType == 1)
             {
                 buildCanvas.SetActive(!buildCanvas.activeSelf);
-                SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.OpenTabSFX);
+                if (buildCanvas.activeSelf) SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.OpenTabSFX);
+                else SoundManager.Instance.PlaySFX(SoundManager.Instance.UISound.CloseTabSFX);
             }
         }
     }
