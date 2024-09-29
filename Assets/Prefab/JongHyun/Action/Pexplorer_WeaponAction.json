@@ -6,7 +6,7 @@
     "ActiveRadius": 1.5,
     "HitBox_Index": [20100],
     "LayerMask": [0],
-    "ActiveDuration": 0.2
+    "ActiveDuration": 0.15
   },
   {
     "Index": 10101,
@@ -15,7 +15,7 @@
     "ActiveRadius": 1.5,
     "HitBox_Index": [20101],
     "LayerMask": [0],
-    "ActiveDuration": 0.2
+    "ActiveDuration": 0.15
   },
   {
     "Index": 10102,
@@ -24,7 +24,7 @@
     "ActiveRadius": 1.5,
     "HitBox_Index": [20102],
     "LayerMask": [0],
-    "ActiveDuration": 0.2
+    "ActiveDuration": 0.15
   },
   {
     "Index": 10200,
