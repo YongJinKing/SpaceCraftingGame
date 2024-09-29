@@ -22,11 +22,11 @@ public class DropItemPerception : MonoBehaviour
     {
         if ((1 << collision.gameObject.layer & layerMask) != 0)
         {
-            if (Inventory.instance.AddItem(dp.index, dp.amount) > 0)
+            /*if (!Inventory.instance.CheckInvenLeft(dp.index, dp.amount))
             {
                 return;
             }
-
+*/
             time += Time.deltaTime;
 
             if(time > 1f)
