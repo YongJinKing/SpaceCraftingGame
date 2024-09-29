@@ -13,7 +13,7 @@ public class WaveManager : MonoBehaviour
     #region Properties
     #region Private
     private int priviousWaveDate = 0;
-    private int waveCount = 0;
+    public int waveCount = 0;
     #endregion
     #region Protected
     [SerializeField] protected int monsterWaveDay = 7;

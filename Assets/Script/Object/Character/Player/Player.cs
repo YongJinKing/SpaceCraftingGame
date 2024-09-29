@@ -114,6 +114,9 @@ public class Player : Unit
     /// <param name="mousePos">InputController 클래스가 보내준 마우스 월드 위치</param>
     public void OnGetMousePos(Vector2 mousePos)
     {
+        if (Time.timeScale < 0.01f)
+            return;
+
         float Dot = Vector2.Dot(transform.right, mousePos - (Vector2)transform.position);
 
         //isRight와 XOR 연산해서 True가 나오면 이전값과 다르므로 위치가 달라졌다고 볼수 있다.
