@@ -27,7 +27,7 @@ public class MortalBox : MonoBehaviour
     {
         endGame = false;
         riceCakes = 0;
-        spawnTime = Random.Range(10f, 20f);
+        spawnTime = Random.Range(20f, 30f);
     }
 
     // Update is called once per frame

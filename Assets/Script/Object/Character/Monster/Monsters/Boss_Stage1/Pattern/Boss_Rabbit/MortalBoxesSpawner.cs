@@ -29,8 +29,8 @@ public class MortalBoxesSpawner : MonoBehaviour
     void SpawnMortals()
     {
         mortalBoxes[idxs[0]].SpawnRabbitWorker();
-        mortalBoxes[idxs[1]].SpawnRabbitWorker();
-        mortalBoxes[idxs[2]].SpawnRabbitWorker();
+        /*mortalBoxes[idxs[1]].SpawnRabbitWorker();
+        mortalBoxes[idxs[2]].SpawnRabbitWorker();*/
     }
     
     public void StopAllMortals()

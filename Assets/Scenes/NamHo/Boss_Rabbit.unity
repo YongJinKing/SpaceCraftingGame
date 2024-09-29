@@ -35582,7 +35582,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   animator: {fileID: 0}
-  moveSpeed: 2
+  moveSpeed: 2.5
   ATK: 1
   ATKSpeed: 0
   Name: 
@@ -74330,7 +74330,7 @@ PrefabInstance:
       objectReference: {fileID: 314828418}
     - target: {fileID: 3952227370154546265, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: MaxHP
-      value: 2000
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 3952227370154546265, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: player
@@ -74386,7 +74386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6357401163938722150, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: healAmount
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6574198756800706090, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: m_Name
