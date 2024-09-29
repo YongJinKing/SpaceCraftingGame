@@ -68,6 +68,12 @@ public class WeaponRotationAxis : MonoBehaviour
         float dir;
         while (true)
         {
+            if(Time.timeScale < 0.01f)
+            {
+                yield return null;
+                continue;
+            }
+
             scale = 1.0f;
             dir = 1.0f;
 
