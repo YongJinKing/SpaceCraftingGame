@@ -42,7 +42,7 @@
     "Consume_CountArr": [80, 60],
     "BuildingSpeed": 10,
     "BuildingScale": 1,
-    "BuildingDetail_Value": 2,
+    "BuildingDetail_Value": 1,
     "BuildingDetail_Delay": 10,
     "BuildingDetail_Range": 5,
     "BuildingDetail_GeneratedItem": 100001
@@ -54,7 +54,7 @@
     "Consume_CountArr": [160, 100],
     "BuildingSpeed": 10,
     "BuildingScale": 1,
-    "BuildingDetail_Value": 5,
+    "BuildingDetail_Value": 2,
     "BuildingDetail_Delay": 10,
     "BuildingDetail_Range": 5,
     "BuildingDetail_GeneratedItem": 100001
@@ -66,7 +66,7 @@
     "Consume_CountArr": [240, 150],
     "BuildingSpeed": 10,
     "BuildingScale": 1,
-    "BuildingDetail_Value": 10,
+    "BuildingDetail_Value": 5,
     "BuildingDetail_Delay": 10,
     "BuildingDetail_Range": 5,
     "BuildingDetail_GeneratedItem": 100001
