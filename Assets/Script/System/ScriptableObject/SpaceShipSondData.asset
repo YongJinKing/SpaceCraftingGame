@@ -16,3 +16,5 @@ MonoBehaviour:
   spaceshipChangeMode: {fileID: 8300000, guid: 7ec16cc76964ca74cbfd0bf670c03e57, type: 3}
   spaceshipSearching: {fileID: 8300000, guid: 26739ed36bce34a4780d0dee13d8f7d5, type: 3}
   spaceshipLand: {fileID: 8300000, guid: dbe1f3434983803498bbc7ad1334aeb7, type: 3}
+  spaceShipWarning: {fileID: 8300000, guid: c18df7d93b3104f4bbeade0abb5193f7, type: 3}
+  spaceShipAttacked: {fileID: 8300000, guid: 9d59c0c132e02db4c89c42fb218591c2, type: 3}

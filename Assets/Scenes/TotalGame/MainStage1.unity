@@ -10536,6 +10536,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 553906920}
     - target: {fileID: 6346119074919893135, guid: 4024fabb79f176041b9db58545241e8b, type: 3}
+      propertyPath: spaceShipUnderAttackUI
+      value: 
+      objectReference: {fileID: 908072435}
+    - target: {fileID: 6346119074919893135, guid: 4024fabb79f176041b9db58545241e8b, type: 3}
       propertyPath: builderDrons.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -23049,6 +23053,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 513585821}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &908072435 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8409844183489182831, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
+  m_PrefabInstance: {fileID: 471455059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963585888
 GameObject:
   m_ObjectHideFlags: 0

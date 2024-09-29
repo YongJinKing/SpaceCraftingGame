@@ -11,7 +11,7 @@ public class SpaceShip : Structure
     public Tilemap tileMap;
     public Transform gameOverCanvas;
     public Transform spaceShipImg;
-
+    public Transform spaceShipUnderAttackUI;
     public UnityEvent<int> dronCountChangeAct;
     public bool IsDronReady()
     {
@@ -51,6 +51,12 @@ public class SpaceShip : Structure
         this.transform.position = pos;
     }
 
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.spaceShipAttacked, false);
+        spaceShipUnderAttackUI.gameObject.SetActive(true);
+    }
     protected override void OnDead()
     {
         deadEvent?.Invoke();

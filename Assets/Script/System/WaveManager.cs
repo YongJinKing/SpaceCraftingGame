@@ -46,6 +46,7 @@ public class WaveManager : MonoBehaviour
     {
         if(timeManager.day - priviousWaveDate - monsterWaveDay >= 0)
         {
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.spaceShipSondData.spaceShipWarning);
             priviousWaveDate = timeManager.day;
             StartCoroutine(ProcessingWave());
             waveCount++;

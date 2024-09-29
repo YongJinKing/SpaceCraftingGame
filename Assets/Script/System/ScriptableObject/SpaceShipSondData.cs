@@ -9,4 +9,6 @@ public class SpaceShipSondData : ScriptableObject
     public AudioClip spaceshipChangeMode;
     public AudioClip spaceshipSearching;
     public AudioClip spaceshipLand;
+    public AudioClip spaceShipWarning;
+    public AudioClip spaceShipAttacked;
 }
