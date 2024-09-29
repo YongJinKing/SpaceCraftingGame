@@ -29,7 +29,7 @@ public abstract class Structure : Stat
     public Vector2 screenOffset;
     public Vector3 barScale;
 
-    HPBar tempHPBar;
+    protected HPBar tempHPBar;
 
     public byte mPriority
     {

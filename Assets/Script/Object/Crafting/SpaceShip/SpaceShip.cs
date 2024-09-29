@@ -13,6 +13,7 @@ public class SpaceShip : Structure
     public Transform spaceShipImg;
     public Transform spaceShipUnderAttackUI;
     public UnityEvent<int> dronCountChangeAct;
+    TimeManager timeManager;
     public bool IsDronReady()
     {
         return builderDrons.Count > 0;
@@ -73,11 +74,21 @@ public class SpaceShip : Structure
         yield return new WaitForSeconds(2f);
         Instantiate(gameOverCanvas, null);
     }
+
+    public void HealAday()
+    {
+        this[EStat.HP] += this[EStat.MaxHP] * 0.1f;
+        if (this[EStat.HP] >= this[EStat.MaxHP])
+        {
+            this[EStat.HP] = this[EStat.MaxHP];
+            tempHPBar.gameObject.SetActive(false);
+        }
+    }
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-
+        timeManager.dayChangeHealing.AddListener(HealAday);
     }
 
     // Update is called once per frame

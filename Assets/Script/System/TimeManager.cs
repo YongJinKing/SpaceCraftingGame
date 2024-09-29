@@ -41,6 +41,7 @@ public class TimeManager : MonoBehaviour
     public UnityEvent<int, int, int> timeChangeEvent = new UnityEvent<int, int, int>();
     public UnityEvent dayChangeEvent = new UnityEvent();
     public UnityEvent respawnEvent = new UnityEvent();
+    public UnityEvent dayChangeHealing = new UnityEvent();
     #endregion
     #endregion
 
@@ -57,7 +58,7 @@ public class TimeManager : MonoBehaviour
     #endregion
 
     #region EventHandlers
-    
+
     public void TimeTest(int day, int hour, int minute)
     {
         //Debug.Log($"TimeManager.TimeTest day : {day}, hour : {hour}, minute : {minute}");
@@ -101,6 +102,7 @@ public class TimeManager : MonoBehaviour
             {
                 _day = tempDay;
                 dayChangeEvent?.Invoke();
+                dayChangeHealing?.Invoke();
                 isChanged = true;
             }
 
