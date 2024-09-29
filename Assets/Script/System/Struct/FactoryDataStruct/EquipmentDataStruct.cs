@@ -8,7 +8,7 @@ public struct WeaponDataStruct
         public EStat stattype;              //스텟 타입
         public ValueModifierType modiType;  //증가 방식 (0이면 +, 1이면 *)
         public int sortOrder;               //정렬 방식(0에 가까울수록 먼저 계산됨)
-        public int value;
+        public float value;
     }
 
     public int Index;
