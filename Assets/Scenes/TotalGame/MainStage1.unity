@@ -23219,7 +23219,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   animator: {fileID: 0}
-  moveSpeed: 2
+  moveSpeed: 2.5
   ATK: 0
   ATKSpeed: 0
   Name: 
