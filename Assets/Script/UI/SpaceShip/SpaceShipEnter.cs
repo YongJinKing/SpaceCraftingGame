@@ -27,6 +27,7 @@ public class SpaceShipEnter : MonoBehaviour
     public TotalSaveManager totalSaveManager;
     BuildingProduceAmountUI buildingInfoUI;
     SpaceShip spaceShip;
+    Player player;
     float hpUITime;
     private void Start()
     {
@@ -40,6 +41,7 @@ public class SpaceShipEnter : MonoBehaviour
         }
         spaceShip = FindObjectOfType<SpaceShip>();
         buildingInfoUI = FindObjectOfType<BuildingProduceAmountUI>();
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -71,7 +73,7 @@ public class SpaceShipEnter : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (invenCanvas.activeSelf || buildingCanvas.activeSelf || pauseCanvas.activeSelf) return;
+            if (invenCanvas.activeSelf || buildingCanvas.activeSelf || pauseCanvas.activeSelf || player.modeType == 0) return;
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, spaceshipLayer);
 

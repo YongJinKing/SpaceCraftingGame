@@ -69544,6 +69544,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 218809822}
     - target: {fileID: 9134859333896924047, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: buildCanvas
+      value: 
+      objectReference: {fileID: 354451899}
+    - target: {fileID: 9134859333896924047, guid: 86de332166973d84687648ac728535d4, type: 3}
+      propertyPath: invenCanvas
+      value: 
+      objectReference: {fileID: 1490515547}
+    - target: {fileID: 9134859333896924047, guid: 86de332166973d84687648ac728535d4, type: 3}
       propertyPath: weaponChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1003947053}

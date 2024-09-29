@@ -10,6 +10,10 @@ public class SpecialItem : DropItem
     public Sprite img;
 
     SpecialItemPickupUI itemPickupPannel;
+    protected override void OnEnable()
+    {
+        
+    }
     protected override void Start()
     {
         base.Start();

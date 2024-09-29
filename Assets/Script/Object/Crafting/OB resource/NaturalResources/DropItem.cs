@@ -27,7 +27,7 @@ public class DropItem : MonoBehaviour
 
     public Vector2 shadowSize;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         Destroy(this.gameObject, 15f);
     }
