@@ -129,6 +129,10 @@ public class InputController : Singleton<InputController>
         {
             keyEvent?.Invoke(KeyCode.B);
         }
+        if (Input.GetKeyDown(KeyCode.G)) 
+        {
+            keyEvent?.Invoke(KeyCode.G);
+        }
     }
 
 

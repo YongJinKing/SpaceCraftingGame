@@ -117,7 +117,7 @@ public class PlayerBuildModeState : PlayerState
     {
         switch (keyCode)
         {
-            case KeyCode.B:
+            case KeyCode.G:
                 {
                     owner.stateMachine.ChangeState<PlayerIdleState>();
                     owner.UIChangeEvent?.Invoke(0);
