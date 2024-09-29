@@ -15,7 +15,7 @@ public class DropItemPerception : MonoBehaviour
     private void OnEnable()
     {
         parent = this.transform.parent;
-        dp = GetComponent<DropItem>();
+        dp = GetComponentInParent<DropItem>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
