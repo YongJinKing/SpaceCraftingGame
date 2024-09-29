@@ -10273,19 +10273,23 @@ PrefabInstance:
       objectReference: {fileID: 294372850}
     - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: gasAmount
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: FindingVFX
       value: 
       objectReference: {fileID: 294372849}
     - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+      propertyPath: rabbitAmount
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: mineralAmount
-      value: 1000
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: searchingTime
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: SpaceShipCanvas
