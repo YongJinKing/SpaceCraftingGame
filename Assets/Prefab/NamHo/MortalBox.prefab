@@ -402,6 +402,10 @@ MonoBehaviour:
   spawnTime: 0
   riceRainVFX: {fileID: 6481941145094137436}
   anim: {fileID: 8451500975031589890}
+  changeSlider:
+    m_PersistentCalls:
+      m_Calls: []
+  endGame: 0
 --- !u!1 &7984892590503404101
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mortalBox: {fileID: 1921101073743576890}
-  maxHp: 100
+  maxHp: 45
   hp: 0
   StartPos: {fileID: 2586487059859318914}
   EndPos: {fileID: 3571013800522906092}

@@ -63,8 +63,8 @@ public class SPAttackAction : BossAction
         if (idx == -1) yield break; // 만약에 절구통을 찾지 못한다면 그냥 break
 
         mortalBox = mortalBoxesList[idx].GetComponent<MortalBox>(); // 가장 떡이 많이 있는 절구통
-        riceCost = mortalBox.GetRice();
-        //if(mortalBox.GetRice() < riceCost) yield break;
+        //riceCost = mortalBox.GetRice();
+        if(mortalBox.GetRice() < riceCost) yield break;
 
         yield return StartCoroutine(MoveToMortalBox(mortalBox)); // 해당 절구통으로 이동하고
 
