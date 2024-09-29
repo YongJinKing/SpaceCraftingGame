@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -68,6 +69,11 @@ public abstract class Unit : Stat
             OnDead();
         }
     }
+
+    public void SetStatTwiceAndReset(EStat _stat, float time)
+    {
+        StartCoroutine(ResetStatAfterSeconds(_stat, time));
+    }
     #endregion
     #endregion
 
@@ -75,6 +81,13 @@ public abstract class Unit : Stat
     #endregion
 
     #region Coroutines
+    IEnumerator ResetStatAfterSeconds(EStat _stat, float time)
+    {
+        this[_stat] = 2;
+        yield return new WaitForSeconds(time);
+        this[_stat] = 1;
+
+    }
     #endregion
 
     #region MonoBehaviour

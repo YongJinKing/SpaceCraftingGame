@@ -641,7 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mortalBox: {fileID: 1921101073743576890}
-  maxHp: 45
+  maxHp: 24
   hp: 0
   StartPos: {fileID: 2586487059859318914}
   EndPos: {fileID: 3571013800522906092}

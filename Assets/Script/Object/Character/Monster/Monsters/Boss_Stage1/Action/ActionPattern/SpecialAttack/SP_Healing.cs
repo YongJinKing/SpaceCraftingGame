@@ -42,7 +42,8 @@ public class SP_Healing : SPAttackAction
         {
             owner.animator.SetTrigger("Eating");
             owner[EStat.HP] += healAmount;
-            owner[EStat.ATK] = 2f;
+            //owner[EStat.ATK] = 2f;
+            owner.SetStatTwiceAndReset(EStat.ATK, 10f);
             owner[EStat.MoveSpeed] *= 1.1f;
             if (!buffVFX.isPlaying) buffVFX.Play();
         }
