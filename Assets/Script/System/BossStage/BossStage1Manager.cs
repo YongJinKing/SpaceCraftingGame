@@ -16,8 +16,12 @@ public class BossStage1Manager : MonoBehaviour
     public GameObject goBackToSpaceShipButton;
     public TotalSaveManager totalSaveManager;
     public InventorySaveSystem inventorySaveSystem;
+    bool gameStarted = false;
+    Player player;
+    Boss_Rabbit rabbit;
     public void StartGame()
     {
+        gameStarted = true;
         playerUI.SetActive(true);
         MortalBoxes.gameObject.SetActive(true);
         MortalGages.gameObject.SetActive(true);
@@ -27,6 +31,19 @@ public class BossStage1Manager : MonoBehaviour
         // 이 아래 보스를 위한 UI(ex 체력바)도 키면 됩니다.
     }
 
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+        rabbit = BossRabbit.GetComponent<Boss_Rabbit>();
+    }
+    private void Update()
+    {
+        if (rabbit[EStat.HP] <= 0f) return;
+        if (gameStarted && !controller.canMove && player[EStat.HP] > 0)
+        {
+            controller.canMove = true;
+        }
+    }
     public void TurnOnButton()
     {
         goBackToSpaceShipButton.SetActive(true);

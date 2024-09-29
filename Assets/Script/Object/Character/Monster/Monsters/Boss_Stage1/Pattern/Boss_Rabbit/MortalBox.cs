@@ -43,7 +43,12 @@ public class MortalBox : MonoBehaviour
                 timer = 0f;
                 SpawnRabbitWorker();
             }
+            else
+            {
+                StopProducingCake();
+            }
         }
+        
     }
 
     public void SpawnRabbitWorker()

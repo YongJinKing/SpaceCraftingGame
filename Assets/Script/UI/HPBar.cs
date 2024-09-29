@@ -127,6 +127,10 @@ public class HPBar : MonoBehaviour
     {
         Initialize();
     }
+    private void OnEnable()
+    {
+        StartCoroutine(Following());
+    }
     private void OnDestroy()
     {
         RemoveListeners();

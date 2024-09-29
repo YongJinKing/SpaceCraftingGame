@@ -74398,7 +74398,7 @@ PrefabInstance:
       objectReference: {fileID: 1015271560}
     - target: {fileID: 8534499887594943049, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: delayTime
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9104120620899300451, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: CamShakeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
