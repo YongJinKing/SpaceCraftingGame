@@ -1,32 +1,32 @@
 using Newtonsoft.Json;
-using Spine;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
+using System.IO;
 
-public class RecentTime
+public class RecentWave
 {
-    public float time;
+    public int waveCount;
 
-    public RecentTime(float time)
+    public RecentWave(int waveCount)
     {
-        this.time = time;
-    }   
+        this.waveCount = waveCount;
+    }
 
 }
-public class TimeSaveManager : BaseSaveSystem
+
+public class WaveSaveManager : BaseSaveSystem
 {
     public string savePath;
-    public TimeManager timeManager;
+    public WaveManager waveManager;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        savePath = Path.Combine(filePath, "RecentTime_" + DataManager.Instance.nowSlot + ".json");
-        timeManager = FindObjectOfType<TimeManager>();
-        if (timeManager != null)
+        savePath = Path.Combine(filePath, "RecentWave_" + DataManager.Instance.nowSlot + ".json");
+        waveManager = FindObjectOfType<WaveManager>();
+        if (waveManager != null)
         {
             LoadTime(savePath);
         }
@@ -36,7 +36,7 @@ public class TimeSaveManager : BaseSaveSystem
     {
         if (DataManager.Instance.nowSlot == -1) return;
         base.Save();
-        RecentTime recentTime = new RecentTime(timeManager.timeCount);
+        RecentTime recentTime = new RecentTime(waveManager.waveCount);
 
         var json = JsonConvert.SerializeObject(recentTime, Formatting.Indented);
         File.WriteAllText(savePath, json);
@@ -48,13 +48,12 @@ public class TimeSaveManager : BaseSaveSystem
         if (File.Exists(jsonPath))
         {
             string json = File.ReadAllText(jsonPath);
-            RecentTime data = JsonUtility.FromJson<RecentTime>(json);
-            timeManager.timeCount = data.time;
+            RecentWave data = JsonUtility.FromJson<RecentWave>(json);
+            waveManager.waveCount = data.waveCount;
         }
         else
         {
             Debug.Log("¾øÀ½");
         }
     }
-
 }

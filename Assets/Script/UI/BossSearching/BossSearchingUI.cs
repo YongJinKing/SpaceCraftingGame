@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+using Button = UnityEngine.UI.Button;
 
 public class BossSearchingUI : MonoBehaviour
 {
@@ -49,6 +51,9 @@ public class BossSearchingUI : MonoBehaviour
     [Header("보스 찾은 VFX"), Space(.5f)]
     public ParticleSystem FoundVFX;
 
+    [Header("보스 서칭 버튼"), Space(.5f)]
+    public Transform searchingButton;
+
     public UnityEvent<float> changeTimerTextAct;
 
     public bool isSearching = false;
@@ -57,11 +62,19 @@ public class BossSearchingUI : MonoBehaviour
 
     public TotalSaveManager TSM;
     public Transform SpaceShipCanvas;
+    BossClearSaveManager bossClearInfo;
     private void Start()
     {
         TSM = FindObjectOfType<TotalSaveManager>();
+        bossClearInfo = FindObjectOfType<BossClearSaveManager>();
         FindingVFX.Stop();
         FoundVFX.Stop();
+
+        if (bossClearInfo.LoadClearInfo())
+        {
+            searchingButton.GetComponent<Button>().interactable = false;
+            return;
+        }
 
         if (isSearching)
         {

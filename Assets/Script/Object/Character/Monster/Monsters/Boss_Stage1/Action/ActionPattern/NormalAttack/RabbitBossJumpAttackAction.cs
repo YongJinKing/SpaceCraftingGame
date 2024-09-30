@@ -95,6 +95,7 @@ public class RabbitBossJumpAttackAction : BossAction
     {
         base.ActionEnd();
         StopAllCoroutines();
+        if (owner.GetComponent<Rigidbody2D>().velocity != Vector2.zero) owner.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
     #endregion
     #region Public

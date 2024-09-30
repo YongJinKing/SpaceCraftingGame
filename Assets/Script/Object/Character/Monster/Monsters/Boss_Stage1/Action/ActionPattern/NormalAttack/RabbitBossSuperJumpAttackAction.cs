@@ -100,6 +100,7 @@ public class RabbitBossSuperJumpAttackAction : BossAction
         base.ActionEnd();
         if (ownerAnim.GetBool("SuperJumping")) ownerAnim.SetBool("SuperJumping", false);
         StopAllCoroutines();
+        if (owner.GetComponent<Rigidbody2D>().velocity != Vector2.zero) owner.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
     #endregion
     #region Public
