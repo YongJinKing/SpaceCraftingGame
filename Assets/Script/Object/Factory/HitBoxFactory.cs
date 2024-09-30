@@ -35,7 +35,7 @@ public class HitBoxFactory
                 {
                     MeleeHitBoxStruct data = default;
 
-                    string s = File.ReadAllText("Assets/Prefab/JongHyun/HitBox/Pexplorer_Melee_Hit_Box.json");
+                    string s = Resources.Load<TextAsset>("Component/WeaponFactory/HitBox/Pexplorer_Melee_Hit_Box.json").text;
                     foreach (MeleeHitBoxStruct temp in JsonConvert.DeserializeObject<MeleeHitBoxStruct[]>(s))
                     {
                         if (temp.Index == index)

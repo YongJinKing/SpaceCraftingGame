@@ -25,7 +25,7 @@ public class ActionFactory
             case 1:
                 {
                     WeaponActionStruct data = default;
-                    string s = File.ReadAllText("Assets/Prefab/JongHyun/Action/Pexplorer_WeaponAction.json");
+                    var s = Resources.Load<TextAsset>("Component/WeaponFactory/Action/Pexplorer_WeaponAction").text;
                     foreach (WeaponActionStruct temp in JsonConvert.DeserializeObject<WeaponActionStruct[]>(s))
                     {
                         if (temp.Index == index)

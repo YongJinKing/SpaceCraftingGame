@@ -37,7 +37,7 @@ public class ItemFactory
             case 3:
                 {
                     WeaponDataStruct data = default;
-                    string s = File.ReadAllText("Assets/Prefab/JongHyun/Equipment/Pexplorer_Weapon.json");
+                    string s = Resources.Load<TextAsset>("Component/WeaponFactory/Equipment/Pexplorer_Weapon").text;
                     foreach (WeaponDataStruct temp in JsonConvert.DeserializeObject<WeaponDataStruct[]>(s))
                     {
                         if (temp.Index == index)
@@ -48,6 +48,7 @@ public class ItemFactory
                     }
                     if (data.Equals(default))
                     {
+                        Debug.Log("ItemFactory.Create FailtoFind Item");
                         break;
                     }
 

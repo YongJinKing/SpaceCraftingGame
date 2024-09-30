@@ -1,0 +1,54 @@
+[
+  {
+    "Index": 10000,
+    "Effect_Index": -1,
+    "Hit_Effect_Prefab_Index": -1,
+    "Destroy_Effect_Prefab_Index": -1,
+    "Affect_Index": [10000, 10001],
+    "HitBox_X_Size": 1.0,
+    "HitBox_Y_Size": 1.0,
+    "LayerMask": [16, 19, 21],
+    "HitBox_Duration": 5.0,
+    "Hit_Frequency": -1.0,
+    "IsFollowDir": true
+  },
+  {
+    "Index": 10200,
+    "Effect_Index": 20200,
+    "Hit_Effect_Prefab_Index": -1,
+    "Destroy_Effect_Prefab_Index": -1,
+    "Affect_Index": [10200],
+    "HitBox_X_Size": 3,
+    "HitBox_Y_Size": 2,
+    "LayerMask": [15, 16, 17, 18, 19],
+    "HitBox_Duration": 5.0,
+    "Hit_Frequency": -1.0,
+    "IsFollowDir": true
+  },
+  {
+    "Index": 10201,
+    "Effect_Index": 20201,
+    "Hit_Effect_Prefab_Index": -1,
+    "Destroy_Effect_Prefab_Index": -1,
+    "Affect_Index": [10200],
+    "HitBox_X_Size": 3.3,
+    "HitBox_Y_Size": 3,
+    "LayerMask": [15, 16, 17, 18, 19],
+    "HitBox_Duration": 5.0,
+    "Hit_Frequency": -1.0,
+    "IsFollowDir": true
+  },
+  {
+    "Index": 10202,
+    "Effect_Index": 20202,
+    "Hit_Effect_Prefab_Index": -1,
+    "Destroy_Effect_Prefab_Index": -1,
+    "Affect_Index": [10200],
+    "HitBox_X_Size": 3.5,
+    "HitBox_Y_Size": 3.2,
+    "LayerMask": [15, 16, 17, 18, 19],
+    "HitBox_Duration": 5.0,
+    "Hit_Frequency": -1.0,
+    "IsFollowDir": true
+  }
+]

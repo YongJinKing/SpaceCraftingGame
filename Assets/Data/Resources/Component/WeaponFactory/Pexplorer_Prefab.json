@@ -1,0 +1,78 @@
+[
+  {
+    "Index": 10100,
+    "Name": "SpineToUnity/WeaponPrefab/Rifle_Lv1"
+  },
+  {
+    "Index": 10101,
+    "Name": "SpineToUnity/WeaponPrefab/Rifle_Lv2"
+  },
+  {
+    "Index": 10102,
+    "Name": "SpineToUnity/WeaponPrefab/Rifle_Lv3"
+  },
+  {
+    "Index": 10200,
+    "Name": "SpineToUnity/WeaponPrefab/ShotGun_Lv1"
+  },
+  {
+    "Index": 10201,
+    "Name": "SpineToUnity/WeaponPrefab/ShotGun_Lv2"
+  },
+  {
+    "Index": 10202,
+    "Name": "SpineToUnity/WeaponPrefab/ShotGun_Lv3"
+  },
+  {
+    "Index": 10300,
+    "Name": "SpineToUnity/WeaponPrefab/Sniper_Lv1"
+  },
+  {
+    "Index": 10301,
+    "Name": "SpineToUnity/WeaponPrefab/Sniper_Lv2"
+  },
+  {
+    "Index": 10302,
+    "Name": "SpineToUnity/WeaponPrefab/Sniper_Lv3"
+  },
+  {
+    "Index": 20100,
+    "Name": "Effect/Player/Bullet/Bullet_Rifle_Lv1"
+  },
+  {
+    "Index": 20101,
+    "Name": "Effect/Player/Bullet/Bullet_Rifle_Lv2"
+  },
+  {
+    "Index": 20102,
+    "Name": "Effect/Player/Bullet/Bullet_Rifle_Lv3"
+  },
+  {
+    "Index": 20200,
+    "Name": "Effect/Player/Bullet/Bullet_Shotgun_Lv1"
+  },
+  {
+    "Index": 20201,
+    "Name": "Effect/Player/Bullet/Bullet_Shotgun_Lv2"
+  },
+  {
+    "Index": 20202,
+    "Name": "Effect/Player/Bullet/Bullet_Shotgun_Lv3"
+  },
+  {
+    "Index": 20300,
+    "Name": "Effect/Player/Bullet/Bullet_Sniper_Lv1"
+  },
+  {
+    "Index": 20301,
+    "Name": "Effect/Player/Bullet/Bullet_Sniper_Lv2"
+  },
+  {
+    "Index": 20302,
+    "Name": "Effect/Player/Bullet/Bullet_Sniper_Lv3"
+  },
+  {
+    "Index": 30000,
+    "Name": "Effect/Player/Gun_Hit"
+  }
+]

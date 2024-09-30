@@ -17,7 +17,7 @@ public class AffectFactory
             case 1:
                 {
                     DamageAffectStruct data = default;
-                    string s = File.ReadAllText("Assets/Prefab/JongHyun/Affect/Pexplorer_Damage_Affect.json");
+                    string s = Resources.Load<TextAsset>("Component/WeaponFactory/Affect/Pexplorer_Damage_Affect").text;
                     foreach (DamageAffectStruct temp in JsonConvert.DeserializeObject<DamageAffectStruct[]>(s))
                     {
                         if (temp.Index == index)
