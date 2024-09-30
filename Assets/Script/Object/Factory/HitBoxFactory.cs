@@ -153,7 +153,7 @@ public class HitBoxFactory
                 {
                     ShotGunHitBoxStruct data = default;
 
-                    string s = Resources.Load<TextAsset>("Component/WeaponFactory/HitBox/Pexplorer_ShotGun_Hit_Box.json").text;
+                    string s = Resources.Load<TextAsset>("Component/WeaponFactory/HitBox/Pexplorer_ShotGun_Hit_Box").text;
                     foreach (ShotGunHitBoxStruct temp in JsonConvert.DeserializeObject<ShotGunHitBoxStruct[]>(s))
                     {
                         if (temp.Index == index)
