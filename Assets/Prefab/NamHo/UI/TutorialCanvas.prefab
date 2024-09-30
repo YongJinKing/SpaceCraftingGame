@@ -8435,14 +8435,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curIdx: 0
   tutoImgs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1049749392860360466}
+  - {fileID: 6443006782184161418}
+  - {fileID: 366225249972549061}
+  - {fileID: 8794819219751274794}
+  - {fileID: 1550583761342987993}
+  - {fileID: 3494200225966326452}
+  - {fileID: 9189457671271433330}
+  - {fileID: 3842372446974085745}
+  - {fileID: 4092027482851490379}
   prevBT: {fileID: 4255086723077862593}
   nextBT: {fileID: 5313997665465668867}
 --- !u!223 &2390017221976097400
@@ -8523,7 +8524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1049749392860360466
 RectTransform:
   m_ObjectHideFlags: 0

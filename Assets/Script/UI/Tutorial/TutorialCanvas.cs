@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TutorialCanvas : MonoBehaviour
 {
     [SerializeField] int curIdx;
-    public List<Image> tutoImgs;
+    public List<Transform> tutoImgs;
     public Button prevBT;
     public Button nextBT;
 
