@@ -71,7 +71,7 @@ public class SpaceShipEnter : MonoBehaviour
             
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             if (invenCanvas.activeSelf || buildingCanvas.activeSelf || pauseCanvas.activeSelf || player.modeType == 0) return;
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
