@@ -45,7 +45,7 @@ public class PlayerInitState : PlayerState
         owner.weaponRotationAxis.SetActive(false);
         owner.UIChangeEvent?.Invoke(0);
 
-        owner.stateMachine.ChangeState<PlayerIdleState>();
+        owner.stateMachine.ChangeState<PlayerBuildModeState>();
     }
     #endregion
 
