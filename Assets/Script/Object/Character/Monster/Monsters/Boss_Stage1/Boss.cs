@@ -21,6 +21,7 @@ public class Boss : Monster
     public Action[] specialActions;
     #endregion
     #region Events
+    public UnityEvent clearEvent;
     #endregion
     #endregion
 
@@ -50,6 +51,7 @@ public class Boss : Monster
     protected override void OnDead()
     {
         base.OnDead();
+        clearEvent?.Invoke();
         activatedAction.Deactivate();
         stateMachine.ChangeState<BossDeadState>();
     }

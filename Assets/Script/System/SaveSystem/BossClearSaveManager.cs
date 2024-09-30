@@ -18,17 +18,24 @@ public class BossClearInfo
 
 public class BossClearSaveManager : BaseSaveSystem
 {
+    Boss boss;
     public string savePath;
     protected override void Start()
     {
         base.Start();
         savePath = Path.Combine(filePath, "BossClearData_" + DataManager.Instance.nowSlot + ".json");
+        boss = FindObjectOfType<Boss>();
+        boss.clearEvent.AddListener(SaveClearData);
     }
 
-    public override void Save() // 얘는 무조건 클리어 했을 때만 작동
+    public override void Save()
     {
         if (DataManager.Instance.nowSlot == -1) return;
         base.Save();
+    }
+
+    void SaveClearData()
+    {
         BossClearInfo bossClearInfo = new BossClearInfo(true);
 
         var json = JsonConvert.SerializeObject(bossClearInfo, Formatting.Indented);
