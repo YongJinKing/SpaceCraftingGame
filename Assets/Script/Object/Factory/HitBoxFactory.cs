@@ -35,7 +35,7 @@ public class HitBoxFactory
                 {
                     MeleeHitBoxStruct data = default;
 
-                    string s = Resources.Load<TextAsset>("Component/WeaponFactory/HitBox/Pexplorer_Melee_Hit_Box.json").text;
+                    string s = Resources.Load<TextAsset>("Component/WeaponFactory/HitBox/Pexplorer_Melee_Hit_Box").text;
                     foreach (MeleeHitBoxStruct temp in JsonConvert.DeserializeObject<MeleeHitBoxStruct[]>(s))
                     {
                         if (temp.Index == index)
@@ -95,7 +95,7 @@ public class HitBoxFactory
                 {
                     ProjectileHitBoxStruct data = default;
 
-                    string s = File.ReadAllText("Assets/Prefab/JongHyun/HitBox/Pexplorer_Projectile_Hit_Box.json");
+                    string s = Resources.Load<TextAsset>("Component/WeaponFactory/HitBox/Pexplorer_Projectile_Hit_Box").text;
                     foreach (ProjectileHitBoxStruct temp in JsonConvert.DeserializeObject<ProjectileHitBoxStruct[]>(s))
                     {
                         if (temp.Index == index)
@@ -153,7 +153,7 @@ public class HitBoxFactory
                 {
                     ShotGunHitBoxStruct data = default;
 
-                    string s = File.ReadAllText("Assets/Prefab/JongHyun/HitBox/Pexplorer_ShotGun_Hit_Box.json");
+                    string s = Resources.Load<TextAsset>("Component/WeaponFactory/HitBox/Pexplorer_ShotGun_Hit_Box.json").text;
                     foreach (ShotGunHitBoxStruct temp in JsonConvert.DeserializeObject<ShotGunHitBoxStruct[]>(s))
                     {
                         if (temp.Index == index)
