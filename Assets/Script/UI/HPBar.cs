@@ -9,6 +9,8 @@ public class HPBar : MonoBehaviour
     private Slider _mySlider;
     [SerializeField]private Image _fillImage;
     [SerializeField]private Stat _myTarget;
+    private bool initialized = false;
+    private Coroutine following;
     #endregion
     #region Protected
     [SerializeField] protected Color fullHPColor = Color.green;
@@ -39,7 +41,12 @@ public class HPBar : MonoBehaviour
         _mySlider = GetComponent<Slider>();
         _mySlider.value = 1.0f;
         _fillImage.color = fullHPColor;
-        StartCoroutine(Following());
+        initialized = true;
+        if(following != null)
+        {
+            StopCoroutine(following);
+        }
+        following = StartCoroutine(Following());
     }
     #endregion
     #region Protected
@@ -106,6 +113,7 @@ public class HPBar : MonoBehaviour
     #region Coroutines
     protected IEnumerator Following()
     {
+        yield return new WaitUntil(() => initialized == true);
         Vector2 screenPos;
         while (true) 
         {
@@ -129,7 +137,11 @@ public class HPBar : MonoBehaviour
     }
     private void OnEnable()
     {
-        StartCoroutine(Following());
+        if(following != null)
+        {
+            StopCoroutine(following);
+        }
+        following = StartCoroutine(Following());
     }
     private void OnDestroy()
     {

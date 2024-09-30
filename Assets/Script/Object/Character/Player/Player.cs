@@ -78,6 +78,11 @@ public class Player : Unit
             myAnim = GetComponentInChildren<PlayerAnimationController>();
         }
         InputController.Instance.getMousePosEvent.AddListener(OnGetMousePos);
+        TimeManager time = FindObjectOfType<TimeManager>();
+        if (time != null) 
+        {
+            time.dayChangeHealing.AddListener(OnDayChangeHealing);
+        }
         if(FindObjectOfType<SpaceShipEnter>() != null) FindObjectOfType<SpaceShipEnter>().UIEnterEvent.AddListener(OnEnterUIState);
         stateMachine.ChangeState<PlayerInitState>();
 
@@ -135,6 +140,12 @@ public class Player : Unit
     public void OnEnterUIState()
     {
         stateMachine.ChangeState<PlayerEnterUIState>();
+    }
+
+    public void OnDayChangeHealing()
+    {
+        if (this[EStat.HP] + 1.0f < this[EStat.MaxHP])
+            this[EStat.HP] = this.GetRawStat(EStat.HP) + 1.0f;
     }
     #endregion
 
