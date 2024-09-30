@@ -1,9 +1,6 @@
 using Cinemachine;
 using System.Collections;
-using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CamController : MonoBehaviour
 {

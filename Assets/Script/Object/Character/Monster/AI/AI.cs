@@ -1,8 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Animations;
-using Unity.VisualScripting;
-using static UnityEditor.PlayerSettings;
 
 public class AI : MonoBehaviour
 {

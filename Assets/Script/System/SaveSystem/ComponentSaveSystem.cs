@@ -1,12 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.IO;
 using System;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using static UnityEditor.Progress;
 
 /*public struct Component
 {
