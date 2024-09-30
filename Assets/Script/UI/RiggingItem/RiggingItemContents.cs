@@ -22,7 +22,7 @@ public class RiggingItemContents : MonoBehaviour
     private int shotGunLevel = 1;
     private int sniperLevel = 1;
     private int pickLevel = 1;
-    private int hammerLevel = 2;
+    private int hammerLevel = 1;
     private int levelUpSlotNum = 0;
 
     private int riggingItemCount = 3;
