@@ -42,7 +42,7 @@ public class InventoryPopup : MonoBehaviour
 
   
   
-    public void SlotHL(int index, bool onCheck)//마우스 커서 올리면 해당 아이템주변에 하이라이트 생김
+    /* public void SlotHL(int index, bool onCheck)//마우스 커서 올리면 해당 아이템주변에 하이라이트 생김
     {
         ObjSlotGridLine.transform.GetChild(index).GetChild(2).gameObject.SetActive(onCheck);
         if(onCheck)
@@ -58,14 +58,14 @@ public class InventoryPopup : MonoBehaviour
                 ObjSlotPopup.SetActive(false);
             }
         }
-    }
+    } */
     
-    IEnumerator CorSlotPopup(int index)//마우스 올리고 1초뒤에 팝업창 생기는 코루틴 단, 아이템 있을 경우 실행됨
+    /* IEnumerator CorSlotPopup(int index)//마우스 올리고 1초뒤에 팝업창 생기는 코루틴 단, 아이템 있을 경우 실행됨
     {
         yield return new WaitForSeconds(1);
         ObjSlotPopup.SetActive(true);
         ObjSlotPopup.transform.GetComponent<RectTransform>().anchoredPosition=
         ObjSlotGridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition;
-    }
+    } */
 }
 
