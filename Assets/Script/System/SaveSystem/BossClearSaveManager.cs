@@ -25,7 +25,7 @@ public class BossClearSaveManager : BaseSaveSystem
         base.Start();
         savePath = Path.Combine(filePath, "BossClearData_" + DataManager.Instance.nowSlot + ".json");
         boss = FindObjectOfType<Boss>();
-        boss.clearEvent.AddListener(SaveClearData);
+        if(boss != null) boss.clearEvent.AddListener(SaveClearData);
     }
 
     public override void Save()
