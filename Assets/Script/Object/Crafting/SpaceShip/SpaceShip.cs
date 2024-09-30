@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class SpaceShip : Structure
 {
@@ -96,12 +96,11 @@ public class SpaceShip : Structure
 
         this[EStat.HP] = savedHP;
 
-        /*if (savedHP < this[EStat.MaxHP])
+        if (savedHP < this[EStat.MaxHP])
         {
             float persent = this[EStat.HP] / this[EStat.MaxHP];
             tempHPBar.gameObject.SetActive(true);
-            tempHPBar.value = persent;
-        }*/
+        }
     }
     // Start is called before the first frame update
     protected override void Start()

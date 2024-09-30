@@ -15,7 +15,7 @@ public class RabbitBossSuperJumpAttackAction : BossAction
     public GameObject fallPosImage;
     public Transform attackVFX;
     public float jumpHeight = 20f; // 토끼가 점프하는 높이
-    public float delayBeforeFall = 2f; // 토끼가 떨어지기 전에 대기하는 시간
+    [SerializeField][Header("떨어지는 시간"), Tooltip("얼마나 빠르게 떨어질 지 정할 변수"), Space(.5f)] float delayBeforeFall; // 토끼가 떨어지기 전에 대기하는 시간
     public float gravity = -9.8f; // 중력 가속도
     [SerializeField] [Header("떨어지는 속도"), Tooltip("얼마나 빠르게 떨어질 지 정할 변수"), Space(.5f)]float fallPower;
     #endregion
@@ -108,6 +108,7 @@ public class RabbitBossSuperJumpAttackAction : BossAction
     {
         base.Activate(pos);
         fallPower = 4f;
+        delayBeforeFall = 1f;
         ownerAnim.SetTrigger("SuperJumpAttack");
     }
 
