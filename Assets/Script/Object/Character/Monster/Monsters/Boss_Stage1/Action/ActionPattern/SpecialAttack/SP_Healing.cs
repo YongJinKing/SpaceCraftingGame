@@ -44,8 +44,9 @@ public class SP_Healing : SPAttackAction
             owner[EStat.HP] += healAmount;
             //owner[EStat.ATK] = 2f;
             owner.SetStatTwiceAndReset(EStat.ATK, 10f);
-            owner[EStat.MoveSpeed] *= 1.1f;
-            if (!buffVFX.isPlaying) buffVFX.Play();
+            //owner[EStat.MoveSpeed] *= 1.1f;
+            //if (!buffVFX.isPlaying) buffVFX.Play();
+            buffVFX.GetComponent<BossBuffVFX>().PlayDuringTime(10f);
         }
 
         yield return new WaitForSeconds(2f);

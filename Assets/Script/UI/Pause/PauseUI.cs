@@ -8,6 +8,10 @@ public class PauseUI : MonoBehaviour
     [Header("볼륨 조절창"), Space(.5f)]
     Transform sfxVolumeSettingScreen;
 
+    [SerializeField]
+    [Header("튜토리얼창"), Space(.5f)]
+    Transform tuToScreen;
+
     bool isPaused;
     // Start is called before the first frame update
     void Start()
@@ -62,6 +66,17 @@ public class PauseUI : MonoBehaviour
     public void TurnOffSFXSettingScreen()
     {
         sfxVolumeSettingScreen.gameObject.SetActive(false);
+    }
+
+    public void SpawnTuToCanvas()
+    {
+        Instantiate(tuToScreen,null);
+        isPaused = false;
+
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+            this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
+        }
     }
 
     public void ExitGame()

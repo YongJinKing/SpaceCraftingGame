@@ -63134,6 +63134,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833087773}
   m_CullTransparentMesh: 1
+--- !u!1 &1856482671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3421655204762409494, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+  m_PrefabInstance: {fileID: 2739661976465003556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1856482672 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2523804996370790129, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+  m_PrefabInstance: {fileID: 2739661976465003556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1856482675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856482671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bad711fa7930c2419e3f906fe741284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffVFX: {fileID: 1856482672}
 --- !u!224 &1883923369 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8390021317487537592, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
@@ -74240,6 +74263,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1318871868595861138, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2428695415235028583, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: riceCost
       value: 19
@@ -74384,9 +74411,37 @@ PrefabInstance:
       propertyPath: delayTime
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4909757226855966915, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: debuging
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909757226855966915, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: _isFollowDir
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909757226855966915, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: _hitBoxSize.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909757226855966915, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: _hitBoxSize.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5645708743843809836, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221957712882869602, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: _isFollowDir
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221957712882869602, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: _hitBoxSize.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221957712882869602, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      propertyPath: _hitBoxSize.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6357401163938722150, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
       propertyPath: riceCost
@@ -74415,7 +74470,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3421655204762409494, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1856482675}
   m_SourcePrefab: {fileID: 100100000, guid: cf167b6d99cb9714ab566517c86fccb5, type: 3}
 --- !u!1001 &4048557334700369881
 PrefabInstance:

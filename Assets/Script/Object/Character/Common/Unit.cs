@@ -83,9 +83,11 @@ public abstract class Unit : Stat
     #region Coroutines
     IEnumerator ResetStatAfterSeconds(EStat _stat, float time)
     {
-        this[_stat] = 2;
+        this[_stat] = 1.5f;
+        Debug.Log(this[EStat.ATK] + " <<<<<<<<<<<<<<<<<<<<");
         yield return new WaitForSeconds(time);
         this[_stat] = 1;
+        Debug.Log(this[EStat.ATK] + " >>>>>>>>>>>>>>>>>>>>>>");
 
     }
     #endregion
