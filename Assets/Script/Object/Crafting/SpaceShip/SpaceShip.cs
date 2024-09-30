@@ -13,7 +13,8 @@ public class SpaceShip : Structure
     public Transform spaceShipImg;
     public Transform spaceShipUnderAttackUI;
     public UnityEvent<int> dronCountChangeAct;
-    TimeManager timeManager;
+    public TimeManager timeManager;
+    public SpaceShipHPSaveManager spaceShipHPSaveManager;
     public bool IsDronReady()
     {
         return builderDrons.Count > 0;
@@ -44,12 +45,12 @@ public class SpaceShip : Structure
     protected override void Initialize()
     {
         base.Initialize();
-        // 스텟은 여기서 결정하면 됨, 위치도 결정해버리자
         int centerY = (tileMap.cellBounds.yMin + tileMap.cellBounds.yMax) / 2;
         int centerX = (tileMap.cellBounds.xMin + tileMap.cellBounds.xMax) / 2;
         Vector3 pos = new Vector3(centerX, centerY, 0);
 
         this.transform.position = pos;
+
     }
 
     public override void TakeDamage(float damage)
@@ -84,6 +85,24 @@ public class SpaceShip : Structure
             tempHPBar.gameObject.SetActive(false);
         }
     }
+
+    public void SetSpaceshipLoadedHP(float _Hp)
+    {
+        float savedHP = _Hp;
+        if (savedHP <= 0f)
+        {
+            return;
+        }
+
+        this[EStat.HP] = savedHP;
+
+        /*if (savedHP < this[EStat.MaxHP])
+        {
+            float persent = this[EStat.HP] / this[EStat.MaxHP];
+            tempHPBar.gameObject.SetActive(true);
+            tempHPBar.value = persent;
+        }*/
+    }
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -96,7 +115,7 @@ public class SpaceShip : Structure
     {
         if (Input.GetKeyDown(KeyCode.F9))
         {
-            TakeDamage(10000f);
+            TakeDamage(10f);
         }
     }
 
