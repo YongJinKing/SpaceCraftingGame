@@ -67,8 +67,8 @@ public class ProjectileHitBox : HitBox
     {
         transform.parent = null;
         transform.rotation = Quaternion.identity;
-        base.Activate(pos);
         StartCoroutine(LinearMoving());
+        base.Activate(pos);
     }
     #endregion
     #endregion

@@ -160,8 +160,8 @@ public abstract class HitBox : MonoBehaviour
     {
         gameObject.SetActive(true);
         this.pos = pos;
-        StartCoroutine(HitChecking());
         StartCoroutine(Refreshing());
+        StartCoroutine(HitChecking());
     }
     ///<summary>
     ///외부에서 호출하여 히트박스 비활성화
