@@ -76,7 +76,7 @@ public class SP_RiceRainAttack : SPAttackAction
         }
 
         // 중력을 설정 (기본 중력 가속도를 사용)
-        rb.gravityScale = 2f;
+        rb.gravityScale = 4f;
 
         obj.GetComponent<MeteorRice>().Initialize(targetPos);
     }

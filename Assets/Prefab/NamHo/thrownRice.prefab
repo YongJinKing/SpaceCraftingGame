@@ -86,7 +86,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 2097152
-  throwSpeed: 4
+  throwSpeed: 8
 --- !u!114 &1264128759513939075
 MonoBehaviour:
   m_ObjectHideFlags: 0

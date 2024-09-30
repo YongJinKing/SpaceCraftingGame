@@ -37,18 +37,15 @@ public class MortalBox : MonoBehaviour
 
         if (!rabbitWorker.activeSelf)
         {
+            StopProducingCake();
+
             timer += Time.deltaTime;
             if(timer >= spawnTime)
             {
                 timer = 0f;
                 SpawnRabbitWorker();
             }
-            else
-            {
-                StopProducingCake();
-            }
         }
-        
     }
 
     public void SpawnRabbitWorker()

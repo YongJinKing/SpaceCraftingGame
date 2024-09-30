@@ -31,6 +31,16 @@ public class RabbitWorker : MonoBehaviour, IDamage
         rabbitCollider = GetComponent<BoxCollider2D>();
     }
 
+    private void OnEnable()
+    {
+        this.gameObject.transform.position = StartPos.position;
+        if(transform.localScale.x < 0f) transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
+    }
+
+    private void OnDisable()
+    {
+        mortalBox.StopProducingCake();
+    }
 
     public void StartWorking()
     {
