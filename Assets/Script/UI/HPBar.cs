@@ -42,6 +42,7 @@ public class HPBar : MonoBehaviour
         _mySlider.value = 1.0f;
         _fillImage.color = fullHPColor;
         initialized = true;
+        OnHPChanged(0, 0);
         if(following != null)
         {
             StopCoroutine(following);
