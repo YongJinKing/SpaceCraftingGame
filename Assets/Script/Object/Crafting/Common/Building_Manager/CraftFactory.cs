@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class CraftFactory : Singleton<CraftFactory>
 {
     StructureDataManager structureDataManger; //= StructureDataManager.GetInstance();
@@ -135,7 +134,8 @@ public class CraftFactory : Singleton<CraftFactory>
         FindComponentsByIndex(index);
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
-        GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
+        GameObject obj = Instantiate(tmp);
+        //GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
 
         //GameObject obj = Resources.Load<GameObject>($"Component/Image/{imgData.ImageResource_Name}");
         size = abilityData.BuildingScale;
@@ -178,7 +178,7 @@ public class CraftFactory : Singleton<CraftFactory>
         FindComponentsByIndex(index);
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
-        GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
+        GameObject obj = Instantiate(tmp);
 
         FactoryBuilding factoryBuilding =  obj.GetComponent<FactoryBuilding>();
         
@@ -211,7 +211,8 @@ public class CraftFactory : Singleton<CraftFactory>
         FindComponentsByIndex(index);
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
-        GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
+        GameObject obj = Instantiate(tmp);
+        //GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
         //GameObject obj = Resources.Load<GameObject>($"Component/Image/{imgData.ImageResource_Name}");
 
         //NaturalResources naturalResources = obj.GetComponent<NaturalResources>();
@@ -239,7 +240,8 @@ public class CraftFactory : Singleton<CraftFactory>
         FindComponentsByIndex(index);
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
-        GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
+        GameObject obj = Instantiate(tmp);
+        //GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
         size = abilityData.BuildingScale;
         //Collider, Rigidbody, Scale Setting
         obj.transform.localScale = Vector3.one;
