@@ -36,7 +36,7 @@ public class WaveSaveManager : BaseSaveSystem
     {
         if (DataManager.Instance.nowSlot == -1) return;
         base.Save();
-        RecentTime recentTime = new RecentTime(waveManager.waveCount);
+        RecentWave recentTime = new RecentWave(waveManager.waveCount);
 
         var json = JsonConvert.SerializeObject(recentTime, Formatting.Indented);
         File.WriteAllText(savePath, json);

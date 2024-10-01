@@ -39,15 +39,16 @@ public class BossSearchedInfoSaveSystem : BaseSaveSystem
         File.WriteAllText(path, json);
     }
 
-    void LoadBossSearchedInfo()
+    public void LoadBossSearchedInfo()
     {
         if (File.Exists(path))
         {
             string JsonString = File.ReadAllText(path);
-            bossSearchedInfo = JsonUtility.FromJson<BossSearchedInfo>(JsonString);
-            bossSearching.isSearching = bossSearchedInfo.isSearching;
-            bossSearching.isSearched = bossSearchedInfo.isSearched;
-            bossSearching.searchedTime = bossSearchedInfo.searchedTime;
+            BossSearchedInfo newBossSearchedInfo = JsonUtility.FromJson<BossSearchedInfo>(JsonString);
+            Debug.Log(newBossSearchedInfo.isSearching + "," + newBossSearchedInfo.isSearched + "," + newBossSearchedInfo.searchedTime);
+            bossSearching.isSearching = newBossSearchedInfo.isSearching;
+            bossSearching.isSearched = newBossSearchedInfo.isSearched;
+            bossSearching.searchedTime = newBossSearchedInfo.searchedTime;
         }
     }
 
@@ -56,7 +57,6 @@ public class BossSearchedInfoSaveSystem : BaseSaveSystem
         base.Start();
         path = Path.Combine(filePath, "BossSearchedInfoSaved_" + DataManager.Instance.nowSlot +".json");
 
-        LoadBossSearchedInfo();
     }
 
 }

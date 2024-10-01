@@ -62,20 +62,20 @@ public class BossSearchingUI : MonoBehaviour
 
     public TotalSaveManager TSM;
     public Transform SpaceShipCanvas;
-    BossClearSaveManager bossClearInfo;
+    public BossSearchedInfoSaveSystem BossSearchedInfoSaveSystem;
+    public BossClearSaveManager bossClearInfo;
     private void Start()
     {
-        TSM = FindObjectOfType<TotalSaveManager>();
-        bossClearInfo = FindObjectOfType<BossClearSaveManager>();
         FindingVFX.Stop();
         FoundVFX.Stop();
+        BossSearchedInfoSaveSystem.LoadBossSearchedInfo();
 
         if (bossClearInfo.LoadClearInfo())
         {
             searchingButton.GetComponent<Button>().interactable = false;
             return;
         }
-
+        Debug.Log(isSearching + "," + isSearched + "," + searchedTime + ">>>>");
         if (isSearching)
         {
             StartSearching();

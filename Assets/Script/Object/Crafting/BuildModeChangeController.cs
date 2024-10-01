@@ -25,6 +25,7 @@ public class BuildModeChangeController : MonoBehaviour
         {
             Inventory.instance.AddItem(100000,99);
             Inventory.instance.AddItem(100001, 99);
+            Inventory.instance.AddItem(200000, 10);
         }
 
         if (Input.GetKeyDown(KeyCode.I))

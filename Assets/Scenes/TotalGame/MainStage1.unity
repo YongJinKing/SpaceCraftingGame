@@ -10284,6 +10284,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+      propertyPath: bossClearInfo
+      value: 
+      objectReference: {fileID: 609214143}
+    - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: mineralAmount
       value: 200
       objectReference: {fileID: 0}
@@ -10299,6 +10303,10 @@ PrefabInstance:
       propertyPath: searchingButton
       value: 
       objectReference: {fileID: 471455064}
+    - target: {fileID: 861806339181395718, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
+      propertyPath: BossSearchedInfoSaveSystem
+      value: 
+      objectReference: {fileID: 1578604507}
     - target: {fileID: 1166778781798874847, guid: 71c67ebd3e93d4b4c8fb0b34cb930756, type: 3}
       propertyPath: m_Name
       value: BossSearchingCanavs
@@ -43723,6 +43731,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7647790787710213617, guid: b9eb413a6aaf3544782d2510957148c4, type: 3}
   m_PrefabInstance: {fileID: 1578604504}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1578604507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4732650239296548488, guid: b9eb413a6aaf3544782d2510957148c4, type: 3}
+  m_PrefabInstance: {fileID: 1578604504}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf761099ecb8d74ab926b17608744aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1585258476 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 341988824625165678, guid: 8e79e060ec896e2449c3f9d2ca5c3279, type: 3}
