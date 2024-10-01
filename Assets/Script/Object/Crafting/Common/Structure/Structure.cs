@@ -170,7 +170,7 @@ public abstract class Structure : Stat
     protected override void Initialize()
     {
         base.Initialize();
-        this[EStat.HP] = curHP;
+        if(curHP != 0) this[EStat.HP] = curHP;
         tempHPBar = Instantiate(structHpBar);
         tempHPBar.myTarget = this.GetComponent<Stat>();
         tempHPBar._offSet = screenOffset;
