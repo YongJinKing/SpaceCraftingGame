@@ -64,22 +64,22 @@ public class BossSearchingUI : MonoBehaviour
     public Transform SpaceShipCanvas;
     public BossSearchedInfoSaveSystem BossSearchedInfoSaveSystem;
     public BossClearSaveManager bossClearInfo;
+
+
     private void Start()
     {
+        if (isSearched || isSearching) return;
+
         FindingVFX.Stop();
         FoundVFX.Stop();
-        BossSearchedInfoSaveSystem.LoadBossSearchedInfo();
+        //BossSearchedInfoSaveSystem.LoadBossSearchedInfo();
 
-        if (bossClearInfo.LoadClearInfo())
-        {
-            searchingButton.GetComponent<Button>().interactable = false;
-            return;
-        }
+        /*
         Debug.Log(isSearching + "," + isSearched + "," + searchedTime + ">>>>");
         if (isSearching)
         {
             StartSearching();
-        }
+        }*/
     }
     public void TryToSearchBoss()
     {
@@ -113,7 +113,7 @@ public class BossSearchingUI : MonoBehaviour
         SceneManager.LoadScene("Boss_Rabbit"); // 이런식으로 넘길건데 잠깐
     }
 
-    void StartSearching()
+    public void StartSearching()
     {
         isSearching = true;
         AskSearchingScreen.SetActive(false);
@@ -147,13 +147,27 @@ public class BossSearchingUI : MonoBehaviour
         FoundVFX.Play();*/
     }
 
-    void SearchComplete()
+    public void SearchComplete()
     {
+        bossClearInfo = FindObjectOfType<BossClearSaveManager>();
+        if (bossClearInfo.LoadClearInfo())
+        {
+            FindingVFX.Stop();
+            FoundVFX.Stop();
+            return;
+        }
+
         isSearched = true;
         searchedTime = 0f;
+        AskSearchingScreen.SetActive(false);
         SearchingScreen.SetActive(false);
         SearchingCompleteScreen.SetActive(true);
         FindingVFX.Stop();
         FoundVFX.Play();
+    }
+
+    public void SetSearchTime(float searhTime)
+    {
+        this.searchedTime = searhTime;
     }
 }

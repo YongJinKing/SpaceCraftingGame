@@ -15,12 +15,13 @@ public class GunManager : BaseSaveSystem
     }
     public int[] gunIndexes = new int[3];
     public string savePath;
+    EquipInven EI;
     protected override void Start()
     {
         base.Start();
         savePath = Path.Combine(filePath, "WeaponLevel_" + DataManager.Instance.nowSlot + ".json");
-
-        //LoadGunIndexes();
+        EI = FindObjectOfType<EquipInven>();
+        LoadGunIndexes();
         /*UpdateGunIndex(0, (int)GunType.Rifle);
         UpdateGunIndex(1, (int)GunType.Shotgun);
         UpdateGunIndex(2, (int)GunType.Sniper);*/
@@ -30,7 +31,7 @@ public class GunManager : BaseSaveSystem
     {
         if (DataManager.Instance.nowSlot == -1) return;
         base.Save();
-        EquipInven EI = FindObjectOfType<EquipInven>();
+        EI = FindObjectOfType<EquipInven>();
 
         Debug.Log(EI.weapons[0] + " , " + EI.weapons[1] + ", " + EI.weapons[2]);
         string json = JsonUtility.ToJson(new GunIndexData(EI.weapons));
@@ -75,6 +76,12 @@ public class GunManager : BaseSaveSystem
             string json = File.ReadAllText(savePath);
             GunIndexData data = JsonUtility.FromJson<GunIndexData>(json);
             gunIndexes = data.indexes;
+
+            for (int i = 0; i < gunIndexes.Length; i++)
+            {
+                EI.Upgrade(gunIndexes[i]);
+                EI.weapons[i] = gunIndexes[i];
+            }
         }
         else
         {
@@ -82,6 +89,12 @@ public class GunManager : BaseSaveSystem
             gunIndexes[0] = (int)GunType.Rifle;
             gunIndexes[1] = (int)GunType.Shotgun;
             gunIndexes[2] = (int)GunType.Sniper;
+
+            for (int i = 0; i < gunIndexes.Length; i++)
+            {
+                EI.Upgrade(gunIndexes[i]);
+                EI.weapons[i] = gunIndexes[i];
+            }
             //Save();
         }
 

@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
+using UnityEngine.UI;
+using System.ComponentModel;
 
 public class BossClearInfo
 {
@@ -19,13 +21,18 @@ public class BossClearInfo
 public class BossClearSaveManager : BaseSaveSystem
 {
     Boss boss;
+    BossSearchingUI searchingUI;
     public string savePath;
+    bool inited = false;
     protected override void Start()
     {
         base.Start();
+        inited = true;
         savePath = Path.Combine(filePath, "BossClearData_" + DataManager.Instance.nowSlot + ".json");
+        searchingUI = FindObjectOfType<BossSearchingUI>();
+        LoadClearInfo();
         boss = FindObjectOfType<Boss>();
-        if(boss != null) boss.clearEvent.AddListener(SaveClearData);
+        if (boss != null) boss.clearEvent.AddListener(SaveClearData);
     }
 
     public override void Save()
@@ -54,12 +61,18 @@ public class BossClearSaveManager : BaseSaveSystem
 
     public bool LoadClearInfo()
     {
+        if (!inited) Start();
+
         bool isClear = false;
         if (File.Exists(savePath))
         {
             string json = File.ReadAllText(savePath);
             BossClearInfo data = JsonUtility.FromJson<BossClearInfo>(json);
             isClear = data.isClear;
+            if (isClear)
+            {
+                searchingUI.searchingButton.GetComponent<Button>().interactable = false;
+            }
         }
         else
         {

@@ -38,13 +38,13 @@ public class EquipInven : MonoBehaviour
         Player player = equipmentManager.GetComponent<Player>();
         player.UIChangeEvent.AddListener(OnModeChange);
         
-        GunManager weaponManager = FindObjectOfType<GunManager>();
+        /*GunManager weaponManager = FindObjectOfType<GunManager>();
         weapons = weaponManager.LoadGunIndexes();
 
         for(int i = 0; i < weapons.Length; i++)
         {
             Upgrade(weapons[i]);
-        }
+        }*/
         
         EquipEvent.AddListener(equipmentManager.EquipItem);
         UnEquipEvent.AddListener(equipmentManager.UnEquip);

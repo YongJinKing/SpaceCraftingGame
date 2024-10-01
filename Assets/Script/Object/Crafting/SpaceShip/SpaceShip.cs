@@ -15,6 +15,7 @@ public class SpaceShip : Structure
     public UnityEvent<int> dronCountChangeAct;
     public TimeManager timeManager;
     public SpaceShipHPSaveManager spaceShipHPSaveManager;
+    SpaceShipHPSaveManager hpSaveManager;
     public bool IsDronReady()
     {
         return builderDrons.Count > 0;
@@ -50,6 +51,7 @@ public class SpaceShip : Structure
         Vector3 pos = new Vector3(centerX, centerY, 0);
 
         this.transform.position = pos;
+        hpSaveManager.LoadHP();
 
     }
 
@@ -105,6 +107,7 @@ public class SpaceShip : Structure
     // Start is called before the first frame update
     protected override void Start()
     {
+        hpSaveManager = FindObjectOfType<SpaceShipHPSaveManager>();
         base.Start();
         timeManager.dayChangeHealing.AddListener(HealAday);
     }

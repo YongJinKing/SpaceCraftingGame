@@ -20,12 +20,13 @@ public class SpaceShipHPSaveManager : BaseSaveSystem
     public SpaceShip spaceship;
     public string savePath;
     float hp;
+    bool inited = false;
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         savePath = Path.Combine(filePath, "SpaceShipHP_" + DataManager.Instance.nowSlot + ".json");
-        LoadHP();
+        inited = true;
     }
 
     public override void Save()
@@ -52,7 +53,9 @@ public class SpaceShipHPSaveManager : BaseSaveSystem
 
     public void LoadHP()
     {
-        float savedHP = 0;
+        if (!inited) Start();
+
+        float savedHP = 0f;
         if (File.Exists(savePath))
         {
             string json = File.ReadAllText(savePath);
@@ -61,7 +64,7 @@ public class SpaceShipHPSaveManager : BaseSaveSystem
             Debug.Log("저장된 파일을 찾았습니다: " + savePath + ", " + savedHP);
 
             spaceship.SetSpaceshipLoadedHP(savedHP);
-            
+
         }
         else
         {

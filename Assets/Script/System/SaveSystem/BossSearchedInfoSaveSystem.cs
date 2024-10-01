@@ -49,13 +49,29 @@ public class BossSearchedInfoSaveSystem : BaseSaveSystem
             bossSearching.isSearching = newBossSearchedInfo.isSearching;
             bossSearching.isSearched = newBossSearchedInfo.isSearched;
             bossSearching.searchedTime = newBossSearchedInfo.searchedTime;
+
+            if (newBossSearchedInfo.isSearched)
+            {
+                bossSearching.SearchComplete();
+                return;
+            }
+
+            if (newBossSearchedInfo.isSearching)
+            {
+                bossSearching.SetSearchTime(newBossSearchedInfo.searchedTime);
+                bossSearching.StartSearching();
+            }
+            
         }
     }
 
     protected override void Start()
     {
         base.Start();
-        path = Path.Combine(filePath, "BossSearchedInfoSaved_" + DataManager.Instance.nowSlot +".json");
+        path = Path.Combine(filePath, "BossSearchSave_" + DataManager.Instance.nowSlot +".json");
+
+        bossSearching = FindObjectOfType<BossSearchingUI>();
+        LoadBossSearchedInfo();
 
     }
 
