@@ -12,7 +12,7 @@ public class WaveManager : MonoBehaviour
 
     #region Properties
     #region Private
-    private int priviousWaveDate = 0;
+    
     public int waveCount = 0;
     #endregion
     #region Protected
@@ -21,6 +21,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] protected HPBar hpBarPrefab;
     #endregion
     #region Public
+    public int priviousWaveDate = 0;
     public TimeManager timeManager;
     public Transform MonsterHPUICanvas;
     #endregion
