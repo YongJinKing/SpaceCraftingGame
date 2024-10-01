@@ -129,7 +129,7 @@ public class ComponentSaveSystem : BaseSaveSystem
                         Debug.Log("°Ç¹°");
                         Debug.Log(tile.Value.Object.GetComponent<Structure>().mComponentName);
                         component.index = int.Parse(tile.Value.Object.GetComponent<Structure>().mComponentName);
-                        component.Hp = tile.Value.Object.GetComponent<Structure>().MaxHP;
+                        component.Hp = tile.Value.Object.GetComponent<Structure>()[EStat.HP];
                         component.producedAmount = 0;
                         if (tile.Value.Object.CompareTag("Factory")) component.producedAmount = tile.Value.Object.GetComponent<FactoryBuilding>().produceAmount;
                     }

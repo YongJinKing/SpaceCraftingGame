@@ -28,6 +28,7 @@ public abstract class Structure : Stat
     public Transform structHPBarCanvas;
     public Vector2 screenOffset;
     public Vector3 barScale;
+    public float curHP;
 
     protected HPBar tempHPBar;
 
@@ -169,12 +170,13 @@ public abstract class Structure : Stat
     protected override void Initialize()
     {
         base.Initialize();
+        this[EStat.HP] = curHP;
         tempHPBar = Instantiate(structHpBar);
         tempHPBar.myTarget = this.GetComponent<Stat>();
         tempHPBar._offSet = screenOffset;
         tempHPBar.GetComponent<RectTransform>().localScale = barScale;
         tempHPBar.transform.SetParent(structHPBarCanvas, false);
-        tempHPBar.gameObject.SetActive(false);
+        if (this[EStat.HP] >= this[EStat.MaxHP])tempHPBar.gameObject.SetActive(false);
     }
 
     #endregion

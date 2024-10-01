@@ -135,7 +135,6 @@ public class CraftFactory : Singleton<CraftFactory>
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = Instantiate(tmp);
-        //GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
 
         //GameObject obj = Resources.Load<GameObject>($"Component/Image/{imgData.ImageResource_Name}");
         size = abilityData.BuildingScale;
@@ -145,8 +144,11 @@ public class CraftFactory : Singleton<CraftFactory>
         obj.layer = 16;
         
         Turret turret = obj.GetComponent<Turret>();
-        if (Hp == 0f) turret.MaxHP = componentData.Component_Hp;
-        else turret.MaxHP = Hp;
+        /*if (Hp == 0f) turret.MaxHP = componentData.Component_Hp;
+        else turret.MaxHP = Hp;*/
+        turret.MaxHP = componentData.Component_Hp;
+        if (Hp != 0) turret.curHP = Hp;
+
         turret.mComponentName = componentData.Component_Name.ToString();
         turret[EStat.ATK] = abilityData.BuildingDetail_Value;
         turret[EStat.ATKDelay] = abilityData.BuildingDetail_Delay;
@@ -188,9 +190,12 @@ public class CraftFactory : Singleton<CraftFactory>
         factoryBuilding.DestroyEvent = new UnityEngine.Events.UnityEvent<Vector3>();
         factoryBuilding.produceAmount = producedAmount;
 
-        if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp; 
-        else factoryBuilding.MaxHP = Hp;
-        Debug.Log(abilityData.BuildingDetail_Delay + "<<<<<<<<<<<<<<");
+        /*if (Hp == 0) factoryBuilding.MaxHP = componentData.Component_Hp;
+        else factoryBuilding.MaxHP = Hp;*/
+        factoryBuilding.MaxHP = componentData.Component_Hp;
+        if (Hp != 0) factoryBuilding.curHP = Hp;
+        
+
         factoryBuilding[EStat.Efficiency] = abilityData.BuildingDetail_Delay; 
         factoryBuilding.GetComponent<Structure>().structHPBarCanvas = struchtHPBarCanvas;
 
@@ -212,7 +217,6 @@ public class CraftFactory : Singleton<CraftFactory>
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = Instantiate(tmp);
-        //GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
         //GameObject obj = Resources.Load<GameObject>($"Component/Image/{imgData.ImageResource_Name}");
 
         //NaturalResources naturalResources = obj.GetComponent<NaturalResources>();
@@ -241,7 +245,6 @@ public class CraftFactory : Singleton<CraftFactory>
 
         GameObject tmp = Resources.Load($"Component/Image/{imgData.ImageResource_Name}") as GameObject;
         GameObject obj = Instantiate(tmp);
-        //GameObject obj = PrefabUtility.InstantiatePrefab(tmp) as GameObject;
         size = abilityData.BuildingScale;
         //Collider, Rigidbody, Scale Setting
         obj.transform.localScale = Vector3.one;
@@ -251,8 +254,10 @@ public class CraftFactory : Singleton<CraftFactory>
         Barricade barricade = obj.GetComponent<Barricade>();
         barricade.mComponentName = componentData.Component_Name.ToString();
         barricade.GetComponent<Structure>().structHPBarCanvas = struchtHPBarCanvas;
-        if (Hp == 0) barricade.MaxHP = componentData.Component_Hp; 
-        else barricade.MaxHP = Hp; 
+        /*if (Hp == 0) barricade.MaxHP = componentData.Component_Hp; 
+        else barricade.MaxHP = Hp; */
+        barricade.MaxHP = componentData.Component_Hp;
+        if (Hp != 0) barricade.curHP = Hp;
 
         obj.transform.localPosition = pos;
         obj.transform.localScale = Vector3.one * size;
