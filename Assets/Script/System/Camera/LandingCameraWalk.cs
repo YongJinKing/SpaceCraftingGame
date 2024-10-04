@@ -26,11 +26,11 @@ public class LandingCameraWalk : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.PageDown))
+        /*if (Input.GetKeyDown(KeyCode.PageDown))
         {
             StopAllCoroutines();
             SceneManager.LoadScene("MainStage1");
-        }
+        }*/
     }
 
     IEnumerator LandingCamFocus()

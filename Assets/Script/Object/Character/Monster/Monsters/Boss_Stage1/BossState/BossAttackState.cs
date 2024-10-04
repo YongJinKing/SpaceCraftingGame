@@ -61,12 +61,12 @@ public class BossAttackState : BossState
         yield return null;
         
         owner.activatedAction.Activate(owner.target.transform.position); // 구현해놓은 각 패턴들을 실행한다.
-
-
-        if (owner.activatedAction.fireAndForget) // 각 패턴들이 실행중일 때, 보스가 움직일 수 있는지 없는지, 즉 패턴을 실행하며 플레이어를 따라올지 아니면 패턴에 움직임을 제한시킬지 등을 설정된 값에 따라서 해당 스테이트로 넘겨준다.
+        /*if (owner.activatedAction.fireAndForget) // 각 패턴들이 실행중일 때, 보스가 움직일 수 있는지 없는지, 즉 패턴을 실행하며 플레이어를 따라올지 아니면 패턴에 움직임을 제한시킬지 등을 설정된 값에 따라서 해당 스테이트로 넘겨준다.
             owner.stateMachine.ChangeState<BossMovableActionState>();
         else
-            owner.stateMachine.ChangeState<BossUnMovableActionState>();
+            owner.stateMachine.ChangeState<BossUnMovableActionState>();*/
+
+        owner.stateMachine.ChangeState<BossChekcState>();
     }
     #endregion
 

@@ -17,7 +17,7 @@ public class GameOverController : MonoBehaviour
 
     void GoBackToStartScene()
     {
-        SceneManager.LoadSceneAsync(0);
         Time.timeScale = 1f;
+        SceneManager.LoadSceneAsync(0);
     }
 }

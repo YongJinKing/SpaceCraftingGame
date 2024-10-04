@@ -13,13 +13,13 @@ public class TimeScaleUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Insert))
+        /*if (Input.GetKeyDown(KeyCode.Insert))
         {
             Time.timeScale += 0.2f;
         }
         if (Input.GetKeyDown(KeyCode.Delete))
         {
             Time.timeScale -= 0.2f;
-        }
+        }*/
     }
 }

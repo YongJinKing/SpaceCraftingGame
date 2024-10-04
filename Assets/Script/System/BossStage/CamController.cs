@@ -204,7 +204,7 @@ public class CamController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.PageDown))
+        /*if (Input.GetKeyDown(KeyCode.PageDown))
         {
             StopAllCoroutines();
             SoundManager.Instance.PlayBGM(SoundManager.Instance.BGMSoundData.bgm[(int)BGM.BOSS]);
@@ -213,7 +213,8 @@ public class CamController : MonoBehaviour
             CamFocus.SetParent(null);
             MoveToTarget(CamFocus.position, Player.position);
             CamFocus.SetParent(Player);
+            controller.canMove = true;
             bossStage1Manager.StartGame();
-        }
+        }*/
     }
 }

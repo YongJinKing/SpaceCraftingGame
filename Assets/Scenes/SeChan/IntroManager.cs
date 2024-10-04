@@ -19,11 +19,11 @@ public class IntroManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.PageDown))
+        /*if (Input.GetKeyDown(KeyCode.PageDown))
         {
             StopAllCoroutines();
             SceneManager.LoadScene("StageSelect"); // 스테이지 씬 이동
-        }
+        }*/
     }
 
     IEnumerator fadeOut()
